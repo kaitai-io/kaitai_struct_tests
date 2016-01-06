@@ -1,0 +1,11 @@
+#!/bin/sh
+
+COMPILER_DIR=..
+
+rm -rf compiled
+mkdir -p compiled/ruby
+
+for F in formats/*.yaml; do
+	TGT=$(basename $F | sed 's/\.yaml$//')
+	"$COMPILER_DIR/compile-to-ruby" "$F" "compiled/ruby/$TGT.rb"
+done
