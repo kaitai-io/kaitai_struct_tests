@@ -1,8 +1,8 @@
 require 'fixed_struct'
 
-RSpec.describe Fixed_structFormat do
+RSpec.describe Fixed_struct do
   it 'parses test properly' do
-    r = Fixed_structFormat.new('src/fixed_struct.bin')
+    r = Fixed_struct.from_file('src/fixed_struct.bin')
 
     expect(r.header.uint8).to eq 255
     expect(r.header.uint16).to eq 65535
