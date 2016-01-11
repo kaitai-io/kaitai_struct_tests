@@ -9,5 +9,5 @@ seq:
     id: lines
     type: strz
     encoding: UTF-8
-    repeat:
-      expr: qty
+    repeat: expr
+    repeat-expr: qty
