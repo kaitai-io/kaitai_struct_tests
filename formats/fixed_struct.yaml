@@ -89,3 +89,4 @@ types:
 instances:
   header:
     position_abs: 0
+    type: header
