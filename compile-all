@@ -6,6 +6,7 @@ rm -rf compiled
 mkdir -p compiled/ruby
 
 for F in formats/*.yaml; do
-	TGT=$(basename $F | sed 's/\.yaml$//')
-	"$COMPILER_DIR/compile-to-ruby" "$F" "compiled/ruby/$TGT.rb"
+	TGT=$(basename "$F" | sed 's/\.yaml$//')
+	echo -n "$TGT ... "
+	"$COMPILER_DIR/compile-to-ruby" "$F" "compiled/ruby/$TGT.rb" && echo OK
 done
