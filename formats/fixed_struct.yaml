@@ -3,7 +3,6 @@ meta:
   endian: le
 types:
   header:
-    type: seq
     seq:
       -
         id: magic1
