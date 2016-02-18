@@ -1,0 +1,5 @@
+#!/bin/sh -ef
+
+PYTHON_RUNTIME_DIR=../../kaitai_structures_python_runtime
+
+PYTHONPATH="$PYTHON_RUNTIME_DIR:compiled/python" python -m unittest discover -s spec/python
