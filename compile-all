@@ -2,7 +2,7 @@
 
 COMPILER_DIR=..
 
-rm -rf compiled
+rm -rf compiled/ruby
 mkdir -p compiled/ruby
 
 for F in formats/*.yaml; do
