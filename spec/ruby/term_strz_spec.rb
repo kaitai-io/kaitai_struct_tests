@@ -1,8 +1,8 @@
 require 'term_strz'
 
-RSpec.describe Term_strz do
+RSpec.describe TermStrz do
   it 'parses test properly' do
-    r = Term_strz.from_file('src/term_strz.bin')
+    r = TermStrz.from_file('src/term_strz.bin')
 
     expect(r.s1).to eq('foo')
     expect(r.s2).to eq('bar')

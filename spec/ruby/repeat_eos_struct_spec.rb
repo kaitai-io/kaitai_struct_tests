@@ -1,8 +1,8 @@
 require 'repeat_eos_struct'
 
-RSpec.describe Repeat_eos_struct do
+RSpec.describe RepeatEosStruct do
   it 'parses test properly' do
-    r = Repeat_eos_struct.from_file('src/repeat_eos_struct.bin')
+    r = RepeatEosStruct.from_file('src/repeat_eos_struct.bin')
 
     expect(r.chunks.size).to eq(2)
     expect(r.chunks[0].offset).to eq 0
