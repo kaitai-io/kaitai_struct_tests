@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+s = $stdin.read
+
+s.gsub!(/expect\(/, 'assertEquals(')
+s.gsub!(/\)\.to eq\((.*?)\)/, ', \1);')
+s.gsub!(/'/, '"')
+s.gsub!(/\.([a-zA-Z0-9_]+)/) {
+  arg = $1
+  w = arg.split(/_/)
+  first = w.shift
+  w.map! { |x| x.capitalize }
+  w.unshift(first)
+  ".#{w.join}()"
+}
+
+print s

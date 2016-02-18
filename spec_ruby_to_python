@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+s = $stdin.read
+
+raise "Unable to detect source name" unless s =~ /require ['"](.*?)['"]/
+src_name = $1
+
+raise "Unable to detect class name" unless s =~ /RSpec\.describe (.*?) do/
+class_name = $1
+
+s.gsub!(/^.*it .parses test properly. do\n/m, '')
+
+s.gsub!(/^( +)/) { $1 * 2 }
+s.gsub!(/expect\(/, 'self.assertEquals(')
+s.gsub!(/\)\.to eq\((.*?)\)/, ', \1)')
+s.gsub!(/'/, '"')
+s.gsub!(/^\s*end\n/, '')
+
+puts <<__EOF__
+import unittest
+
+from #{src_name} import #{class_name}
+
+class Test#{class_name}(unittest.TestCase):
+    def test_#{src_name}(self):
+__EOF__
+
+print s
