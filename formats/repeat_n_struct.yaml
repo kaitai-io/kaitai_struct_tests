@@ -1,5 +1,5 @@
 meta:
-  id: repeat_n_strz
+  id: repeat_n_struct
   endian: le
 seq:
   -
