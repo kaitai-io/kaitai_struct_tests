@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
 public class SpecTests {
-    private static final String SRC_DIR = "../kaitai-structures/test/src/";
+    private static final String SRC_DIR = "../../src/";
 
     @Test
     public void testHelloWorld() throws Exception {
