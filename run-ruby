@@ -1,3 +1,5 @@
 #!/bin/sh -ef
 
-rspec -I compiled/ruby -I ..
+. ./config
+
+rspec -I compiled/ruby -I "$RUBY_RUNTIME_DIR"
