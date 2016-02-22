@@ -1,4 +1,5 @@
 COMPILER_DIR=../compiler
 JAVA_RUNTIME_DIR=../runtime/java
+JAVA_TESTNG_JAR=$HOME/.m2/repository/org/testng/testng/6.9.10/testng-6.9.10.jar:$HOME/.m2/repository/com/beust/jcommander/1.48/jcommander-1.48.jar
 PYTHON_RUNTIME_DIR=../runtime/python
 RUBY_RUNTIME_DIR=../runtime/ruby
