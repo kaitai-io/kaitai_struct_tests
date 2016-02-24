@@ -2,10 +2,8 @@ package io.kaitai.struct.spec;
 
 import io.kaitai.struct.testformats.*;
 import org.testng.annotations.Test;
-import org.testng.reporters.Buffer;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertEqualsNoOrder;
 
 public class SpecTests {
     private static final String SRC_DIR = "../../src/";
