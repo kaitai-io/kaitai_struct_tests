@@ -152,4 +152,12 @@ public class SpecTests {
 
         assertEquals(r.finisher(), 0xee);
     }
+
+    @Test
+    public void testProcessXorConst() throws Exception {
+        ProcessXorConst r = ProcessXorConst.fromFile(SRC_DIR + "process_xor_1.bin");
+
+        assertEquals(r.key(), 0xff);
+        assertEquals(new String(r.buf(), "UTF-8"), "foo bar");
+    }
 }
