@@ -117,4 +117,12 @@ public class SpecTests {
         assertEquals(r.op3().opcode(), 0x53);
         assertEquals(r.op3().argStr().str(), "bar");
     }
+
+    @Test
+    public void testPositionAbs() throws Exception {
+        PositionAbs r = PositionAbs.fromFile(SRC_DIR + "position_abs.bin");
+
+        assertEquals(r.indexOffset(), 0x20);
+        assertEquals(r.index().entry(), "foo");
+    }
 }
