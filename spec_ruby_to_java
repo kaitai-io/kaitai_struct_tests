@@ -3,7 +3,7 @@
 s = $stdin.read
 
 s.gsub!(/expect\(/, 'assertEquals(')
-s.gsub!(/\)\.to eq\((.*?)\)/, ', \1);')
+s.gsub!(/\)\.to eq\s*\(?\s*(.*?)\s*\)?\s*$/, ', \1);')
 s.gsub!(/'/, '"')
 s.gsub!(/\.([a-zA-Z0-9_]+)/) {
   arg = $1
