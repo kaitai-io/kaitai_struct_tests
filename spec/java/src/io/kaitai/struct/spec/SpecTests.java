@@ -2,8 +2,10 @@ package io.kaitai.struct.spec;
 
 import io.kaitai.struct.testformats.*;
 import org.testng.annotations.Test;
+import org.testng.reporters.Buffer;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertEqualsNoOrder;
 
 public class SpecTests {
     private static final String SRC_DIR = "../../src/";
@@ -124,5 +126,18 @@ public class SpecTests {
 
         assertEquals(r.indexOffset(), 0x20);
         assertEquals(r.index().entry(), "foo");
+    }
+
+    @Test
+    public void testBufferedStruct() throws Exception {
+        BufferedStruct r = BufferedStruct.fromFile(SRC_DIR + "buffered_struct.bin");
+
+        assertEquals(r.len1(), 0x10);
+        assertEquals(r.block1().number1(), 0x42);
+        assertEquals(r.block1().number2(), 0x43);
+        assertEquals(r.len2(), 0x8);
+        assertEquals(r.block2().number1(), 0x44);
+        assertEquals(r.block2().number2(), 0x45);
+        assertEquals(r.finisher(), 0xee);
     }
 }
