@@ -1,0 +1,6 @@
+#!/bin/sh -ef
+
+. ./config
+
+NODE_PATH=compiled/javascript:helpers/javascript:$JAVASCRIPT_RUNTIME_DIR mocha spec/javascript
+
