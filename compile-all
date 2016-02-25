@@ -1,12 +1,20 @@
 #!/bin/sh
 
-COMPILER_DIR=..
+COMPILER_DIR=../compiler
+TEST_DIR="$(pwd)"
+DEST_DIR="$TEST_DIR/compiled"
 
-rm -rf compiled/ruby
-mkdir -p compiled/ruby
+rebuild_compiler()
+{
+	cd "$COMPILER_DIR"
+    sbt universal:packageBin
+    rm -rf runnable
+    mkdir -p runnable
+    unzip -q target/universal/kaitai-struct-compiler-*.zip -d runnable
+    cd "$TEST_DIR"
+}
 
-for F in formats/*.yaml; do
-	TGT=$(basename "$F" | sed 's/\.yaml$//')
-	echo -n "$TGT ... "
-	"$COMPILER_DIR/compile-to-ruby" "$F" "compiled/ruby/$TGT.rb" && echo OK
-done
+rebuild_compiler
+rm -rf "$DEST_DIR"
+mkdir -p "$DEST_DIR"
+$COMPILER_DIR/runnable/kaitai-struct*/bin/kaitai-struct-compiler -- --verbose -t all -d "$DEST_DIR" formats/*.ksy
