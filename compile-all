@@ -7,11 +7,11 @@ DEST_DIR="$TEST_DIR/compiled"
 rebuild_compiler()
 {
 	cd "$COMPILER_DIR"
-    sbt universal:packageBin
-    rm -rf runnable
-    mkdir -p runnable
-    unzip -q target/universal/kaitai-struct-compiler-*.zip -d runnable
-    cd "$TEST_DIR"
+	sbt universal:packageBin
+	rm -rf runnable
+	mkdir -p runnable
+	unzip -q target/universal/kaitai-struct-compiler-*.zip -d runnable
+	cd "$TEST_DIR"
 }
 
 rebuild_compiler
