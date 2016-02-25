@@ -17,4 +17,5 @@ rebuild_compiler()
 rebuild_compiler
 rm -rf "$DEST_DIR"
 mkdir -p "$DEST_DIR"
-$COMPILER_DIR/runnable/kaitai-struct*/bin/kaitai-struct-compiler -- --verbose -t all -d "$DEST_DIR" formats/*.ksy
+$COMPILER_DIR/runnable/kaitai-struct*/bin/kaitai-struct-compiler -- \
+	--verbose -t all -d "$DEST_DIR" --java-package io.kaitai.struct.testformats formats/*.ksy
