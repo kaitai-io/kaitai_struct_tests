@@ -2,7 +2,7 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('TermStrz', 'src/term_strz.bin', function(r) {
-    assert.equal("foo", r.s1);
-    assert.equal("bar", r.s2);
-    assert.equal("|baz@", r.s3);
+    assert.equal(r.s1, "foo");
+    assert.equal(r.s2, "bar");
+    assert.equal(r.s3, "|baz@");
 })
