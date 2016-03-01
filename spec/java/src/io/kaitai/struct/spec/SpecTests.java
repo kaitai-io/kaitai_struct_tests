@@ -168,4 +168,12 @@ public class SpecTests {
         assertEquals(r.key(), 0xff);
         assertEquals(new String(r.buf(), "UTF-8"), "foo bar");
     }
+
+    @Test
+    public void testExpr0() throws Exception {
+        Expr0 r = Expr0.fromFile(SRC_DIR + "str_encodings.bin");
+
+        assertEquals(r.mustBeF7().intValue(), 0xf7);
+        assertEquals(r.mustBeAbc123(), "abc123");
+    }
 }
