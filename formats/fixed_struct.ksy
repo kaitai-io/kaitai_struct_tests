@@ -87,5 +87,5 @@ types:
         type: s8be
 instances:
   header:
-    position_abs: 0
+    position-abs: 0
     type: header

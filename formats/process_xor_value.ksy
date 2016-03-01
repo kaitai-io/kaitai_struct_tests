@@ -5,5 +5,5 @@ seq:
   - id: key
     type: u1
   - id: buf
-    size_eos: true
+    size-eos: true
     process: xor(key)

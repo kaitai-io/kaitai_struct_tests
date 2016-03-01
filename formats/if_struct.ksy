@@ -31,5 +31,5 @@ types:
         type: u1
       - id: str
         type: str
-        byte_size: len
+        size: len
         encoding: UTF-8
