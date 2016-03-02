@@ -4,6 +4,7 @@ import io.kaitai.struct.testformats.*;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertEqualsNoOrder;
 
 public class SpecTests {
     private static final String SRC_DIR = "../../src/";
@@ -185,5 +186,12 @@ public class SpecTests {
         assertEquals(r.lenOf1Mod().intValue(), 8);
         assertEquals(r.str1(), "Some ASC");
         assertEquals(r.str1Len().intValue(), 8);
+    }
+
+    @Test
+    public void testInstanceStd() throws Exception {
+        InstanceStd r = InstanceStd.fromFile(SRC_DIR + "str_encodings.bin");
+
+        assertEquals(r.header(), "Some ");
     }
 }
