@@ -176,4 +176,14 @@ public class SpecTests {
         assertEquals(r.mustBeF7().intValue(), 0xf7);
         assertEquals(r.mustBeAbc123(), "abc123");
     }
+
+    @Test
+    public void testExpr1() throws Exception {
+        Expr1 r = Expr1.fromFile(SRC_DIR + "str_encodings.bin");
+
+        assertEquals(r.lenOf1(), 10);
+        assertEquals(r.lenOf1Mod().intValue(), 8);
+        assertEquals(r.str1(), "Some ASC");
+        assertEquals(r.str1Len().intValue(), 8);
+    }
 }
