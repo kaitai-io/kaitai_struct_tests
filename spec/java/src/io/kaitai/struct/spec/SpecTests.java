@@ -217,4 +217,18 @@ public class SpecTests {
         assertEquals(r.str2Tuple5().byte2(), 0x20);
         assertEquals(r.str2Tuple5().avg().intValue(), 0x42);
     }
+
+    @Test
+    public void testInstanceStdArray() throws Exception {
+        InstanceStdArray r = InstanceStdArray.fromFile(SRC_DIR + "instance_std_array.bin");
+
+        assertEquals(r.ofs(), 0x10);
+        assertEquals(r.qtyEntries(), 3);
+        assertEquals(r.entrySize(), 4);
+
+        assertEquals(r.entries().size(), 3);
+        assertEquals(r.entries().get(0), new byte[] { 0x11, 0x11, 0x11, 0x11 });
+        assertEquals(r.entries().get(1), new byte[] { 0x22, 0x22, 0x22, 0x22 });
+        assertEquals(r.entries().get(2), new byte[] { 0x33, 0x33, 0x33, 0x33 });
+    }
 }
