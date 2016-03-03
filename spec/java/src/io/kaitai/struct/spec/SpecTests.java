@@ -194,4 +194,27 @@ public class SpecTests {
 
         assertEquals(r.header(), "Some ");
     }
+
+    @Test
+    public void testExpr2() throws Exception {
+        Expr2 r = Expr2.fromFile(SRC_DIR + "str_encodings.bin");
+
+        assertEquals(r.str1().lenOrig(), 10);
+        assertEquals(r.str1().lenMod().intValue(), 8);
+        assertEquals(r.str1().str(), "Some ASC");
+
+        assertEquals(r.str1Len().intValue(), 8);
+        assertEquals(r.str1LenMod().intValue(), 8);
+        assertEquals(r.str1Byte1().intValue(), 0x49);
+        assertEquals(r.str1Avg().intValue(), 0x49);
+        assertEquals(r.str1Char5(), "e");
+
+        assertEquals(r.str1Tuple5().byte1(), 0x65);
+        assertEquals(r.str1Tuple5().byte2(), 0x20);
+        assertEquals(r.str1Tuple5().avg().intValue(), 0x42);
+
+        assertEquals(r.str2Tuple5().byte1(), 0x65);
+        assertEquals(r.str2Tuple5().byte2(), 0x20);
+        assertEquals(r.str2Tuple5().avg().intValue(), 0x42);
+    }
 }
