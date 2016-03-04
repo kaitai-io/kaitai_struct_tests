@@ -243,4 +243,21 @@ public class SpecTests {
         assertEquals(r.index().entries().get(0).filename(), "FIRST___");
         assertEquals(r.index().entries().get(1).filename(), "SECOND__");
     }
+
+    @Test
+    public void testInstanceUserArray() throws Exception {
+        InstanceUserArray r = InstanceUserArray.fromFile(SRC_DIR + "instance_user_array.bin");
+
+        assertEquals(r.ofs(), 0x10);
+        assertEquals(r.qtyEntries(), 3);
+        assertEquals(r.entrySize(), 4);
+
+        assertEquals(r.entries().size(), 3);
+        assertEquals(r.entries().get(0).word1(), 0x1111);
+        assertEquals(r.entries().get(0).word2(), 0x1111);
+        assertEquals(r.entries().get(1).word1(), 0x2222);
+        assertEquals(r.entries().get(1).word2(), 0x2222);
+        assertEquals(r.entries().get(2).word1(), 0x3333);
+        assertEquals(r.entries().get(2).word2(), 0x3333);
+    }
 }
