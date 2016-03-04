@@ -274,4 +274,12 @@ public class SpecTests {
         assertEquals(r.entries().get(2).word1(), 0x3333);
         assertEquals(r.entries().get(2).word2(), 0x3333);
     }
+
+    @Test
+    public void testEnum0() throws Exception {
+        Enum0 r = Enum0.fromFile(SRC_DIR + "enum_0.bin");
+
+        assertEquals(r.pet1(), Enum0.Animal.CAT);
+        assertEquals(r.pet2(), Enum0.Animal.CHICKEN);
+    }
 }
