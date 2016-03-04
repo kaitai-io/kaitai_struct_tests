@@ -247,6 +247,18 @@ public class SpecTests {
     }
 
     @Test
+    public void testNavParent() throws Exception {
+        NavParent r = NavParent.fromFile(SRC_DIR + "nav.bin");
+
+        assertEquals(r.header().qtyEntries(), 2);
+        assertEquals(r.header().filenameLen(), 8);
+
+        assertEquals(r.index().entries().size(), 2);
+        assertEquals(r.index().entries().get(0).filename(), "FIRST___");
+        assertEquals(r.index().entries().get(1).filename(), "SECOND__");
+    }
+
+    @Test
     public void testInstanceUserArray() throws Exception {
         InstanceUserArray r = InstanceUserArray.fromFile(SRC_DIR + "instance_user_array.bin");
 
