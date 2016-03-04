@@ -231,4 +231,16 @@ public class SpecTests {
         assertEquals(r.entries().get(1), new byte[] { 0x22, 0x22, 0x22, 0x22 });
         assertEquals(r.entries().get(2), new byte[] { 0x33, 0x33, 0x33, 0x33 });
     }
+
+    @Test
+    public void testNavRoot() throws Exception {
+        NavRoot r = NavRoot.fromFile(SRC_DIR + "nav.bin");
+
+        assertEquals(r.header().qtyEntries(), 2);
+        assertEquals(r.header().filenameLen(), 8);
+
+        assertEquals(r.index().entries().size(), 2);
+        assertEquals(r.index().entries().get(0).filename(), "FIRST___");
+        assertEquals(r.index().entries().get(1).filename(), "SECOND__");
+    }
 }
