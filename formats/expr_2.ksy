@@ -14,13 +14,13 @@ types:
       - id: str
         type: str
         size: len_mod
-        encoding: ASCII
+        encoding: UTF-8
       - id: rest
         type: tuple
-        size: 2
+        size: 3
     instances:
       len_mod:
-        value: len_orig - 2
+        value: len_orig - 3
       char5:
         position-abs: 5
         type: str
@@ -31,6 +31,8 @@ types:
         type: tuple
   tuple:
     seq:
+      - id: byte0
+        type: u1
       - id: byte1
         type: u1
       - id: byte2
