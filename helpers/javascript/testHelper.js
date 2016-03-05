@@ -10,7 +10,7 @@ function testHelper(className, fileName, testFunc) {
 //        var st = new DataStream(buf);
         var st = new KaitaiStream(buf);
         var r = new parser(st);
-        testFunc(r);
+        testFunc(r, parser);
         done();
       });
     });
