@@ -11,4 +11,4 @@ testHelper('IfStruct', 'src/if_struct.bin', function(r) {
 
     assert.equal(r.op3.opcode, 0x53);
     assert.equal(r.op3.argStr.str, "bar");
-})
+});
