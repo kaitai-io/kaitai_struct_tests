@@ -297,4 +297,15 @@ public class SpecTests {
         assertEquals(r.op3().opcode(), EnumIf.Opcodes.A_STRING);
         assertEquals(r.op3().argStr().str(), "bar");
     }
+
+    @Test
+    public void testInstanceIoUser() throws Exception {
+        InstanceIoUser r = InstanceIoUser.fromFile(SRC_DIR + "instance_io.bin");
+
+        assertEquals(r.qtyEntries(), 3);
+
+        assertEquals(r.entries().get(0).name(), "the");
+        assertEquals(r.entries().get(1).name(), "rainy");
+        assertEquals(r.entries().get(2).name(), "day it is");
+    }
 }
