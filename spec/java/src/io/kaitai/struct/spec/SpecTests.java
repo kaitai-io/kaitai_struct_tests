@@ -260,7 +260,7 @@ public class SpecTests {
 
     @Test
     public void testInstanceUserArray() throws Exception {
-        InstanceUserArray r = InstanceUserArray.fromFile(SRC_DIR + "instance_user_array.bin");
+        InstanceUserArray r = InstanceUserArray.fromFile(SRC_DIR + "instance_std_array.bin");
 
         assertEquals(r.ofs(), 0x10);
         assertEquals(r.qtyEntries(), 3);
