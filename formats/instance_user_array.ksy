@@ -16,7 +16,7 @@ types:
       - id: word2
         type: u2
 instances:
-  entries:
+  user_entries:
     position-abs: ofs
     repeat: expr
     repeat-expr: qty_entries

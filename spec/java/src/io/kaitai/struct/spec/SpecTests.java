@@ -266,13 +266,13 @@ public class SpecTests {
         assertEquals(r.qtyEntries(), 3);
         assertEquals(r.entrySize(), 4);
 
-        assertEquals(r.entries().size(), 3);
-        assertEquals(r.entries().get(0).word1(), 0x1111);
-        assertEquals(r.entries().get(0).word2(), 0x1111);
-        assertEquals(r.entries().get(1).word1(), 0x2222);
-        assertEquals(r.entries().get(1).word2(), 0x2222);
-        assertEquals(r.entries().get(2).word1(), 0x3333);
-        assertEquals(r.entries().get(2).word2(), 0x3333);
+        assertEquals(r.userEntries().size(), 3);
+        assertEquals(r.userEntries().get(0).word1(), 0x1111);
+        assertEquals(r.userEntries().get(0).word2(), 0x1111);
+        assertEquals(r.userEntries().get(1).word1(), 0x2222);
+        assertEquals(r.userEntries().get(1).word2(), 0x2222);
+        assertEquals(r.userEntries().get(2).word1(), 0x3333);
+        assertEquals(r.userEntries().get(2).word2(), 0x3333);
     }
 
     @Test
