@@ -308,4 +308,11 @@ public class SpecTests {
         assertEquals(r.entries().get(1).name(), "rainy");
         assertEquals(r.entries().get(2).name(), "day it is");
     }
+
+    @Test
+    public void testDefaultBigEndian() throws Exception {
+        DefaultBigEndian r = DefaultBigEndian.fromFile(SRC_DIR + "enum_0.bin");
+
+        assertEquals(r.one(), 0x7000000);
+    }
 }
