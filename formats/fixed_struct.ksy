@@ -86,6 +86,6 @@ types:
         id: sint64be
         type: s8be
 instances:
-  header:
+  hdr:
     position-abs: 0
     type: header

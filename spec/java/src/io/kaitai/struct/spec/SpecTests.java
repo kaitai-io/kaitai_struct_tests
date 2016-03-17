@@ -20,32 +20,32 @@ public class SpecTests {
     public void testFixedStruct() throws Exception {
         FixedStruct r = FixedStruct.fromFile(SRC_DIR + "fixed_struct.bin");
 
-        assertEquals(r.header().uint8(), 255);
-        assertEquals(r.header().uint16(), 65535);
-        assertEquals(r.header().uint32(), 4294967295L);
-        //assertEquals(r.header().uint64(), 18446744073709551615);
-        assertEquals(r.header().uint64(), 0xFFFFFFFFFFFFFFFFL);
+        assertEquals(r.hdr().uint8(), 255);
+        assertEquals(r.hdr().uint16(), 65535);
+        assertEquals(r.hdr().uint32(), 4294967295L);
+        //assertEquals(r.hdr().uint64(), 18446744073709551615);
+        assertEquals(r.hdr().uint64(), 0xFFFFFFFFFFFFFFFFL);
 
-        assertEquals(r.header().sint8(), -1);
-        assertEquals(r.header().sint16(), -1);
-        assertEquals(r.header().sint32(), -1);
-        assertEquals(r.header().sint64(), -1);
+        assertEquals(r.hdr().sint8(), -1);
+        assertEquals(r.hdr().sint16(), -1);
+        assertEquals(r.hdr().sint32(), -1);
+        assertEquals(r.hdr().sint64(), -1);
 
-        assertEquals(r.header().uint16le(), 66);
-        assertEquals(r.header().uint32le(), 66);
-        assertEquals(r.header().uint64le(), 66);
+        assertEquals(r.hdr().uint16le(), 66);
+        assertEquals(r.hdr().uint32le(), 66);
+        assertEquals(r.hdr().uint64le(), 66);
 
-        assertEquals(r.header().sint16le(), -66);
-        assertEquals(r.header().sint32le(), -66);
-        assertEquals(r.header().sint64le(), -66);
+        assertEquals(r.hdr().sint16le(), -66);
+        assertEquals(r.hdr().sint32le(), -66);
+        assertEquals(r.hdr().sint64le(), -66);
 
-        assertEquals(r.header().uint16be(), 66);
-        assertEquals(r.header().uint32be(), 66);
-        assertEquals(r.header().uint64be(), 66);
+        assertEquals(r.hdr().uint16be(), 66);
+        assertEquals(r.hdr().uint32be(), 66);
+        assertEquals(r.hdr().uint64be(), 66);
 
-        assertEquals(r.header().sint16be(), -66);
-        assertEquals(r.header().sint32be(), -66);
-        assertEquals(r.header().sint64be(), -66);
+        assertEquals(r.hdr().sint16be(), -66);
+        assertEquals(r.hdr().sint32be(), -66);
+        assertEquals(r.hdr().sint64be(), -66);
     }
 
     @Test
