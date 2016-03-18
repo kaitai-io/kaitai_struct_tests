@@ -14,7 +14,7 @@ TEST_DIR=$(pwd)
 mkdir -p "$OBJ_DIR"
 cd "$OBJ_DIR"
 if [ ! -r Makefile ]; then
-	cmake "$TEST_DIR/spec/cpp_stl"
+	cmake -DCMAKE_BUILD_TYPE=Debug "$TEST_DIR/spec/cpp_stl"
 fi
 make
 
