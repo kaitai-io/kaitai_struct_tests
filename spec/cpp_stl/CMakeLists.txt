@@ -7,11 +7,14 @@ set(KS_PATH ../../compiled/cpp_stl)
 set(RUNTIME_SRC_PATH ../../../runtime/cpp_stl)
 
 set(SPEC_SOURCES
+	main.cpp
 	test_hello_world.cpp
+	test_fixed_struct.cpp
 )
 
 set(KS_SOURCES
-	${KS_PATH}/HelloWorld.cpp
+	${KS_PATH}/hello_world.cpp
+	${KS_PATH}/fixed_struct.cpp
 )
 
 set(RUNTIME_SOURCES
