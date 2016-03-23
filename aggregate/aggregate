@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require 'erb'
+
 require_relative 'test_result'
 require_relative 'junit_xml_parser'
 require_relative 'rspec_json_parser'
@@ -21,62 +23,8 @@ parsers.each_pair { |lang, result|
   }
 }
 
-langs = parsers.keys.sort
+@langs = parsers.keys.sort
 
-puts <<__EOF__
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Kaitai Struct: test results</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body>
-    <div class="container">
-    <table class="table">
-    <tr>
-      <th>Test</th>
-__EOF__
-
-langs.each { |lang|
-  puts "      <th>#{lang}</th>"
-}
-
-puts <<__EOF__
-    </tr>
-
-__EOF__
-
-@aggr.keys.sort.each { |test_name|
-  puts "<tr>"
-  puts "  <td>#{test_name}</td>"
-
-  tests = @aggr[test_name]
-  langs.each { |lang|
-    test = tests[lang]
-    if test
-      puts "  <td>#{test.status}</td>"
-    else
-      puts "  <td>didn't run</td>"
-    end
-  }
-
-  puts "</tr>"
-}
-
-puts <<__EOF__
-    </table>
-    </div>
-</body>
-</html>
-__EOF__
+bin_dir = File.expand_path(File.dirname(__FILE__))
+tmpl = ERB.new(File.read("#{bin_dir}/report.html.erb"), nil, nil, '_err')
+print tmpl.result(binding)
