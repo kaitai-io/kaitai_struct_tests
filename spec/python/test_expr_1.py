@@ -4,7 +4,7 @@ import unittest
 from expr_1 import Expr1
 
 class TestExpr1(unittest.TestCase):
-    def test_expr1(self):
+    def test_expr_1(self):
         r = Expr1.from_file("src/str_encodings.bin")
 
         self.assertEquals(r.len_of_1, 10)
