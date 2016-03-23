@@ -16,18 +16,24 @@ parsers = {
 }
 
 @aggr = {}
+@count_ok = {}
 
 parsers.each_pair { |lang, result|
+  ok = 0
   result.each_test { |t|
     h = (@aggr[t.name] ||= {})
     h[lang] = t
+    ok +=1 if t.status == :passed
   }
+  @count_ok[lang] = ok
 }
 
 @langs = parsers.keys.sort
 
 puts "got #{@aggr.size} tests..."
 puts "processing for #{@langs.inspect}..."
+
+@date = Time.now.utc.to_s
 
 bin_dir = File.expand_path(File.dirname(__FILE__))
 tmpl = ERB.new(File.read("#{bin_dir}/report.html.erb"), nil, nil, '_err')

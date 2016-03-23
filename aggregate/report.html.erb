@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Kaitai Struct: test results</title>
+    <title>Kaitai Struct: test results - <%= @date %></title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
@@ -29,11 +29,20 @@
 </head>
 <body>
     <div class="container">
+    <h1>Kaitai Struct: build and test results, <%= @date %></h1>
+
     <table class="table">
     <tr>
         <th>Test</th>
 <% @langs.each { |lang| %>
         <th><%= lang %></th>
+<% } %>
+    </tr>
+
+    <tr>
+        <th>% passed</th>
+<% @langs.each { |lang| %>
+        <td><%= sprintf('%d', (100.0 * @count_ok[lang] / @aggr.size)) %>%</td>
 <% } %>
     </tr>
 
