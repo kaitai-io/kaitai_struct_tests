@@ -26,6 +26,11 @@ parsers.each_pair { |lang, result|
 
 @langs = parsers.keys.sort
 
+puts "got #{@aggr.size} tests..."
+puts "processing for #{@langs.inspect}..."
+
 bin_dir = File.expand_path(File.dirname(__FILE__))
 tmpl = ERB.new(File.read("#{bin_dir}/report.html.erb"), nil, nil, '_err')
-print tmpl.result(binding)
+File.open(ARGV[1], 'w') { |out|
+  out.print tmpl.result(binding)
+}

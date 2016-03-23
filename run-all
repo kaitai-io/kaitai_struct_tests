@@ -3,20 +3,25 @@
 . ./config
 
 # Run Java tests, generates JUnit XML report by default
+echo '#################### java'
 ./run-java
 
 # Run JavaScript tests, generate JUnit-like report
+echo '#################### javascript'
 mkdir -p "$TEST_OUT_DIR/javascript"
 NODE_PATH=compiled/javascript:helpers/javascript:$JAVASCRIPT_RUNTIME_DIR/node_modules:$JAVASCRIPT_RUNTIME_DIR mocha \
 	-R xunit spec/javascript >"$TEST_OUT_DIR/javascript/test-output-javascript.xml"
 
 # Run Python tests, generate bunch of JUnit-like reports
+echo '#################### python'
 rm -rf "$TEST_OUT_DIR/python"
 PYTHONPATH="$PYTHON_RUNTIME_DIR:compiled/python" python ./run-python-xml.py spec/python "$TEST_OUT_DIR/python"
 
 # Run Ruby tests, generate JSON report
+echo '#################### ruby'
 mkdir -p "$TEST_OUT_DIR/ruby"
 rspec -I compiled/ruby -I "$RUBY_RUNTIME_DIR" -f json >"$TEST_OUT_DIR/ruby/test-output-ruby.json"
 
 # Aggregate
-aggregate/aggregate "$TEST_OUT_DIR" >"$TEST_OUT_DIR/full.html"
+echo '#################### ... aggregation'
+aggregate/aggregate "$TEST_OUT_DIR" "$TEST_OUT_DIR/full.html"
