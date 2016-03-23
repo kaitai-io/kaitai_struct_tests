@@ -31,8 +31,13 @@ class JUnitXMLParser
       doc.root.elements.each('testcase') { |tc|
         name = tc.attribute('name').value
 
-        raise "Unable to parse name: \"#{name}\"" unless name =~ /^test(.*?)$/
-        name = $1
+        if name == 'parses test properly'
+          # Mocha output, use classname
+          name = tc.attribute('classname').value
+        else
+          raise "Unable to parse name: \"#{name}\"" unless name =~ /^test(.*?)$/
+          name = $1
+        end
         uname = camelcase_to_underscore(name)
 
         failure_xml = tc.elements['failure']
@@ -41,10 +46,12 @@ class JUnitXMLParser
           failure = nil
         else
           status = :failed
+          failure_msg = failure_xml.attribute('message')
+          failure_msg = failure_msg.value if failure_msg
           failure = TestResult::Failure.new(
             nil,
             nil,
-            failure_xml.attribute('message').value,
+            failure_msg,
             failure_xml.children
           )
         end

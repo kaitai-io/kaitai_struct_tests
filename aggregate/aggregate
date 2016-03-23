@@ -10,6 +10,7 @@ TEST_ROOT = ARGV[0]
 
 parsers = {
   'java' => JUnitXMLParser.new("#{TEST_ROOT}/java/junitreports/TEST-io.kaitai.struct.spec.SpecTests.xml"),
+  'javascript' => JUnitXMLParser.new("#{TEST_ROOT}/javascript/test-output-javascript.xml"),
   'python' => JUnitXMLParser.new("#{TEST_ROOT}/python"),
   'ruby' => RSpecJSONParser.new("#{TEST_ROOT}/ruby/test-output-ruby.json"),
 }
