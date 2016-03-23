@@ -1,0 +1,16 @@
+#!/bin/sh
+
+. ./config
+
+# Run Java tests, generates JUnit XML report by default
+./run-java
+
+# Run Python tests
+PYTHONPATH="$PYTHON_RUNTIME_DIR:compiled/python" python ./run-python-xml.py spec/python "$TEST_OUT_DIR/python"
+
+# Run Ruby tests, generate JSON report
+mkdir -p "$TEST_OUT_DIR/ruby"
+rspec -I compiled/ruby -I "$RUBY_RUNTIME_DIR" -f json >"$TEST_OUT_DIR/ruby/test-output-ruby.json"
+
+# Aggregate
+aggregate/aggregate "$TEST_OUT_DIR" >"$TEST_OUT_DIR/full.html"
