@@ -5,7 +5,13 @@
 # Run Java tests, generates JUnit XML report by default
 ./run-java
 
-# Run Python tests
+# Run JavaScript tests, generate JUnit-like report
+mkdir -p "$TEST_OUT_DIR/javascript"
+NODE_PATH=compiled/javascript:helpers/javascript:$JAVASCRIPT_RUNTIME_DIR/node_modules:$JAVASCRIPT_RUNTIME_DIR mocha \
+	-R xunit spec/javascript >"$TEST_OUT_DIR/javascript/test-output-javascript.xml"
+
+# Run Python tests, generate bunch of JUnit-like reports
+rm -rf "$TEST_OUT_DIR/python"
 PYTHONPATH="$PYTHON_RUNTIME_DIR:compiled/python" python ./run-python-xml.py spec/python "$TEST_OUT_DIR/python"
 
 # Run Ruby tests, generate JSON report
