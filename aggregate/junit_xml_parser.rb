@@ -42,7 +42,8 @@ class JUnitXMLParser
         end
         uname = camelcase_to_underscore(name)
 
-        failure_xml = tc.elements['failure']
+        failure_xml = tc.elements['failure'] || tc.elements['error']
+
         if failure_xml.nil?
           status = :passed
           failure = nil
