@@ -17,7 +17,9 @@ end
 
 class JUnitXMLParser
   def initialize(fn)
-    @docs = if File.directory?(fn)
+    @docs = if not File.exists?(fn)
+      []
+    elsif File.directory?(fn)
       Dir.glob("#{fn}/*.xml").map { |x|
         REXML::Document.new(File.read(x))
       }
