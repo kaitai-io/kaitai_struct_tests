@@ -19,4 +19,4 @@ javac -cp $JAVA_TESTNG_JAR \
 # Actually run the tests
 cd spec/java
 java -cp "$JAVA_CLASSES_DIR:$JAVA_TESTNG_JAR" \
-	org.testng.TestNG -testclass io.kaitai.struct.spec.SpecTests -d ../../test_out
+	org.testng.TestNG -testclass io.kaitai.struct.spec.SpecTests -d "../../$TEST_OUT_DIR/java"
