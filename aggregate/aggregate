@@ -22,6 +22,7 @@ parsers.each_pair { |lang, result|
   ok = 0
   result.each_test { |t|
     h = (@aggr[t.name] ||= {})
+    raise "Duplicate test name \"#{t.name}\" for #{lang}" if h[lang]
     h[lang] = t
     ok +=1 if t.status == :passed
   }
