@@ -4,6 +4,7 @@ import io.kaitai.struct.testformats.*;
 import org.testng.annotations.Test;
 
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertEqualsNoOrder;
@@ -323,5 +324,17 @@ public class SpecTests {
         ZlibWithHeader78 r = ZlibWithHeader78.fromFile(SRC_DIR + "zlib_with_header_78.bin");
 
         assertEquals(new String(r.data(), Charset.forName("UTF-8")), "a quick brown fox jumps over");
+    }
+
+    @Test
+    public void testPositionInSeq() throws Exception {
+        PositionInSeq r = PositionInSeq.fromFile(SRC_DIR + "position_in_seq.bin");
+
+        ArrayList<Integer> expected = new ArrayList<Integer>(3);
+        expected.add(1);
+        expected.add(2);
+        expected.add(3);
+
+        assertEquals(r.numbers(), expected);
     }
 }
