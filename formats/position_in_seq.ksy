@@ -13,5 +13,5 @@ types:
         type: u4
 instances:
   header:
-    position-abs: 0x10
+    pos: 0x10
     type: header

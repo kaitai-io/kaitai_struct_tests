@@ -87,5 +87,5 @@ types:
         type: s8be
 instances:
   hdr:
-    position-abs: 0
+    pos: 0
     type: header

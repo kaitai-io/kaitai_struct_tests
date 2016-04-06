@@ -3,7 +3,7 @@ meta:
   endian: le
 instances:
   header:
-    position-abs: 2
+    pos: 2
     type: str
     size: 5
     encoding: ASCII

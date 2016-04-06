@@ -10,7 +10,7 @@ seq:
     type: u4
 instances:
   entries:
-    position-abs: ofs
+    pos: ofs
     repeat: expr
     repeat-expr: qty_entries
     size: entry_size

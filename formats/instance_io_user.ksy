@@ -21,7 +21,7 @@ types:
     instances:
       name:
         io: _root.strings._io
-        position-abs: name_ofs
+        pos: name_ofs
         type: strz
         encoding: UTF-8
   strings:

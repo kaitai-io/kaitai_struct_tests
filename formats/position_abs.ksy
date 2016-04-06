@@ -12,5 +12,5 @@ types:
        encoding: UTF-8
 instances:
   index:
-    position-abs: index_offset
+    pos: index_offset
     type: index

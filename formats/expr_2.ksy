@@ -22,12 +22,12 @@ types:
       len_mod:
         value: len_orig - 3
       char5:
-        position-abs: 5
+        pos: 5
         type: str
         size: 1
         encoding: ASCII
       tuple5:
-        position-abs: 5
+        pos: 5
         type: tuple
   tuple:
     seq:

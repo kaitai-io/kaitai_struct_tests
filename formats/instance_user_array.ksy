@@ -17,7 +17,7 @@ types:
         type: u2
 instances:
   user_entries:
-    position-abs: ofs
+    pos: ofs
     repeat: expr
     repeat-expr: qty_entries
     size: entry_size
