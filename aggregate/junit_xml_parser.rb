@@ -1,18 +1,7 @@
 require 'rexml/document'
 
-def camelcase_to_underscore(s)
-  r = ''
-
-  s.each_char { |c|
-    if ('A'..'Z').include?(c)
-      r << '_'
-      r << c.downcase
-    else
-      r << c
-    end
-  }
-
-  r.gsub(/^_/, '')
+def underscore_to_ucamelcase(s)
+  s.split(/_/).map { |x| x.capitalize }.join
 end
 
 class JUnitXMLParser
@@ -38,9 +27,12 @@ class JUnitXMLParser
           name = tc.attribute('classname').value
         else
           raise "Unable to parse name: \"#{name}\"" unless name =~ /^test(.*?)$/
-          name = $1
+          if $1[0] == '_'
+            name = underscore_to_ucamelcase($1)
+          else
+            name = $1
+          end
         end
-        uname = camelcase_to_underscore(name)
 
         failure_xml = tc.elements['failure'] || tc.elements['error']
 
@@ -59,7 +51,7 @@ class JUnitXMLParser
           )
         end
 
-        tr = TestResult.new(uname, status, tc.attribute('time').value.to_f, failure)
+        tr = TestResult.new(name, status, tc.attribute('time').value.to_f, failure)
         yield tr
       }
     }

@@ -25,7 +25,7 @@ class RSpecJSONParser
         )
       end
 
-      tr = TestResult.new(top_name, t['status'].to_sym, t['run_time'], failure)
+      tr = TestResult.new(class_name, t['status'].to_sym, t['run_time'], failure)
       yield tr
     }
   end
