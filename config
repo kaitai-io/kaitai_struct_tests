@@ -3,6 +3,6 @@ JAVA_RUNTIME_DIR=../runtime/java
 JAVA_TESTNG_JAR=$HOME/.m2/repository/org/testng/testng/6.9.10/testng-6.9.10.jar:$HOME/.m2/repository/com/beust/jcommander/1.48/jcommander-1.48.jar
 JAVASCRIPT_RUNTIME_DIR=../runtime/javascript
 PYTHON_RUNTIME_DIR=../runtime/python
-RUBY_RUNTIME_DIR=../runtime/ruby
+RUBY_RUNTIME_DIR=../runtime/ruby/lib
 
 TEST_OUT_DIR=test_out
