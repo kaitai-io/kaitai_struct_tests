@@ -353,4 +353,11 @@ public class SpecTests {
 
         assertEquals(r.str(), "foo|bar|baz@");
     }
+
+    @Test
+    public void testProcessToUser() throws Exception {
+        ProcessToUser r = ProcessToUser.fromFile(SRC_DIR + "process_rotate.bin");
+
+        assertEquals(r.buf1().str(), "Hello");
+    }
 }
