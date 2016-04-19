@@ -346,4 +346,11 @@ public class SpecTests {
         assertEquals(r.buf2(), "World".getBytes());
         assertEquals(r.buf3(), "There".getBytes());
     }
+
+    @Test
+    public void testStrEos() throws Exception {
+        StrEos r = StrEos.fromFile(SRC_DIR + "term_strz.bin");
+
+        assertEquals(r.str(), "foo|bar|baz@");
+    }
 }
