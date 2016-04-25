@@ -12,7 +12,7 @@ set(SPEC_SOURCES
 	test_fixed_struct.cpp
 	test_instance_std.cpp
 	test_repeat_eos_u4.cpp
-        test_if_struct.cpp
+	test_if_struct.cpp
 )
 
 set(KS_SOURCES
