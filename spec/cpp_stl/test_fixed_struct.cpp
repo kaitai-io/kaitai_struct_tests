@@ -10,7 +10,7 @@ BOOST_AUTO_TEST_CASE(test_fixed_struct) {
 
     std::ifstream ifs("src/fixed_struct.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
-    fixed_struct* r = new fixed_struct(&ks);
+    fixed_struct_t* r = new fixed_struct_t(&ks);
 
     BOOST_CHECK_EQUAL(r->hdr()->uint8(), 255);
     BOOST_CHECK_EQUAL(r->hdr()->uint16(), 65535);
