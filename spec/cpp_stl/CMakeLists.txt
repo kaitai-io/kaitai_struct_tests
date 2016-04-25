@@ -17,6 +17,7 @@ set(SPEC_SOURCES
 	test_position_in_seq.cpp
 	test_repeat_n_strz.cpp
 	test_term_strz.cpp
+	test_expr_0.cpp
 )
 
 set(KS_SOURCES
@@ -29,6 +30,7 @@ set(KS_SOURCES
 	${KS_PATH}/position_in_seq.cpp
 	${KS_PATH}/repeat_n_strz.cpp
 	${KS_PATH}/term_strz.cpp
+	${KS_PATH}/expr_0.cpp
 )
 
 set(RUNTIME_SOURCES
