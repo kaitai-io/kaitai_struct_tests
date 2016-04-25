@@ -20,4 +20,7 @@ make
 
 # Actually run the tests
 cd "$TEST_DIR"
-"$OBJ_DIR/ks_tests"
+mkdir -p "$TEST_OUT_DIR/cpp_stl"
+"$OBJ_DIR/ks_tests" \
+	--log_format=XML --log_sink="$TEST_OUT_DIR/cpp_stl/results.xml" --log_level=all \
+    --report_level=detailed

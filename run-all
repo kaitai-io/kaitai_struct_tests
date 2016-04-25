@@ -2,6 +2,9 @@
 
 . ./config
 
+# Run C++/STL tests, generates JUnit XML report
+./run-cpp_stl
+
 # Run Java tests, generates JUnit XML report by default
 echo '#################### java'
 ./run-java
