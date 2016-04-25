@@ -15,6 +15,7 @@ set(SPEC_SOURCES
 	test_if_struct.cpp
 	test_position_abs.cpp
 	test_position_in_seq.cpp
+	test_repeat_n_strz.cpp
 )
 
 set(KS_SOURCES
@@ -25,6 +26,7 @@ set(KS_SOURCES
 	${KS_PATH}/if_struct.cpp
 	${KS_PATH}/position_abs.cpp
 	${KS_PATH}/position_in_seq.cpp
+	${KS_PATH}/repeat_n_strz.cpp
 )
 
 set(RUNTIME_SOURCES
