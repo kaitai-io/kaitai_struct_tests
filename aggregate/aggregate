@@ -5,10 +5,12 @@ require 'erb'
 require_relative 'test_result'
 require_relative 'junit_xml_parser'
 require_relative 'rspec_json_parser'
+require_relative 'boost_test_parser'
 
 TEST_ROOT = ARGV[0]
 
 parsers = {
+  'cpp_stl' => BoostTestParser.new("#{TEST_ROOT}/cpp_stl/results.xml"),
   'java' => JUnitXMLParser.new("#{TEST_ROOT}/java/junitreports/TEST-io.kaitai.struct.spec.SpecTests.xml"),
   'javascript' => JUnitXMLParser.new("#{TEST_ROOT}/javascript/test-output-javascript.xml"),
   'python' => JUnitXMLParser.new("#{TEST_ROOT}/python"),
