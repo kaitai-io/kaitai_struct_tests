@@ -13,6 +13,7 @@ set(SPEC_SOURCES
 	test_instance_std.cpp
 	test_repeat_eos_u4.cpp
 	test_if_struct.cpp
+	test_position_abs.cpp
 )
 
 set(KS_SOURCES
@@ -21,6 +22,7 @@ set(KS_SOURCES
 	${KS_PATH}/instance_std.cpp
 	${KS_PATH}/repeat_eos_u4.cpp
 	${KS_PATH}/if_struct.cpp
+	${KS_PATH}/position_abs.cpp
 )
 
 set(RUNTIME_SOURCES
