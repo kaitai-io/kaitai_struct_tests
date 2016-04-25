@@ -14,4 +14,6 @@ BOOST_AUTO_TEST_CASE(test_term_strz) {
     BOOST_CHECK_EQUAL(r->s1(), "foo");
     BOOST_CHECK_EQUAL(r->s2(), "bar");
     BOOST_CHECK_EQUAL(r->s3(), "|baz@");
+
+    delete r;
 }
