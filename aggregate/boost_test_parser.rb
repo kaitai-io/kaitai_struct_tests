@@ -26,6 +26,14 @@ class BoostTestParser
             nil
           )
         }
+        tc.elements.each('Exception') { |err|
+          failures << TestResult::Failure.new(
+            err.attribute('file'),
+            err.attribute('line'),
+            err.text,
+            nil
+          )
+        }
 
         if failures.empty?
           status = :passed
