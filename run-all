@@ -2,6 +2,10 @@
 
 . ./config
 
+# Run C# tests
+echo '#################### csharp'
+./run-csharp
+
 # Run C++/STL tests, generates JUnit XML report
 ./run-cpp_stl
 
