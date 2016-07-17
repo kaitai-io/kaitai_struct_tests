@@ -10,6 +10,7 @@ class NUnitXMLParser
       name = tc.attribute('name').value
 
       raise "Unable to parse name: \"#{name}\"" unless name =~ /^Test(.*?)$/
+      name = $1
 
       result = tc.attribute('result').value
       status = case result
