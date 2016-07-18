@@ -5,7 +5,7 @@
 CSHARP_SPEC_DIR=spec/csharp
 
 # Compile everything
-xbuild /verbosity:diagnostic "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests.sln"
+xbuild "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests.sln"
 
 # Actually run the tests
 mkdir -p "$TEST_OUT_DIR/csharp"
