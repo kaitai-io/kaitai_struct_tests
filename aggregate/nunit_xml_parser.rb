@@ -13,30 +13,33 @@ class NUnitXMLParser
       name = $1
 
       result = tc.attribute('result').value
+      failure = nil
       status = case result
                when 'Passed'
                  :passed
+               when 'Failed'
+                 classname = tc.attribute('classname')
+                 classname = classname.value if classname
+
+                 methodname = tc.attribute('methodname')
+                 methodname = methodname.value if methodname
+
+                 filename = "#{classname || '?'}:#{methodname || '?'}"
+
+                 failure_xml = tc.elements['failure']
+                 failure_msg = failure_xml.elements['message'].text
+                 failure_trace = failure_xml.elements['stack-trace'].text
+
+                 failure = TestResult::Failure.new(
+                   filename,
+                   nil,
+                   failure_msg,
+                   failure_trace
+                 )
+                 :failed
                else
                  raise "Unable to parse result: #{result.inspect}"
                end
-
-      failure = nil
-#        failure_xml = tc.elements['failure'] || tc.elements['error']
-#
-#        if failure_xml.nil?
-#          status = :passed
-#          failure = nil
-#        else
-#          status = :failed
-#          failure_msg = failure_xml.attribute('message')
-#          failure_msg = failure_msg.value if failure_msg
-#          failure = TestResult::Failure.new(
-#            nil,
-#            nil,
-#            failure_msg,
-#            failure_xml.children
-#          )
-#        end
 
       tr = TestResult.new(name, status, tc.attribute('duration').value.to_f, failure)
       yield tr
