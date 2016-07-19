@@ -7,6 +7,7 @@ require_relative 'junit_xml_parser'
 require_relative 'rspec_json_parser'
 require_relative 'boost_test_parser'
 require_relative 'nunit_xml_parser'
+require_relative 'build_fail_parser'
 
 TEST_ROOT = ARGV[0]
 
@@ -22,6 +23,7 @@ parsers = {
 @aggr = {}
 @count_ok = {}
 
+# Process testing results
 parsers.each_pair { |lang, result|
   ok = 0
   result.each_test { |t|
@@ -31,6 +33,19 @@ parsers.each_pair { |lang, result|
     ok +=1 if t.status == :passed
   }
   @count_ok[lang] = ok
+}
+
+# Add build fail results
+bfps = {
+  'java' => BuildFailParser.new("#{TEST_ROOT}/java"),
+}
+
+bfps.each_pair { |lang, bfp|
+  bfp.each_test { |t|
+    h = (@aggr[t.name] ||= {})
+    raise "Already got test information on failing build test \"#{t.name}\" for #{lang}: #{h[lang].inspect}" if h[lang]
+    h[lang] = t
+  }
 }
 
 @langs = parsers.keys.sort
