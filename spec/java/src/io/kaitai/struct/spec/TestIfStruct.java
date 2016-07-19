@@ -1,13 +1,9 @@
 package io.kaitai.struct.spec;
 
-import io.kaitai.struct.testformats.*;
+import io.kaitai.struct.testformats.IfStruct;
 import org.testng.annotations.Test;
 
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertEqualsNoOrder;
 
 public class TestIfStruct extends CommonSpec {
     @Test
@@ -24,5 +20,4 @@ public class TestIfStruct extends CommonSpec {
         assertEquals(r.op3().opcode(), 0x53);
         assertEquals(r.op3().argStr().str(), "bar");
     }
-
 }

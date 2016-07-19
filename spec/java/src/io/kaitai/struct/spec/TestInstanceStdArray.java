@@ -1,13 +1,9 @@
 package io.kaitai.struct.spec;
 
-import io.kaitai.struct.testformats.*;
+import io.kaitai.struct.testformats.InstanceStdArray;
 import org.testng.annotations.Test;
 
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertEqualsNoOrder;
 
 public class TestInstanceStdArray extends CommonSpec {
     @Test
@@ -23,5 +19,4 @@ public class TestInstanceStdArray extends CommonSpec {
         assertEquals(r.entries().get(1), new byte[] { 0x22, 0x22, 0x22, 0x22 });
         assertEquals(r.entries().get(2), new byte[] { 0x33, 0x33, 0x33, 0x33 });
     }
-
 }

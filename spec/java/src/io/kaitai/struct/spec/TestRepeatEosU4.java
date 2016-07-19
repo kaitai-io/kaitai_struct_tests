@@ -1,13 +1,9 @@
 package io.kaitai.struct.spec;
 
-import io.kaitai.struct.testformats.*;
+import io.kaitai.struct.testformats.RepeatEosU4;
 import org.testng.annotations.Test;
 
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertEqualsNoOrder;
 
 public class TestRepeatEosU4 extends CommonSpec {
     @Test
@@ -16,5 +12,4 @@ public class TestRepeatEosU4 extends CommonSpec {
 
         assertEquals(r.numbers().toArray(), new long[] { 0, 0x42, 0x42, 0x815 });
     }
-
 }

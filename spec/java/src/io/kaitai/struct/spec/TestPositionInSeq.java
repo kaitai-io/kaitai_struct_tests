@@ -1,13 +1,11 @@
 package io.kaitai.struct.spec;
 
-import io.kaitai.struct.testformats.*;
+import io.kaitai.struct.testformats.PositionInSeq;
 import org.testng.annotations.Test;
 
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertEqualsNoOrder;
 
 public class TestPositionInSeq extends CommonSpec {
     @Test
@@ -21,5 +19,4 @@ public class TestPositionInSeq extends CommonSpec {
 
         assertEquals(r.numbers(), expected);
     }
-
 }

@@ -1,13 +1,9 @@
 package io.kaitai.struct.spec;
 
-import io.kaitai.struct.testformats.*;
+import io.kaitai.struct.testformats.ProcessRotate;
 import org.testng.annotations.Test;
 
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertEqualsNoOrder;
 
 public class TestProcessRotate extends CommonSpec {
     @Test
@@ -18,5 +14,4 @@ public class TestProcessRotate extends CommonSpec {
         assertEquals(r.buf2(), "World".getBytes());
         assertEquals(r.buf3(), "There".getBytes());
     }
-
 }

@@ -1,13 +1,9 @@
 package io.kaitai.struct.spec;
 
-import io.kaitai.struct.testformats.*;
+import io.kaitai.struct.testformats.Expr2;
 import org.testng.annotations.Test;
 
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertEqualsNoOrder;
 
 public class TestExpr2 extends CommonSpec {
     @Test
@@ -34,5 +30,4 @@ public class TestExpr2 extends CommonSpec {
         assertEquals(r.str2Tuple5().byte2(), 0x41);
         assertEquals(r.str2Tuple5().avg().intValue(), 0x30);
     }
-
 }

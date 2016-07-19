@@ -1,13 +1,11 @@
 package io.kaitai.struct.spec;
 
-import io.kaitai.struct.testformats.*;
+import io.kaitai.struct.testformats.ZlibWithHeader78;
 import org.testng.annotations.Test;
 
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertEqualsNoOrder;
 
 public class TestZlibWithHeader78 extends CommonSpec {
     @Test
@@ -16,5 +14,4 @@ public class TestZlibWithHeader78 extends CommonSpec {
 
         assertEquals(new String(r.data(), Charset.forName("UTF-8")), "a quick brown fox jumps over");
     }
-
 }

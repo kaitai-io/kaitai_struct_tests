@@ -1,13 +1,9 @@
 package io.kaitai.struct.spec;
 
-import io.kaitai.struct.testformats.*;
+import io.kaitai.struct.testformats.InstanceIoUser;
 import org.testng.annotations.Test;
 
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertEqualsNoOrder;
 
 public class TestInstanceIoUser extends CommonSpec {
     @Test
@@ -20,5 +16,4 @@ public class TestInstanceIoUser extends CommonSpec {
         assertEquals(r.entries().get(1).name(), "rainy");
         assertEquals(r.entries().get(2).name(), "day it is");
     }
-
 }

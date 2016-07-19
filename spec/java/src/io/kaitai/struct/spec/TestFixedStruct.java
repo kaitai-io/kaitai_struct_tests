@@ -1,13 +1,9 @@
 package io.kaitai.struct.spec;
 
-import io.kaitai.struct.testformats.*;
+import io.kaitai.struct.testformats.FixedStruct;
 import org.testng.annotations.Test;
 
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertEqualsNoOrder;
 
 public class TestFixedStruct extends CommonSpec {
     @Test
@@ -41,5 +37,4 @@ public class TestFixedStruct extends CommonSpec {
         assertEquals(r.hdr().sint32be(), -66);
         assertEquals(r.hdr().sint64be(), -66);
     }
-
 }

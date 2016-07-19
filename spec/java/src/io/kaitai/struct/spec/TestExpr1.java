@@ -1,13 +1,9 @@
 package io.kaitai.struct.spec;
 
-import io.kaitai.struct.testformats.*;
+import io.kaitai.struct.testformats.Expr1;
 import org.testng.annotations.Test;
 
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertEqualsNoOrder;
 
 public class TestExpr1 extends CommonSpec {
     @Test
@@ -19,5 +15,4 @@ public class TestExpr1 extends CommonSpec {
         assertEquals(r.str1(), "Some ASC");
         assertEquals(r.str1Len().intValue(), 8);
     }
-
 }

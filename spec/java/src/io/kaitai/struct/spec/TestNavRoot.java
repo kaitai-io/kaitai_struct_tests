@@ -1,13 +1,9 @@
 package io.kaitai.struct.spec;
 
-import io.kaitai.struct.testformats.*;
+import io.kaitai.struct.testformats.NavRoot;
 import org.testng.annotations.Test;
 
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertEqualsNoOrder;
 
 public class TestNavRoot extends CommonSpec {
     @Test
@@ -21,5 +17,4 @@ public class TestNavRoot extends CommonSpec {
         assertEquals(r.index().entries().get(0).filename(), "FIRST___");
         assertEquals(r.index().entries().get(1).filename(), "SECOND__");
     }
-
 }

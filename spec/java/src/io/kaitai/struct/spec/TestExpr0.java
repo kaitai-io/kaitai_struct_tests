@@ -1,13 +1,9 @@
 package io.kaitai.struct.spec;
 
-import io.kaitai.struct.testformats.*;
+import io.kaitai.struct.testformats.Expr0;
 import org.testng.annotations.Test;
 
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertEqualsNoOrder;
 
 public class TestExpr0 extends CommonSpec {
     @Test
@@ -17,5 +13,4 @@ public class TestExpr0 extends CommonSpec {
         assertEquals(r.mustBeF7().intValue(), 0xf7);
         assertEquals(r.mustBeAbc123(), "abc123");
     }
-
 }

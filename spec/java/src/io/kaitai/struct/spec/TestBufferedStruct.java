@@ -1,13 +1,9 @@
 package io.kaitai.struct.spec;
 
-import io.kaitai.struct.testformats.*;
+import io.kaitai.struct.testformats.BufferedStruct;
 import org.testng.annotations.Test;
 
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertEqualsNoOrder;
 
 public class TestBufferedStruct extends CommonSpec {
     @Test
@@ -36,5 +32,4 @@ public class TestBufferedStruct extends CommonSpec {
 
         assertEquals(r.finisher(), 0xee);
     }
-
 }
