@@ -12,8 +12,8 @@ namespace Kaitai
         [Test]
         public void TestHelloWorld()
         {
-            HelloWorld r = HelloWorld.fromFile(SRC_DIR + "fixed_struct.bin");
-            Assert.AreEqual(r.One(), 0x50);
+            HelloWorld r = HelloWorld.FromFile(SRC_DIR + "fixed_struct.bin");
+            Assert.AreEqual(r.One, 0x50);
         }
     }
 }
