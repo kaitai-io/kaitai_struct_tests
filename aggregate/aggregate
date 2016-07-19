@@ -43,7 +43,17 @@ bfps = {
 bfps.each_pair { |lang, bfp|
   bfp.each_test { |t|
     h = (@aggr[t.name] ||= {})
-    raise "Already got test information on failing build test \"#{t.name}\" for #{lang}: #{h[lang].inspect}" if h[lang]
+    prev_t = h[lang]
+    if prev_t
+      if prev_t.status == :format_build_failed and t.status == :spec_build_failed
+        # "format failed" is the culprit, trust it
+        next
+      elsif prev_t.status == :spec_build_failed and t.status == :format_build_failed
+        # actually it is "format failed", store it
+      else
+        raise "Already got test information on failing build test \"#{t.name}\" for #{lang}: #{h[lang].inspect}"
+      end
+    end
     h[lang] = t
   }
 }
