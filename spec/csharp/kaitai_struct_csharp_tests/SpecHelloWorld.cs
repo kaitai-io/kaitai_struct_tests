@@ -5,10 +5,8 @@ namespace Kaitai
     using NUnit.Framework;
 
     [TestFixture]
-    public class Tests
+    public class SpecHelloWorld : CommonSpec
     {
-        String SRC_DIR = "src/";
-
         [Test]
         public void TestHelloWorld()
         {
