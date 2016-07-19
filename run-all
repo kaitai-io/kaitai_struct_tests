@@ -7,6 +7,7 @@ echo '#################### csharp'
 ./run-csharp
 
 # Run C++/STL tests, generates JUnit XML report
+echo '#################### cpp_stl'
 ./run-cpp_stl
 
 # Run Java tests, generates JUnit XML report by default
