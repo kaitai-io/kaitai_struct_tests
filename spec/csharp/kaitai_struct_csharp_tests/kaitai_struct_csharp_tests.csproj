@@ -36,8 +36,80 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CommonSpec.cs" />
-    <Compile Include="..\..\..\compiled\csharp\*.cs">
-      <Link>compiled\%(Filename)%(Extension)</Link>
+    <Compile Include="..\..\..\compiled\csharp\BufferedStruct.cs">
+      <Link>compiled\BufferedStruct.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\DefaultBigEndian.cs">
+      <Link>compiled\DefaultBigEndian.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\Enum0.cs">
+      <Link>compiled\Enum0.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\EnumIf.cs">
+      <Link>compiled\EnumIf.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\Expr0.cs">
+      <Link>compiled\Expr0.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\Expr1.cs">
+      <Link>compiled\Expr1.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\Expr2.cs">
+      <Link>compiled\Expr2.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\FixedStruct.cs">
+      <Link>compiled\FixedStruct.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\HelloWorld.cs">
+      <Link>compiled\HelloWorld.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\IfStruct.cs">
+      <Link>compiled\IfStruct.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\InstanceStd.cs">
+      <Link>compiled\InstanceStd.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\InstanceStdArray.cs">
+      <Link>compiled\InstanceStdArray.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\InstanceUserArray.cs">
+      <Link>compiled\InstanceUserArray.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\ProcessRotate.cs">
+      <Link>compiled\ProcessRotate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\ProcessToUser.cs">
+      <Link>compiled\ProcessToUser.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\ProcessXorConst.cs">
+      <Link>compiled\ProcessXorConst.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\ProcessXorValue.cs">
+      <Link>compiled\ProcessXorValue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\RepeatEosStruct.cs">
+      <Link>compiled\RepeatEosStruct.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\RepeatEosU4.cs">
+      <Link>compiled\RepeatEosU4.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\RepeatNStruct.cs">
+      <Link>compiled\RepeatNStruct.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\RepeatNStrz.cs">
+      <Link>compiled\RepeatNStrz.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\StrEncodings.cs">
+      <Link>compiled\StrEncodings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\StrEos.cs">
+      <Link>compiled\StrEos.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\TermStrz.cs">
+      <Link>compiled\TermStrz.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\ZlibWithHeader78.cs">
+      <Link>compiled\ZlibWithHeader78.cs</Link>
     </Compile>
     <Compile Include="tests\*.cs" />
   </ItemGroup>
