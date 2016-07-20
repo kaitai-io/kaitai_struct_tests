@@ -10,7 +10,7 @@ namespace Kaitai
         [Test]
         public void TestFixedStruct()
         {
-            var r = FixedStruct.FromFile(SRC_DIR + "fixed_struct.bin");
+            var r = FixedStruct.FromFile(SourceFile("fixed_struct.bin"));
 
             Assert.AreEqual(r.Hdr.Uint8, 255);
             Assert.AreEqual(r.Hdr.Uint16, 65535);
