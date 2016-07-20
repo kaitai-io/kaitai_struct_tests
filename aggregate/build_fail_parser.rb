@@ -4,7 +4,8 @@ class BuildFailParser
   end
 
   def each_test
-    File.open("#{@dir}/build.fails", 'r') { |f|
+    fn = "#{@dir}/build.fails"
+    File.open(fn, 'r') { |f|
       f.each_line { |l|
         case l
         when /^Test(.*?)\.java$/
@@ -15,6 +16,6 @@ class BuildFailParser
           yield TestResult.new(name, :format_build_failed, 0, nil)
         end
       }
-    }
+    } if FileTest::exists?(fn)
   end
 end
