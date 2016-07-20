@@ -111,8 +111,31 @@
     <Compile Include="..\..\..\compiled\csharp\ZlibWithHeader78.cs">
       <Link>compiled\ZlibWithHeader78.cs</Link>
     </Compile>
+    <Compile Include="tests\SpecBufferedStruct.cs" />
+    <Compile Include="tests\SpecDefaultBigEndian.cs" />
+    <Compile Include="tests\SpecEnum0.cs" />
+    <Compile Include="tests\SpecEnumIf.cs" />
+    <Compile Include="tests\SpecExpr0.cs" />
+    <Compile Include="tests\SpecExpr1.cs" />
+    <Compile Include="tests\SpecExpr2.cs" />
     <Compile Include="tests\SpecFixedStruct.cs" />
     <Compile Include="tests\SpecHelloWorld.cs" />
+    <Compile Include="tests\SpecIfStruct.cs" />
+    <Compile Include="tests\SpecInstanceStd.cs" />
+    <Compile Include="tests\SpecInstanceStdArray.cs" />
+    <Compile Include="tests\SpecInstanceUserArray.cs" />
+    <Compile Include="tests\SpecProcessRotate.cs" />
+    <Compile Include="tests\SpecProcessToUser.cs" />
+    <Compile Include="tests\SpecProcessXorConst.cs" />
+    <Compile Include="tests\SpecProcessXorValue.cs" />
+    <Compile Include="tests\SpecRepeatEosStruct.cs" />
+    <Compile Include="tests\SpecRepeatEosU4.cs" />
+    <Compile Include="tests\SpecRepeatNStruct.cs" />
+    <Compile Include="tests\SpecRepeatNStrz.cs" />
+    <Compile Include="tests\SpecStrEncodings.cs" />
+    <Compile Include="tests\SpecStrEos.cs" />
+    <Compile Include="tests\SpecTermStrz.cs" />
+    <Compile Include="tests\SpecZlibWithHeader78.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\src\buffered_struct.bin">
