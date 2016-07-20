@@ -21,7 +21,7 @@ set(SPEC_SOURCES
 	test_expr_1.cpp
 	test_process_xor_const.cpp
 	test_process_xor_value.cpp
-#	test_process_xor4_const.cpp
+	test_process_xor4_const.cpp
 	test_process_xor4_value.cpp
 )
 
@@ -39,7 +39,7 @@ set(KS_SOURCES
 	${KS_PATH}/expr_1.cpp
 	${KS_PATH}/process_xor_const.cpp
 	${KS_PATH}/process_xor_value.cpp
-#	${KS_PATH}/process_xor4_const.cpp
+	${KS_PATH}/process_xor4_const.cpp
 	${KS_PATH}/process_xor4_value.cpp
 )
 
