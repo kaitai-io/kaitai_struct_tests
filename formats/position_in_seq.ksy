@@ -7,11 +7,11 @@ seq:
     repeat: expr
     repeat-expr: header.qty_numbers
 types:
-  header:
+  header_obj:
     seq:
       - id: qty_numbers
         type: u4
 instances:
   header:
     pos: 0x10
-    type: header
+    type: header_obj

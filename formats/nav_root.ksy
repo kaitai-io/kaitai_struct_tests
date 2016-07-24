@@ -3,17 +3,17 @@ meta:
   endian: le
 seq:
   - id: header
-    type: header
+    type: header_obj
   - id: index
-    type: index
+    type: index_obj
 types:
-  header:
+  header_obj:
     seq:
       - id: qty_entries
         type: u4
       - id: filename_len
         type: u4
-  index:
+  index_obj:
     seq:
       - id: magic
         size: 4

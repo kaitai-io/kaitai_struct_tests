@@ -9,7 +9,7 @@ seq:
     repeat: expr
     repeat-expr: qty_entries
   - id: strings
-    type: strings
+    type: strings_obj
     size-eos: true
 types:
   entry:
@@ -24,7 +24,7 @@ types:
         pos: name_ofs
         type: strz
         encoding: UTF-8
-  strings:
+  strings_obj:
     seq:
       - id: str
         type: strz

@@ -5,7 +5,7 @@ seq:
   - id: index_offset
     type: u4
 types:
-  index:
+  index_obj:
     seq:
      - id: entry
        type: strz
@@ -13,4 +13,4 @@ types:
 instances:
   index:
     pos: index_offset
-    type: index
+    type: index_obj
