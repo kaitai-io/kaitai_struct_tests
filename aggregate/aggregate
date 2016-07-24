@@ -1,72 +1,161 @@
 #!/usr/bin/env ruby
 
+require 'set'
 require 'erb'
 
 require_relative 'test_result'
+require_relative 'translator_xml_parser'
 require_relative 'junit_xml_parser'
 require_relative 'rspec_json_parser'
 require_relative 'boost_test_parser'
 require_relative 'nunit_xml_parser'
 require_relative 'build_fail_parser'
 
-TEST_ROOT = ARGV[0]
+class Aggregator
+  attr_reader :name
+  attr_reader :aggr
+  
+  def initialize(name)
+    @name = name
+    @aggr = {}
+    @count_ok = nil
+  end
 
-parsers = {
-  'csharp' => NUnitXMLParser.new("#{TEST_ROOT}/csharp/TestResult.xml"),
-  'cpp_stl' => BoostTestParser.new("#{TEST_ROOT}/cpp_stl/results.xml"),
-  'java' => JUnitXMLParser.new("#{TEST_ROOT}/java/junitreports"),
-  'javascript' => JUnitXMLParser.new("#{TEST_ROOT}/javascript/test-output-javascript.xml"),
-  'python' => JUnitXMLParser.new("#{TEST_ROOT}/python"),
-  'ruby' => RSpecJSONParser.new("#{TEST_ROOT}/ruby/test-output-ruby.json"),
-}
+  def add_translators(parser)
+    parser.each_test { |lang, t|
+      h = (@aggr[t.name] ||= {})
+      raise "Duplicate test name \"#{t.name}\" for #{lang}" if h[lang]
+      h[lang] = t
+    }
+  end
 
-@aggr = {}
-@count_ok = {}
+  def add(lang, parser)
+    parser.each_test { |t|
+      h = (@aggr[t.name] ||= {})
+      raise "Duplicate test name \"#{t.name}\" for #{lang}" if h[lang]
+      h[lang] = t
+    }
+  end
 
-# Process testing results
-parsers.each_pair { |lang, result|
-  ok = 0
-  result.each_test { |t|
-    h = (@aggr[t.name] ||= {})
-    raise "Duplicate test name \"#{t.name}\" for #{lang}" if h[lang]
-    h[lang] = t
-    ok +=1 if t.status == :passed
-  }
-  @count_ok[lang] = ok
-}
-
-# Add build fail results
-bfps = {
-  'java' => BuildFailParser.new("#{TEST_ROOT}/java"),
-}
-
-bfps.each_pair { |lang, bfp|
-  bfp.each_test { |t|
-    h = (@aggr[t.name] ||= {})
-    prev_t = h[lang]
-    if prev_t
-      if prev_t.status == :format_build_failed and t.status == :spec_build_failed
-        # "format failed" is the culprit, trust it
-        next
-      elsif prev_t.status == :spec_build_failed and t.status == :format_build_failed
-        # actually it is "format failed", store it
-      else
-        raise "Already got test information on failing build test \"#{t.name}\" for #{lang}: #{h[lang].inspect}"
+  def add_fails(lang, parser)
+    parser.each_test { |t|
+      h = (@aggr[t.name] ||= {})
+      prev_t = h[lang]
+      if prev_t
+        if prev_t.status == :format_build_failed and t.status == :spec_build_failed
+          # "format failed" is the culprit, trust it
+          next
+        elsif prev_t.status == :spec_build_failed and t.status == :format_build_failed
+          # actually it is "format failed", store it
+        else
+          raise "Already got test information on failing build test \"#{t.name}\" for #{lang}: #{h[lang].inspect}"
+        end
       end
-    end
-    h[lang] = t
-  }
-}
+      h[lang] = t
+    }
+  end
 
-@langs = parsers.keys.sort
+  # Count summaries
+  def count_ok
+    return @count_ok unless @count_ok.nil?
+    @count_ok = {}
+    @aggr.each_pair { |test, results|
+      results.each_pair { |lang, t|
+        @count_ok[lang] ||= 0
+        @count_ok[lang] += 1 if t.status == :passed
+      }
+    }
 
-puts "got #{@aggr.size} tests..."
-puts "processing for #{@langs.inspect}..."
+    @count_ok
+  end
 
-@date = Time.now.utc.to_s
+  def summary
+    puts "  #{@aggr.size} tests"
+    puts "  per language:"
+    count_ok.each_pair { |lang, ok|
+      printf "%15s: %d%%\n", lang, 100.0 * ok / @aggr.size
+    }
+  end
 
-bin_dir = File.expand_path(File.dirname(__FILE__))
-tmpl = ERB.new(File.read("#{bin_dir}/report.html.erb"), nil, nil, '_err')
-File.open(ARGV[1], 'w') { |out|
-  out.print tmpl.result(binding)
-}
+  def langs
+    Set.new(count_ok.keys)
+  end
+end
+
+class ReportGenerator
+  attr_reader :translators
+  attr_reader :specs
+
+  def initialize(translator_report, test_root)
+    @translator_report = translator_report
+    @test_root = test_root
+    
+    @date = Time.now.utc.to_s
+    @translators = Aggregator.new('Expressions')
+    @specs = Aggregator.new('KSY compilation')
+  end
+
+  def process
+    # Process translator test report in compiler directory
+    @translators.add_translators(TranslatorXMLParser.new(@translator_report))
+  
+    parsers = {
+      'csharp' => NUnitXMLParser.new("#{@test_root}/csharp/TestResult.xml"),
+      'cpp_stl' => BoostTestParser.new("#{@test_root}/cpp_stl/results.xml"),
+      'java' => JUnitXMLParser.new("#{@test_root}/java/junitreports"),
+      'javascript' => JUnitXMLParser.new("#{@test_root}/javascript/test-output-javascript.xml"),
+      'python' => JUnitXMLParser.new("#{@test_root}/python"),
+      'ruby' => RSpecJSONParser.new("#{@test_root}/ruby/test-output-ruby.json"),
+    }
+
+    # Process testing results
+    parsers.each_pair { |lang, parser|
+      @specs.add(lang, parser)
+    }
+
+    # Add build fail results
+    bfps = {
+      'java' => BuildFailParser.new("#{@test_root}/java"),
+    }
+
+    bfps.each_pair { |lang, bfp|
+      @specs.add_fails(lang, bfp)
+    }    
+
+    puts "translators"
+    @translators.summary
+    puts "specs"
+    @specs.summary
+  end
+
+  def generate(output_file)
+    @langs = (@translators.langs + @specs.langs).to_a.sort
+    
+    tmpl_header = erb('report_header')
+    tmpl_table = erb('report_table')
+    tmpl_footer = erb('report_footer')
+
+    File.open(output_file, 'w') { |out|
+      out.print tmpl_header.result(binding)
+
+      data = @translators
+      out.print tmpl_table.result(binding)
+
+      data = @specs
+      out.print tmpl_table.result(binding)
+
+      out.print tmpl_footer.result(binding)
+    }
+  end
+
+  def erb(name)
+    bin_dir = File.expand_path(File.dirname(__FILE__))
+    ERB.new(File.read("#{bin_dir}/#{name}.html.erb"), nil, nil, '_err')
+  end
+end
+
+translator_report, test_root, output_file = ARGV
+
+rg = ReportGenerator.new(translator_report, test_root)
+rg.process
+rg.generate(output_file)

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+. ./config
+
+cd "$COMPILER_IR"
+sbt test
