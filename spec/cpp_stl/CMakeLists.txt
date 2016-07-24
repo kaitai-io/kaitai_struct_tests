@@ -24,6 +24,7 @@ set(SPEC_SOURCES
 	test_process_xor4_const.cpp
 	test_process_xor4_value.cpp
 	test_process_rotate.cpp
+	test_repeat_n_struct.cpp
 )
 
 set(KS_SOURCES
@@ -43,6 +44,7 @@ set(KS_SOURCES
 	${KS_PATH}/process_xor4_const.cpp
 	${KS_PATH}/process_xor4_value.cpp
 	${KS_PATH}/process_rotate.cpp
+	${KS_PATH}/repeat_n_struct.cpp
 )
 
 set(RUNTIME_SOURCES
