@@ -2,6 +2,7 @@
 
 require 'set'
 require 'erb'
+require 'cgi'
 
 require_relative 'test_result'
 require_relative 'translator_xml_parser'
@@ -70,6 +71,7 @@ class Aggregator
   end
 
   def summary
+    puts @name
     puts "  #{@aggr.size} tests"
     puts "  per language:"
     count_ok.each_pair { |lang, ok|
@@ -122,9 +124,7 @@ class ReportGenerator
       @specs.add_fails(lang, bfp)
     }    
 
-    puts "translators"
     @translators.summary
-    puts "specs"
     @specs.summary
   end
 
@@ -151,6 +151,10 @@ class ReportGenerator
   def erb(name)
     bin_dir = File.expand_path(File.dirname(__FILE__))
     ERB.new(File.read("#{bin_dir}/#{name}.html.erb"), nil, nil, '_err')
+  end
+
+  def h(s)
+    CGI::h(s)
   end
 end
 

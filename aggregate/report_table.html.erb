@@ -1,5 +1,5 @@
     <tr>
-        <th colspan="<%= 1 + @langs.size %>">
+        <th colspan="<%= 1 + @langs.size %>" class="section">
             <%= data.name %>
         </th>
     </tr>
@@ -14,7 +14,7 @@
 <% data.aggr.keys.sort.each { |test_name|
      tests = data.aggr[test_name] %>
     <tr>
-        <td><%= test_name %></td>
+        <td><%= h test_name %></td>
 <%   @langs.each { |lang|
        test = tests[lang]
        if test %>
