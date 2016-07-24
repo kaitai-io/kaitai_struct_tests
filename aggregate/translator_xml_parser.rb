@@ -22,6 +22,8 @@ class TranslatorXMLParser
         status = :failed
         failure_msg = failure_xml.attribute('message')
         failure_msg = failure_msg.value if failure_msg
+
+        status = :no_spec if failure_msg == 'no expected result'
         failure = TestResult::Failure.new(
           nil,
           nil,
