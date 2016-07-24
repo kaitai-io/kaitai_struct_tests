@@ -66,6 +66,9 @@
     <Compile Include="..\..\..\compiled\csharp\IfStruct.cs">
       <Link>compiled\IfStruct.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\compiled\csharp\InstanceIoUser.cs">
+      <Link>compiled\InstanceIoUser.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\compiled\csharp\InstanceStd.cs">
       <Link>compiled\InstanceStd.cs</Link>
     </Compile>
@@ -75,11 +78,29 @@
     <Compile Include="..\..\..\compiled\csharp\InstanceUserArray.cs">
       <Link>compiled\InstanceUserArray.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\compiled\csharp\NavParent.cs">
+      <Link>compiled\NavParent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\NavRoot.cs">
+      <Link>compiled\NavRoot.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\PositionInSeq.cs">
+      <Link>compiled\PositionInSeq.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\PositionAbs.cs">
+      <Link>compiled\PositionAbs.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\compiled\csharp\ProcessRotate.cs">
       <Link>compiled\ProcessRotate.cs</Link>
     </Compile>
     <Compile Include="..\..\..\compiled\csharp\ProcessToUser.cs">
       <Link>compiled\ProcessToUser.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\ProcessXor4Const.cs">
+      <Link>compiled\ProcessXor4Const.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\ProcessXor4Value.cs">
+      <Link>compiled\ProcessXor4Value.cs</Link>
     </Compile>
     <Compile Include="..\..\..\compiled\csharp\ProcessXorConst.cs">
       <Link>compiled\ProcessXorConst.cs</Link>
@@ -121,11 +142,18 @@
     <Compile Include="tests\SpecFixedStruct.cs" />
     <Compile Include="tests\SpecHelloWorld.cs" />
     <Compile Include="tests\SpecIfStruct.cs" />
+    <Compile Include="tests\SpecInstanceIoUser.cs" />
     <Compile Include="tests\SpecInstanceStd.cs" />
     <Compile Include="tests\SpecInstanceStdArray.cs" />
     <Compile Include="tests\SpecInstanceUserArray.cs" />
+    <Compile Include="tests\SpecNavParent.cs" />
+    <Compile Include="tests\SpecNavRoot.cs" />
+    <Compile Include="tests\SpecPositionAbs.cs" />
+    <Compile Include="tests\SpecPositionInSeq.cs" />
     <Compile Include="tests\SpecProcessRotate.cs" />
     <Compile Include="tests\SpecProcessToUser.cs" />
+    <Compile Include="tests\SpecProcessXor4Const.cs" />
+    <Compile Include="tests\SpecProcessXor4Value.cs" />
     <Compile Include="tests\SpecProcessXorConst.cs" />
     <Compile Include="tests\SpecProcessXorValue.cs" />
     <Compile Include="tests\SpecRepeatEosStruct.cs" />
