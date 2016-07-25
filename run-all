@@ -32,4 +32,4 @@ rspec -I compiled/ruby -I "$RUBY_RUNTIME_DIR" -f json >"$TEST_OUT_DIR/ruby/test-
 
 # Aggregate
 echo '#################### ... aggregation'
-aggregate/aggregate "$TEST_OUT_DIR" "$TEST_OUT_DIR/full.html"
+aggregate/aggregate "$COMPILER_DIR/target/test_out/TEST-io.kaitai.struct.translators.TranslatorSpec.xml" "$TEST_OUT_DIR" "$TEST_OUT_DIR/full.html"
