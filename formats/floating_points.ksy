@@ -10,3 +10,10 @@ seq:
     type: f4be
   - id: double_value_be
     type: f8be
+instances:
+  single_value_plus_int:
+    value: single_value + 1
+  single_value_plus_float:
+    value: single_value + 0.5
+  double_value_plus_float:
+    value: double_value + 0.05
