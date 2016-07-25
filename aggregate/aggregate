@@ -15,7 +15,7 @@ require_relative 'build_fail_parser'
 class Aggregator
   attr_reader :name
   attr_reader :aggr
-  
+
   def initialize(name)
     @name = name
     @aggr = {}
@@ -91,7 +91,7 @@ class ReportGenerator
   def initialize(translator_report, test_root)
     @translator_report = translator_report
     @test_root = test_root
-    
+
     @date = Time.now.utc.to_s
     @translators = Aggregator.new('Expressions')
     @specs = Aggregator.new('KSY compilation')
@@ -100,7 +100,7 @@ class ReportGenerator
   def process
     # Process translator test report in compiler directory
     @translators.add_translators(TranslatorXMLParser.new(@translator_report))
-  
+
     parsers = {
       'csharp' => NUnitXMLParser.new("#{@test_root}/csharp/TestResult.xml"),
       'cpp_stl' => BoostTestParser.new("#{@test_root}/cpp_stl/results.xml"),
@@ -122,7 +122,7 @@ class ReportGenerator
 
     bfps.each_pair { |lang, bfp|
       @specs.add_fails(lang, bfp)
-    }    
+    }
 
     @translators.summary
     @specs.summary
@@ -130,7 +130,7 @@ class ReportGenerator
 
   def generate(output_file)
     @langs = (@translators.langs + @specs.langs).to_a.sort
-    
+
     tmpl_header = erb('report_header')
     tmpl_table = erb('report_table')
     tmpl_footer = erb('report_footer')
