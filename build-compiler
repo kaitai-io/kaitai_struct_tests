@@ -1,0 +1,6 @@
+#!/bin/sh
+
+. ./config
+
+cd "$COMPILER_DIR"
+sbt compilerJVM/stage
