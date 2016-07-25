@@ -7,7 +7,7 @@
     <tr>
         <th>% passed</th>
 <% @langs.each { |lang| %>
-        <td><%= sprintf('%d', (100.0 * data.count_ok[lang] / data.aggr.size)) %>%</td>
+        <td><%= sprintf('%d', (100.0 * (data.count_ok[lang] || 0) / (data.aggr.size || 1))) %>%</td>
 <% } %>
     </tr>
 
