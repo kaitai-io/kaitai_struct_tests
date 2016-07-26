@@ -60,6 +60,9 @@
     <Compile Include="..\..\..\compiled\csharp\FixedStruct.cs">
       <Link>compiled\FixedStruct.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\compiled\csharp\FloatingPoints.cs">
+      <Link>compiled\FloatingPoints.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\compiled\csharp\HelloWorld.cs">
       <Link>compiled\HelloWorld.cs</Link>
     </Compile>
@@ -133,6 +136,7 @@
       <Link>compiled\ZlibWithHeader78.cs</Link>
     </Compile>
     <Compile Include="tests\SpecBufferedStruct.cs" />
+    <Compile Include="tests\SpecFloatingPoints.cs" />
     <Compile Include="tests\SpecDefaultBigEndian.cs" />
     <Compile Include="tests\SpecEnum0.cs" />
     <Compile Include="tests\SpecEnumIf.cs" />
@@ -177,6 +181,10 @@
     <None Include="..\..\..\src\fixed_struct.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Link>src\fixed_struct.bin</Link>
+    </None>
+    <None Include="..\..\..\src\floating_points.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>src\floating_points.bin</Link>
     </None>
     <None Include="..\..\..\src\if_struct.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
