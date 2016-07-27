@@ -10,6 +10,8 @@ seq:
     type: f4be
   - id: double_value_be
     type: f8be
+  - id: approximate_value
+    type: f4
 instances:
   single_value_plus_int:
     value: single_value + 1

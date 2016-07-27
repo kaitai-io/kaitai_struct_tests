@@ -8,11 +8,13 @@ class TestFloatingPoints(unittest.TestCase):
 
         prec = 6
 
-        self.assertAlmostEqual(r.single_value, 1.2345, prec)
-        self.assertAlmostEqual(r.single_value_be, 1.2345, prec)
-        self.assertAlmostEqual(r.double_value, 123.456, prec)
-        self.assertAlmostEqual(r.double_value_be, 123.456, prec)
+        self.assertEquals(r.single_value, 0.5)
+        self.assertEquals(r.single_value_be, 0.5)
+        self.assertEquals(r.double_value, 0.25)
+        self.assertEquals(r.double_value_be, 0.25)
+        
+        self.assertAlmostEqual(r.approximate_value, 1.2345, prec)
 
-        self.assertAlmostEqual(r.single_value_plus_int, 2.2345, prec)
-        self.assertAlmostEqual(r.single_value_plus_float, 1.7345, prec)
-        self.assertAlmostEqual(r.double_value_plus_float, 123.506, prec)
+        self.assertAlmostEqual(r.single_value_plus_int, 1.5, prec)
+        self.assertAlmostEqual(r.single_value_plus_float, 1.0, prec)
+        self.assertAlmostEqual(r.double_value_plus_float, 0.3, prec)
