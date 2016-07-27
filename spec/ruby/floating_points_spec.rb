@@ -6,13 +6,15 @@ RSpec.describe FloatingPoints do
     
     delta = 1e-6
 
-    expect(r.single_value).to be_within(delta).of 1.2345
-    expect(r.single_value_be).to be_within(delta).of 1.2345
-    expect(r.double_value).to be_within(delta).of 123.456
-    expect(r.double_value_be).to be_within(delta).of 123.456
+    expect(r.single_value).to eq 0.5
+    expect(r.single_value_be).to eq 0.5
+    expect(r.double_value).to eq 0.25
+    expect(r.double_value_be).to eq 0.25
     
-    expect(r.single_value_plus_int).to be_within(delta).of 2.2345
-    expect(r.single_value_plus_float).to be_within(delta).of 1.7345
-    expect(r.double_value_plus_float).to be_within(delta).of 123.506
+    expect(r.approximate_value).to be_within(delta).of 1.2345
+    
+    expect(r.single_value_plus_int).to be_within(delta).of 1.5
+    expect(r.single_value_plus_float).to be_within(delta).of 1.0
+    expect(r.double_value_plus_float).to be_within(delta).of 0.3
   end
 end

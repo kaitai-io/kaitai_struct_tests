@@ -12,15 +12,17 @@ public class TestFloatingPoints extends CommonSpec {
 
         double delta = 1e-6;
 
-        assertEquals(1.2345f, fp.singleValue(), delta);
-        assertEquals(1.2345f, fp.singleValueBe(), delta);
+        assertEquals(0.5f, fp.singleValue());
+        assertEquals(0.5f, fp.singleValueBe());
 
-        assertEquals(123.456d, fp.doubleValue(), delta);
-        assertEquals(123.456d, fp.doubleValueBe(), delta);
+        assertEquals(0.25d, fp.doubleValue());
+        assertEquals(0.25d, fp.doubleValueBe());
 
-        assertEquals(2.2345f, fp.singleValuePlusInt(), delta);
-        assertEquals(1.7345d, fp.singleValuePlusFloat(), delta);
-        assertEquals(123.506d, fp.doubleValuePlusFloat(), delta);
+        assertEquals(1.2345d, fp.approximateValue(), delta);
+
+        assertEquals(1.5f, fp.singleValuePlusInt(), delta);
+        assertEquals(1.0d, fp.singleValuePlusFloat(), delta);
+        assertEquals(0.3d, fp.doubleValuePlusFloat(), delta);
     }
 
 }
