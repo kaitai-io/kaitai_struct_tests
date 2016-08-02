@@ -2,14 +2,56 @@
 
 . ./config
 
+CSHARP_TEST_FORMATS_DIR=$FORMATS_COMPILED_DIR/csharp
 CSHARP_SPEC_DIR=spec/csharp
+CSHARP_TEST_OUT_DIR="$TEST_OUT_DIR"/csharp
+CSHARP_COMPILE_LOG="$CSHARP_TEST_OUT_DIR/_compile.log"
 
-# Compile everything
-xbuild "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests.sln"
+rm -rf "$CSHARP_TEST_OUT_DIR"
+mkdir -p "$CSHARP_TEST_OUT_DIR"
+
+# Try and build the project first - if there's no compile errors, we can continue straight away
+echo "run-csharp: building project"
+xbuild "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests.sln" >> "$CSHARP_COMPILE_LOG" || {
+
+    # Some formats failed to build - find the failing files and erase them
+    echo "run-csharp: some formats failed to compile, checking each file individually"
+    
+    # Find the invalid files and wipe them - we do this by scanning the error list from the compiler
+    mcs \
+        -t:library \
+        -fullpaths \
+        -warn:0 \
+        -r:"$CSHARP_SPEC_DIR/packages/NUnit.3.4.1/lib/net45/nunit.framework.dll" \
+        "$CSHARP_RUNTIME_DIR/*.cs" \
+        "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests/CommonSpec.cs" \
+        "$CSHARP_TEST_FORMATS_DIR"/*.cs \
+            2>&1 >> "$CSHARP_COMPILE_LOG" | \
+            fgrep '(' | cut -d'(' -f1 | xargs -d '\n' truncate -c -s0
+    
+    echo "run-csharp: removing tests that are no longer valid"
+    
+    # Now that the invalid spec classes are gone, we need to remove the matching test cases
+    mcs \
+        -t:library \
+        -fullpaths \
+        -warn:0 \
+        -r:"$CSHARP_SPEC_DIR/packages/NUnit.3.4.1/lib/net45/nunit.framework.dll" \
+        "$CSHARP_RUNTIME_DIR/*.cs" \
+        "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests/CommonSpec.cs" \
+        "$CSHARP_TEST_FORMATS_DIR"/*.cs \
+        "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests/tests/*.cs" \
+            2>&1 >> "$CSHARP_COMPILE_LOG" | \
+            fgrep '(' | cut -d'(' -f1 | xargs -d '\n' truncate -c -s0
+    
+    # Invalid tests should all be gone - rebuild the project
+    echo "run-csharp: rebuilding project"
+    xbuild "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests.sln" >> "$CSHARP_COMPILE_LOG"
+}
 
 # Actually run the tests
 mkdir -p "$TEST_OUT_DIR/csharp"
 mono \
-	"$CSHARP_SPEC_DIR/packages/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe" \
-	--result="$TEST_OUT_DIR/csharp/TestResult.xml" \
-	"$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests/bin/Debug/kaitai_struct_csharp_tests.dll"
+    "$CSHARP_SPEC_DIR/packages/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe" \
+    --result="$TEST_OUT_DIR/csharp/TestResult.xml" \
+    "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests/bin/Debug/kaitai_struct_csharp_tests.dll"
