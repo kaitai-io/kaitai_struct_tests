@@ -31,5 +31,3 @@ class TestFixedStruct(unittest.TestCase):
         self.assertEqual(r.hdr.sint16be, -66)
         self.assertEqual(r.hdr.sint32be, -66)
         self.assertEqual(r.hdr.sint64be, -66)
-
-        r.close()

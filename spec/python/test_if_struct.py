@@ -15,5 +15,3 @@ class TestIfStruct(unittest.TestCase):
 
         self.assertEquals(r.op3.opcode, 0x53)
         self.assertEquals(r.op3.arg_str.str, "bar")
-
-        r.close()
