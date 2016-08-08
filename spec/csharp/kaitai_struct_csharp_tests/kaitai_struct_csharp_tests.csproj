@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -168,6 +168,10 @@
     <Compile Include="tests\SpecStrEos.cs" />
     <Compile Include="tests\SpecTermStrz.cs" />
     <Compile Include="tests\SpecZlibWithHeader78.cs" />
+    <Compile Include="tests\SpecPositionToEnd.cs" />
+    <Compile Include="..\..\..\compiled\csharp\PositionToEnd.cs">
+      <Link>compiled\PositionToEnd.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\src\buffered_struct.bin">
@@ -209,6 +213,10 @@
     <None Include="..\..\..\src\position_in_seq.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Link>src\position_in_seq.bin</Link>
+    </None>
+    <None Include="..\..\..\src\position_to_end.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>src\position_to_end.bin</Link>
     </None>
     <None Include="..\..\..\src\process_rotate.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
