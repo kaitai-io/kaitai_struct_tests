@@ -172,6 +172,10 @@
     <Compile Include="..\..\..\compiled\csharp\PositionToEnd.cs">
       <Link>compiled\PositionToEnd.cs</Link>
     </Compile>
+    <Compile Include="tests\SpecEofExceptionBytes.cs" />
+    <Compile Include="..\..\..\compiled\csharp\EofExceptionBytes.cs">
+      <Link>compiled\EofExceptionBytes.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\src\buffered_struct.bin">
