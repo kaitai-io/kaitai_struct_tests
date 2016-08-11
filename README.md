@@ -38,12 +38,12 @@ The overall procedure of testing works as follows:
 
 There are a few scripts that automate steps specified above:
 
-* `compile-all` does two things:
-  * builds compiler using special "stage" mode, i.e. without
-    system-wide deployment, ready to be run from a build directory
-  * compiles all format descriptions in `formats/` with this compiler
-    for every supported language, placing results in
-    `compiled/$LANGUAGE`
+* `build-compiler` builds compiler using special "stage" mode,
+  i.e. without system-wide deployment, ready to be run from a build
+  directory
+* `build-formats` compiles all format descriptions in `formats/` with
+  this compiler for every supported language, placing results in
+  `compiled/$LANGUAGE`
 * `run-$LANGUAGE` executes all tests for a particular `$LANGUAGE` using
   preferred language-specific testing tool.
 * `run-all`
