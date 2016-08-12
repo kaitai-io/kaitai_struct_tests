@@ -1,0 +1,3 @@
+#!/bin/sh
+
+phpunit spec/php --bootstrap spec/php/_bootstrap.php
