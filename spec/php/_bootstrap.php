@@ -1,15 +1,18 @@
 <?php
+require __DIR__ . '/../../../runtime/php/lib/Kaitai/Struct/Struct.php';
+require __DIR__ . '/../../../runtime/php/lib/Kaitai/Struct/Stream.php';
 
-include '../runtime/php/lib/Kaitai/Struct.php';
-include '../runtime/php/lib/Kaitai/Stream.php';
-
-spl_autoload_register(function ($name) {
+spl_autoload_register(function ($class) {
+    /*
     $kt = "Kaitai\\Tests\\";
-
-    if (substr($name, 0, strlen($kt)) == $kt) {
+    if (substr($name, 0, strlen($kt)) === $kt) {
         $testName = substr($name, strlen($kt));
-        include "compiled/php/$testName.php";
+    */
+    $classes = [
+        'HelloWorld'
+    ];
+    if (in_array($class, $classes, true)) {
+        require __DIR__ . "/../../compiled/php/$class.php";
     }
-#    echo "Want to load $name.\n";
-#    throw new Exception("Unable to load $name.");
+    //}
 });

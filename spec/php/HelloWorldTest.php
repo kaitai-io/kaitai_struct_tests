@@ -1,10 +1,15 @@
 <?php
-
 namespace Kaitai\Tests;
 
 class HelloWorldTest extends \PHPUnit_Framework_TestCase {
-    public function test() {
-        $r = HelloWorld::fromFile('src/fixed_struct.bin');
-        $this->assertEquals($r->one, 0x50);
+    const FILE_PATH = __DIR__ . '/../../src/fixed_struct.bin';
+    public function testAccessProperty_ThroughDirectCall() {
+        $r = \HelloWorld::fromFile(self::FILE_PATH);
+        $this->assertEquals(0x50, $r->one());
+    }
+
+    public function testAccessProperty_ThroughGetCall() {
+        $r = \HelloWorld::fromFile(self::FILE_PATH);
+        $this->assertEquals(0x50, $r->one);
     }
 }
