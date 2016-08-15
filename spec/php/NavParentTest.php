@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class NavParentTest extends \PHPUnit_Framework_TestCase {
+class NavParentTest extends TestCase {
     public function testNavParent() {
         $this->markTestIncomplete();
 /*

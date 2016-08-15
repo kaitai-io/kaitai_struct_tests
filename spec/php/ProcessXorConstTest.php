@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class ProcessXorConstTest extends \PHPUnit_Framework_TestCase {
+class ProcessXorConstTest extends TestCase {
     public function testProcessXorConst() {
         $this->markTestIncomplete();
 /*

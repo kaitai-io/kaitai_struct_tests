@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class EnumIfTest extends \PHPUnit_Framework_TestCase {
+class EnumIfTest extends TestCase {
     public function testEnumIf() {
         $this->markTestIncomplete();
 /*

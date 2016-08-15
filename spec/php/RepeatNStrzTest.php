@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class RepeatNStrzTest extends \PHPUnit_Framework_TestCase {
+class RepeatNStrzTest extends TestCase {
     public function testRepeatNStrz() {
         $this->markTestIncomplete();
 /*

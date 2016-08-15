@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class PositionInSeqTest extends \PHPUnit_Framework_TestCase {
+class PositionInSeqTest extends TestCase {
     public function testPositionInSeq() {
         $this->markTestIncomplete();
 /*

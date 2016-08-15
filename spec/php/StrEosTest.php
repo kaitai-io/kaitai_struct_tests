@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class StrEosTest extends \PHPUnit_Framework_TestCase {
+class StrEosTest extends TestCase {
     public function testStrEos() {
         $this->markTestIncomplete();
 /*

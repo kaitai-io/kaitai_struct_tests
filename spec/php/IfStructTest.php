@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class IfStructTest extends \PHPUnit_Framework_TestCase {
+class IfStructTest extends TestCase {
     public function testIfStruct() {
         $this->markTestIncomplete();
 /*

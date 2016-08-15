@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class StrEncodingsTest extends \PHPUnit_Framework_TestCase {
+class StrEncodingsTest extends TestCase {
     public function testStrEncodings() {
         $this->markTestIncomplete();
 /*

@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class RepeatEosU4Test extends \PHPUnit_Framework_TestCase {
+class RepeatEosU4Test extends TestCase {
     public function testRepeatEosU4() {
         $this->markTestIncomplete();
 /*

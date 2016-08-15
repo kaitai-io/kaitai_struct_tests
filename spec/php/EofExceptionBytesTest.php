@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class EofExceptionBytesTest extends \PHPUnit_Framework_TestCase {
+class EofExceptionBytesTest extends TestCase {
     public function testEofExceptionBytes() {
         $this->markTestIncomplete();
 /*

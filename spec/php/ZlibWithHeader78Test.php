@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class ZlibWithHeader78Test extends \PHPUnit_Framework_TestCase {
+class ZlibWithHeader78Test extends TestCase {
     public function testZlibWithHeader78() {
         $this->markTestIncomplete();
 /*

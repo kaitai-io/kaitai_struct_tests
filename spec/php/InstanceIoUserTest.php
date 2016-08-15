@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class InstanceIoUserTest extends \PHPUnit_Framework_TestCase {
+class InstanceIoUserTest extends TestCase {
     public function testInstanceIoUser() {
         $this->markTestIncomplete();
 /*

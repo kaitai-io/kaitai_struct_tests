@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class FloatingPointsTest extends \PHPUnit_Framework_TestCase {
+class FloatingPointsTest extends TestCase {
     public function testFloatingPoints() {
         $this->markTestIncomplete();
 /*

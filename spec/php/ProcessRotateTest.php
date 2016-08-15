@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class ProcessRotateTest extends \PHPUnit_Framework_TestCase {
+class ProcessRotateTest extends TestCase {
     public function testProcessRotate() {
         $this->markTestIncomplete();
 /*

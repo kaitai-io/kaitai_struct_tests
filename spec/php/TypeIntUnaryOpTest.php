@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class TypeIntUnaryOpTest extends \PHPUnit_Framework_TestCase {
+class TypeIntUnaryOpTest extends TestCase {
     public function testTypeIntUnaryOp() {
         $this->markTestIncomplete();
 /*

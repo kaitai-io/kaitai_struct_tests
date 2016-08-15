@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class FixedStructTest extends \PHPUnit_Framework_TestCase {
+class FixedStructTest extends TestCase {
     public function testFixedStruct() {
         $this->markTestIncomplete();
 /*

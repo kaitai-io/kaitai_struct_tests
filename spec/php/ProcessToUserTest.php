@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class ProcessToUserTest extends \PHPUnit_Framework_TestCase {
+class ProcessToUserTest extends TestCase {
     public function testProcessToUser() {
         $this->markTestIncomplete();
 /*

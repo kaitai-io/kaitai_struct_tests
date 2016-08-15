@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class MultipleUseTest extends \PHPUnit_Framework_TestCase {
+class MultipleUseTest extends TestCase {
     public function testMultipleUse() {
         $this->markTestIncomplete();
 /*

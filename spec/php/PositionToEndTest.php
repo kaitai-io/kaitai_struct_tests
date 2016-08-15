@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class PositionToEndTest extends \PHPUnit_Framework_TestCase {
+class PositionToEndTest extends TestCase {
     public function testPositionToEnd() {
         $this->markTestIncomplete();
 /*

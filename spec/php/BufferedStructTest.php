@@ -1,7 +1,7 @@
 <?php
 namespace Kaitai\Struct\Tests;
 
-class BufferedStructTest extends \PHPUnit_Framework_TestCase {
+class BufferedStructTest extends TestCase {
     public function testBufferedStruct() {
         $this->markTestIncomplete();
 /*
