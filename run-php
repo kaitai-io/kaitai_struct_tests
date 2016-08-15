@@ -1,3 +1,9 @@
 #!/bin/sh
 
-phpunit spec/php --bootstrap spec/php/_bootstrap.php
+. ./config
+
+mkdir -p "$TEST_OUT_DIR/php"
+
+phpunit spec/php \
+	--bootstrap spec/php/_bootstrap.php \
+	--log-junit "$TEST_OUT_DIR/php/results.xml"
