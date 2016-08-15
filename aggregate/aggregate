@@ -106,6 +106,7 @@ class ReportGenerator
       'cpp_stl' => BoostTestParser.new("#{@test_root}/cpp_stl/results.xml"),
       'java' => JUnitXMLParser.new("#{@test_root}/java/junitreports"),
       'javascript' => JUnitXMLParser.new("#{@test_root}/javascript/test-output-javascript.xml"),
+      'php' => JUnitXMLParser.new("#{@test_root}/php/results.xml"),
       'python' => JUnitXMLParser.new("#{@test_root}/python"),
       'ruby' => RSpecJSONParser.new("#{@test_root}/ruby/test-output-ruby.json"),
     }
