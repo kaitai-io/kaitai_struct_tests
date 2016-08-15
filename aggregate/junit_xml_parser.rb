@@ -20,7 +20,7 @@ class JUnitXMLParser
   def each_test
     @docs.each { |doc|
       next unless doc.root
-      doc.root.elements.each('testcase') { |tc|
+      doc.elements.each('//testcase') { |tc|
         name = tc.attribute('name').value
 
         if name == 'parses test properly'
