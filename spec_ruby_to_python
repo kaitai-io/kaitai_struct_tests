@@ -13,6 +13,7 @@ s.gsub!(/^.*it .parses test properly. do\n/m, '')
 s.gsub!(/^( +)/) { $1 * 2 }
 s.gsub!(/expect\(/, 'self.assertEquals(')
 s.gsub!(/\)\.to eq (.*?)$/) { ", #{$1})" }
+s.gsub!(/\)\.to eq\((.*?)\)$/) { ", #{$1})" }
 s.gsub!(/'/, '"')
 s.gsub!(/^\s*end\n/, '')
 
