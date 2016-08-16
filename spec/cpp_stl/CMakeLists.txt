@@ -30,6 +30,7 @@ set(SPEC_SOURCES
 	test_position_to_end.cpp
 	test_str_eos.cpp
 	test_type_int_unary_op.cpp
+	test_process_to_user.cpp
 )
 
 set(KS_SOURCES
@@ -55,6 +56,7 @@ set(KS_SOURCES
 	${KS_PATH}/position_to_end.cpp
 	${KS_PATH}/str_eos.cpp
 	${KS_PATH}/type_int_unary_op.cpp
+	${KS_PATH}/process_to_user.cpp
 )
 
 set(RUNTIME_SOURCES
