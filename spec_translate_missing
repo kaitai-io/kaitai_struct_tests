@@ -17,7 +17,7 @@ generate_spec()
 
 	if [ ! -r "$dst_spec" ]; then
 		echo "$lang: $dst_spec"
-#		echo "./spec_ruby_to_$lang" "$src_spec" "$dst_spec"
+		"./spec_ruby_to_$lang" <"$src_spec" >"$dst_spec"
 	fi
 }
 
