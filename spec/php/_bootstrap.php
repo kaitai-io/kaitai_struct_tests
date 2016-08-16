@@ -6,6 +6,10 @@ spl_autoload_register(function ($class) {
     $kt = "Kaitai\\Struct\\Tests\\";
     if (substr($class, 0, strlen($kt)) === $kt) {
         $testName = substr($class, strlen($kt));
-        require __DIR__ . "/../../compiled/php/$testName.php";
+        if ($testName === 'TestCase') {
+            require __DIR__ . '/TestCase.php';
+        } else {
+            require __DIR__ . "/../../compiled/php/$testName.php";
+        }
     }
 });
