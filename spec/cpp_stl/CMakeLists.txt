@@ -28,6 +28,7 @@ set(SPEC_SOURCES
 	test_repeat_eos_struct.cpp
 	test_floating_points.cpp
 	test_position_to_end.cpp
+	test_str_eos.cpp
 )
 
 set(KS_SOURCES
@@ -51,6 +52,7 @@ set(KS_SOURCES
 	${KS_PATH}/repeat_eos_struct.cpp
 	${KS_PATH}/floating_points.cpp
 	${KS_PATH}/position_to_end.cpp
+	${KS_PATH}/str_eos.cpp
 )
 
 set(RUNTIME_SOURCES
