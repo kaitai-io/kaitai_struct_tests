@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+
+s = $stdin.read
+
+raise "Unable to detect source name" unless s =~ /require ['"](.*?)['"]/
+src_name = $1
+
+raise "Unable to detect class name" unless s =~ /RSpec\.describe (.*?) do/
+class_name = $1
+
+s.gsub!(/^.*it .parses test properly. do\n/m, '')
+
+src_file = '???'
+s.gsub!(/^\s*r = (.*?)\.from_file\('(.*?)'\)$/) {
+  src_file = $2
+  ''
+}
+
+s = s[2..-1] if s[0..1] == "\n\n"
+
+s.gsub!(/expect\((.*?)\)\.to eq\(? *(.*?)\)?$/, 'assert.equal(\1, \2);')
+s.gsub!(/^  /, '')
+s.gsub!(/^\s*end\n/, '')
+
+puts <<__EOF__
+var assert = require('assert');
+var testHelper = require('testHelper');
+
+testHelper('#{class_name}', '#{src_file}', function(r) {
+__EOF__
+
+print s
+puts "});"
