@@ -18,6 +18,16 @@ s.gsub!(/^\s*r = (.*?)\.from_file\('(.*?)'\)$/) {
 
 s = s[2..-1] if s[0..1] == "\n\n"
 
+# under_score_case => lowerCamelCase
+s.gsub!(/\.([a-zA-Z0-9_]+)/) {
+  arg = $1
+  w = arg.split(/_/)
+  first = w.shift
+  w.map! { |x| x.capitalize }
+  w.unshift(first)
+  ".#{w.join}"
+}
+
 s.gsub!(/expect\((.*?)\)\.to eq\(? *(.*?)\)?$/, 'assert.equal(\1, \2);')
 s.gsub!(/^  /, '')
 s.gsub!(/^\s*end\n/, '')
