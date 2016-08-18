@@ -7,6 +7,7 @@
 RUBY_SPEC_DIR=spec/ruby
 PYTHON_SPEC_DIR=spec/python
 JAVA_SPEC_DIR=spec/java/src/io/kaitai/struct/spec
+JAVASCRIPT_SPEC_DIR=spec/javascript
 CPP_STL_SPEC_DIR=spec/cpp_stl
 
 generate_spec()
@@ -27,5 +28,6 @@ for FN in "$RUBY_SPEC_DIR"/*_spec.rb; do
 
 	generate_spec "$FN" "$PYTHON_SPEC_DIR/test_$SPEC.py" python
 	generate_spec "$FN" "$JAVA_SPEC_DIR/Test${UCC_SPEC}.java" java
+	generate_spec "$FN" "$JAVASCRIPT_SPEC_DIR/test_$SPEC.js" javascript
 	generate_spec "$FN" "$CPP_STL_SPEC_DIR/test_$SPEC.cpp" cpp_stl
 done
