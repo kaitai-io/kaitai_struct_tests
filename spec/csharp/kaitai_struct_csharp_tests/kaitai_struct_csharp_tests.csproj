@@ -81,6 +81,9 @@
     <Compile Include="..\..\..\compiled\csharp\InstanceUserArray.cs">
       <Link>compiled\InstanceUserArray.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\compiled\csharp\MultipleUse.cs">
+      <Link>compiled\MultipleUse.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\compiled\csharp\NavParent.cs">
       <Link>compiled\NavParent.cs</Link>
     </Compile>
@@ -123,6 +126,9 @@
     <Compile Include="..\..\..\compiled\csharp\RepeatNStrz.cs">
       <Link>compiled\RepeatNStrz.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\compiled\csharp\RepeatUntilS4.cs">
+      <Link>compiled\RepeatUntilS4.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\compiled\csharp\StrEncodings.cs">
       <Link>compiled\StrEncodings.cs</Link>
     </Compile>
@@ -131,6 +137,9 @@
     </Compile>
     <Compile Include="..\..\..\compiled\csharp\TermStrz.cs">
       <Link>compiled\TermStrz.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\TypeIntUnaryOp.cs">
+      <Link>compiled\TypeIntUnaryOp.cs</Link>
     </Compile>
     <Compile Include="..\..\..\compiled\csharp\ZlibWithHeader78.cs">
       <Link>compiled\ZlibWithHeader78.cs</Link>
@@ -176,6 +185,9 @@
     <Compile Include="..\..\..\compiled\csharp\EofExceptionBytes.cs">
       <Link>compiled\EofExceptionBytes.cs</Link>
     </Compile>
+    <Compile Include="tests\SpecMultipleUse.cs" />
+    <Compile Include="tests\SpecRepeatUntilS4.cs" />
+    <Compile Include="tests\SpecTypeIntUnaryOp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\src\buffered_struct.bin">
@@ -245,6 +257,10 @@
     <None Include="..\..\..\src\repeat_n_strz.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Link>src\repeat_n_strz.bin</Link>
+    </None>
+    <None Include="..\..\..\src\repeat_until_s4.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>src\repeat_until_s4.bin</Link>
     </None>
     <None Include="..\..\..\src\str_encodings.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
