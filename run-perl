@@ -6,20 +6,4 @@ mkdir -p "$TEST_OUT_DIR"/perl
 
 PERL_TEST_HARNESS_DUMP_TAP="$TEST_OUT_DIR"/perl
 
-script=$(cat <<'EOF'
-    use strict;
-    use warnings;
-    use TAP::Harness::JUnit;
-
-    my $harness = TAP::Harness::JUnit->new( {
-        xmlfile => 'test_out/perl/output.xml',
-    } );
-
-    my @tests = ('spec/perl/TestHelloWorld.t');
-
-    $harness->runtests(@tests);
-EOF
-)
-
-PERLLIB=../kaitai_struct_perl_runtime perl -e "$script"
-
+PERLLIB="$PERL_RUNTIME_DIR:compiled/perl" perl spec/perl/_run.pl
