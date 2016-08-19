@@ -31,6 +31,7 @@ set(SPEC_SOURCES
 	test_str_eos.cpp
 	test_type_int_unary_op.cpp
 	test_process_to_user.cpp
+	test_repeat_until_s4.cpp
 )
 
 set(KS_SOURCES
@@ -57,6 +58,7 @@ set(KS_SOURCES
 	${KS_PATH}/str_eos.cpp
 	${KS_PATH}/type_int_unary_op.cpp
 	${KS_PATH}/process_to_user.cpp
+	${KS_PATH}/repeat_until_s4.cpp
 )
 
 set(RUNTIME_SOURCES
