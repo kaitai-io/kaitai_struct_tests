@@ -8,6 +8,9 @@ my $harness = TAP::Harness::JUnit->new( {
     xmlfile => 'test_out/perl/output.xml',
 } );
 
-my @tests = ('spec/perl/TestHelloWorld.t');
+my @tests = (
+    'spec/perl/TestHelloWorld.t',
+    'spec/perl/TestRepeatEosStruct.t',
+);
 
 $harness->runtests(@tests);
