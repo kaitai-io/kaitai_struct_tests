@@ -23,7 +23,10 @@ class JUnitXMLParser
       doc.elements.each('//testcase') { |tc|
         name = tc.attribute('name').value
 
-        if name == 'parses test properly'
+        if tc.attribute('classname') and tc.attribute('classname').value =~ /^spec_perl_Test(.*?)_t$/
+          # Perl output, extract test from classname
+          name = $1
+        elsif name == 'parses test properly'
           # Mocha output, use classname
           name = tc.attribute('classname').value
         else

@@ -30,11 +30,30 @@ class Aggregator
     }
   end
 
+  def sum_test(t1, t2)
+    return t2 if t1.nil?
+
+    raise "adding tests with non-matching names #{t1.name.inspect} and #{t2.name.inspect}" unless t1.name == t2.name
+
+    name = t1.name
+    status = (t1.status == :passed and t2.status == :passed) ? :passed : :failed
+    elapsed = t1.elapsed + t2.elapsed
+    failure = t1.failure or t2.failure
+
+    TestResult.new(name, status, elapsed, failure)
+  end
+
   def add(lang, parser)
     parser.each_test { |t|
       h = (@aggr[t.name] ||= {})
-      raise "Duplicate test name \"#{t.name}\" for #{lang}" if h[lang]
-      h[lang] = t
+      if lang == 'perl'
+        # allow duplicate test names for Perl, it generates "testcase"
+        # for every assertion; sum it up
+        h[lang] = sum_test(h[lang], t)
+      else
+        raise "Duplicate test name \"#{t.name}\" for #{lang}" if h[lang]
+        h[lang] = t
+      end
     }
   end
 
@@ -106,6 +125,7 @@ class ReportGenerator
       'cpp_stl' => BoostTestParser.new("#{@test_root}/cpp_stl/results.xml"),
       'java' => JUnitXMLParser.new("#{@test_root}/java/junitreports"),
       'javascript' => JUnitXMLParser.new("#{@test_root}/javascript/test-output-javascript.xml"),
+      'perl' => JUnitXMLParser.new("#{@test_root}/perl/output.xml"),
       'php' => JUnitXMLParser.new("#{@test_root}/php/results.xml"),
       'python' => JUnitXMLParser.new("#{@test_root}/python"),
       'ruby' => RSpecJSONParser.new("#{@test_root}/ruby/test-output-ruby.json"),
