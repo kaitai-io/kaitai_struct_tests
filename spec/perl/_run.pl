@@ -10,6 +10,7 @@ my $harness = TAP::Harness::JUnit->new( {
 
 my @tests = (
     'spec/perl/TestHelloWorld.t',
+    'spec/perl/TestProcessXorValue.t',
     'spec/perl/TestRepeatEosStruct.t',
     'spec/perl/TestTermStrz.t',
 );
