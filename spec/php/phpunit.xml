@@ -1,0 +1,7 @@
+<phpunit bootstrap="_bootstrap.php" colors="false" verbose="true" beStrictAboutTestsThatDoNotTestAnything="true">
+    <testsuites>
+        <testsuite>
+            <directory>.</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
