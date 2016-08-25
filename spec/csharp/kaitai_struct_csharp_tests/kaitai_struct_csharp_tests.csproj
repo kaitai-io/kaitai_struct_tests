@@ -129,6 +129,9 @@
     <Compile Include="..\..\..\compiled\csharp\RepeatUntilS4.cs">
       <Link>compiled\RepeatUntilS4.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\compiled\csharp\RepeatUntilComplex.cs">
+      <Link>compiled\RepeatUntilComplex.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\compiled\csharp\StrEncodings.cs">
       <Link>compiled\StrEncodings.cs</Link>
     </Compile>
@@ -187,6 +190,7 @@
     </Compile>
     <Compile Include="tests\SpecMultipleUse.cs" />
     <Compile Include="tests\SpecRepeatUntilS4.cs" />
+    <Compile Include="tests\SpecRepeatUntilComplex.cs" />
     <Compile Include="tests\SpecTypeIntUnaryOp.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -261,6 +265,10 @@
     <None Include="..\..\..\src\repeat_until_s4.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Link>src\repeat_until_s4.bin</Link>
+    </None>
+    <None Include="..\..\..\src\repeat_until_complex.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>src\repeat_until_complex.bin</Link>
     </None>
     <None Include="..\..\..\src\str_encodings.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
