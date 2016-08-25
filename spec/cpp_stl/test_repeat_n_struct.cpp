@@ -13,10 +13,8 @@ BOOST_AUTO_TEST_CASE(test_repeat_n_struct) {
 
     BOOST_CHECK_EQUAL(r->qty(), 2);
 
-    std::vector<repeat_n_struct_t::chunk_t*> chunks = *(r->chunks());
-    
-    BOOST_CHECK_EQUAL(chunks[0]->offset(), 0x10);
-    BOOST_CHECK_EQUAL(chunks[0]->len(), 0x2078);
-    BOOST_CHECK_EQUAL(chunks[1]->offset(), 0x2088);
-    BOOST_CHECK_EQUAL(chunks[1]->len(), 0xf);
+    BOOST_CHECK_EQUAL(r->chunks()->at(0)->offset(), 0x10);
+    BOOST_CHECK_EQUAL(r->chunks()->at(0)->len(), 0x2078);
+    BOOST_CHECK_EQUAL(r->chunks()->at(1)->offset(), 0x2088);
+    BOOST_CHECK_EQUAL(r->chunks()->at(1)->len(), 0xf);
 }
