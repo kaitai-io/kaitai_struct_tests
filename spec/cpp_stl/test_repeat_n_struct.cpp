@@ -17,4 +17,6 @@ BOOST_AUTO_TEST_CASE(test_repeat_n_struct) {
     BOOST_CHECK_EQUAL(r->chunks()->at(0)->len(), 0x2078);
     BOOST_CHECK_EQUAL(r->chunks()->at(1)->offset(), 0x2088);
     BOOST_CHECK_EQUAL(r->chunks()->at(1)->len(), 0xf);
+
+    delete r;
 }
