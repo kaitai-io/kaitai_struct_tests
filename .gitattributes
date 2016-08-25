@@ -1,0 +1,7 @@
+# Force the bash scripts to checkout with Unix line endings, even on Windows
+
+build-* eol=lf
+config eol=lf
+run-* eol=lf
+spec_* eol=lf
+translator-tests eol=lf
