@@ -33,6 +33,7 @@ set(SPEC_SOURCES
 	test_process_to_user.cpp
 	test_repeat_until_s4.cpp
 	test_default_big_endian.cpp
+	test_repeat_until_complex.cpp
 )
 
 set(KS_SOURCES
@@ -61,6 +62,7 @@ set(KS_SOURCES
 	${KS_PATH}/process_to_user.cpp
 	${KS_PATH}/repeat_until_s4.cpp
 	${KS_PATH}/default_big_endian.cpp
+	${KS_PATH}/repeat_until_complex.cpp
 )
 
 set(RUNTIME_SOURCES
