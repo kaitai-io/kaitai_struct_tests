@@ -21,4 +21,6 @@ BOOST_AUTO_TEST_CASE(test_repeat_n_strz) {
         r->lines()->begin(), r->lines()->end(),
         exp_vector.begin(), exp_vector.end()
     );
+
+    delete r;
 }

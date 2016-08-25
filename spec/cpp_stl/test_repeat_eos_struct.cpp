@@ -18,4 +18,6 @@ BOOST_AUTO_TEST_CASE(test_repeat_eos_struct) {
     BOOST_CHECK_EQUAL(chunks[0]->len(), 0x42);
     BOOST_CHECK_EQUAL(chunks[1]->offset(), 0x42);
     BOOST_CHECK_EQUAL(chunks[1]->len(), 0x815);
+
+    delete r;
 }
