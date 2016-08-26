@@ -36,6 +36,8 @@ set(SPEC_SOURCES
 	test_repeat_until_complex.cpp
 	test_instance_std_array.cpp
 	test_instance_user_array.cpp
+	test_instance_io_user.cpp
+	test_buffered_struct.cpp
 )
 
 set(KS_SOURCES
@@ -67,6 +69,8 @@ set(KS_SOURCES
 	${KS_PATH}/repeat_until_complex.cpp
 	${KS_PATH}/instance_std_array.cpp
 	${KS_PATH}/instance_user_array.cpp
+	${KS_PATH}/instance_io_user.cpp
+	${KS_PATH}/buffered_struct.cpp
 )
 
 set(RUNTIME_SOURCES
