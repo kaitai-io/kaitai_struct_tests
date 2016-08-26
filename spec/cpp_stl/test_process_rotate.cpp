@@ -14,4 +14,6 @@ BOOST_AUTO_TEST_CASE(test_process_rotate) {
     BOOST_CHECK_EQUAL(r->buf1(), "Hello");
     BOOST_CHECK_EQUAL(r->buf2(), "World");
     BOOST_CHECK_EQUAL(r->buf3(), "There");
+
+    delete r;
 }
