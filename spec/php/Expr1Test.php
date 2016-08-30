@@ -5,9 +5,9 @@ class Expr1Test extends TestCase {
     public function testExpr1() {
         $r = Expr1::fromFile(self::SRC_DIR_PATH . "/str_encodings.bin");
 
-        $this->assertEquals($r->lenOf1(), 10);
-        $this->assertEquals($r->lenOf1Mod(), 8);
-        $this->assertEquals($r->str1(), "Some ASC");
-        $this->assertEquals($r->str1Len(), 8);
+        $this->assertEquals(00, $r->lenOf1());
+        $this->assertEquals(8, $r->lenOf1Mod());
+        $this->assertEquals("Some ASC", $r->str1());
+        $this->assertEquals(8, $r->str1Len());
     }
 }

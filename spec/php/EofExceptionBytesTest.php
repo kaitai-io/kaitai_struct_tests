@@ -2,10 +2,11 @@
 namespace Kaitai\Struct\Tests;
 
 class EofExceptionBytesTest extends TestCase {
+    /**
+     * @expectedException \RuntimeException
+     * @expectedExceptionMessage Requested 13 bytes, but got only 12 bytes
+     */
     public function testEofExceptionBytes() {
-        $this->markTestIncomplete();
-/*
-        EofExceptionBytes r = EofExceptionBytes::fromFile(self::SRC_DIR_PATH . "term_strz.bin");
-*/    
+        EofExceptionBytes::fromFile(self::SRC_DIR_PATH . "/term_strz.bin");
     }
 }
