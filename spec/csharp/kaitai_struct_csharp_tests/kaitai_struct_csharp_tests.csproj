@@ -90,6 +90,9 @@
     <Compile Include="..\..\..\compiled\csharp\NavRoot.cs">
       <Link>compiled\NavRoot.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\compiled\csharp\NestedTypes.cs">
+      <Link>compiled\NestedTypes.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\compiled\csharp\PositionInSeq.cs">
       <Link>compiled\PositionInSeq.cs</Link>
     </Compile>
@@ -170,6 +173,7 @@
     <Compile Include="tests\SpecInstanceUserArray.cs" />
     <Compile Include="tests\SpecNavParent.cs" />
     <Compile Include="tests\SpecNavRoot.cs" />
+    <Compile Include="tests\SpecNestedTypes.cs" />
     <Compile Include="tests\SpecPositionAbs.cs" />
     <Compile Include="tests\SpecPositionInSeq.cs" />
     <Compile Include="tests\SpecProcessRotate.cs" />
