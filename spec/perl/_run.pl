@@ -31,7 +31,7 @@ my @tests = (
 #    'spec/perl/TestPositionAbs.t',
 #    'spec/perl/TestPositionInSeq.t',
 #    'spec/perl/TestPositionToEnd.t',
-#    'spec/perl/TestProcessRotate.t',
+    'spec/perl/TestProcessRotate.t',
 #    'spec/perl/TestProcessToUser.t',
 #    'spec/perl/TestProcessXor4Const.t',
 #    'spec/perl/TestProcessXor4Value.t',
