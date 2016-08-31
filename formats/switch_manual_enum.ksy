@@ -9,15 +9,15 @@ types:
     seq:
       - id: code
         type: u1
-        enum: code
+        enum: code_enum
       - id: body
         type:
           switch-on: code
           cases:
-            code::intval: intval
-            code::strval: strval
+            code_enum::intval: intval
+            code_enum::strval: strval
     enums:
-      code:
+      code_enum:
         73: intval # 'I'
         83: strval # 'S'
     types:
