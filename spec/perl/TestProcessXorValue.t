@@ -9,8 +9,10 @@ use ProcessXorValue;
 sub test_process_xor_value : Test(2) {
     my $r = ProcessXorValue->from_file('src/process_xor_1.bin');
 
+    print STDERR "key=${$r->{key}}, buf=${$r->{buf}}\n";
+
     is($r->{key}, 0xff, 'equals');
-    is($r->{buf}, "foo bar", 'equals');
+    is($r->{buf}, 'foo bar', 'equals');
 }
 
 Test::Class->runtests;
