@@ -7,7 +7,7 @@ use Test::More;
 use EnumIf;
 use Data::Dumper qw(Dumper);
 
-sub test_enum_0: Test(7) {
+sub test_enum_if: Test(7) {
     my $r = EnumIf->from_file('src/if_struct.bin');
     
     is($r->{op1}->{opcode}, $EnumIf::OPCODES_A_STRING, 'Equals');

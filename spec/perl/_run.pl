@@ -12,7 +12,7 @@ my @tests = (
     'spec/perl/TestBufferedStruct.t',
     'spec/perl/TestDefaultBigEndian.t',
     'spec/perl/TestEnum0.t',
-#    'spec/perl/TestEnumIf.t',
+    'spec/perl/TestEnumIf.t',
 #    'spec/perl/TestEofExceptionBytes.t',
 #    'spec/perl/TestExpr0.t',
 #    'spec/perl/TestExpr1.t',
