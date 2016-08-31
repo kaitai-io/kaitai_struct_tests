@@ -38,6 +38,7 @@ set(SPEC_SOURCES
 	test_instance_user_array.cpp
 	test_instance_io_user.cpp
 	test_buffered_struct.cpp
+	test_eof_exception_bytes.cpp
 )
 
 set(KS_SOURCES
@@ -71,6 +72,7 @@ set(KS_SOURCES
 	${KS_PATH}/instance_user_array.cpp
 	${KS_PATH}/instance_io_user.cpp
 	${KS_PATH}/buffered_struct.cpp
+	${KS_PATH}/eof_exception_bytes.cpp
 )
 
 set(RUNTIME_SOURCES
