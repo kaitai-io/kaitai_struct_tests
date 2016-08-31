@@ -14,16 +14,16 @@ public class TestSwitchManualEnum extends CommonSpec {
 
         assertEquals(r.opcodes().size(), 4);
 
-        assertEquals(r.opcodes().get(0).code(), Code.STRVAL);
+        assertEquals(r.opcodes().get(0).code(), CodeEnum.STRVAL);
         assertEquals(((Strval) r.opcodes().get(0).body()).value(), "foobar");
 
-        assertEquals(r.opcodes().get(1).code(), Code.INTVAL);
+        assertEquals(r.opcodes().get(1).code(), CodeEnum.INTVAL);
         assertEquals(((Intval) r.opcodes().get(1).body()).value(), 0x42);
 
-        assertEquals(r.opcodes().get(2).code(), Code.INTVAL);
+        assertEquals(r.opcodes().get(2).code(), CodeEnum.INTVAL);
         assertEquals(((Intval) r.opcodes().get(2).body()).value(), 0x37);
 
-        assertEquals(r.opcodes().get(3).code(), Code.STRVAL);
+        assertEquals(r.opcodes().get(3).code(), CodeEnum.STRVAL);
         assertEquals(((Strval) r.opcodes().get(3).body()).value(), "");
     }
 }
