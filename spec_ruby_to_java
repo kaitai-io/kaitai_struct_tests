@@ -2,16 +2,57 @@
 
 s = $stdin.read
 
-s.gsub!(/expect\(/, 'assertEquals(')
-s.gsub!(/\)\.to eq\s*\(?\s*(.*?)\s*\)?\s*$/, ', \1);')
-s.gsub!(/'/, '"')
-s.gsub!(/\.([a-zA-Z0-9_]+)/) {
-  arg = $1
-  w = arg.split(/_/)
+def underscore_to_lower_camel(s)
+  w = s.split(/_/)
   first = w.shift
   w.map! { |x| x.capitalize }
   w.unshift(first)
-  ".#{w.join}()"
+  w.join
+end
+
+raise "Unable to detect source name" unless s =~ /require ['"](.*?)['"]/
+src_name = $1
+
+raise "Unable to detect class name" unless s =~ /RSpec\.describe (.*?) do/
+class_name = $1
+
+raise "Unable to detect binary file name" unless s =~ /r = .*\.from_file\(['"]src\/(.*?)['"]\)/
+bin_name = $1
+
+s.gsub!(/^.*it .parses test properly. do\n/m, '')
+s.gsub!(/^ *r = .*\.from_file\(.*\n\n/, '')
+
+s.gsub!(/^( +)/) { $1 * 2 }
+s.gsub!(/expect\((.*?)\)/) {
+  ex = $1
+  c = ex.split(/\./)
+  first = c.shift
+  c.map! { |x| "#{underscore_to_lower_camel(x)}()" }
+  c.unshift(first)
+  ex = c.join('.')
+  "assertEquals(#{ex})"
 }
 
+s.gsub!(/\)\.to eq ?\(?(.*?)\)?$/) { ", #{$1});" }
+s.gsub!(/'/, '"')
+s.gsub!(/^\s*end\n/, '')
+
+puts <<__EOF__
+package io.kaitai.struct.spec;
+
+import io.kaitai.struct.testformats.#{class_name};
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
+
+public class Test#{class_name} extends CommonSpec {
+    @Test
+    public void test#{class_name}() throws Exception {
+        #{class_name} r = #{class_name}.fromFile(SRC_DIR + "#{bin_name}");
+
+__EOF__
+
 print s
+
+puts '    }'
+puts '}'
