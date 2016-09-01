@@ -9,7 +9,12 @@ spl_autoload_register(function ($class) {
         if ($testName === 'TestCase') {
             require __DIR__ . '/TestCase.php';
         } else {
-            require __DIR__ . "/../../compiled/php/$testName.php";
+            $fn = __DIR__ . "/../../compiled/php/$testName.php";
+            if (file_exists($fn)) {
+                require $fn;
+            } else {
+                trigger_error("attempt to autoload \"$class\" failed", E_USER_WARNING);
+            }
         }
     }
 });
