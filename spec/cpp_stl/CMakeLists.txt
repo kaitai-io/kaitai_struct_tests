@@ -40,6 +40,7 @@ set(SPEC_SOURCES
 	test_buffered_struct.cpp
 	test_eof_exception_bytes.cpp
 	test_nested_types.cpp
+	test_nested_types2.cpp
 )
 
 set(KS_SOURCES
@@ -75,6 +76,7 @@ set(KS_SOURCES
 	${KS_PATH}/buffered_struct.cpp
 	${KS_PATH}/eof_exception_bytes.cpp
 	${KS_PATH}/nested_types.cpp
+	${KS_PATH}/nested_types2.cpp
 )
 
 set(RUNTIME_SOURCES
