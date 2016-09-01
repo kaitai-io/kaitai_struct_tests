@@ -4,6 +4,4 @@
 
 mkdir -p "$TEST_OUT_DIR"/perl
 
-PERL_TEST_HARNESS_DUMP_TAP="$TEST_OUT_DIR"/perl
-
 PERLLIB="$PERL_RUNTIME_DIR:compiled/perl" perl spec/perl/_run.pl
