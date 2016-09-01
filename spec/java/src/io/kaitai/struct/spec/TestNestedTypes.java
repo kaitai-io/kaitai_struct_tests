@@ -7,7 +7,7 @@ import static org.testng.Assert.assertEquals;
 
 public class TestNestedTypes extends CommonSpec {
     @Test
-    public void testPositionInSeq() throws Exception {
+    public void testNestedTypes() throws Exception {
         NestedTypes r = NestedTypes.fromFile(SRC_DIR + "fixed_struct.bin");
 
         assertEquals(r.one().typedAtRoot().valueB(), 80);
