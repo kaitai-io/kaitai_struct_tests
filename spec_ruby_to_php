@@ -1,0 +1,52 @@
+#!/usr/bin/env ruby
+
+s = $stdin.read
+
+def underscore_to_lower_camel(s)
+  w = s.split(/_/)
+  first = w.shift
+  w.map! { |x| x.capitalize }
+  w.unshift(first)
+  w.join
+end
+
+raise "Unable to detect source name" unless s =~ /require ['"](.*?)['"]/
+src_name = $1
+
+raise "Unable to detect class name" unless s =~ /RSpec\.describe (.*?) do/
+class_name = $1
+
+raise "Unable to detect binary file name" unless s =~ /r = .*\.from_file\(['"]src\/(.*?)['"]\)/
+bin_name = $1
+
+s.gsub!(/^.*it .parses test properly. do\n/m, '')
+s.gsub!(/^ *r = .*\.from_file\(.*\n\n/, '')
+
+s.gsub!(/^( +)/) { $1 * 2 }
+s.gsub!(/\)\.to eq\((.*?)\)$/, ").to eq \\1")
+s.gsub!(/expect\((.*?)\)\.to eq (.*)$/) {
+  act = $1
+  exp = $2
+
+  c = act.split(/\./)
+  c.map! { |x| "#{underscore_to_lower_camel(x)}" }
+  act = c.join('->')
+
+  "$this->assertEquals(#{exp}, #{act});"
+}
+s.gsub!(/^\s*end\n/, '')
+
+puts <<__EOF__
+<?php
+namespace Kaitai\Struct\Tests;
+
+class #{class_name}Test extends TestCase {
+    public function test#{class_name}() {
+        $r = #{class_name}::fromFile(self::SRC_DIR_PATH . "/#{bin_name}");
+
+__EOF__
+
+print s
+
+puts '    }'
+puts '}'
