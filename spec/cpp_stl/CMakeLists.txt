@@ -41,6 +41,7 @@ set(SPEC_SOURCES
 	test_eof_exception_bytes.cpp
 	test_nested_types.cpp
 	test_nested_types2.cpp
+	test_switch_manual_int.cpp
 )
 
 set(KS_SOURCES
@@ -77,6 +78,7 @@ set(KS_SOURCES
 	${KS_PATH}/eof_exception_bytes.cpp
 	${KS_PATH}/nested_types.cpp
 	${KS_PATH}/nested_types2.cpp
+	${KS_PATH}/switch_manual_int.cpp
 )
 
 set(RUNTIME_SOURCES
