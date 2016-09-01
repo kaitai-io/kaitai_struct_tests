@@ -30,7 +30,7 @@ s.gsub!(/expect\((.*?)\)\.to eq (.*)$/) {
 
   c = act.split(/\./)
   c.map! { |x| "#{underscore_to_lower_camel(x)}" }
-  act = c.join('->')
+  act = c.join('->').gsub(/^r/, '$r')
 
   "$this->assertEquals(#{exp}, #{act});"
 }
@@ -38,7 +38,7 @@ s.gsub!(/^\s*end\n/, '')
 
 puts <<__EOF__
 <?php
-namespace Kaitai\Struct\Tests;
+namespace Kaitai\\Struct\\Tests;
 
 class #{class_name}Test extends TestCase {
     public function test#{class_name}() {
