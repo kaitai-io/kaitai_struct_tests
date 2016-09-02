@@ -19,6 +19,7 @@ set(SPEC_SOURCES
 	test_term_strz.cpp
 	test_expr_0.cpp
 	test_expr_1.cpp
+	test_expr_2.cpp
 	test_process_xor_const.cpp
 	test_process_xor_value.cpp
 	test_process_xor4_const.cpp
@@ -59,6 +60,7 @@ set(KS_SOURCES
 	${KS_PATH}/term_strz.cpp
 	${KS_PATH}/expr_0.cpp
 	${KS_PATH}/expr_1.cpp
+	${KS_PATH}/expr_2.cpp
 	${KS_PATH}/process_xor_const.cpp
 	${KS_PATH}/process_xor_value.cpp
 	${KS_PATH}/process_xor4_const.cpp
