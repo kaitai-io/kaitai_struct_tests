@@ -3,19 +3,16 @@ namespace Kaitai\Struct\Tests;
 
 class IfStructTest extends TestCase {
     public function testIfStruct() {
-        $this->markTestIncomplete();
-/*
-        IfStruct r = IfStruct::fromFile(self::SRC_DIR_PATH . "if_struct.bin");
+        $r = IfStruct::fromFile(self::SRC_DIR_PATH . "/if_struct.bin");
 
-        $this->assertEquals(r.op1().opcode(), 0x53);
-        $this->assertEquals(r.op1().argStr().str(), "foo");
+        $this->assertEquals(0x53, $r->op1()->opcode());
+        $this->assertEquals("foo", $r->op1()->argStr()->str());
 
-        $this->assertEquals(r.op2().opcode(), 0x54);
-        $this->assertEquals(r.op2().argTuple().num1(), 0x42);
-        $this->assertEquals(r.op2().argTuple().num2(), 0x43);
+        $this->assertEquals(0x54, $r->op2()->opcode());
+        $this->assertEquals(0x42, $r->op2()->argTuple()->num1());
+        $this->assertEquals(0x43, $r->op2()->argTuple()->num2());
 
-        $this->assertEquals(r.op3().opcode(), 0x53);
-        $this->assertEquals(r.op3().argStr().str(), "bar");
-*/    
+        $this->assertEquals(0x53, $r->op3()->opcode());
+        $this->assertEquals("bar", $r->op3()->argStr()->str());
     }
 }
