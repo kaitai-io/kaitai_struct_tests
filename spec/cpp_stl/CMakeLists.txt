@@ -44,6 +44,7 @@ set(SPEC_SOURCES
 	test_switch_manual_int.cpp
 	test_nav_root.cpp
 	test_nav_parent.cpp
+	test_multiple_use.cpp
 )
 
 set(KS_SOURCES
@@ -83,6 +84,7 @@ set(KS_SOURCES
 	${KS_PATH}/switch_manual_int.cpp
 	${KS_PATH}/nav_root.cpp
 	${KS_PATH}/nav_parent.cpp
+	${KS_PATH}/multiple_use.cpp
 )
 
 set(RUNTIME_SOURCES
