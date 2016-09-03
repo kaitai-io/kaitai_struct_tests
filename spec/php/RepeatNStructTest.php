@@ -3,15 +3,12 @@ namespace Kaitai\Struct\Tests;
 
 class RepeatNStructTest extends TestCase {
     public function testRepeatNStruct() {
-        $this->markTestIncomplete();
-/*
-        RepeatNStruct r = RepeatNStruct::fromFile(self::SRC_DIR_PATH . "repeat_n_struct.bin");
+        $r = RepeatNStruct::fromFile(self::SRC_DIR_PATH . "/repeat_n_struct.bin");
 
-        $this->assertEquals(r.qty(), 2);
-        $this->assertEquals(r.chunks().get(0).offset(), 0x10);
-        $this->assertEquals(r.chunks().get(0).len(), 0x2078);
-        $this->assertEquals(r.chunks().get(1).offset(), 0x2088);
-        $this->assertEquals(r.chunks().get(1).len(), 0xf);
-*/    
+        $this->assertEquals(2, $r->qty());
+        $this->assertEquals(0x10, $r->chunks()->get(0)->offset());
+        $this->assertEquals(0x2078,$r->chunks()->get(0)->len());
+        $this->assertEquals(0x2088,$r->chunks()->get(1)->offset());
+        $this->assertEquals(0xf, $r->chunks()->get(1)->len());
     }
 }
