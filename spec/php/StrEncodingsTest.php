@@ -3,14 +3,11 @@ namespace Kaitai\Struct\Tests;
 
 class StrEncodingsTest extends TestCase {
     public function testStrEncodings() {
-        $this->markTestIncomplete();
-/*
-        StrEncodings r = StrEncodings::fromFile(self::SRC_DIR_PATH . "str_encodings.bin");
+        $r = StrEncodings::fromFile(self::SRC_DIR_PATH . "/str_encodings.bin");
 
-        $this->assertEquals(r.str1(), "Some ASCII");
-        $this->assertEquals(r.str2(), "こんにちは");
-        $this->assertEquals(r.str3(), "こんにちは");
-        $this->assertEquals(r.str4(), "░▒▓");
-*/    
+        $this->assertEquals("Some ASCII", $r->str1());
+        $this->assertEquals("こんにちは", $r->str2());
+        $this->assertEquals("こんにちは", $r->str3());
+        $this->assertEquals("░▒▓", $r->str4());
     }
 }
