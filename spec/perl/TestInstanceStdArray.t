@@ -13,11 +13,8 @@ sub test_instance_std_array: Test(4) {
     is($r->qty_entries(), 3, 'Equals');
     is($r->entry_size(), 4, 'Equals');
 
-    is($r->entries(), [;
-            '\x11\x11\x11\x11',
-            '\x22\x22\x22\x22',
-            '\x33\x33\x33\x33',
-        ])
+    my @exp = ("\x11\x11\x11\x11", "\x22\x22\x22\x22", "\x33\x33\x33\x33");
+    is_deeply($r->entries(), \@exp, 'Equals');
 }
 
 Test::Class->runtests;
