@@ -9,7 +9,8 @@ use PositionInSeq;
 sub test_position_in_seq: Test(1) {
     my $r = PositionInSeq->from_file('src/position_in_seq.bin');
 
-    is($r->numbers(), [1(), 2(), 3], 'Equals');
+    my @exp = (1, 2, 3);
+    is_deeply($r->numbers(), \@exp, 'Equals');
 }
 
 Test::Class->runtests;
