@@ -7,7 +7,7 @@ use Test::More;
 use RepeatNStruct;
 
 sub test_repeat_n_struct: Test(5) {
-    my $r = RepeatNStruct->from_file("src/repeat_n_struct.bin");
+    my $r = RepeatNStruct->from_file('src/repeat_n_struct.bin');
 
     is(scalar @{$r->chunks()}, 2, 'Equals');
     is(@{$r->chunks()}[0]->offset(), 0x10, 'Equals');

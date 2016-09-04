@@ -9,7 +9,7 @@ use StrEos;
 sub test_str_eos: Test(1) {
     my $r = StrEos->from_file('src/term_strz.bin');
 
-    is($r->{str}, 'foo|bar|baz@', 'Equals');
+    is($r->str(), 'foo|bar|baz@', 'Equals');
 }
 
 Test::Class->runtests;
