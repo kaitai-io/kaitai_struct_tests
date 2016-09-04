@@ -10,7 +10,9 @@ sub test_repeat_n_strz: Test(2) {
     my $r = RepeatNStrz->from_file('src/repeat_n_strz.bin');
 
     is($r->qty(), 2, 'Equals');
-    is($r->lines(), ['foo'(), 'bar'], 'Equals');
+
+    my @exp = ('foo', 'bar');
+    is_deeply($r->lines(), \@exp, 'Equals');
 }
 
 Test::Class->runtests;
