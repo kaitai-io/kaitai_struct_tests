@@ -11,9 +11,9 @@ sub test_instance_io_user: Test(4) {
 
     is($r->qty_entries(), 3, 'Equals');
 
-    is($r->entries[0]()->name(), 'the', 'Equals');
-    is($r->entries[1]()->name(), 'rainy', 'Equals');
-    is($r->entries[2]()->name(), 'day it is', 'Equals');
+    is(@{ $r->entries() }[0]->name(), 'the', 'Equals');
+    is(@{ $r->entries() }[1]->name(), 'rainy', 'Equals');
+    is(@{ $r->entries() }[2]->name(), 'day it is', 'Equals');
 }
 
 Test::Class->runtests;
