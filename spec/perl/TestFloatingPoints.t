@@ -7,14 +7,14 @@ use Test::More;
 use FloatingPoints;
 
 sub test_floating_points: Test(8) {
-    my $r = FloatingPoints->from_file("src/floating_points.bin");
+    my $r = FloatingPoints->from_file('src/floating_points.bin');
 
-    is($r->{single_value}, 0.5, 'Equals');
-    is($r->{single_value_be}, 0.5, 'Equals');
-    is($r->{double_value}, 0.25, 'Equals');
-    is($r->{double_value_be}, 0.25, 'Equals');
+    is($r->single_value(), 0.5, 'Equals');
+    is($r->single_value_be(), 0.5, 'Equals');
+    is($r->double_value(), 0.25, 'Equals');
+    is($r->double_value_be(), 0.25, 'Equals');
 
-    my $val_1 = sprintf("%.4f", $r->{approximate_value});
+    my $val_1 = sprintf("%.4f", $r->approximate_value());
     is($val_1, 1.2345, 'Equals');
 
     my $val_2 = sprintf("%.1f", $r->single_value_plus_int());
