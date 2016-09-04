@@ -1,4 +1,14 @@
     </table>
     </div>
+
+<script>
+$('.failed').on('click', function(ev) {
+     var addInfo = $(ev.target).find('.add-info');
+     var v = addInfo.css('visibility');
+     var antiV = (v === 'visible') ? 'hidden' : 'visible';
+     addInfo.css('visibility', antiV);
+});
+</script>
+
 </body>
 </html>
