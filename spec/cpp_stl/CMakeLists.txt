@@ -46,6 +46,7 @@ set(SPEC_SOURCES
 	test_nav_root.cpp
 	test_nav_parent.cpp
 	test_multiple_use.cpp
+	test_str_encodings.cpp
 )
 
 set(KS_SOURCES
@@ -87,6 +88,7 @@ set(KS_SOURCES
 	${KS_PATH}/nav_root.cpp
 	${KS_PATH}/nav_parent.cpp
 	${KS_PATH}/multiple_use.cpp
+	${KS_PATH}/str_encodings.cpp
 )
 
 set(RUNTIME_SOURCES
