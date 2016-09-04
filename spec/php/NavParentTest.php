@@ -9,7 +9,7 @@ class NavParentTest extends TestCase {
         $this->assertEquals(8, $r->header()->filenameLen());
 
         $this->assertEquals(2, $r->index()->entries()->size());
-        $this->assertEquals("FIRST___", $r->index()->entries()->get(0)->filename());
-        $this->assertEquals("SECOND__", $r->index()->entries()->get(1)->filename());
+        $this->assertEquals("FIRST___", $r->index()->entries()[0]->filename());
+        $this->assertEquals("SECOND__", $r->index()->entries()[1]->filename());
     }
 }
