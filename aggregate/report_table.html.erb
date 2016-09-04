@@ -26,7 +26,7 @@
         <td class="<%= test.status.to_s.tr('_', '-') %>"><%= test.status.to_s.tr('_', ' ') %>
 <%         if test.failure %>
           <div class="add-info">
-<%           if test.failure.filename or test.failure.line_num %>
+<%           if test.failure.file_name or test.failure.line_num %>
               <div class="filename"><%= test.failure.file_name %>:<%= test.failure.line_num %></div>
 <%           end %>
               <div class="message"><%= test.failure.message %></div>
