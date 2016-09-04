@@ -12,9 +12,9 @@ sub test_nav_parent: Test(5) {
     is($r->header()->qty_entries(), 2, 'Equals');
     is($r->header()->filename_len(), 8, 'Equals');
 
-    is($len(r->index()->entries)(), 2, 'Equals');
-    is($r->index()->entries[0]()->filename(), 'FIRST___', 'Equals');
-    is($r->index()->entries[1]()->filename(), 'SECOND__', 'Equals');
+    is(scalar @{ $r->index()->entries() }, 2, 'Equals');
+    is(@{ $r->index()->entries() }[0]->filename(), 'FIRST___', 'Equals');
+    is(@{ $r->index()->entries() }[1]->filename(), 'SECOND__', 'Equals');
 }
 
 Test::Class->runtests;
