@@ -150,6 +150,9 @@
     <Compile Include="..\..\..\compiled\csharp\SwitchManualInt.cs">
       <Link>compiled\SwitchManualInt.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\compiled\csharp\SwitchManualStr.cs">
+      <Link>compiled\SwitchManualStr.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\compiled\csharp\TermStrz.cs">
       <Link>compiled\TermStrz.cs</Link>
     </Compile>
@@ -194,6 +197,7 @@
     <Compile Include="tests\SpecStrEos.cs" />
     <Compile Include="tests\SpecSwitchManualEnum.cs" />
     <Compile Include="tests\SpecSwitchManualInt.cs" />
+    <Compile Include="tests\SpecSwitchManualStr.cs" />
     <Compile Include="tests\SpecTermStrz.cs" />
     <Compile Include="tests\SpecZlibWithHeader78.cs" />
     <Compile Include="tests\SpecPositionToEnd.cs" />
