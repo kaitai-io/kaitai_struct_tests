@@ -43,6 +43,7 @@ set(SPEC_SOURCES
 	test_nested_types.cpp
 	test_nested_types2.cpp
 	test_switch_manual_int.cpp
+	test_switch_manual_int_else.cpp
 	test_switch_manual_str.cpp
 	test_nav_root.cpp
 	test_nav_parent.cpp
@@ -86,6 +87,7 @@ set(KS_SOURCES
 	${KS_PATH}/nested_types.cpp
 	${KS_PATH}/nested_types2.cpp
 	${KS_PATH}/switch_manual_int.cpp
+	${KS_PATH}/switch_manual_int_else.cpp
 	${KS_PATH}/switch_manual_str.cpp
 	${KS_PATH}/nav_root.cpp
 	${KS_PATH}/nav_parent.cpp
