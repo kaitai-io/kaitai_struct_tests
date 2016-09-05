@@ -6,7 +6,7 @@ class TestSwitchManualInt(unittest.TestCase):
     def test_switch_manual_int(self):
         r = SwitchManualInt.from_file("src/switch_opcodes.bin")
 
-        self.assertEquals(r.opcodes.size, 4)
+        self.assertEquals(len(r.opcodes), 4)
 
         self.assertEquals(r.opcodes[0].code, 83)
         self.assertEquals(r.opcodes[0].body.value, "foobar")
