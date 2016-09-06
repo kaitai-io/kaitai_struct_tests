@@ -153,6 +153,9 @@
     <Compile Include="..\..\..\compiled\csharp\SwitchManualInt.cs">
       <Link>compiled\SwitchManualInt.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\compiled\csharp\SwitchManualIntElse.cs">
+      <Link>compiled\SwitchManualIntElse.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\compiled\csharp\SwitchManualStr.cs">
       <Link>compiled\SwitchManualStr.cs</Link>
     </Compile>
@@ -201,6 +204,7 @@
     <Compile Include="tests\SpecStrEos.cs" />
     <Compile Include="tests\SpecSwitchManualEnum.cs" />
     <Compile Include="tests\SpecSwitchManualInt.cs" />
+    <Compile Include="tests\SpecSwitchManualIntElse.cs" />
     <Compile Include="tests\SpecSwitchManualStr.cs" />
     <Compile Include="tests\SpecTermStrz.cs" />
     <Compile Include="tests\SpecZlibWithHeader78.cs" />
@@ -301,6 +305,10 @@
     <None Include="..\..\..\src\switch_opcodes.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Link>src\switch_opcodes.bin</Link>
+    </None>
+    <None Include="..\..\..\src\switch_opcodes2.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>src\switch_opcodes2.bin</Link>
     </None>
     <None Include="..\..\..\src\term_strz.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
