@@ -57,6 +57,9 @@
     <Compile Include="..\..\..\compiled\csharp\Expr2.cs">
       <Link>compiled\Expr2.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\compiled\csharp\Expr3.cs">
+      <Link>compiled\Expr3.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\compiled\csharp\FixedStruct.cs">
       <Link>compiled\FixedStruct.cs</Link>
     </Compile>
@@ -170,6 +173,7 @@
     <Compile Include="tests\SpecExpr0.cs" />
     <Compile Include="tests\SpecExpr1.cs" />
     <Compile Include="tests\SpecExpr2.cs" />
+    <Compile Include="tests\SpecExpr3.cs" />
     <Compile Include="tests\SpecFixedStruct.cs" />
     <Compile Include="tests\SpecHelloWorld.cs" />
     <Compile Include="tests\SpecIfStruct.cs" />
