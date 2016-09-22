@@ -44,6 +44,8 @@ set(SPEC_SOURCES
 	test_eof_exception_bytes.cpp
 	test_nested_types.cpp
 	test_nested_types2.cpp
+	test_nested_same_name.cpp
+	test_nested_same_name2.cpp
 	test_switch_manual_int.cpp
 	test_switch_manual_int_else.cpp
 	test_switch_manual_str.cpp
@@ -90,6 +92,8 @@ set(KS_SOURCES
 	${KS_PATH}/eof_exception_bytes.cpp
 	${KS_PATH}/nested_types.cpp
 	${KS_PATH}/nested_types2.cpp
+	${KS_PATH}/nested_same_name.cpp
+	${KS_PATH}/nested_same_name2.cpp
 	${KS_PATH}/switch_manual_int.cpp
 	${KS_PATH}/switch_manual_int_else.cpp
 	${KS_PATH}/switch_manual_str.cpp
