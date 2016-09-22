@@ -5,7 +5,7 @@ class SwitchManualIntElseTest extends TestCase {
     public function testSwitchManualIntElse() {
         $r = SwitchManualIntElse::fromFile(self::SRC_DIR_PATH . "/switch_opcodes2.bin");
 
-        $this->assertEquals(4, $r->opcodes->size);
+        $this->assertEquals(4, count($r->opcodes));
 
         $this->assertEquals(83, $r->opcodes[0]->code);
         $this->assertEquals('foo', $r->opcodes[0]->body->value);
