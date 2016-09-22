@@ -135,6 +135,9 @@
     <Compile Include="..\..\..\compiled\csharp\RepeatNStrz.cs">
       <Link>compiled\RepeatNStrz.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\compiled\csharp\RepeatNStrzDouble.cs">
+      <Link>compiled\RepeatNStrzDouble.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\compiled\csharp\RepeatUntilS4.cs">
       <Link>compiled\RepeatUntilS4.cs</Link>
     </Compile>
@@ -200,6 +203,7 @@
     <Compile Include="tests\SpecRepeatEosU4.cs" />
     <Compile Include="tests\SpecRepeatNStruct.cs" />
     <Compile Include="tests\SpecRepeatNStrz.cs" />
+    <Compile Include="tests\SpecRepeatNStrzDouble.cs" />
     <Compile Include="tests\SpecStrEncodings.cs" />
     <Compile Include="tests\SpecStrEos.cs" />
     <Compile Include="tests\SpecSwitchManualEnum.cs" />

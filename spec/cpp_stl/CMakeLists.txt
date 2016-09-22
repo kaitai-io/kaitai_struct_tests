@@ -16,6 +16,7 @@ set(SPEC_SOURCES
 	test_position_abs.cpp
 	test_position_in_seq.cpp
 	test_repeat_n_strz.cpp
+	test_repeat_n_strz_double.cpp
 	test_term_strz.cpp
 	test_expr_0.cpp
 	test_expr_1.cpp
@@ -61,6 +62,7 @@ set(KS_SOURCES
 	${KS_PATH}/position_abs.cpp
 	${KS_PATH}/position_in_seq.cpp
 	${KS_PATH}/repeat_n_strz.cpp
+	${KS_PATH}/repeat_n_strz_double.cpp
 	${KS_PATH}/term_strz.cpp
 	${KS_PATH}/expr_0.cpp
 	${KS_PATH}/expr_1.cpp
