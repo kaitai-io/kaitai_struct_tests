@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.6)
 
 project(KS_TEST_CPP_STL)
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+find_package(ZLIB REQUIRED)
 
 set(KS_PATH ../../compiled/cpp_stl)
 set(RUNTIME_SRC_PATH ../../../runtime/cpp_stl)
@@ -53,6 +54,7 @@ set(SPEC_SOURCES
 	test_nav_parent.cpp
 	test_multiple_use.cpp
 	test_str_encodings.cpp
+	test_zlib_with_header_78.cpp
 )
 
 set(KS_SOURCES
@@ -101,6 +103,7 @@ set(KS_SOURCES
 	${KS_PATH}/nav_parent.cpp
 	${KS_PATH}/multiple_use.cpp
 	${KS_PATH}/str_encodings.cpp
+	${KS_PATH}/zlib_with_header_78.cpp
 )
 
 set(RUNTIME_SOURCES
@@ -113,10 +116,16 @@ add_executable (ks_tests
 	${RUNTIME_SOURCES}
 )
 
-include_directories("${PROJECT_BINARY_DIR}" "${KS_PATH}" "${RUNTIME_SRC_PATH}")
+include_directories(
+	"${PROJECT_BINARY_DIR}"
+	"${KS_PATH}"
+	"${RUNTIME_SRC_PATH}"
+	"${ZLIB_INCLUDE_DIRS}"
+)
 
 target_link_libraries(ks_tests
-	${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
+	"${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}"
+	"${ZLIB_LIBRARIES}"
 )
 
 add_test(ks_tests ks_tests)
