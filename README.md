@@ -1,7 +1,7 @@
 # Kaitai Struct: specs and tests
 
 This repository contains specifications and tests for 
-[Kaitai Structures](https://github.com/kaitai-io/kaitai_struct) project.
+[Kaitai Struct](https://github.com/kaitai-io/kaitai_struct) project.
 
 ## What's inside
 
