@@ -7,27 +7,27 @@ seq:
   - id: main_data
     type: main
   - id: dummy
-    type: dummy
+    type: dummy_obj
 types:
   main:
     seq:
       - id: main_size
         type: s4
       - id: foo
-        type: foo
+        type: foo_obj
     types:
-      foo:
+      foo_obj:
         seq:
           - id: data1
             size: _parent.main_size * 2
-  dummy:
+  dummy_obj:
     seq:
       - id: dummy_size
         type: s4
       - id: foo
-        type: foo
+        type: foo_obj
     types:
-      foo:
+      foo_obj:
         seq:
           - id: data2
             size: _parent.dummy_size * 2
