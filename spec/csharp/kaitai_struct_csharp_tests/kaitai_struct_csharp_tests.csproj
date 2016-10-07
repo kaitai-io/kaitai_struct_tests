@@ -60,6 +60,9 @@
     <Compile Include="..\..\..\compiled\csharp\Expr3.cs">
       <Link>compiled\Expr3.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\compiled\csharp\ExprMod.cs">
+      <Link>compiled\ExprMod.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\compiled\csharp\FixedStruct.cs">
       <Link>compiled\FixedStruct.cs</Link>
     </Compile>
@@ -98,6 +101,12 @@
     </Compile>
     <Compile Include="..\..\..\compiled\csharp\NestedTypes2.cs">
       <Link>compiled\NestedTypes2.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\NestedSameName.cs">
+      <Link>compiled\NestedSameName.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\NestedSameName2.cs">
+      <Link>compiled\NestedSameName2.cs</Link>
     </Compile>
     <Compile Include="..\..\..\compiled\csharp\PositionInSeq.cs">
       <Link>compiled\PositionInSeq.cs</Link>
@@ -159,6 +168,15 @@
     <Compile Include="..\..\..\compiled\csharp\SwitchManualIntElse.cs">
       <Link>compiled\SwitchManualIntElse.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\compiled\csharp\SwitchManualIntSize.cs">
+      <Link>compiled\SwitchManualIntSize.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\SwitchManualIntSizeElse.cs">
+      <Link>compiled\SwitchManualIntSizeElse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\compiled\csharp\SwitchManualIntSizeEos.cs">
+      <Link>compiled\SwitchManualIntSizeEos.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\compiled\csharp\SwitchManualStr.cs">
       <Link>compiled\SwitchManualStr.cs</Link>
     </Compile>
@@ -180,6 +198,7 @@
     <Compile Include="tests\SpecExpr1.cs" />
     <Compile Include="tests\SpecExpr2.cs" />
     <Compile Include="tests\SpecExpr3.cs" />
+    <Compile Include="tests\SpecExprMod.cs" />
     <Compile Include="tests\SpecFixedStruct.cs" />
     <Compile Include="tests\SpecHelloWorld.cs" />
     <Compile Include="tests\SpecIfStruct.cs" />
@@ -191,6 +210,8 @@
     <Compile Include="tests\SpecNavRoot.cs" />
     <Compile Include="tests\SpecNestedTypes.cs" />
     <Compile Include="tests\SpecNestedTypes2.cs" />
+    <Compile Include="tests\SpecNestedSameName.cs" />
+    <Compile Include="tests\SpecNestedSameName2.cs" />
     <Compile Include="tests\SpecPositionAbs.cs" />
     <Compile Include="tests\SpecPositionInSeq.cs" />
     <Compile Include="tests\SpecProcessRotate.cs" />
@@ -209,6 +230,9 @@
     <Compile Include="tests\SpecSwitchManualEnum.cs" />
     <Compile Include="tests\SpecSwitchManualInt.cs" />
     <Compile Include="tests\SpecSwitchManualIntElse.cs" />
+    <Compile Include="tests\SpecSwitchManualIntSize.cs" />
+    <Compile Include="tests\SpecSwitchManualIntSizeElse.cs" />
+    <Compile Include="tests\SpecSwitchManualIntSizeEos.cs" />
     <Compile Include="tests\SpecSwitchManualStr.cs" />
     <Compile Include="tests\SpecTermStrz.cs" />
     <Compile Include="tests\SpecZlibWithHeader78.cs" />
@@ -257,6 +281,10 @@
     <None Include="..\..\..\src\nav.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Link>src\nav.bin</Link>
+    </None>
+    <None Include="..\..\..\src\nested_same_name2.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>src\nested_same_name2.bin</Link>
     </None>
     <None Include="..\..\..\src\position_abs.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -313,6 +341,10 @@
     <None Include="..\..\..\src\switch_opcodes2.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Link>src\switch_opcodes2.bin</Link>
+    </None>
+    <None Include="..\..\..\src\switch_tlv.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>src\switch_tlv.bin</Link>
     </None>
     <None Include="..\..\..\src\term_strz.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
