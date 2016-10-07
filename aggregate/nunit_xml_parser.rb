@@ -34,7 +34,7 @@ class NUnitXMLParser
                    filename,
                    nil,
                    failure_msg,
-                   failure_trace
+                   failure_trace.split(/\n/)
                  )
                  :failed
                else
