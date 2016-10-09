@@ -6,4 +6,4 @@ class TestPositionInSeq(unittest.TestCase):
     def test_position_in_seq(self):
         r = PositionInSeq.from_file("src/position_in_seq.bin")
 
-        self.assertEquals(r.numbers, [1, 2, 3])
+        self.assertEqual(r.numbers, [1, 2, 3])
