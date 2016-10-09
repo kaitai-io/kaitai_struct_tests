@@ -7,4 +7,4 @@ class TestNestedSameName(unittest.TestCase):
         r = NestedSameName.from_file("src/repeat_n_struct.bin")
 
         self.assertEqual(r.main_data.main_size, 2)
-        self.assertEqual(r.main_data.foo.data, "\x10\0\0\0")
+        self.assertEqual(r.main_data.foo.data, b"\x10\0\0\0")
