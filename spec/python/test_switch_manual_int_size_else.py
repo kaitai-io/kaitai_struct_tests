@@ -20,4 +20,4 @@ class TestSwitchManualIntSizeElse(unittest.TestCase):
         self.assertEqual(r.chunks[2].body.rest, bytearray([0x10, 0x20, 0x30, 0x40, 0x50, 0x60, 0x70, 0x80]))
 
         self.assertEqual(r.chunks[3].code, 0xff)
-        self.assertEqual(r.chunks[3].body.rest, "")
+        self.assertEqual(r.chunks[3].body.rest, b"")
