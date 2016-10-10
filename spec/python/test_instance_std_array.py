@@ -11,7 +11,7 @@ class TestInstanceStdArray(unittest.TestCase):
         self.assertEqual(r.entry_size, 4)
 
         self.assertEqual(r.entries, [
-            "\x11\x11\x11\x11",
-            "\x22\x22\x22\x22",
-            "\x33\x33\x33\x33",
+            b"\x11\x11\x11\x11",
+            b"\x22\x22\x22\x22",
+            b"\x33\x33\x33\x33",
         ])
