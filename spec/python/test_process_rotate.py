@@ -4,8 +4,8 @@ from process_rotate import ProcessRotate
 
 class TestProcessRotate(unittest.TestCase):
     def test_process_rotate(self):
-        r = ProcessRotate.from_file("src/process_rotate.bin")
+        with ProcessRotate.from_file("src/process_rotate.bin") as r:
 
-        self.assertEqual(r.buf1, b"Hello")
-        self.assertEqual(r.buf2, b"World")
-        self.assertEqual(r.buf3, b"There")
+            self.assertEqual(r.buf1, b"Hello")
+            self.assertEqual(r.buf2, b"World")
+            self.assertEqual(r.buf3, b"There")

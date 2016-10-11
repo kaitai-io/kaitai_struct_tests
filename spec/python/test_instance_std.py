@@ -5,7 +5,7 @@ from instance_std import InstanceStd
 
 class TestInstanceStd(unittest.TestCase):
     def test_instance_std(self):
-        r = InstanceStd.from_file("src/str_encodings.bin")
+        with InstanceStd.from_file("src/str_encodings.bin") as r:
 
-        self.assertEqual(r.header, "Some ")
+            self.assertEqual(r.header, "Some ")
 
