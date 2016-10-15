@@ -42,6 +42,9 @@
     <Compile Include="..\..\..\compiled\csharp\DefaultBigEndian.cs">
       <Link>compiled\DefaultBigEndian.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\compiled\csharp\Docstrings.cs">
+      <Link>compiled\Docstrings.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\compiled\csharp\Enum0.cs">
       <Link>compiled\Enum0.cs</Link>
     </Compile>
