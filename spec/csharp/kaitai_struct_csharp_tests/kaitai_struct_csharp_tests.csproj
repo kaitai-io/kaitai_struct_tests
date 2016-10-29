@@ -36,333 +36,36 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CommonSpec.cs" />
-    <Compile Include="..\..\..\compiled\csharp\BufferedStruct.cs">
-      <Link>compiled\BufferedStruct.cs</Link>
+    <Compile Include="..\..\..\compiled\csharp\*.cs">
+      <Link>compiled\%(Filename)%(Extension)</Link>
     </Compile>
-    <Compile Include="..\..\..\compiled\csharp\DefaultBigEndian.cs">
-      <Link>compiled\DefaultBigEndian.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\Docstrings.cs">
-      <Link>compiled\Docstrings.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\Enum0.cs">
-      <Link>compiled\Enum0.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\EnumIf.cs">
-      <Link>compiled\EnumIf.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\Expr0.cs">
-      <Link>compiled\Expr0.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\Expr1.cs">
-      <Link>compiled\Expr1.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\Expr2.cs">
-      <Link>compiled\Expr2.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\Expr3.cs">
-      <Link>compiled\Expr3.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\ExprMod.cs">
-      <Link>compiled\ExprMod.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\ExprIoEof.cs">
-      <Link>compiled\ExprIoEof.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\FixedStruct.cs">
-      <Link>compiled\FixedStruct.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\FloatingPoints.cs">
-      <Link>compiled\FloatingPoints.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\HelloWorld.cs">
-      <Link>compiled\HelloWorld.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\IfStruct.cs">
-      <Link>compiled\IfStruct.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\InstanceIoUser.cs">
-      <Link>compiled\InstanceIoUser.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\InstanceStd.cs">
-      <Link>compiled\InstanceStd.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\InstanceStdArray.cs">
-      <Link>compiled\InstanceStdArray.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\InstanceUserArray.cs">
-      <Link>compiled\InstanceUserArray.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\MultipleUse.cs">
-      <Link>compiled\MultipleUse.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\NavParent.cs">
-      <Link>compiled\NavParent.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\NavRoot.cs">
-      <Link>compiled\NavRoot.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\NestedTypes.cs">
-      <Link>compiled\NestedTypes.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\NestedTypes2.cs">
-      <Link>compiled\NestedTypes2.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\NestedSameName.cs">
-      <Link>compiled\NestedSameName.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\NestedSameName2.cs">
-      <Link>compiled\NestedSameName2.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\PositionInSeq.cs">
-      <Link>compiled\PositionInSeq.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\PositionAbs.cs">
-      <Link>compiled\PositionAbs.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\ProcessRotate.cs">
-      <Link>compiled\ProcessRotate.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\ProcessToUser.cs">
-      <Link>compiled\ProcessToUser.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\ProcessXor4Const.cs">
-      <Link>compiled\ProcessXor4Const.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\ProcessXor4Value.cs">
-      <Link>compiled\ProcessXor4Value.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\ProcessXorConst.cs">
-      <Link>compiled\ProcessXorConst.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\ProcessXorValue.cs">
-      <Link>compiled\ProcessXorValue.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\RepeatEosStruct.cs">
-      <Link>compiled\RepeatEosStruct.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\RepeatEosU4.cs">
-      <Link>compiled\RepeatEosU4.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\RepeatNStruct.cs">
-      <Link>compiled\RepeatNStruct.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\RepeatNStrz.cs">
-      <Link>compiled\RepeatNStrz.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\RepeatNStrzDouble.cs">
-      <Link>compiled\RepeatNStrzDouble.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\RepeatUntilS4.cs">
-      <Link>compiled\RepeatUntilS4.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\RepeatUntilComplex.cs">
-      <Link>compiled\RepeatUntilComplex.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\StrEncodings.cs">
-      <Link>compiled\StrEncodings.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\StrEos.cs">
-      <Link>compiled\StrEos.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\SwitchManualEnum.cs">
-      <Link>compiled\SwitchManualEnum.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\SwitchManualInt.cs">
-      <Link>compiled\SwitchManualInt.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\SwitchManualIntElse.cs">
-      <Link>compiled\SwitchManualIntElse.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\SwitchManualIntSize.cs">
-      <Link>compiled\SwitchManualIntSize.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\SwitchManualIntSizeElse.cs">
-      <Link>compiled\SwitchManualIntSizeElse.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\SwitchManualIntSizeEos.cs">
-      <Link>compiled\SwitchManualIntSizeEos.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\SwitchManualStr.cs">
-      <Link>compiled\SwitchManualStr.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\TermStrz.cs">
-      <Link>compiled\TermStrz.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\TypeIntUnaryOp.cs">
-      <Link>compiled\TypeIntUnaryOp.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\compiled\csharp\ZlibWithHeader78.cs">
-      <Link>compiled\ZlibWithHeader78.cs</Link>
-    </Compile>
-    <Compile Include="tests\SpecBufferedStruct.cs" />
-    <Compile Include="tests\SpecFloatingPoints.cs" />
-    <Compile Include="tests\SpecDefaultBigEndian.cs" />
-    <Compile Include="tests\SpecEnum0.cs" />
-    <Compile Include="tests\SpecEnumIf.cs" />
-    <Compile Include="tests\SpecExpr0.cs" />
-    <Compile Include="tests\SpecExpr1.cs" />
-    <Compile Include="tests\SpecExpr2.cs" />
-    <Compile Include="tests\SpecExpr3.cs" />
-    <Compile Include="tests\SpecExprMod.cs" />
-    <Compile Include="tests\SpecExprIoEof.cs" />
-    <Compile Include="tests\SpecFixedStruct.cs" />
-    <Compile Include="tests\SpecHelloWorld.cs" />
-    <Compile Include="tests\SpecIfStruct.cs" />
-    <Compile Include="tests\SpecInstanceIoUser.cs" />
-    <Compile Include="tests\SpecInstanceStd.cs" />
-    <Compile Include="tests\SpecInstanceStdArray.cs" />
-    <Compile Include="tests\SpecInstanceUserArray.cs" />
-    <Compile Include="tests\SpecNavParent.cs" />
-    <Compile Include="tests\SpecNavRoot.cs" />
-    <Compile Include="tests\SpecNestedTypes.cs" />
-    <Compile Include="tests\SpecNestedTypes2.cs" />
-    <Compile Include="tests\SpecNestedSameName.cs" />
-    <Compile Include="tests\SpecNestedSameName2.cs" />
-    <Compile Include="tests\SpecPositionAbs.cs" />
-    <Compile Include="tests\SpecPositionInSeq.cs" />
-    <Compile Include="tests\SpecProcessRotate.cs" />
-    <Compile Include="tests\SpecProcessToUser.cs" />
-    <Compile Include="tests\SpecProcessXor4Const.cs" />
-    <Compile Include="tests\SpecProcessXor4Value.cs" />
-    <Compile Include="tests\SpecProcessXorConst.cs" />
-    <Compile Include="tests\SpecProcessXorValue.cs" />
-    <Compile Include="tests\SpecRepeatEosStruct.cs" />
-    <Compile Include="tests\SpecRepeatEosU4.cs" />
-    <Compile Include="tests\SpecRepeatNStruct.cs" />
-    <Compile Include="tests\SpecRepeatNStrz.cs" />
-    <Compile Include="tests\SpecRepeatNStrzDouble.cs" />
-    <Compile Include="tests\SpecStrEncodings.cs" />
-    <Compile Include="tests\SpecStrEos.cs" />
-    <Compile Include="tests\SpecSwitchManualEnum.cs" />
-    <Compile Include="tests\SpecSwitchManualInt.cs" />
-    <Compile Include="tests\SpecSwitchManualIntElse.cs" />
-    <Compile Include="tests\SpecSwitchManualIntSize.cs" />
-    <Compile Include="tests\SpecSwitchManualIntSizeElse.cs" />
-    <Compile Include="tests\SpecSwitchManualIntSizeEos.cs" />
-    <Compile Include="tests\SpecSwitchManualStr.cs" />
-    <Compile Include="tests\SpecTermStrz.cs" />
-    <Compile Include="tests\SpecZlibWithHeader78.cs" />
-    <Compile Include="tests\SpecPositionToEnd.cs" />
-    <Compile Include="..\..\..\compiled\csharp\PositionToEnd.cs">
-      <Link>compiled\PositionToEnd.cs</Link>
-    </Compile>
-    <Compile Include="tests\SpecEofExceptionBytes.cs" />
-    <Compile Include="..\..\..\compiled\csharp\EofExceptionBytes.cs">
-      <Link>compiled\EofExceptionBytes.cs</Link>
-    </Compile>
-    <Compile Include="tests\SpecMultipleUse.cs" />
-    <Compile Include="tests\SpecRepeatUntilS4.cs" />
-    <Compile Include="tests\SpecRepeatUntilComplex.cs" />
-    <Compile Include="tests\SpecTypeIntUnaryOp.cs" />
+    <Compile Include="tests\*.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\src\buffered_struct.bin">
+    <None Include="..\..\..\src\*.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\buffered_struct.bin</Link>
-    </None>
-    <None Include="..\..\..\src\enum_0.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\enum_0.bin</Link>
-    </None>
-    <None Include="..\..\..\src\fixed_struct.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\fixed_struct.bin</Link>
-    </None>
-    <None Include="..\..\..\src\floating_points.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\floating_points.bin</Link>
-    </None>
-    <None Include="..\..\..\src\if_struct.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\if_struct.bin</Link>
-    </None>
-    <None Include="..\..\..\src\instance_io.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\instance_io.bin</Link>
-    </None>
-    <None Include="..\..\..\src\instance_std_array.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\instance_std_array.bin</Link>
-    </None>
-    <None Include="..\..\..\src\nav.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\nav.bin</Link>
-    </None>
-    <None Include="..\..\..\src\nested_same_name2.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\nested_same_name2.bin</Link>
-    </None>
-    <None Include="..\..\..\src\position_abs.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\position_abs.bin</Link>
-    </None>
-    <None Include="..\..\..\src\position_in_seq.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\position_in_seq.bin</Link>
-    </None>
-    <None Include="..\..\..\src\position_to_end.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\position_to_end.bin</Link>
-    </None>
-    <None Include="..\..\..\src\process_rotate.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\process_rotate.bin</Link>
-    </None>
-    <None Include="..\..\..\src\process_xor_1.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\process_xor_1.bin</Link>
-    </None>
-    <None Include="..\..\..\src\process_xor_4.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\process_xor_4.bin</Link>
-    </None>
-    <None Include="..\..\..\src\repeat_eos_struct.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\repeat_eos_struct.bin</Link>
-    </None>
-    <None Include="..\..\..\src\repeat_n_struct.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\repeat_n_struct.bin</Link>
-    </None>
-    <None Include="..\..\..\src\repeat_n_strz.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\repeat_n_strz.bin</Link>
-    </None>
-    <None Include="..\..\..\src\repeat_until_s4.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\repeat_until_s4.bin</Link>
-    </None>
-    <None Include="..\..\..\src\repeat_until_complex.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\repeat_until_complex.bin</Link>
-    </None>
-    <None Include="..\..\..\src\str_encodings.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\str_encodings.bin</Link>
-    </None>
-    <None Include="..\..\..\src\switch_opcodes.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\switch_opcodes.bin</Link>
-    </None>
-    <None Include="..\..\..\src\switch_opcodes2.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\switch_opcodes2.bin</Link>
-    </None>
-    <None Include="..\..\..\src\switch_tlv.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\switch_tlv.bin</Link>
-    </None>
-    <None Include="..\..\..\src\term_strz.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\term_strz.bin</Link>
-    </None>
-    <None Include="..\..\..\src\zlib_with_header_78.bin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>src\zlib_with_header_78.bin</Link>
+      <Link>src\%(Filename)%(Extension)</Link>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <!--
+  In case VS mangles the above:
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonSpec.cs" />
+    <Compile Include="..\..\..\compiled\csharp\*.cs">
+      <Link>compiled\%(Filename)%(Extension)</Link>
+    </Compile>
+    <Compile Include="tests\*.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\src\*.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>src\%(Filename)%(Extension)</Link>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  -->
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
