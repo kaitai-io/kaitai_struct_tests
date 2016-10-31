@@ -27,6 +27,7 @@ set(SPEC_SOURCES
 	test_expr_3.cpp
 	test_expr_mod.cpp
 	test_expr_io_eof.cpp
+	test_expr_io_pos.cpp
 	test_process_xor_const.cpp
 	test_process_xor_value.cpp
 	test_process_xor4_const.cpp
@@ -84,6 +85,7 @@ set(KS_SOURCES
 	${KS_PATH}/expr_3.cpp
 	${KS_PATH}/expr_mod.cpp
 	${KS_PATH}/expr_io_eof.cpp
+	${KS_PATH}/expr_io_pos.cpp
 	${KS_PATH}/process_xor_const.cpp
 	${KS_PATH}/process_xor_value.cpp
 	${KS_PATH}/process_xor4_const.cpp
