@@ -1,0 +1,2 @@
+meta:
+  endian: be
