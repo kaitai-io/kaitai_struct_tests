@@ -17,7 +17,8 @@ echo '#################### java'
 # Run JavaScript tests, generate JUnit-like report
 echo '#################### javascript'
 mkdir -p "$TEST_OUT_DIR/javascript"
-NODE_PATH=compiled/javascript:helpers/javascript:$JAVASCRIPT_RUNTIME_DIR/node_modules:$JAVASCRIPT_RUNTIME_DIR mocha \
+NODE_PATH=compiled/javascript:helpers/javascript:$JAVASCRIPT_MODULES_DIR:$JAVASCRIPT_RUNTIME_DIR \
+	$JAVASCRIPT_MODULES_DIR/mocha/bin/mocha \
 	-R xunit spec/javascript >"$TEST_OUT_DIR/javascript/test-output-javascript.xml"
 
 # Run Perl tests, generate JUnit-like report
