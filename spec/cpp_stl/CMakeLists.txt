@@ -48,6 +48,7 @@ set(SPEC_SOURCES
 	test_instance_io_user.cpp
 	test_buffered_struct.cpp
 	test_eof_exception_bytes.cpp
+	test_eof_exception_u4.cpp
 	test_nested_types.cpp
 	test_nested_types2.cpp
 	test_nested_same_name.cpp
@@ -106,6 +107,7 @@ set(KS_SOURCES
 	${KS_PATH}/instance_io_user.cpp
 	${KS_PATH}/buffered_struct.cpp
 	${KS_PATH}/eof_exception_bytes.cpp
+	${KS_PATH}/eof_exception_u4.cpp
 	${KS_PATH}/nested_types.cpp
 	${KS_PATH}/nested_types2.cpp
 	${KS_PATH}/nested_same_name.cpp
