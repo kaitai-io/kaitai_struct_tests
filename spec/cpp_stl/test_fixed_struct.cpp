@@ -15,7 +15,7 @@ BOOST_AUTO_TEST_CASE(test_fixed_struct) {
     BOOST_CHECK_EQUAL(r->hdr()->uint8(), 255);
     BOOST_CHECK_EQUAL(r->hdr()->uint16(), 65535);
     BOOST_CHECK_EQUAL(r->hdr()->uint32(), 4294967295L);
-    BOOST_CHECK_EQUAL(r->hdr()->uint64(), 18446744073709551615);
+    BOOST_CHECK_EQUAL(r->hdr()->uint64(), 18446744073709551615UL);
 
     BOOST_CHECK_EQUAL(r->hdr()->sint8(), -1);
     BOOST_CHECK_EQUAL(r->hdr()->sint16(), -1);
