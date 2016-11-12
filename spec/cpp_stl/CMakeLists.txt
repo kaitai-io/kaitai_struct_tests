@@ -62,6 +62,7 @@ set(SPEC_SOURCES
 	test_switch_manual_str.cpp
 	test_nav_root.cpp
 	test_nav_parent.cpp
+	test_nav_parent_switch.cpp
 	test_multiple_use.cpp
 	test_str_encodings.cpp
 	test_zlib_with_header_78.cpp
@@ -121,6 +122,7 @@ set(KS_SOURCES
 	${KS_PATH}/switch_manual_str.cpp
 	${KS_PATH}/nav_root.cpp
 	${KS_PATH}/nav_parent.cpp
+	${KS_PATH}/nav_parent_switch.cpp
 	${KS_PATH}/multiple_use.cpp
 	${KS_PATH}/str_encodings.cpp
 	${KS_PATH}/zlib_with_header_78.cpp
