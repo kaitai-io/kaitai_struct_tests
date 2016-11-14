@@ -10,7 +10,7 @@ sub test_process_xor_const: Test(2) {
     my $r = ProcessXorConst->from_file('src/process_xor_1.bin');
 
     is($r->key(), 0xff, 'Equals');
-    is($r->buf(), 'foo bar', 'Equals');
+    is($r->buf(), "foo bar", 'Equals');
 }
 
 Test::Class->runtests;
