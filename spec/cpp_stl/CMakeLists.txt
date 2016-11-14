@@ -11,6 +11,7 @@ set(SPEC_SOURCES
 	main.cpp
 	test_hello_world.cpp
 	test_fixed_struct.cpp
+	test_fixed_contents.cpp
 	test_instance_std.cpp
 	test_repeat_eos_u4.cpp
 	test_if_struct.cpp
@@ -71,6 +72,7 @@ set(SPEC_SOURCES
 set(KS_SOURCES
 	${KS_PATH}/hello_world.cpp
 	${KS_PATH}/fixed_struct.cpp
+	${KS_PATH}/fixed_contents.cpp
 	${KS_PATH}/instance_std.cpp
 	${KS_PATH}/repeat_eos_u4.cpp
 	${KS_PATH}/if_struct.cpp
