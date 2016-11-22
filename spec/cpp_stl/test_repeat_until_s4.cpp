@@ -13,7 +13,7 @@ BOOST_AUTO_TEST_CASE(test_repeat_until_s4) {
     kaitai::kstream ks(&ifs);
     repeat_until_s4_t* r = new repeat_until_s4_t(&ks);
 
-    COMPARE_ARRAY(uint32_t, r->entries(), 0x42, 0x1337, -251658241, -1);
+    COMPARE_ARRAY(int32_t, r->entries(), 0x42, 0x1337, -251658241, -1);
     BOOST_CHECK_EQUAL(r->afterall(), std::string("foobar"));
 
     delete r;
