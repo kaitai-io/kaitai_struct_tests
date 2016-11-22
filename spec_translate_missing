@@ -8,6 +8,7 @@ CPP_STL_SPEC_DIR=spec/cpp_stl
 CSHARP_SPEC_DIR=spec/csharp/kaitai_struct_csharp_tests/tests
 JAVASCRIPT_SPEC_DIR=spec/javascript
 JAVA_SPEC_DIR=spec/java/src/io/kaitai/struct/spec
+PERL_SPEC_DIR=spec/perl
 PHP_SPEC_DIR=spec/php
 PYTHON_SPEC_DIR=spec/python
 RUBY_SPEC_DIR=spec/ruby
@@ -24,6 +25,18 @@ generate_spec()
 	fi
 }
 
+generate_perl_spec()
+{
+	local src_spec="$1"
+	local dst_spec="$2"
+	local lang="$3"
+
+	if [ ! -r "$dst_spec" ]; then
+		echo "$lang: $dst_spec"
+		"./spec_python_to_$lang" <"$src_spec" >"$dst_spec"
+	fi
+}
+
 for FN in "$RUBY_SPEC_DIR"/*_spec.rb; do
 	SPEC=$(basename "$FN" | sed 's/_spec\.rb$//')
 	UCC_SPEC=$(echo "$SPEC" | ruby -e 'puts gets.chomp.split(/_/).map { |x| x.capitalize }.join')
@@ -34,4 +47,11 @@ for FN in "$RUBY_SPEC_DIR"/*_spec.rb; do
 	generate_spec "$FN" "$JAVASCRIPT_SPEC_DIR/test_$SPEC.js" javascript
 	generate_spec "$FN" "$PHP_SPEC_DIR/${UCC_SPEC}Test.php" php
 	generate_spec "$FN" "$PYTHON_SPEC_DIR/test_$SPEC.py" python
+done
+
+for FN in "$PYTHON_SPEC_DIR"/test_*.py; do
+	SPEC=$(basename "$FN" | sed 's/^test_//; s/\.py$//')
+	UCC_SPEC=$(echo "$SPEC" | ruby -e 'puts gets.chomp.split(/_/).map { |x| x.capitalize }.join')
+
+	generate_perl_spec "$FN" "$PERL_SPEC_DIR/Test${UCC_SPEC}.t" perl
 done
