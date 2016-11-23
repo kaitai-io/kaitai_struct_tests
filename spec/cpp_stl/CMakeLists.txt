@@ -61,6 +61,7 @@ set(SPEC_SOURCES
 	test_switch_manual_int_size_else.cpp
 	test_switch_manual_int_size_eos.cpp
 	test_switch_manual_str.cpp
+	test_switch_integers.cpp
 	test_nav_root.cpp
 	test_nav_parent.cpp
 	test_nav_parent_switch.cpp
@@ -123,6 +124,7 @@ set(KS_SOURCES
 	${KS_PATH}/switch_manual_int_size_else.cpp
 	${KS_PATH}/switch_manual_int_size_eos.cpp
 	${KS_PATH}/switch_manual_str.cpp
+	${KS_PATH}/switch_integers.cpp
 	${KS_PATH}/nav_root.cpp
 	${KS_PATH}/nav_parent.cpp
 	${KS_PATH}/nav_parent_switch.cpp
