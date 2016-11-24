@@ -43,6 +43,7 @@ set(SPEC_SOURCES
 	test_process_to_user.cpp
 	test_repeat_until_s4.cpp
 	test_default_big_endian.cpp
+	test_default_endian_mod.cpp
 	test_repeat_until_complex.cpp
 	test_instance_std_array.cpp
 	test_instance_user_array.cpp
@@ -106,6 +107,7 @@ set(KS_SOURCES
 	${KS_PATH}/process_to_user.cpp
 	${KS_PATH}/repeat_until_s4.cpp
 	${KS_PATH}/default_big_endian.cpp
+	${KS_PATH}/default_endian_mod.cpp
 	${KS_PATH}/repeat_until_complex.cpp
 	${KS_PATH}/instance_std_array.cpp
 	${KS_PATH}/instance_user_array.cpp
