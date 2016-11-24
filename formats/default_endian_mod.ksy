@@ -3,9 +3,9 @@ meta:
   id: default_endian_mod
 seq:
   - id: main
-    type: nest
+    type: main_obj
 types:
-  nest:
+  main_obj:
     meta:
       endian: le
     seq:
