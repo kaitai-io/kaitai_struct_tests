@@ -68,6 +68,7 @@ set(SPEC_SOURCES
 	test_nav_parent_switch.cpp
 	test_multiple_use.cpp
 	test_str_encodings.cpp
+	test_str_encodings_default.cpp
 	test_zlib_with_header_78.cpp
 	test_opaque_external_type.cpp
 )
@@ -132,6 +133,7 @@ set(KS_SOURCES
 	${KS_PATH}/nav_parent_switch.cpp
 	${KS_PATH}/multiple_use.cpp
 	${KS_PATH}/str_encodings.cpp
+	${KS_PATH}/str_encodings_default.cpp
 	${KS_PATH}/zlib_with_header_78.cpp
 	${KS_PATH}/opaque_external_type.cpp
 )
