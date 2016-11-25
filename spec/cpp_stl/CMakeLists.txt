@@ -71,6 +71,7 @@ set(SPEC_SOURCES
 	test_str_encodings_default.cpp
 	test_zlib_with_header_78.cpp
 	test_opaque_external_type.cpp
+	test_optional_id.cpp
 )
 
 set(KS_SOURCES
@@ -136,6 +137,7 @@ set(KS_SOURCES
 	${KS_PATH}/str_encodings_default.cpp
 	${KS_PATH}/zlib_with_header_78.cpp
 	${KS_PATH}/opaque_external_type.cpp
+	${KS_PATH}/optional_id.cpp
 )
 
 set(RUNTIME_SOURCES
