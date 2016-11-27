@@ -7,16 +7,16 @@ class SwitchManualEnumTest extends TestCase {
 
         $this->assertEquals(4, count($r->opcodes));
 
-        $this->assertEquals(":code_enum_strval", $r->opcodes[0]->code);
+        $this->assertEquals(SwitchManualEnum\Opcode\CodeEnum::STRVAL, $r->opcodes[0]->code);
         $this->assertEquals('foobar', $r->opcodes[0]->body->value);
 
-        $this->assertEquals(":code_enum_intval", $r->opcodes[1]->code);
+        $this->assertEquals(SwitchManualEnum\Opcode\CodeEnum::INTVAL, $r->opcodes[1]->code);
         $this->assertEquals(0x42, $r->opcodes[1]->body->value);
 
-        $this->assertEquals(":code_enum_intval", $r->opcodes[2]->code);
+        $this->assertEquals(SwitchManualEnum\Opcode\CodeEnum::INTVAL, $r->opcodes[2]->code);
         $this->assertEquals(0x37, $r->opcodes[2]->body->value);
 
-        $this->assertEquals(":code_enum_strval", $r->opcodes[3]->code);
+        $this->assertEquals(SwitchManualEnum\Opcode\CodeEnum::STRVAL, $r->opcodes[3]->code);
         $this->assertEquals('', $r->opcodes[3]->body->value);
     }
 }
