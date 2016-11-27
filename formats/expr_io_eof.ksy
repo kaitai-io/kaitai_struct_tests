@@ -17,3 +17,6 @@ types:
       - id: two
         type: u4
         if: not _io.eof
+    instances:
+      reflect_eof:
+        value: _io.eof
