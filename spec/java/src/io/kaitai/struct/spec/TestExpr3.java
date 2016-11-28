@@ -22,5 +22,6 @@ public class TestExpr3 extends CommonSpec {
         assertEquals(r.isStrLe().booleanValue(), true);
         assertEquals(r.isStrGe().booleanValue(), false);
         assertEquals(r.isStrLt2().booleanValue(), true);
+        assertEquals(r.testNot().booleanValue(), true);
     }
 }

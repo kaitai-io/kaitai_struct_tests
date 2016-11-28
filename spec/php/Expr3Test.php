@@ -17,5 +17,6 @@ class Expr3Test extends TestCase {
         $this->assertEquals(true, $r->isStrLe);
         $this->assertEquals(false, $r->isStrGe);
         $this->assertEquals(true, $r->isStrLt2);
+        $this->assertEquals(true, $r->testNot);
     }
 }

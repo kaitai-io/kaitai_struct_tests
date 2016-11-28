@@ -14,4 +14,5 @@ testHelper('Expr3', 'src/fixed_struct.bin', function(r) {
   assert.equal(r.isStrLe, true);
   assert.equal(r.isStrGe, false);
   assert.equal(r.isStrLt2, true);
+  assert.equal(r.testNot, true);
 });

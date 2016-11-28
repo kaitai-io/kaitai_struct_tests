@@ -27,3 +27,5 @@ instances:
     value: two >= "ACK2"
   is_str_lt2:
     value: three < two
+  test_not:
+    value: not false

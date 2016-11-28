@@ -21,6 +21,7 @@ namespace Kaitai
             Assert.AreEqual(r.IsStrLe, true);
             Assert.AreEqual(r.IsStrGe, false);
             Assert.AreEqual(r.IsStrLt2, true);
+            Assert.AreEqual(r.TestNot, true);
         }
     }
 }

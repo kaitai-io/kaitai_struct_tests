@@ -18,3 +18,4 @@ class TestExpr3(unittest.TestCase):
             self.assertEqual(r.is_str_le, True)
             self.assertEqual(r.is_str_ge, False)
             self.assertEqual(r.is_str_lt2, True)
+            self.assertEqual(r.test_not, True)

@@ -23,6 +23,7 @@ BOOST_AUTO_TEST_CASE(test_expr_3) {
     BOOST_CHECK_EQUAL(r->is_str_le(), true);
     BOOST_CHECK_EQUAL(r->is_str_ge(), false);
     BOOST_CHECK_EQUAL(r->is_str_lt2(), true);
+    BOOST_CHECK_EQUAL(r->test_not(), true);
 
     delete r;
 }

@@ -17,5 +17,6 @@ RSpec.describe Expr3 do
     expect(r.is_str_le).to eq true
     expect(r.is_str_ge).to eq false
     expect(r.is_str_lt2).to eq true
+    expect(r.test_not).to eq true
   end
 end

@@ -6,7 +6,7 @@ use base qw(Test::Class);
 use Test::More;
 use Expr3;
 
-sub test_expr_3: Test(11) {
+sub test_expr_3: Test(12) {
     my $r = Expr3->from_file('src/fixed_struct.bin');
 
     is($r->one(), 80, 'Equals');
@@ -21,6 +21,7 @@ sub test_expr_3: Test(11) {
     is($r->is_str_le(), 1, 'Equals');
     is($r->is_str_ge(), '', 'Equals');
     is($r->is_str_lt2(), 1, 'Equals');
+    is($r->test_not(), 1, 'Equals');
 }
 
 Test::Class->runtests;
