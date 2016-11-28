@@ -8,9 +8,6 @@ instances:
   const_dog:
     value: 4
     enum: animal
-  const_nobody:
-    value: 8
-    enum: animal
   derived_boom:
     value: one
     enum: animal
