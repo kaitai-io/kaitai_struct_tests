@@ -11,7 +11,6 @@ public class TestExprEnum extends CommonSpec {
         ExprEnum r = ExprEnum.fromFile(SRC_DIR + "term_strz.bin");
 
         assertEquals(r.constDog(), ExprEnum.Animal.DOG);
-        assertEquals(r.constNobody(), null);
         assertEquals(r.derivedBoom(), ExprEnum.Animal.BOOM);
         assertEquals(r.derivedDog(), ExprEnum.Animal.DOG);
     }

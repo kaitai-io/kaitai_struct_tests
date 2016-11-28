@@ -10,7 +10,6 @@ sub test_expr_enum: Test(4) {
     my $r = ExprEnum->from_file('src/term_strz.bin');
 
     is($r->const_dog(), $ExprEnum::ANIMAL_DOG, 'Equals');
-    is($r->const_nobody(), 8, 'Equals');
     is($r->derived_boom(), $ExprEnum::ANIMAL_BOOM, 'Equals');
     is($r->derived_dog(), $ExprEnum::ANIMAL_DOG, 'Equals');
 }

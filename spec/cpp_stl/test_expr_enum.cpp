@@ -12,7 +12,6 @@ BOOST_AUTO_TEST_CASE(test_expr_enum) {
     expr_enum_t* r = new expr_enum_t(&ks);
 
     BOOST_CHECK_EQUAL(r->const_dog(), expr_enum_t::ANIMAL_DOG);
-    BOOST_CHECK_EQUAL(r->const_nobody(), 8);
     BOOST_CHECK_EQUAL(r->derived_boom(), expr_enum_t::ANIMAL_BOOM);
     BOOST_CHECK_EQUAL(r->derived_dog(), expr_enum_t::ANIMAL_DOG);
 

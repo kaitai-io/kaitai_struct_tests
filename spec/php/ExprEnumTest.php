@@ -6,7 +6,6 @@ class ExprEnumTest extends TestCase {
         $r = ExprEnum::fromFile(self::SRC_DIR_PATH . "/term_strz.bin");
 
         $this->assertEquals(ExprEnum\Animal::DOG, $r->constDog);
-        $this->assertEquals(8, $r->constNobody);
         $this->assertEquals(ExprEnum\Animal::BOOM, $r->derivedBoom);
         $this->assertEquals(ExprEnum\Animal::DOG, $r->derivedDog);
     }

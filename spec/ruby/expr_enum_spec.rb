@@ -5,7 +5,6 @@ RSpec.describe ExprEnum do
     r = ExprEnum.from_file('src/term_strz.bin')
 
     expect(r.const_dog).to eq :animal_dog
-    expect(r.const_nobody).to eq 8
     expect(r.derived_boom).to eq :animal_boom
     expect(r.derived_dog).to eq :animal_dog
   end
