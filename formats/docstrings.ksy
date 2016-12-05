@@ -1,5 +1,6 @@
 meta:
   id: docstrings
+doc: One-liner description of a type.
 seq:
   - id: one
     type: u1
