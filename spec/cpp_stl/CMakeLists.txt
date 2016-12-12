@@ -43,6 +43,8 @@ set(SPEC_SOURCES
 	test_position_to_end.cpp
 	test_str_eos.cpp
 	test_type_int_unary_op.cpp
+	test_type_ternary.cpp
+	test_type_ternary_opaque.cpp
 	test_process_to_user.cpp
 	test_repeat_until_s4.cpp
 	test_default_big_endian.cpp
@@ -114,6 +116,8 @@ set(KS_SOURCES
 	${KS_PATH}/position_to_end.cpp
 	${KS_PATH}/str_eos.cpp
 	${KS_PATH}/type_int_unary_op.cpp
+	${KS_PATH}/type_ternary.cpp
+	${KS_PATH}/type_ternary_opaque.cpp
 	${KS_PATH}/process_to_user.cpp
 	${KS_PATH}/repeat_until_s4.cpp
 	${KS_PATH}/default_big_endian.cpp
