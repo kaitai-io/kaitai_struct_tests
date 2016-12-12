@@ -5,8 +5,8 @@ RSpec.describe OpaqueExternalType02Parent do
   it 'parses test properly' do
     r = OpaqueExternalType02Parent.from_file('src/term_strz.bin')
 
-    expect(r.parent.child.s1).to    eq('foo')
-    expect(r.parent.child.s2).to    eq('bar')
+    expect(r.parent.child.s1).to eq('foo')
+    expect(r.parent.child.s2).to eq('bar')
     expect(r.parent.child.s3.s3).to eq('|baz@')
   end
 end
