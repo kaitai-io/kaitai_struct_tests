@@ -2,5 +2,13 @@
 
 . ./config
 
-NODE_PATH=compiled/javascript:helpers/javascript:$JAVASCRIPT_MODULES_DIR:$JAVASCRIPT_RUNTIME_DIR \
+# (Note: On Windows, NODE_PATH is delimited by semicolons instead of colons.)
+# https://nodejs.org/api/modules.html#modules_loading_from_the_global_folders
+DIVIDER=":"
+if [ ${OS} = "Windows_NT" ]
+then
+	DIVIDER=";"
+fi
+
+NODE_PATH="compiled/javascript${DIVIDER}helpers/javascript${DIVIDER}$JAVASCRIPT_MODULES_DIR${DIVIDER}$JAVASCRIPT_RUNTIME_DIR" \
 	$JAVASCRIPT_MODULES_DIR/mocha/bin/mocha spec/javascript
