@@ -6,7 +6,7 @@
 # work if Ruby is installed in a path with spaces, but is used by default in environments like Git
 # Bash.
 if [ "$OS" = "Windows_NT" ]; then
-	EXEC_EXT=.bat
+	EXEC_EXT=".bat"
 fi
 
 rspec${EXEC_EXT} -I compiled/ruby -I "$RUBY_RUNTIME_DIR"
