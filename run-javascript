@@ -5,8 +5,7 @@
 # (Note: On Windows, NODE_PATH is delimited by semicolons instead of colons.)
 # https://nodejs.org/api/modules.html#modules_loading_from_the_global_folders
 DIVIDER=":"
-if [ ${OS} = "Windows_NT" ]
-then
+if [ "$OS" = "Windows_NT" ]; then
 	DIVIDER=";"
 fi
 
