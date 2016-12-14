@@ -4,9 +4,9 @@ meta:
   endian: le
 seq:
   - id: parent
-    type: parent
+    type: parent_obj
 types:
-  parent:
+  parent_obj:
     seq:
       - id: child
         type: opaque_external_type_02_child
