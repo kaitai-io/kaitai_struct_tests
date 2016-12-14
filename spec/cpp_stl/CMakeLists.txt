@@ -16,6 +16,7 @@ set(SPEC_SOURCES
 	test_repeat_eos_u4.cpp
 	test_if_struct.cpp
 	test_if_values.cpp
+	test_if_instances.cpp
 	test_position_abs.cpp
 	test_position_in_seq.cpp
 	test_repeat_n_strz.cpp
@@ -91,6 +92,7 @@ set(KS_SOURCES
 	${KS_PATH}/repeat_eos_u4.cpp
 	${KS_PATH}/if_struct.cpp
 	${KS_PATH}/if_values.cpp
+	${KS_PATH}/if_instances.cpp
 	${KS_PATH}/position_abs.cpp
 	${KS_PATH}/position_in_seq.cpp
 	${KS_PATH}/repeat_n_strz.cpp
