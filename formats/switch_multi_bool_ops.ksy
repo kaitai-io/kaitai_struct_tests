@@ -1,3 +1,4 @@
+# https://github.com/kaitai-io/kaitai_struct_compiler/issues/39
 meta:
   id: switch_multi_bool_ops
   endian: le
