@@ -17,7 +17,7 @@ mkdir -p "$CSHARP_TEST_OUT_DIR"
 echo "run-csharp: building project"
 xbuild "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests.sln" >"$CSHARP_COMPILE_LOG_XBUILD" || {
 	# Some formats failed to build - find the failing files and erase them
-	travis-fold xbuild cat "$CSHARP_COMPILE_LOG_XBUILD"
+	./travis-fold xbuild cat "$CSHARP_COMPILE_LOG_XBUILD"
 	echo "run-csharp: some formats failed to compile, checking each file individually"
 
 	# Find the invalid files and wipe them - we do this by scanning the error list from the compiler
@@ -32,7 +32,7 @@ xbuild "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests.sln" >"$CSHARP_COMPILE_LOG_X
 		2>&1 >"$CSHARP_COMPILE_LOG_MCS_FORMATS" | \
 		fgrep '(' | cut -d'(' -f1 | xargs -d '\n' truncate -c -s0
 
-	travis-fold mcs_formats cat "$CSHARP_COMPILE_LOG_MCS_FORMATS"
+	./travis-fold mcs_formats cat "$CSHARP_COMPILE_LOG_MCS_FORMATS"
 	echo "run-csharp: removing tests that are no longer valid"
 
 	# Now that the invalid spec classes are gone, we need to remove the matching test cases
@@ -49,10 +49,10 @@ xbuild "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests.sln" >"$CSHARP_COMPILE_LOG_X
 		fgrep '(' | cut -d'(' -f1 | xargs -d '\n' truncate -c -s0
 
 	# Invalid tests should all be gone - rebuild the project
-	travis-fold mcs_specs cat "$CSHARP_COMPILE_LOG_MCS_FORMATS"
+	./travis-fold mcs_specs cat "$CSHARP_COMPILE_LOG_MCS_FORMATS"
 	echo "run-csharp: rebuilding project"
 	xbuild "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests.sln" >"$CSHARP_COMPILE_LOG_XBUILD2"
-	travis-fold mcs_formats cat "$CSHARP_COMPILE_LOG_XBUILD2"
+	./travis-fold mcs_formats cat "$CSHARP_COMPILE_LOG_XBUILD2"
 }
 
 # Actually run the tests
