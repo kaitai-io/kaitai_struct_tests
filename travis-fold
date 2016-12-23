@@ -1,0 +1,15 @@
+#!/bin/sh -ef
+
+# Invoke desired command, wrapping it before and after with special
+# Travis CI formatting commands that make output of the command appear
+# as foldable (and folded by default) in console output.
+#
+# Usage:
+# travis-fold <name> <command> [arguments]
+
+name=$1
+shift
+
+echo -n "travis_fold:start:$name\r"
+$@
+echo -n "travis_fold:end:$name\r"
