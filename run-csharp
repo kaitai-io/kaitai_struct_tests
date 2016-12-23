@@ -1,20 +1,23 @@
-#!/bin/sh -e
+#!/bin/sh
 
 . ./config
 
 CSHARP_TEST_FORMATS_DIR=$FORMATS_COMPILED_DIR/csharp
 CSHARP_SPEC_DIR=spec/csharp
 CSHARP_TEST_OUT_DIR="$TEST_OUT_DIR"/csharp
-CSHARP_COMPILE_LOG="$CSHARP_TEST_OUT_DIR/_compile.log"
+CSHARP_COMPILE_LOG_XBUILD="$CSHARP_TEST_OUT_DIR/_compile-0.log"
+CSHARP_COMPILE_LOG_MCS_FORMATS="$CSHARP_TEST_OUT_DIR/_compile-1.log"
+CSHARP_COMPILE_LOG_MCS_SPECS="$CSHARP_TEST_OUT_DIR/_compile-2.log"
+CSHARP_COMPILE_LOG_XBUILD2="$CSHARP_TEST_OUT_DIR/_compile-3.log"
 
 rm -rf "$CSHARP_TEST_OUT_DIR"
 mkdir -p "$CSHARP_TEST_OUT_DIR"
 
 # Try and build the project first - if there's no compile errors, we can continue straight away
 echo "run-csharp: building project"
-xbuild "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests.sln" >> "$CSHARP_COMPILE_LOG" || {
-
+xbuild "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests.sln" >"$CSHARP_COMPILE_LOG_XBUILD" || {
 	# Some formats failed to build - find the failing files and erase them
+	travis-fold xbuild cat "$CSHARP_COMPILE_LOG_XBUILD"
 	echo "run-csharp: some formats failed to compile, checking each file individually"
 
 	# Find the invalid files and wipe them - we do this by scanning the error list from the compiler
@@ -26,9 +29,10 @@ xbuild "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests.sln" >> "$CSHARP_COMPILE_LOG
 		"$CSHARP_RUNTIME_DIR/*.cs" \
 		"$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests/CommonSpec.cs" \
 		"$CSHARP_TEST_FORMATS_DIR"/*.cs \
-		2>&1 >>"$CSHARP_COMPILE_LOG" | \
+		2>&1 >"$CSHARP_COMPILE_LOG_MCS_FORMATS" | \
 		fgrep '(' | cut -d'(' -f1 | xargs -d '\n' truncate -c -s0
 
+	travis-fold mcs_formats cat "$CSHARP_COMPILE_LOG_MCS_FORMATS"
 	echo "run-csharp: removing tests that are no longer valid"
 
 	# Now that the invalid spec classes are gone, we need to remove the matching test cases
@@ -41,12 +45,14 @@ xbuild "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests.sln" >> "$CSHARP_COMPILE_LOG
 		"$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests/CommonSpec.cs" \
 		"$CSHARP_TEST_FORMATS_DIR"/*.cs \
 		"$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests/tests/*.cs" \
-		2>&1 >>"$CSHARP_COMPILE_LOG" | \
+		2>&1 >"$CSHARP_COMPILE_LOG_MCS_SPECS" | \
 		fgrep '(' | cut -d'(' -f1 | xargs -d '\n' truncate -c -s0
 
 	# Invalid tests should all be gone - rebuild the project
+	travis-fold mcs_specs cat "$CSHARP_COMPILE_LOG_MCS_FORMATS"
 	echo "run-csharp: rebuilding project"
-	xbuild "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests.sln" >> "$CSHARP_COMPILE_LOG"
+	xbuild "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests.sln" >"$CSHARP_COMPILE_LOG_XBUILD2"
+	travis-fold mcs_formats cat "$CSHARP_COMPILE_LOG_XBUILD2"
 }
 
 # Actually run the tests
