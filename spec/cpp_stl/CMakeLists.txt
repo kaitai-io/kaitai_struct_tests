@@ -70,6 +70,7 @@ set(SPEC_SOURCES
 	test_switch_manual_int_size_else.cpp
 	test_switch_manual_int_size_eos.cpp
 	test_switch_manual_str.cpp
+	test_switch_manual_str_else.cpp
 	test_switch_integers.cpp
 	test_switch_multi_bool_ops.cpp
 	test_nav_root.cpp
@@ -149,6 +150,7 @@ set(KS_SOURCES
 	${KS_PATH}/switch_manual_int_size_else.cpp
 	${KS_PATH}/switch_manual_int_size_eos.cpp
 	${KS_PATH}/switch_manual_str.cpp
+	${KS_PATH}/switch_manual_str_else.cpp
 	${KS_PATH}/switch_integers.cpp
 	${KS_PATH}/switch_multi_bool_ops.cpp
 	${KS_PATH}/nav_root.cpp
