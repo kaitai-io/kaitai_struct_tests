@@ -86,6 +86,7 @@ set(SPEC_SOURCES
 	test_optional_id.cpp
 	test_opaque_external_type_02_parent.cpp
 	test_non_standard.cpp
+	test_debug_0.cpp
 )
 
 set(KS_SOURCES
@@ -167,6 +168,7 @@ set(KS_SOURCES
 	${KS_PATH}/opaque_external_type_02_parent.cpp
 	${KS_PATH}/opaque_external_type_02_child.cpp
 	${KS_PATH}/non_standard.cpp
+	${KS_PATH}/debug_0.cpp
 )
 
 set(RUNTIME_SOURCES
