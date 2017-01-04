@@ -11,7 +11,7 @@ class TestBitsSimple(unittest.TestCase):
         self.assertEqual(r.byte_2, 0x41)
 
         # 43 (1 + 3 + 4) = 0|100|0011
-        self.assertEqual(r.bits_a, 0)
+        self.assertEqual(r.bits_a, False)
         self.assertEqual(r.bits_b, 0b100)
         self.assertEqual(r.bits_c, 0b0011)
 

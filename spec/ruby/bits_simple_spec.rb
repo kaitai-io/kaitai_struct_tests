@@ -9,7 +9,7 @@ RSpec.describe BitsSimple do
     expect(r.byte_2).to eq 0x41
 
     # 43 (1 + 3 + 4) = 0|100|0011
-    expect(r.bits_a).to eq 0
+    expect(r.bits_a).to eq false
     expect(r.bits_b).to eq 0b100
     expect(r.bits_c).to eq 0b0011
 

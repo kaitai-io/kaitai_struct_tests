@@ -15,7 +15,7 @@ public class TestBitsSimple extends CommonSpec {
         assertEquals(r.byte2(), 0x41);
 
         // 43 (1 + 3 + 4) = 0|100|0011
-        assertEquals(r.bitsA(), 0);
+        assertEquals(r.bitsA(), false);
         assertEquals(r.bitsB(), 0b100);
         assertEquals(r.bitsC(), 0b0011);
 
