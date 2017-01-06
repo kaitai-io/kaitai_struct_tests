@@ -6,7 +6,7 @@ testHelper('BitsSimple', 'src/fixed_struct.bin', function(r) {
     assert.equal(r.byte2, 0x41);
 
     // 43 (1 + 3 + 4) = 0|100|0011
-    assert.equal(r.bitsA, 0);
+    assert.strictEqual(r.bitsA, false);
     assert.equal(r.bitsB, 0b100);
     assert.equal(r.bitsC, 0b0011);
 
