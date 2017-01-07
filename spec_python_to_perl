@@ -273,7 +273,7 @@ my ($src_name, $class_name) = ($1, $2);
 die 'Unable to detect source name' unless $src_name;
 die 'Unable to detect class name' unless $class_name;
 
-$s =~ s/^#.*//;     # Remove comments (+ '# coding: utf8')
+#$s =~ s/^#.*//;     # Remove comments (+ '# coding: utf8')
 $s =~ s/;//g;       # Remove semicolons
 $s =~ s/\"/'/g;     # Replace " with '
 
@@ -290,7 +290,10 @@ my $done = 0;
 while (<$fd>) {
     chomp;
 
-    if ($_ =~ /(.*?)\s=\s(.*?)/) {
+    if ($_ =~ /\s*#.*/) {
+        # Preserve comment
+        $_ =~ s/^\s{4}//;
+    } elsif ($_ =~ /(.*?)\s=\s(.*?)/) {
         my $is_replaced;
         ($_, $is_replaced) = replace_variable_assignment($_);
         if ($is_replaced) {
