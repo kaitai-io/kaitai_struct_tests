@@ -1,3 +1,4 @@
+# https://github.com/kaitai-io/kaitai_struct/issues/78
 meta:
   id:      bcd_user_type_be
   endian:  be
