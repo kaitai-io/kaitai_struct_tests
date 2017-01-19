@@ -14,7 +14,7 @@ sub test_bits_simple: Test(10) {
     is($r->byte_2(), 0x41, 'Equals');
 
     # 43 (1 + 3 + 4) = 0|100|0011
-    is($r->bits_a(), '', 'Equals');
+    is($r->bits_a(), 0, 'Equals');
     is($r->bits_b(), 0b100, 'Equals');
     is($r->bits_c(), 0b0011, 'Equals');
 
