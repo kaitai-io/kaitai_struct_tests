@@ -13,7 +13,7 @@ public class TestTypeIntUnaryOp extends CommonSpec {
 
         assertEquals(r.valueS2(), (short) 0x4150);
         assertEquals(r.valueS8(), 0x4150ffff312d4b43L);
-        assertTrue(r.unaryS2() instanceof Integer);
+        assertTrue(r.unaryS2() instanceof Long);
         assertTrue(r.unaryS8() instanceof Long);
         assertEquals(r.unaryS2().shortValue(), (short) -0x4150);
         assertEquals(r.unaryS8().longValue(), -0x4150ffff312d4b43L);
