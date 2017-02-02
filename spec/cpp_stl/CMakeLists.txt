@@ -90,6 +90,8 @@ set(SPEC_SOURCES
 	test_debug_enum_name.cpp
 	test_bits_simple.cpp
 	test_bits_byte_aligned.cpp
+	test_bcd_user_type_be.cpp
+	test_bcd_user_type_le.cpp
 )
 
 set(KS_SOURCES
@@ -175,6 +177,8 @@ set(KS_SOURCES
 	${KS_PATH}/debug_enum_name.cpp
 	${KS_PATH}/bits_simple.cpp
 	${KS_PATH}/bits_byte_aligned.cpp
+	${KS_PATH}/bcd_user_type_be.cpp
+	${KS_PATH}/bcd_user_type_le.cpp
 )
 
 set(RUNTIME_SOURCES
