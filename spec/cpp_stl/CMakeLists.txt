@@ -93,6 +93,7 @@ set(SPEC_SOURCES
 	test_bits_enum.cpp
 	test_bcd_user_type_be.cpp
 	test_bcd_user_type_le.cpp
+	test_docstrings.cpp
 )
 
 set(KS_SOURCES
@@ -181,6 +182,7 @@ set(KS_SOURCES
 	${KS_PATH}/bits_enum.cpp
 	${KS_PATH}/bcd_user_type_be.cpp
 	${KS_PATH}/bcd_user_type_le.cpp
+	${KS_PATH}/docstrings.cpp
 )
 
 set(RUNTIME_SOURCES
