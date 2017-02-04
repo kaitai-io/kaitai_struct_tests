@@ -14,7 +14,7 @@ namespace Kaitai
             Assert.AreEqual(rec1.One, 0x41);
             var rec2 = (RecursiveOne) rec1.Next;
             Assert.AreEqual(rec2.One, 0x43);
-            var rec3 = (RecursiveOne.Fini) r.Next;
+            var rec3 = (RecursiveOne.Fini) rec2.Next;
             Assert.AreEqual(rec3.Finisher, 0x2d4b);
         }
     }
