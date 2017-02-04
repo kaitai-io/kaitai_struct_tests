@@ -94,6 +94,7 @@ set(SPEC_SOURCES
 	test_bcd_user_type_be.cpp
 	test_bcd_user_type_le.cpp
 	test_docstrings.cpp
+	test_recursive_one.cpp
 )
 
 set(KS_SOURCES
@@ -183,6 +184,7 @@ set(KS_SOURCES
 	${KS_PATH}/bcd_user_type_be.cpp
 	${KS_PATH}/bcd_user_type_le.cpp
 	${KS_PATH}/docstrings.cpp
+	${KS_PATH}/recursive_one.cpp
 )
 
 set(RUNTIME_SOURCES
