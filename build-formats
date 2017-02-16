@@ -5,7 +5,7 @@
 rm -rf "$FORMATS_COMPILED_DIR"
 mkdir -p "$FORMATS_COMPILED_DIR"
 "$COMPILER_DIR/jvm/target/universal/stage/bin/kaitai-struct-compiler" -- \
-	--verbose -t all -d "$FORMATS_COMPILED_DIR" \
+	--verbose all -t all -d "$FORMATS_COMPILED_DIR" \
 	--java-package io.kaitai.struct.testformats \
 	--php-namespace 'Kaitai\Struct\Tests' \
 	"$FORMATS_KSY_DIR"/*.ksy
