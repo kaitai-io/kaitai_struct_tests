@@ -97,6 +97,7 @@ set(SPEC_SOURCES
 	test_recursive_one.cpp
 	test_str_pad_term.cpp
 	test_nav_parent_override.cpp
+	test_term_bytes.cpp
 )
 
 set(KS_SOURCES
@@ -189,6 +190,7 @@ set(KS_SOURCES
 	${KS_PATH}/recursive_one.cpp
 	${KS_PATH}/str_pad_term.cpp
 	${KS_PATH}/nav_parent_override.cpp
+	${KS_PATH}/term_bytes.cpp
 )
 
 set(RUNTIME_SOURCES
