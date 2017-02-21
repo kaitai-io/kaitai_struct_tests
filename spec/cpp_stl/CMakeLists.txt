@@ -99,6 +99,7 @@ set(SPEC_SOURCES
 	test_nav_parent_override.cpp
 	test_term_bytes.cpp
 	test_switch_cast.cpp
+	test_ts_packet_header.cpp
 )
 
 set(KS_SOURCES
@@ -193,6 +194,7 @@ set(KS_SOURCES
 	${KS_PATH}/nav_parent_override.cpp
 	${KS_PATH}/term_bytes.cpp
 	${KS_PATH}/switch_cast.cpp
+	${KS_PATH}/ts_packet_header.cpp
 )
 
 set(RUNTIME_SOURCES
