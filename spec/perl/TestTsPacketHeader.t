@@ -15,7 +15,7 @@ sub test_ts_packet_header: Test(7) {
     is($r->transport_priority(), 1, 'Equals');
     is($r->pid(), 33, 'Equals');
     is($r->transport_scrambling_control(), 0, 'Equals');
-    is($r->adaptation_field_control(), $TsPacketHeader::ADAPTATION_FIELD_CONTROL_PAYLOAD_ONLY, 'Equals');
+    is($r->adaptation_field_control(), $TsPacketHeader::ADAPTATION_FIELD_CONTROL_ENUM_PAYLOAD_ONLY, 'Equals');
 }
 
 Test::Class->runtests;

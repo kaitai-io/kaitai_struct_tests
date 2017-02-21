@@ -12,4 +12,4 @@ class TestTsPacketHeader(unittest.TestCase):
         self.assertEqual(r.transport_priority, True)
         self.assertEqual(r.pid, 33)
         self.assertEqual(r.transport_scrambling_control, 0)
-        self.assertEqual(r.adaptation_field_control, TsPacketHeader.AdaptationFieldControl.payload_only)
+        self.assertEqual(r.adaptation_field_control, TsPacketHeader.AdaptationFieldControlEnum.payload_only)

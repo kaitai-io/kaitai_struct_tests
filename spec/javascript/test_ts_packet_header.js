@@ -8,5 +8,5 @@ testHelper('TsPacketHeader', 'src/ts_packet.bin', function(r, TsPacketHeader) {
   assert.equal(r.transportPriority, true);
   assert.equal(r.pid, 33);
   assert.equal(r.transportScramblingControl, 0);
-  assert.equal(r.adaptationFieldControl, TsPacketHeader.AdaptationFieldControl.PAYLOAD_ONLY);
+  assert.equal(r.adaptationFieldControl, TsPacketHeader.AdaptationFieldControlEnum.PAYLOAD_ONLY);
 });

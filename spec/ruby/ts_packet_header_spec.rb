@@ -10,6 +10,6 @@ RSpec.describe TsPacketHeader do
     expect(r.transport_priority).to eq true
     expect(r.pid).to eq 33
     expect(r.transport_scrambling_control).to eq 0
-    expect(r.adaptation_field_control).to eq :adaptation_field_control_payload_only
+    expect(r.adaptation_field_control).to eq :adaptation_field_control_enum_payload_only
   end
 end

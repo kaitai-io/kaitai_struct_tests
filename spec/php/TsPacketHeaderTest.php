@@ -11,6 +11,6 @@ class TsPacketHeaderTest extends TestCase {
         $this->assertEquals(true, $r->transportPriority);
         $this->assertEquals(33, $r->pid);
         $this->assertEquals(0, $r->transportScramblingControl);
-        $this->assertEquals(TsPacketHeader\AdaptationFieldControl::PAYLOAD_ONLY, $r->adaptationFieldControl);
+        $this->assertEquals(TsPacketHeader\AdaptationFieldControlEnum::PAYLOAD_ONLY, $r->adaptationFieldControl);
     }
 }

@@ -16,6 +16,6 @@ public class TestTsPacketHeader extends CommonSpec {
         assertEquals(r.transportPriority(), true);
         assertEquals(r.pid(), 33);
         assertEquals(r.transportScramblingControl(), 0);
-        assertEquals(r.adaptationFieldControl(), TsPacketHeader.AdaptationFieldControl.PAYLOAD_ONLY);
+        assertEquals(r.adaptationFieldControl(), TsPacketHeader.AdaptationFieldControlEnum.PAYLOAD_ONLY);
     }
 }
