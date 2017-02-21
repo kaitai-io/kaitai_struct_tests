@@ -22,13 +22,13 @@ seq:
     type: b2
   - id: adaptation_field_control
     type: b2
-    enum: adaptation_field_control
+    enum: adaptation_field_control_enum
   - id: continuity_counter
     type: b4
   - id: ts_packet_remain
     size: 184
 enums:
-  adaptation_field_control:
+  adaptation_field_control_enum:
     0x0: reserved
     0x1: payload_only
     0x2: adaptation_field_only
