@@ -98,6 +98,7 @@ set(SPEC_SOURCES
 	test_str_pad_term.cpp
 	test_nav_parent_override.cpp
 	test_term_bytes.cpp
+	test_switch_cast.cpp
 )
 
 set(KS_SOURCES
@@ -191,6 +192,7 @@ set(KS_SOURCES
 	${KS_PATH}/str_pad_term.cpp
 	${KS_PATH}/nav_parent_override.cpp
 	${KS_PATH}/term_bytes.cpp
+	${KS_PATH}/switch_cast.cpp
 )
 
 set(RUNTIME_SOURCES
