@@ -6,7 +6,7 @@ use base qw(Test::Class);
 use Test::More;
 use BitsSimple;
 
-sub test_bits_simple: Test(10) {
+sub test_bits_simple: Test(11) {
     my $r = BitsSimple->from_file('src/fixed_struct.bin');
 
     # 50 41
@@ -28,6 +28,8 @@ sub test_bits_simple: Test(10) {
 
     # 50 41 43
     is($r->byte_8_9_10(), 0x504143, 'Equals');
+
+    is($r->test_if_b1(), 123, 'Equals');
 }
 
 Test::Class->runtests;

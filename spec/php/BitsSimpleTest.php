@@ -24,5 +24,7 @@ class BitsSimpleTest extends TestCase {
 
         # 50 41 43
         $this->assertEquals(0x504143, $r->byte8910);
+
+        $this->assertEquals(123, $r->testIfB1);
     }
 }

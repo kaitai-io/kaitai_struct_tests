@@ -27,3 +27,7 @@ seq:
   # byte 8-9-10 (24 bits)
   - id: byte_8_9_10
     type: b24
+instances:
+  test_if_b1:
+    value: 123
+    if: bits_a == false

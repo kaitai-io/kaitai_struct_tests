@@ -31,5 +31,7 @@ BOOST_AUTO_TEST_CASE(test_bits_simple) {
     // 50 41 43
     BOOST_CHECK_EQUAL(r->byte_8_9_10(), 0x504143);
 
+    BOOST_CHECK_EQUAL(r->test_if_b1(), 123);
+
     delete r;
 }
