@@ -27,6 +27,7 @@ set(SPEC_SOURCES
 	test_enum_if.cpp
 	test_enum_for_unknown_id.cpp
 	test_enum_of_value_inst.cpp
+	test_enum_to_i.cpp
 	test_expr_0.cpp
 	test_expr_1.cpp
 	test_expr_2.cpp
@@ -121,6 +122,7 @@ set(KS_SOURCES
 	${KS_PATH}/enum_if.cpp
 	${KS_PATH}/enum_for_unknown_id.cpp
 	${KS_PATH}/enum_of_value_inst.cpp
+	${KS_PATH}/enum_to_i.cpp
 	${KS_PATH}/expr_0.cpp
 	${KS_PATH}/expr_1.cpp
 	${KS_PATH}/expr_2.cpp
