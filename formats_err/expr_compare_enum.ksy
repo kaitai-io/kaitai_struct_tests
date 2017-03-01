@@ -1,3 +1,4 @@
+# /seq/1/if: can't use comparison operator Gt on enums
 meta:
   id: expr_compare_enum
 seq:
