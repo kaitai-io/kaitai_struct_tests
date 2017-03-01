@@ -1,3 +1,4 @@
+# /seq/1/type/cases/Str(foo): can't compare Int1Type(false) and CalcStrType
 meta:
   id: attr_invalid_switch_eq
 seq:

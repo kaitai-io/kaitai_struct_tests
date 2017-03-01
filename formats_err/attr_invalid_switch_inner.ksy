@@ -1,3 +1,4 @@
+# /seq/1/type/cases/IntNum(42)/size: invalid type: expected integer, got CalcBooleanType
 meta:
   id: attr_invalid_switch_inner
 seq:

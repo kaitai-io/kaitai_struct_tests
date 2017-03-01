@@ -1,3 +1,4 @@
+# /seq/1/blah: unknown key found, expected: consume, contents, doc, eos-error, id, if, include, parent, process, repeat, repeat-expr, repeat-until, size, size-eos, terminator, type
 meta:
   id: attr_bad_key
   endian: le

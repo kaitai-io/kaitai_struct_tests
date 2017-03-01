@@ -1,3 +1,4 @@
+# /types/foo_type/instances/foo/if: invalid type: expected boolean, got CalcIntType
 meta:
   id: attr_bad_if2
 seq:
