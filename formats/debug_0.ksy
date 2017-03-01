@@ -9,3 +9,4 @@ seq:
     type: u1
     repeat: expr
     repeat-expr: 3
+  - type: u1 # anonymous, numbered field
