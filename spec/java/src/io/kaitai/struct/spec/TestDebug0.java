@@ -17,7 +17,7 @@ public class TestDebug0 extends CommonSpec {
         assertEquals(r.one(), 0x50);
         assertEquals(r.arrayOfInts().toArray(), new Integer[] { 0x41, 0x43, 0x4b });
 
-        assertEquals(Debug0._seqFields, new String[] { "one", "arrayOfInts" });
+        assertEquals(Debug0._seqFields, new String[] { "one", "arrayOfInts", "_unnamed2" });
 
         assertEquals(r._attrStart.get("one").intValue(), 0);
         assertEquals(r._attrEnd.get("one").intValue(), 1);
