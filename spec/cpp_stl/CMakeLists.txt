@@ -101,6 +101,7 @@ set(SPEC_SOURCES
 	test_term_bytes.cpp
 	test_switch_cast.cpp
 	test_ts_packet_header.cpp
+	test_repeat_until_sized.cpp
 )
 
 set(KS_SOURCES
@@ -197,6 +198,7 @@ set(KS_SOURCES
 	${KS_PATH}/term_bytes.cpp
 	${KS_PATH}/switch_cast.cpp
 	${KS_PATH}/ts_packet_header.cpp
+	${KS_PATH}/repeat_until_sized.cpp
 )
 
 set(RUNTIME_SOURCES
