@@ -103,6 +103,7 @@ set(SPEC_SOURCES
 	test_ts_packet_header.cpp
 	test_repeat_until_sized.cpp
 	test_nav_parent_vs_value_inst.cpp
+	test_str_literals.cpp
 )
 
 set(KS_SOURCES
@@ -201,6 +202,7 @@ set(KS_SOURCES
 	${KS_PATH}/ts_packet_header.cpp
 	${KS_PATH}/repeat_until_sized.cpp
 	${KS_PATH}/nav_parent_vs_value_inst.cpp
+	${KS_PATH}/str_literals.cpp
 )
 
 set(RUNTIME_SOURCES
