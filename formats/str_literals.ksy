@@ -7,3 +7,5 @@ instances:
     value: '"\"\u0022\42"'
   backslashes:
     value: '"\\\u005c\134"'
+  octal_eatup:
+    value: '"\0\62\62"'
