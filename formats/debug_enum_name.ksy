@@ -24,7 +24,6 @@ types:
     instances:
       instance_field:
         value: "field2 & 0xf"
-        type: enum
         enum: inner_enum2
     enums:
       inner_enum1:
