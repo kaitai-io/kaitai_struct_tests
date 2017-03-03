@@ -10,7 +10,7 @@ class TestStrLiterals(unittest.TestCase):
         self.assertEqual(self.str_to_arr(r.double_quotes), [34, 34, 34])
         self.assertEqual(self.str_to_arr(r.backslashes), [92, 92, 92])
         self.assertEqual(self.str_to_arr(r.octal_eatup), [0, 50, 50])
-        self.assertEqual(self.str_to_arr(r.octal_eatup2), [0, 50])
+        self.assertEqual(self.str_to_arr(r.octal_eatup2), [2, 50])
 
     def str_to_arr(self, s):
         return [ord(c) for c in s]

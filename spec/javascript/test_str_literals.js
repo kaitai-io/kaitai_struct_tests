@@ -12,5 +12,5 @@ testHelper('StrLiterals', 'src/fixed_struct.bin', function(r) {
   assert.equal(strToArr(r.doubleQuotes), [34, 34, 34].toString());
   assert.equal(strToArr(r.backslashes), [92, 92, 92].toString());
   assert.equal(strToArr(r.octalEatup), [0, 50, 50].toString());
-  assert.equal(strToArr(r.octalEatup2), [0, 50].toString());
+  assert.equal(strToArr(r.octalEatup2), [2, 50].toString());
 });

@@ -25,7 +25,7 @@ public class TestStrLiterals extends CommonSpec {
                 new char[] { 0, 50, 50 }
         );
         assertEquals(r.octalEatup2().toCharArray(),
-                new char[] { 0, 50 }
+                new char[] { 2, 50 }
         );
     }
 }

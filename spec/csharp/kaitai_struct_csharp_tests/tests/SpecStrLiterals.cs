@@ -27,7 +27,7 @@ namespace Kaitai
                 r.OctalEatup.ToCharArray()
             );
             Assert.AreEqual(
-                GenCharArray(new int[] { 0, 50 }),
+                GenCharArray(new int[] { 2, 50 }),
                 r.OctalEatup2.ToCharArray()
             );
         }

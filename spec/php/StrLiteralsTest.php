@@ -9,6 +9,6 @@ class StrLiteralsTest extends TestCase {
         $this->assertEquals("\u{22}\u{22}\u{22}", $r->doubleQuotes);
         $this->assertEquals("\u{5c}\u{5c}\u{5c}", $r->backslashes);
         $this->assertEquals("\u{0}\u{32}\u{32}", $r->octalEatup);
-        $this->assertEquals("\u{0}\u{32}", $r->octalEatup2);
+        $this->assertEquals("\u{2}\u{32}", $r->octalEatup2);
     }
 }
