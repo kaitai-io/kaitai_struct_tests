@@ -8,5 +8,6 @@ RSpec.describe StrLiterals do
     expect(r.double_quotes.chars.map { |x| x.ord }).to eq [34, 34, 34]
     expect(r.backslashes.chars.map { |x| x.ord }).to eq [92, 92, 92]
     expect(r.octal_eatup.chars.map { |x| x.ord }).to eq [0, 50, 50]
+    expect(r.octal_eatup2.chars.map { |x| x.ord }).to eq [0, 50]
   end
 end

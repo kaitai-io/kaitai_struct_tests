@@ -21,5 +21,11 @@ public class TestStrLiterals extends CommonSpec {
         assertEquals(r.backslashes().toCharArray(),
                 new char[] { 92, 92, 92 }
         );
+        assertEquals(r.octalEatup().toCharArray(),
+                new char[] { 0, 50, 50 }
+        );
+        assertEquals(r.octalEatup2().toCharArray(),
+                new char[] { 0, 50 }
+        );
     }
 }

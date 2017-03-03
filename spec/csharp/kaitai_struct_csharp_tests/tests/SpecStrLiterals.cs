@@ -22,6 +22,14 @@ namespace Kaitai
                 r.Backslashes.ToCharArray(),
                 GenCharArray(new int[] { 92, 92, 92 })
             );
+            Assert.AreEqual(
+                r.OctalEatup.ToCharArray(),
+                GenCharArray(new int[] { 0, 50, 50 })
+            );
+            Assert.AreEqual(
+                r.OctalEatup2.ToCharArray(),
+                GenCharArray(new int[] { 0, 50 })
+            );
         }
 
         private static char[] GenCharArray(int[] a)
