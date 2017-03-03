@@ -9,3 +9,5 @@ instances:
     value: '"\\\u005c\134"'
   octal_eatup:
     value: '"\0\62\62"'
+  octal_eatup2:
+    value: '"\2\62"'
