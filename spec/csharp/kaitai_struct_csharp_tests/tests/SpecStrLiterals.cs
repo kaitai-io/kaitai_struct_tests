@@ -11,24 +11,24 @@ namespace Kaitai
         {
             var r = StrLiterals.FromFile(SourceFile("fixed_struct.bin"));
             Assert.AreEqual(
-                r.ComplexStr.ToCharArray(),
-                GenCharArray(new int[] { 0, 1, 2, 7, 8, 10, 13, 9, 11, 12, 27, 61, 7, 10, 36, 9787 })
+                GenCharArray(new int[] { 0, 1, 2, 7, 8, 10, 13, 9, 11, 12, 27, 61, 7, 10, 36, 9787 }),
+                r.ComplexStr.ToCharArray()
             );
             Assert.AreEqual(
-                r.DoubleQuotes.ToCharArray(),
-                GenCharArray(new int[] { 34, 34, 34 })
+                GenCharArray(new int[] { 34, 34, 34 }),
+                r.DoubleQuotes.ToCharArray()
             );
             Assert.AreEqual(
-                r.Backslashes.ToCharArray(),
-                GenCharArray(new int[] { 92, 92, 92 })
+                GenCharArray(new int[] { 92, 92, 92 }),
+                r.Backslashes.ToCharArray()
             );
             Assert.AreEqual(
-                r.OctalEatup.ToCharArray(),
-                GenCharArray(new int[] { 0, 50, 50 })
+                GenCharArray(new int[] { 0, 50, 50 }),
+                r.OctalEatup.ToCharArray()
             );
             Assert.AreEqual(
-                r.OctalEatup2.ToCharArray(),
-                GenCharArray(new int[] { 0, 50 })
+                GenCharArray(new int[] { 0, 50 }),
+                r.OctalEatup2.ToCharArray()
             );
         }
 
