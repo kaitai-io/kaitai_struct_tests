@@ -1,5 +1,6 @@
 meta:
   id: type_ternary_opaque
+  ks-opaque-types: true
 seq:
   - id: dif_wo_hack
     size: 12
