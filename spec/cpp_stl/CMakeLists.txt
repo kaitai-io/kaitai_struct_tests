@@ -107,6 +107,7 @@ set(SPEC_SOURCES
 	test_str_literals2.cpp
 	test_imports0.cpp
 	test_imports_circular_a.cpp
+	test_imports_abs.cpp
 )
 
 set(KS_SOURCES
@@ -210,6 +211,8 @@ set(KS_SOURCES
 	${KS_PATH}/imports0.cpp
 	${KS_PATH}/imports_circular_a.cpp
 	${KS_PATH}/imports_circular_b.cpp
+	${KS_PATH}/imports_abs.cpp
+	${KS_PATH}/vlq_base128_le.cpp
 )
 
 set(RUNTIME_SOURCES
