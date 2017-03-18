@@ -98,6 +98,8 @@ set(SPEC_SOURCES
 	test_recursive_one.cpp
 	test_str_pad_term.cpp
 	test_nav_parent_override.cpp
+	test_nav_parent_false.cpp
+	test_nav_parent_false2.cpp
 	test_term_bytes.cpp
 	test_switch_cast.cpp
 	test_ts_packet_header.cpp
@@ -201,6 +203,8 @@ set(KS_SOURCES
 	${KS_PATH}/recursive_one.cpp
 	${KS_PATH}/str_pad_term.cpp
 	${KS_PATH}/nav_parent_override.cpp
+	${KS_PATH}/nav_parent_false.cpp
+	${KS_PATH}/nav_parent_false2.cpp
 	${KS_PATH}/term_bytes.cpp
 	${KS_PATH}/switch_cast.cpp
 	${KS_PATH}/ts_packet_header.cpp
