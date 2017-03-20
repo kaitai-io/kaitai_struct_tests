@@ -95,6 +95,7 @@ set(SPEC_SOURCES
 	test_bcd_user_type_be.cpp
 	test_bcd_user_type_le.cpp
 	test_docstrings.cpp
+	test_docstrings_docref.cpp
 	test_recursive_one.cpp
 	test_str_pad_term.cpp
 	test_nav_parent_override.cpp
@@ -200,6 +201,7 @@ set(KS_SOURCES
 	${KS_PATH}/bcd_user_type_be.cpp
 	${KS_PATH}/bcd_user_type_le.cpp
 	${KS_PATH}/docstrings.cpp
+	${KS_PATH}/docstrings_docref.cpp
 	${KS_PATH}/recursive_one.cpp
 	${KS_PATH}/str_pad_term.cpp
 	${KS_PATH}/nav_parent_override.cpp
