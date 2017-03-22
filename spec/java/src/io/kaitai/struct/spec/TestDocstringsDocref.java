@@ -9,7 +9,5 @@ public class TestDocstringsDocref extends CommonSpec {
     @Test
     public void testDocstringsDocref() throws Exception {
         DocstringsDocref r = DocstringsDocref.fromFile(SRC_DIR + "fixed_struct.bin");
-
-        r = DocstringsDocref.from_file("src/fixed_struct.bin")
     }
 }
