@@ -1,7 +1,7 @@
 # https://github.com/kaitai-io/kaitai_struct_compiler/issues/44
 meta:
   id: opaque_external_type_02_parent
-  endian: le
+  ks-opaque-types: true
 seq:
   - id: parent
     type: parent_obj

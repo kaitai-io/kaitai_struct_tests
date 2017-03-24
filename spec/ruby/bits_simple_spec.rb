@@ -23,5 +23,16 @@ RSpec.describe BitsSimple do
 
     # 50 41 43
     expect(r.byte_8_9_10).to eq 0x504143
+
+    # 4B 2D 55 2D
+    expect(r.byte_11_to_14).to eq 0x4B2D552D
+
+    # 44 45 46 FF FF
+    expect(r.byte_15_to_19).to eq 0x444546FFFF
+
+    # FF FF FF FF FF FF FF FF
+    expect(r.byte_20_to_27).to eq 0xFFFFFFFFFFFFFFFF
+
+    expect(r.test_if_b1).to eq 123
   end
 end

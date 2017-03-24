@@ -31,5 +31,16 @@ BOOST_AUTO_TEST_CASE(test_bits_simple) {
     // 50 41 43
     BOOST_CHECK_EQUAL(r->byte_8_9_10(), 0x504143);
 
+    // 4B 2D 55 2D
+    BOOST_CHECK_EQUAL(r->byte_11_to_14(), 0x4B2D552D);
+
+    // 44 45 46 FF FF
+    BOOST_CHECK_EQUAL(r->byte_15_to_19(), 0x444546FFFF);
+
+    // FF FF FF FF FF FF FF FF
+    BOOST_CHECK_EQUAL(r->byte_20_to_27(), 0xFFFFFFFFFFFFFFFF);
+
+    BOOST_CHECK_EQUAL(r->test_if_b1(), 123);
+
     delete r;
 }

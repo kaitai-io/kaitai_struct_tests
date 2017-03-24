@@ -16,8 +16,10 @@ testHelper('BitsSimple', 'src/fixed_struct.bin', function(r) {
     assert.equal(r.largeBits2, 0b10100110001);
 
     // FF FF
-    assert.equal(r.normalS2, -1)
+    assert.equal(r.normalS2, -1);
 
     // 50 41 43
-    assert.equal(r.byte8910, 0x504143)
+    assert.equal(r.byte8910, 0x504143);
+
+    assert.equal(r.testIfB1, 123);
 });

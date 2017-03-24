@@ -8,7 +8,7 @@ RSpec.describe Debug0 do
     expect(r.one).to eq 0x50
     expect(r.array_of_ints).to eq [0x41, 0x43, 0x4b]
 
-    expect(Debug0::SEQ_FIELDS).to eq ['one', 'array_of_ints']
+    expect(Debug0::SEQ_FIELDS).to eq ['one', 'array_of_ints', '_unnamed2']
     expect(r._debug['one']).to eq({
       start: 0,
       end: 1,

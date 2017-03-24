@@ -82,7 +82,7 @@ class Aggregator
     @aggr.each_pair { |test, results|
       results.each_pair { |lang, t|
         @count_ok[lang] ||= 0
-        @count_ok[lang] += 1 if t.status == :passed
+        @count_ok[lang] += 1 if t.status == :passed or t.status == :skipped
       }
     }
 

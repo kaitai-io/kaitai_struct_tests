@@ -6,16 +6,16 @@ meta:
 seq:
   - id:       ltr
     size:     4
-    type:     ltr
+    type:     ltr_obj
   - id:       rtl
     size:     4
-    type:     rtl
+    type:     rtl_obj
   - id:       leading_zero_ltr
     size:     4
-    type:     leading_zero_ltr
+    type:     leading_zero_ltr_obj
 
 types:
-  ltr:
+  ltr_obj:
     seq:
       - id:   b1
         type: u1
@@ -55,7 +55,7 @@ types:
       as_str:
         value:  digit1.to_s + digit2.to_s + digit3.to_s + digit4.to_s + digit5.to_s + digit6.to_s + digit7.to_s + digit8.to_s
 
-  rtl:
+  rtl_obj:
     seq:
       - id:   b1
         type: u1
@@ -95,7 +95,7 @@ types:
       as_str:
         value:  digit8.to_s + digit7.to_s + digit6.to_s + digit5.to_s + digit4.to_s + digit3.to_s + digit2.to_s + digit1.to_s
 
-  leading_zero_ltr:
+  leading_zero_ltr_obj:
     seq:
       - id:   b1
         type: u1

@@ -58,6 +58,16 @@ class JUnitXMLParser
         tr = TestResult.new(name, status, tc.attribute('time').value.to_f, failure)
         yield tr
       }
+
+      # Pick up PHP empty testsuites = skipped tests
+      doc.elements.each('//testsuite') { |ts|
+        if ts.children.size == 0
+          name = ts.attribute('name').value.gsub(/^.*\\/, '').gsub(/Test$/, '')
+
+          tr = TestResult.new(name, :skipped, 0, nil)
+          yield tr
+        end
+      }
     }
   end
 end

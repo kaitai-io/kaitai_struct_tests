@@ -24,5 +24,17 @@ class BitsSimpleTest extends TestCase {
 
         # 50 41 43
         $this->assertEquals(0x504143, $r->byte8910);
+
+        # 4B 2D 55 2D
+        $this->assertEquals(0x4B2D552D, $r->byte11To14);
+
+        # 44 45 46 FF FF
+        $this->assertEquals(0x444546FFFF, $r->byte15To19);
+
+        # FF FF FF FF FF FF FF FF
+        # no 64-bit unsigned integers in PHP, so it would be signed => -1
+        $this->assertEquals(-1, $r->byte20To27);
+
+        $this->assertEquals(123, $r->testIfB1);
     }
 }

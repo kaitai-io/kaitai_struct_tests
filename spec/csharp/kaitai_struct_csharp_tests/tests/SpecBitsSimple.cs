@@ -28,6 +28,17 @@ namespace Kaitai
 
             // 50 41 43
             Assert.AreEqual(r.Byte8910, 0x504143);
+
+            // 4B 2D 55 2D
+            Assert.AreEqual(r.Byte11To14, 0x4B2D552DUL);
+
+            // 44 45 46 FF FF
+            Assert.AreEqual(r.Byte15To19, 0x444546FFFFUL);
+
+            // FF FF FF FF FF FF FF FF
+            Assert.AreEqual(r.Byte20To27, 0xFFFFFFFFFFFFFFFFUL);
+
+            Assert.AreEqual(r.TestIfB1, 123);
         }
     }
 }

@@ -25,3 +25,14 @@ class TestBitsSimple(unittest.TestCase):
 
         # 50 41 43
         self.assertEqual(r.byte_8_9_10, 0x504143)
+
+        # 4B 2D 55 2D
+        self.assertEqual(r.byte_11_to_14, 0x4B2D552D)
+
+        # 44 45 46 FF FF
+        self.assertEqual(r.byte_15_to_19, 0x444546FFFF)
+
+        # FF FF FF FF FF FF FF FF
+        self.assertEqual(r.byte_20_to_27, 0xFFFFFFFFFFFFFFFF)
+
+        self.assertEqual(r.test_if_b1, 123)

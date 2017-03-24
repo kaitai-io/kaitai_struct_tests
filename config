@@ -1,6 +1,7 @@
 COMPILER_DIR=../compiler
 FORMATS_KSY_DIR=formats
 FORMATS_COMPILED_DIR=compiled
+FORMATS_REPO_DIR=../formats
 
 CSHARP_RUNTIME_DIR=../runtime/csharp
 JAVA_RUNTIME_DIR=../runtime/java

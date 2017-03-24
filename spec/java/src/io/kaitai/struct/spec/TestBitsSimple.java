@@ -29,5 +29,16 @@ public class TestBitsSimple extends CommonSpec {
 
         // 50 41 43
         assertEquals(r.byte8910(), 0x504143);
+
+        // 4B 2D 55 2D
+        assertEquals(r.byte11To14(), 0x4B2D552DL);
+
+        // 44 45 46 FF FF
+        assertEquals(r.byte15To19(), 0x444546FFFFL);
+
+        // FF FF FF FF FF FF FF FF
+        assertEquals(r.byte20To27(), 0xFFFFFFFFFFFFFFFFL);
+
+        assertEquals(r.testIfB1().intValue(), 123);
     }
 }

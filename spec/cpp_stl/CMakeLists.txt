@@ -27,6 +27,7 @@ set(SPEC_SOURCES
 	test_enum_if.cpp
 	test_enum_for_unknown_id.cpp
 	test_enum_of_value_inst.cpp
+	test_enum_to_i.cpp
 	test_expr_0.cpp
 	test_expr_1.cpp
 	test_expr_2.cpp
@@ -89,6 +90,27 @@ set(SPEC_SOURCES
 	test_debug_0.cpp
 	test_debug_enum_name.cpp
 	test_bits_simple.cpp
+	test_bits_byte_aligned.cpp
+	test_bits_enum.cpp
+	test_bcd_user_type_be.cpp
+	test_bcd_user_type_le.cpp
+	test_docstrings.cpp
+	test_docstrings_docref.cpp
+	test_recursive_one.cpp
+	test_str_pad_term.cpp
+	test_nav_parent_override.cpp
+	test_nav_parent_false.cpp
+	test_nav_parent_false2.cpp
+	test_term_bytes.cpp
+	test_switch_cast.cpp
+	test_ts_packet_header.cpp
+	test_repeat_until_sized.cpp
+	test_nav_parent_vs_value_inst.cpp
+	test_str_literals.cpp
+	test_str_literals2.cpp
+	test_imports0.cpp
+	test_imports_circular_a.cpp
+	test_imports_abs.cpp
 )
 
 set(KS_SOURCES
@@ -110,6 +132,7 @@ set(KS_SOURCES
 	${KS_PATH}/enum_if.cpp
 	${KS_PATH}/enum_for_unknown_id.cpp
 	${KS_PATH}/enum_of_value_inst.cpp
+	${KS_PATH}/enum_to_i.cpp
 	${KS_PATH}/expr_0.cpp
 	${KS_PATH}/expr_1.cpp
 	${KS_PATH}/expr_2.cpp
@@ -173,6 +196,29 @@ set(KS_SOURCES
 	${KS_PATH}/debug_0.cpp
 	${KS_PATH}/debug_enum_name.cpp
 	${KS_PATH}/bits_simple.cpp
+	${KS_PATH}/bits_byte_aligned.cpp
+	${KS_PATH}/bits_enum.cpp
+	${KS_PATH}/bcd_user_type_be.cpp
+	${KS_PATH}/bcd_user_type_le.cpp
+	${KS_PATH}/docstrings.cpp
+	${KS_PATH}/docstrings_docref.cpp
+	${KS_PATH}/recursive_one.cpp
+	${KS_PATH}/str_pad_term.cpp
+	${KS_PATH}/nav_parent_override.cpp
+	${KS_PATH}/nav_parent_false.cpp
+	${KS_PATH}/nav_parent_false2.cpp
+	${KS_PATH}/term_bytes.cpp
+	${KS_PATH}/switch_cast.cpp
+	${KS_PATH}/ts_packet_header.cpp
+	${KS_PATH}/repeat_until_sized.cpp
+	${KS_PATH}/nav_parent_vs_value_inst.cpp
+	${KS_PATH}/str_literals.cpp
+	${KS_PATH}/str_literals2.cpp
+	${KS_PATH}/imports0.cpp
+	${KS_PATH}/imports_circular_a.cpp
+	${KS_PATH}/imports_circular_b.cpp
+	${KS_PATH}/imports_abs.cpp
+	${KS_PATH}/vlq_base128_le.cpp
 )
 
 set(RUNTIME_SOURCES

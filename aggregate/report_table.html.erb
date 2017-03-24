@@ -23,7 +23,7 @@
        if lang != ''
          test = tests[lang]
          if test %>
-        <td class="<%= test.status.to_s.tr('_', '-') %>"><%= test.status.to_s.tr('_', ' ') %>
+        <td class="<%= test.status.to_s.tr('_', '-') %>" title="<%= lang %>: <%= h test_name %>"><%= test.status.to_s.tr('_', ' ') %>
 <%         if test.failure %>
           <div class="add-info">
 <%           if test.failure.file_name or test.failure.line_num %>
@@ -37,7 +37,7 @@
 <%         end %>
         </td>
 <%       else %>
-        <td class="no-run">didn't run</td>
+        <td class="no-run" title="<%= lang %>: <%= h test_name %>">didn't run</td>
 <%       end
        else %>
         <td></td>

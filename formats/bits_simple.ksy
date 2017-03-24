@@ -27,3 +27,16 @@ seq:
   # byte 8-9-10 (24 bits)
   - id: byte_8_9_10
     type: b24
+  # byte 11-12-13-14 (32 bits)
+  - id: byte_11_to_14
+    type: b32
+  # byte 15-16-17-18-19 (40 bits)
+  - id: byte_15_to_19
+    type: b40
+  # byte 20-21-22-23-24-25-26-27 (64 bits)
+  - id: byte_20_to_27
+    type: b64
+instances:
+  test_if_b1:
+    value: 123
+    if: bits_a == false
