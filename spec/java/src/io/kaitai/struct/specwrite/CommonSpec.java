@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class CommonSpec {
     private final static String SRC_DIR = io.kaitai.struct.spec.CommonSpec.SRC_DIR;
@@ -18,6 +19,8 @@ public class CommonSpec {
     protected void assertEqualToFile(KaitaiStruct struct, String fn) throws IOException {
         KaitaiStream io = struct._io();
         int size = io.pos();
+
+        assertTrue(size > 0, "no data was written");
 
         io.seek(0);
         byte[] actual = io.readBytes(size);
