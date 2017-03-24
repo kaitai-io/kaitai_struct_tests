@@ -3,6 +3,7 @@
   <test name="all">
     <packages>
       <package name="io.kaitai.struct.spec" />
+      <package name="io.kaitai.struct.specwrite" />
     </packages>
   </test>
 </suite>
