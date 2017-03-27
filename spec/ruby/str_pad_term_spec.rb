@@ -1,8 +1,8 @@
-require 'str_pad_term'
+require 'bytes_pad_term'
 
-RSpec.describe StrPadTerm do
+RSpec.describe BytesPadTerm do
   it 'parses test properly' do
-    r = StrPadTerm.from_file('src/str_pad_term.bin')
+    r = BytesPadTerm.from_file('src/str_pad_term.bin')
 
     expect(r.str_pad).to eq 'str1'
     expect(r.str_term).to eq 'str2foo'
