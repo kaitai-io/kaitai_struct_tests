@@ -19,7 +19,9 @@ public class CommonSpec {
     protected void assertEqualToFile(KaitaiStruct.Writable struct, String fn) throws IOException {
         KaitaiStream io = emptyIO();
         struct._write(io);
-        byte[] actual = io.toByteArray();
+        long size = io.pos();
+        io.seek(0);
+        byte[] actual = io.readBytes(size);
 
         assertTrue(actual.length > 0, "no data was written");
 
