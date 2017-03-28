@@ -19,15 +19,12 @@ public class CommonSpec {
     protected void assertEqualToFile(KaitaiStruct.Writable struct, String fn) throws IOException {
         KaitaiStream io = emptyIO();
         struct._write(io);
-        int size = io.pos();
+        byte[] actual = io.toByteArray();
 
-        assertTrue(size > 0, "no data was written");
-
-        io.seek(0);
-        byte[] actual = io.readBytes(size);
+        assertTrue(actual.length > 0, "no data was written");
 
         FileInputStream fis = new FileInputStream(SRC_DIR + fn);
-        byte[] expected = new byte[size];
+        byte[] expected = new byte[actual.length];
         fis.read(expected);
 
         assertEquals(byteArrayToHex(actual), byteArrayToHex(expected));
