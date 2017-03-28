@@ -6,8 +6,6 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 
-import static org.testng.Assert.assertEquals;
-
 public class TestRepeatNStruct extends CommonSpec {
     @Test
     public void testRepeatNStruct() throws Exception {
