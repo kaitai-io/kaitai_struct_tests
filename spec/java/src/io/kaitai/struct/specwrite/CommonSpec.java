@@ -12,12 +12,13 @@ import static org.testng.Assert.assertTrue;
 public class CommonSpec {
     private final static String SRC_DIR = io.kaitai.struct.spec.CommonSpec.SRC_DIR;
 
-    protected KaitaiStream emptyIO() {
-        return new KaitaiStream(new byte[1024 * 1024]);
+    private KaitaiStream emptyIO() {
+        return new KaitaiStream(1024 * 1024);
     }
 
-    protected void assertEqualToFile(KaitaiStruct struct, String fn) throws IOException {
-        KaitaiStream io = struct._io();
+    protected void assertEqualToFile(KaitaiStruct.Writable struct, String fn) throws IOException {
+        KaitaiStream io = emptyIO();
+        struct._write(io);
         int size = io.pos();
 
         assertTrue(size > 0, "no data was written");

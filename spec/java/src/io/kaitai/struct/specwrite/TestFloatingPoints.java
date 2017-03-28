@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 public class TestFloatingPoints extends CommonSpec {
     @Test
     public void testFloatingPoints() throws Exception {
-        FloatingPoints r = new FloatingPoints(emptyIO());
+        FloatingPoints r = new FloatingPoints();
 
         r.setSingleValue(0.5f);
         r.setSingleValueBe(0.5f);
@@ -15,8 +15,6 @@ public class TestFloatingPoints extends CommonSpec {
         r.setDoubleValueBe(0.25d);
 
         r.setApproximateValue(1.2345f);
-
-        r._write();
 
         assertEqualToFile(r, "floating_points.bin");
     }

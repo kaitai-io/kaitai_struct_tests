@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 public class TestStrEncodings extends CommonSpec {
     @Test
     public void testStrEncodings() throws Exception {
-        StrEncodings r = new StrEncodings(emptyIO());
+        StrEncodings r = new StrEncodings();
 
         r.setStr1("Some ASCII");
         r.setStr2("こんにちは");
@@ -19,7 +19,6 @@ public class TestStrEncodings extends CommonSpec {
         r.setLenOf3(10);
         r.setLenOf4(3);
 
-        r._write();
         assertEqualToFile(r, "str_encodings.bin");
     }
 }

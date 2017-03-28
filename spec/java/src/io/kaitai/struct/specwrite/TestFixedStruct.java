@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 public class TestFixedStruct extends CommonSpec {
     @Test
     public void testFixedStruct() throws Exception {
-        FixedStruct.Header r = new FixedStruct.Header(emptyIO());
+        FixedStruct.Header r = new FixedStruct.Header();
 
         r.setUint8(255);
         r.setUint16(65535);
@@ -35,8 +35,6 @@ public class TestFixedStruct extends CommonSpec {
         r.setSint32be(-66);
         r.setSint64be(-66);
         
-        r._write();
-
         assertEqualToFile(r, "fixed_struct.bin");
     }
 }

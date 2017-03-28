@@ -1,6 +1,5 @@
 package io.kaitai.struct.specwrite;
 
-import io.kaitai.struct.KaitaiStream;
 import io.kaitai.struct.testwrite.BufferedStruct;
 import org.testng.annotations.Test;
 
@@ -23,7 +22,6 @@ public class TestBufferedStruct extends CommonSpec {
             setFinisher(0xee);
         }};
 
-        r._write(emptyIO());
         assertEqualToFile(r, "buffered_struct.bin");
     }
 }
