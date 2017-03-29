@@ -22,6 +22,8 @@ public class TestBufferedStruct extends CommonSpec {
             setFinisher(0xee);
         }};
 
-        assertEqualToFile(r, "buffered_struct.bin");
+        io.kaitai.struct.testformats.BufferedStruct r2 = new io.kaitai.struct.testformats.BufferedStruct(structToReadStream(r));
+
+        io.kaitai.struct.spec.TestBufferedStruct.assertGood(r2);
     }
 }
