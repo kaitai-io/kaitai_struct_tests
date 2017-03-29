@@ -16,20 +16,39 @@ public class CommonSpec {
         return new KaitaiStream(1024 * 1024);
     }
 
+    protected void assertEqualToFullFile(KaitaiStruct.Writable struct, String fn) throws IOException {
+        byte[] actual = structToByteArray(struct);
+
+        KaitaiStream expFile = new KaitaiStream(SRC_DIR + fn);
+        byte[] expected = expFile.readBytesFull();
+        expFile.close();
+
+        assertEquals(byteArrayToHex(actual), byteArrayToHex(expected));
+    }
+
     protected void assertEqualToFile(KaitaiStruct.Writable struct, String fn) throws IOException {
-        KaitaiStream io = emptyIO();
-        struct._write(io);
-        long size = io.pos();
-        io.seek(0);
-        byte[] actual = io.readBytes(size);
+        byte[] actual = structToByteArray(struct);
 
         assertTrue(actual.length > 0, "no data was written");
 
         FileInputStream fis = new FileInputStream(SRC_DIR + fn);
         byte[] expected = new byte[actual.length];
         fis.read(expected);
+        fis.close();
 
         assertEquals(byteArrayToHex(actual), byteArrayToHex(expected));
+    }
+
+    protected byte[] structToByteArray(KaitaiStruct.Writable struct) {
+        KaitaiStream io = emptyIO();
+        struct._write(io);
+        long size = io.pos();
+        io.seek(0);
+        return io.readBytes(size);
+    }
+
+    protected KaitaiStream structToReadStream(KaitaiStruct.Writable struct) {
+        return new KaitaiStream(structToByteArray(struct));
     }
 
     private String byteArrayToHex(byte[] arr) {
