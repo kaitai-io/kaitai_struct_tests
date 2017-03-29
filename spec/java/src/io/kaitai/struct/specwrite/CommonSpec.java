@@ -12,11 +12,7 @@ import static org.testng.Assert.assertTrue;
 public class CommonSpec {
     private final static String SRC_DIR = io.kaitai.struct.spec.CommonSpec.SRC_DIR;
 
-    private KaitaiStream emptyIO() {
-        return new KaitaiStream(1024 * 1024);
-    }
-
-    protected void assertEqualToFullFile(KaitaiStruct.Writable struct, String fn) throws IOException {
+    protected void assertEqualToFullFile(KaitaiStruct.ReadWrite struct, String fn) throws IOException {
         byte[] actual = structToByteArray(struct);
 
         KaitaiStream expFile = new KaitaiStream(SRC_DIR + fn);
@@ -26,7 +22,7 @@ public class CommonSpec {
         assertEquals(byteArrayToHex(actual), byteArrayToHex(expected));
     }
 
-    protected void assertEqualToFile(KaitaiStruct.Writable struct, String fn) throws IOException {
+    protected void assertEqualToFile(KaitaiStruct.ReadWrite struct, String fn) throws IOException {
         byte[] actual = structToByteArray(struct);
 
         assertTrue(actual.length > 0, "no data was written");
@@ -39,15 +35,15 @@ public class CommonSpec {
         assertEquals(byteArrayToHex(actual), byteArrayToHex(expected));
     }
 
-    protected byte[] structToByteArray(KaitaiStruct.Writable struct) {
-        KaitaiStream io = emptyIO();
+    protected byte[] structToByteArray(KaitaiStruct.ReadWrite struct) {
+        KaitaiStream io = new KaitaiStream(1024 * 1024);
         struct._write(io);
         long size = io.pos();
         io.seek(0);
         return io.readBytes(size);
     }
 
-    protected KaitaiStream structToReadStream(KaitaiStruct.Writable struct) {
+    protected KaitaiStream structToReadStream(KaitaiStruct.ReadWrite struct) {
         return new KaitaiStream(structToByteArray(struct));
     }
 
