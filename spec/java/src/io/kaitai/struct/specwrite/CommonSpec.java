@@ -36,6 +36,7 @@ public class CommonSpec {
     }
 
     protected byte[] structToByteArray(KaitaiStruct.ReadWrite struct) {
+        struct._check();
         KaitaiStream io = new KaitaiStream(1024 * 1024);
         struct._write(io);
         long size = io.pos();
