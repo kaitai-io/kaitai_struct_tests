@@ -32,6 +32,7 @@ set(SPEC_SOURCES
 	test_expr_1.cpp
 	test_expr_2.cpp
 	test_expr_3.cpp
+	test_expr_array.cpp
 	test_expr_mod.cpp
 	test_expr_enum.cpp
 	test_expr_io_eof.cpp
@@ -138,6 +139,7 @@ set(KS_SOURCES
 	${KS_PATH}/expr_1.cpp
 	${KS_PATH}/expr_2.cpp
 	${KS_PATH}/expr_3.cpp
+	${KS_PATH}/expr_array.cpp
 	${KS_PATH}/expr_mod.cpp
 	${KS_PATH}/expr_enum.cpp
 	${KS_PATH}/expr_io_eof.cpp
