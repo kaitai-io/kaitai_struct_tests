@@ -16,3 +16,4 @@ class TestExprBytesCmp(unittest.TestCase):
         self.assertEqual(r.is_le, True)
         self.assertEqual(r.is_ge, False)
         self.assertEqual(r.is_lt2, False)
+        self.assertEqual(r.is_gt2, True)

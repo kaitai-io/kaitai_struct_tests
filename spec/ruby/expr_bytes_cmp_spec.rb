@@ -14,5 +14,6 @@ RSpec.describe ExprBytesCmp do
     expect(r.is_le).to eq true
     expect(r.is_ge).to eq false
     expect(r.is_lt2).to eq false
+    expect(r.is_gt2).to eq true
   end
 end

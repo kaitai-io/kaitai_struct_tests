@@ -11,6 +11,8 @@ instances:
     value: '[65, 67, 75]'
   ack2:
     value: '[65, 67, 75, 50]'
+  hi_val:
+    value: '[0x90, 67]'
   is_eq:
     value: two == ack
   is_ne:
@@ -25,3 +27,5 @@ instances:
     value: two >= ack2
   is_lt2:
     value: one < two
+  is_gt2:
+    value: hi_val > two
