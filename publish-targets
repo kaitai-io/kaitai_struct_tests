@@ -71,7 +71,7 @@ cd "$GH_REPO_NAME"
 
 echo 'Adding and committing...'
 git add --all .
-git commit -m Regen
+git commit -m Regen || :
 
 echo 'Pushing...'
 git push
