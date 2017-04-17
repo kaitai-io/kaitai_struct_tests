@@ -16,8 +16,8 @@ BOOST_AUTO_TEST_CASE(test_floating_points) {
     BOOST_CHECK_EQUAL(r->single_value(), 0.5f);
     BOOST_CHECK_EQUAL(r->single_value_be(), 0.5f);
 
-    BOOST_CHECK_EQUAL(r->double_value(), 0.25d);
-    BOOST_CHECK_EQUAL(r->double_value_be(), 0.25d);
+    BOOST_CHECK_EQUAL(r->double_value(), 0.25);
+    BOOST_CHECK_EQUAL(r->double_value_be(), 0.25);
 
     //assertEquals(1.2345d, fp.approximateValue(), delta);
 
