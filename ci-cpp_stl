@@ -1,0 +1,3 @@
+#!/bin/sh
+
+./run-cpp_stl
