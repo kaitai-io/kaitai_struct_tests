@@ -22,8 +22,8 @@ BOOST_AUTO_TEST_CASE(test_floating_points) {
     BOOST_CHECK_CLOSE(r->approximate_value(), 1.2345, delta);
 
     BOOST_CHECK_CLOSE(r->single_value_plus_int(), 1.5f, delta);
-    BOOST_CHECK_CLOSE(r->single_value_plus_float(), 1.0d, delta);
-    BOOST_CHECK_CLOSE(r->double_value_plus_float(), 0.3d, delta);
+    BOOST_CHECK_CLOSE(r->single_value_plus_float(), 1.0, delta);
+    BOOST_CHECK_CLOSE(r->double_value_plus_float(), 0.3, delta);
 
     delete r;
 }
