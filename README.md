@@ -44,12 +44,14 @@ There are a few scripts that automate steps specified above:
 * `build-formats` compiles all format descriptions in `formats/` with
   this compiler for every supported language, placing results in
   `compiled/$LANGUAGE`
-* `run-$LANGUAGE` executes all tests for a particular `$LANGUAGE` using
-  preferred language-specific testing tool.
-* `run-all`
-  * runs tests for all languages (usually by executing
-    `run-$LANGUAGE`, sometimes with special arguments for brevity and
-    proper test machine-readable output generation)
+* `run-$LANGUAGE` executes all tests for a particular `$LANGUAGE`
+  using preferred language-specific testing tool. The output is
+  generally dumped on screen for quick assessment during development.
+* `ci-$LANGUAGE` also runs all tests for a particular `$LANGUAGE`, but
+  logs all output into designated log file instead (mostly useful for
+  aggregation within a CI system afterwards).
+* `ci-all`
+  * runs tests for all languages (usually by executing `ci-$LANGUAGE`)
   * aggregates all testing results into single nice HTML page by
     running `aggregate/aggregate` result aggregation & formatting
     script
