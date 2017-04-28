@@ -18,9 +18,9 @@ func TestHelloWorld(t *testing.T) {
 	s := kaitai.NewStream(f)
 
 	var h HelloWorld
-	err = h.Read(s)
+	err = h.Read(s, &h, &h)
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.Equal(t, byte(0x50), h.One(), "They should be equal")
+	assert.Equal(t, byte(0x50), h.One, "They should be equal")
 }
