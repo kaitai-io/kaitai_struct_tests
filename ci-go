@@ -1,0 +1,15 @@
+#!/bin/sh
+
+. ./config
+
+export GOPATH=$HOME/go
+export GOPATH=$GOPATH:$(pwd)/compiled/go
+
+ABS_TEST_OUT_DIR=$(realpath "$TEST_OUT_DIR")
+mkdir -p "$TEST_OUT_DIR/go"
+
+cd spec/go
+go test -v . 2>&1 >"$ABS_TEST_OUT_DIR/go/report.log"
+cd ../..
+cat "$ABS_TEST_OUT_DIR/go/report.log"
+$HOME/go/bin/go-junit-report <"$ABS_TEST_OUT_DIR/go/report.log" >"$ABS_TEST_OUT_DIR/go/report.xml"
