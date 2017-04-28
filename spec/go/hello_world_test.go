@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tarm/kaitai_struct_go_runtime/kaitai"
+	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 
 	. "test_formats"
 )
