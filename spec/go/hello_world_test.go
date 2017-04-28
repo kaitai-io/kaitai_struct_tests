@@ -22,5 +22,6 @@ func TestHelloWorld(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.Equal(t, byte(0x50), h.One, "They should be equal")
+
+	assert.Equal(t, byte(0x50), h.One)
 }
