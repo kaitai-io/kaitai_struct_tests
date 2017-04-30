@@ -46,6 +46,7 @@ set(SPEC_SOURCES
 	test_repeat_n_struct.cpp
 	test_repeat_eos_struct.cpp
 	test_floating_points.cpp
+	test_float_to_i.cpp
 	test_position_to_end.cpp
 	test_str_eos.cpp
 	test_type_int_unary_op.cpp
@@ -154,6 +155,7 @@ set(KS_SOURCES
 	${KS_PATH}/repeat_n_struct.cpp
 	${KS_PATH}/repeat_eos_struct.cpp
 	${KS_PATH}/floating_points.cpp
+	${KS_PATH}/float_to_i.cpp
 	${KS_PATH}/position_to_end.cpp
 	${KS_PATH}/str_eos.cpp
 	${KS_PATH}/type_int_unary_op.cpp
