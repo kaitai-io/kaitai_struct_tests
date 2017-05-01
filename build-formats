@@ -9,4 +9,5 @@ mkdir -p "$FORMATS_COMPILED_DIR"
 	-I "$FORMATS_REPO_DIR" \
 	--java-package io.kaitai.struct.testformats \
 	--php-namespace 'Kaitai\Struct\Tests' \
+	--go-package test_formats \
 	"$FORMATS_KSY_DIR"/*.ksy
