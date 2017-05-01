@@ -5,6 +5,11 @@
 export GOPATH=$HOME/go
 export GOPATH=$GOPATH:$(pwd)/compiled/go
 
+# Symlink Go runtime libraries from full umbrella project checkout
+mkdir -p compiled/go/src/github.com/kaitai-io
+rm -f compiled/go/src/github.com/kaitai-io/kaitai_struct_go_runtime
+ln -s ../../../../../../runtime/go compiled/go/src/github.com/kaitai-io/kaitai_struct_go_runtime
+
 ABS_TEST_OUT_DIR=$(realpath "$TEST_OUT_DIR")
 mkdir -p "$TEST_OUT_DIR/go"
 
