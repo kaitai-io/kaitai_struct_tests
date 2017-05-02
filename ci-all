@@ -10,6 +10,10 @@ echo '#################### csharp'
 echo '#################### cpp_stl'
 ./ci-cpp_stl
 
+# Run Go tests, generates JUnit XML report
+echo '#################### go'
+./ci-go
+
 # Run Java tests, generates JUnit XML report by default
 echo '#################### java'
 ./ci-java
