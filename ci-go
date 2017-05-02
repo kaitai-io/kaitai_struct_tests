@@ -11,10 +11,30 @@ rm -f compiled/go/src/github.com/kaitai-io/kaitai_struct_go_runtime
 ln -s ../../../../../../runtime/go compiled/go/src/github.com/kaitai-io/kaitai_struct_go_runtime
 
 ABS_TEST_OUT_DIR=$(realpath "$TEST_OUT_DIR")
+ABS_REPORT_LOG="$ABS_TEST_OUT_DIR/go/report.log"
 mkdir -p "$TEST_OUT_DIR/go"
 
 cd spec/go
-go test -v . 2>&1 >"$ABS_TEST_OUT_DIR/go/report.log"
+
+keep_compiling=1
+while [ "$keep_compiling" = 1 ]; do
+	if go test -v . >"$ABS_REPORT_LOG" 2>&1; then
+		keep_compiling=0
+	else
+		echo "Got error:"
+		cat "$ABS_REPORT_LOG"
+		if egrep "^\.\./\.\./compiled/go/.*: syntax error:" "$ABS_REPORT_LOG" >"$ABS_TEST_OUT_DIR/go/syntax_err.log"; then
+			sed 's/:.*//' <"$ABS_TEST_OUT_DIR/go/syntax_err.log" | sort -u | xargs rm
+			echo "Trying to recover..."
+			keep_compiling=1
+		else
+			echo "Unable to recover, bailing out :("
+			keep_compiling=0
+			exit 1
+		fi
+	fi
+done
+
 cd ../..
 cat "$ABS_TEST_OUT_DIR/go/report.log"
 $HOME/go/bin/go-junit-report <"$ABS_TEST_OUT_DIR/go/report.log" >"$ABS_TEST_OUT_DIR/go/report.xml"
