@@ -13,6 +13,7 @@ ln -s ../../../../../../runtime/go compiled/go/src/github.com/kaitai-io/kaitai_s
 ABS_TEST_OUT_DIR=$(realpath "$TEST_OUT_DIR")
 ABS_REPORT_LOG="$ABS_TEST_OUT_DIR/go/report.log"
 mkdir -p "$TEST_OUT_DIR/go"
+rm -f "$TEST_OUT_DIR/go/build-err.log"
 
 cd spec/go
 
@@ -23,8 +24,10 @@ while [ "$keep_compiling" = 1 ]; do
 	else
 		echo "Got error:"
 		cat "$ABS_REPORT_LOG"
-		if egrep "^\.\./\.\./compiled/go/.*: syntax error:" "$ABS_REPORT_LOG" >"$ABS_TEST_OUT_DIR/go/syntax_err.log"; then
-			sed 's/:.*//' <"$ABS_TEST_OUT_DIR/go/syntax_err.log" | sort -u | xargs rm
+		if egrep "^\.\./\.\./compiled/go/.*:[0-9][0-9]*:" "$ABS_REPORT_LOG" >"$ABS_TEST_OUT_DIR/go/err.now"; then
+			cat "$ABS_TEST_OUT_DIR/go/err.now" >>"$ABS_TEST_OUT_DIR/go/build-err.log"
+			sed 's/:.*//' <"$ABS_TEST_OUT_DIR/go/err.now" | sort -u >"$ABS_TEST_OUT_DIR/go/to_delete.now"
+			xargs rm <"$ABS_TEST_OUT_DIR/go/to_delete.now"
 			echo "Trying to recover..."
 			keep_compiling=1
 		else
