@@ -67,8 +67,11 @@ class Aggregator
           next
         elsif prev_t.status == :spec_build_failed and t.status == :format_build_failed
           # actually it is "format failed", store it
+        elsif prev_t.status == :format_build_failed and t.status == :format_build_failed
+          # just more messages on this one: ignore it for now, in
+          # future, maybe we should concat
         else
-          raise "Already got test information on failing build test \"#{t.name}\" for #{lang}: #{h[lang].inspect}"
+          raise "Already got test information on failing build test \"#{t.name}\" for #{lang}: #{h[lang].inspect} (was status=#{prev_t.status.inspect})"
         end
       end
       h[lang] = t
@@ -140,6 +143,7 @@ class ReportGenerator
 
     # Add build fail results
     bfps = {
+      'go' => BuildFailParser.new("#{@test_root}/go"),
       'java' => BuildFailParser.new("#{@test_root}/java"),
     }
 
