@@ -123,6 +123,7 @@ class ReportGenerator
     parsers = {
       'csharp' => NUnitXMLParser.new("#{@test_root}/csharp/TestResult.xml"),
       'cpp_stl' => BoostTestParser.new("#{@test_root}/cpp_stl/results.xml"),
+      'go' => JUnitXMLParser.new("#{@test_root}/go/report.xml"),
       'java' => JUnitXMLParser.new("#{@test_root}/java/junitreports"),
       'javascript' => JUnitXMLParser.new("#{@test_root}/javascript/test-output-javascript.xml"),
       'perl' => JUnitXMLParser.new("#{@test_root}/perl/output.xml"),

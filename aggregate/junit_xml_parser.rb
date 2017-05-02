@@ -30,7 +30,7 @@ class JUnitXMLParser
           # Mocha output, use classname
           name = tc.attribute('classname').value
         else
-          raise "Unable to parse name: \"#{name}\"" unless name =~ /^test(.*?)$/
+          raise "Unable to parse name: \"#{name}\"" unless name =~ /^[Tt]est(.*?)$/
           if $1[0] == '_'
             name = underscore_to_ucamelcase($1)
           else
