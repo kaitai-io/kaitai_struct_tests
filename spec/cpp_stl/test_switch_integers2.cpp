@@ -13,7 +13,7 @@ BOOST_AUTO_TEST_CASE(test_switch_integers2) {
 
     BOOST_CHECK_EQUAL(r->code(), 1);
     BOOST_CHECK_EQUAL(r->len(), 7);
-    BOOST_CHECK_EQUAL(r->ham(), "\x02\x40\x40\x04\x37\x13\x00");
+    BOOST_CHECK_EQUAL(r->ham(), std::string("\x02\x40\x40\x04\x37\x13\x00", 7));
     BOOST_CHECK_EQUAL(r->padding(), 0);
     BOOST_CHECK_EQUAL(r->len_mod_str(), "13");
 
