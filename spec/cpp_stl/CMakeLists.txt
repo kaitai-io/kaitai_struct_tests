@@ -76,6 +76,7 @@ set(SPEC_SOURCES
 	test_switch_manual_str.cpp
 	test_switch_manual_str_else.cpp
 	test_switch_integers.cpp
+	test_switch_integers2.cpp
 	test_switch_multi_bool_ops.cpp
 	test_nav_root.cpp
 	test_nav_parent.cpp
@@ -185,6 +186,7 @@ set(KS_SOURCES
 	${KS_PATH}/switch_manual_str.cpp
 	${KS_PATH}/switch_manual_str_else.cpp
 	${KS_PATH}/switch_integers.cpp
+	${KS_PATH}/switch_integers2.cpp
 	${KS_PATH}/switch_multi_bool_ops.cpp
 	${KS_PATH}/nav_root.cpp
 	${KS_PATH}/nav_parent.cpp
