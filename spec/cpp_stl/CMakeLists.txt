@@ -234,9 +234,9 @@ set(RUNTIME_SOURCES
 )
 
 add_executable (ks_tests
-	${SPEC_SOURCES}
-	${KS_SOURCES}
 	${RUNTIME_SOURCES}
+	${KS_SOURCES}
+	${SPEC_SOURCES}
 )
 
 include_directories(
