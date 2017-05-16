@@ -1,5 +1,7 @@
+# Parses doc[0] and doc[1], then raises an exception on doc[2] due to
+# unknown endianness
 meta:
-  id: default_endian_expr_both
+  id: default_endian_expr_exception
 seq:
   - id: docs
     repeat: eos
@@ -14,9 +16,11 @@ types:
     types:
       main_obj:
         meta:
-          endian: expr
-          endian-is-le: _parent.indicator == [0x49, 0x49]
-          endian-is-be: _parent.indicator == [0x4d, 0x4d]
+          endian:
+            switch-on: _parent.indicator
+            cases:
+              '[0x49, 0x49]': le
+              '[0x4d, 0x4d]': be
         seq:
           - id: some_int
             type: u4

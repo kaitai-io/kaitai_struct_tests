@@ -14,8 +14,11 @@ types:
     types:
       main_obj:
         meta:
-          endian: expr
-          endian-is-le: _parent.indicator == [0x49, 0x49]
+          endian:
+            switch-on: _parent.indicator
+            cases:
+              '[0x49, 0x49]': le
+              _: be
         seq:
           - id: some_int
             type: u4

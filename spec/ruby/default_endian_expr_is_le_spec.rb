@@ -1,8 +1,8 @@
-require 'default_endian_expr_both'
+require 'default_endian_expr_is_le'
 
-RSpec.describe DefaultEndianExprBoth do
+RSpec.describe DefaultEndianExprIsLe do
   it 'parses test properly' do
-    r = DefaultEndianExprBoth.from_file('src/endian_expr.bin')
+    r = DefaultEndianExprIsLe.from_file('src/endian_expr.bin')
 
     expect(r.docs[0].indicator).to eq [0x49, 0x49].pack('C*')
     expect(r.docs[0].main.some_int).to eq 0x42

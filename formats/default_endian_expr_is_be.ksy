@@ -14,8 +14,11 @@ types:
     types:
       main_obj:
         meta:
-          endian: expr
-          endian-is-be: _parent.indicator == [0x4d, 0x4d]
+          endian:
+            switch-on: _parent.indicator
+            cases:
+              '[0x4d, 0x4d]': be
+              _: le
         seq:
           - id: some_int
             type: u4
@@ -23,3 +26,15 @@ types:
             type: u2be
           - id: some_int_le
             type: u2le
+        instances:
+          inst_int:
+            pos: 2
+            type: u4
+          inst_sub:
+            pos: 2
+            type: sub_main_obj
+        types:
+          sub_main_obj:
+            seq:
+              - id: foo
+                type: u4
