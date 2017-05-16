@@ -22,13 +22,13 @@ RSpec.describe DefaultEndianExprIsBe do
     expect(r.docs[1].main.inst_int).to eq 0x42000000
     expect(r.docs[1].main.inst_sub.foo).to eq 0x42000000
 
-    # Weird => BE
+    # Weird => LE
     expect(r.docs[2].indicator).to eq [0x58, 0x58].pack('C*')
     expect(r.docs[2].main.some_int).to eq 0x42000000
     expect(r.docs[2].main.some_int_be).to eq 0x42
     expect(r.docs[2].main.some_int_le).to eq 0x42
 
-    expect(r.docs[2].main.inst_int).to eq 0x42000000
-    expect(r.docs[2].main.inst_sub.foo).to eq 0x42000000
+    expect(r.docs[2].main.inst_int).to eq 0x42
+    expect(r.docs[2].main.inst_sub.foo).to eq 0x42
   end
 end
