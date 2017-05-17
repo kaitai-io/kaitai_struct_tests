@@ -56,6 +56,9 @@ set(SPEC_SOURCES
 	test_repeat_until_s4.cpp
 	test_default_big_endian.cpp
 	test_default_endian_mod.cpp
+	test_default_endian_expr_exception.cpp
+	test_default_endian_expr_is_be.cpp
+	test_default_endian_expr_is_le.cpp
 	test_repeat_until_complex.cpp
 	test_instance_std_array.cpp
 	test_instance_user_array.cpp
@@ -167,6 +170,9 @@ set(KS_SOURCES
 	${KS_PATH}/repeat_until_s4.cpp
 	${KS_PATH}/default_big_endian.cpp
 	${KS_PATH}/default_endian_mod.cpp
+	${KS_PATH}/default_endian_expr_exception.cpp
+	${KS_PATH}/default_endian_expr_is_be.cpp
+	${KS_PATH}/default_endian_expr_is_le.cpp
 	${KS_PATH}/repeat_until_complex.cpp
 	${KS_PATH}/instance_std_array.cpp
 	${KS_PATH}/instance_user_array.cpp
