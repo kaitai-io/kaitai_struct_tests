@@ -57,6 +57,7 @@ set(SPEC_SOURCES
 	test_default_big_endian.cpp
 	test_default_endian_mod.cpp
 	test_default_endian_expr_exception.cpp
+	test_default_endian_expr_inherited.cpp
 	test_default_endian_expr_is_be.cpp
 	test_default_endian_expr_is_le.cpp
 	test_repeat_until_complex.cpp
@@ -171,6 +172,7 @@ set(KS_SOURCES
 	${KS_PATH}/default_big_endian.cpp
 	${KS_PATH}/default_endian_mod.cpp
 	${KS_PATH}/default_endian_expr_exception.cpp
+	${KS_PATH}/default_endian_expr_inherited.cpp
 	${KS_PATH}/default_endian_expr_is_be.cpp
 	${KS_PATH}/default_endian_expr_is_le.cpp
 	${KS_PATH}/repeat_until_complex.cpp
