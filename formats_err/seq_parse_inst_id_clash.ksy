@@ -1,4 +1,4 @@
-# /instances/foo: duplicate seq attribute ID 'foo', previously defined at /seq/0
+# /instances/foo: duplicate attribute ID 'foo', previously defined at /seq/0
 meta:
   id: seq_parse_inst_id_clash
 seq:
