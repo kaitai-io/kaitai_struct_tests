@@ -45,6 +45,9 @@ set(SPEC_SOURCES
 	test_process_xor4_const.cpp
 	test_process_xor4_value.cpp
 	test_process_rotate.cpp
+	test_process_coerce_bytes.cpp
+	test_process_coerce_usertype1.cpp
+	test_process_coerce_usertype2.cpp
 	test_repeat_n_struct.cpp
 	test_repeat_eos_struct.cpp
 	test_floating_points.cpp
@@ -163,6 +166,9 @@ set(KS_SOURCES
 	${KS_PATH}/process_xor4_const.cpp
 	${KS_PATH}/process_xor4_value.cpp
 	${KS_PATH}/process_rotate.cpp
+	${KS_PATH}/process_coerce_bytes.cpp
+	${KS_PATH}/process_coerce_usertype1.cpp
+	${KS_PATH}/process_coerce_usertype2.cpp
 	${KS_PATH}/repeat_n_struct.cpp
 	${KS_PATH}/repeat_eos_struct.cpp
 	${KS_PATH}/floating_points.cpp
