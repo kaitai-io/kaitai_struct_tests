@@ -27,4 +27,5 @@ instances:
 types:
   foo:
     seq:
-    - size: 4
+      - id: foo
+        size: 4
