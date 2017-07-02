@@ -1,6 +1,6 @@
 # Checks coercion of a switch type (with and without processing)
 meta:
-  id: process_coerce_bytes
+  id: process_coerce_switch
 seq:
   - id: buf_type
     type: u1
