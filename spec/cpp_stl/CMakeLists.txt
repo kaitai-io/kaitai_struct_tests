@@ -112,6 +112,7 @@ set(SPEC_SOURCES
 	test_docstrings_docref.cpp
 	test_recursive_one.cpp
 	test_str_pad_term.cpp
+	test_str_pad_term_empty.cpp
 	test_bytes_pad_term.cpp
 	test_nav_parent_override.cpp
 	test_nav_parent_false.cpp
@@ -234,6 +235,7 @@ set(KS_SOURCES
 	${KS_PATH}/docstrings_docref.cpp
 	${KS_PATH}/recursive_one.cpp
 	${KS_PATH}/str_pad_term.cpp
+	${KS_PATH}/str_pad_term_empty.cpp
 	${KS_PATH}/bytes_pad_term.cpp
 	${KS_PATH}/nav_parent_override.cpp
 	${KS_PATH}/nav_parent_false.cpp
