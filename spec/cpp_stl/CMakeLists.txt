@@ -128,6 +128,7 @@ set(SPEC_SOURCES
 	test_imports_circular_a.cpp
 	test_imports_abs.cpp
 	test_index_sizes.cpp
+	test_meta_xref.cpp
 )
 
 set(KS_SOURCES
@@ -253,6 +254,7 @@ set(KS_SOURCES
 	${KS_PATH}/imports_abs.cpp
 	${KS_PATH}/vlq_base128_le.cpp
 	${KS_PATH}/index_sizes.cpp
+	${KS_PATH}/meta_xref.cpp
 )
 
 set(RUNTIME_SOURCES
