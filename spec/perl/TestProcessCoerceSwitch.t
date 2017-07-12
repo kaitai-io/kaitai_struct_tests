@@ -11,7 +11,7 @@ sub test_process_coerce_switch: Test(3) {
 
     is($r->buf_type(), 0, 'Equals');
     is($r->flag(), 0, 'Equals');
-    is($r->buf()->foo(), 'AAAA', 'Equals');
+    is($r->buf()->bar(), 'AAAA', 'Equals');
 }
 
 Test::Class->runtests;

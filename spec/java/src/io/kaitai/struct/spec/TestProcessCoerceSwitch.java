@@ -12,6 +12,6 @@ public class TestProcessCoerceSwitch extends CommonSpec {
 
         assertEquals(r.bufType(), 0);
         assertEquals(r.flag(), 0);
-        assertEquals(((ProcessCoerceSwitch.Foo) r.buf()).foo(), new byte[] {0x41, 0x41, 0x41, 0x41});
+        assertEquals(((ProcessCoerceSwitch.Foo) r.buf()).bar(), new byte[] {0x41, 0x41, 0x41, 0x41});
     }
 }

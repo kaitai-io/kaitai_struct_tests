@@ -6,6 +6,6 @@ RSpec.describe ProcessCoerceSwitch do
 
     expect(r.buf_type).to eq 0
     expect(r.flag).to eq 0
-    expect(r.buf.foo).to eq "AAAA"
+    expect(r.buf.bar).to eq "AAAA"
   end
 end

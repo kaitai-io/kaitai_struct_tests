@@ -8,4 +8,4 @@ class TestProcessCoerceSwitch(unittest.TestCase):
 
         self.assertEqual(r.buf_type, 0)
         self.assertEqual(r.flag, 0)
-        self.assertEqual(r.buf.foo, b"AAAA")
+        self.assertEqual(r.buf.bar, b"AAAA")

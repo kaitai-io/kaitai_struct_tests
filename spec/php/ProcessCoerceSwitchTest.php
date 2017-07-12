@@ -7,6 +7,6 @@ class ProcessCoerceSwitchTest extends TestCase {
 
         $this->assertEquals(0, $r->bufType);
         $this->assertEquals(0, $r->flag);
-        $this->assertEquals("AAAA", $r->buf->foo);
+        $this->assertEquals("AAAA", $r->buf->bar);
     }
 }
