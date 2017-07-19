@@ -28,7 +28,7 @@ class ValgrindXMLParser
       }
 
       unless affected.empty?
-        msg = err.elements['xwhat']&.elements['text']&.text
+        msg = err.elements['xwhat']&.elements&['text']&.text
         failure = TestResult::Failure.new(nil, nil, msg, nil)
         affected.each { |name|
           tr = TestResult.new(underscore_to_ucamelcase(name), :leak, 0, failure)
