@@ -11,6 +11,7 @@ require_relative 'rspec_json_parser'
 require_relative 'boost_test_parser'
 require_relative 'nunit_xml_parser'
 require_relative 'build_fail_parser'
+require_relative 'valgrind_xml_parser'
 
 class Aggregator
   attr_reader :name
@@ -70,6 +71,8 @@ class Aggregator
         elsif prev_t.status == :format_build_failed and t.status == :format_build_failed
           # just more messages on this one: ignore it for now, in
           # future, maybe we should concat
+        elsif t.status == :leak
+          # this is legitimate Valgrind leak message, store it
         else
           raise "Already got test information on failing build test \"#{t.name}\" for #{lang}: #{h[lang].inspect} (was status=#{prev_t.status.inspect})"
         end
@@ -150,6 +153,10 @@ class ReportGenerator
     bfps.each_pair { |lang, bfp|
       @specs.add_fails(lang, bfp)
     }
+
+    # Add C++ valgrind check results
+    vgp = ValgrindXMLParser.new("#{@test_root}/cpp_stl/valgrind.xml")
+    @specs.add_fails('cpp_stl', vgp)
 
     @translators.summary
     @specs.summary
