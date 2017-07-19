@@ -1,3 +1,6 @@
 #!/bin/sh
 
 ./run-cpp_stl
+
+# Run C++/STL valgrind check, generates Valgrind XML report
+./valgrind-cpp_stl

@@ -10,9 +10,6 @@ echo '#################### csharp'
 echo '#################### cpp_stl'
 ./ci-cpp_stl
 
-# Run C++/STL valgrind check, generates Valgrind XML report
-./valgrind-cpp_stl
-
 # Run Go tests, generates JUnit XML report
 echo '#################### go'
 ./ci-go
