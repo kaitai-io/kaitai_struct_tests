@@ -13,15 +13,15 @@ public class TestSwitchMultiBoolOps extends CommonSpec {
         assertEquals(r.opcodes().size(), 4);
 
         assertEquals(r.opcodes().get(0).code(), 1);
-        assertEquals(r.opcodes().get(0).body(), 7);
+        assertEquals(r.opcodes().get(0).body().longValue(), 7);
 
         assertEquals(r.opcodes().get(1).code(), 2);
-        assertEquals(r.opcodes().get(1).body(), 0x4040);
+        assertEquals(r.opcodes().get(1).body().longValue(), 0x4040);
 
         assertEquals(r.opcodes().get(2).code(), 4);
-        assertEquals(r.opcodes().get(2).body(), 4919);
+        assertEquals(r.opcodes().get(2).body().longValue(), 4919);
 
         assertEquals(r.opcodes().get(3).code(), 8);
-        assertEquals(r.opcodes().get(3).body(), 4919);
+        assertEquals(r.opcodes().get(3).body().longValue(), 4919);
     }
 }
