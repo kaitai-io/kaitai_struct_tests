@@ -176,9 +176,12 @@ class ReportGenerator
       out.print tmpl_table.result(binding)
 
       data = @specs
-      # special way to tell table builder to skip first column (with
-      # `_expr` pseudo-language)
-      @langs[0] = ''
+
+      # mark up columns to skip, as they're not available in
+      # per-environment tests
+      to_skip = Set.new(['_expr', 'python'])
+      @langs.map! { |lang| to_skip.include?(lang) ? '' : lang }
+
       out.print tmpl_table.result(binding)
 
       out.print tmpl_footer.result(binding)
