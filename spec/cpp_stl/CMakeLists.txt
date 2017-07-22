@@ -6,6 +6,7 @@ find_package(ZLIB REQUIRED)
 
 set(KS_PATH ../../compiled/cpp_stl)
 set(RUNTIME_SRC_PATH ../../../runtime/cpp_stl)
+set(PREREQ_PATH prereq)
 
 set(SPEC_SOURCES
 	main.cpp
@@ -48,6 +49,7 @@ set(SPEC_SOURCES
 	test_process_coerce_bytes.cpp
 	test_process_coerce_usertype1.cpp
 	test_process_coerce_usertype2.cpp
+	test_process_custom.cpp
 	test_repeat_n_struct.cpp
 	test_repeat_eos_struct.cpp
 	test_floating_points.cpp
@@ -131,6 +133,11 @@ set(SPEC_SOURCES
 	test_meta_xref.cpp
 )
 
+set(PREREQ_SOURCES
+	${PREREQ_PATH}/my_custom_fx.cpp
+	${PREREQ_PATH}/custom_fx.cpp
+)
+
 set(KS_SOURCES
 	${KS_PATH}/hello_world.cpp
 	${KS_PATH}/fixed_struct.cpp
@@ -171,6 +178,7 @@ set(KS_SOURCES
 	${KS_PATH}/process_coerce_bytes.cpp
 	${KS_PATH}/process_coerce_usertype1.cpp
 	${KS_PATH}/process_coerce_usertype2.cpp
+	${KS_PATH}/process_custom.cpp
 	${KS_PATH}/repeat_n_struct.cpp
 	${KS_PATH}/repeat_eos_struct.cpp
 	${KS_PATH}/floating_points.cpp
@@ -263,6 +271,7 @@ set(RUNTIME_SOURCES
 
 add_executable (ks_tests
 	${RUNTIME_SOURCES}
+	${PREREQ_SOURCES}
 	${KS_SOURCES}
 	${SPEC_SOURCES}
 )
@@ -271,6 +280,7 @@ include_directories(
 	"${PROJECT_BINARY_DIR}"
 	"${KS_PATH}"
 	"${RUNTIME_SRC_PATH}"
+	"${PREREQ_PATH}"
 	"${ZLIB_INCLUDE_DIRS}"
 )
 
