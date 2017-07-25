@@ -90,6 +90,7 @@ set(SPEC_SOURCES
 	test_switch_integers2.cpp
 	test_switch_multi_bool_ops.cpp
 	test_switch_bytearray.cpp
+	test_switch_repeat_expr.cpp
 	test_nav_root.cpp
 	test_nav_parent.cpp
 	test_nav_parent2.cpp
@@ -219,6 +220,7 @@ set(KS_SOURCES
 	${KS_PATH}/switch_integers2.cpp
 	${KS_PATH}/switch_multi_bool_ops.cpp
 	${KS_PATH}/switch_bytearray.cpp
+	${KS_PATH}/switch_repeat_expr.cpp
 	${KS_PATH}/nav_root.cpp
 	${KS_PATH}/nav_parent.cpp
 	${KS_PATH}/nav_parent2.cpp
