@@ -132,6 +132,7 @@ set(SPEC_SOURCES
 	test_imports_abs.cpp
 	test_index_sizes.cpp
 	test_meta_xref.cpp
+	test_params_def.cpp
 )
 
 set(PREREQ_SOURCES
@@ -265,6 +266,7 @@ set(KS_SOURCES
 	${KS_PATH}/vlq_base128_le.cpp
 	${KS_PATH}/index_sizes.cpp
 	${KS_PATH}/meta_xref.cpp
+	${KS_PATH}/params_def.cpp
 )
 
 set(RUNTIME_SOURCES
