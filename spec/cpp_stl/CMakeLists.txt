@@ -133,6 +133,7 @@ set(SPEC_SOURCES
 	test_index_sizes.cpp
 	test_meta_xref.cpp
 	test_params_def.cpp
+	test_params_call_short.cpp
 )
 
 set(PREREQ_SOURCES
@@ -267,6 +268,7 @@ set(KS_SOURCES
 	${KS_PATH}/index_sizes.cpp
 	${KS_PATH}/meta_xref.cpp
 	${KS_PATH}/params_def.cpp
+	${KS_PATH}/params_call_short.cpp
 )
 
 set(RUNTIME_SOURCES
