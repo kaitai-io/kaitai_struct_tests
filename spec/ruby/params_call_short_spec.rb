@@ -6,6 +6,6 @@ RSpec.describe ParamsCallShort do
 
     expect(r.buf1.body).to eq("foo|b")
     expect(r.buf2.body).to eq("ar|ba")
-    expect(r.buf2.trailer).to eq(0x7a)    
+    expect(r.buf2.trailer).to eq(0x7a)
   end
 end
