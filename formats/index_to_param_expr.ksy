@@ -21,3 +21,5 @@ types:
     seq:
       - id: buf
         size: _root.sizes[idx]
+        type: str
+        encoding: ASCII
