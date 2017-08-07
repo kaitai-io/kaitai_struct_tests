@@ -17,7 +17,7 @@ types:
   block:
     params:
       - id: idx
-        type: u4
+        type: s4 # NB: C# requires this to be signed
     seq:
       - id: buf
         size: _root.sizes[idx]
