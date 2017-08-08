@@ -4,4 +4,5 @@
 TEST_DIR=$(pwd)
 
 cd "$COMPILER_DIR"
-"$TEST_DIR/travis-fold" build-compiler sbt compilerJVM/stage
+"$TEST_DIR/travis-fold" build-jvm-compiler sbt compilerJVM/stage
+"$TEST_DIR/travis-fold" build-js-compiler sbt compile fastOptJS
