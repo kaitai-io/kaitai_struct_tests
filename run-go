@@ -1,12 +1,3 @@
 #!/bin/sh
 
-export GOPATH=$HOME/go
-export GOPATH=$GOPATH:$(pwd)/compiled/go
-
-# Symlink Go runtime libraries from full umbrella project checkout
-mkdir -p compiled/go/src/github.com/kaitai-io
-rm -f compiled/go/src/github.com/kaitai-io/kaitai_struct_go_runtime
-ln -s ../../../../../../runtime/go compiled/go/src/github.com/kaitai-io/kaitai_struct_go_runtime
-
-cd spec/go
-go test -v .
+./ci-go
