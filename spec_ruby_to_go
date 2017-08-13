@@ -15,6 +15,9 @@ s.gsub!(/\.encode\('UTF-8'\)/, '')
 s.gsub!(/expect\((.+)\)\.to eq(?: (.+)|\((.+)\))$/) {
   ex = $1
   to = $2 ? $2 : $3
+  to.gsub!(/^\[(0.+)\]\.pack\('C\*'\)$/, '[]byte{\1}')
+  to.gsub!(/^\[('.+')\]$/, '[]string{\1}')
+  to.gsub!(/^\[(0.+)\]$/, '[]uint{\1}')
   c = ex.split(/\./)
   first = c.shift
   c.map! { |x| x.split('_').map{|y| y.capitalize}.join }
