@@ -21,6 +21,7 @@ keep_compiling=1
 while [ "$keep_compiling" = 1 ]; do
 	if go test -v . >"$ABS_REPORT_LOG" 2>&1; then
 		keep_compiling=0
+		cat "$ABS_TEST_OUT_DIR/go/report.log"
 	else
 		echo "Got error:"
 		cat "$ABS_REPORT_LOG"
@@ -30,6 +31,9 @@ while [ "$keep_compiling" = 1 ]; do
 			xargs rm <"$ABS_TEST_OUT_DIR/go/to_delete.now"
 			echo "Trying to recover..."
 			keep_compiling=1
+        elif grep -q '^=== RUN' "$ABS_REPORT_LOG"; then
+			echo "Tests completed partially..."
+			keep_compiling=0
 		else
 			echo "Unable to recover, bailing out :("
 			keep_compiling=0
@@ -39,5 +43,4 @@ while [ "$keep_compiling" = 1 ]; do
 done
 
 cd ../..
-cat "$ABS_TEST_OUT_DIR/go/report.log"
 $HOME/go/bin/go-junit-report <"$ABS_TEST_OUT_DIR/go/report.log" >"$ABS_TEST_OUT_DIR/go/report.xml"
