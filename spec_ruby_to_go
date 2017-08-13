@@ -12,8 +12,12 @@ s.gsub!(/^.*it .parses test properly. do\n/m, '')
 s.gsub!(/^ *r = .*\.from_file\(.*\n/, '')
 s.gsub!(/\.encode\('UTF-8'\)/, '')
 
-s.gsub!(/expect\((.*?)\)/) {
+s.gsub!(/expect\((.+)\)\.to eq(?: (.+)|\((.+)\))$/) {
   ex = $1
+  to = $2 ? $2 : $3
+  to.gsub!(/^\[(0.+)\]\.pack\('C\*'\)$/, '[]byte{\1}')
+  to.gsub!(/^\[('.+')\]$/, '[]string{\1}')
+  to.gsub!(/^\[(0.+)\]$/, '[]uint{\1}')
   c = ex.split(/\./)
   first = c.shift
   c.map! { |x| x.split('_').map{|y| y.capitalize}.join }
@@ -24,10 +28,8 @@ s.gsub!(/expect\((.*?)\)/) {
   else
     ex = c.join('.')
   end
-  "assert.EqualValues(t, #{ex}"
+  "assert.EqualValues(t, #{to}, #{ex})"
 }
-s.gsub!(/\.to eq (.*?)$/) { ", #{$1})" }
-s.gsub!(/\.to eq\((.*?)\)$/) { ", #{$1})" }
 
 s.gsub!(/'/, '"')
 s.gsub!(/^\s*end\n/, '')
