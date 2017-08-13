@@ -23,5 +23,5 @@ func TestDefaultBigEndian(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, r.One, 0x7000000)
+	assert.EqualValues(t, 0x7000000, r.One)
 }

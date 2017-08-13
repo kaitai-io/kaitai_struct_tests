@@ -23,7 +23,7 @@ func TestTermStrz(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, r.S1, "foo")
-	assert.EqualValues(t, r.S2, "bar")
-	assert.EqualValues(t, r.S3, "|baz@")
+	assert.EqualValues(t, "foo", r.S1)
+	assert.EqualValues(t, "bar", r.S2)
+	assert.EqualValues(t, "|baz@", r.S3)
 }

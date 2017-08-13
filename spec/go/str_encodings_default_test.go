@@ -23,8 +23,8 @@ func TestStrEncodingsDefault(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, r.Str1, "Some ASCII")
-	assert.EqualValues(t, r.Rest.Str2, "こんにちは")
-	assert.EqualValues(t, r.Rest.Str3, "こんにちは")
-	assert.EqualValues(t, r.Rest.Str4, "░▒▓")
+	assert.EqualValues(t, "Some ASCII", r.Str1)
+	assert.EqualValues(t, "こんにちは", r.Rest.Str2)
+	assert.EqualValues(t, "こんにちは", r.Rest.Str3)
+	assert.EqualValues(t, "░▒▓", r.Rest.Str4)
 }

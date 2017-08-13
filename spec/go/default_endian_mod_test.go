@@ -23,7 +23,7 @@ func TestDefaultEndianMod(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, r.Main.One, 0x4b434150)
-	assert.EqualValues(t, r.Main.Nest.Two, -52947)
-	assert.EqualValues(t, r.Main.NestBe.Two, 0x5041434b)
+	assert.EqualValues(t, 0x4b434150, r.Main.One)
+	assert.EqualValues(t, -52947, r.Main.Nest.Two)
+	assert.EqualValues(t, 0x5041434b, r.Main.NestBe.Two)
 }

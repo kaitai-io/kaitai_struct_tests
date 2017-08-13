@@ -23,5 +23,5 @@ func TestNavParentFalse2(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, r.Parentless.Foo, 80)
+	assert.EqualValues(t, 80, r.Parentless.Foo)
 }

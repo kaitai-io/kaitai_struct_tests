@@ -23,15 +23,15 @@ func TestNestedTypes2(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, r.One.TypedAtRoot.ValueB, 80)
+	assert.EqualValues(t, 80, r.One.TypedAtRoot.ValueB)
 
-	assert.EqualValues(t, r.One.TypedHere1.ValueC, 65)
+	assert.EqualValues(t, 65, r.One.TypedHere1.ValueC)
 
-	assert.EqualValues(t, r.One.TypedHere1.TypedHere.ValueD, 67)
-	assert.EqualValues(t, r.One.TypedHere1.TypedParent.ValueCc, 75)
-	assert.EqualValues(t, r.One.TypedHere1.TypedRoot.ValueB, 45)
+	assert.EqualValues(t, 67, r.One.TypedHere1.TypedHere.ValueD)
+	assert.EqualValues(t, 75, r.One.TypedHere1.TypedParent.ValueCc)
+	assert.EqualValues(t, 45, r.One.TypedHere1.TypedRoot.ValueB)
 
-	assert.EqualValues(t, r.One.TypedHere2.ValueCc, 49)
+	assert.EqualValues(t, 49, r.One.TypedHere2.ValueCc)
 
-	assert.EqualValues(t, r.Two.ValueB, -1)
+	assert.EqualValues(t, -1, r.Two.ValueB)
 }

@@ -23,7 +23,7 @@ func TestProcessRotate(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, r.Buf1, "Hello")
-	assert.EqualValues(t, r.Buf2, "World")
-	assert.EqualValues(t, r.Buf3, "There")
+	assert.EqualValues(t, "Hello", r.Buf1)
+	assert.EqualValues(t, "World", r.Buf2)
+	assert.EqualValues(t, "There", r.Buf3)
 }

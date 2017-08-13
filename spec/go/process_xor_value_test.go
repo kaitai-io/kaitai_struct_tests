@@ -23,6 +23,6 @@ func TestProcessXorValue(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, r.Key, 0xff)
-	assert.EqualValues(t, r.Buf, "foo bar")
+	assert.EqualValues(t, 0xff, r.Key)
+	assert.EqualValues(t, "foo bar", r.Buf)
 }

@@ -24,8 +24,8 @@ func TestRepeatEosStruct(t *testing.T) {
 	}
 
 	assert.EqualValues(t, len(r.Chunks), 2)
-	assert.EqualValues(t, r.Chunks[0].Offset, 0)
-	assert.EqualValues(t, r.Chunks[0].Len, 0x42)
-	assert.EqualValues(t, r.Chunks[1].Offset, 0x42)
-	assert.EqualValues(t, r.Chunks[1].Len, 0x815)
+	assert.EqualValues(t, 0, r.Chunks[0].Offset)
+	assert.EqualValues(t, 0x42, r.Chunks[0].Len)
+	assert.EqualValues(t, 0x42, r.Chunks[1].Offset)
+	assert.EqualValues(t, 0x815, r.Chunks[1].Len)
 }

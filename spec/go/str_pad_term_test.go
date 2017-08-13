@@ -23,8 +23,8 @@ func TestStrPadTerm(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, r.StrPad, "str1")
-	assert.EqualValues(t, r.StrTerm, "str2foo")
-	assert.EqualValues(t, r.StrTermAndPad, "str+++3bar+++")
-	assert.EqualValues(t, r.StrTermInclude, "str4baz@")
+	assert.EqualValues(t, "str1", r.StrPad)
+	assert.EqualValues(t, "str2foo", r.StrTerm)
+	assert.EqualValues(t, "str+++3bar+++", r.StrTermAndPad)
+	assert.EqualValues(t, "str4baz@", r.StrTermInclude)
 }

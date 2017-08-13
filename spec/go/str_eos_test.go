@@ -23,5 +23,5 @@ func TestStrEos(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, r.Str, "foo|bar|baz@")
+	assert.EqualValues(t, "foo|bar|baz@", r.Str)
 }

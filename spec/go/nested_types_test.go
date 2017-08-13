@@ -23,7 +23,7 @@ func TestNestedTypes(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, r.One.TypedAtRoot.ValueB, 80)
-	assert.EqualValues(t, r.One.TypedHere.ValueC, 65)
-	assert.EqualValues(t, r.Two.ValueB, 67)
+	assert.EqualValues(t, 80, r.One.TypedAtRoot.ValueB)
+	assert.EqualValues(t, 65, r.One.TypedHere.ValueC)
+	assert.EqualValues(t, 67, r.Two.ValueB)
 }
