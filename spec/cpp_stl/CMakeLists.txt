@@ -137,6 +137,7 @@ set(SPEC_SOURCES
 	test_index_to_param_eos.cpp
 	test_index_to_param_expr.cpp 
 	test_index_to_param_until.cpp
+	test_js_signed_right_shift.cpp
 )
 
 set(PREREQ_SOURCES
@@ -275,6 +276,7 @@ set(KS_SOURCES
 	${KS_PATH}/index_to_param_eos.cpp
 	${KS_PATH}/index_to_param_expr.cpp 
 	${KS_PATH}/index_to_param_until.cpp
+	${KS_PATH}/js_signed_right_shift.cpp
 )
 
 set(RUNTIME_SOURCES
