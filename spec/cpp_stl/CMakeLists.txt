@@ -300,9 +300,14 @@ include_directories(
 	"${ZLIB_INCLUDE_DIRS}"
 )
 
+if (APPLE)
+	set (ICONV_LIBRARIES iconv)
+endif()
+
 target_link_libraries(ks_tests
 	"${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}"
 	"${ZLIB_LIBRARIES}"
+	"${ICONV_LIBRARIES}"
 )
 
 add_test(ks_tests ks_tests)
