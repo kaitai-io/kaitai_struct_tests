@@ -140,6 +140,7 @@ set(SPEC_SOURCES
 	test_js_signed_right_shift.cpp
 	test_opaque_with_param.cpp
 	test_cast_to_top.cpp
+	test_cast_to_imported.cpp
 )
 
 set(PREREQ_SOURCES
@@ -281,6 +282,7 @@ set(KS_SOURCES
 	${KS_PATH}/js_signed_right_shift.cpp
 	${KS_PATH}/opaque_with_param.cpp
 	${KS_PATH}/cast_to_top.cpp
+	${KS_PATH}/cast_to_imported.cpp
 )
 
 set(RUNTIME_SOURCES
