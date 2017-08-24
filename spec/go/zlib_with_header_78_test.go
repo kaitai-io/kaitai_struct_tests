@@ -23,5 +23,5 @@ func TestZlibWithHeader78(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, "a quick brown fox jumps over", r.Data)
+	assert.EqualValues(t, "a quick brown fox jumps over", string(r.Data))
 }
