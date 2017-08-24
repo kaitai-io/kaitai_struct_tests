@@ -22,6 +22,10 @@ echo '#################### java'
 echo '#################### javascript'
 ./ci-javascript
 
+# Run Lua tests, generate JUnit-like report
+echo '#################### lua'
+./ci-lua
+
 # Run Perl tests, generate JUnit-like report
 echo '#################### perl'
 ./ci-perl
