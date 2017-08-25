@@ -2,9 +2,9 @@ local luaunit = require("luaunit")
 
 require("bytes_pad_term")
 
-TestBytesBadTerm = {}
+TestBytesPadTerm = {}
 
-function TestBytesBadTerm:test_bytes_pad_term()
+function TestBytesPadTerm:test_bytes_pad_term()
     r = BytesPadTerm:from_file("src/str_pad_term.bin")
 
     luaunit.assertEquals(r.str_pad, "str1")
