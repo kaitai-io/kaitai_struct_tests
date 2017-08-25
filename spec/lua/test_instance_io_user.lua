@@ -2,9 +2,9 @@ local luaunit = require("luaunit")
 
 require("instance_io_user")
 
-InstanceIoUser = {}
+TestInstanceIoUser = {}
 
-function InstanceIoUser:test_instance_io_user()
+function TestInstanceIoUser:test_instance_io_user()
     local r = InstanceIoUser:from_file("src/instance_io.bin")
 
     luaunit.assertEquals(r.qty_entries, 3)
