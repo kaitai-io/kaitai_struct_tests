@@ -3,5 +3,6 @@
 . ./config
 
 rm -rf "$TEST_OUT_DIR/lua"
+mkdir -p "$TEST_OUT_DIR/lua"
 LUA_PATH="$LUA_PATH;$LUA_RUNTIME_DIR/?.lua;spec/lua/?.lua;compiled/lua/?.lua;;" lua5.3 spec/lua/run_test_suite.lua \
-    -v -o junit -n "$TEST_OUT_DIR/lua"
+	-v -o junit -n "$TEST_OUT_DIR/lua/report"
