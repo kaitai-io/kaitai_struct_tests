@@ -2,9 +2,9 @@ local luaunit = require("luaunit")
 
 require("switch_integers2")
 
-TestSwitchIntegers = {}
+TestSwitchIntegers2 = {}
 
-function TestSwitchIntegers:test_switch_integers()
+function TestSwitchIntegers2:test_switch_integers2()
     local r = SwitchIntegers2:from_file("src/switch_integers.bin")
 
     luaunit.assertEquals(r.code, 1)
