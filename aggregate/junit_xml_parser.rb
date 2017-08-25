@@ -29,6 +29,9 @@ class JUnitXMLParser
         elsif name == 'parses test properly'
           # Mocha output, use classname
           name = tc.attribute('classname').value
+        elsif name =~ /^Test.*\.test_/
+          # Lua output, use classname
+          name = tc.attribute('classname').value.gsub(/^Test/, '')
         else
           raise "Unable to parse name: \"#{name}\"" unless name =~ /^[Tt]est(.*?)$/
           if $1[0] == '_'
