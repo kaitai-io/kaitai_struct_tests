@@ -8,6 +8,7 @@ CPP_STL_SPEC_DIR=spec/cpp_stl
 CSHARP_SPEC_DIR=spec/csharp/kaitai_struct_csharp_tests/tests
 JAVASCRIPT_SPEC_DIR=spec/javascript
 JAVA_SPEC_DIR=spec/java/src/io/kaitai/struct/spec
+LUA_SPEC_DIR=spec/lua
 PERL_SPEC_DIR=spec/perl
 PHP_SPEC_DIR=spec/php
 PYTHON_SPEC_DIR=spec/python
@@ -45,6 +46,7 @@ for FN in "$RUBY_SPEC_DIR"/*_spec.rb; do
 	generate_spec "$FN" "$CSHARP_SPEC_DIR/Spec${UCC_SPEC}.cs" csharp
 	generate_spec "$FN" "$JAVA_SPEC_DIR/Test${UCC_SPEC}.java" java
 	generate_spec "$FN" "$JAVASCRIPT_SPEC_DIR/test_$SPEC.js" javascript
+	generate_spec "$FN" "$LUA_SPEC_DIR/test_$SPEC.lua" lua
 	generate_spec "$FN" "$PHP_SPEC_DIR/${UCC_SPEC}Test.php" php
 	generate_spec "$FN" "$PYTHON_SPEC_DIR/test_$SPEC.py" python
 done
