@@ -5,7 +5,7 @@ require("bytes_pad_term")
 TestBytesPadTerm = {}
 
 function TestBytesPadTerm:test_bytes_pad_term()
-    r = BytesPadTerm:from_file("src/str_pad_term.bin")
+    local r = BytesPadTerm:from_file("src/str_pad_term.bin")
 
     luaunit.assertEquals(r.str_pad, "str1")
     luaunit.assertEquals(r.str_term, "str2foo")
