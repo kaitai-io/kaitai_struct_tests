@@ -5,7 +5,7 @@ require("bits_byte_aligned")
 TestBitsByteAligned = {}
 
 function TestBitsByteAligned:test_bits_byte_aligned()
-    r = BitsByteAligned:from_file("src/fixed_struct.bin")
+    local r = BitsByteAligned:from_file("src/fixed_struct.bin")
 
     -- 50 (6 + 2) = 010100|00
     luaunit.assertEquals(r.one, 0x14)
