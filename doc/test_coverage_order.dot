@@ -1,8 +1,9 @@
 digraph {
 	rankdir=LR;
+        node [style=filled];
 
 	hello_world -> fixed_contents;
-	fixed_contents -> integers [label="builtin integers"];
+	fixed_contents -> integers; // [label="builtin integers"];
 
 	expr_0 -> floating_points -> float_to_i;
 	expr_0 -> str_literals -> str_literals2;
@@ -75,4 +76,8 @@ digraph {
         {repeat_n_struct process_xor_const expr_0} -> process_coerce_bytes;
 
         nested_types2 -> nav_root -> nav_parent -> nav_parent2 -> nav_parent3;
+
+        repeat_n_struct -> position_in_seq -> position_abs;
+        term_strz -> position_abs;
+        {expr_io_pos position_abs} -> position_to_end;
 }
