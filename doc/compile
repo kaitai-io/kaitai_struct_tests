@@ -1,0 +1,3 @@
+#!/bin/sh
+
+dot -Tsvg test_coverage_order.dot >test_coverage_order.svg
