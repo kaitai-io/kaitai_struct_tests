@@ -141,6 +141,7 @@ set(SPEC_SOURCES
 	test_opaque_with_param.cpp
 	test_cast_to_top.cpp
 	test_cast_to_imported.cpp
+	test_user_type.cpp
 )
 
 set(PREREQ_SOURCES
@@ -283,6 +284,7 @@ set(KS_SOURCES
 	${KS_PATH}/opaque_with_param.cpp
 	${KS_PATH}/cast_to_top.cpp
 	${KS_PATH}/cast_to_imported.cpp
+	${KS_PATH}/user_type.cpp
 )
 
 set(RUNTIME_SOURCES

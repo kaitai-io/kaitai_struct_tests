@@ -132,6 +132,7 @@ require("test_ts_packet_header")
 require("test_type_ternary")
 require("test_type_int_unary_op")
 require("test_type_ternary_opaque")
+require("test_user_type")
 
 -- Execute the test cases
 local runner = luaunit.LuaUnit.new()
