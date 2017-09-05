@@ -62,7 +62,9 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
   override def indentStr: String = "    "
 
   override def results: String = {
-    importList.toList.map((x) => s"#include $x").mkString("", "\n", "\n") + out.result
+    "// " + AUTOGEN_COMMENT + "\n\n" +
+      importList.toList.map((x) => s"#include $x").mkString("", "\n", "\n") +
+      out.result
   }
 
   def translateAct(x: Ast.expr) =

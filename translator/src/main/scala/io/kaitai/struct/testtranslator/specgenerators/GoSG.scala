@@ -3,16 +3,16 @@ package io.kaitai.struct.testtranslator.specgenerators
 import io.kaitai.struct.datatype.DataType
 import io.kaitai.struct.exprlang.Ast
 import io.kaitai.struct.languages.GoCompiler
-import io.kaitai.struct.testtranslator.{TestAssert, TestSpec}
+import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 import io.kaitai.struct.translators.GoTranslator
-import io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
+import io.kaitai.struct.{ClassTypeProvider, RuntimeConfig, Utils}
 
 class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   val compiler = new GoCompiler(provider, RuntimeConfig())
   val className = GoCompiler.types2class(List(spec.id))
   val translator = new GoTranslator(out, provider, importList)
 
-  override def fileName(name: String): String = s"test_$name.cpp"
+  override def fileName(name: String): String = s"${name}_test.go"
 
   importList.add("\"os\"")
   importList.add("\"testing\"")
@@ -26,8 +26,8 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
     out.puts("f, err := os.Open(\"../../src/" + spec.data + "\")")
     fatalCheck()
     out.puts("s := kaitai.NewStream(f)")
-    out.puts(s"var this $className")
-    out.puts("err = this.Read(s, &r, &r)")
+    out.puts(s"var r $className")
+    out.puts("err = r.Read(s, &r, &r)")
     fatalCheck()
     out.puts
   }
@@ -38,9 +38,9 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
   }
 
   def simpleAssert(check: TestAssert): Unit = {
-    val actStr = translator.translate(check.actual)
+    val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
-    out.puts(s"assert.Equal(t, $expStr, $actStr);")
+    out.puts(s"assert.EqualValues(t, $expStr, $actStr)")
   }
 
   def nullAssert(actual: Ast.expr): Unit = {
@@ -57,7 +57,8 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
   override def indentStr: String = "\t"
 
   override def results: String = {
-    "package spec\n\nimport (" +
+    "// " + AUTOGEN_COMMENT + "\n\n" +
+    "package spec\n\nimport (\n" +
       importList.toList.map((x) => "\t" + x).mkString("\n") +
       "\n)\n\n" +
       out.result
@@ -70,4 +71,9 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
     out.dec
     out.puts("}")
   }
+
+  lazy val REPLACER: String = "this." + Utils.upperCamelCase(Main.INIT_OBJ_NAME) + "."
+
+  def translateAct(x: Ast.expr) =
+    translator.translate(x).replace(REPLACER, "r.")
 }

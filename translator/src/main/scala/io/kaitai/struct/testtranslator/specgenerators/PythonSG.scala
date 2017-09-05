@@ -47,4 +47,7 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
 
   def translateAct(x: Ast.expr) =
     translator.translate(x).replace("self." + Main.INIT_OBJ_NAME, "r")
+
+  override def results: String =
+    "# " + AUTOGEN_COMMENT + "\n\n" + super.results
 }

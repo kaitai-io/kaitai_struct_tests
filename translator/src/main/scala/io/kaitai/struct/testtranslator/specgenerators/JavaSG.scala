@@ -52,7 +52,8 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   override def indentStr: String = "    "
 
   override def results: String = {
-    "package io.kaitai.struct.spec;\n\n" +
+    "// " + AUTOGEN_COMMENT + "\n\n" +
+      "package io.kaitai.struct.spec;\n\n" +
       importList.toList.map((x) => s"import $x;").mkString("", "\n", "\n") +
       out.result
   }
