@@ -1,0 +1,19 @@
+id: switch_manual_int_else
+data: switch_opcodes2.bin
+asserts:
+  - actual: opcodes.size
+    expected: 4
+
+  - actual: opcodes[0].code
+    expected: 83
+#  - actual: opcodes[0].body.as<opcode.strval>.value
+#    expected: '"foo"'
+
+#        assertEquals(r.opcodes().get(1).code(), 88);
+#        assertEquals(((Noneval) r.opcodes().get(1).body()).filler(), 0x42);
+
+#        assertEquals(r.opcodes().get(2).code(), 89);
+#        assertEquals(((Noneval) r.opcodes().get(2).body()).filler(), 0xcafe);
+
+#        assertEquals(r.opcodes().get(3).code(), 73);
+#        assertEquals(((Intval) r.opcodes().get(3).body()).value(), 7);
