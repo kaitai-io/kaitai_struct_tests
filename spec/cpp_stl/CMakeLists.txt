@@ -316,6 +316,8 @@ target_link_libraries(ks_tests
 	"${ICONV_LIBRARIES}"
 )
 
+target_compile_definitions(ks_tests PRIVATE -DKS_ZLIB -DKS_STR_ENCODING_ICONV)
+
 add_test(ks_tests ks_tests)
 
 enable_testing()
