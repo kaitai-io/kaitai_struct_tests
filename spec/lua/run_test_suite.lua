@@ -134,6 +134,7 @@ require("test_type_ternary")
 require("test_type_int_unary_op")
 require("test_type_ternary_opaque")
 require("test_user_type")
+require("test_yaml_ints")
 
 -- Execute the test cases
 local runner = luaunit.LuaUnit.new()
