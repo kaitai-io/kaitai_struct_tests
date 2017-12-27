@@ -14,6 +14,7 @@ TEST_DIR=$(pwd)
 mkdir -p "$OBJ_DIR"
 cd "$OBJ_DIR"
 if [ ! -r Makefile ] && [ ! -r Project.sln ]; then
+	echo "Using KS_CMAKE_OPTIONS=<$KS_CMAKE_OPTIONS>"
 	cmake -DCMAKE_BUILD_TYPE=Debug "$KS_CMAKE_OPTIONS" "$TEST_DIR/spec/cpp_stl"
 fi
 
