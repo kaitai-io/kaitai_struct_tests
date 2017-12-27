@@ -13,8 +13,8 @@ BOOST_AUTO_TEST_CASE(test_yaml_ints) {
 
     BOOST_CHECK_EQUAL(r->test_u4_dec(), 0xffffffff);
     BOOST_CHECK_EQUAL(r->test_u4_hex(), 0xffffffff);
-    BOOST_CHECK_EQUAL(r->test_u8_dec(), 0xffffffffffffffff);
-    BOOST_CHECK_EQUAL(r->test_u8_hex(), 0xffffffffffffffff);
+    BOOST_CHECK_EQUAL(r->test_u8_dec(), 0xffffffffffffffffUL);
+    BOOST_CHECK_EQUAL(r->test_u8_hex(), 0xffffffffffffffffUL);
 
     delete r;
 }
