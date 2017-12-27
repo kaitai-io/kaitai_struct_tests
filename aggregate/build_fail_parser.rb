@@ -1,7 +1,18 @@
+require 'set'
+
 class BuildFailParser
   def initialize(dir)
     @dir = dir
   end
+
+  # Special hack: ignore some imported files which are definitely
+  # *not* distinct tests per se, but might fail compilation while
+  # being imported from main test files.
+  BLACKLIST_TESTS = Set.new([
+    'Imported1',
+    'ImportedAndAbs',
+    'ImportedAndRel',
+  ])
 
   def each_test
     fn = "#{@dir}/build.fails"
@@ -17,6 +28,10 @@ class BuildFailParser
         when /^(.*?)\.go:(\d+): (.*?)$/
           fn = $1
           name = underscore_to_ucamelcase(File.basename(fn))
+
+          # Ignore files that are definitely not tests
+          next if BLACKLIST_TESTS.include?(name)
+
           fail = TestResult::Failure.new(
             fn,
             $2,

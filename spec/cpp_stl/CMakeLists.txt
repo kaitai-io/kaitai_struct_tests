@@ -142,6 +142,10 @@ set(SPEC_SOURCES
 	test_cast_to_top.cpp
 	test_cast_to_imported.cpp
 	test_user_type.cpp
+	test_imports_abs_abs.cpp
+	test_imports_abs_rel.cpp
+	test_imports_rel_1.cpp
+	test_yaml_ints.cpp
 )
 
 set(PREREQ_SOURCES
@@ -285,6 +289,16 @@ set(KS_SOURCES
 	${KS_PATH}/cast_to_top.cpp
 	${KS_PATH}/cast_to_imported.cpp
 	${KS_PATH}/user_type.cpp
+	${KS_PATH}/imports_abs_abs.cpp
+	${KS_PATH}/imports_abs_rel.cpp
+	${KS_PATH}/imports_rel_1.cpp
+	${KS_PATH}/yaml_ints.cpp
+
+	${KS_PATH}/imported_1.cpp
+	${KS_PATH}/imported_2.cpp
+	${KS_PATH}/imported_and_abs.cpp
+	${KS_PATH}/imported_and_rel.cpp
+	${KS_PATH}/imported_root.cpp
 )
 
 set(RUNTIME_SOURCES

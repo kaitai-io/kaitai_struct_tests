@@ -35,7 +35,28 @@ javac $JAVAC_OPTS -cp "$JAVA_CLASSES_DIR" \
 	"$TEST_FORMATS_JAVA_DIR"/*.java \
 	-d "$JAVA_CLASSES_DIR" || {
 	echo "run-java: some formats failed to compile, trying one by one"
-	for TFJ in "$TEST_FORMATS_JAVA_DIR"/*.java; do
+
+	# NB: Several files are prepended to file globbing as they're
+	# import dependencies which are to be compiled before files which
+	# actually use them.
+
+	# Special workaround for circular dependency test
+	(
+		javac -cp "$JAVA_CLASSES_DIR" \
+			"$TEST_FORMATS_JAVA_DIR/ImportsCircularA.java" \
+			"$TEST_FORMATS_JAVA_DIR/ImportsCircularB.java" \
+			-d "$JAVA_CLASSES_DIR" 2>&1 || {
+			echo "ImportsCircularA.java" >>"$JAVA_BUILD_FAILS"
+			echo "ImportsCircularB.java" >>"$JAVA_BUILD_FAILS"
+		}
+	) | tee "$JAVA_COMPILE_LOG_DIR/$SRC.log"
+
+	for TFJ in \
+		"$TEST_FORMATS_JAVA_DIR/HelloWorld.java" \
+		"$TEST_FORMATS_JAVA_DIR/ImportedRoot.java" \
+		"$TEST_FORMATS_JAVA_DIR/Imported2.java" \
+		"$TEST_FORMATS_JAVA_DIR/VlqBase128Le.java" \
+		"$TEST_FORMATS_JAVA_DIR"/*.java; do
 		SRC=$(basename "$TFJ")
 		echo "$SRC"
 		(
