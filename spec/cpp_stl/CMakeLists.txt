@@ -4,6 +4,9 @@ project(KS_TEST_CPP_STL)
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 find_package(ZLIB REQUIRED)
 
+# Enforce UTF-8 source files encoding for MSVC
+add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
+
 set(KS_PATH ../../compiled/cpp_stl)
 set(RUNTIME_SRC_PATH ../../../runtime/cpp_stl)
 set(PREREQ_PATH prereq)
@@ -324,10 +327,12 @@ if (APPLE)
 	set (ICONV_LIBRARIES iconv)
 endif()
 
+# NB: no quotes around variables here, as it messes up new "optimized
+# A debug B" syntax which gets generated on Windows platforms
 target_link_libraries(ks_tests
-	"${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}"
-	"${ZLIB_LIBRARIES}"
-	"${ICONV_LIBRARIES}"
+	${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
+	${ZLIB_LIBRARIES}
+	${ICONV_LIBRARIES}
 )
 
 target_compile_definitions(ks_tests PRIVATE -DKS_ZLIB -DKS_STR_ENCODING_ICONV)
