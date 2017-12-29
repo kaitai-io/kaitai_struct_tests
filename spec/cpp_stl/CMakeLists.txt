@@ -1,8 +1,12 @@
 cmake_minimum_required(VERSION 2.6)
 
 project(KS_TEST_CPP_STL)
+
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
+
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 find_package(ZLIB REQUIRED)
+find_package(Iconv REQUIRED)
 
 # Enforce UTF-8 source files encoding for MSVC
 add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
