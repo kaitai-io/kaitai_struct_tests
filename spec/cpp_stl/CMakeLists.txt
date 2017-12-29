@@ -327,16 +327,12 @@ include_directories(
 	"${ZLIB_INCLUDE_DIRS}"
 )
 
-if (APPLE)
-	set (ICONV_LIBRARIES iconv)
-endif()
-
 # NB: no quotes around variables here, as it messes up new "optimized
 # A debug B" syntax which gets generated on Windows platforms
 target_link_libraries(ks_tests
 	${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
 	${ZLIB_LIBRARIES}
-	${ICONV_LIBRARIES}
+	${Iconv_LIBRARIES}
 )
 
 target_compile_definitions(ks_tests PRIVATE -DKS_ZLIB -DKS_STR_ENCODING_ICONV)
