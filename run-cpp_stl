@@ -29,10 +29,12 @@ else
 fi
 
 # Actually run the tests
+# NB: --log_sink is broken in boost v1.62, using workaround, as per
+# https://stackoverflow.com/a/39999085/487064
 cd "$TEST_DIR"
 mkdir -p "$TEST_OUT_DIR/cpp_stl"
 "$OBJ_DIR/ks_tests" \
 	--log_format=XML \
-	--log_sink="$TEST_OUT_DIR/cpp_stl/results.xml" \
+	--logger=JUNIT,test_suite,"$TEST_OUT_DIR/cpp_stl/results.xml" \
 	--log_level=all \
 	--report_level=detailed
