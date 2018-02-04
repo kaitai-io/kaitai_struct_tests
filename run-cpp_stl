@@ -28,13 +28,26 @@ else
 	exit 1
 fi
 
-# Actually run the tests
-# NB: --log_sink is broken in boost v1.62, using workaround, as per
+# Work around boost v1.62 bug: https://svn.boost.org/trac10/ticket/12507
+# --log_sink is broken in boost v1.62, using workaround, as per
 # https://stackoverflow.com/a/39999085/487064
+#
+# However, Travis has boost v1.54, which has problems with it, so we
+# won't use the workaround on anything except exactly v1.62
+
+if [ -r /usr/include/boost/version.hpp ] && grep -q 'BOOST_VERSION 106200' /usr/include/boost/version.hpp; then
+	# Boost v1.62 detected, enabling workaround
+	BOOST_LOG_OPTION=--logger=JUNIT,test_suite,"$TEST_OUT_DIR/cpp_stl/results.xml"
+else
+	# No boost v1.62, we'll stick to standard which works with v1.54 too
+	BOOST_LOG_OPTION=--log_sink="$TEST_OUT_DIR/cpp_stl/results.xml"
+fi
+
+# Actually run the tests
 cd "$TEST_DIR"
 mkdir -p "$TEST_OUT_DIR/cpp_stl"
 "$OBJ_DIR/ks_tests" \
 	--log_format=XML \
-	--logger=JUNIT,test_suite,"$TEST_OUT_DIR/cpp_stl/results.xml" \
+	$BOOST_LOG_OPTION \
 	--log_level=all \
 	--report_level=detailed
