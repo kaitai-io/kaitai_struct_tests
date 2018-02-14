@@ -1,11 +1,19 @@
 cmake_minimum_required(VERSION 2.6)
 
 project(KS_TEST_CPP_STL)
+
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
+
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 find_package(ZLIB REQUIRED)
+find_package(Iconv REQUIRED)
+
+# Enforce UTF-8 source files encoding for MSVC
+add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 
 set(KS_PATH ../../compiled/cpp_stl)
 set(RUNTIME_SRC_PATH ../../../runtime/cpp_stl)
+set(PREREQ_PATH prereq)
 
 set(SPEC_SOURCES
 	main.cpp
@@ -28,10 +36,14 @@ set(SPEC_SOURCES
 	test_enum_for_unknown_id.cpp
 	test_enum_of_value_inst.cpp
 	test_enum_to_i.cpp
+	test_enum_negative.cpp
+	test_enum_fancy.cpp
 	test_expr_0.cpp
 	test_expr_1.cpp
 	test_expr_2.cpp
 	test_expr_3.cpp
+	test_expr_array.cpp
+	test_expr_bytes_cmp.cpp
 	test_expr_mod.cpp
 	test_expr_enum.cpp
 	test_expr_io_eof.cpp
@@ -41,9 +53,14 @@ set(SPEC_SOURCES
 	test_process_xor4_const.cpp
 	test_process_xor4_value.cpp
 	test_process_rotate.cpp
+	test_process_coerce_bytes.cpp
+	test_process_coerce_usertype1.cpp
+	test_process_coerce_usertype2.cpp
+	test_process_custom.cpp
 	test_repeat_n_struct.cpp
 	test_repeat_eos_struct.cpp
 	test_floating_points.cpp
+	test_float_to_i.cpp
 	test_position_to_end.cpp
 	test_str_eos.cpp
 	test_type_int_unary_op.cpp
@@ -53,6 +70,10 @@ set(SPEC_SOURCES
 	test_repeat_until_s4.cpp
 	test_default_big_endian.cpp
 	test_default_endian_mod.cpp
+	test_default_endian_expr_exception.cpp
+	test_default_endian_expr_inherited.cpp
+	test_default_endian_expr_is_be.cpp
+	test_default_endian_expr_is_le.cpp
 	test_repeat_until_complex.cpp
 	test_instance_std_array.cpp
 	test_instance_user_array.cpp
@@ -73,7 +94,10 @@ set(SPEC_SOURCES
 	test_switch_manual_str.cpp
 	test_switch_manual_str_else.cpp
 	test_switch_integers.cpp
+	test_switch_integers2.cpp
 	test_switch_multi_bool_ops.cpp
+	test_switch_bytearray.cpp
+	test_switch_repeat_expr.cpp
 	test_nav_root.cpp
 	test_nav_parent.cpp
 	test_nav_parent2.cpp
@@ -98,6 +122,8 @@ set(SPEC_SOURCES
 	test_docstrings_docref.cpp
 	test_recursive_one.cpp
 	test_str_pad_term.cpp
+	test_str_pad_term_empty.cpp
+	test_bytes_pad_term.cpp
 	test_nav_parent_override.cpp
 	test_nav_parent_false.cpp
 	test_nav_parent_false2.cpp
@@ -111,6 +137,27 @@ set(SPEC_SOURCES
 	test_imports0.cpp
 	test_imports_circular_a.cpp
 	test_imports_abs.cpp
+	test_index_sizes.cpp
+	test_meta_xref.cpp
+	test_params_def.cpp
+	test_params_call_short.cpp
+	test_index_to_param_eos.cpp
+	test_index_to_param_expr.cpp 
+	test_index_to_param_until.cpp
+	test_js_signed_right_shift.cpp
+	test_opaque_with_param.cpp
+	test_cast_to_top.cpp
+	test_cast_to_imported.cpp
+	test_user_type.cpp
+	test_imports_abs_abs.cpp
+	test_imports_abs_rel.cpp
+	test_imports_rel_1.cpp
+	test_yaml_ints.cpp
+)
+
+set(PREREQ_SOURCES
+	${PREREQ_PATH}/my_custom_fx.cpp
+	${PREREQ_PATH}/custom_fx.cpp
 )
 
 set(KS_SOURCES
@@ -133,10 +180,14 @@ set(KS_SOURCES
 	${KS_PATH}/enum_for_unknown_id.cpp
 	${KS_PATH}/enum_of_value_inst.cpp
 	${KS_PATH}/enum_to_i.cpp
+	${KS_PATH}/enum_negative.cpp
+	${KS_PATH}/enum_fancy.cpp
 	${KS_PATH}/expr_0.cpp
 	${KS_PATH}/expr_1.cpp
 	${KS_PATH}/expr_2.cpp
 	${KS_PATH}/expr_3.cpp
+	${KS_PATH}/expr_array.cpp
+	${KS_PATH}/expr_bytes_cmp.cpp
 	${KS_PATH}/expr_mod.cpp
 	${KS_PATH}/expr_enum.cpp
 	${KS_PATH}/expr_io_eof.cpp
@@ -146,9 +197,14 @@ set(KS_SOURCES
 	${KS_PATH}/process_xor4_const.cpp
 	${KS_PATH}/process_xor4_value.cpp
 	${KS_PATH}/process_rotate.cpp
+	${KS_PATH}/process_coerce_bytes.cpp
+	${KS_PATH}/process_coerce_usertype1.cpp
+	${KS_PATH}/process_coerce_usertype2.cpp
+	${KS_PATH}/process_custom.cpp
 	${KS_PATH}/repeat_n_struct.cpp
 	${KS_PATH}/repeat_eos_struct.cpp
 	${KS_PATH}/floating_points.cpp
+	${KS_PATH}/float_to_i.cpp
 	${KS_PATH}/position_to_end.cpp
 	${KS_PATH}/str_eos.cpp
 	${KS_PATH}/type_int_unary_op.cpp
@@ -158,6 +214,10 @@ set(KS_SOURCES
 	${KS_PATH}/repeat_until_s4.cpp
 	${KS_PATH}/default_big_endian.cpp
 	${KS_PATH}/default_endian_mod.cpp
+	${KS_PATH}/default_endian_expr_exception.cpp
+	${KS_PATH}/default_endian_expr_inherited.cpp
+	${KS_PATH}/default_endian_expr_is_be.cpp
+	${KS_PATH}/default_endian_expr_is_le.cpp
 	${KS_PATH}/repeat_until_complex.cpp
 	${KS_PATH}/instance_std_array.cpp
 	${KS_PATH}/instance_user_array.cpp
@@ -178,7 +238,10 @@ set(KS_SOURCES
 	${KS_PATH}/switch_manual_str.cpp
 	${KS_PATH}/switch_manual_str_else.cpp
 	${KS_PATH}/switch_integers.cpp
+	${KS_PATH}/switch_integers2.cpp
 	${KS_PATH}/switch_multi_bool_ops.cpp
+	${KS_PATH}/switch_bytearray.cpp
+	${KS_PATH}/switch_repeat_expr.cpp
 	${KS_PATH}/nav_root.cpp
 	${KS_PATH}/nav_parent.cpp
 	${KS_PATH}/nav_parent2.cpp
@@ -204,6 +267,8 @@ set(KS_SOURCES
 	${KS_PATH}/docstrings_docref.cpp
 	${KS_PATH}/recursive_one.cpp
 	${KS_PATH}/str_pad_term.cpp
+	${KS_PATH}/str_pad_term_empty.cpp
+	${KS_PATH}/bytes_pad_term.cpp
 	${KS_PATH}/nav_parent_override.cpp
 	${KS_PATH}/nav_parent_false.cpp
 	${KS_PATH}/nav_parent_false2.cpp
@@ -219,6 +284,28 @@ set(KS_SOURCES
 	${KS_PATH}/imports_circular_b.cpp
 	${KS_PATH}/imports_abs.cpp
 	${KS_PATH}/vlq_base128_le.cpp
+	${KS_PATH}/index_sizes.cpp
+	${KS_PATH}/meta_xref.cpp
+	${KS_PATH}/params_def.cpp
+	${KS_PATH}/params_call_short.cpp
+	${KS_PATH}/index_to_param_eos.cpp
+	${KS_PATH}/index_to_param_expr.cpp 
+	${KS_PATH}/index_to_param_until.cpp
+	${KS_PATH}/js_signed_right_shift.cpp
+	${KS_PATH}/opaque_with_param.cpp
+	${KS_PATH}/cast_to_top.cpp
+	${KS_PATH}/cast_to_imported.cpp
+	${KS_PATH}/user_type.cpp
+	${KS_PATH}/imports_abs_abs.cpp
+	${KS_PATH}/imports_abs_rel.cpp
+	${KS_PATH}/imports_rel_1.cpp
+	${KS_PATH}/yaml_ints.cpp
+
+	${KS_PATH}/imported_1.cpp
+	${KS_PATH}/imported_2.cpp
+	${KS_PATH}/imported_and_abs.cpp
+	${KS_PATH}/imported_and_rel.cpp
+	${KS_PATH}/imported_root.cpp
 )
 
 set(RUNTIME_SOURCES
@@ -226,22 +313,29 @@ set(RUNTIME_SOURCES
 )
 
 add_executable (ks_tests
-	${SPEC_SOURCES}
-	${KS_SOURCES}
 	${RUNTIME_SOURCES}
+	${PREREQ_SOURCES}
+	${KS_SOURCES}
+	${SPEC_SOURCES}
 )
 
 include_directories(
 	"${PROJECT_BINARY_DIR}"
 	"${KS_PATH}"
 	"${RUNTIME_SRC_PATH}"
+	"${PREREQ_PATH}"
 	"${ZLIB_INCLUDE_DIRS}"
 )
 
+# NB: no quotes around variables here, as it messes up new "optimized
+# A debug B" syntax which gets generated on Windows platforms
 target_link_libraries(ks_tests
-	"${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}"
-	"${ZLIB_LIBRARIES}"
+	${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
+	${ZLIB_LIBRARIES}
+	${Iconv_LIBRARIES}
 )
+
+target_compile_definitions(ks_tests PRIVATE -DKS_ZLIB -DKS_STR_ENCODING_ICONV)
 
 add_test(ks_tests ks_tests)
 

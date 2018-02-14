@@ -1,4 +1,4 @@
-# /seq/1/if: unable to find enum 'unknown_enum', searching from expr_enum_unknown
+# (main): /seq/1/if: unable to find enum 'unknown_enum', searching from expr_enum_unknown
 meta:
   id: expr_enum_unknown
 seq:

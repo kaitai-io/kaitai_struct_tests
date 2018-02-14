@@ -16,7 +16,7 @@ BOOST_AUTO_TEST_CASE(test_if_struct) {
     BOOST_CHECK_EQUAL(r->op2()->opcode(), 0x54);
     BOOST_CHECK_EQUAL(r->op2()->arg_tuple()->num1(), 0x42);
     BOOST_CHECK_EQUAL(r->op2()->arg_tuple()->num2(), 0x43);
-      
+
     BOOST_CHECK_EQUAL(r->op3()->opcode(), 0x53);
     BOOST_CHECK_EQUAL(r->op3()->arg_str()->str(), "bar");
 

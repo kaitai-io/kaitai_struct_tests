@@ -1,0 +1,83 @@
+digraph {
+	rankdir=LR;
+        node [style=filled];
+
+	hello_world -> fixed_contents;
+	fixed_contents -> integers; // [label="builtin integers"];
+
+	expr_0 -> floating_points -> float_to_i;
+	expr_0 -> str_literals -> str_literals2;
+        expr_0 -> expr_1 -> expr_2 -> expr_3;
+        {expr_0 repeat_n_strz} -> expr_array;
+        {user_type expr_0} -> expr_io_eof;
+        {user_type expr_0} -> expr_io_pos;
+        str_literals -> expr_3;
+
+        expr_0 -> docstrings -> docstrings_docref;
+
+	integers -> enum_0;
+	enum_0 -> enum_1; // [label="multi-level enums"];
+	enum_0 -> enum_fancy;
+	{expr_0 enum_0} -> expr_enum -> enum_of_value_inst;
+	enum_0 -> enum_negative;
+        enum_0 -> enum_for_unknown_id;
+        {enum_of_value_inst if_struct} -> enum_if;
+
+	integers -> expr_0; // [label="instance values, basic arithmetics"];
+
+        if_instances -> bits_simple -> {bits_byte_aligned bits_enum};
+        enum_0 -> bits_enum;
+
+	integers -> user_type -> nested_types -> nested_types2;
+
+        {bytes user_type} -> buffered_struct;
+
+	integers -> {repeat_eos_u4 repeat_n_strz repeat_until_s4};
+        term_strz -> repeat_n_strz -> repeat_n_strz_double;
+	{user_type repeat_eos_u4} -> repeat_eos_struct;
+	{user_type repeat_n_strz} -> repeat_n_struct;
+        repeat_until_s4 -> repeat_until_complex -> repeat_until_sized;
+        repeat_n_struct -> repeat_until_complex;
+        buffered_struct -> repeat_until_sized;
+
+        hello_world -> bytes -> term_bytes -> bytes_pad_term -> str_pad_term;
+	term_bytes -> term_strz -> str_pad_term -> str_pad_term_empty;
+
+	hello_world -> str_encodings -> str_encodings_default;
+
+	str_encodings -> {term_strz str_eos};
+
+        {nested_types2 term_strz repeat_eos_struct} -> switch_manual_int -> {switch_manual_int_else switch_manual_int_size};
+        buffered_struct -> switch_manual_int_size;
+        {switch_manual_int_else switch_manual_int_size} -> switch_manual_int_size_else;
+        {switch_manual_int str_literals} -> switch_manual_str;
+        {switch_manual_str switch_manual_int_else} -> switch_manual_str_else;
+        switch_manual_int -> switch_integers -> switch_integers2;
+        {switch_manual_int enum_of_value_inst} -> switch_manual_enum;
+
+        hello_world -> meta_xref;
+
+        {str_eos switch_manual_int_size} -> switch_manual_int_size_eos;
+
+        repeat_n_strz -> index_sizes -> {index_to_param_eos index_to_param_expr index_to_param_until};
+        user_type -> params_def -> params_call_short -> {index_to_param_eos index_to_param_expr index_to_param_until params_pass_struct};
+        repeat_eos_struct -> index_to_param_eos;
+        repeat_n_struct -> index_to_param_expr;
+        {repeat_until_complex expr_io_eof} -> index_to_param_until;
+
+        nested_types2 -> if_struct -> if_instances -> if_values;
+        repeat_n_struct -> if_values;
+
+        bytes -> process_xor_const -> process_xor_value -> process_xor4_value;
+        process_xor_const -> {process_xor4_const process_rotate};
+        process_xor4_const -> process_xor4_value;
+        {buffered_struct process_rotate} -> process_to_user;
+
+        {repeat_n_struct process_xor_const expr_0} -> process_coerce_bytes;
+
+        nested_types2 -> nav_root -> nav_parent -> nav_parent2 -> nav_parent3;
+
+        repeat_n_struct -> position_in_seq -> position_abs;
+        term_strz -> position_abs;
+        {expr_io_pos position_abs} -> position_to_end;
+}

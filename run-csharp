@@ -57,7 +57,7 @@ xbuild "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests.sln" >"$CSHARP_COMPILE_LOG_X
 
 # Actually run the tests
 mkdir -p "$TEST_OUT_DIR/csharp"
-mono \
+CSHARP_TEST_SRC_PATH=src mono \
 	"$CSHARP_SPEC_DIR/packages/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe" \
 	--result="$TEST_OUT_DIR/csharp/TestResult.xml" \
 	"$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests/bin/Debug/kaitai_struct_csharp_tests.dll"

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+. ./config
+
+rm -rf "$TEST_OUT_DIR/python"
+PYTHONPATH="$PYTHON_RUNTIME_DIR:compiled/python:spec/python/extra" python ./run-python-xml.py spec/python "$TEST_OUT_DIR/python"

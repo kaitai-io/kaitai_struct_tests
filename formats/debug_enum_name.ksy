@@ -12,9 +12,9 @@ seq:
     repeat: expr
     repeat-expr: 1
   - id: test_type
-    type: test_type
+    type: test_subtype
 types:
-  test_type:
+  test_subtype:
     seq:
       - id: field1
         type: u1

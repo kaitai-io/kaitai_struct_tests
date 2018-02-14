@@ -11,6 +11,7 @@ require_relative 'rspec_json_parser'
 require_relative 'boost_test_parser'
 require_relative 'nunit_xml_parser'
 require_relative 'build_fail_parser'
+require_relative 'valgrind_xml_parser'
 
 class Aggregator
   attr_reader :name
@@ -67,8 +68,13 @@ class Aggregator
           next
         elsif prev_t.status == :spec_build_failed and t.status == :format_build_failed
           # actually it is "format failed", store it
+        elsif prev_t.status == :format_build_failed and t.status == :format_build_failed
+          # just more messages on this one: ignore it for now, in
+          # future, maybe we should concat
+        elsif t.status == :leak
+          # this is legitimate Valgrind leak message, store it
         else
-          raise "Already got test information on failing build test \"#{t.name}\" for #{lang}: #{h[lang].inspect}"
+          raise "Already got test information on failing build test \"#{t.name}\" for #{lang}: #{h[lang].inspect} (was status=#{prev_t.status.inspect})"
         end
       end
       h[lang] = t
@@ -123,8 +129,10 @@ class ReportGenerator
     parsers = {
       'csharp' => NUnitXMLParser.new("#{@test_root}/csharp/TestResult.xml"),
       'cpp_stl' => BoostTestParser.new("#{@test_root}/cpp_stl/results.xml"),
+      'go' => JUnitXMLParser.new("#{@test_root}/go/report.xml"),
       'java' => JUnitXMLParser.new("#{@test_root}/java/junitreports"),
       'javascript' => JUnitXMLParser.new("#{@test_root}/javascript/test-output-javascript.xml"),
+      'lua' => JUnitXMLParser.new("#{@test_root}/lua/report.xml"),
       'perl' => JUnitXMLParser.new("#{@test_root}/perl/output.xml"),
       'php' => JUnitXMLParser.new("#{@test_root}/php/results.xml"),
       'python2' => JUnitXMLParser.new("#{@test_root}/python2"),
@@ -139,12 +147,17 @@ class ReportGenerator
 
     # Add build fail results
     bfps = {
+      'go' => BuildFailParser.new("#{@test_root}/go"),
       'java' => BuildFailParser.new("#{@test_root}/java"),
     }
 
     bfps.each_pair { |lang, bfp|
       @specs.add_fails(lang, bfp)
     }
+
+    # Add C++ valgrind check results
+    vgp = ValgrindXMLParser.new("#{@test_root}/cpp_stl/valgrind.xml")
+    @specs.add_fails('cpp_stl', vgp)
 
     @translators.summary
     @specs.summary
@@ -164,9 +177,12 @@ class ReportGenerator
       out.print tmpl_table.result(binding)
 
       data = @specs
-      # special way to tell table builder to skip first column (with
-      # `_expr` pseudo-language)
-      @langs[0] = ''
+
+      # mark up columns to skip, as they're not available in
+      # per-environment tests
+      to_skip = Set.new(['_expr', 'python'])
+      @langs.map! { |lang| to_skip.include?(lang) ? '' : lang }
+
       out.print tmpl_table.result(binding)
 
       out.print tmpl_footer.result(binding)

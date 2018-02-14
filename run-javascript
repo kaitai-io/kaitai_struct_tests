@@ -9,5 +9,12 @@ if [ "$OS" = "Windows_NT" ]; then
 	DIVIDER=";"
 fi
 
-NODE_PATH="compiled/javascript${DIVIDER}helpers/javascript${DIVIDER}$JAVASCRIPT_MODULES_DIR${DIVIDER}$JAVASCRIPT_RUNTIME_DIR" \
+# Symlinks fresh KS JavaScript runtime into node_modules dir
+mkdir -p "$JAVASCRIPT_MODULES_DIR"
+if [ ! -e "$JAVASCRIPT_MODULES_DIR/kaitai-struct" ]; then
+	ABS_JS_RUNTIME=$(pwd)/$JAVASCRIPT_RUNTIME_DIR
+	ln -s "$ABS_JS_RUNTIME" "$JAVASCRIPT_MODULES_DIR/kaitai-struct"
+fi
+
+NODE_PATH="compiled/javascript${DIVIDER}helpers/javascript${DIVIDER}$JAVASCRIPT_MODULES_DIR" \
 	$JAVASCRIPT_MODULES_DIR/mocha/bin/mocha spec/javascript

@@ -13,16 +13,41 @@ TEST_DIR=$(pwd)
 #rm -rf "$OBJ_DIR"
 mkdir -p "$OBJ_DIR"
 cd "$OBJ_DIR"
-if [ ! -r Makefile ]; then
-	cmake -DCMAKE_BUILD_TYPE=Debug "$TEST_DIR/spec/cpp_stl"
+if [ ! -r Makefile ] && [ ! -r KS_TEST_CPP_STL.sln ]; then
+	echo "Using KS_CMAKE_OPTIONS=<$KS_CMAKE_OPTIONS>"
+	cmake -DCMAKE_BUILD_TYPE=Debug "$KS_CMAKE_OPTIONS" "$TEST_DIR/spec/cpp_stl"
 fi
-make
+
+if [ -r Makefile ]; then
+	make
+elif [ -r KS_TEST_CPP_STL.sln ]; then
+	msbuild
+else
+	echo "No build makefile/project file found, unable to continue."
+	ls -al
+	exit 1
+fi
+
+# Work around boost v1.62 bug: https://svn.boost.org/trac10/ticket/12507
+# --log_sink is broken in boost v1.62, using workaround, as per
+# https://stackoverflow.com/a/39999085/487064
+#
+# However, Travis has boost v1.54, which has problems with it, so we
+# won't use the workaround on anything except exactly v1.62
+
+if [ -r /usr/include/boost/version.hpp ] && grep -q 'BOOST_VERSION 106200' /usr/include/boost/version.hpp; then
+	# Boost v1.62 detected, enabling workaround
+	BOOST_LOG_OPTION=--logger=JUNIT,test_suite,"$TEST_OUT_DIR/cpp_stl/results.xml"
+else
+	# No boost v1.62, we'll stick to standard which works with v1.54 too
+	BOOST_LOG_OPTION=--log_sink="$TEST_OUT_DIR/cpp_stl/results.xml"
+fi
 
 # Actually run the tests
 cd "$TEST_DIR"
 mkdir -p "$TEST_OUT_DIR/cpp_stl"
 "$OBJ_DIR/ks_tests" \
 	--log_format=XML \
-	--log_sink="$TEST_OUT_DIR/cpp_stl/results.xml" \
+	$BOOST_LOG_OPTION \
 	--log_level=all \
 	--report_level=detailed

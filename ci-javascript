@@ -1,0 +1,15 @@
+#!/bin/sh
+
+. ./config
+
+# Symlinks fresh KS JavaScript runtime into node_modules dir
+mkdir -p "$JAVASCRIPT_MODULES_DIR"
+if [ ! -e "$JAVASCRIPT_MODULES_DIR/kaitai-struct" ]; then
+	ABS_JS_RUNTIME=$(pwd)/$JAVASCRIPT_RUNTIME_DIR
+	ln -s "$ABS_JS_RUNTIME" "$JAVASCRIPT_MODULES_DIR/kaitai-struct"
+fi
+
+mkdir -p "$TEST_OUT_DIR/javascript"
+NODE_PATH=compiled/javascript:helpers/javascript:$JAVASCRIPT_MODULES_DIR:$JAVASCRIPT_RUNTIME_DIR \
+	$JAVASCRIPT_MODULES_DIR/mocha/bin/mocha \
+	-R xunit spec/javascript >"$TEST_OUT_DIR/javascript/test-output-javascript.xml"

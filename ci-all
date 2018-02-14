@@ -4,45 +4,47 @@
 
 # Run C# tests
 echo '#################### csharp'
-./run-csharp
+./ci-csharp
 
 # Run C++/STL tests, generates JUnit XML report
 echo '#################### cpp_stl'
-./run-cpp_stl
+./ci-cpp_stl
+
+# Run Go tests, generates JUnit XML report
+echo '#################### go'
+./ci-go
 
 # Run Java tests, generates JUnit XML report by default
 echo '#################### java'
-./run-java
+./ci-java
 
 # Run JavaScript tests, generate JUnit-like report
 echo '#################### javascript'
-mkdir -p "$TEST_OUT_DIR/javascript"
-NODE_PATH=compiled/javascript:helpers/javascript:$JAVASCRIPT_MODULES_DIR:$JAVASCRIPT_RUNTIME_DIR \
-	$JAVASCRIPT_MODULES_DIR/mocha/bin/mocha \
-	-R xunit spec/javascript >"$TEST_OUT_DIR/javascript/test-output-javascript.xml"
+./ci-javascript
+
+# Run Lua tests, generate JUnit-like report
+echo '#################### lua'
+./ci-lua
 
 # Run Perl tests, generate JUnit-like report
 echo '#################### perl'
-./run-perl
+./ci-perl
 
 # Run PHP tests, generate JUnit-like report
 echo '#################### php'
-./run-php
+./ci-php
 
 # Run Python 2 tests, generate bunch of JUnit-like reports
 echo '#################### python2'
-rm -rf "$TEST_OUT_DIR/python2"
-PYTHONPATH="$PYTHON_RUNTIME_DIR:compiled/python" python2 ./run-python-xml.py spec/python "$TEST_OUT_DIR/python2"
+./ci-python2
 
 # Run Python 3 tests, generate bunch of JUnit-like reports
 echo '#################### python3'
-rm -rf "$TEST_OUT_DIR/python3"
-PYTHONPATH="$PYTHON_RUNTIME_DIR:compiled/python" python3 ./run-python-xml.py spec/python "$TEST_OUT_DIR/python3"
+./ci-python3
 
 # Run Ruby tests, generate JSON report
 echo '#################### ruby'
-mkdir -p "$TEST_OUT_DIR/ruby"
-rspec -I compiled/ruby -I "$RUBY_RUNTIME_DIR" -f json >"$TEST_OUT_DIR/ruby/test-output-ruby.json"
+./ci-ruby
 
 # Aggregate
 echo '#################### ... aggregation'

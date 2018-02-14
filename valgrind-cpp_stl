@@ -5,4 +5,4 @@
 OBJ_DIR=$(pwd)/compiled/cpp_stl/bin
 TEST_DIR=$(pwd)
 
-valgrind --leak-check=full --log-file="$TEST_OUT_DIR/cpp_stl/valgrind.log" "$OBJ_DIR/ks_tests"
+valgrind --leak-check=full --xml=yes --xml-file="$TEST_OUT_DIR/cpp_stl/valgrind.xml" "$OBJ_DIR/ks_tests"

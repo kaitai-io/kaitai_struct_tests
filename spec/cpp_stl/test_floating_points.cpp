@@ -11,19 +11,19 @@ BOOST_AUTO_TEST_CASE(test_floating_points) {
     kaitai::kstream ks(&ifs);
     floating_points_t* r = new floating_points_t(&ks);
 
-    double delta = 1e-6;
+    double delta = 1e-5;
 
     BOOST_CHECK_EQUAL(r->single_value(), 0.5f);
     BOOST_CHECK_EQUAL(r->single_value_be(), 0.5f);
 
-    BOOST_CHECK_EQUAL(r->double_value(), 0.25d);
-    BOOST_CHECK_EQUAL(r->double_value_be(), 0.25d);
+    BOOST_CHECK_EQUAL(r->double_value(), 0.25);
+    BOOST_CHECK_EQUAL(r->double_value_be(), 0.25);
 
-    //assertEquals(1.2345d, fp.approximateValue(), delta);
+    BOOST_CHECK_CLOSE(r->approximate_value(), 1.2345, delta);
 
-    //assertEquals(1.5f, fp.singleValuePlusInt(), delta);
-    //assertEquals(1.0d, fp.singleValuePlusFloat(), delta);
-    //assertEquals(0.3d, fp.doubleValuePlusFloat(), delta);
+    BOOST_CHECK_CLOSE(r->single_value_plus_int(), 1.5f, delta);
+    BOOST_CHECK_CLOSE(r->single_value_plus_float(), 1.0, delta);
+    BOOST_CHECK_CLOSE(r->double_value_plus_float(), 0.3, delta);
 
     delete r;
 }

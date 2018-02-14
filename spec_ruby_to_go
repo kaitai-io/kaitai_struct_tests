@@ -1,0 +1,67 @@
+#!/usr/bin/env ruby
+
+s = $stdin.read
+
+raise "Unable to detect class name" unless s =~ /RSpec\.describe (.*?) do/
+class_name = $1
+
+raise "Unable to detect binary file name" unless s =~ /r = .*\.from_file\(['"](.*?)['"]\)/
+bin_name = $1
+
+s.gsub!(/^.*it .parses test properly. do\n/m, '')
+s.gsub!(/^ *r = .*\.from_file\(.*\n/, '')
+s.gsub!(/\.encode\('UTF-8'\)/, '')
+
+s.gsub!(/expect\((.+)\)\.to eq(?: (.+)|\((.+)\))$/) {
+  ex = $1
+  to = $2 ? $2 : $3
+  to.gsub!(/^\[(0.+)\]\.pack\('C\*'\)$/, '[]byte{\1}')
+  to.gsub!(/^\[('.+')\]$/, '[]string{\1}')
+  to.gsub!(/^\[(0.+)\]$/, '[]uint{\1}')
+  c = ex.split(/\./)
+  first = c.shift
+  c.map! { |x| x.split('_').map{|y| y.capitalize}.join }
+  c.unshift(first)
+  if c.last == 'Size' then
+    c.pop
+    ex = "len(#{c.join('.')})"
+  else
+    ex = c.join('.')
+  end
+  "assert.EqualValues(t, #{to}, #{ex})"
+}
+
+s.gsub!(/'/, '"')
+s.gsub!(/^\s*end\n/, '')
+
+puts <<__EOF__
+package spec
+
+import (
+	"os"
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+
+	. "test_formats"
+)
+
+func Test#{class_name}(t *testing.T) {
+	f, err := os.Open("../../#{bin_name}")
+	if err != nil {
+		t.Fatal(err)
+	}
+	s := kaitai.NewStream(f)
+
+	var r #{class_name}
+	err = r.Read(s, &r, &r)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+__EOF__
+
+print s
+
+puts "}"
