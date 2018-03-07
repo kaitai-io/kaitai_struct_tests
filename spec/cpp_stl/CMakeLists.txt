@@ -1,8 +1,15 @@
 cmake_minimum_required(VERSION 2.6)
 
 project(KS_TEST_CPP_STL)
+
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
+
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 find_package(ZLIB REQUIRED)
+find_package(Iconv REQUIRED)
+
+# Enforce UTF-8 source files encoding for MSVC
+add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 
 set(KS_PATH ../../compiled/cpp_stl)
 set(RUNTIME_SRC_PATH ../../../runtime/cpp_stl)
@@ -142,6 +149,10 @@ set(SPEC_SOURCES
 	test_cast_to_top.cpp
 	test_cast_to_imported.cpp
 	test_user_type.cpp
+	test_imports_abs_abs.cpp
+	test_imports_abs_rel.cpp
+	test_imports_rel_1.cpp
+	test_yaml_ints.cpp
 )
 
 set(PREREQ_SOURCES
@@ -285,6 +296,16 @@ set(KS_SOURCES
 	${KS_PATH}/cast_to_top.cpp
 	${KS_PATH}/cast_to_imported.cpp
 	${KS_PATH}/user_type.cpp
+	${KS_PATH}/imports_abs_abs.cpp
+	${KS_PATH}/imports_abs_rel.cpp
+	${KS_PATH}/imports_rel_1.cpp
+	${KS_PATH}/yaml_ints.cpp
+
+	${KS_PATH}/imported_1.cpp
+	${KS_PATH}/imported_2.cpp
+	${KS_PATH}/imported_and_abs.cpp
+	${KS_PATH}/imported_and_rel.cpp
+	${KS_PATH}/imported_root.cpp
 )
 
 set(RUNTIME_SOURCES
@@ -306,15 +327,15 @@ include_directories(
 	"${ZLIB_INCLUDE_DIRS}"
 )
 
-if (APPLE)
-	set (ICONV_LIBRARIES iconv)
-endif()
-
+# NB: no quotes around variables here, as it messes up new "optimized
+# A debug B" syntax which gets generated on Windows platforms
 target_link_libraries(ks_tests
-	"${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}"
-	"${ZLIB_LIBRARIES}"
-	"${ICONV_LIBRARIES}"
+	${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
+	${ZLIB_LIBRARIES}
+	${Iconv_LIBRARIES}
 )
+
+target_compile_definitions(ks_tests PRIVATE -DKS_ZLIB -DKS_STR_ENCODING_ICONV)
 
 add_test(ks_tests ks_tests)
 
