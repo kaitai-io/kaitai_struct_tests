@@ -34,7 +34,7 @@ asserts:
 
   # Weird => LE
   - actual: docs[2].indicator
-    expected: '"XX"'
+    expected: '[0x58, 0x58]'
   - actual: docs[2].main.some_int
     expected: 0x42000000
   - actual: docs[2].main.some_int_be
