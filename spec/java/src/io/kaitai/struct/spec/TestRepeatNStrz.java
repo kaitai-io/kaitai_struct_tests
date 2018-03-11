@@ -4,10 +4,9 @@ package io.kaitai.struct.spec;
 
 import io.kaitai.struct.testformats.RepeatNStrz;
 import org.testng.annotations.Test;
+import static org.testng.Assert.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import static org.testng.Assert.*;
 public class TestRepeatNStrz extends CommonSpec {
     @Test
     public void testRepeatNStrz() throws Exception {
