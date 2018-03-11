@@ -86,6 +86,7 @@ object Main extends App {
       "cpp_stl" -> new CppStlSG(testSpec, provider),
       "go" -> new GoSG(testSpec, provider),
       "java" -> new JavaSG(testSpec, provider),
+      "javascript" -> new JavaScriptSG(testSpec, provider),
       "python" -> new PythonSG(testSpec, provider)
     )
 
