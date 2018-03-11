@@ -2,6 +2,7 @@ package io.kaitai.struct.testtranslator.specgenerators
 
 import io.kaitai.struct.ClassTypeProvider
 import io.kaitai.struct.datatype.DataType
+import io.kaitai.struct.datatype.DataType._
 import io.kaitai.struct.exprlang.Ast
 import io.kaitai.struct.languages.JavaCompiler
 import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
@@ -13,7 +14,7 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
   importList.add(s"io.kaitai.struct.testformats.$className")
   importList.add("org.testng.annotations.Test")
-  importList.add("static org.testng.Assert.assertEquals")
+  importList.add("static org.testng.Assert.*")
 
   override def fileName(name: String): String = s"src/io/kaitai/struct/spec/Test$className.java"
 
@@ -35,9 +36,15 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   }
 
   override def simpleAssert(check: TestAssert): Unit = {
+    val actType = translator.detectType(check.actual)
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
-    out.puts(s"assertEquals($actStr, $expStr);")
+    actType match {
+      case _: IntType | _: BooleanType =>
+        out.puts(s"assertIntEquals($actStr, $expStr);")
+      case _ =>
+        out.puts(s"assertEquals($actStr, $expStr);")
+    }
   }
 
   override def nullAssert(actual: Ast.expr): Unit = {
