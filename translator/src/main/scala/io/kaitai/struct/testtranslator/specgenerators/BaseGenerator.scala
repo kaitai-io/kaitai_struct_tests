@@ -15,6 +15,7 @@ abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
   def simpleAssert(check: TestAssert): Unit
   def nullAssert(actual: Ast.expr): Unit
   def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit
+  def noAsserts(): Unit = {}
 
   override def run(): Unit = {
     header()
@@ -38,6 +39,9 @@ abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
           simpleAssert(check)
       }
     }
+
+    if (spec.asserts.isEmpty)
+      noAsserts()
 
     footer()
   }

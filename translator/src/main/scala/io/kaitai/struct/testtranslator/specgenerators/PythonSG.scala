@@ -45,6 +45,9 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
   override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit =
     simpleAssert(check)
 
+  override def noAsserts() =
+    out.puts("pass")
+
   def translateAct(x: Ast.expr) =
     translator.translate(x).replace("self." + Main.INIT_OBJ_NAME, "r")
 
