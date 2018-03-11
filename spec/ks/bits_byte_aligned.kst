@@ -5,7 +5,7 @@ asserts:
   - actual: one
     expected: 0b010100
   # 41
-  - actual: byte1
+  - actual: byte_1
     expected: 0x41
   # 43 (3 + 1 + 4) = 010|0|0011
   - actual: two
@@ -13,17 +13,17 @@ asserts:
   - actual: three
     expected: false
   # 4B
-  - actual: byte2
+  - actual: byte_2
     expected: 0x4b
   # 2D 31 (14 + 2) = 00101101 001100|01
   - actual: four
     expected: 0b00101101_001100
   # FF
-  - actual: byte3
+  - actual: byte_3
     expected: '[0xff]'
   # FF
   - actual: full_byte
     expected: 0xff
   # 50
-  - actual: byte4
+  - actual: byte_4
     expected: 0x50
