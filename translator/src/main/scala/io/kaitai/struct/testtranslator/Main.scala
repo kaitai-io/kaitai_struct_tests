@@ -87,6 +87,7 @@ object Main extends App {
       "go" -> new GoSG(testSpec, provider),
       "java" -> new JavaSG(testSpec, provider),
       "javascript" -> new JavaScriptSG(testSpec, provider),
+      "php" -> new PHPSG(testSpec, provider),
       "python" -> new PythonSG(testSpec, provider),
       "ruby" -> new RubySG(testSpec, provider)
     )
