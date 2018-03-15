@@ -153,6 +153,7 @@ set(SPEC_SOURCES
 	test_imports_abs_rel.cpp
 	test_imports_rel_1.cpp
 	test_yaml_ints.cpp
+	test_params_pass_usertype.cpp
 )
 
 set(PREREQ_SOURCES
@@ -300,6 +301,7 @@ set(KS_SOURCES
 	${KS_PATH}/imports_abs_rel.cpp
 	${KS_PATH}/imports_rel_1.cpp
 	${KS_PATH}/yaml_ints.cpp
+	${KS_PATH}/params_pass_usertype.cpp
 
 	${KS_PATH}/imported_1.cpp
 	${KS_PATH}/imported_2.cpp
