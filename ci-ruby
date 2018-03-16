@@ -3,4 +3,4 @@
 . ./config
 
 mkdir -p "$TEST_OUT_DIR/ruby"
-rspec -I compiled/ruby -I "$RUBY_RUNTIME_DIR" -f json --out "$TEST_OUT_DIR/ruby/test-output-ruby.json"
+rspec -I compiled/ruby -I "$RUBY_RUNTIME_DIR" -f json --out "$TEST_OUT_DIR/ruby/test-output-ruby.json" spec/ruby
