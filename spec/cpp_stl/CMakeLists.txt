@@ -155,6 +155,7 @@ set(SPEC_SOURCES
 	test_yaml_ints.cpp
 	test_params_pass_usertype.cpp
 	test_nested_types3.cpp
+	test_cast_nested.cpp
 )
 
 set(PREREQ_SOURCES
@@ -304,6 +305,7 @@ set(KS_SOURCES
 	${KS_PATH}/yaml_ints.cpp
 	${KS_PATH}/params_pass_usertype.cpp
 	${KS_PATH}/nested_types3.cpp
+	${KS_PATH}/cast_nested.cpp
 
 	${KS_PATH}/imported_1.cpp
 	${KS_PATH}/imported_2.cpp
