@@ -6,14 +6,20 @@ asserts:
 
   - actual: opcodes[0].code
     expected: 83
-#  - actual: opcodes[0].body.as<opcode.strval>.value
-#    expected: '"foo"'
+  - actual: opcodes[0].body.as<switch_manual_int_else::opcode::strval>.value
+    expected: '"foo"'
 
-#        assertEquals(r.opcodes().get(1).code(), 88);
-#        assertEquals(((Noneval) r.opcodes().get(1).body()).filler(), 0x42);
+  - actual: opcodes[1].code
+    expected: 88
+  - actual: opcodes[1].body.as<switch_manual_int_else::opcode::noneval>.filler
+    expected: 0x42
 
-#        assertEquals(r.opcodes().get(2).code(), 89);
-#        assertEquals(((Noneval) r.opcodes().get(2).body()).filler(), 0xcafe);
+  - actual: opcodes[2].code
+    expected: 89
+  - actual: opcodes[2].body.as<switch_manual_int_else::opcode::noneval>.filler
+    expected: 0xcafe
 
-#        assertEquals(r.opcodes().get(3).code(), 73);
-#        assertEquals(((Intval) r.opcodes().get(3).body()).value(), 7);
+  - actual: opcodes[3].code
+    expected: 73
+  - actual: opcodes[3].body.as<switch_manual_int_else::opcode::intval>.value
+    expected: 7
