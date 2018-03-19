@@ -69,6 +69,8 @@ object Main extends App {
       enums = Map()
     )
 
+    initObj.name = List(INIT_OBJ_TYPE)
+
     origSpecs.put(INIT_OBJ_TYPE, initObj)
 
     origSpecs
@@ -84,7 +86,7 @@ object Main extends App {
 
     val sgs = Map(
       "cpp_stl" -> new CppStlSG(testSpec, provider),
-      "go" -> new GoSG(testSpec, provider),
+      //"go" -> new GoSG(testSpec, provider),
       "java" -> new JavaSG(testSpec, provider),
       "javascript" -> new JavaScriptSG(testSpec, provider),
       "php" -> new PHPSG(testSpec, provider),
@@ -105,9 +107,8 @@ object Main extends App {
   def doOneSpec(langName: String, testName: String) {
     val testSpec = loadTestSpec(testName)
     val classSpecs = loadClassSpecs(testName)
-    val provider = new ClassTypeProvider(classSpecs, classSpecs.firstSpec)
-
-    val langName = "cpp_stl"
+    val initObj = classSpecs(INIT_OBJ_TYPE)
+    val provider = new ClassTypeProvider(classSpecs, initObj)
 
 //    val sg = new PythonSG(testSpec, provider)
     val sg = new CppStlSG(testSpec, provider)
@@ -127,7 +128,7 @@ object Main extends App {
   //doOneSpec("hello_world")
   //doOneSpec("process_xor4_const")
   //doOneSpec("enum_0")
-//  doOneSpec("switch_manual_int_else")
+  //doOneSpec("cpp_stl", "switch_manual_int_else")
   //doAllSpecs("if_values")
 
   doAll()
