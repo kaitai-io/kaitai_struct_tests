@@ -10,6 +10,7 @@ class TestInstanceUserArray(unittest.TestCase):
             self.assertEqual(r.ofs, 16)
             self.assertEqual(r.qty_entries, 3)
             self.assertEqual(r.entry_size, 4)
+            self.assertEqual(len(r.user_entries), 3)
             self.assertEqual(r.user_entries[0].word1, 4369)
             self.assertEqual(r.user_entries[0].word2, 4369)
             self.assertEqual(r.user_entries[1].word1, 8738)
