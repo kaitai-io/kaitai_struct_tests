@@ -85,6 +85,7 @@ object Main extends App {
     val provider = new ClassTypeProvider(classSpecs, initObj)
 
     val sgs = Map(
+      "construct" -> new ConstructSG(testSpec, provider),
       "cpp_stl" -> new CppStlSG(testSpec, provider),
       //"go" -> new GoSG(testSpec, provider),
       "java" -> new JavaSG(testSpec, provider),
