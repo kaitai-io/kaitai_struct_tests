@@ -2,9 +2,8 @@
 
 import unittest
 
-from hello_world import _schema
+from meta_xref import _schema
 
-class TestHelloWorld(unittest.TestCase):
-    def test_hello_world(self):
+class TestMetaXref(unittest.TestCase):
+    def test_meta_xref(self):
         r = _schema.parse_file('src/fixed_struct.bin')
-        self.assertEqual(r.one, 80)
