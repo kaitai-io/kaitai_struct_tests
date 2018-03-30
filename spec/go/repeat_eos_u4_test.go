@@ -23,5 +23,5 @@ func TestRepeatEosU4(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, []uint{0, 0x42, 0x42, 0x815}, r.Numbers)
+	assert.EqualValues(t, []uint32{0, 0x42, 0x42, 0x815}, r.Numbers)
 }
