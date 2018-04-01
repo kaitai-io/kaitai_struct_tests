@@ -2,7 +2,6 @@
 
 . ./config
 
-export GOPATH=$HOME/go
 export GOPATH=$GOPATH:$(pwd)/compiled/go
 
 # Symlink Go runtime libraries from full umbrella project checkout
