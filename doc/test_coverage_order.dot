@@ -28,7 +28,8 @@ digraph {
         if_instances -> bits_simple -> {bits_byte_aligned bits_enum};
         enum_0 -> bits_enum;
 
-	integers -> user_type -> nested_types -> nested_types2;
+	integers -> user_type -> nested_types -> nested_types2 -> nested_types3;
+	nested_types -> nested_same_name -> nested_same_name2;
 
         {bytes user_type} -> buffered_struct;
 
@@ -43,11 +44,11 @@ digraph {
         hello_world -> bytes -> term_bytes -> bytes_pad_term -> str_pad_term;
 	term_bytes -> term_strz -> str_pad_term -> str_pad_term_empty;
 
-	hello_world -> str_encodings -> str_encodings_default;
+	bytes -> str_encodings -> str_encodings_default;
 
 	str_encodings -> {term_strz str_eos};
 
-        {nested_types2 term_strz repeat_eos_struct} -> switch_manual_int -> {switch_manual_int_else switch_manual_int_size};
+        {nested_types2 term_strz repeat_eos_struct} -> switch_manual_int -> {switch_manual_int_else switch_manual_int_size switch_bytearray};
         buffered_struct -> switch_manual_int_size;
         {switch_manual_int_else switch_manual_int_size} -> switch_manual_int_size_else;
         {switch_manual_int str_literals} -> switch_manual_str;
@@ -69,15 +70,25 @@ digraph {
         repeat_n_struct -> if_values;
 
         bytes -> process_xor_const -> process_xor_value -> process_xor4_value;
-        process_xor_const -> {process_xor4_const process_rotate};
+        process_xor_const -> {process_xor4_const process_rotate zlib_with_header_78};
         process_xor4_const -> process_xor4_value;
         {buffered_struct process_rotate} -> process_to_user;
 
-        {repeat_n_struct process_xor_const expr_0} -> process_coerce_bytes;
+        {repeat_n_struct process_xor_const expr_0} -> process_coerce_bytes -> process_coerce_usertype1 -> process_coerce_usertype2;
+        {process_coerce_bytes switch_manual_int} -> process_coerce_switch;
 
         nested_types2 -> nav_root -> nav_parent -> nav_parent2 -> nav_parent3;
 
         repeat_n_struct -> position_in_seq -> position_abs;
         term_strz -> position_abs;
         {expr_io_pos position_abs} -> position_to_end;
+
+        process_xor4_value -> process_custom;
+
+        str_encodings -> instance_std -> if_instances;
+        {instance_std repeat_n_strz} -> instance_std_array;
+
+	{instance_std user_type} -> fixed_struct -> instance_io_user;
+
+        {default_big_endian nested_types} -> default_endian_mod;
 }
