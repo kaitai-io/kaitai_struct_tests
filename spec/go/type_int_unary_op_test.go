@@ -10,17 +10,28 @@ import (
 	. "test_formats"
 )
 
-func TestHelloWorld(t *testing.T) {
+func TestTypeIntUnaryOp(t *testing.T) {
 	f, err := os.Open("../../src/fixed_struct.bin")
 	if err != nil {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r HelloWorld
+	var r TypeIntUnaryOp
 	err = r.Read(s, &r, &r)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, 80, r.One)
+	assert.EqualValues(t, 16720, r.ValueS2)
+	assert.EqualValues(t, 4706543082108963651, r.ValueS8)
+	tmp1, err := r.UnaryS2()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, -16720, tmp1)
+	tmp2, err := r.UnaryS8()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, -4706543082108963651, tmp2)
 }

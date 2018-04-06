@@ -10,19 +10,18 @@ import (
 	. "test_formats"
 )
 
-func TestTermStrz(t *testing.T) {
-	f, err := os.Open("../../src/term_strz.bin")
+func TestNestedSameName(t *testing.T) {
+	f, err := os.Open("../../src/repeat_n_struct.bin")
 	if err != nil {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r TermStrz
+	var r NestedSameName
 	err = r.Read(s, &r, &r)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, "foo", r.S1)
-	assert.EqualValues(t, "bar", r.S2)
-	assert.EqualValues(t, "|baz@", r.S3)
+	assert.EqualValues(t, 2, r.MainData.MainSize)
+	assert.EqualValues(t, []uint8{16, 0, 0, 0}, r.MainData.Foo.Data)
 }
