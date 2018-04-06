@@ -2,11 +2,13 @@ package io.kaitai.struct.testtranslator
 
 import java.io.{File, FileReader, FileWriter}
 
-import io.kaitai.struct.ClassTypeProvider
+import io.kaitai.struct.{ClassTypeProvider, ConstructClassCompiler}
 import io.kaitai.struct.JavaMain.CLIConfig
 import io.kaitai.struct.datatype.DataType.UserTypeInstream
 import io.kaitai.struct.format._
 import io.kaitai.struct.formats.JavaKSYParser
+import io.kaitai.struct.languages._
+import io.kaitai.struct.languages.components.LanguageCompilerStatic
 import io.kaitai.struct.testtranslator.specgenerators._
 
 object Main extends App {
@@ -76,61 +78,75 @@ object Main extends App {
     origSpecs
   }
 
-  def doAllSpecs(testName: String): Unit = {
-    Console.println(s"doAllSpecs($testName)")
-
-    val testSpec = loadTestSpec(testName)
-    val classSpecs = loadClassSpecs(testName)
-    val initObj = classSpecs(INIT_OBJ_TYPE)
-    val provider = new ClassTypeProvider(classSpecs, initObj)
-
-    val sgs = Map(
-      "construct" -> new ConstructSG(testSpec, provider),
-      "cpp_stl" -> new CppStlSG(testSpec, provider),
-      //"go" -> new GoSG(testSpec, provider),
-      "java" -> new JavaSG(testSpec, provider),
-      "javascript" -> new JavaScriptSG(testSpec, provider),
-      "php" -> new PHPSG(testSpec, provider),
-      "python" -> new PythonSG(testSpec, provider),
-      "ruby" -> new RubySG(testSpec, provider)
-    )
-
-    sgs.foreach { case (langName, sg) =>
-      try {
-        sg.run()
-        writeFile(s"$outDir/$langName/${sg.fileName(testName)}", sg.results)
-      } catch {
-        case e => e.printStackTrace(Console.err)
-      }
+  def getSG(lang: LanguageCompilerStatic, testSpec: TestSpec, provider: ClassTypeProvider): SpecGenerator = {
+    lang match {
+      case ConstructClassCompiler => new ConstructSG(testSpec, provider)
+      case CppCompiler => new CppStlSG(testSpec, provider)
+      case GoCompiler => new GoSG(testSpec, provider)
+      case JavaCompiler => new JavaSG(testSpec, provider)
+      case JavaScriptCompiler => new JavaScriptSG(testSpec, provider)
+      case PHPCompiler => new PHPSG(testSpec, provider)
+      case PythonCompiler => new PythonSG(testSpec, provider)
+      case RubyCompiler => new RubySG(testSpec, provider)
     }
   }
 
-  def doOneSpec(langName: String, testName: String) {
+  final val ALL_LANGS = List(
+    ConstructClassCompiler,
+    CppCompiler,
+    GoCompiler,
+    JavaCompiler,
+    JavaScriptCompiler,
+    PHPCompiler,
+    PythonCompiler,
+    RubyCompiler,
+  )
+
+  def doOneSpec(lang: LanguageCompilerStatic, testName: String, testSpec: TestSpec, provider: ClassTypeProvider) = {
+    val langName = LanguageCompilerStatic.CLASS_TO_NAME(lang)
+    val sg = getSG(lang, testSpec, provider)
+    try {
+      sg.run()
+      writeFile(s"$outDir/$langName/${sg.fileName(testName)}", sg.results)
+    } catch {
+      case e: Throwable => e.printStackTrace(Console.err)
+    }
+  }
+
+  def doOneSpecOneLang(lang: LanguageCompilerStatic, testName: String) {
     val testSpec = loadTestSpec(testName)
     val classSpecs = loadClassSpecs(testName)
     val initObj = classSpecs(INIT_OBJ_TYPE)
     val provider = new ClassTypeProvider(classSpecs, initObj)
 
-//    val sg = new PythonSG(testSpec, provider)
-    val sg = new CppStlSG(testSpec, provider)
-    sg.run()
-
-    writeFile(outDir + "/" + langName + "/" + sg.fileName(testName), sg.results)
+    doOneSpec(lang, testName, testSpec, provider)
   }
 
-  def doAll(): Unit = {
+  def doOneSpecAllLangs(testName: String): Unit = {
+    Console.println(s"doOneSpecAllLangs($testName)")
+
+    val testSpec = loadTestSpec(testName)
+    val classSpecs = loadClassSpecs(testName)
+    val initObj = classSpecs(INIT_OBJ_TYPE)
+    val provider = new ClassTypeProvider(classSpecs, initObj)
+
+    ALL_LANGS.foreach((lang) => doOneSpec(lang, testName, testSpec, provider))
+  }
+
+  def doAllSpecsAllLangs(): Unit = {
     val dir = new File(specKsDir)
     dir.list().foreach((fn) =>
       if (fn.endsWith(".kst"))
-        doAllSpecs(fn.substring(0, fn.size - 4))
+        doOneSpecAllLangs(fn.substring(0, fn.length - 4))
     )
   }
 
-  //doOneSpec("hello_world")
-  //doOneSpec("process_xor4_const")
-  //doOneSpec("enum_0")
-  //doOneSpec("cpp_stl", "switch_manual_int_else")
-  //doAllSpecs("if_values")
+  //doOneSpecAllLangs("hello_world")
+  //doOneSpecAllLangs("process_xor4_const")
+  //doOneSpecAllLangs("enum_0")
+  //doOneSpecOneLangs(CppCompiler, "switch_manual_int_else")
+  //doOneSpecAllLangs("if_values")
+  //doOneSpecOneLang(GoCompiler, "type_ternary")
 
-  doAll()
+  doAllSpecsAllLangs()
 }
