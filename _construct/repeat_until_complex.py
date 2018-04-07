@@ -1,4 +1,5 @@
 type_u1 = Struct(
+	# ISSUE: those 2 fields are translated as big-endian
 	'count' / Int8ul,
 	'values' / Array(this.count, Int8ul),
 )
