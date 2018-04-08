@@ -140,6 +140,7 @@ class ReportGenerator
       'python2' => JUnitXMLParser.new("#{@test_root}/python2"),
       'python3' => JUnitXMLParser.new("#{@test_root}/python3"),
       'ruby' => RSpecJSONParser.new("#{@test_root}/ruby/test-output-ruby.json"),
+      'rust' => JUnitXMLParser.new("#{@test_root}/rust/results.xml")
     }
 
     # Process testing results
