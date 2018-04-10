@@ -18,6 +18,7 @@ set(PREREQ_PATH prereq)
 set(SPEC_SOURCES
 	main.cpp
 	test_hello_world.cpp
+	test_integers.cpp
 	test_fixed_struct.cpp
 	test_fixed_contents.cpp
 	test_instance_std.cpp
@@ -165,6 +166,7 @@ set(PREREQ_SOURCES
 
 set(KS_SOURCES
 	${KS_PATH}/hello_world.cpp
+	${KS_PATH}/integers.cpp
 	${KS_PATH}/fixed_struct.cpp
 	${KS_PATH}/fixed_contents.cpp
 	${KS_PATH}/instance_std.cpp
