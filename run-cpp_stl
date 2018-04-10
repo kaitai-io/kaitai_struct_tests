@@ -19,7 +19,7 @@ if [ ! -r Makefile ] && [ ! -r KS_TEST_CPP_STL.sln ]; then
 fi
 
 if [ -r Makefile ]; then
-	make
+	make -j8
 elif [ -r KS_TEST_CPP_STL.sln ]; then
 	msbuild
 else
