@@ -4,5 +4,8 @@
 
 # Run C++/STL valgrind check, generates Valgrind XML report
 echo 'Running Valgrind checks...'
-valgrind --version
-./valgrind-cpp_stl
+if valgrind --version; then
+	./valgrind-cpp_stl
+else
+	echo 'Valgrind not found :-('
+fi
