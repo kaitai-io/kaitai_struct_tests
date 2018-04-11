@@ -2,6 +2,14 @@
 
 . ./config
 
+# Run Construct + Python 2 tests
+echo '#################### construct2'
+./ci-construct2
+
+# Run Construct + Python 3 tests
+echo '#################### construct3'
+./ci-construct3
+
 # Run C# tests
 echo '#################### csharp'
 ./ci-csharp

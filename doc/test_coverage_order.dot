@@ -1,83 +1,124 @@
 digraph {
 	rankdir=LR;
-        node [style=filled];
+	node [style=filled];
 
 	hello_world -> fixed_contents;
 	fixed_contents -> integers; // [label="builtin integers"];
+	integers -> yaml_ints;
 
 	expr_0 -> floating_points -> float_to_i;
+	expr_0 -> {expr_mod js_signed_right_shift};
 	expr_0 -> str_literals -> str_literals2;
-        expr_0 -> expr_1 -> expr_2 -> expr_3;
-        {expr_0 repeat_n_strz} -> expr_array;
-        {user_type expr_0} -> expr_io_eof;
-        {user_type expr_0} -> expr_io_pos;
-        str_literals -> expr_3;
+	expr_0 -> expr_1 -> expr_2 -> expr_3 -> expr_bytes_cmp;
+	{expr_0 repeat_n_strz} -> expr_array;
+	{user_type expr_0} -> expr_io_eof;
+	{user_type expr_0} -> expr_io_pos;
+	str_literals -> expr_3 -> {bcd_user_type_le bcd_user_type_be};
 
-        expr_0 -> docstrings -> docstrings_docref;
+	expr_0 -> docstrings -> docstrings_docref;
 
 	integers -> enum_0;
 	enum_0 -> enum_1; // [label="multi-level enums"];
 	enum_0 -> enum_fancy;
 	{expr_0 enum_0} -> expr_enum -> enum_of_value_inst;
 	enum_0 -> enum_negative;
-        enum_0 -> enum_for_unknown_id;
-        {enum_of_value_inst if_struct} -> enum_if;
+	enum_0 -> enum_for_unknown_id;
+	enum_0 -> enum_to_i;
+	{enum_of_value_inst if_struct} -> enum_if;
 
 	integers -> expr_0; // [label="instance values, basic arithmetics"];
 
-        if_instances -> bits_simple -> {bits_byte_aligned bits_enum};
-        enum_0 -> bits_enum;
+	if_instances -> bits_simple -> {bits_byte_aligned bits_enum};
+	enum_0 -> bits_enum;
 
-	integers -> user_type -> nested_types -> nested_types2;
+	integers -> user_type -> nested_types -> nested_types2 -> nested_types3;
+	nested_types -> nested_same_name -> nested_same_name2;
 
-        {bytes user_type} -> buffered_struct;
+	{bytes user_type} -> buffered_struct;
 
 	integers -> {repeat_eos_u4 repeat_n_strz repeat_until_s4};
-        term_strz -> repeat_n_strz -> repeat_n_strz_double;
+	term_strz -> repeat_n_strz -> repeat_n_strz_double;
 	{user_type repeat_eos_u4} -> repeat_eos_struct;
 	{user_type repeat_n_strz} -> repeat_n_struct;
-        repeat_until_s4 -> repeat_until_complex -> repeat_until_sized;
-        repeat_n_struct -> repeat_until_complex;
-        buffered_struct -> repeat_until_sized;
+	repeat_until_s4 -> repeat_until_complex -> repeat_until_sized;
+	repeat_n_struct -> repeat_until_complex;
+	buffered_struct -> repeat_until_sized;
 
-        hello_world -> bytes -> term_bytes -> bytes_pad_term -> str_pad_term;
+	hello_world -> bytes -> term_bytes -> bytes_pad_term -> str_pad_term;
 	term_bytes -> term_strz -> str_pad_term -> str_pad_term_empty;
 
-	hello_world -> str_encodings -> str_encodings_default;
+	bytes -> str_encodings -> str_encodings_default;
 
 	str_encodings -> {term_strz str_eos};
 
-        {nested_types2 term_strz repeat_eos_struct} -> switch_manual_int -> {switch_manual_int_else switch_manual_int_size};
-        buffered_struct -> switch_manual_int_size;
-        {switch_manual_int_else switch_manual_int_size} -> switch_manual_int_size_else;
-        {switch_manual_int str_literals} -> switch_manual_str;
-        {switch_manual_str switch_manual_int_else} -> switch_manual_str_else;
-        switch_manual_int -> switch_integers -> switch_integers2;
-        {switch_manual_int enum_of_value_inst} -> switch_manual_enum;
+	{nested_types2 term_strz repeat_eos_struct} -> switch_manual_int -> {switch_manual_int_else switch_manual_int_size switch_bytearray};
+	buffered_struct -> switch_manual_int_size;
+	{switch_manual_int_else switch_manual_int_size} -> switch_manual_int_size_else;
+	{switch_manual_int str_literals} -> switch_manual_str;
+	{switch_manual_str switch_manual_int_else} -> switch_manual_str_else;
+	switch_manual_int -> switch_integers -> switch_integers2;
+	{switch_manual_int enum_of_value_inst} -> switch_manual_enum;
+	switch_manual_int -> {non_standard recursive_one};
+	switch_manual_int_size -> switch_repeat_expr;
 
-        hello_world -> meta_xref;
+	hello_world -> meta_xref;
 
-        {str_eos switch_manual_int_size} -> switch_manual_int_size_eos;
+	{str_eos switch_manual_int_size} -> switch_manual_int_size_eos;
 
-        repeat_n_strz -> index_sizes -> {index_to_param_eos index_to_param_expr index_to_param_until};
-        user_type -> params_def -> params_call_short -> {index_to_param_eos index_to_param_expr index_to_param_until params_pass_struct};
-        repeat_eos_struct -> index_to_param_eos;
-        repeat_n_struct -> index_to_param_expr;
-        {repeat_until_complex expr_io_eof} -> index_to_param_until;
+	repeat_n_strz -> index_sizes -> {index_to_param_eos index_to_param_expr index_to_param_until};
+	user_type -> params_def -> params_call_short -> {index_to_param_eos index_to_param_expr index_to_param_until params_pass_struct params_pass_usertype};
+	repeat_eos_struct -> index_to_param_eos;
+	repeat_n_struct -> index_to_param_expr;
+	{repeat_until_complex expr_io_eof} -> index_to_param_until;
 
-        nested_types2 -> if_struct -> if_instances -> if_values;
-        repeat_n_struct -> if_values;
+	nested_types2 -> if_struct -> if_instances -> if_values;
+	repeat_n_struct -> if_values;
 
-        bytes -> process_xor_const -> process_xor_value -> process_xor4_value;
-        process_xor_const -> {process_xor4_const process_rotate};
-        process_xor4_const -> process_xor4_value;
-        {buffered_struct process_rotate} -> process_to_user;
+	bytes -> process_xor_const -> process_xor_value -> process_xor4_value;
+	process_xor_const -> {process_xor4_const process_rotate zlib_with_header_78};
+	process_xor4_const -> process_xor4_value;
+	{buffered_struct process_rotate} -> process_to_user;
 
-        {repeat_n_struct process_xor_const expr_0} -> process_coerce_bytes;
+	{repeat_n_struct process_xor_const expr_0} -> process_coerce_bytes -> process_coerce_usertype1 -> process_coerce_usertype2;
+	{process_coerce_bytes switch_manual_int} -> process_coerce_switch;
 
-        nested_types2 -> nav_root -> nav_parent -> nav_parent2 -> nav_parent3;
+	nested_types2 -> nav_root -> nav_parent -> nav_parent2 -> nav_parent3;
+	nav_parent3 -> nav_parent_vs_value_inst;
+	nav_parent3 -> nav_parent_override;
+	nav_parent3 -> nav_parent_false -> nav_parent_false2;
+	{nav_parent3 switch_manual_int} -> nav_parent_switch;
 
-        repeat_n_struct -> position_in_seq -> position_abs;
-        term_strz -> position_abs;
-        {expr_io_pos position_abs} -> position_to_end;
+	repeat_n_struct -> position_in_seq -> position_abs;
+	term_strz -> position_abs;
+	{expr_io_pos position_abs} -> position_to_end;
+
+	process_xor4_value -> process_custom;
+
+	str_encodings -> instance_std;
+	{instance_std repeat_n_strz} -> instance_std_array;
+
+	{instance_std user_type} -> fixed_struct -> {instance_io_user if_instances};
+	{instance_std_array fixed_struct} -> instance_user_array;
+
+	integers -> default_big_endian;
+	{default_big_endian nested_types} -> default_endian_mod -> default_endian_expr_is_le -> default_endian_expr_is_be -> default_endian_expr_inherited;
+	default_endian_expr_is_le -> default_endian_expr_exception;
+
+	expr_0 -> cast_to_top;
+	{cast_to_top switch_manual_int} -> switch_cast -> cast_nested;
+	nested_types3 -> cast_nested;
+
+	repeat_n_strz -> debug_0;
+	{debug_0 switch_manual_int} -> debug_switch;
+	{debug_0 enum_of_value_inst} -> debug_enum_name;
+
+	user_type -> imports0;
+	imports0 -> imports_rel_1 -> imports_circular_a;
+	{imports0 nav_root} -> imports_root;
+	{imports0 cast_to_top} -> cast_to_imported;
+	imports0 -> imports_abs -> {imports_abs_abs imports_abs_rel};
+	imports_rel_1 -> imports_abs_rel;
+
+	term_strz -> opaque_external_type -> opaque_external_type_02_parent;
+	{opaque_external_type params_call_short} -> opaque_with_param;
 }

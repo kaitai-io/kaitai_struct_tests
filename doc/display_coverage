@@ -5,7 +5,7 @@
 # based on "test_coverage_order.dot" with individual failing/passing
 # tests highlighted accordingly.
 
-wanted_lang = 'go' # ARGV[0]
+wanted_lang = ARGV[0]
 
 def to_ucc(s)
   s.split(/_/).map { |word| word.capitalize }.join

@@ -2,7 +2,6 @@
 
 . ./config
 
-export GOPATH=$HOME/go
 export GOPATH=$GOPATH:$(pwd)/compiled/go
 
 # Symlink Go runtime libraries from full umbrella project checkout
@@ -43,7 +42,7 @@ while [ "$keep_compiling" = 1 ]; do
 done
 
 cd ../..
-$HOME/go/bin/go-junit-report <"$ABS_TEST_OUT_DIR/go/report.log" >"$ABS_TEST_OUT_DIR/go/report.xml"
+go-junit-report <"$ABS_TEST_OUT_DIR/go/report.log" >"$ABS_TEST_OUT_DIR/go/report.xml"
 
 COUNT_TOTAL=$(grep '^=== RUN' "$ABS_REPORT_LOG" | wc -l)
 COUNT_FAIL=$(grep '^--- FAIL' "$ABS_REPORT_LOG" | wc -l)

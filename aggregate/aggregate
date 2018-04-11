@@ -127,6 +127,8 @@ class ReportGenerator
     @translators.add_translators(TranslatorXMLParser.new(@translator_report))
 
     parsers = {
+      'construct2' => JUnitXMLParser.new("#{@test_root}/construct2"),
+      'construct3' => JUnitXMLParser.new("#{@test_root}/construct3"),
       'csharp' => NUnitXMLParser.new("#{@test_root}/csharp/TestResult.xml"),
       'cpp_stl' => BoostTestParser.new("#{@test_root}/cpp_stl/results.xml"),
       'go' => JUnitXMLParser.new("#{@test_root}/go/report.xml"),

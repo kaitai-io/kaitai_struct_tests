@@ -9,4 +9,4 @@ if [ "$OS" = "Windows_NT" ]; then
 	EXEC_EXT=".bat"
 fi
 
-rspec${EXEC_EXT} -I compiled/ruby -I "$RUBY_RUNTIME_DIR"
+rspec${EXEC_EXT} -I compiled/ruby -I "$RUBY_RUNTIME_DIR" spec/ruby
