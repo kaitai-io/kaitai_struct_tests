@@ -12,9 +12,9 @@ BOOST_AUTO_TEST_CASE(test_type_int_unary_op) {
     type_int_unary_op_t* r = new type_int_unary_op_t(&ks);
 
     BOOST_CHECK_EQUAL(r->value_s2(), 16720);
-    BOOST_CHECK_EQUAL(r->value_s8(), 4706543082108963651);
+    BOOST_CHECK_EQUAL(r->value_s8(), 4706543082108963651LL);
     BOOST_CHECK_EQUAL(r->unary_s2(), -16720);
-    BOOST_CHECK_EQUAL(r->unary_s8(), -4706543082108963651);
+    BOOST_CHECK_EQUAL(r->unary_s8(), -4706543082108963651LL);
 
     delete r;
 }
