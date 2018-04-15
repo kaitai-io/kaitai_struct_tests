@@ -5,4 +5,4 @@ if [ -z "$GOPATH" ]; then
 	export PATH=$PATH:$GOPATH/bin
 fi
 
-./ci-go
+NO_RECOVER=1 ./ci-go
