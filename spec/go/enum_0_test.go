@@ -23,6 +23,6 @@ func TestEnum0(t *testing.T) {
         t.Fatal(err)
     }
 
-    assert.Equal(t, Cat, h.Pet1)
-    assert.Equal(t, Chicken, h.Pet2)
+    assert.Equal(t, Enum0_Animal__Cat, h.Pet1)
+    assert.Equal(t, Enum0_Animal__Chicken, h.Pet2)
 }
