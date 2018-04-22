@@ -14,6 +14,8 @@ ABS_REPORT_LOG="$ABS_TEST_OUT_DIR/go/report.log"
 mkdir -p "$TEST_OUT_DIR/go"
 rm -f "$TEST_OUT_DIR/go/build.fails"
 
+./travis-fold gometalinter gometalinter.v2 compiled/go/...
+
 cd spec/go
 
 keep_compiling=1
