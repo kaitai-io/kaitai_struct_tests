@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('NavParent3', 'src/nav_parent2.bin', function(r) {
+testHelper('NavParent3', 'src/nav_parent2.bin', function(r, NavParent3) {
   assert.strictEqual(r.ofsTags, 8);
   assert.strictEqual(r.numTags, 2);
   assert.strictEqual(r.tags[0].name, "RAHC");

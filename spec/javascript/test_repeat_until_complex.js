@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('RepeatUntilComplex', 'src/repeat_until_complex.bin', function(r) {
+testHelper('RepeatUntilComplex', 'src/repeat_until_complex.bin', function(r, RepeatUntilComplex) {
   assert.strictEqual(r.first.length, 3);
   assert.strictEqual(r.first[0].count, 4);
   assert.deepStrictEqual(r.first[0].values, [(0 + 1), 2, 3, 4]);

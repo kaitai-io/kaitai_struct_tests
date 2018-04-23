@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('DefaultEndianMod', 'src/fixed_struct.bin', function(r) {
+testHelper('DefaultEndianMod', 'src/fixed_struct.bin', function(r, DefaultEndianMod) {
   assert.strictEqual(r.main.one, 1262698832);
   assert.strictEqual(r.main.nest.two, -52947);
   assert.strictEqual(r.main.nestBe.two, 1346454347);

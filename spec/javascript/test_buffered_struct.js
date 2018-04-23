@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('BufferedStruct', 'src/buffered_struct.bin', function(r) {
+testHelper('BufferedStruct', 'src/buffered_struct.bin', function(r, BufferedStruct) {
   assert.strictEqual(r.len1, 16);
   assert.strictEqual(r.block1.number1, 66);
   assert.strictEqual(r.block1.number2, 67);

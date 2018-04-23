@@ -4,7 +4,7 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 var hexString = require('hexString');
 
-testHelper('ProcessCustom', 'src/process_rotate.bin', function(r) {
+testHelper('ProcessCustom', 'src/process_rotate.bin', function(r, ProcessCustom) {
   assert.strictEqual(hexString(r.buf1), hexString([16, 179, 148, 148, 244]));
   assert.strictEqual(hexString(r.buf2), hexString([95, 186, 123, 147, 99, 35, 95]));
   assert.strictEqual(hexString(r.buf3), hexString([41, 51, 177, 56, 177]));

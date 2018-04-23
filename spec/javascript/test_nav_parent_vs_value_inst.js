@@ -3,6 +3,6 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('NavParentVsValueInst', 'src/term_strz.bin', function(r) {
+testHelper('NavParentVsValueInst', 'src/term_strz.bin', function(r, NavParentVsValueInst) {
   assert.strictEqual(r.s1, "foo");
 });

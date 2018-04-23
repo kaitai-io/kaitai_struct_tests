@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('CastToTop', 'src/fixed_struct.bin', function(r) {
+testHelper('CastToTop', 'src/fixed_struct.bin', function(r, CastToTop) {
   assert.strictEqual(r.code, 80);
   assert.strictEqual(r.header.code, 65);
   assert.strictEqual(r.headerCasted.code, 65);

@@ -4,7 +4,7 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 var hexString = require('hexString');
 
-testHelper('ProcessCoerceBytes', 'src/process_coerce_bytes.bin', function(r) {
+testHelper('ProcessCoerceBytes', 'src/process_coerce_bytes.bin', function(r, ProcessCoerceBytes) {
   assert.strictEqual(r.records[0].flag, 0);
   assert.strictEqual(hexString(r.records[0].buf), hexString([65, 65, 65, 65]));
   assert.strictEqual(r.records[1].flag, 1);

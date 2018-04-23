@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('Expr3', 'src/fixed_struct.bin', function(r) {
+testHelper('Expr3', 'src/fixed_struct.bin', function(r, Expr3) {
   assert.strictEqual(r.one, 80);
   assert.strictEqual(r.two, "ACK");
   assert.strictEqual(r.three, "@ACK");

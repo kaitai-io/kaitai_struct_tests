@@ -4,7 +4,7 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 var hexString = require('hexString');
 
-testHelper('NavParentOverride', 'src/nav_parent_codes.bin', function(r) {
+testHelper('NavParentOverride', 'src/nav_parent_codes.bin', function(r, NavParentOverride) {
   assert.strictEqual(r.childSize, 3);
   assert.strictEqual(hexString(r.child1.data), hexString([73, 49, 50]));
   assert.strictEqual(hexString(r.mediator2.child2.data), hexString([51, 66, 98]));

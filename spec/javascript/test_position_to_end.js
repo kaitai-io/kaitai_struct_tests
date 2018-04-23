@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('PositionToEnd', 'src/position_to_end.bin', function(r) {
+testHelper('PositionToEnd', 'src/position_to_end.bin', function(r, PositionToEnd) {
   assert.strictEqual(r.index.foo, 66);
   assert.strictEqual(r.index.bar, 4660);
 });

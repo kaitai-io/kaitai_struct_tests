@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ExprMod', 'src/fixed_struct.bin', function(r) {
+testHelper('ExprMod', 'src/fixed_struct.bin', function(r, ExprMod) {
   assert.strictEqual(r.intU, 1262698832);
   assert.strictEqual(r.intS, -52947);
   assert.strictEqual(r.modPosConst, 9);

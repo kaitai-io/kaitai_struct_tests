@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('IndexToParamEos', 'src/index_sizes.bin', function(r) {
+testHelper('IndexToParamEos', 'src/index_sizes.bin', function(r, IndexToParamEos) {
   assert.strictEqual(r.qty, 3);
   assert.strictEqual(r.sizes[0], 1);
   assert.strictEqual(r.sizes[1], 8);

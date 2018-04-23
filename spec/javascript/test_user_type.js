@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('UserType', 'src/repeat_until_s4.bin', function(r) {
+testHelper('UserType', 'src/repeat_until_s4.bin', function(r, UserType) {
   assert.strictEqual(r.one.width, 66);
   assert.strictEqual(r.one.height, 4919);
 });

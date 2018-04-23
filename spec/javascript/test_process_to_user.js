@@ -3,6 +3,6 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ProcessToUser', 'src/process_rotate.bin', function(r) {
+testHelper('ProcessToUser', 'src/process_rotate.bin', function(r, ProcessToUser) {
   assert.strictEqual(r.buf1.str, "Hello");
 });

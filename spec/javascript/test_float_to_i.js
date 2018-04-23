@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('FloatToI', 'src/floating_points.bin', function(r) {
+testHelper('FloatToI', 'src/floating_points.bin', function(r, FloatToI) {
   assert.strictEqual(r.singleValue, 0.5);
   assert.strictEqual(r.doubleValue, 0.25);
   assert.strictEqual(r.singleI, 0);

@@ -4,7 +4,7 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 var hexString = require('hexString');
 
-testHelper('InstanceStdArray', 'src/instance_std_array.bin', function(r) {
+testHelper('InstanceStdArray', 'src/instance_std_array.bin', function(r, InstanceStdArray) {
   assert.strictEqual(r.ofs, 16);
   assert.strictEqual(r.qtyEntries, 3);
   assert.strictEqual(r.entrySize, 4);

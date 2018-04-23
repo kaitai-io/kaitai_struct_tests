@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('RepeatEosStruct', 'src/repeat_eos_struct.bin', function(r) {
+testHelper('RepeatEosStruct', 'src/repeat_eos_struct.bin', function(r, RepeatEosStruct) {
   assert.strictEqual(r.chunks.length, 2);
   assert.strictEqual(r.chunks[0].offset, 0);
   assert.strictEqual(r.chunks[0].len, 66);

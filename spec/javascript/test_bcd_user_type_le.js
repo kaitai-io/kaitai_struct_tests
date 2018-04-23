@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('BcdUserTypeLe', 'src/bcd_user_type_le.bin', function(r) {
+testHelper('BcdUserTypeLe', 'src/bcd_user_type_le.bin', function(r, BcdUserTypeLe) {
   assert.strictEqual(r.ltr.asInt, 12345678);
   assert.strictEqual(r.ltr.asStr, "12345678");
   assert.strictEqual(r.rtl.asInt, 87654321);

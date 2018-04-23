@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ParamsCallShort', 'src/term_strz.bin', function(r) {
+testHelper('ParamsCallShort', 'src/term_strz.bin', function(r, ParamsCallShort) {
   assert.strictEqual(r.buf1.body, "foo|b");
   assert.strictEqual(r.buf2.body, "ar|ba");
   assert.strictEqual(r.buf2.trailer, 122);

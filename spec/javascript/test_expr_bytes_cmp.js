@@ -4,7 +4,7 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 var hexString = require('hexString');
 
-testHelper('ExprBytesCmp', 'src/fixed_struct.bin', function(r) {
+testHelper('ExprBytesCmp', 'src/fixed_struct.bin', function(r, ExprBytesCmp) {
   assert.strictEqual(hexString(r.one), hexString([80]));
   assert.strictEqual(hexString(r.two), hexString([65, 67, 75]));
   assert.strictEqual(r.isEq, true);

@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ProcessCoerceUsertype1', 'src/process_coerce_bytes.bin', function(r) {
+testHelper('ProcessCoerceUsertype1', 'src/process_coerce_bytes.bin', function(r, ProcessCoerceUsertype1) {
   assert.strictEqual(r.records[0].flag, 0);
   assert.strictEqual(r.records[0].buf.value, 1094795585);
   assert.strictEqual(r.records[1].flag, 1);

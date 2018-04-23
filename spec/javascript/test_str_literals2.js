@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('StrLiterals2', 'src/fixed_struct.bin', function(r) {
+testHelper('StrLiterals2', 'src/fixed_struct.bin', function(r, StrLiterals2) {
   assert.strictEqual(r.dollar1, "$foo");
   assert.strictEqual(r.dollar2, "${foo}");
   assert.strictEqual(r.hash, "#{foo}");
