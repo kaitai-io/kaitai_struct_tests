@@ -18,7 +18,7 @@ class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGene
   override def fileName(name: String): String = s"test_${spec.id}.js"
 
   override def header(): Unit = {
-    out.puts(s"testHelper('$className', 'src/${spec.data}', function(r) {")
+    out.puts(s"testHelper('$className', 'src/${spec.data}', function(r, $className) {")
     out.inc
   }
 
