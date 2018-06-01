@@ -157,6 +157,7 @@ set(SPEC_SOURCES
 	test_params_pass_usertype.cpp
 	test_nested_types3.cpp
 	test_cast_nested.cpp
+	test_enum_deep.cpp
 )
 
 set(PREREQ_SOURCES
@@ -308,6 +309,7 @@ set(KS_SOURCES
 	${KS_PATH}/params_pass_usertype.cpp
 	${KS_PATH}/nested_types3.cpp
 	${KS_PATH}/cast_nested.cpp
+	${KS_PATH}/enum_deep.cpp
 
 	${KS_PATH}/imported_1.cpp
 	${KS_PATH}/imported_2.cpp
