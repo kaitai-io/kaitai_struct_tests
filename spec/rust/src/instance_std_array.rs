@@ -1,21 +1,20 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct InstanceStdArray {
-    pub entries: Vec<String>*,
     pub ofs: u32,
     pub entrySize: u32,
     pub qtyEntries: u32,
+    pub entries: Option<Vec<Vec<u8>>>,
 }
 
 impl KaitaiStruct for InstanceStdArray {
@@ -24,17 +23,14 @@ impl KaitaiStruct for InstanceStdArray {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            entries: Vec<String>*,
-            ofs: 0,
-            entrySize: 0,
-            qtyEntries: 0,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -42,23 +38,25 @@ impl KaitaiStruct for InstanceStdArray {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.ofs = stream.read_u4le()?;
-        self.entrySize = stream.read_u4le()?;
-        self.qtyEntries = stream.read_u4le()?;
-
-        Ok(())
+        self.ofs = self.stream.read_u4le()?;
+        self.entrySize = self.stream.read_u4le()?;
+        self.qtyEntries = self.stream.read_u4le()?;
     }
-    public function entries() {
-        if (self.entries !== null)
-            return self.entries;
-        $_pos = stream->pos();
-        stream->seek($this->ofs());
-        self.entries = [];
-        $n = $this->qtyEntries();
-        for ($i = 0; $i < $n; $i++) {
-            self.entries[] = stream->readBytes($this->entrySize());
+}
+
+impl InstanceStdArray {
+    fn entries(&mut self) -> Vec<Vec<u8>> {
+        if let Some(x) = self.entries {
+            return x;
         }
-        stream->seek($_pos);
+
+        let _pos = self.stream.pos();
+        self.stream.seek(self.ofs);
+        self.entries = vec!();
+        for i in 0..self.qty_entries {
+            self.entries.push(self.stream.read_bytes(self.entry_size)?);
+        }
+        self.stream.seek(_pos);
         return self.entries;
     }
 }

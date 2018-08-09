@@ -1,34 +1,18 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct NestedTypes2 {
-pub struct SubtypeA {
-pub struct SubtypeC {
-pub struct SubtypeD {
-pub struct SubtypeCc {
-pub struct SubtypeB {
-    pub one: ,
-    pub two: ,
-    pub typedAtRoot: ,
-    pub typedHere1: ,
-    pub typedHere2: ,
-    pub valueC: i8,
-    pub typedHere: ,
-    pub typedParent: ,
-    pub typedRoot: ,
-    pub valueD: i8,
-    pub valueCc: i8,
-    pub valueB: i8,
+    pub one: Box<NestedTypes2__SubtypeA>,
+    pub two: Box<NestedTypes2__SubtypeB>,
 }
 
 impl KaitaiStruct for NestedTypes2 {
@@ -37,70 +21,14 @@ impl KaitaiStruct for NestedTypes2 {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for SubtypeA {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-                }
-
-                impl KaitaiStruct for SubtypeC {
-                    fn new<S: KaitaiStream>(stream: &mut S,
-                                            _parent: &Option<Box<KaitaiStruct>>,
-                                            _root: &Option<Box<KaitaiStruct>>)
-                                            -> Result<Self>
-                        where Self: Sized {
-                        let mut s = Self {
-                        }
-
-                        impl KaitaiStruct for SubtypeD {
-                            fn new<S: KaitaiStream>(stream: &mut S,
-                                                    _parent: &Option<Box<KaitaiStruct>>,
-                                                    _root: &Option<Box<KaitaiStruct>>)
-                                                    -> Result<Self>
-                                where Self: Sized {
-                                let mut s = Self {
-                                }
-
-                                impl KaitaiStruct for SubtypeCc {
-                                    fn new<S: KaitaiStream>(stream: &mut S,
-                                                            _parent: &Option<Box<KaitaiStruct>>,
-                                                            _root: &Option<Box<KaitaiStruct>>)
-                                                            -> Result<Self>
-                                        where Self: Sized {
-                                        let mut s = Self {
-                                        }
-
-                                        impl KaitaiStruct for SubtypeB {
-                                            fn new<S: KaitaiStream>(stream: &mut S,
-                                                                    _parent: &Option<Box<KaitaiStruct>>,
-                                                                    _root: &Option<Box<KaitaiStruct>>)
-                                                                    -> Result<Self>
-                                                where Self: Sized {
-                                                let mut s = Self {
-            one: ,
-            two: ,
-            typedAtRoot: ,
-            typedHere1: ,
-            typedHere2: ,
-            valueC: 0,
-            typedHere: ,
-            typedParent: ,
-            typedRoot: ,
-            valueD: 0,
-            valueCc: 0,
-            valueB: 0,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -108,18 +36,34 @@ impl KaitaiStruct for NestedTypes2 {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.one = new nested_types2::subtype_a(stream, $this, _root);
-        self.two = new nested_types2::subtype_b(stream, $this, _root);
-
-        Ok(())
+        self.one = Box::new(NestedTypes2__SubtypeA::new(self.stream, self, _root)?);
+        self.two = Box::new(NestedTypes2__SubtypeB::new(self.stream, self, _root)?);
     }
 }
-        };
 
+impl NestedTypes2 {
+}
+#[derive(Default)]
+pub struct NestedTypes2__SubtypeA {
+    pub typedAtRoot: Box<NestedTypes2__SubtypeB>,
+    pub typedHere1: Box<NestedTypes2__SubtypeA__SubtypeC>,
+    pub typedHere2: Box<NestedTypes2__SubtypeA__SubtypeCc>,
+}
+
+impl KaitaiStruct for NestedTypes2__SubtypeA {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -127,19 +71,36 @@ impl KaitaiStruct for NestedTypes2 {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.typedAtRoot = new nested_types2::subtype_b(stream, $this, _root);
-        self.typedHere1 = new nested_types2::subtype_a::subtype_c(stream, $this, _root);
-        self.typedHere2 = new nested_types2::subtype_a::subtype_cc(stream, $this, _root);
-
-        Ok(())
+        self.typedAtRoot = Box::new(NestedTypes2__SubtypeB::new(self.stream, self, _root)?);
+        self.typedHere1 = Box::new(NestedTypes2__SubtypeA__SubtypeC::new(self.stream, self, _root)?);
+        self.typedHere2 = Box::new(NestedTypes2__SubtypeA__SubtypeCc::new(self.stream, self, _root)?);
     }
 }
-        };
 
+impl NestedTypes2__SubtypeA {
+}
+#[derive(Default)]
+pub struct NestedTypes2__SubtypeA__SubtypeC {
+    pub valueC: i8,
+    pub typedHere: Box<NestedTypes2__SubtypeA__SubtypeC__SubtypeD>,
+    pub typedParent: Box<NestedTypes2__SubtypeA__SubtypeCc>,
+    pub typedRoot: Box<NestedTypes2__SubtypeB>,
+}
+
+impl KaitaiStruct for NestedTypes2__SubtypeA__SubtypeC {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -147,20 +108,34 @@ impl KaitaiStruct for NestedTypes2 {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.valueC = stream.read_s1()?;
-        self.typedHere = new nested_types2::subtype_a::subtype_c::subtype_d(stream, $this, _root);
-        self.typedParent = new nested_types2::subtype_a::subtype_cc(stream, $this, _root);
-        self.typedRoot = new nested_types2::subtype_b(stream, $this, _root);
-
-        Ok(())
+        self.valueC = self.stream.read_s1()?;
+        self.typedHere = Box::new(NestedTypes2__SubtypeA__SubtypeC__SubtypeD::new(self.stream, self, _root)?);
+        self.typedParent = Box::new(NestedTypes2__SubtypeA__SubtypeCc::new(self.stream, self, _root)?);
+        self.typedRoot = Box::new(NestedTypes2__SubtypeB::new(self.stream, self, _root)?);
     }
 }
-        };
 
+impl NestedTypes2__SubtypeA__SubtypeC {
+}
+#[derive(Default)]
+pub struct NestedTypes2__SubtypeA__SubtypeC__SubtypeD {
+    pub valueD: i8,
+}
+
+impl KaitaiStruct for NestedTypes2__SubtypeA__SubtypeC__SubtypeD {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -168,17 +143,31 @@ impl KaitaiStruct for NestedTypes2 {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.valueD = stream.read_s1()?;
-
-        Ok(())
+        self.valueD = self.stream.read_s1()?;
     }
 }
-        };
 
+impl NestedTypes2__SubtypeA__SubtypeC__SubtypeD {
+}
+#[derive(Default)]
+pub struct NestedTypes2__SubtypeA__SubtypeCc {
+    pub valueCc: i8,
+}
+
+impl KaitaiStruct for NestedTypes2__SubtypeA__SubtypeCc {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -186,17 +175,31 @@ impl KaitaiStruct for NestedTypes2 {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.valueCc = stream.read_s1()?;
-
-        Ok(())
+        self.valueCc = self.stream.read_s1()?;
     }
 }
-        };
 
+impl NestedTypes2__SubtypeA__SubtypeCc {
+}
+#[derive(Default)]
+pub struct NestedTypes2__SubtypeB {
+    pub valueB: i8,
+}
+
+impl KaitaiStruct for NestedTypes2__SubtypeB {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -204,8 +207,9 @@ impl KaitaiStruct for NestedTypes2 {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.valueB = stream.read_s1()?;
-
-        Ok(())
+        self.valueB = self.stream.read_s1()?;
     }
+}
+
+impl NestedTypes2__SubtypeB {
 }

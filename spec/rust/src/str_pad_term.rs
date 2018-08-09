@@ -1,16 +1,15 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct StrPadTerm {
     pub strPad: String,
     pub strTerm: String,
@@ -24,17 +23,14 @@ impl KaitaiStruct for StrPadTerm {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            strPad: String,
-            strTerm: String,
-            strTermAndPad: String,
-            strTermInclude: String,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -42,11 +38,12 @@ impl KaitaiStruct for StrPadTerm {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.strPad = &mut S::bytesToStr(&mut S::bytesStripRight(stream->readBytes(20), 64), "UTF-8");
-        self.strTerm = &mut S::bytesToStr(&mut S::bytesTerminate(stream->readBytes(20), 64, false), "UTF-8");
-        self.strTermAndPad = &mut S::bytesToStr(&mut S::bytesTerminate(&mut S::bytesStripRight(stream->readBytes(20), 43), 64, false), "UTF-8");
-        self.strTermInclude = &mut S::bytesToStr(&mut S::bytesTerminate(stream->readBytes(20), 64, true), "UTF-8");
-
-        Ok(())
+        self.strPad = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
+        self.strTerm = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
+        self.strTermAndPad = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
+        self.strTermInclude = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
     }
+}
+
+impl StrPadTerm {
 }

@@ -1,30 +1,19 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct IfStruct {
-pub struct Operation {
-pub struct ArgTuple {
-pub struct ArgStr {
-    pub op1: ,
-    pub op2: ,
-    pub op3: ,
-    pub opcode: u8,
-    pub argTuple: ,
-    pub argStr: ,
-    pub num1: u8,
-    pub num2: u8,
-    pub len: u8,
-    pub str: String,
+    pub op1: Box<IfStruct__Operation>,
+    pub op2: Box<IfStruct__Operation>,
+    pub op3: Box<IfStruct__Operation>,
 }
 
 impl KaitaiStruct for IfStruct {
@@ -33,50 +22,14 @@ impl KaitaiStruct for IfStruct {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for Operation {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-                }
-
-                impl KaitaiStruct for ArgTuple {
-                    fn new<S: KaitaiStream>(stream: &mut S,
-                                            _parent: &Option<Box<KaitaiStruct>>,
-                                            _root: &Option<Box<KaitaiStruct>>)
-                                            -> Result<Self>
-                        where Self: Sized {
-                        let mut s = Self {
-                        }
-
-                        impl KaitaiStruct for ArgStr {
-                            fn new<S: KaitaiStream>(stream: &mut S,
-                                                    _parent: &Option<Box<KaitaiStruct>>,
-                                                    _root: &Option<Box<KaitaiStruct>>)
-                                                    -> Result<Self>
-                                where Self: Sized {
-                                let mut s = Self {
-            op1: ,
-            op2: ,
-            op3: ,
-            opcode: 0,
-            argTuple: ,
-            argStr: ,
-            num1: 0,
-            num2: 0,
-            len: 0,
-            str: String,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -84,19 +37,35 @@ impl KaitaiStruct for IfStruct {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.op1 = new if_struct::operation(stream, $this, _root);
-        self.op2 = new if_struct::operation(stream, $this, _root);
-        self.op3 = new if_struct::operation(stream, $this, _root);
-
-        Ok(())
+        self.op1 = Box::new(IfStruct__Operation::new(self.stream, self, _root)?);
+        self.op2 = Box::new(IfStruct__Operation::new(self.stream, self, _root)?);
+        self.op3 = Box::new(IfStruct__Operation::new(self.stream, self, _root)?);
     }
 }
-        };
 
+impl IfStruct {
+}
+#[derive(Default)]
+pub struct IfStruct__Operation {
+    pub opcode: u8,
+    pub argTuple: Box<IfStruct__ArgTuple>,
+    pub argStr: Box<IfStruct__ArgStr>,
+}
+
+impl KaitaiStruct for IfStruct__Operation {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -104,23 +73,38 @@ impl KaitaiStruct for IfStruct {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.opcode = stream.read_u1()?;
-        if ($this->opcode() == 84) {
-            self.argTuple = new if_struct::arg_tuple(stream, $this, _root);
+        self.opcode = self.stream.read_u1()?;
+        if self.opcode == 84 {
+            self.argTuple = Box::new(IfStruct__ArgTuple::new(self.stream, self, _root)?);
         }
-        if ($this->opcode() == 83) {
-            self.argStr = new if_struct::arg_str(stream, $this, _root);
+        if self.opcode == 83 {
+            self.argStr = Box::new(IfStruct__ArgStr::new(self.stream, self, _root)?);
         }
-
-        Ok(())
     }
 }
-        };
 
+impl IfStruct__Operation {
+}
+#[derive(Default)]
+pub struct IfStruct__ArgTuple {
+    pub num1: u8,
+    pub num2: u8,
+}
+
+impl KaitaiStruct for IfStruct__ArgTuple {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -128,18 +112,33 @@ impl KaitaiStruct for IfStruct {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.num1 = stream.read_u1()?;
-        self.num2 = stream.read_u1()?;
-
-        Ok(())
+        self.num1 = self.stream.read_u1()?;
+        self.num2 = self.stream.read_u1()?;
     }
 }
-        };
 
+impl IfStruct__ArgTuple {
+}
+#[derive(Default)]
+pub struct IfStruct__ArgStr {
+    pub len: u8,
+    pub str: String,
+}
+
+impl KaitaiStruct for IfStruct__ArgStr {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -147,9 +146,10 @@ impl KaitaiStruct for IfStruct {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.len = stream.read_u1()?;
-        self.str = &mut S::bytesToStr(stream->readBytes($this->len()), "UTF-8");
-
-        Ok(())
+        self.len = self.stream.read_u1()?;
+        self.str = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
     }
+}
+
+impl IfStruct__ArgStr {
 }

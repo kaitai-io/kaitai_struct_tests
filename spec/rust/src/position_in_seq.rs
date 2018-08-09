@@ -1,21 +1,18 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct PositionInSeq {
-pub struct HeaderObj {
-    pub header: ,
-    pub numbers: Vec<u8>*,
-    pub qtyNumbers: u32,
+    pub numbers: Vec<u8>,
+    pub header: Option<Box<PositionInSeq__HeaderObj>>,
 }
 
 impl KaitaiStruct for PositionInSeq {
@@ -24,25 +21,14 @@ impl KaitaiStruct for PositionInSeq {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for HeaderObj {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-            header: ,
-            numbers: Vec<u8>*,
-            qtyNumbers: 0,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -50,30 +36,45 @@ impl KaitaiStruct for PositionInSeq {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.numbers = [];
-        $n = $this->header()->qtyNumbers();
-        for ($i = 0; $i < $n; $i++) {
-            self.numbers[] = stream.read_u1()?;
+        self.numbers = vec!();
+        for i in 0..self.header.qty_numbers {
+            self.numbers.push(self.stream.read_u1()?);
+        }
+    }
+}
+
+impl PositionInSeq {
+    fn header(&mut self) -> Box<PositionInSeq__HeaderObj> {
+        if let Some(x) = self.header {
+            return x;
         }
 
-        Ok(())
-    }
-    public function header() {
-        if (self.header !== null)
-            return self.header;
-        $_pos = stream->pos();
-        stream->seek(16);
-        self.header = new position_in_seq::header_obj(stream, $this, _root);
-        stream->seek($_pos);
+        let _pos = self.stream.pos();
+        self.stream.seek(16);
+        self.header = Box::new(PositionInSeq__HeaderObj::new(self.stream, self, _root)?);
+        self.stream.seek(_pos);
         return self.header;
     }
 }
-        };
+#[derive(Default)]
+pub struct PositionInSeq__HeaderObj {
+    pub qtyNumbers: u32,
+}
 
+impl KaitaiStruct for PositionInSeq__HeaderObj {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -81,8 +82,9 @@ impl KaitaiStruct for PositionInSeq {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.qtyNumbers = stream.read_u4le()?;
-
-        Ok(())
+        self.qtyNumbers = self.stream.read_u4le()?;
     }
+}
+
+impl PositionInSeq__HeaderObj {
 }

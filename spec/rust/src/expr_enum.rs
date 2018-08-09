@@ -1,22 +1,20 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct ExprEnum {
-pub struct Animal {
-    pub constDog: ,
-    pub derivedBoom: ,
-    pub derivedDog: ,
     pub one: u8,
+    pub constDog: Option<Box<ExprEnum__Animal>>,
+    pub derivedBoom: Option<Box<ExprEnum__Animal>>,
+    pub derivedDog: Option<Box<ExprEnum__Animal>>,
 }
 
 impl KaitaiStruct for ExprEnum {
@@ -25,17 +23,14 @@ impl KaitaiStruct for ExprEnum {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            constDog: ,
-            derivedBoom: ,
-            derivedDog: ,
-            one: 0,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -43,31 +38,39 @@ impl KaitaiStruct for ExprEnum {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.one = stream.read_u1()?;
-
-        Ok(())
+        self.one = self.stream.read_u1()?;
     }
-    public function constDog() {
-        if (self.constDog !== null)
-            return self.constDog;
+}
+
+impl ExprEnum {
+    fn constDog(&mut self) -> Box<ExprEnum__Animal> {
+        if let Some(x) = self.constDog {
+            return x;
+        }
+
         self.constDog = 4;
         return self.constDog;
     }
-    public function derivedBoom() {
-        if (self.derivedBoom !== null)
-            return self.derivedBoom;
-        self.derivedBoom = $this->one();
+    fn derivedBoom(&mut self) -> Box<ExprEnum__Animal> {
+        if let Some(x) = self.derivedBoom {
+            return x;
+        }
+
+        self.derivedBoom = self.one;
         return self.derivedBoom;
     }
-    public function derivedDog() {
-        if (self.derivedDog !== null)
-            return self.derivedDog;
-        self.derivedDog = ($this->one() - 98);
+    fn derivedDog(&mut self) -> Box<ExprEnum__Animal> {
+        if let Some(x) = self.derivedDog {
+            return x;
+        }
+
+        self.derivedDog = (self.one - 98);
         return self.derivedDog;
     }
 }
-const DOG = 4;
-const CAT = 7;
-const CHICKEN = 12;
-const BOOM = 102;
+enum ExprEnum__Animal {
+    DOG,
+    CAT,
+    CHICKEN,
+    BOOM,
 }

@@ -1,20 +1,19 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct OptionalId {
     pub _unnamed0: u8,
     pub _unnamed1: u8,
-    pub _unnamed2: String,
+    pub _unnamed2: Vec<u8>,
 }
 
 impl KaitaiStruct for OptionalId {
@@ -23,16 +22,14 @@ impl KaitaiStruct for OptionalId {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            _unnamed0: 0,
-            _unnamed1: 0,
-            _unnamed2: String,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -40,10 +37,11 @@ impl KaitaiStruct for OptionalId {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self._unnamed0 = stream.read_u1()?;
-        self._unnamed1 = stream.read_u1()?;
-        self._unnamed2 = stream->readBytes(5);
-
-        Ok(())
+        self._unnamed0 = self.stream.read_u1()?;
+        self._unnamed1 = self.stream.read_u1()?;
+        self._unnamed2 = self.stream.read_bytes(5)?;
     }
+}
+
+impl OptionalId {
 }

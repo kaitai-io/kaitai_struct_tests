@@ -1,27 +1,19 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct NavParent2 {
-pub struct Tag {
-pub struct TagChar {
     pub ofsTags: u32,
     pub numTags: u32,
-    pub tags: Vec<>*,
-    pub tagContent: ,
-    pub name: String,
-    pub ofs: u32,
-    pub numItems: u32,
-    pub content: String,
+    pub tags: Vec<Box<NavParent2__Tag>>,
 }
 
 impl KaitaiStruct for NavParent2 {
@@ -30,39 +22,14 @@ impl KaitaiStruct for NavParent2 {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for Tag {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-                }
-
-                impl KaitaiStruct for TagChar {
-                    fn new<S: KaitaiStream>(stream: &mut S,
-                                            _parent: &Option<Box<KaitaiStruct>>,
-                                            _root: &Option<Box<KaitaiStruct>>)
-                                            -> Result<Self>
-                        where Self: Sized {
-                        let mut s = Self {
-            ofsTags: 0,
-            numTags: 0,
-            tags: Vec<>*,
-            tagContent: ,
-            name: String,
-            ofs: 0,
-            numItems: 0,
-            content: String,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -70,23 +37,39 @@ impl KaitaiStruct for NavParent2 {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.ofsTags = stream.read_u4le()?;
-        self.numTags = stream.read_u4le()?;
-        self.tags = [];
-        $n = $this->numTags();
-        for ($i = 0; $i < $n; $i++) {
-            self.tags[] = new nav_parent2::tag(stream, $this, _root);
+        self.ofsTags = self.stream.read_u4le()?;
+        self.numTags = self.stream.read_u4le()?;
+        self.tags = vec!();
+        for i in 0..self.num_tags {
+            self.tags.push(Box::new(NavParent2__Tag::new(self.stream, self, _root)?));
         }
-
-        Ok(())
     }
 }
-        };
 
+impl NavParent2 {
+}
+#[derive(Default)]
+pub struct NavParent2__Tag {
+    pub name: String,
+    pub ofs: u32,
+    pub numItems: u32,
+    pub tagContent: Option<Box<NavParent2__Tag__TagChar>>,
+}
+
+impl KaitaiStruct for NavParent2__Tag {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -94,33 +77,49 @@ impl KaitaiStruct for NavParent2 {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.name = &mut S::bytesToStr(stream->readBytes(4), "ASCII");
-        self.ofs = stream.read_u4le()?;
-        self.numItems = stream.read_u4le()?;
-
-        Ok(())
+        self.name = String::from_utf8_lossy(self.stream.read_bytes(4)?);
+        self.ofs = self.stream.read_u4le()?;
+        self.numItems = self.stream.read_u4le()?;
     }
-    public function tagContent() {
-        if (self.tagContent !== null)
-            return self.tagContent;
-        $io = $this->_root()->_io();
-        $_pos = $io->pos();
-        $io->seek($this->ofs());
-        switch ($this->name()) {
-            case "RAHC":
-                self.tagContent = new nav_parent2::tag::tag_char($io, $this, _root);
-                break;
+}
+
+impl NavParent2__Tag {
+    fn tagContent(&mut self) -> Box<NavParent2__Tag__TagChar> {
+        if let Some(x) = self.tagContent {
+            return x;
         }
-        $io->seek($_pos);
+
+        let mut io = self._root._io;
+        let _pos = io.pos();
+        io.seek(self.ofs);
+        match self.name {
+            "RAHC" => {
+                self.tagContent = Box::new(NavParent2__Tag__TagChar::new(self.stream, self, _root)?);
+            },
+        }
+        io.seek(_pos);
         return self.tagContent;
     }
 }
-        };
+#[derive(Default)]
+pub struct NavParent2__Tag__TagChar {
+    pub content: String,
+}
 
+impl KaitaiStruct for NavParent2__Tag__TagChar {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -128,8 +127,9 @@ impl KaitaiStruct for NavParent2 {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.content = &mut S::bytesToStr(stream->readBytes($this->_parent()->numItems()), "ASCII");
-
-        Ok(())
+        self.content = String::from_utf8_lossy(self.stream.read_bytes(self._parent.num_items)?);
     }
+}
+
+impl NavParent2__Tag__TagChar {
 }

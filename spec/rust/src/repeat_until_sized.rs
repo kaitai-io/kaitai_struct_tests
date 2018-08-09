@@ -1,22 +1,18 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct RepeatUntilSized {
-pub struct Record {
-    pub records: Vec<>*,
-    pub _raw_records: Vec<String>*,
-    pub marker: u8,
-    pub body: u32,
+    pub records: Vec<Box<RepeatUntilSized__Record>>,
+    pub _raw_records: Vec<u8>,
 }
 
 impl KaitaiStruct for RepeatUntilSized {
@@ -25,26 +21,14 @@ impl KaitaiStruct for RepeatUntilSized {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for Record {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-            records: Vec<>*,
-            _raw_records: Vec<String>*,
-            marker: 0,
-            body: 0,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -52,27 +36,41 @@ impl KaitaiStruct for RepeatUntilSized {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self._raw_records = [];
-        self.records = [];
-        $i = 0;
-        do {
-            $_buf = stream->readBytes(5);
-            self._raw_records[] = $_buf;
-            $io = new &mut S($_buf);
-            $_ = new repeat_until_sized::record($io, $this, _root);
-            self.records[] = $_;
-            $i++;
-        } while (!($_->marker() == 170));
-
-        Ok(())
+        self._raw_records = vec!();
+        self.records = vec!();
+        while {
+            let tmpb = self.stream.read_bytes(5)?;
+            self._raw_records.append(self.stream.read_bytes(5)?);
+            let mut io = Cursor::new(tmpb);
+            let tmpa = Box::new(RepeatUntilSized__Record::new(self.stream, self, _root)?);
+            self.records.append(Box::new(RepeatUntilSized__Record::new(self.stream, self, _root)?));
+            !(tmpa.marker == 170)
+        } { }
     }
 }
-        };
 
+impl RepeatUntilSized {
+}
+#[derive(Default)]
+pub struct RepeatUntilSized__Record {
+    pub marker: u8,
+    pub body: u32,
+}
+
+impl KaitaiStruct for RepeatUntilSized__Record {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -80,9 +78,10 @@ impl KaitaiStruct for RepeatUntilSized {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.marker = stream.read_u1()?;
-        self.body = stream.read_u4le()?;
-
-        Ok(())
+        self.marker = self.stream.read_u1()?;
+        self.body = self.stream.read_u4le()?;
     }
+}
+
+impl RepeatUntilSized__Record {
 }

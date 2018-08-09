@@ -1,24 +1,17 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct ProcessCoerceBytes {
-pub struct Record {
-    pub records: Vec<>*,
-    pub buf: String,
-    pub flag: u8,
-    pub bufUnproc: String,
-    pub bufProc: String,
-    pub _raw_bufProc: String,
+    pub records: Vec<Box<ProcessCoerceBytes__Record>>,
 }
 
 impl KaitaiStruct for ProcessCoerceBytes {
@@ -27,28 +20,14 @@ impl KaitaiStruct for ProcessCoerceBytes {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for Record {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-            records: Vec<>*,
-            buf: String,
-            flag: 0,
-            bufUnproc: String,
-            bufProc: String,
-            _raw_bufProc: String,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -56,21 +35,38 @@ impl KaitaiStruct for ProcessCoerceBytes {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.records = [];
-        $n = 2;
-        for ($i = 0; $i < $n; $i++) {
-            self.records[] = new process_coerce_bytes::record(stream, $this, _root);
+        self.records = vec!();
+        for i in 0..2 {
+            self.records.push(Box::new(ProcessCoerceBytes__Record::new(self.stream, self, _root)?));
         }
-
-        Ok(())
     }
 }
-        };
 
+impl ProcessCoerceBytes {
+}
+#[derive(Default)]
+pub struct ProcessCoerceBytes__Record {
+    pub flag: u8,
+    pub bufUnproc: Vec<u8>,
+    pub bufProc: Vec<u8>,
+    pub _raw_bufProc: Vec<u8>,
+    pub buf: Option<Vec<u8>>,
+}
+
+impl KaitaiStruct for ProcessCoerceBytes__Record {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -78,21 +74,24 @@ impl KaitaiStruct for ProcessCoerceBytes {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.flag = stream.read_u1()?;
-        if ($this->flag() == 0) {
-            self.bufUnproc = stream->readBytes(4);
+        self.flag = self.stream.read_u1()?;
+        if self.flag == 0 {
+            self.bufUnproc = self.stream.read_bytes(4)?;
         }
-        if ($this->flag() != 0) {
-            self._raw_bufProc = stream->readBytes(4);
+        if self.flag != 0 {
+            self._raw_bufProc = self.stream.read_bytes(4)?;
             self.bufProc = &mut S::processXorOne(self._raw_bufProc, 170);
         }
-
-        Ok(())
     }
-    public function buf() {
-        if (self.buf !== null)
-            return self.buf;
-        self.buf = ($this->flag() == 0 ? $this->bufUnproc() : $this->bufProc());
+}
+
+impl ProcessCoerceBytes__Record {
+    fn buf(&mut self) -> Vec<u8> {
+        if let Some(x) = self.buf {
+            return x;
+        }
+
+        self.buf = if self.flag == 0 { self.buf_unproc } else { self.buf_proc};
         return self.buf;
     }
 }

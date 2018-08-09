@@ -1,23 +1,21 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct EnumToI {
-pub struct Animal {
-    pub pet1I: i32,
-    pub pet1Mod: i32,
-    pub oneLtTwo: bool,
-    pub pet1: ,
-    pub pet2: ,
+    pub pet1: Box<EnumToI__Animal>,
+    pub pet2: Box<EnumToI__Animal>,
+    pub pet1I: Option<i32>,
+    pub pet1Mod: Option<i32>,
+    pub oneLtTwo: Option<bool>,
 }
 
 impl KaitaiStruct for EnumToI {
@@ -26,18 +24,14 @@ impl KaitaiStruct for EnumToI {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            pet1I: i32,
-            pet1Mod: i32,
-            oneLtTwo: bool,
-            pet1: ,
-            pet2: ,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -45,31 +39,39 @@ impl KaitaiStruct for EnumToI {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.pet1 = stream.read_u4le()?;
-        self.pet2 = stream.read_u4le()?;
-
-        Ok(())
+        self.pet1 = self.stream.read_u4le()?;
+        self.pet2 = self.stream.read_u4le()?;
     }
-    public function pet1I() {
-        if (self.pet1I !== null)
-            return self.pet1I;
-        self.pet1I = $this->pet1();
+}
+
+impl EnumToI {
+    fn pet1I(&mut self) -> i32 {
+        if let Some(x) = self.pet1I {
+            return x;
+        }
+
+        self.pet1I = self.pet_1;
         return self.pet1I;
     }
-    public function pet1Mod() {
-        if (self.pet1Mod !== null)
-            return self.pet1Mod;
-        self.pet1Mod = ($this->pet1() + 32768);
+    fn pet1Mod(&mut self) -> i32 {
+        if let Some(x) = self.pet1Mod {
+            return x;
+        }
+
+        self.pet1Mod = (self.pet_1 + 32768);
         return self.pet1Mod;
     }
-    public function oneLtTwo() {
-        if (self.oneLtTwo !== null)
-            return self.oneLtTwo;
-        self.oneLtTwo = $this->pet1() < $this->pet2();
+    fn oneLtTwo(&mut self) -> bool {
+        if let Some(x) = self.oneLtTwo {
+            return x;
+        }
+
+        self.oneLtTwo = self.pet_1 < self.pet_2;
         return self.oneLtTwo;
     }
 }
-const DOG = 4;
-const CAT = 7;
-const CHICKEN = 12;
+enum EnumToI__Animal {
+    DOG,
+    CAT,
+    CHICKEN,
 }

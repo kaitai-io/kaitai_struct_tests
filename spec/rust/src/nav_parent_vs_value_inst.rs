@@ -1,21 +1,18 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct NavParentVsValueInst {
-pub struct ChildObj {
     pub s1: String,
-    pub child: ,
-    pub doSomething: bool,
+    pub child: Box<NavParentVsValueInst__ChildObj>,
 }
 
 impl KaitaiStruct for NavParentVsValueInst {
@@ -24,25 +21,14 @@ impl KaitaiStruct for NavParentVsValueInst {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for ChildObj {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-            s1: String,
-            child: ,
-            doSomething: bool,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -50,18 +36,32 @@ impl KaitaiStruct for NavParentVsValueInst {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.s1 = &mut S::bytesToStr(stream->readBytesTerm(124, false, true, true), "UTF-8");
-        self.child = new nav_parent_vs_value_inst::child_obj(stream, $this, _root);
-
-        Ok(())
+        self.s1 = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
+        self.child = Box::new(NavParentVsValueInst__ChildObj::new(self.stream, self, _root)?);
     }
 }
-        };
 
+impl NavParentVsValueInst {
+}
+#[derive(Default)]
+pub struct NavParentVsValueInst__ChildObj {
+    pub doSomething: Option<bool>,
+}
+
+impl KaitaiStruct for NavParentVsValueInst__ChildObj {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -69,13 +69,16 @@ impl KaitaiStruct for NavParentVsValueInst {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-
-        Ok(())
     }
-    public function doSomething() {
-        if (self.doSomething !== null)
-            return self.doSomething;
-        self.doSomething = ($this->_parent()->s1() == "foo" ? true : false);
+}
+
+impl NavParentVsValueInst__ChildObj {
+    fn doSomething(&mut self) -> bool {
+        if let Some(x) = self.doSomething {
+            return x;
+        }
+
+        self.doSomething = if self._parent.s1 == "foo" { true } else { false};
         return self.doSomething;
     }
 }

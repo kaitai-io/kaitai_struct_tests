@@ -1,19 +1,19 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
+use imported_and_rel::ImportedAndRel;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct ImportsAbsRel {
     pub one: u8,
-    pub two: ,
+    pub two: Box<ImportedAndRel>,
 }
 
 impl KaitaiStruct for ImportsAbsRel {
@@ -22,15 +22,14 @@ impl KaitaiStruct for ImportsAbsRel {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            one: 0,
-            two: ,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -38,9 +37,10 @@ impl KaitaiStruct for ImportsAbsRel {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.one = stream.read_u1()?;
-        self.two = new imported_and_rel(stream);
-
-        Ok(())
+        self.one = self.stream.read_u1()?;
+        self.two = Box::new(ImportedAndRel::new(self.stream, self, _root)?);
     }
+}
+
+impl ImportsAbsRel {
 }

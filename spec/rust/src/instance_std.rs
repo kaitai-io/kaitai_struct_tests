@@ -1,18 +1,17 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct InstanceStd {
-    pub header: String,
+    pub header: Option<String>,
 }
 
 impl KaitaiStruct for InstanceStd {
@@ -21,14 +20,14 @@ impl KaitaiStruct for InstanceStd {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            header: String,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -36,16 +35,19 @@ impl KaitaiStruct for InstanceStd {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-
-        Ok(())
     }
-    public function header() {
-        if (self.header !== null)
-            return self.header;
-        $_pos = stream->pos();
-        stream->seek(2);
-        self.header = &mut S::bytesToStr(stream->readBytes(5), "ASCII");
-        stream->seek($_pos);
+}
+
+impl InstanceStd {
+    fn header(&mut self) -> String {
+        if let Some(x) = self.header {
+            return x;
+        }
+
+        let _pos = self.stream.pos();
+        self.stream.seek(2);
+        self.header = String::from_utf8_lossy(self.stream.read_bytes(5)?);
+        self.stream.seek(_pos);
         return self.header;
     }
 }

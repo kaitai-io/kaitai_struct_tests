@@ -1,24 +1,18 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct ParamsPassUsertype {
-pub struct Block {
-pub struct ParamType {
-    pub first: ,
-    pub one: ,
-    pub foo: u8,
-    pub buf: String,
-    pub foo: ,
+    pub first: Box<ParamsPassUsertype__Block>,
+    pub one: Box<ParamsPassUsertype__ParamType>,
 }
 
 impl KaitaiStruct for ParamsPassUsertype {
@@ -27,36 +21,14 @@ impl KaitaiStruct for ParamsPassUsertype {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for Block {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-                }
-
-                impl KaitaiStruct for ParamType {
-                    fn new<S: KaitaiStream>(stream: &mut S,
-                                            _parent: &Option<Box<KaitaiStruct>>,
-                                            _root: &Option<Box<KaitaiStruct>>)
-                                            -> Result<Self>
-                        where Self: Sized {
-                        let mut s = Self {
-            first: ,
-            one: ,
-            foo: 0,
-            buf: String,
-            foo: ,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -64,18 +36,32 @@ impl KaitaiStruct for ParamsPassUsertype {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.first = new params_pass_usertype::block(stream, $this, _root);
-        self.one = new params_pass_usertype::param_type($this->first(), stream, $this, _root);
-
-        Ok(())
+        self.first = Box::new(ParamsPassUsertype__Block::new(self.stream, self, _root)?);
+        self.one = Box::new(ParamsPassUsertype__ParamType::new(self.stream, self, _root)?);
     }
 }
-        };
 
+impl ParamsPassUsertype {
+}
+#[derive(Default)]
+pub struct ParamsPassUsertype__Block {
+    pub foo: u8,
+}
+
+impl KaitaiStruct for ParamsPassUsertype__Block {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -83,17 +69,31 @@ impl KaitaiStruct for ParamsPassUsertype {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.foo = stream.read_u1()?;
-
-        Ok(())
+        self.foo = self.stream.read_u1()?;
     }
 }
-        };
 
+impl ParamsPassUsertype__Block {
+}
+#[derive(Default)]
+pub struct ParamsPassUsertype__ParamType {
+    pub buf: Vec<u8>,
+}
+
+impl KaitaiStruct for ParamsPassUsertype__ParamType {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -101,8 +101,9 @@ impl KaitaiStruct for ParamsPassUsertype {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.buf = stream->readBytes($this->foo()->foo());
-
-        Ok(())
+        self.buf = self.stream.read_bytes(self.foo.foo)?;
     }
+}
+
+impl ParamsPassUsertype__ParamType {
 }

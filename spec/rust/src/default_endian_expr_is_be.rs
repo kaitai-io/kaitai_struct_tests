@@ -1,29 +1,17 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct DefaultEndianExprIsBe {
-pub struct Doc {
-pub struct MainObj {
-pub struct SubMainObj {
-    pub docs: Vec<>*,
-    pub indicator: String,
-    pub main: ,
-    pub instInt: u32,
-    pub instSub: ,
-    pub someInt: u32,
-    pub someIntBe: u16,
-    pub someIntLe: u16,
-    pub foo: u32,
+    pub docs: Vec<Box<DefaultEndianExprIsBe__Doc>>,
 }
 
 impl KaitaiStruct for DefaultEndianExprIsBe {
@@ -32,49 +20,14 @@ impl KaitaiStruct for DefaultEndianExprIsBe {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for Doc {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-                }
-
-                impl KaitaiStruct for MainObj {
-                    fn new<S: KaitaiStream>(stream: &mut S,
-                                            _parent: &Option<Box<KaitaiStruct>>,
-                                            _root: &Option<Box<KaitaiStruct>>)
-                                            -> Result<Self>
-                        where Self: Sized {
-                        let mut s = Self {
-                        }
-
-                        impl KaitaiStruct for SubMainObj {
-                            fn new<S: KaitaiStream>(stream: &mut S,
-                                                    _parent: &Option<Box<KaitaiStruct>>,
-                                                    _root: &Option<Box<KaitaiStruct>>)
-                                                    -> Result<Self>
-                                where Self: Sized {
-                                let mut s = Self {
-            docs: Vec<>*,
-            indicator: String,
-            main: ,
-            instInt: 0,
-            instSub: ,
-            someInt: 0,
-            someIntBe: 0,
-            someIntLe: 0,
-            foo: 0,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -83,127 +36,127 @@ impl KaitaiStruct for DefaultEndianExprIsBe {
                              -> Result<()>
         where Self: Sized {
         self.docs = [];
-        $i = 0;
-        while (!stream->isEof()) {
-            self.docs[] = new default_endian_expr_is_be::doc(stream, $this, _root);
-            $i++;
+        while !self.stream.isEof() {
+            self.docs.push(Box::new(DefaultEndianExprIsBe__Doc::new(self.stream, self, _root)?));
         }
-
-        Ok(())
     }
 }
-        };
 
+impl DefaultEndianExprIsBe {
+}
+#[derive(Default)]
+pub struct DefaultEndianExprIsBe__Doc {
+    pub indicator: Vec<u8>,
+    pub main: Box<DefaultEndianExprIsBe__Doc__MainObj>,
+}
+
+impl KaitaiStruct for DefaultEndianExprIsBe__Doc {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
 
+
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
                              _parent: &Option<Box<KaitaiStruct>>,
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.indicator = stream->readBytes(2);
-        self.main = new default_endian_expr_is_be::doc::main_obj(stream, $this, _root);
-
-        Ok(())
+        self.indicator = self.stream.read_bytes(2)?;
+        self.main = Box::new(DefaultEndianExprIsBe__Doc__MainObj::new(self.stream, self, _root)?);
     }
 }
-        };
 
+impl DefaultEndianExprIsBe__Doc {
+}
+#[derive(Default)]
+pub struct DefaultEndianExprIsBe__Doc__MainObj {
+    pub someInt: u32,
+    pub someIntBe: u16,
+    pub someIntLe: u16,
+    pub instInt: Option<u32>,
+    pub instSub: Option<Box<DefaultEndianExprIsBe__Doc__MainObj__SubMainObj>>,
+}
+
+impl KaitaiStruct for DefaultEndianExprIsBe__Doc__MainObj {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
 
+
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
                              _parent: &Option<Box<KaitaiStruct>>,
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        switch ($this->_parent()->indicator()) {
-            case "\x4D\x4D":
-                self._is_le = false;
-                break;
-            default:
-                self._is_le = true;
-                break;
+        self.someInt = self.stream.read_u4()?;
+        self.someIntBe = self.stream.read_u2be()?;
+        self.someIntLe = self.stream.read_u2le()?;
+    }
+}
+
+impl DefaultEndianExprIsBe__Doc__MainObj {
+    fn instInt(&mut self) -> u32 {
+        if let Some(x) = self.instInt {
+            return x;
         }
 
-        Ok(())
-    }
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.someInt = stream.read_u4le()?;
-        self.someIntBe = stream.read_u2be()?;
-        self.someIntLe = stream.read_u2le()?;
-
-        Ok(())
-    }
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.someInt = stream.read_u4be()?;
-        self.someIntBe = stream.read_u2be()?;
-        self.someIntLe = stream.read_u2le()?;
-
-        Ok(())
-    }
-    public function instInt() {
-        if (self.instInt !== null)
-            return self.instInt;
-        $_pos = stream->pos();
-        stream->seek(2);
-        if ($this->_m__is_le) {
-            self.instInt = stream.read_u4le()?;
-        } else {
-            self.instInt = stream.read_u4be()?;
-        }
-        stream->seek($_pos);
+        let _pos = self.stream.pos();
+        self.stream.seek(2);
+        self.instInt = self.stream.read_u4()?;
+        self.stream.seek(_pos);
         return self.instInt;
     }
-    public function instSub() {
-        if (self.instSub !== null)
-            return self.instSub;
-        $_pos = stream->pos();
-        stream->seek(2);
-        if ($this->_m__is_le) {
-            self.instSub = new default_endian_expr_is_be::doc::main_obj::sub_main_obj(stream, $this, _root, self._is_le);
-        } else {
-            self.instSub = new default_endian_expr_is_be::doc::main_obj::sub_main_obj(stream, $this, _root, self._is_le);
+    fn instSub(&mut self) -> Box<DefaultEndianExprIsBe__Doc__MainObj__SubMainObj> {
+        if let Some(x) = self.instSub {
+            return x;
         }
-        stream->seek($_pos);
+
+        let _pos = self.stream.pos();
+        self.stream.seek(2);
+        self.instSub = Box::new(DefaultEndianExprIsBe__Doc__MainObj__SubMainObj::new(self.stream, self, _root)?);
+        self.stream.seek(_pos);
         return self.instSub;
     }
 }
-        };
+#[derive(Default)]
+pub struct DefaultEndianExprIsBe__Doc__MainObj__SubMainObj {
+    pub foo: u32,
+}
 
+impl KaitaiStruct for DefaultEndianExprIsBe__Doc__MainObj__SubMainObj {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
 
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-
-        Ok(())
-    }
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -211,19 +164,9 @@ impl KaitaiStruct for DefaultEndianExprIsBe {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.foo = stream.read_u4le()?;
-
-        Ok(())
+        self.foo = self.stream.read_u4()?;
     }
+}
 
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.foo = stream.read_u4be()?;
-
-        Ok(())
-    }
+impl DefaultEndianExprIsBe__Doc__MainObj__SubMainObj {
 }

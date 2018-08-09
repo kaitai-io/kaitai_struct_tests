@@ -1,21 +1,20 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct TypeIntUnaryOp {
-    pub unaryS2: i32,
-    pub unaryS8: i64,
     pub valueS2: i16,
     pub valueS8: i64,
+    pub unaryS2: Option<i32>,
+    pub unaryS8: Option<i64>,
 }
 
 impl KaitaiStruct for TypeIntUnaryOp {
@@ -24,17 +23,14 @@ impl KaitaiStruct for TypeIntUnaryOp {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            unaryS2: i32,
-            unaryS8: 0,
-            valueS2: 0,
-            valueS8: 0,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -42,21 +38,26 @@ impl KaitaiStruct for TypeIntUnaryOp {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.valueS2 = stream.read_s2le()?;
-        self.valueS8 = stream.read_s8le()?;
-
-        Ok(())
+        self.valueS2 = self.stream.read_s2le()?;
+        self.valueS8 = self.stream.read_s8le()?;
     }
-    public function unaryS2() {
-        if (self.unaryS2 !== null)
-            return self.unaryS2;
-        self.unaryS2 = -($this->valueS2());
+}
+
+impl TypeIntUnaryOp {
+    fn unaryS2(&mut self) -> i32 {
+        if let Some(x) = self.unaryS2 {
+            return x;
+        }
+
+        self.unaryS2 = -(self.value_s2);
         return self.unaryS2;
     }
-    public function unaryS8() {
-        if (self.unaryS8 !== null)
-            return self.unaryS8;
-        self.unaryS8 = -($this->valueS8());
+    fn unaryS8(&mut self) -> i64 {
+        if let Some(x) = self.unaryS8 {
+            return x;
+        }
+
+        self.unaryS8 = -(self.value_s8);
         return self.unaryS8;
     }
 }

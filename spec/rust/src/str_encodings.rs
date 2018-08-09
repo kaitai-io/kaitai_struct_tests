@@ -1,16 +1,15 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct StrEncodings {
     pub lenOf1: u16,
     pub str1: String,
@@ -28,21 +27,14 @@ impl KaitaiStruct for StrEncodings {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            lenOf1: 0,
-            str1: String,
-            lenOf2: 0,
-            str2: String,
-            lenOf3: 0,
-            str3: String,
-            lenOf4: 0,
-            str4: String,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -50,15 +42,16 @@ impl KaitaiStruct for StrEncodings {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.lenOf1 = stream.read_u2le()?;
-        self.str1 = &mut S::bytesToStr(stream->readBytes($this->lenOf1()), "ASCII");
-        self.lenOf2 = stream.read_u2le()?;
-        self.str2 = &mut S::bytesToStr(stream->readBytes($this->lenOf2()), "UTF-8");
-        self.lenOf3 = stream.read_u2le()?;
-        self.str3 = &mut S::bytesToStr(stream->readBytes($this->lenOf3()), "SJIS");
-        self.lenOf4 = stream.read_u2le()?;
-        self.str4 = &mut S::bytesToStr(stream->readBytes($this->lenOf4()), "CP437");
-
-        Ok(())
+        self.lenOf1 = self.stream.read_u2le()?;
+        self.str1 = String::from_utf8_lossy(self.stream.read_bytes(self.len_of_1)?);
+        self.lenOf2 = self.stream.read_u2le()?;
+        self.str2 = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
+        self.lenOf3 = self.stream.read_u2le()?;
+        self.str3 = panic!("Unimplemented encoding for bytesToStr: {}", "SJIS");
+        self.lenOf4 = self.stream.read_u2le()?;
+        self.str4 = panic!("Unimplemented encoding for bytesToStr: {}", "CP437");
     }
+}
+
+impl StrEncodings {
 }

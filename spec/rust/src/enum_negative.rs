@@ -1,20 +1,18 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct EnumNegative {
-pub struct Constants {
-    pub f1: ,
-    pub f2: ,
+    pub f1: Box<EnumNegative__Constants>,
+    pub f2: Box<EnumNegative__Constants>,
 }
 
 impl KaitaiStruct for EnumNegative {
@@ -23,15 +21,14 @@ impl KaitaiStruct for EnumNegative {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            f1: ,
-            f2: ,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -39,12 +36,14 @@ impl KaitaiStruct for EnumNegative {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.f1 = stream.read_s1()?;
-        self.f2 = stream.read_s1()?;
-
-        Ok(())
+        self.f1 = self.stream.read_s1()?;
+        self.f2 = self.stream.read_s1()?;
     }
 }
-const NEGATIVE_ONE = -1;
-const POSITIVE_ONE = 1;
+
+impl EnumNegative {
+}
+enum EnumNegative__Constants {
+    NEGATIVE_ONE,
+    POSITIVE_ONE,
 }

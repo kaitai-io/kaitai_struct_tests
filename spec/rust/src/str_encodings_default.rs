@@ -1,27 +1,19 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct StrEncodingsDefault {
-pub struct Subtype {
     pub lenOf1: u16,
     pub str1: String,
-    pub rest: ,
-    pub lenOf2: u16,
-    pub str2: String,
-    pub lenOf3: u16,
-    pub str3: String,
-    pub lenOf4: u16,
-    pub str4: String,
+    pub rest: Box<StrEncodingsDefault__Subtype>,
 }
 
 impl KaitaiStruct for StrEncodingsDefault {
@@ -30,31 +22,14 @@ impl KaitaiStruct for StrEncodingsDefault {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for Subtype {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-            lenOf1: 0,
-            str1: String,
-            rest: ,
-            lenOf2: 0,
-            str2: String,
-            lenOf3: 0,
-            str3: String,
-            lenOf4: 0,
-            str4: String,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -62,19 +37,38 @@ impl KaitaiStruct for StrEncodingsDefault {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.lenOf1 = stream.read_u2le()?;
-        self.str1 = &mut S::bytesToStr(stream->readBytes($this->lenOf1()), "UTF-8");
-        self.rest = new str_encodings_default::subtype(stream, $this, _root);
-
-        Ok(())
+        self.lenOf1 = self.stream.read_u2le()?;
+        self.str1 = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
+        self.rest = Box::new(StrEncodingsDefault__Subtype::new(self.stream, self, _root)?);
     }
 }
-        };
 
+impl StrEncodingsDefault {
+}
+#[derive(Default)]
+pub struct StrEncodingsDefault__Subtype {
+    pub lenOf2: u16,
+    pub str2: String,
+    pub lenOf3: u16,
+    pub str3: String,
+    pub lenOf4: u16,
+    pub str4: String,
+}
+
+impl KaitaiStruct for StrEncodingsDefault__Subtype {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -82,13 +76,14 @@ impl KaitaiStruct for StrEncodingsDefault {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.lenOf2 = stream.read_u2le()?;
-        self.str2 = &mut S::bytesToStr(stream->readBytes($this->lenOf2()), "UTF-8");
-        self.lenOf3 = stream.read_u2le()?;
-        self.str3 = &mut S::bytesToStr(stream->readBytes($this->lenOf3()), "SJIS");
-        self.lenOf4 = stream.read_u2le()?;
-        self.str4 = &mut S::bytesToStr(stream->readBytes($this->lenOf4()), "CP437");
-
-        Ok(())
+        self.lenOf2 = self.stream.read_u2le()?;
+        self.str2 = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
+        self.lenOf3 = self.stream.read_u2le()?;
+        self.str3 = panic!("Unimplemented encoding for bytesToStr: {}", "SJIS");
+        self.lenOf4 = self.stream.read_u2le()?;
+        self.str4 = panic!("Unimplemented encoding for bytesToStr: {}", "CP437");
     }
+}
+
+impl StrEncodingsDefault__Subtype {
 }

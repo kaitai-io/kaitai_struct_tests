@@ -1,20 +1,19 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct IndexSizes {
     pub qty: u32,
-    pub sizes: Vec<u32>*,
-    pub bufs: Vec<String>*,
+    pub sizes: Vec<u32>,
+    pub bufs: Vec<String>,
 }
 
 impl KaitaiStruct for IndexSizes {
@@ -23,16 +22,14 @@ impl KaitaiStruct for IndexSizes {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            qty: 0,
-            sizes: Vec<u32>*,
-            bufs: Vec<String>*,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -40,18 +37,17 @@ impl KaitaiStruct for IndexSizes {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.qty = stream.read_u4le()?;
-        self.sizes = [];
-        $n = $this->qty();
-        for ($i = 0; $i < $n; $i++) {
-            self.sizes[] = stream.read_u4le()?;
+        self.qty = self.stream.read_u4le()?;
+        self.sizes = vec!();
+        for i in 0..self.qty {
+            self.sizes.push(self.stream.read_u4le()?);
         }
-        self.bufs = [];
-        $n = $this->qty();
-        for ($i = 0; $i < $n; $i++) {
-            self.bufs[] = &mut S::bytesToStr(stream->readBytes($this->sizes()[$i]), "ASCII");
+        self.bufs = vec!();
+        for i in 0..self.qty {
+            self.bufs.push(String::from_utf8_lossy(self.stream.read_bytes(self.sizes[i])?));
         }
-
-        Ok(())
     }
+}
+
+impl IndexSizes {
 }

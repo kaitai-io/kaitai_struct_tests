@@ -1,23 +1,20 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct OpaqueExternalType02Child {
-pub struct OpaqueExternalType02ChildChild {
-    pub someMethod: bool,
     pub s1: String,
     pub s2: String,
-    pub s3: ,
-    pub s3: String,
+    pub s3: Box<OpaqueExternalType02Child__OpaqueExternalType02ChildChild>,
+    pub someMethod: Option<bool>,
 }
 
 impl KaitaiStruct for OpaqueExternalType02Child {
@@ -26,27 +23,14 @@ impl KaitaiStruct for OpaqueExternalType02Child {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for OpaqueExternalType02ChildChild {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-            someMethod: bool,
-            s1: String,
-            s2: String,
-            s3: ,
-            s3: String,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -54,25 +38,41 @@ impl KaitaiStruct for OpaqueExternalType02Child {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.s1 = &mut S::bytesToStr(stream->readBytesTerm(124, false, true, true), "UTF-8");
-        self.s2 = &mut S::bytesToStr(stream->readBytesTerm(124, false, false, true), "UTF-8");
-        self.s3 = new opaque_external_type_02_child::opaque_external_type_02_child_child(stream, $this, _root);
-
-        Ok(())
+        self.s1 = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
+        self.s2 = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
+        self.s3 = Box::new(OpaqueExternalType02Child__OpaqueExternalType02ChildChild::new(self.stream, self, _root)?);
     }
-    public function someMethod() {
-        if (self.someMethod !== null)
-            return self.someMethod;
+}
+
+impl OpaqueExternalType02Child {
+    fn someMethod(&mut self) -> bool {
+        if let Some(x) = self.someMethod {
+            return x;
+        }
+
         self.someMethod = true;
         return self.someMethod;
     }
 }
-        };
+#[derive(Default)]
+pub struct OpaqueExternalType02Child__OpaqueExternalType02ChildChild {
+    pub s3: String,
+}
 
+impl KaitaiStruct for OpaqueExternalType02Child__OpaqueExternalType02ChildChild {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -80,10 +80,11 @@ impl KaitaiStruct for OpaqueExternalType02Child {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        if ($this->_root()->someMethod()) {
-            self.s3 = &mut S::bytesToStr(stream->readBytesTerm(64, true, true, true), "UTF-8");
+        if self._root.some_method {
+            self.s3 = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
         }
-
-        Ok(())
     }
+}
+
+impl OpaqueExternalType02Child__OpaqueExternalType02ChildChild {
 }

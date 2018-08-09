@@ -1,21 +1,17 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct RepeatEosStruct {
-pub struct Chunk {
-    pub chunks: Vec<>*,
-    pub offset: u32,
-    pub len: u32,
+    pub chunks: Vec<Box<RepeatEosStruct__Chunk>>,
 }
 
 impl KaitaiStruct for RepeatEosStruct {
@@ -24,25 +20,14 @@ impl KaitaiStruct for RepeatEosStruct {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for Chunk {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-            chunks: Vec<>*,
-            offset: 0,
-            len: 0,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -51,21 +36,34 @@ impl KaitaiStruct for RepeatEosStruct {
                              -> Result<()>
         where Self: Sized {
         self.chunks = [];
-        $i = 0;
-        while (!stream->isEof()) {
-            self.chunks[] = new repeat_eos_struct::chunk(stream, $this, _root);
-            $i++;
+        while !self.stream.isEof() {
+            self.chunks.push(Box::new(RepeatEosStruct__Chunk::new(self.stream, self, _root)?));
         }
-
-        Ok(())
     }
 }
-        };
 
+impl RepeatEosStruct {
+}
+#[derive(Default)]
+pub struct RepeatEosStruct__Chunk {
+    pub offset: u32,
+    pub len: u32,
+}
+
+impl KaitaiStruct for RepeatEosStruct__Chunk {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -73,9 +71,10 @@ impl KaitaiStruct for RepeatEosStruct {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.offset = stream.read_u4le()?;
-        self.len = stream.read_u4le()?;
-
-        Ok(())
+        self.offset = self.stream.read_u4le()?;
+        self.len = self.stream.read_u4le()?;
     }
+}
+
+impl RepeatEosStruct__Chunk {
 }

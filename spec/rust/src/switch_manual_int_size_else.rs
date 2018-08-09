@@ -1,30 +1,17 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct SwitchManualIntSizeElse {
-pub struct Chunk {
-pub struct ChunkMeta {
-pub struct ChunkDir {
-pub struct Dummy {
-    pub chunks: Vec<>*,
-    pub code: u8,
-    pub size: u32,
-    pub body: ,
-    pub _raw_body: String,
-    pub title: String,
-    pub author: String,
-    pub entries: Vec<String>*,
-    pub rest: String,
+    pub chunks: Vec<Box<SwitchManualIntSizeElse__Chunk>>,
 }
 
 impl KaitaiStruct for SwitchManualIntSizeElse {
@@ -33,58 +20,14 @@ impl KaitaiStruct for SwitchManualIntSizeElse {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for Chunk {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-                }
-
-                impl KaitaiStruct for ChunkMeta {
-                    fn new<S: KaitaiStream>(stream: &mut S,
-                                            _parent: &Option<Box<KaitaiStruct>>,
-                                            _root: &Option<Box<KaitaiStruct>>)
-                                            -> Result<Self>
-                        where Self: Sized {
-                        let mut s = Self {
-                        }
-
-                        impl KaitaiStruct for ChunkDir {
-                            fn new<S: KaitaiStream>(stream: &mut S,
-                                                    _parent: &Option<Box<KaitaiStruct>>,
-                                                    _root: &Option<Box<KaitaiStruct>>)
-                                                    -> Result<Self>
-                                where Self: Sized {
-                                let mut s = Self {
-                                }
-
-                                impl KaitaiStruct for Dummy {
-                                    fn new<S: KaitaiStream>(stream: &mut S,
-                                                            _parent: &Option<Box<KaitaiStruct>>,
-                                                            _root: &Option<Box<KaitaiStruct>>)
-                                                            -> Result<Self>
-                                        where Self: Sized {
-                                        let mut s = Self {
-            chunks: Vec<>*,
-            code: 0,
-            size: 0,
-            body: ,
-            _raw_body: String,
-            title: String,
-            author: String,
-            entries: Vec<String>*,
-            rest: String,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -93,21 +36,35 @@ impl KaitaiStruct for SwitchManualIntSizeElse {
                              -> Result<()>
         where Self: Sized {
         self.chunks = [];
-        $i = 0;
-        while (!stream->isEof()) {
-            self.chunks[] = new switch_manual_int_size_else::chunk(stream, $this, _root);
-            $i++;
+        while !self.stream.isEof() {
+            self.chunks.push(Box::new(SwitchManualIntSizeElse__Chunk::new(self.stream, self, _root)?));
         }
-
-        Ok(())
     }
 }
-        };
 
+impl SwitchManualIntSizeElse {
+}
+#[derive(Default)]
+pub struct SwitchManualIntSizeElse__Chunk {
+    pub code: u8,
+    pub size: u32,
+    pub body: Option<Box<KaitaiStruct>>,
+}
+
+impl KaitaiStruct for SwitchManualIntSizeElse__Chunk {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -115,35 +72,50 @@ impl KaitaiStruct for SwitchManualIntSizeElse {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.code = stream.read_u1()?;
-        self.size = stream.read_u4le()?;
-        switch ($this->code()) {
-            case 17:
-                self._raw_body = stream->readBytes($this->size());
-                $io = new &mut S(self._raw_body);
-                self.body = new switch_manual_int_size_else::chunk::chunk_meta($io, $this, _root);
-                break;
-            case 34:
-                self._raw_body = stream->readBytes($this->size());
-                $io = new &mut S(self._raw_body);
-                self.body = new switch_manual_int_size_else::chunk::chunk_dir($io, $this, _root);
-                break;
-            default:
-                self._raw_body = stream->readBytes($this->size());
-                $io = new &mut S(self._raw_body);
-                self.body = new switch_manual_int_size_else::chunk::dummy($io, $this, _root);
-                break;
+        self.code = self.stream.read_u1()?;
+        self.size = self.stream.read_u4le()?;
+        match self.code {
+            17 => {
+                self._raw_body = self.stream.read_bytes(self.size)?;
+                let mut io = Cursor::new(self._raw_body);
+                self.body = Box::new(SwitchManualIntSizeElse__Chunk__ChunkMeta::new(self.stream, self, _root)?);
+            },
+            34 => {
+                self._raw_body = self.stream.read_bytes(self.size)?;
+                let mut io = Cursor::new(self._raw_body);
+                self.body = Box::new(SwitchManualIntSizeElse__Chunk__ChunkDir::new(self.stream, self, _root)?);
+            },
+            _ => {
+                self._raw_body = self.stream.read_bytes(self.size)?;
+                let mut io = Cursor::new(self._raw_body);
+                self.body = Box::new(SwitchManualIntSizeElse__Chunk__Dummy::new(self.stream, self, _root)?);
+            }
         }
-
-        Ok(())
     }
 }
-        };
 
+impl SwitchManualIntSizeElse__Chunk {
+}
+#[derive(Default)]
+pub struct SwitchManualIntSizeElse__Chunk__ChunkMeta {
+    pub title: String,
+    pub author: String,
+}
+
+impl KaitaiStruct for SwitchManualIntSizeElse__Chunk__ChunkMeta {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -151,18 +123,32 @@ impl KaitaiStruct for SwitchManualIntSizeElse {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.title = &mut S::bytesToStr(stream->readBytesTerm(0, false, true, true), "UTF-8");
-        self.author = &mut S::bytesToStr(stream->readBytesTerm(0, false, true, true), "UTF-8");
-
-        Ok(())
+        self.title = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
+        self.author = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
     }
 }
-        };
 
+impl SwitchManualIntSizeElse__Chunk__ChunkMeta {
+}
+#[derive(Default)]
+pub struct SwitchManualIntSizeElse__Chunk__ChunkDir {
+    pub entries: Vec<String>,
+}
+
+impl KaitaiStruct for SwitchManualIntSizeElse__Chunk__ChunkDir {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -171,21 +157,33 @@ impl KaitaiStruct for SwitchManualIntSizeElse {
                              -> Result<()>
         where Self: Sized {
         self.entries = [];
-        $i = 0;
-        while (!stream->isEof()) {
-            self.entries[] = &mut S::bytesToStr(stream->readBytes(4), "UTF-8");
-            $i++;
+        while !self.stream.isEof() {
+            self.entries.push(panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8"));
         }
-
-        Ok(())
     }
 }
-        };
 
+impl SwitchManualIntSizeElse__Chunk__ChunkDir {
+}
+#[derive(Default)]
+pub struct SwitchManualIntSizeElse__Chunk__Dummy {
+    pub rest: Vec<u8>,
+}
+
+impl KaitaiStruct for SwitchManualIntSizeElse__Chunk__Dummy {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -193,8 +191,9 @@ impl KaitaiStruct for SwitchManualIntSizeElse {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.rest = stream->readBytesFull();
-
-        Ok(())
+        self.rest = self.stream.read_bytes_full()?;
     }
+}
+
+impl SwitchManualIntSizeElse__Chunk__Dummy {
 }

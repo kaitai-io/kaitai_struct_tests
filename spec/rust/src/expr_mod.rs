@@ -1,23 +1,22 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct ExprMod {
-    pub modPosConst: i32,
-    pub modNegConst: i32,
-    pub modPosSeq: i32,
-    pub modNegSeq: i32,
     pub intU: u32,
     pub intS: i32,
+    pub modPosConst: Option<i32>,
+    pub modNegConst: Option<i32>,
+    pub modPosSeq: Option<i32>,
+    pub modNegSeq: Option<i32>,
 }
 
 impl KaitaiStruct for ExprMod {
@@ -26,19 +25,14 @@ impl KaitaiStruct for ExprMod {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            modPosConst: i32,
-            modNegConst: i32,
-            modPosSeq: i32,
-            modNegSeq: i32,
-            intU: 0,
-            intS: 0,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -46,33 +40,42 @@ impl KaitaiStruct for ExprMod {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.intU = stream.read_u4le()?;
-        self.intS = stream.read_s4le()?;
-
-        Ok(())
+        self.intU = self.stream.read_u4le()?;
+        self.intS = self.stream.read_s4le()?;
     }
-    public function modPosConst() {
-        if (self.modPosConst !== null)
-            return self.modPosConst;
-        self.modPosConst = &mut S::mod(9837, 13);
+}
+
+impl ExprMod {
+    fn modPosConst(&mut self) -> i32 {
+        if let Some(x) = self.modPosConst {
+            return x;
+        }
+
+        self.modPosConst = 9837 % 13;
         return self.modPosConst;
     }
-    public function modNegConst() {
-        if (self.modNegConst !== null)
-            return self.modNegConst;
-        self.modNegConst = &mut S::mod(-9837, 13);
+    fn modNegConst(&mut self) -> i32 {
+        if let Some(x) = self.modNegConst {
+            return x;
+        }
+
+        self.modNegConst = -9837 % 13;
         return self.modNegConst;
     }
-    public function modPosSeq() {
-        if (self.modPosSeq !== null)
-            return self.modPosSeq;
-        self.modPosSeq = &mut S::mod($this->intU(), 13);
+    fn modPosSeq(&mut self) -> i32 {
+        if let Some(x) = self.modPosSeq {
+            return x;
+        }
+
+        self.modPosSeq = self.int_u % 13;
         return self.modPosSeq;
     }
-    public function modNegSeq() {
-        if (self.modNegSeq !== null)
-            return self.modNegSeq;
-        self.modNegSeq = &mut S::mod($this->intS(), 13);
+    fn modNegSeq(&mut self) -> i32 {
+        if let Some(x) = self.modNegSeq {
+            return x;
+        }
+
+        self.modNegSeq = self.int_s % 13;
         return self.modNegSeq;
     }
 }

@@ -1,24 +1,17 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct Enum1 {
-pub struct MainObj {
-pub struct SubmainObj {
-pub struct Animal {
-    pub main: ,
-    pub submain: ,
-    pub pet1: ,
-    pub pet2: ,
+    pub main: Box<Enum1__MainObj>,
 }
 
 impl KaitaiStruct for Enum1 {
@@ -27,35 +20,14 @@ impl KaitaiStruct for Enum1 {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for MainObj {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-                }
-
-                impl KaitaiStruct for SubmainObj {
-                    fn new<S: KaitaiStream>(stream: &mut S,
-                                            _parent: &Option<Box<KaitaiStruct>>,
-                                            _root: &Option<Box<KaitaiStruct>>)
-                                            -> Result<Self>
-                        where Self: Sized {
-                        let mut s = Self {
-            main: ,
-            submain: ,
-            pet1: ,
-            pet2: ,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -63,17 +35,31 @@ impl KaitaiStruct for Enum1 {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.main = new enum_1::main_obj(stream, $this, _root);
-
-        Ok(())
+        self.main = Box::new(Enum1__MainObj::new(self.stream, self, _root)?);
     }
 }
-        };
 
+impl Enum1 {
+}
+#[derive(Default)]
+pub struct Enum1__MainObj {
+    pub submain: Box<Enum1__MainObj__SubmainObj>,
+}
+
+impl KaitaiStruct for Enum1__MainObj {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -81,17 +67,37 @@ impl KaitaiStruct for Enum1 {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.submain = new enum_1::main_obj::submain_obj(stream, $this, _root);
-
-        Ok(())
+        self.submain = Box::new(Enum1__MainObj__SubmainObj::new(self.stream, self, _root)?);
     }
 }
-        };
 
+impl Enum1__MainObj {
+}
+enum Enum1__MainObj__Animal {
+    DOG,
+    CAT,
+    CHICKEN,
+}
+#[derive(Default)]
+pub struct Enum1__MainObj__SubmainObj {
+    pub pet1: Box<Enum1__MainObj__Animal>,
+    pub pet2: Box<Enum1__MainObj__Animal>,
+}
+
+impl KaitaiStruct for Enum1__MainObj__SubmainObj {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -99,13 +105,10 @@ impl KaitaiStruct for Enum1 {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.pet1 = stream.read_u4le()?;
-        self.pet2 = stream.read_u4le()?;
-
-        Ok(())
+        self.pet1 = self.stream.read_u4le()?;
+        self.pet2 = self.stream.read_u4le()?;
     }
 }
-const DOG = 4;
-const CAT = 7;
-const CHICKEN = 12;
+
+impl Enum1__MainObj__SubmainObj {
 }

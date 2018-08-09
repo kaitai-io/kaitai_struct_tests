@@ -1,27 +1,18 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct NavRoot {
-pub struct HeaderObj {
-pub struct IndexObj {
-pub struct Entry {
-    pub header: ,
-    pub index: ,
-    pub qtyEntries: u32,
-    pub filenameLen: u32,
-    pub magic: String,
-    pub entries: Vec<>*,
-    pub filename: String,
+    pub header: Box<NavRoot__HeaderObj>,
+    pub index: Box<NavRoot__IndexObj>,
 }
 
 impl KaitaiStruct for NavRoot {
@@ -30,66 +21,118 @@ impl KaitaiStruct for NavRoot {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+        self.header = Box::new(NavRoot__HeaderObj::new(self.stream, self, _root)?);
+        self.index = Box::new(NavRoot__IndexObj::new(self.stream, self, _root)?);
+    }
+}
+
+impl NavRoot {
+}
+#[derive(Default)]
+pub struct NavRoot__HeaderObj {
+    pub qtyEntries: u32,
+    pub filenameLen: u32,
+}
+
+impl KaitaiStruct for NavRoot__HeaderObj {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+        self.qtyEntries = self.stream.read_u4le()?;
+        self.filenameLen = self.stream.read_u4le()?;
+    }
+}
+
+impl NavRoot__HeaderObj {
+}
+#[derive(Default)]
+pub struct NavRoot__IndexObj {
+    pub magic: Vec<u8>,
+    pub entries: Vec<Box<NavRoot__Entry>>,
+}
+
+impl KaitaiStruct for NavRoot__IndexObj {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+        self.magic = self.stream.read_bytes(4)?;
+        self.entries = vec!();
+        for i in 0..self._root.header.qty_entries {
+            self.entries.push(Box::new(NavRoot__Entry::new(self.stream, self, _root)?));
         }
-
-        impl KaitaiStruct for HeaderObj {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-                }
-
-                impl KaitaiStruct for IndexObj {
-                    fn new<S: KaitaiStream>(stream: &mut S,
-                                            _parent: &Option<Box<KaitaiStruct>>,
-                                            _root: &Option<Box<KaitaiStruct>>)
-                                            -> Result<Self>
-                        where Self: Sized {
-                        let mut s = Self {
-                        }
-
-                        impl KaitaiStruct for Entry {
-                            fn new<S: KaitaiStream>(stream: &mut S,
-                                                    _parent: &Option<Box<KaitaiStruct>>,
-                                                    _root: &Option<Box<KaitaiStruct>>)
-                                                    -> Result<Self>
-                                where Self: Sized {
-                                let mut s = Self {
-            header: ,
-            index: ,
-            qtyEntries: 0,
-            filenameLen: 0,
-            magic: String,
-            entries: Vec<>*,
-            filename: String,
-        };
-
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.header = new nav_root::header_obj(stream, $this, _root);
-        self.index = new nav_root::index_obj(stream, $this, _root);
-
-        Ok(())
     }
 }
-        };
 
+impl NavRoot__IndexObj {
+}
+#[derive(Default)]
+pub struct NavRoot__Entry {
+    pub filename: String,
+}
+
+impl KaitaiStruct for NavRoot__Entry {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -97,50 +140,9 @@ impl KaitaiStruct for NavRoot {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.qtyEntries = stream.read_u4le()?;
-        self.filenameLen = stream.read_u4le()?;
-
-        Ok(())
+        self.filename = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
     }
 }
-        };
 
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.magic = stream->readBytes(4);
-        self.entries = [];
-        $n = $this->_root()->header()->qtyEntries();
-        for ($i = 0; $i < $n; $i++) {
-            self.entries[] = new nav_root::entry(stream, $this, _root);
-        }
-
-        Ok(())
-    }
-}
-        };
-
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.filename = &mut S::bytesToStr(stream->readBytes($this->_root()->header()->filenameLen()), "UTF-8");
-
-        Ok(())
-    }
+impl NavRoot__Entry {
 }

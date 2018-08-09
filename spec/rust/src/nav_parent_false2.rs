@@ -1,20 +1,17 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct NavParentFalse2 {
-pub struct Child {
-    pub parentless: ,
-    pub foo: u8,
+    pub parentless: Box<NavParentFalse2__Child>,
 }
 
 impl KaitaiStruct for NavParentFalse2 {
@@ -23,24 +20,14 @@ impl KaitaiStruct for NavParentFalse2 {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for Child {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-            parentless: ,
-            foo: 0,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -48,17 +35,31 @@ impl KaitaiStruct for NavParentFalse2 {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.parentless = new nav_parent_false2::child(stream, null, _root);
-
-        Ok(())
+        self.parentless = Box::new(NavParentFalse2__Child::new(self.stream, self, _root)?);
     }
 }
-        };
 
+impl NavParentFalse2 {
+}
+#[derive(Default)]
+pub struct NavParentFalse2__Child {
+    pub foo: u8,
+}
+
+impl KaitaiStruct for NavParentFalse2__Child {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -66,8 +67,9 @@ impl KaitaiStruct for NavParentFalse2 {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.foo = stream.read_u1()?;
-
-        Ok(())
+        self.foo = self.stream.read_u1()?;
     }
+}
+
+impl NavParentFalse2__Child {
 }

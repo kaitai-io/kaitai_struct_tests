@@ -1,20 +1,19 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct ProcessXor4Value {
-    pub key: String,
-    pub buf: String,
-    pub _raw_buf: String,
+    pub key: Vec<u8>,
+    pub buf: Vec<u8>,
+    pub _raw_buf: Vec<u8>,
 }
 
 impl KaitaiStruct for ProcessXor4Value {
@@ -23,16 +22,14 @@ impl KaitaiStruct for ProcessXor4Value {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            key: String,
-            buf: String,
-            _raw_buf: String,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -40,10 +37,11 @@ impl KaitaiStruct for ProcessXor4Value {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.key = stream->readBytes(4);
-        self._raw_buf = stream->readBytesFull();
-        self.buf = &mut S::processXorMany(self._raw_buf, $this->key());
-
-        Ok(())
+        self.key = self.stream.read_bytes(4)?;
+        self._raw_buf = self.stream.read_bytes_full()?;
+        self.buf = &mut S::processXorMany(self._raw_buf, self.key);
     }
+}
+
+impl ProcessXor4Value {
 }

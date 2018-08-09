@@ -1,16 +1,15 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct BitsByteAligned {
     pub one: u64,
     pub byte1: u8,
@@ -18,7 +17,7 @@ pub struct BitsByteAligned {
     pub three: bool,
     pub byte2: u8,
     pub four: u64,
-    pub byte3: String,
+    pub byte3: Vec<u8>,
     pub fullByte: u64,
     pub byte4: u8,
 }
@@ -29,22 +28,14 @@ impl KaitaiStruct for BitsByteAligned {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            one: u64,
-            byte1: 0,
-            two: u64,
-            three: bool,
-            byte2: 0,
-            four: u64,
-            byte3: String,
-            fullByte: u64,
-            byte4: 0,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -52,20 +43,21 @@ impl KaitaiStruct for BitsByteAligned {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.one = stream->readBitsInt(6);
-        stream->alignToByte();
-        self.byte1 = stream.read_u1()?;
-        self.two = stream->readBitsInt(3);
-        self.three = stream->readBitsInt(1) != 0;
-        stream->alignToByte();
-        self.byte2 = stream.read_u1()?;
-        self.four = stream->readBitsInt(14);
-        stream->alignToByte();
-        self.byte3 = stream->readBytes(1);
-        self.fullByte = stream->readBitsInt(8);
-        stream->alignToByte();
-        self.byte4 = stream.read_u1()?;
-
-        Ok(())
+        self.one = self.stream.read_bits_int(6)?;
+        self.stream.alignToByte();
+        self.byte1 = self.stream.read_u1()?;
+        self.two = self.stream.read_bits_int(3)?;
+        self.three = self.stream.read_bits_int(1)? != 0;
+        self.stream.alignToByte();
+        self.byte2 = self.stream.read_u1()?;
+        self.four = self.stream.read_bits_int(14)?;
+        self.stream.alignToByte();
+        self.byte3 = self.stream.read_bytes(1)?;
+        self.fullByte = self.stream.read_bits_int(8)?;
+        self.stream.alignToByte();
+        self.byte4 = self.stream.read_u1()?;
     }
+}
+
+impl BitsByteAligned {
 }

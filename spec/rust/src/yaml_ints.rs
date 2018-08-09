@@ -1,21 +1,20 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct YamlInts {
-    pub testU4Dec: i32,
-    pub testU4Hex: i32,
-    pub testU8Dec: i32,
-    pub testU8Hex: i32,
+    pub testU4Dec: Option<i32>,
+    pub testU4Hex: Option<i32>,
+    pub testU8Dec: Option<i32>,
+    pub testU8Hex: Option<i32>,
 }
 
 impl KaitaiStruct for YamlInts {
@@ -24,17 +23,14 @@ impl KaitaiStruct for YamlInts {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            testU4Dec: i32,
-            testU4Hex: i32,
-            testU8Dec: i32,
-            testU8Hex: i32,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -42,30 +38,39 @@ impl KaitaiStruct for YamlInts {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-
-        Ok(())
     }
-    public function testU4Dec() {
-        if (self.testU4Dec !== null)
-            return self.testU4Dec;
+}
+
+impl YamlInts {
+    fn testU4Dec(&mut self) -> i32 {
+        if let Some(x) = self.testU4Dec {
+            return x;
+        }
+
         self.testU4Dec = 4294967295;
         return self.testU4Dec;
     }
-    public function testU4Hex() {
-        if (self.testU4Hex !== null)
-            return self.testU4Hex;
+    fn testU4Hex(&mut self) -> i32 {
+        if let Some(x) = self.testU4Hex {
+            return x;
+        }
+
         self.testU4Hex = 4294967295;
         return self.testU4Hex;
     }
-    public function testU8Dec() {
-        if (self.testU8Dec !== null)
-            return self.testU8Dec;
+    fn testU8Dec(&mut self) -> i32 {
+        if let Some(x) = self.testU8Dec {
+            return x;
+        }
+
         self.testU8Dec = 18446744073709551615;
         return self.testU8Dec;
     }
-    public function testU8Hex() {
-        if (self.testU8Hex !== null)
-            return self.testU8Hex;
+    fn testU8Hex(&mut self) -> i32 {
+        if let Some(x) = self.testU8Hex {
+            return x;
+        }
+
         self.testU8Hex = 18446744073709551615;
         return self.testU8Hex;
     }

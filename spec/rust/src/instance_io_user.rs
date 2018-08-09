@@ -1,27 +1,20 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct InstanceIoUser {
-pub struct Entry {
-pub struct StringsObj {
     pub qtyEntries: u32,
-    pub entries: Vec<>*,
-    pub strings: ,
-    pub _raw_strings: String,
-    pub name: String,
-    pub nameOfs: u32,
-    pub value: u32,
-    pub str: Vec<String>*,
+    pub entries: Vec<Box<InstanceIoUser__Entry>>,
+    pub strings: Box<InstanceIoUser__StringsObj>,
+    pub _raw_strings: Vec<u8>,
 }
 
 impl KaitaiStruct for InstanceIoUser {
@@ -30,39 +23,14 @@ impl KaitaiStruct for InstanceIoUser {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for Entry {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-                }
-
-                impl KaitaiStruct for StringsObj {
-                    fn new<S: KaitaiStream>(stream: &mut S,
-                                            _parent: &Option<Box<KaitaiStruct>>,
-                                            _root: &Option<Box<KaitaiStruct>>)
-                                            -> Result<Self>
-                        where Self: Sized {
-                        let mut s = Self {
-            qtyEntries: 0,
-            entries: Vec<>*,
-            strings: ,
-            _raw_strings: String,
-            name: String,
-            nameOfs: 0,
-            value: 0,
-            str: Vec<String>*,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -70,25 +38,40 @@ impl KaitaiStruct for InstanceIoUser {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.qtyEntries = stream.read_u4le()?;
-        self.entries = [];
-        $n = $this->qtyEntries();
-        for ($i = 0; $i < $n; $i++) {
-            self.entries[] = new instance_io_user::entry(stream, $this, _root);
+        self.qtyEntries = self.stream.read_u4le()?;
+        self.entries = vec!();
+        for i in 0..self.qty_entries {
+            self.entries.push(Box::new(InstanceIoUser__Entry::new(self.stream, self, _root)?));
         }
-        self._raw_strings = stream->readBytesFull();
-        $io = new &mut S(self._raw_strings);
-        self.strings = new instance_io_user::strings_obj($io, $this, _root);
-
-        Ok(())
+        self._raw_strings = self.stream.read_bytes_full()?;
+        let mut io = Cursor::new(self._raw_strings);
+        self.strings = Box::new(InstanceIoUser__StringsObj::new(self.stream, self, _root)?);
     }
 }
-        };
 
+impl InstanceIoUser {
+}
+#[derive(Default)]
+pub struct InstanceIoUser__Entry {
+    pub nameOfs: u32,
+    pub value: u32,
+    pub name: Option<String>,
+}
+
+impl KaitaiStruct for InstanceIoUser__Entry {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -96,28 +79,44 @@ impl KaitaiStruct for InstanceIoUser {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.nameOfs = stream.read_u4le()?;
-        self.value = stream.read_u4le()?;
-
-        Ok(())
+        self.nameOfs = self.stream.read_u4le()?;
+        self.value = self.stream.read_u4le()?;
     }
-    public function name() {
-        if (self.name !== null)
-            return self.name;
-        $io = $this->_root()->strings()->_io();
-        $_pos = $io->pos();
-        $io->seek($this->nameOfs());
-        self.name = &mut S::bytesToStr($io->readBytesTerm(0, false, true, true), "UTF-8");
-        $io->seek($_pos);
+}
+
+impl InstanceIoUser__Entry {
+    fn name(&mut self) -> String {
+        if let Some(x) = self.name {
+            return x;
+        }
+
+        let mut io = self._root.strings._io;
+        let _pos = io.pos();
+        io.seek(self.name_ofs);
+        self.name = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
+        io.seek(_pos);
         return self.name;
     }
 }
-        };
+#[derive(Default)]
+pub struct InstanceIoUser__StringsObj {
+    pub str: Vec<String>,
+}
 
+impl KaitaiStruct for InstanceIoUser__StringsObj {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -126,12 +125,11 @@ impl KaitaiStruct for InstanceIoUser {
                              -> Result<()>
         where Self: Sized {
         self.str = [];
-        $i = 0;
-        while (!stream->isEof()) {
-            self.str[] = &mut S::bytesToStr(stream->readBytesTerm(0, false, true, true), "UTF-8");
-            $i++;
+        while !self.stream.isEof() {
+            self.str.push(panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8"));
         }
-
-        Ok(())
     }
+}
+
+impl InstanceIoUser__StringsObj {
 }

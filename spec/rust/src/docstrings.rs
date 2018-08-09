@@ -1,21 +1,23 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
 
+/*
+ * One-liner description of a type.
+ */
+#[derive(Default)]
 pub struct Docstrings {
-pub struct ComplexSubtype {
-    pub two: u8,
-    pub three: i8,
     pub one: u8,
+    pub two: Option<u8>,
+    pub three: Option<i8>,
 }
 
 impl KaitaiStruct for Docstrings {
@@ -24,29 +26,14 @@ impl KaitaiStruct for Docstrings {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for ComplexSubtype {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-            two: 0,
-            three: 0,
-            one: 0,
-
-/**
- * One-liner description of a type.
- */
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -54,40 +41,45 @@ impl KaitaiStruct for Docstrings {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.one = stream.read_u1()?;
-
-        Ok(())
+        self.one = self.stream.read_u1()?;
     }
+}
 
-    /**
+impl Docstrings {
+
+    /*
      * Another description for parse instance "two"
      */
-    public function two() {
-        if (self.two !== null)
-            return self.two;
-        $_pos = stream->pos();
-        stream->seek(0);
-        self.two = stream.read_u1()?;
-        stream->seek($_pos);
+    fn two(&mut self) -> u8 {
+        if let Some(x) = self.two {
+            return x;
+        }
+
+        let _pos = self.stream.pos();
+        self.stream.seek(0);
+        self.two = self.stream.read_u1()?;
+        self.stream.seek(_pos);
         return self.two;
     }
 
-    /**
+    /*
      * And yet another one for value instance "three"
      */
-    public function three() {
-        if (self.three !== null)
-            return self.three;
+    fn three(&mut self) -> i8 {
+        if let Some(x) = self.three {
+            return x;
+        }
+
         self.three = 66;
         return self.three;
     }
 
-    /**
+    /*
      * A pretty verbose description for sequence attribute "one"
      */
 }
 
-/**
+/*
  * This subtype is never used, yet has a very long description
  * that spans multiple lines. It should be formatted accordingly,
  * even in languages that have single-line comments for
@@ -102,12 +94,24 @@ impl KaitaiStruct for Docstrings {
  * [woohoo](http://example.com) - one day it will be supported as
  * well.
  */
-        };
+#[derive(Default)]
+pub struct Docstrings__ComplexSubtype {
+}
 
+impl KaitaiStruct for Docstrings__ComplexSubtype {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -115,7 +119,8 @@ impl KaitaiStruct for Docstrings {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-
-        Ok(())
     }
+}
+
+impl Docstrings__ComplexSubtype {
 }

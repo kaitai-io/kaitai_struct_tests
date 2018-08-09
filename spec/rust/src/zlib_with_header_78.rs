@@ -1,19 +1,18 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct ZlibWithHeader78 {
-    pub data: String,
-    pub _raw_data: String,
+    pub data: Vec<u8>,
+    pub _raw_data: Vec<u8>,
 }
 
 impl KaitaiStruct for ZlibWithHeader78 {
@@ -22,15 +21,14 @@ impl KaitaiStruct for ZlibWithHeader78 {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            data: String,
-            _raw_data: String,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -38,9 +36,10 @@ impl KaitaiStruct for ZlibWithHeader78 {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self._raw_data = stream->readBytesFull();
+        self._raw_data = self.stream.read_bytes_full()?;
         self.data = &mut S::processZlib(self._raw_data);
-
-        Ok(())
     }
+}
+
+impl ZlibWithHeader78 {
 }

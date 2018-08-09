@@ -1,22 +1,20 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct EnumOfValueInst {
-pub struct Animal {
-    pub pet3: ,
-    pub pet4: ,
-    pub pet1: ,
-    pub pet2: ,
+    pub pet1: Box<EnumOfValueInst__Animal>,
+    pub pet2: Box<EnumOfValueInst__Animal>,
+    pub pet3: Option<Box<EnumOfValueInst__Animal>>,
+    pub pet4: Option<Box<EnumOfValueInst__Animal>>,
 }
 
 impl KaitaiStruct for EnumOfValueInst {
@@ -25,17 +23,14 @@ impl KaitaiStruct for EnumOfValueInst {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            pet3: ,
-            pet4: ,
-            pet1: ,
-            pet2: ,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -43,25 +38,31 @@ impl KaitaiStruct for EnumOfValueInst {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.pet1 = stream.read_u4le()?;
-        self.pet2 = stream.read_u4le()?;
-
-        Ok(())
+        self.pet1 = self.stream.read_u4le()?;
+        self.pet2 = self.stream.read_u4le()?;
     }
-    public function pet3() {
-        if (self.pet3 !== null)
-            return self.pet3;
-        self.pet3 = ($this->pet1() == enum_of_value_inst::animal::CAT ? 4 : 12);
+}
+
+impl EnumOfValueInst {
+    fn pet3(&mut self) -> Box<EnumOfValueInst__Animal> {
+        if let Some(x) = self.pet3 {
+            return x;
+        }
+
+        self.pet3 = if self.pet_1 == EnumOfValueInst__Animal::CAT { 4 } else { 12};
         return self.pet3;
     }
-    public function pet4() {
-        if (self.pet4 !== null)
-            return self.pet4;
-        self.pet4 = ($this->pet1() == enum_of_value_inst::animal::CAT ? enum_of_value_inst::animal::DOG : enum_of_value_inst::animal::CHICKEN);
+    fn pet4(&mut self) -> Box<EnumOfValueInst__Animal> {
+        if let Some(x) = self.pet4 {
+            return x;
+        }
+
+        self.pet4 = if self.pet_1 == EnumOfValueInst__Animal::CAT { EnumOfValueInst__Animal::DOG } else { EnumOfValueInst__Animal::CHICKEN};
         return self.pet4;
     }
 }
-const DOG = 4;
-const CAT = 7;
-const CHICKEN = 12;
+enum EnumOfValueInst__Animal {
+    DOG,
+    CAT,
+    CHICKEN,
 }

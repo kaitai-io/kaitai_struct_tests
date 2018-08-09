@@ -1,20 +1,19 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct CastToTop {
-    pub header: ,
-    pub headerCasted: ,
     pub code: u8,
+    pub header: Option<Box<CastToTop>>,
+    pub headerCasted: Option<Box<CastToTop>>,
 }
 
 impl KaitaiStruct for CastToTop {
@@ -23,16 +22,14 @@ impl KaitaiStruct for CastToTop {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            header: ,
-            headerCasted: ,
-            code: 0,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -40,23 +37,28 @@ impl KaitaiStruct for CastToTop {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.code = stream.read_u1()?;
-
-        Ok(())
+        self.code = self.stream.read_u1()?;
     }
-    public function header() {
-        if (self.header !== null)
-            return self.header;
-        $_pos = stream->pos();
-        stream->seek(1);
-        self.header = new cast_to_top(stream);
-        stream->seek($_pos);
+}
+
+impl CastToTop {
+    fn header(&mut self) -> Box<CastToTop> {
+        if let Some(x) = self.header {
+            return x;
+        }
+
+        let _pos = self.stream.pos();
+        self.stream.seek(1);
+        self.header = Box::new(CastToTop::new(self.stream, self, _root)?);
+        self.stream.seek(_pos);
         return self.header;
     }
-    public function headerCasted() {
-        if (self.headerCasted !== null)
-            return self.headerCasted;
-        self.headerCasted = $this->header();
+    fn headerCasted(&mut self) -> Box<CastToTop> {
+        if let Some(x) = self.headerCasted {
+            return x;
+        }
+
+        self.headerCasted = self.header;
         return self.headerCasted;
     }
 }

@@ -1,21 +1,20 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct StrLiterals2 {
-    pub dollar1: String,
-    pub dollar2: String,
-    pub hash: String,
-    pub atSign: String,
+    pub dollar1: Option<String>,
+    pub dollar2: Option<String>,
+    pub hash: Option<String>,
+    pub atSign: Option<String>,
 }
 
 impl KaitaiStruct for StrLiterals2 {
@@ -24,17 +23,14 @@ impl KaitaiStruct for StrLiterals2 {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            dollar1: String,
-            dollar2: String,
-            hash: String,
-            atSign: String,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -42,30 +38,39 @@ impl KaitaiStruct for StrLiterals2 {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-
-        Ok(())
     }
-    public function dollar1() {
-        if (self.dollar1 !== null)
-            return self.dollar1;
-        self.dollar1 = "\$foo";
+}
+
+impl StrLiterals2 {
+    fn dollar1(&mut self) -> String {
+        if let Some(x) = self.dollar1 {
+            return x;
+        }
+
+        self.dollar1 = "$foo";
         return self.dollar1;
     }
-    public function dollar2() {
-        if (self.dollar2 !== null)
-            return self.dollar2;
-        self.dollar2 = "\${foo}";
+    fn dollar2(&mut self) -> String {
+        if let Some(x) = self.dollar2 {
+            return x;
+        }
+
+        self.dollar2 = "${foo}";
         return self.dollar2;
     }
-    public function hash() {
-        if (self.hash !== null)
-            return self.hash;
+    fn hash(&mut self) -> String {
+        if let Some(x) = self.hash {
+            return x;
+        }
+
         self.hash = "#{foo}";
         return self.hash;
     }
-    public function atSign() {
-        if (self.atSign !== null)
-            return self.atSign;
+    fn atSign(&mut self) -> String {
+        if let Some(x) = self.atSign {
+            return x;
+        }
+
         self.atSign = "@foo";
         return self.atSign;
     }

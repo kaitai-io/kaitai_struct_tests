@@ -1,25 +1,18 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct MultipleUse {
-pub struct Multi {
-pub struct Type1 {
-pub struct Type2 {
-    pub t1: ,
-    pub t2: ,
-    pub value: i32,
-    pub firstUse: ,
-    pub secondUse: ,
+    pub t1: Box<MultipleUse__Type1>,
+    pub t2: Box<MultipleUse__Type2>,
 }
 
 impl KaitaiStruct for MultipleUse {
@@ -28,117 +21,131 @@ impl KaitaiStruct for MultipleUse {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+        self.t1 = Box::new(MultipleUse__Type1::new(self.stream, self, _root)?);
+        self.t2 = Box::new(MultipleUse__Type2::new(self.stream, self, _root)?);
+    }
+}
+
+impl MultipleUse {
+}
+#[derive(Default)]
+pub struct MultipleUse__Multi {
+    pub value: i32,
+}
+
+impl KaitaiStruct for MultipleUse__Multi {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+        self.value = self.stream.read_s4le()?;
+    }
+}
+
+impl MultipleUse__Multi {
+}
+#[derive(Default)]
+pub struct MultipleUse__Type1 {
+    pub firstUse: Box<MultipleUse__Multi>,
+}
+
+impl KaitaiStruct for MultipleUse__Type1 {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+        self.firstUse = Box::new(MultipleUse__Multi::new(self.stream, self, _root)?);
+    }
+}
+
+impl MultipleUse__Type1 {
+}
+#[derive(Default)]
+pub struct MultipleUse__Type2 {
+    pub secondUse: Option<Box<MultipleUse__Multi>>,
+}
+
+impl KaitaiStruct for MultipleUse__Type2 {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
+        s.read(stream, _parent, _root)?;
+
+        Ok(s)
+    }
+
+
+    fn read<S: KaitaiStream>(&mut self,
+                             stream: &mut S,
+                             _parent: &Option<Box<KaitaiStruct>>,
+                             _root: &Option<Box<KaitaiStruct>>)
+                             -> Result<()>
+        where Self: Sized {
+    }
+}
+
+impl MultipleUse__Type2 {
+    fn secondUse(&mut self) -> Box<MultipleUse__Multi> {
+        if let Some(x) = self.secondUse {
+            return x;
         }
 
-        impl KaitaiStruct for Multi {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-                }
-
-                impl KaitaiStruct for Type1 {
-                    fn new<S: KaitaiStream>(stream: &mut S,
-                                            _parent: &Option<Box<KaitaiStruct>>,
-                                            _root: &Option<Box<KaitaiStruct>>)
-                                            -> Result<Self>
-                        where Self: Sized {
-                        let mut s = Self {
-                        }
-
-                        impl KaitaiStruct for Type2 {
-                            fn new<S: KaitaiStream>(stream: &mut S,
-                                                    _parent: &Option<Box<KaitaiStruct>>,
-                                                    _root: &Option<Box<KaitaiStruct>>)
-                                                    -> Result<Self>
-                                where Self: Sized {
-                                let mut s = Self {
-            t1: ,
-            t2: ,
-            value: 0,
-            firstUse: ,
-            secondUse: ,
-        };
-
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.t1 = new multiple_use::type_1(stream, $this, _root);
-        self.t2 = new multiple_use::type_2(stream, $this, _root);
-
-        Ok(())
-    }
-}
-        };
-
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.value = stream.read_s4le()?;
-
-        Ok(())
-    }
-}
-        };
-
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-        self.firstUse = new multiple_use::multi(stream, $this, _root);
-
-        Ok(())
-    }
-}
-        };
-
-        s.read(stream, _parent, _root)?;
-
-        Ok(s)
-    }
-
-    fn read<S: KaitaiStream>(&mut self,
-                             stream: &mut S,
-                             _parent: &Option<Box<KaitaiStruct>>,
-                             _root: &Option<Box<KaitaiStruct>>)
-                             -> Result<()>
-        where Self: Sized {
-
-        Ok(())
-    }
-    public function secondUse() {
-        if (self.secondUse !== null)
-            return self.secondUse;
-        $_pos = stream->pos();
-        stream->seek(0);
-        self.secondUse = new multiple_use::multi(stream, $this, _root);
-        stream->seek($_pos);
+        let _pos = self.stream.pos();
+        self.stream.seek(0);
+        self.secondUse = Box::new(MultipleUse__Multi::new(self.stream, self, _root)?);
+        self.stream.seek(_pos);
         return self.secondUse;
     }
 }

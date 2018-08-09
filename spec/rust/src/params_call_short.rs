@@ -1,27 +1,18 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct ParamsCallShort {
-pub struct MyStr1 {
-pub struct MyStr2 {
-    pub buf1: ,
-    pub buf2: ,
-    pub body: String,
-    pub len: u32,
-    pub body: String,
-    pub trailer: u8,
-    pub len: u32,
-    pub hasTrailer: bool,
+    pub buf1: Box<ParamsCallShort__MyStr1>,
+    pub buf2: Box<ParamsCallShort__MyStr2>,
 }
 
 impl KaitaiStruct for ParamsCallShort {
@@ -30,39 +21,14 @@ impl KaitaiStruct for ParamsCallShort {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for MyStr1 {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-                }
-
-                impl KaitaiStruct for MyStr2 {
-                    fn new<S: KaitaiStream>(stream: &mut S,
-                                            _parent: &Option<Box<KaitaiStruct>>,
-                                            _root: &Option<Box<KaitaiStruct>>)
-                                            -> Result<Self>
-                        where Self: Sized {
-                        let mut s = Self {
-            buf1: ,
-            buf2: ,
-            body: String,
-            len: 0,
-            body: String,
-            trailer: 0,
-            len: 0,
-            hasTrailer: bool,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -70,18 +36,32 @@ impl KaitaiStruct for ParamsCallShort {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.buf1 = new params_call_short::my_str1(5, stream, $this, _root);
-        self.buf2 = new params_call_short::my_str2((2 + 3), true, stream, $this, _root);
-
-        Ok(())
+        self.buf1 = Box::new(ParamsCallShort__MyStr1::new(self.stream, self, _root)?);
+        self.buf2 = Box::new(ParamsCallShort__MyStr2::new(self.stream, self, _root)?);
     }
 }
-        };
 
+impl ParamsCallShort {
+}
+#[derive(Default)]
+pub struct ParamsCallShort__MyStr1 {
+    pub body: String,
+}
+
+impl KaitaiStruct for ParamsCallShort__MyStr1 {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -89,17 +69,32 @@ impl KaitaiStruct for ParamsCallShort {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.body = &mut S::bytesToStr(stream->readBytes($this->len()), "UTF-8");
-
-        Ok(())
+        self.body = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
     }
 }
-        };
 
+impl ParamsCallShort__MyStr1 {
+}
+#[derive(Default)]
+pub struct ParamsCallShort__MyStr2 {
+    pub body: String,
+    pub trailer: u8,
+}
+
+impl KaitaiStruct for ParamsCallShort__MyStr2 {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -107,11 +102,12 @@ impl KaitaiStruct for ParamsCallShort {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.body = &mut S::bytesToStr(stream->readBytes($this->len()), "UTF-8");
-        if ($this->hasTrailer()) {
-            self.trailer = stream.read_u1()?;
+        self.body = panic!("Unimplemented encoding for bytesToStr: {}", "UTF-8");
+        if self.has_trailer {
+            self.trailer = self.stream.read_u1()?;
         }
-
-        Ok(())
     }
+}
+
+impl ParamsCallShort__MyStr2 {
 }

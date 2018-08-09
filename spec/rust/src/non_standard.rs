@@ -1,21 +1,20 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct NonStandard {
-    pub vi: u8,
-    pub pi: u8,
     pub foo: u8,
-    pub bar: ,
+    pub bar: u32,
+    pub vi: Option<u8>,
+    pub pi: Option<u8>,
 }
 
 impl KaitaiStruct for NonStandard {
@@ -24,17 +23,14 @@ impl KaitaiStruct for NonStandard {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            vi: 0,
-            pi: 0,
-            foo: 0,
-            bar: ,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -42,31 +38,36 @@ impl KaitaiStruct for NonStandard {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.foo = stream.read_u1()?;
-        switch ($this->foo()) {
-            case 42:
-                self.bar = stream.read_u2le()?;
-                break;
-            case 43:
-                self.bar = stream.read_u4le()?;
-                break;
+        self.foo = self.stream.read_u1()?;
+        match self.foo {
+            42 => {
+                self.bar = self.stream.read_u2le()?;
+            },
+            43 => {
+                self.bar = self.stream.read_u4le()?;
+            },
+        }
+    }
+}
+
+impl NonStandard {
+    fn vi(&mut self) -> u8 {
+        if let Some(x) = self.vi {
+            return x;
         }
 
-        Ok(())
-    }
-    public function vi() {
-        if (self.vi !== null)
-            return self.vi;
-        self.vi = $this->foo();
+        self.vi = self.foo;
         return self.vi;
     }
-    public function pi() {
-        if (self.pi !== null)
-            return self.pi;
-        $_pos = stream->pos();
-        stream->seek(0);
-        self.pi = stream.read_u1()?;
-        stream->seek($_pos);
+    fn pi(&mut self) -> u8 {
+        if let Some(x) = self.pi {
+            return x;
+        }
+
+        let _pos = self.stream.pos();
+        self.stream.seek(0);
+        self.pi = self.stream.read_u1()?;
+        self.stream.seek(_pos);
         return self.pi;
     }
 }

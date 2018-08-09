@@ -1,21 +1,17 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct IfValues {
-pub struct Code {
-    pub codes: Vec<>*,
-    pub halfOpcode: i32,
-    pub opcode: u8,
+    pub codes: Vec<Box<IfValues__Code>>,
 }
 
 impl KaitaiStruct for IfValues {
@@ -24,25 +20,14 @@ impl KaitaiStruct for IfValues {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for Code {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-            codes: Vec<>*,
-            halfOpcode: i32,
-            opcode: 0,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -50,21 +35,35 @@ impl KaitaiStruct for IfValues {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.codes = [];
-        $n = 3;
-        for ($i = 0; $i < $n; $i++) {
-            self.codes[] = new if_values::code(stream, $this, _root);
+        self.codes = vec!();
+        for i in 0..3 {
+            self.codes.push(Box::new(IfValues__Code::new(self.stream, self, _root)?));
         }
-
-        Ok(())
     }
 }
-        };
 
+impl IfValues {
+}
+#[derive(Default)]
+pub struct IfValues__Code {
+    pub opcode: u8,
+    pub halfOpcode: Option<i32>,
+}
+
+impl KaitaiStruct for IfValues__Code {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -72,15 +71,18 @@ impl KaitaiStruct for IfValues {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.opcode = stream.read_u1()?;
-
-        Ok(())
+        self.opcode = self.stream.read_u1()?;
     }
-    public function halfOpcode() {
-        if (self.halfOpcode !== null)
-            return self.halfOpcode;
-        if (&mut S::mod($this->opcode(), 2) == 0) {
-            self.halfOpcode = intval($this->opcode() / 2);
+}
+
+impl IfValues__Code {
+    fn halfOpcode(&mut self) -> i32 {
+        if let Some(x) = self.halfOpcode {
+            return x;
+        }
+
+        if self.opcode % 2 == 0 {
+            self.halfOpcode = self.opcode / 2;
         }
         return self.halfOpcode;
     }

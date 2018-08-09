@@ -1,25 +1,20 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct ExprIoEof {
-pub struct OneOrTwo {
-    pub substream1: ,
-    pub substream2: ,
-    pub _raw_substream1: String,
-    pub _raw_substream2: String,
-    pub reflectEof: bool,
-    pub one: u32,
-    pub two: u32,
+    pub substream1: Box<ExprIoEof__OneOrTwo>,
+    pub substream2: Box<ExprIoEof__OneOrTwo>,
+    pub _raw_substream1: Vec<u8>,
+    pub _raw_substream2: Vec<u8>,
 }
 
 impl KaitaiStruct for ExprIoEof {
@@ -28,29 +23,14 @@ impl KaitaiStruct for ExprIoEof {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for OneOrTwo {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-            substream1: ,
-            substream2: ,
-            _raw_substream1: String,
-            _raw_substream2: String,
-            reflectEof: bool,
-            one: 0,
-            two: 0,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -58,22 +38,38 @@ impl KaitaiStruct for ExprIoEof {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self._raw_substream1 = stream->readBytes(4);
-        $io = new &mut S(self._raw_substream1);
-        self.substream1 = new expr_io_eof::one_or_two($io, $this, _root);
-        self._raw_substream2 = stream->readBytes(8);
-        $io = new &mut S(self._raw_substream2);
-        self.substream2 = new expr_io_eof::one_or_two($io, $this, _root);
-
-        Ok(())
+        self._raw_substream1 = self.stream.read_bytes(4)?;
+        let mut io = Cursor::new(self._raw_substream1);
+        self.substream1 = Box::new(ExprIoEof__OneOrTwo::new(self.stream, self, _root)?);
+        self._raw_substream2 = self.stream.read_bytes(8)?;
+        let mut io = Cursor::new(self._raw_substream2);
+        self.substream2 = Box::new(ExprIoEof__OneOrTwo::new(self.stream, self, _root)?);
     }
 }
-        };
 
+impl ExprIoEof {
+}
+#[derive(Default)]
+pub struct ExprIoEof__OneOrTwo {
+    pub one: u32,
+    pub two: u32,
+    pub reflectEof: Option<bool>,
+}
+
+impl KaitaiStruct for ExprIoEof__OneOrTwo {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -81,17 +77,20 @@ impl KaitaiStruct for ExprIoEof {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.one = stream.read_u4le()?;
-        if (!($this->_io()->isEof())) {
-            self.two = stream.read_u4le()?;
+        self.one = self.stream.read_u4le()?;
+        if !(self._io.is_eof) {
+            self.two = self.stream.read_u4le()?;
+        }
+    }
+}
+
+impl ExprIoEof__OneOrTwo {
+    fn reflectEof(&mut self) -> bool {
+        if let Some(x) = self.reflectEof {
+            return x;
         }
 
-        Ok(())
-    }
-    public function reflectEof() {
-        if (self.reflectEof !== null)
-            return self.reflectEof;
-        self.reflectEof = $this->_io()->isEof();
+        self.reflectEof = self._io.is_eof;
         return self.reflectEof;
     }
 }

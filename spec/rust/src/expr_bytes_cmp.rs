@@ -1,30 +1,29 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct ExprBytesCmp {
-    pub isLe: bool,
-    pub ack: String,
-    pub isGt2: bool,
-    pub isGt: bool,
-    pub ack2: String,
-    pub isEq: bool,
-    pub isLt2: bool,
-    pub isGe: bool,
-    pub hiVal: String,
-    pub isNe: bool,
-    pub isLt: bool,
-    pub one: String,
-    pub two: String,
+    pub one: Vec<u8>,
+    pub two: Vec<u8>,
+    pub isLe: Option<bool>,
+    pub ack: Option<Vec<u8>>,
+    pub isGt2: Option<bool>,
+    pub isGt: Option<bool>,
+    pub ack2: Option<Vec<u8>>,
+    pub isEq: Option<bool>,
+    pub isLt2: Option<bool>,
+    pub isGe: Option<bool>,
+    pub hiVal: Option<Vec<u8>>,
+    pub isNe: Option<bool>,
+    pub isLt: Option<bool>,
 }
 
 impl KaitaiStruct for ExprBytesCmp {
@@ -33,26 +32,14 @@ impl KaitaiStruct for ExprBytesCmp {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            isLe: bool,
-            ack: String,
-            isGt2: bool,
-            isGt: bool,
-            ack2: String,
-            isEq: bool,
-            isLt2: bool,
-            isGe: bool,
-            hiVal: String,
-            isNe: bool,
-            isLt: bool,
-            one: String,
-            two: String,
-        };
+        let mut s: Self = Default::default();
 
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -60,75 +47,98 @@ impl KaitaiStruct for ExprBytesCmp {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.one = stream->readBytes(1);
-        self.two = stream->readBytes(3);
-
-        Ok(())
+        self.one = self.stream.read_bytes(1)?;
+        self.two = self.stream.read_bytes(3)?;
     }
-    public function isLe() {
-        if (self.isLe !== null)
-            return self.isLe;
-        self.isLe = $this->two() <= $this->ack2();
+}
+
+impl ExprBytesCmp {
+    fn isLe(&mut self) -> bool {
+        if let Some(x) = self.isLe {
+            return x;
+        }
+
+        self.isLe = self.two <= self.ack2;
         return self.isLe;
     }
-    public function ack() {
-        if (self.ack !== null)
-            return self.ack;
-        self.ack = "\x41\x43\x4B";
+    fn ack(&mut self) -> Vec<u8> {
+        if let Some(x) = self.ack {
+            return x;
+        }
+
+        self.ack = vec!([0x41, 0x43, 0x4b]);
         return self.ack;
     }
-    public function isGt2() {
-        if (self.isGt2 !== null)
-            return self.isGt2;
-        self.isGt2 = $this->hiVal() > $this->two();
+    fn isGt2(&mut self) -> bool {
+        if let Some(x) = self.isGt2 {
+            return x;
+        }
+
+        self.isGt2 = self.hi_val > self.two;
         return self.isGt2;
     }
-    public function isGt() {
-        if (self.isGt !== null)
-            return self.isGt;
-        self.isGt = $this->two() > $this->ack2();
+    fn isGt(&mut self) -> bool {
+        if let Some(x) = self.isGt {
+            return x;
+        }
+
+        self.isGt = self.two > self.ack2;
         return self.isGt;
     }
-    public function ack2() {
-        if (self.ack2 !== null)
-            return self.ack2;
-        self.ack2 = "\x41\x43\x4B\x32";
+    fn ack2(&mut self) -> Vec<u8> {
+        if let Some(x) = self.ack2 {
+            return x;
+        }
+
+        self.ack2 = vec!([0x41, 0x43, 0x4b, 0x32]);
         return self.ack2;
     }
-    public function isEq() {
-        if (self.isEq !== null)
-            return self.isEq;
-        self.isEq = $this->two() == $this->ack();
+    fn isEq(&mut self) -> bool {
+        if let Some(x) = self.isEq {
+            return x;
+        }
+
+        self.isEq = self.two == self.ack;
         return self.isEq;
     }
-    public function isLt2() {
-        if (self.isLt2 !== null)
-            return self.isLt2;
-        self.isLt2 = $this->one() < $this->two();
+    fn isLt2(&mut self) -> bool {
+        if let Some(x) = self.isLt2 {
+            return x;
+        }
+
+        self.isLt2 = self.one < self.two;
         return self.isLt2;
     }
-    public function isGe() {
-        if (self.isGe !== null)
-            return self.isGe;
-        self.isGe = $this->two() >= $this->ack2();
+    fn isGe(&mut self) -> bool {
+        if let Some(x) = self.isGe {
+            return x;
+        }
+
+        self.isGe = self.two >= self.ack2;
         return self.isGe;
     }
-    public function hiVal() {
-        if (self.hiVal !== null)
-            return self.hiVal;
-        self.hiVal = "\x90\x43";
+    fn hiVal(&mut self) -> Vec<u8> {
+        if let Some(x) = self.hiVal {
+            return x;
+        }
+
+        self.hiVal = vec!([0x90, 0x43]);
         return self.hiVal;
     }
-    public function isNe() {
-        if (self.isNe !== null)
-            return self.isNe;
-        self.isNe = $this->two() != $this->ack();
+    fn isNe(&mut self) -> bool {
+        if let Some(x) = self.isNe {
+            return x;
+        }
+
+        self.isNe = self.two != self.ack;
         return self.isNe;
     }
-    public function isLt() {
-        if (self.isLt !== null)
-            return self.isLt;
-        self.isLt = $this->two() < $this->ack2();
+    fn isLt(&mut self) -> bool {
+        if let Some(x) = self.isLt {
+            return x;
+        }
+
+        self.isLt = self.two < self.ack2;
         return self.isLt;
     }
 }

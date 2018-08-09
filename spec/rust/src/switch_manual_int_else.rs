@@ -1,27 +1,17 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct SwitchManualIntElse {
-pub struct Opcode {
-pub struct Intval {
-pub struct Strval {
-pub struct Noneval {
-    pub opcodes: Vec<>*,
-    pub code: u8,
-    pub body: ,
-    pub value: u8,
-    pub value: String,
-    pub filler: u32,
+    pub opcodes: Vec<Box<SwitchManualIntElse__Opcode>>,
 }
 
 impl KaitaiStruct for SwitchManualIntElse {
@@ -30,55 +20,14 @@ impl KaitaiStruct for SwitchManualIntElse {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for Opcode {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-                }
-
-                impl KaitaiStruct for Intval {
-                    fn new<S: KaitaiStream>(stream: &mut S,
-                                            _parent: &Option<Box<KaitaiStruct>>,
-                                            _root: &Option<Box<KaitaiStruct>>)
-                                            -> Result<Self>
-                        where Self: Sized {
-                        let mut s = Self {
-                        }
-
-                        impl KaitaiStruct for Strval {
-                            fn new<S: KaitaiStream>(stream: &mut S,
-                                                    _parent: &Option<Box<KaitaiStruct>>,
-                                                    _root: &Option<Box<KaitaiStruct>>)
-                                                    -> Result<Self>
-                                where Self: Sized {
-                                let mut s = Self {
-                                }
-
-                                impl KaitaiStruct for Noneval {
-                                    fn new<S: KaitaiStream>(stream: &mut S,
-                                                            _parent: &Option<Box<KaitaiStruct>>,
-                                                            _root: &Option<Box<KaitaiStruct>>)
-                                                            -> Result<Self>
-                                        where Self: Sized {
-                                        let mut s = Self {
-            opcodes: Vec<>*,
-            code: 0,
-            body: ,
-            value: 0,
-            value: String,
-            filler: 0,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -87,21 +36,34 @@ impl KaitaiStruct for SwitchManualIntElse {
                              -> Result<()>
         where Self: Sized {
         self.opcodes = [];
-        $i = 0;
-        while (!stream->isEof()) {
-            self.opcodes[] = new switch_manual_int_else::opcode(stream, $this, _root);
-            $i++;
+        while !self.stream.isEof() {
+            self.opcodes.push(Box::new(SwitchManualIntElse__Opcode::new(self.stream, self, _root)?));
         }
-
-        Ok(())
     }
 }
-        };
 
+impl SwitchManualIntElse {
+}
+#[derive(Default)]
+pub struct SwitchManualIntElse__Opcode {
+    pub code: u8,
+    pub body: Option<Box<KaitaiStruct>>,
+}
+
+impl KaitaiStruct for SwitchManualIntElse__Opcode {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -109,28 +71,42 @@ impl KaitaiStruct for SwitchManualIntElse {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.code = stream.read_u1()?;
-        switch ($this->code()) {
-            case 73:
-                self.body = new switch_manual_int_else::opcode::intval(stream, $this, _root);
-                break;
-            case 83:
-                self.body = new switch_manual_int_else::opcode::strval(stream, $this, _root);
-                break;
-            default:
-                self.body = new switch_manual_int_else::opcode::noneval(stream, $this, _root);
-                break;
+        self.code = self.stream.read_u1()?;
+        match self.code {
+            73 => {
+                self.body = Box::new(SwitchManualIntElse__Opcode__Intval::new(self.stream, self, _root)?);
+            },
+            83 => {
+                self.body = Box::new(SwitchManualIntElse__Opcode__Strval::new(self.stream, self, _root)?);
+            },
+            _ => {
+                self.body = Box::new(SwitchManualIntElse__Opcode__Noneval::new(self.stream, self, _root)?);
+            }
         }
-
-        Ok(())
     }
 }
-        };
 
+impl SwitchManualIntElse__Opcode {
+}
+#[derive(Default)]
+pub struct SwitchManualIntElse__Opcode__Intval {
+    pub value: u8,
+}
+
+impl KaitaiStruct for SwitchManualIntElse__Opcode__Intval {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -138,17 +114,31 @@ impl KaitaiStruct for SwitchManualIntElse {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.value = stream.read_u1()?;
-
-        Ok(())
+        self.value = self.stream.read_u1()?;
     }
 }
-        };
 
+impl SwitchManualIntElse__Opcode__Intval {
+}
+#[derive(Default)]
+pub struct SwitchManualIntElse__Opcode__Strval {
+    pub value: String,
+}
+
+impl KaitaiStruct for SwitchManualIntElse__Opcode__Strval {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -156,17 +146,31 @@ impl KaitaiStruct for SwitchManualIntElse {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.value = &mut S::bytesToStr(stream->readBytesTerm(0, false, true, true), "ASCII");
-
-        Ok(())
+        self.value = String::from_utf8_lossy(self.stream.read_bytes_term(0, false, true, true)?);
     }
 }
-        };
 
+impl SwitchManualIntElse__Opcode__Strval {
+}
+#[derive(Default)]
+pub struct SwitchManualIntElse__Opcode__Noneval {
+    pub filler: u32,
+}
+
+impl KaitaiStruct for SwitchManualIntElse__Opcode__Noneval {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -174,8 +178,9 @@ impl KaitaiStruct for SwitchManualIntElse {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.filler = stream.read_u4le()?;
-
-        Ok(())
+        self.filler = self.stream.read_u4le()?;
     }
+}
+
+impl SwitchManualIntElse__Opcode__Noneval {
 }

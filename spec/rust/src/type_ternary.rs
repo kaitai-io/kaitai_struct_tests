@@ -1,27 +1,24 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct TypeTernary {
-pub struct Dummy {
-    pub isHack: bool,
-    pub dif: ,
-    pub difValue: u8,
-    pub difWoHack: ,
-    pub difWithHack: ,
-    pub _raw_difWoHack: String,
-    pub _raw__raw_difWithHack: String,
-    pub _raw_difWithHack: String,
-    pub value: u8,
+    pub difWoHack: Box<TypeTernary__Dummy>,
+    pub difWithHack: Box<TypeTernary__Dummy>,
+    pub _raw_difWoHack: Vec<u8>,
+    pub _raw_difWithHack: Vec<u8>,
+    pub _raw__raw_difWithHack: Vec<u8>,
+    pub isHack: Option<bool>,
+    pub dif: Option<Box<TypeTernary__Dummy>>,
+    pub difValue: Option<u8>,
 }
 
 impl KaitaiStruct for TypeTernary {
@@ -30,31 +27,14 @@ impl KaitaiStruct for TypeTernary {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for Dummy {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-            isHack: bool,
-            dif: ,
-            difValue: 0,
-            difWoHack: ,
-            difWithHack: ,
-            _raw_difWoHack: String,
-            _raw__raw_difWithHack: String,
-            _raw_difWithHack: String,
-            value: 0,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -62,43 +42,63 @@ impl KaitaiStruct for TypeTernary {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        if (!($this->isHack())) {
-            self._raw_difWoHack = stream->readBytes(1);
-            $io = new &mut S(self._raw_difWoHack);
-            self.difWoHack = new type_ternary::dummy($io, $this, _root);
+        if !(self.is_hack) {
+            self._raw_difWoHack = self.stream.read_bytes(1)?;
+            let mut io = Cursor::new(self._raw_difWoHack);
+            self.difWoHack = Box::new(TypeTernary__Dummy::new(self.stream, self, _root)?);
         }
-        self._raw__raw_difWithHack = stream->readBytes(1);
+        self._raw__raw_difWithHack = self.stream.read_bytes(1)?;
         self._raw_difWithHack = &mut S::processXorOne(self._raw__raw_difWithHack, 3);
-        $io = new &mut S(self._raw_difWithHack);
-        self.difWithHack = new type_ternary::dummy($io, $this, _root);
-
-        Ok(())
+        let mut io = Cursor::new(self._raw_difWithHack);
+        self.difWithHack = Box::new(TypeTernary__Dummy::new(self.stream, self, _root)?);
     }
-    public function isHack() {
-        if (self.isHack !== null)
-            return self.isHack;
+}
+
+impl TypeTernary {
+    fn isHack(&mut self) -> bool {
+        if let Some(x) = self.isHack {
+            return x;
+        }
+
         self.isHack = true;
         return self.isHack;
     }
-    public function dif() {
-        if (self.dif !== null)
-            return self.dif;
-        self.dif = (!($this->isHack()) ? $this->difWoHack() : $this->difWithHack());
+    fn dif(&mut self) -> Box<TypeTernary__Dummy> {
+        if let Some(x) = self.dif {
+            return x;
+        }
+
+        self.dif = if !(self.is_hack) { self.dif_wo_hack } else { self.dif_with_hack};
         return self.dif;
     }
-    public function difValue() {
-        if (self.difValue !== null)
-            return self.difValue;
-        self.difValue = $this->dif()->value();
+    fn difValue(&mut self) -> u8 {
+        if let Some(x) = self.difValue {
+            return x;
+        }
+
+        self.difValue = self.dif.value;
         return self.difValue;
     }
 }
-        };
+#[derive(Default)]
+pub struct TypeTernary__Dummy {
+    pub value: u8,
+}
 
+impl KaitaiStruct for TypeTernary__Dummy {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -106,8 +106,9 @@ impl KaitaiStruct for TypeTernary {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.value = stream.read_u1()?;
-
-        Ok(())
+        self.value = self.stream.read_u1()?;
     }
+}
+
+impl TypeTernary__Dummy {
 }

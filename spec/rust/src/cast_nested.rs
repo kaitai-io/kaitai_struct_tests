@@ -1,29 +1,21 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct CastNested {
-pub struct Opcode {
-pub struct Intval {
-pub struct Strval {
-    pub opcodes0Str: ,
-    pub opcodes0StrValue: String,
-    pub opcodes1Int: ,
-    pub opcodes1IntValue: u8,
-    pub opcodes: Vec<>*,
-    pub code: u8,
-    pub body: ,
-    pub value: u8,
-    pub value: String,
+    pub opcodes: Vec<Box<CastNested__Opcode>>,
+    pub opcodes0Str: Option<Box<CastNested__Opcode__Strval>>,
+    pub opcodes0StrValue: Option<String>,
+    pub opcodes1Int: Option<Box<CastNested__Opcode__Intval>>,
+    pub opcodes1IntValue: Option<u8>,
 }
 
 impl KaitaiStruct for CastNested {
@@ -32,49 +24,14 @@ impl KaitaiStruct for CastNested {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for Opcode {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-                }
-
-                impl KaitaiStruct for Intval {
-                    fn new<S: KaitaiStream>(stream: &mut S,
-                                            _parent: &Option<Box<KaitaiStruct>>,
-                                            _root: &Option<Box<KaitaiStruct>>)
-                                            -> Result<Self>
-                        where Self: Sized {
-                        let mut s = Self {
-                        }
-
-                        impl KaitaiStruct for Strval {
-                            fn new<S: KaitaiStream>(stream: &mut S,
-                                                    _parent: &Option<Box<KaitaiStruct>>,
-                                                    _root: &Option<Box<KaitaiStruct>>)
-                                                    -> Result<Self>
-                                where Self: Sized {
-                                let mut s = Self {
-            opcodes0Str: ,
-            opcodes0StrValue: String,
-            opcodes1Int: ,
-            opcodes1IntValue: 0,
-            opcodes: Vec<>*,
-            code: 0,
-            body: ,
-            value: 0,
-            value: String,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -83,45 +40,66 @@ impl KaitaiStruct for CastNested {
                              -> Result<()>
         where Self: Sized {
         self.opcodes = [];
-        $i = 0;
-        while (!stream->isEof()) {
-            self.opcodes[] = new cast_nested::opcode(stream, $this, _root);
-            $i++;
+        while !self.stream.isEof() {
+            self.opcodes.push(Box::new(CastNested__Opcode::new(self.stream, self, _root)?));
+        }
+    }
+}
+
+impl CastNested {
+    fn opcodes0Str(&mut self) -> Box<CastNested__Opcode__Strval> {
+        if let Some(x) = self.opcodes0Str {
+            return x;
         }
 
-        Ok(())
-    }
-    public function opcodes0Str() {
-        if (self.opcodes0Str !== null)
-            return self.opcodes0Str;
-        self.opcodes0Str = $this->opcodes()[0]->body();
+        self.opcodes0Str = self.opcodes[0].body;
         return self.opcodes0Str;
     }
-    public function opcodes0StrValue() {
-        if (self.opcodes0StrValue !== null)
-            return self.opcodes0StrValue;
-        self.opcodes0StrValue = $this->opcodes()[0]->body()->value();
+    fn opcodes0StrValue(&mut self) -> String {
+        if let Some(x) = self.opcodes0StrValue {
+            return x;
+        }
+
+        self.opcodes0StrValue = self.opcodes[0].body.value;
         return self.opcodes0StrValue;
     }
-    public function opcodes1Int() {
-        if (self.opcodes1Int !== null)
-            return self.opcodes1Int;
-        self.opcodes1Int = $this->opcodes()[1]->body();
+    fn opcodes1Int(&mut self) -> Box<CastNested__Opcode__Intval> {
+        if let Some(x) = self.opcodes1Int {
+            return x;
+        }
+
+        self.opcodes1Int = self.opcodes[1].body;
         return self.opcodes1Int;
     }
-    public function opcodes1IntValue() {
-        if (self.opcodes1IntValue !== null)
-            return self.opcodes1IntValue;
-        self.opcodes1IntValue = $this->opcodes()[1]->body()->value();
+    fn opcodes1IntValue(&mut self) -> u8 {
+        if let Some(x) = self.opcodes1IntValue {
+            return x;
+        }
+
+        self.opcodes1IntValue = self.opcodes[1].body.value;
         return self.opcodes1IntValue;
     }
 }
-        };
+#[derive(Default)]
+pub struct CastNested__Opcode {
+    pub code: u8,
+    pub body: Option<Box<KaitaiStruct>>,
+}
 
+impl KaitaiStruct for CastNested__Opcode {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -129,25 +107,39 @@ impl KaitaiStruct for CastNested {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.code = stream.read_u1()?;
-        switch ($this->code()) {
-            case 73:
-                self.body = new cast_nested::opcode::intval(stream, $this, _root);
-                break;
-            case 83:
-                self.body = new cast_nested::opcode::strval(stream, $this, _root);
-                break;
+        self.code = self.stream.read_u1()?;
+        match self.code {
+            73 => {
+                self.body = Box::new(CastNested__Opcode__Intval::new(self.stream, self, _root)?);
+            },
+            83 => {
+                self.body = Box::new(CastNested__Opcode__Strval::new(self.stream, self, _root)?);
+            },
         }
-
-        Ok(())
     }
 }
-        };
 
+impl CastNested__Opcode {
+}
+#[derive(Default)]
+pub struct CastNested__Opcode__Intval {
+    pub value: u8,
+}
+
+impl KaitaiStruct for CastNested__Opcode__Intval {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -155,17 +147,31 @@ impl KaitaiStruct for CastNested {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.value = stream.read_u1()?;
-
-        Ok(())
+        self.value = self.stream.read_u1()?;
     }
 }
-        };
 
+impl CastNested__Opcode__Intval {
+}
+#[derive(Default)]
+pub struct CastNested__Opcode__Strval {
+    pub value: String,
+}
+
+impl KaitaiStruct for CastNested__Opcode__Strval {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -173,8 +179,9 @@ impl KaitaiStruct for CastNested {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.value = &mut S::bytesToStr(stream->readBytesTerm(0, false, true, true), "ASCII");
-
-        Ok(())
+        self.value = String::from_utf8_lossy(self.stream.read_bytes_term(0, false, true, true)?);
     }
+}
+
+impl CastNested__Opcode__Strval {
 }

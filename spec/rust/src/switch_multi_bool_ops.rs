@@ -1,21 +1,17 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct SwitchMultiBoolOps {
-pub struct Opcode {
-    pub opcodes: Vec<>*,
-    pub code: u8,
-    pub body: ,
+    pub opcodes: Vec<Box<SwitchMultiBoolOps__Opcode>>,
 }
 
 impl KaitaiStruct for SwitchMultiBoolOps {
@@ -24,25 +20,14 @@ impl KaitaiStruct for SwitchMultiBoolOps {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for Opcode {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-            opcodes: Vec<>*,
-            code: 0,
-            body: ,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -51,21 +36,34 @@ impl KaitaiStruct for SwitchMultiBoolOps {
                              -> Result<()>
         where Self: Sized {
         self.opcodes = [];
-        $i = 0;
-        while (!stream->isEof()) {
-            self.opcodes[] = new switch_multi_bool_ops::opcode(stream, $this, _root);
-            $i++;
+        while !self.stream.isEof() {
+            self.opcodes.push(Box::new(SwitchMultiBoolOps__Opcode::new(self.stream, self, _root)?));
         }
-
-        Ok(())
     }
 }
-        };
 
+impl SwitchMultiBoolOps {
+}
+#[derive(Default)]
+pub struct SwitchMultiBoolOps__Opcode {
+    pub code: u8,
+    pub body: u64,
+}
+
+impl KaitaiStruct for SwitchMultiBoolOps__Opcode {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -73,22 +71,23 @@ impl KaitaiStruct for SwitchMultiBoolOps {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.code = stream.read_u1()?;
-        switch (( (($this->code() > 0) && ($this->code() <= 8) && (($this->code() != 10 ? true : false)))  ? $this->code() : 0)) {
-            case 1:
-                self.body = stream.read_u1()?;
-                break;
-            case 2:
-                self.body = stream.read_u2le()?;
-                break;
-            case 4:
-                self.body = stream.read_u4le()?;
-                break;
-            case 8:
-                self.body = stream.read_u8le()?;
-                break;
+        self.code = self.stream.read_u1()?;
+        match if  ((self.code > 0) && (self.code <= 8) && (if self.code != 10 { true } else { false}))  { self.code } else { 0} {
+            1 => {
+                self.body = self.stream.read_u1()?;
+            },
+            2 => {
+                self.body = self.stream.read_u2le()?;
+            },
+            4 => {
+                self.body = self.stream.read_u4le()?;
+            },
+            8 => {
+                self.body = self.stream.read_u8le()?;
+            },
         }
-
-        Ok(())
     }
+}
+
+impl SwitchMultiBoolOps__Opcode {
 }

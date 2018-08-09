@@ -1,28 +1,20 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct SwitchCast {
-pub struct Opcode {
-pub struct Intval {
-pub struct Strval {
-    pub firstObj: ,
-    pub secondVal: u8,
-    pub errCast: ,
-    pub opcodes: Vec<>*,
-    pub code: u8,
-    pub body: ,
-    pub value: u8,
-    pub value: String,
+    pub opcodes: Vec<Box<SwitchCast__Opcode>>,
+    pub firstObj: Option<Box<SwitchCast__Strval>>,
+    pub secondVal: Option<u8>,
+    pub errCast: Option<Box<SwitchCast__Strval>>,
 }
 
 impl KaitaiStruct for SwitchCast {
@@ -31,48 +23,14 @@ impl KaitaiStruct for SwitchCast {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for Opcode {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-                }
-
-                impl KaitaiStruct for Intval {
-                    fn new<S: KaitaiStream>(stream: &mut S,
-                                            _parent: &Option<Box<KaitaiStruct>>,
-                                            _root: &Option<Box<KaitaiStruct>>)
-                                            -> Result<Self>
-                        where Self: Sized {
-                        let mut s = Self {
-                        }
-
-                        impl KaitaiStruct for Strval {
-                            fn new<S: KaitaiStream>(stream: &mut S,
-                                                    _parent: &Option<Box<KaitaiStruct>>,
-                                                    _root: &Option<Box<KaitaiStruct>>)
-                                                    -> Result<Self>
-                                where Self: Sized {
-                                let mut s = Self {
-            firstObj: ,
-            secondVal: 0,
-            errCast: ,
-            opcodes: Vec<>*,
-            code: 0,
-            body: ,
-            value: 0,
-            value: String,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -81,39 +39,58 @@ impl KaitaiStruct for SwitchCast {
                              -> Result<()>
         where Self: Sized {
         self.opcodes = [];
-        $i = 0;
-        while (!stream->isEof()) {
-            self.opcodes[] = new switch_cast::opcode(stream, $this, _root);
-            $i++;
+        while !self.stream.isEof() {
+            self.opcodes.push(Box::new(SwitchCast__Opcode::new(self.stream, self, _root)?));
+        }
+    }
+}
+
+impl SwitchCast {
+    fn firstObj(&mut self) -> Box<SwitchCast__Strval> {
+        if let Some(x) = self.firstObj {
+            return x;
         }
 
-        Ok(())
-    }
-    public function firstObj() {
-        if (self.firstObj !== null)
-            return self.firstObj;
-        self.firstObj = $this->opcodes()[0]->body();
+        self.firstObj = self.opcodes[0].body;
         return self.firstObj;
     }
-    public function secondVal() {
-        if (self.secondVal !== null)
-            return self.secondVal;
-        self.secondVal = $this->opcodes()[1]->body()->value();
+    fn secondVal(&mut self) -> u8 {
+        if let Some(x) = self.secondVal {
+            return x;
+        }
+
+        self.secondVal = self.opcodes[1].body.value;
         return self.secondVal;
     }
-    public function errCast() {
-        if (self.errCast !== null)
-            return self.errCast;
-        self.errCast = $this->opcodes()[2]->body();
+    fn errCast(&mut self) -> Box<SwitchCast__Strval> {
+        if let Some(x) = self.errCast {
+            return x;
+        }
+
+        self.errCast = self.opcodes[2].body;
         return self.errCast;
     }
 }
-        };
+#[derive(Default)]
+pub struct SwitchCast__Opcode {
+    pub code: u8,
+    pub body: Option<Box<KaitaiStruct>>,
+}
 
+impl KaitaiStruct for SwitchCast__Opcode {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -121,25 +98,39 @@ impl KaitaiStruct for SwitchCast {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.code = stream.read_u1()?;
-        switch ($this->code()) {
-            case 73:
-                self.body = new switch_cast::intval(stream, $this, _root);
-                break;
-            case 83:
-                self.body = new switch_cast::strval(stream, $this, _root);
-                break;
+        self.code = self.stream.read_u1()?;
+        match self.code {
+            73 => {
+                self.body = Box::new(SwitchCast__Intval::new(self.stream, self, _root)?);
+            },
+            83 => {
+                self.body = Box::new(SwitchCast__Strval::new(self.stream, self, _root)?);
+            },
         }
-
-        Ok(())
     }
 }
-        };
 
+impl SwitchCast__Opcode {
+}
+#[derive(Default)]
+pub struct SwitchCast__Intval {
+    pub value: u8,
+}
+
+impl KaitaiStruct for SwitchCast__Intval {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -147,17 +138,31 @@ impl KaitaiStruct for SwitchCast {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.value = stream.read_u1()?;
-
-        Ok(())
+        self.value = self.stream.read_u1()?;
     }
 }
-        };
 
+impl SwitchCast__Intval {
+}
+#[derive(Default)]
+pub struct SwitchCast__Strval {
+    pub value: String,
+}
+
+impl KaitaiStruct for SwitchCast__Strval {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -165,8 +170,9 @@ impl KaitaiStruct for SwitchCast {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.value = &mut S::bytesToStr(stream->readBytesTerm(0, false, true, true), "ASCII");
-
-        Ok(())
+        self.value = String::from_utf8_lossy(self.stream.read_bytes_term(0, false, true, true)?);
     }
+}
+
+impl SwitchCast__Strval {
 }

@@ -1,21 +1,17 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct PositionToEnd {
-pub struct IndexObj {
-    pub index: ,
-    pub foo: u32,
-    pub bar: u32,
+    pub index: Option<Box<PositionToEnd__IndexObj>>,
 }
 
 impl KaitaiStruct for PositionToEnd {
@@ -24,25 +20,14 @@ impl KaitaiStruct for PositionToEnd {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for IndexObj {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-            index: ,
-            foo: 0,
-            bar: 0,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -50,25 +35,42 @@ impl KaitaiStruct for PositionToEnd {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-
-        Ok(())
     }
-    public function index() {
-        if (self.index !== null)
-            return self.index;
-        $_pos = stream->pos();
-        stream->seek(($this->_io()->size() - 8));
-        self.index = new position_to_end::index_obj(stream, $this, _root);
-        stream->seek($_pos);
+}
+
+impl PositionToEnd {
+    fn index(&mut self) -> Box<PositionToEnd__IndexObj> {
+        if let Some(x) = self.index {
+            return x;
+        }
+
+        let _pos = self.stream.pos();
+        self.stream.seek((self._io.size - 8));
+        self.index = Box::new(PositionToEnd__IndexObj::new(self.stream, self, _root)?);
+        self.stream.seek(_pos);
         return self.index;
     }
 }
-        };
+#[derive(Default)]
+pub struct PositionToEnd__IndexObj {
+    pub foo: u32,
+    pub bar: u32,
+}
 
+impl KaitaiStruct for PositionToEnd__IndexObj {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -76,9 +78,10 @@ impl KaitaiStruct for PositionToEnd {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.foo = stream.read_u4le()?;
-        self.bar = stream.read_u4le()?;
-
-        Ok(())
+        self.foo = self.stream.read_u4le()?;
+        self.bar = self.stream.read_u4le()?;
     }
+}
+
+impl PositionToEnd__IndexObj {
 }

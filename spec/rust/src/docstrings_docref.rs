@@ -1,22 +1,25 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
 
+/*
+ * Another one-liner
+ */
+#[derive(Default)]
 pub struct DocstringsDocref {
-    pub foo: bool,
-    pub parseInst: u8,
     pub one: u8,
     pub two: u8,
     pub three: u8,
+    pub foo: Option<bool>,
+    pub parseInst: Option<u8>,
 }
 
 impl KaitaiStruct for DocstringsDocref {
@@ -25,22 +28,14 @@ impl KaitaiStruct for DocstringsDocref {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-            foo: bool,
-            parseInst: 0,
-            one: 0,
-            two: 0,
-            three: 0,
+        let mut s: Self = Default::default();
 
-/**
- * Another one-liner
- */
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -48,29 +43,34 @@ impl KaitaiStruct for DocstringsDocref {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.one = stream.read_u1()?;
-        self.two = stream.read_u1()?;
-        self.three = stream.read_u1()?;
-
-        Ok(())
+        self.one = self.stream.read_u1()?;
+        self.two = self.stream.read_u1()?;
+        self.three = self.stream.read_u1()?;
     }
-    public function foo() {
-        if (self.foo !== null)
-            return self.foo;
+}
+
+impl DocstringsDocref {
+    fn foo(&mut self) -> bool {
+        if let Some(x) = self.foo {
+            return x;
+        }
+
         self.foo = true;
         return self.foo;
     }
-    public function parseInst() {
-        if (self.parseInst !== null)
-            return self.parseInst;
-        $_pos = stream->pos();
-        stream->seek(0);
-        self.parseInst = stream.read_u1()?;
-        stream->seek($_pos);
+    fn parseInst(&mut self) -> u8 {
+        if let Some(x) = self.parseInst {
+            return x;
+        }
+
+        let _pos = self.stream.pos();
+        self.stream.seek(0);
+        self.parseInst = self.stream.read_u1()?;
+        self.stream.seek(_pos);
         return self.parseInst;
     }
 
-    /**
+    /*
      * Both doc and doc-ref are defined
      */
 }

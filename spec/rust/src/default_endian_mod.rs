@@ -1,26 +1,17 @@
 // This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
 
-use std::{
-    option::Option,
-    boxed::Box,
-    io::Result
-};
+use std::option::Option;
+use std::boxed::Box;
+use std::io::Result;
+use std::io::Cursor;
+use std::vec::Vec;
+use std::default::Default;
+use kaitai_struct::KaitaiStream;
+use kaitai_struct::KaitaiStruct;
 
-use kaitai_struct::{
-    KaitaiStream,
-    KaitaiStruct
-};
-
+#[derive(Default)]
 pub struct DefaultEndianMod {
-pub struct MainObj {
-pub struct Subnest {
-pub struct SubnestBe {
-    pub main: ,
-    pub one: i32,
-    pub nest: ,
-    pub nestBe: ,
-    pub two: i32,
-    pub two: i32,
+    pub main: Box<DefaultEndianMod__MainObj>,
 }
 
 impl KaitaiStruct for DefaultEndianMod {
@@ -29,46 +20,14 @@ impl KaitaiStruct for DefaultEndianMod {
                             _root: &Option<Box<KaitaiStruct>>)
                             -> Result<Self>
         where Self: Sized {
-        let mut s = Self {
-        }
+        let mut s: Self = Default::default();
 
-        impl KaitaiStruct for MainObj {
-            fn new<S: KaitaiStream>(stream: &mut S,
-                                    _parent: &Option<Box<KaitaiStruct>>,
-                                    _root: &Option<Box<KaitaiStruct>>)
-                                    -> Result<Self>
-                where Self: Sized {
-                let mut s = Self {
-                }
-
-                impl KaitaiStruct for Subnest {
-                    fn new<S: KaitaiStream>(stream: &mut S,
-                                            _parent: &Option<Box<KaitaiStruct>>,
-                                            _root: &Option<Box<KaitaiStruct>>)
-                                            -> Result<Self>
-                        where Self: Sized {
-                        let mut s = Self {
-                        }
-
-                        impl KaitaiStruct for SubnestBe {
-                            fn new<S: KaitaiStream>(stream: &mut S,
-                                                    _parent: &Option<Box<KaitaiStruct>>,
-                                                    _root: &Option<Box<KaitaiStruct>>)
-                                                    -> Result<Self>
-                                where Self: Sized {
-                                let mut s = Self {
-            main: ,
-            one: 0,
-            nest: ,
-            nestBe: ,
-            two: 0,
-            two: 0,
-        };
-
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -76,17 +35,33 @@ impl KaitaiStruct for DefaultEndianMod {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.main = new default_endian_mod::main_obj(stream, $this, _root);
-
-        Ok(())
+        self.main = Box::new(DefaultEndianMod__MainObj::new(self.stream, self, _root)?);
     }
 }
-        };
 
+impl DefaultEndianMod {
+}
+#[derive(Default)]
+pub struct DefaultEndianMod__MainObj {
+    pub one: i32,
+    pub nest: Box<DefaultEndianMod__MainObj__Subnest>,
+    pub nestBe: Box<DefaultEndianMod__MainObj__SubnestBe>,
+}
+
+impl KaitaiStruct for DefaultEndianMod__MainObj {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -94,19 +69,33 @@ impl KaitaiStruct for DefaultEndianMod {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.one = stream.read_s4le()?;
-        self.nest = new default_endian_mod::main_obj::subnest(stream, $this, _root);
-        self.nestBe = new default_endian_mod::main_obj::subnest_be(stream, $this, _root);
-
-        Ok(())
+        self.one = self.stream.read_s4le()?;
+        self.nest = Box::new(DefaultEndianMod__MainObj__Subnest::new(self.stream, self, _root)?);
+        self.nestBe = Box::new(DefaultEndianMod__MainObj__SubnestBe::new(self.stream, self, _root)?);
     }
 }
-        };
 
+impl DefaultEndianMod__MainObj {
+}
+#[derive(Default)]
+pub struct DefaultEndianMod__MainObj__Subnest {
+    pub two: i32,
+}
+
+impl KaitaiStruct for DefaultEndianMod__MainObj__Subnest {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -114,17 +103,31 @@ impl KaitaiStruct for DefaultEndianMod {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.two = stream.read_s4le()?;
-
-        Ok(())
+        self.two = self.stream.read_s4le()?;
     }
 }
-        };
 
+impl DefaultEndianMod__MainObj__Subnest {
+}
+#[derive(Default)]
+pub struct DefaultEndianMod__MainObj__SubnestBe {
+    pub two: i32,
+}
+
+impl KaitaiStruct for DefaultEndianMod__MainObj__SubnestBe {
+    fn new<S: KaitaiStream>(stream: &mut S,
+                            _parent: &Option<Box<KaitaiStruct>>,
+                            _root: &Option<Box<KaitaiStruct>>)
+                            -> Result<Self>
+        where Self: Sized {
+        let mut s: Self = Default::default();
+
+        s.stream = stream;
         s.read(stream, _parent, _root)?;
 
         Ok(s)
     }
+
 
     fn read<S: KaitaiStream>(&mut self,
                              stream: &mut S,
@@ -132,8 +135,9 @@ impl KaitaiStruct for DefaultEndianMod {
                              _root: &Option<Box<KaitaiStruct>>)
                              -> Result<()>
         where Self: Sized {
-        self.two = stream.read_s4be()?;
-
-        Ok(())
+        self.two = self.stream.read_s4be()?;
     }
+}
+
+impl DefaultEndianMod__MainObj__SubnestBe {
 }
