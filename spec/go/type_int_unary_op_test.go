@@ -5,9 +5,9 @@ package spec
 import (
 	"os"
 	"testing"
-	"github.com/stretchr/testify/assert"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	. "test_formats"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestTypeIntUnaryOp(t *testing.T) {
@@ -23,7 +23,7 @@ func TestTypeIntUnaryOp(t *testing.T) {
 	}
 
 	assert.EqualValues(t, 16720, r.ValueS2)
-	assert.EqualValues(t, 4706543082108963651, r.ValueS8)
+	assert.EqualValues(t, int64(4706543082108963651), r.ValueS8)
 	tmp1, err := r.UnaryS2()
 	if err != nil {
 		t.Fatal(err)
@@ -33,5 +33,5 @@ func TestTypeIntUnaryOp(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, -4706543082108963651, tmp2)
+	assert.EqualValues(t, -int64(4706543082108963651), tmp2)
 }

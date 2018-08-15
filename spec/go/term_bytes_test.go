@@ -5,9 +5,9 @@ package spec
 import (
 	"os"
 	"testing"
-	"github.com/stretchr/testify/assert"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	. "test_formats"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestTermBytes(t *testing.T) {
@@ -22,7 +22,7 @@ func TestTermBytes(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, "\x66\x6F\x6F", r.S1)
-	assert.EqualValues(t, "\x62\x61\x72", r.S2)
-	assert.EqualValues(t, "\x7C\x62\x61\x7A\x40", r.S3)
+	assert.EqualValues(t, []uint8{102, 111, 111}, r.S1)
+	assert.EqualValues(t, []uint8{98, 97, 114}, r.S2)
+	assert.EqualValues(t, []uint8{124, 98, 97, 122, 64}, r.S3)
 }

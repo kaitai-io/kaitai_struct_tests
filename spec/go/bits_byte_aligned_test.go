@@ -10,17 +10,25 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestHelloWorld(t *testing.T) {
+func TestBitsByteAligned(t *testing.T) {
 	f, err := os.Open("../../src/fixed_struct.bin")
 	if err != nil {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r HelloWorld
+	var r BitsByteAligned
 	err = r.Read(s, &r, &r)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, 80, r.One)
+	assert.EqualValues(t, 20, r.One)
+	assert.EqualValues(t, 65, r.Byte1)
+	assert.EqualValues(t, 2, r.Two)
+	assert.EqualValues(t, false, r.Three)
+	assert.EqualValues(t, 75, r.Byte2)
+	assert.EqualValues(t, 2892, r.Four)
+	assert.EqualValues(t, []uint8{255}, r.Byte3)
+	assert.EqualValues(t, 255, r.FullByte)
+	assert.EqualValues(t, 80, r.Byte4)
 }

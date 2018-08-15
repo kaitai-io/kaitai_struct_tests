@@ -10,28 +10,31 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestExpr1(t *testing.T) {
-	f, err := os.Open("../../src/str_encodings.bin")
+func TestExprEnum(t *testing.T) {
+	f, err := os.Open("../../src/term_strz.bin")
 	if err != nil {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r Expr1
+	var r ExprEnum
 	err = r.Read(s, &r, &r)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, 10, r.LenOf1)
-	tmp1, err := r.LenOf1Mod()
+	tmp1, err := r.ConstDog()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 8, tmp1)
-	assert.EqualValues(t, "Some ASC", r.Str1)
-	tmp2, err := r.Str1Len()
+	assert.EqualValues(t, ExprEnum_Animal__Dog, tmp1)
+	tmp2, err := r.DerivedBoom()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 8, tmp2)
+	assert.EqualValues(t, ExprEnum_Animal__Boom, tmp2)
+	tmp3, err := r.DerivedDog()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, ExprEnum_Animal__Dog, tmp3)
 }

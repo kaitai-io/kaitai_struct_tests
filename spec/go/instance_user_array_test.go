@@ -10,13 +10,13 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestInstanceStdArray(t *testing.T) {
+func TestInstanceUserArray(t *testing.T) {
 	f, err := os.Open("../../src/instance_std_array.bin")
 	if err != nil {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r InstanceStdArray
+	var r InstanceUserArray
 	err = r.Read(s, &r, &r)
 	if err != nil {
 		t.Fatal(err)
@@ -25,24 +25,39 @@ func TestInstanceStdArray(t *testing.T) {
 	assert.EqualValues(t, 16, r.Ofs)
 	assert.EqualValues(t, 3, r.QtyEntries)
 	assert.EqualValues(t, 4, r.EntrySize)
-	tmp1, err := r.Entries()
+	tmp1, err := r.UserEntries()
 	if err != nil {
 		t.Fatal(err)
 	}
 	assert.EqualValues(t, 3, len(tmp1))
-	tmp2, err := r.Entries()
+	tmp2, err := r.UserEntries()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, []uint8{17, 17, 17, 17}, tmp2[0])
-	tmp3, err := r.Entries()
+	assert.EqualValues(t, 4369, tmp2[0].Word1)
+	tmp3, err := r.UserEntries()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, []uint8{34, 34, 34, 34}, tmp3[1])
-	tmp4, err := r.Entries()
+	assert.EqualValues(t, 4369, tmp3[0].Word2)
+	tmp4, err := r.UserEntries()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, []uint8{51, 51, 51, 51}, tmp4[2])
+	assert.EqualValues(t, 8738, tmp4[1].Word1)
+	tmp5, err := r.UserEntries()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, 8738, tmp5[1].Word2)
+	tmp6, err := r.UserEntries()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, 13107, tmp6[2].Word1)
+	tmp7, err := r.UserEntries()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, 13107, tmp7[2].Word2)
 }

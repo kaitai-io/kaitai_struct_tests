@@ -10,28 +10,32 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestExpr1(t *testing.T) {
-	f, err := os.Open("../../src/str_encodings.bin")
+func TestInstanceIoUser(t *testing.T) {
+	f, err := os.Open("../../src/instance_io.bin")
 	if err != nil {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r Expr1
+	var r InstanceIoUser
 	err = r.Read(s, &r, &r)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, 10, r.LenOf1)
-	tmp1, err := r.LenOf1Mod()
+	assert.EqualValues(t, 3, r.QtyEntries)
+	tmp1, err := r.Entries[0].Name()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 8, tmp1)
-	assert.EqualValues(t, "Some ASC", r.Str1)
-	tmp2, err := r.Str1Len()
+	assert.EqualValues(t, "the", tmp1)
+	tmp2, err := r.Entries[1].Name()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 8, tmp2)
+	assert.EqualValues(t, "rainy", tmp2)
+	tmp3, err := r.Entries[2].Name()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, "day it is", tmp3)
 }
