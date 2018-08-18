@@ -32,7 +32,8 @@ while [ "$keep_compiling" = 1 ]; do
 			cat "$ABS_TEST_OUT_DIR/go/err.now" >>"$ABS_TEST_OUT_DIR/go/build.fails"
 			sed 's/:.*//' <"$ABS_TEST_OUT_DIR/go/err.now" | sort -u >"$ABS_TEST_OUT_DIR/go/to_delete.now"
 			xargs rm <"$ABS_TEST_OUT_DIR/go/to_delete.now"
-			echo "Trying to recover..."
+			echo "Trying to recover, deleting..."
+			cat "$ABS_TEST_OUT_DIR/go/to_delete.now"
 			keep_compiling=1
 		elif grep -q '^=== RUN' "$ABS_REPORT_LOG"; then
 			echo "Tests completed partially..."
