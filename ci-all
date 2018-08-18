@@ -54,5 +54,8 @@ echo '#################### python3'
 echo '#################### ruby'
 ./ci-ruby
 
+# Run Rust tests, generate JUnit-like report
+./ci-rust
+
 # Aggregate
 ./aggregate-reports

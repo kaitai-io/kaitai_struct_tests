@@ -1,0 +1,9 @@
+#!/bin/sh
+
+. ./config
+
+mkdir -p "$TEST_OUT_DIR/rust"
+
+cd spec/rust
+cargo test-junit \
+      --name "../../$TEST_OUT_DIR/rust/results.xml"
