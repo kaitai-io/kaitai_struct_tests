@@ -53,7 +53,7 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
 
   def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit = {
     importList.add("\"helpers.h\"")
-    val elTypeName = compiler.kaitaiType2NativeType(elType)
+    val elTypeName = CppCompiler.kaitaiType2NativeType(elType)
     val eltsStr = elts.map((x) => translator.translate(x)).mkString(", ")
     val actStr = translateAct(check.actual)
     out.puts(s"COMPARE_ARRAY($elTypeName, $actStr, $eltsStr);")

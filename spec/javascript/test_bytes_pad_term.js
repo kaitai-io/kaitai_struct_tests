@@ -4,7 +4,7 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 var hexString = require('hexString');
 
-testHelper('BytesPadTerm', 'src/str_pad_term.bin', function(r) {
+testHelper('BytesPadTerm', 'src/str_pad_term.bin', function(r, BytesPadTerm) {
   assert.strictEqual(hexString(r.strPad), hexString([115, 116, 114, 49]));
   assert.strictEqual(hexString(r.strTerm), hexString([115, 116, 114, 50, 102, 111, 111]));
   assert.strictEqual(hexString(r.strTermAndPad), hexString([115, 116, 114, 43, 43, 43, 51, 98, 97, 114, 43, 43, 43]));

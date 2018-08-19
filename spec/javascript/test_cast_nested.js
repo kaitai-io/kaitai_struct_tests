@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('CastNested', 'src/switch_opcodes.bin', function(r) {
+testHelper('CastNested', 'src/switch_opcodes.bin', function(r, CastNested) {
   assert.strictEqual(r.opcodes0Str.value, "foobar");
   assert.strictEqual(r.opcodes0StrValue, "foobar");
   assert.strictEqual(r.opcodes1Int.value, 66);

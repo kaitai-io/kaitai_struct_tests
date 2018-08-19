@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('RepeatNStruct', 'src/repeat_n_struct.bin', function(r) {
+testHelper('RepeatNStruct', 'src/repeat_n_struct.bin', function(r, RepeatNStruct) {
   assert.strictEqual(r.chunks.length, 2);
   assert.strictEqual(r.chunks[0].offset, 16);
   assert.strictEqual(r.chunks[0].len, 8312);

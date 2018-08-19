@@ -4,7 +4,7 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 var hexString = require('hexString');
 
-testHelper('SwitchBytearray', 'src/switch_opcodes.bin', function(r) {
+testHelper('SwitchBytearray', 'src/switch_opcodes.bin', function(r, SwitchBytearray) {
   assert.strictEqual(r.opcodes.length, 4);
   assert.strictEqual(hexString(r.opcodes[0].code), hexString([83]));
   assert.strictEqual(r.opcodes[0].body.value, "foobar");

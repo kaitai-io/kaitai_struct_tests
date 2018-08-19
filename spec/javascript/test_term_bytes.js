@@ -4,7 +4,7 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 var hexString = require('hexString');
 
-testHelper('TermBytes', 'src/term_strz.bin', function(r) {
+testHelper('TermBytes', 'src/term_strz.bin', function(r, TermBytes) {
   assert.strictEqual(hexString(r.s1), hexString([102, 111, 111]));
   assert.strictEqual(hexString(r.s2), hexString([98, 97, 114]));
   assert.strictEqual(hexString(r.s3), hexString([124, 98, 97, 122, 64]));

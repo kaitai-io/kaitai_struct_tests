@@ -33,7 +33,7 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
 
   override def simpleAssert(check: TestAssert): Unit = {
     val actStr = translateAct(check.actual)
-    val expStr = translator.translate(check.expected)
+    val expStr = translateExp(check.expected)
     out.puts(s"self.assertEqual($actStr, $expStr)")
   }
 
@@ -50,6 +50,9 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
 
   def translateAct(x: Ast.expr) =
     translator.translate(x).replace("self." + Main.INIT_OBJ_NAME, "r")
+
+  def translateExp(x: Ast.expr) =
+    translator.translate(x).replace("self._root", className)
 
   override def results: String =
     "# " + AUTOGEN_COMMENT + "\n\n" + super.results

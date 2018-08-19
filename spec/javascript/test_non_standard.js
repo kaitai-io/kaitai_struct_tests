@@ -3,6 +3,6 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('NonStandard', 'src/fixed_struct.bin', function(r) {
+testHelper('NonStandard', 'src/fixed_struct.bin', function(r, NonStandard) {
   assert.strictEqual(r.foo, 80);
 });

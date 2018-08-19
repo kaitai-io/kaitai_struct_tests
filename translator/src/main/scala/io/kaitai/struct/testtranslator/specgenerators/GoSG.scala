@@ -66,11 +66,9 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
   }
 
   def nullAssert(actual: Ast.expr): Unit = {
-    val nullCheckStr = actual match {
-      case Ast.expr.Attribute(x, Ast.identifier(attrName)) =>
-        "r->" + translator.translate(x) + s"->_is_null_$attrName()"
-    }
-    out.puts(s"BOOST_CHECK($nullCheckStr);")
+    importList.add("\"github.com/stretchr/testify/assert\"")
+    val actStr = translateAct(actual)
+    out.puts(s"assert.Nil(t, $actStr)")
   }
 
   def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit =

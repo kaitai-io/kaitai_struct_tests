@@ -9,13 +9,14 @@ import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 import io.kaitai.struct.translators.PHPTranslator
 
 class PHPSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
+  val namespace = "Kaitai\\Struct\\Tests"
   val className = PHPCompiler.type2class(spec.id)
-  val translator = new PHPTranslator(provider, RuntimeConfig())
+  val translator = new PHPTranslator(provider, RuntimeConfig(phpNamespace = namespace))
 
   override def fileName(name: String): String = s"${className}Test.php"
 
   override def header(): Unit = {
-    out.puts("namespace Kaitai\\Struct\\Tests;")
+    out.puts(s"namespace $namespace;")
     out.puts
     out.puts(s"class ${className}Test extends TestCase {")
     out.inc

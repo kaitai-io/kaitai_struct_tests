@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('NestedTypes3', 'src/fixed_struct.bin', function(r) {
+testHelper('NestedTypes3', 'src/fixed_struct.bin', function(r, NestedTypes3) {
   assert.strictEqual(r.aCc.valueCc, 80);
   assert.strictEqual(r.aCD.valueD, 65);
   assert.strictEqual(r.b.valueB, 67);

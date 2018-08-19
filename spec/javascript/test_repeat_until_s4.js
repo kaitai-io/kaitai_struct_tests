@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('RepeatUntilS4', 'src/repeat_until_s4.bin', function(r) {
+testHelper('RepeatUntilS4', 'src/repeat_until_s4.bin', function(r, RepeatUntilS4) {
   assert.deepStrictEqual(r.entries, [66, 4919, -251658241, -1]);
   assert.strictEqual(r.afterall, "foobar");
 });

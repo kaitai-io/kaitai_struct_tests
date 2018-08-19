@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('NavParent', 'src/nav.bin', function(r) {
+testHelper('NavParent', 'src/nav.bin', function(r, NavParent) {
   assert.strictEqual(r.header.qtyEntries, 2);
   assert.strictEqual(r.header.filenameLen, 8);
   assert.strictEqual(r.index.entries.length, 2);

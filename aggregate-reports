@@ -1,0 +1,7 @@
+#!/bin/sh
+
+. ./config
+
+# Aggregate
+echo '#################### ... aggregation'
+aggregate/aggregate "$COMPILER_DIR/target/test_out/TEST-io.kaitai.struct.translators.TranslatorSpec.xml" "$TEST_OUT_DIR" "$TEST_OUT_DIR/full.html"

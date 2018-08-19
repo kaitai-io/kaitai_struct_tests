@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('SwitchManualIntElse', 'src/switch_opcodes2.bin', function(r) {
+testHelper('SwitchManualIntElse', 'src/switch_opcodes2.bin', function(r, SwitchManualIntElse) {
   assert.strictEqual(r.opcodes.length, 4);
   assert.strictEqual(r.opcodes[0].code, 83);
   assert.strictEqual(r.opcodes[0].body.value, "foo");

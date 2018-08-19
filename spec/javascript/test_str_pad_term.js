@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('StrPadTerm', 'src/str_pad_term.bin', function(r) {
+testHelper('StrPadTerm', 'src/str_pad_term.bin', function(r, StrPadTerm) {
   assert.strictEqual(r.strPad, "str1");
   assert.strictEqual(r.strTerm, "str2foo");
   assert.strictEqual(r.strTermAndPad, "str+++3bar+++");

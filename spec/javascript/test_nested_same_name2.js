@@ -4,7 +4,7 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 var hexString = require('hexString');
 
-testHelper('NestedSameName2', 'src/nested_same_name2.bin', function(r) {
+testHelper('NestedSameName2', 'src/nested_same_name2.bin', function(r, NestedSameName2) {
   assert.strictEqual(r.version, 66);
   assert.strictEqual(r.mainData.mainSize, 2);
   assert.strictEqual(hexString(r.mainData.foo.data1), hexString([17, 17, 17, 17]));

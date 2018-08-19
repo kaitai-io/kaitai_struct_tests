@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('Expr0', 'src/str_encodings.bin', function(r) {
+testHelper('Expr0', 'src/str_encodings.bin', function(r, Expr0) {
   assert.strictEqual(r.mustBeF7, 247);
   assert.strictEqual(r.mustBeAbc123, "abc123");
 });

@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('RepeatNStrzDouble', 'src/repeat_n_strz.bin', function(r) {
+testHelper('RepeatNStrzDouble', 'src/repeat_n_strz.bin', function(r, RepeatNStrzDouble) {
   assert.strictEqual(r.qty, 2);
   assert.deepStrictEqual(r.lines1, ["foo"]);
   assert.deepStrictEqual(r.lines2, ["bar"]);

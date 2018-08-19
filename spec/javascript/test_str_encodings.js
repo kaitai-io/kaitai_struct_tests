@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('StrEncodings', 'src/str_encodings.bin', function(r) {
+testHelper('StrEncodings', 'src/str_encodings.bin', function(r, StrEncodings) {
   assert.strictEqual(r.str1, "Some ASCII");
   assert.strictEqual(r.str2, "\u3053\u3093\u306b\u3061\u306f");
   assert.strictEqual(r.str3, "\u3053\u3093\u306b\u3061\u306f");

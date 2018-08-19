@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('InstanceIoUser', 'src/instance_io.bin', function(r) {
+testHelper('InstanceIoUser', 'src/instance_io.bin', function(r, InstanceIoUser) {
   assert.strictEqual(r.qtyEntries, 3);
   assert.strictEqual(r.entries[0].name, "the");
   assert.strictEqual(r.entries[1].name, "rainy");

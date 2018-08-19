@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('SwitchIntegers', 'src/switch_integers.bin', function(r) {
+testHelper('SwitchIntegers', 'src/switch_integers.bin', function(r, SwitchIntegers) {
   assert.strictEqual(r.opcodes.length, 4);
   assert.strictEqual(r.opcodes[0].code, 1);
   assert.strictEqual(r.opcodes[0].body, 7);

@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('IfValues', 'src/fixed_struct.bin', function(r) {
+testHelper('IfValues', 'src/fixed_struct.bin', function(r, IfValues) {
   assert.strictEqual(r.codes[0].opcode, 80);
   assert.strictEqual(r.codes[0].halfOpcode, 40);
   assert.strictEqual(r.codes[1].opcode, 65);

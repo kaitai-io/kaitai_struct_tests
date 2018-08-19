@@ -3,6 +3,6 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('NavParentFalse2', 'src/fixed_struct.bin', function(r) {
+testHelper('NavParentFalse2', 'src/fixed_struct.bin', function(r, NavParentFalse2) {
   assert.strictEqual(r.parentless.foo, 80);
 });

@@ -4,7 +4,7 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 var hexString = require('hexString');
 
-testHelper('DefaultEndianExprInherited', 'src/endian_expr.bin', function(r) {
+testHelper('DefaultEndianExprInherited', 'src/endian_expr.bin', function(r, DefaultEndianExprInherited) {
   assert.strictEqual(hexString(r.docs[0].indicator), hexString([73, 73]));
   assert.strictEqual(r.docs[0].main.insides.someInt, 66);
   assert.strictEqual(r.docs[0].main.insides.more.someInt1, 16896);

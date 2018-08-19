@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('SwitchManualStr', 'src/switch_opcodes.bin', function(r) {
+testHelper('SwitchManualStr', 'src/switch_opcodes.bin', function(r, SwitchManualStr) {
   assert.strictEqual(r.opcodes.length, 4);
   assert.strictEqual(r.opcodes[0].code, "S");
   assert.strictEqual(r.opcodes[0].body.value, "foobar");

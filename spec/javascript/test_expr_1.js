@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('Expr1', 'src/str_encodings.bin', function(r) {
+testHelper('Expr1', 'src/str_encodings.bin', function(r, Expr1) {
   assert.strictEqual(r.lenOf1, 10);
   assert.strictEqual(r.lenOf1Mod, 8);
   assert.strictEqual(r.str1, "Some ASC");

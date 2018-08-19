@@ -3,6 +3,6 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('StrEos', 'src/term_strz.bin', function(r) {
+testHelper('StrEos', 'src/term_strz.bin', function(r, StrEos) {
   assert.strictEqual(r.str, "foo|bar|baz@");
 });

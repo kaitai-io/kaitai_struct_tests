@@ -18,6 +18,7 @@ set(PREREQ_PATH prereq)
 set(SPEC_SOURCES
 	main.cpp
 	test_hello_world.cpp
+	test_integers.cpp
 	test_fixed_struct.cpp
 	test_fixed_contents.cpp
 	test_instance_std.cpp
@@ -156,6 +157,8 @@ set(SPEC_SOURCES
 	test_params_pass_usertype.cpp
 	test_nested_types3.cpp
 	test_cast_nested.cpp
+	test_enum_deep.cpp
+	test_enum_deep_literals.cpp
 )
 
 set(PREREQ_SOURCES
@@ -165,6 +168,7 @@ set(PREREQ_SOURCES
 
 set(KS_SOURCES
 	${KS_PATH}/hello_world.cpp
+	${KS_PATH}/integers.cpp
 	${KS_PATH}/fixed_struct.cpp
 	${KS_PATH}/fixed_contents.cpp
 	${KS_PATH}/instance_std.cpp
@@ -306,6 +310,8 @@ set(KS_SOURCES
 	${KS_PATH}/params_pass_usertype.cpp
 	${KS_PATH}/nested_types3.cpp
 	${KS_PATH}/cast_nested.cpp
+	${KS_PATH}/enum_deep.cpp
+	${KS_PATH}/enum_deep_literals.cpp
 
 	${KS_PATH}/imported_1.cpp
 	${KS_PATH}/imported_2.cpp

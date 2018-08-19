@@ -13,9 +13,9 @@ BOOST_AUTO_TEST_CASE(test_repeat_until_sized) {
 
     BOOST_CHECK_EQUAL(r->records()->size(), 3);
     BOOST_CHECK_EQUAL(r->records()->at(0)->marker(), 232);
-    BOOST_CHECK_EQUAL(r->records()->at(0)->body(), 2863311546);
+    BOOST_CHECK_EQUAL(r->records()->at(0)->body(), 2863311546UL);
     BOOST_CHECK_EQUAL(r->records()->at(1)->marker(), 250);
-    BOOST_CHECK_EQUAL(r->records()->at(1)->body(), 2863315102);
+    BOOST_CHECK_EQUAL(r->records()->at(1)->body(), 2863315102UL);
     BOOST_CHECK_EQUAL(r->records()->at(2)->marker(), 170);
     BOOST_CHECK_EQUAL(r->records()->at(2)->body(), 1431655765);
 

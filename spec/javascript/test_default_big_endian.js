@@ -3,6 +3,6 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('DefaultBigEndian', 'src/enum_0.bin', function(r) {
+testHelper('DefaultBigEndian', 'src/enum_0.bin', function(r, DefaultBigEndian) {
   assert.strictEqual(r.one, 117440512);
 });

@@ -4,7 +4,7 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 var hexString = require('hexString');
 
-testHelper('BitsByteAligned', 'src/fixed_struct.bin', function(r) {
+testHelper('BitsByteAligned', 'src/fixed_struct.bin', function(r, BitsByteAligned) {
   assert.strictEqual(r.one, 20);
   assert.strictEqual(r.byte1, 65);
   assert.strictEqual(r.two, 2);

@@ -4,7 +4,7 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 var hexString = require('hexString');
 
-testHelper('ExprIoPos', 'src/expr_io_pos.bin', function(r) {
+testHelper('ExprIoPos', 'src/expr_io_pos.bin', function(r, ExprIoPos) {
   assert.strictEqual(r.substream1.myStr, "CURIOSITY");
   assert.strictEqual(hexString(r.substream1.body), hexString([17, 34, 51, 68]));
   assert.strictEqual(r.substream1.number, 66);
