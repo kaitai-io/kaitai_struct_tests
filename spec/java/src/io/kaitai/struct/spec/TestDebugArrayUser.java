@@ -7,7 +7,7 @@ import static org.testng.Assert.assertEquals;
 
 public class TestDebugArrayUser extends CommonSpec {
     @Test
-    public void testDebug0() throws Exception {
+    public void testDebugArrayUser() throws Exception {
         DebugArrayUser r = DebugArrayUser.fromFile(SRC_DIR + "fixed_struct.bin");
         r._read();
 
