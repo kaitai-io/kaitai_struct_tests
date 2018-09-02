@@ -45,17 +45,22 @@ class Aggregator
   end
 
   def add(lang, parser)
-    parser.each_test { |t|
-      h = (@aggr[t.name] ||= {})
-      if lang == 'perl'
-        # allow duplicate test names for Perl, it generates "testcase"
-        # for every assertion; sum it up
-        h[lang] = sum_test(h[lang], t)
-      else
-        raise "Duplicate test name \"#{t.name}\" for #{lang}" if h[lang]
-        h[lang] = t
-      end
-    }
+    begin
+      parser.each_test { |t|
+        h = (@aggr[t.name] ||= {})
+        if lang == 'perl'
+          # allow duplicate test names for Perl, it generates "testcase"
+          # for every assertion; sum it up
+          h[lang] = sum_test(h[lang], t)
+        else
+          raise "Duplicate test name \"#{t.name}\" for #{lang}" if h[lang]
+          h[lang] = t
+        end
+      }
+    rescue Exception => e
+      puts "ERROR: Exception for #{lang} parsing"
+      p e
+    end
   end
 
   def add_fails(lang, parser)
