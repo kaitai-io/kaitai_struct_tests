@@ -160,6 +160,7 @@ set(SPEC_SOURCES
 	test_enum_deep.cpp
 	test_enum_deep_literals.cpp
 	test_debug_array_user.cpp
+	test_params_enum.cpp
 )
 
 set(PREREQ_SOURCES
@@ -320,6 +321,7 @@ set(KS_SOURCES
 	${KS_PATH}/imported_and_rel.cpp
 	${KS_PATH}/imported_root.cpp
 	${KS_PATH}/debug_array_user.cpp
+	${KS_PATH}/params_enum.cpp
 )
 
 set(RUNTIME_SOURCES
