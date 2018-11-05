@@ -1,4 +1,4 @@
-# (main): /seq/1/if: can't compare EnumType(List(animal),Int1Type(false)) and Int1Type(true)
+# expr_compare_enum2: /seq/1/if: can't compare EnumType(List(animal),Int1Type(false)) and Int1Type(true)
 meta:
   id: expr_compare_enum2
 seq:
