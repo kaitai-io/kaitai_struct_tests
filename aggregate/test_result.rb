@@ -36,7 +36,7 @@ class TestResult
 
   def to_h
     h = {
-      'name' => name,
+#      'name' => name,
       'status' => status.to_s,
       'elapsed' => elapsed,
     }
