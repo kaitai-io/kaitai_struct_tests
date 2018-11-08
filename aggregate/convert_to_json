@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+# Convert tests result from many different languages from test
+# framework's native format to our unified JSON.
+#
+# Usage: convert_to_json {lang} {infile} {outfile}
+
+require_relative 'test_result'
+require_relative 'translator_xml_parser'
+require_relative 'junit_xml_parser'
+require_relative 'rspec_json_parser'
+require_relative 'boost_test_parser'
+require_relative 'nunit_xml_parser'
+require_relative 'build_fail_parser'
+require_relative 'valgrind_xml_parser'
+
+raise 'Needs exactly 3 arguments' unless ARGV.size == 3
+
+lang, infile, outfile = ARGV
+
+result = case
+when 'ruby'
+  RSpecJSONParser.new(infile).to_json
+else
+  raise "Unable to handle language #{lang.inspect}"
+end
+
+File.write(outfile, result)
