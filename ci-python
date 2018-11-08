@@ -4,3 +4,5 @@
 
 rm -rf "$TEST_OUT_DIR/python"
 PYTHONPATH="$PYTHON_RUNTIME_DIR:compiled/python:spec/python/extra" python ./run-python-xml.py spec/python "$TEST_OUT_DIR/python"
+
+aggregate/convert_to_json python "$TEST_OUT_DIR/python" "$TEST_OUT_DIR/python/ci.json"
