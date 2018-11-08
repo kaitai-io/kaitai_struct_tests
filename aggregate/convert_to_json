@@ -18,7 +18,9 @@ raise 'Needs exactly 3 arguments' unless ARGV.size == 3
 
 lang, infile, outfile = ARGV
 
-result = case
+result = case lang
+when 'go', 'java', 'javascript', 'lua', 'perl', 'php', 'python2', 'python3', 'rust'
+  JUnitXMLParser.new(infile).to_json
 when 'ruby'
   RSpecJSONParser.new(infile).to_json
 else
