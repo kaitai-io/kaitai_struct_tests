@@ -13,3 +13,5 @@ mkdir -p "$TEST_OUT_DIR/javascript"
 NODE_PATH=compiled/javascript:helpers/javascript:$JAVASCRIPT_MODULES_DIR:$JAVASCRIPT_RUNTIME_DIR \
 	$JAVASCRIPT_MODULES_DIR/mocha/bin/mocha \
 	-R xunit spec/javascript >"$TEST_OUT_DIR/javascript/test-output-javascript.xml"
+
+aggregate/convert_to_json javascript "$TEST_OUT_DIR/javascript/test-output-javascript.xml" "$TEST_OUT_DIR/javascript/ci.json"
