@@ -7,9 +7,12 @@
 # Run C++/STL valgrind check, generates Valgrind XML report
 echo 'Running Valgrind checks...'
 if valgrind --version; then
-    ./valgrind-cpp_stl
+	./valgrind-cpp_stl
 else
 	echo 'Valgrind not found :-('
+
+	# Generate empty valgrind output - this is normal and it should not stop `ci.json` generation
+	echo '<?xml version="1.0"?><valgrindoutput></valgrindoutput>' >"$TEST_OUT_DIR/cpp_stl/valgrind.xml"
 fi
 
 aggregate/convert_to_json cpp_stl "$TEST_OUT_DIR/cpp_stl" "$TEST_OUT_DIR/cpp_stl/ci.json"
