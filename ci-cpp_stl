@@ -1,11 +1,15 @@
 #!/bin/sh
 
+. ./config
+
 ./run-cpp_stl
 
 # Run C++/STL valgrind check, generates Valgrind XML report
 echo 'Running Valgrind checks...'
 if valgrind --version; then
-	./valgrind-cpp_stl
+    ./valgrind-cpp_stl
 else
 	echo 'Valgrind not found :-('
 fi
+
+aggregate/convert_to_json cpp_stl "$TEST_OUT_DIR/cpp_stl" "$TEST_OUT_DIR/cpp_stl/ci.json"
