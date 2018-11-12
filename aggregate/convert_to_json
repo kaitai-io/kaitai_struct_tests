@@ -16,9 +16,23 @@ require_relative 'valgrind_xml_parser'
 
 raise 'Needs exactly 3 arguments' unless ARGV.size == 3
 
+def add_fails(first, second)
+  second.each_pair { |k, v|
+    first[k] = v if v['status'] != 'passed'
+  }
+  first
+end
+
 lang, infile, outfile = ARGV
 
 result = case lang
+when 'cpp_stl'
+  JSON.pretty_generate(
+    add_fails(
+      BoostTestParser.new("#{infile}/results.xml").to_h,
+      ValgrindXMLParser.new("#{infile}/valgrind.xml").to_h
+    )
+  )
 when 'go', 'java', 'javascript', 'lua', 'perl', 'php', 'python', 'rust'
   JUnitXMLParser.new(infile).to_json
 when 'ruby'
