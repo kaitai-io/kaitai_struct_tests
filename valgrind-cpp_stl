@@ -2,7 +2,14 @@
 
 . ./config
 
-OBJ_DIR=$(pwd)/compiled/cpp_stl/bin
-TEST_DIR=$(pwd)
+if [ "$#" -ne 2 ]; then
+	echo "$0 <src_dir> <cpp_test_out_dir>"
+	exit 1
+fi
 
-valgrind --leak-check=full --xml=yes --xml-file="$TEST_OUT_DIR/cpp_stl/valgrind.xml" "$OBJ_DIR/ks_tests"
+SRC_DIR="$1"
+CPP_TEST_OUT_DIR="$2"
+
+OBJ_DIR="$SRC_DIR/bin"
+
+valgrind --leak-check=full --xml=yes --xml-file="$CPP_TEST_OUT_DIR/valgrind.xml" "$OBJ_DIR/ks_tests"

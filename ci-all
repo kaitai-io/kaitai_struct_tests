@@ -15,8 +15,8 @@ echo '#################### csharp'
 ./ci-csharp
 
 # Run C++/STL tests, generates JUnit XML report
-echo '#################### cpp_stl'
-./ci-cpp_stl
+echo '#################### cpp_stl_98'
+./ci-cpp_stl_98
 
 # Run Go tests, generates JUnit XML report
 echo '#################### go'

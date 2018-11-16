@@ -11,7 +11,6 @@ find_package(Iconv REQUIRED)
 # Enforce UTF-8 source files encoding for MSVC
 add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 
-set(KS_PATH ../../compiled/cpp_stl)
 set(RUNTIME_SRC_PATH ../../../runtime/cpp_stl)
 set(PREREQ_PATH prereq)
 

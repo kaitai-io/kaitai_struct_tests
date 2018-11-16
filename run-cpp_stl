@@ -2,7 +2,16 @@
 
 . ./config
 
-OBJ_DIR=$(pwd)/compiled/cpp_stl/bin
+if [ "$#" -ne 3 ]; then
+	echo "$0 <src_dir> <spec_dir> <test_out_dir>"
+	exit 1
+fi
+
+SRC_DIR="$1"
+CPP_SPEC_DIR="$2"
+CPP_TEST_OUT_DIR="$3"
+
+OBJ_DIR="$SRC_DIR/bin"
 TEST_DIR=$(pwd)
 
 # Compile everything:
@@ -15,7 +24,7 @@ mkdir -p "$OBJ_DIR"
 cd "$OBJ_DIR"
 if [ ! -r Makefile ] && [ ! -r KS_TEST_CPP_STL.sln ]; then
 	echo "Using KS_CMAKE_OPTIONS=<$KS_CMAKE_OPTIONS>"
-	cmake -DCMAKE_BUILD_TYPE=Debug "$KS_CMAKE_OPTIONS" "$TEST_DIR/spec/cpp_stl"
+	cmake -DCMAKE_BUILD_TYPE=Debug -DKS_PATH="$SRC_DIR" "$KS_CMAKE_OPTIONS" "$CPP_SPEC_DIR"
 fi
 
 if [ -r Makefile ]; then
@@ -37,15 +46,15 @@ fi
 
 if [ -r /usr/include/boost/version.hpp ] && grep -q 'BOOST_VERSION 106200' /usr/include/boost/version.hpp; then
 	# Boost v1.62 detected, enabling workaround
-	BOOST_LOG_OPTION=--logger=JUNIT,test_suite,"$TEST_OUT_DIR/cpp_stl/results.xml"
+	BOOST_LOG_OPTION=--logger=JUNIT,test_suite,"$CPP_TEST_OUT_DIR/results.xml"
 else
 	# No boost v1.62, we'll stick to standard which works with v1.54 too
-	BOOST_LOG_OPTION=--log_sink="$TEST_OUT_DIR/cpp_stl/results.xml"
+	BOOST_LOG_OPTION=--log_sink="$CPP_TEST_OUT_DIR/results.xml"
 fi
 
 # Actually run the tests
 cd "$TEST_DIR"
-mkdir -p "$TEST_OUT_DIR/cpp_stl"
+mkdir -p "$CPP_TEST_OUT_DIR"
 "$OBJ_DIR/ks_tests" \
 	--log_format=XML \
 	$BOOST_LOG_OPTION \
