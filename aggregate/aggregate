@@ -135,7 +135,7 @@ class ReportGenerator
       'construct2' => JUnitXMLParser.new("#{@test_root}/construct2"),
       'construct3' => JUnitXMLParser.new("#{@test_root}/construct3"),
       'csharp' => NUnitXMLParser.new("#{@test_root}/csharp/TestResult.xml"),
-      'cpp_stl' => BoostTestParser.new("#{@test_root}/cpp_stl/results.xml"),
+      'cpp_stl' => BoostTestParser.new("#{@test_root}/cpp_stl_98/results.xml"),
       'go' => JUnitXMLParser.new("#{@test_root}/go/report.xml"),
       'java' => JUnitXMLParser.new("#{@test_root}/java/junitreports"),
       'javascript' => JUnitXMLParser.new("#{@test_root}/javascript/test-output-javascript.xml"),
@@ -164,7 +164,7 @@ class ReportGenerator
     }
 
     # Add C++ valgrind check results
-    vgp = ValgrindXMLParser.new("#{@test_root}/cpp_stl/valgrind.xml")
+    vgp = ValgrindXMLParser.new("#{@test_root}/cpp_stl_98/valgrind.xml")
     @specs.add_fails('cpp_stl', vgp)
 
     @translators.summary
