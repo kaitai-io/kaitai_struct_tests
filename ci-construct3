@@ -3,4 +3,4 @@
 . ./config
 
 rm -rf "$TEST_OUT_DIR/construct3"
-PYTHONPATH="compiled/construct" python3 ./run-python-xml.py spec/construct "$TEST_OUT_DIR/construct3"
+PYTHONPATH="compiled/construct" python3.6 ./run-python-xml.py spec/construct "$TEST_OUT_DIR/construct3"
