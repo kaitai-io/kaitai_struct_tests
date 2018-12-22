@@ -66,7 +66,14 @@ class LinkRunner
 
   def parse_linker(stderr)
     r = []
+
+    # Modern g++ messages
     stderr.gsub(/^.*\/ld: (.*?\.o): .*/) {
+      r << $1
+    }
+
+    # Older g++/ld messages
+    stderr.gsub(/^([^: ]*?\.o): .*/) {
       r << $1
     }
     r
