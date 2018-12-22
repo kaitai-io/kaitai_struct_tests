@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
 
+puts "link-cpp_stl: started"
+
 require 'find'
 require 'set'
 require 'open3'
 
 require 'pp'
-
-OBJ_DIR, TEST_OUT_DIR = ARGV
 
 class LinkRunner
   def initialize(obj_dir, test_out_dir)
@@ -18,6 +18,8 @@ class LinkRunner
     @link_tmpl = File.read('CMakeFiles/ks_tests.dir/link.txt').gsub(/CMakeFiles\/.*\.o /, '@@@')
 
     @iteration = 1
+
+    puts "... initialized"
   end
 
   def run
@@ -81,4 +83,7 @@ class LinkRunner
   end
 end
 
-return LinkRunner.new(*ARGV).run ? 1 : 0
+r = LinkRunner.new(*ARGV).run
+
+puts "Result: #{r}"
+return r ? 1 : 0
