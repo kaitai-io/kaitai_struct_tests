@@ -46,8 +46,8 @@ class LinkRunner
 
     link_cmd = @link_tmpl.gsub(/@@@/, @objs.join(' '))
     stdout, stderr, status = Open3.capture3(link_cmd)
-    File.write("link.stdout.#{@iteration}", stdout)
-    File.write("link.stderr.#{@iteration}", stderr)
+    File.write("#{@test_out_dir}/link.stdout.#{@iteration}", stdout)
+    File.write("#{@test_out_dir}/link.stderr.#{@iteration}", stderr)
 
     if status.exitstatus != 0
       puts "Failed, trying to remove offending files..."
