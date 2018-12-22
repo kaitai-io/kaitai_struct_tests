@@ -67,11 +67,14 @@ init_file_lists
 init_cmake
 if compile_everything; then
 	# all good, compile finished
-	true
+	echo DONE
 else
 	# try to fix up by removing some files from compilation
-	echo 'Trying to resolve by linking successfully compiled things...'
-	"$TEST_DIR/link-cpp_stl" "." "$ABS_CPP_TEST_OUT_DIR"
+	echo 'FAILED, trying to resolve by linking successfully compiled things...'
+	echo 'Testing ruby...'
+	which ruby
+	ruby --version
+	ruby "$TEST_DIR/link-cpp_stl" "." "$ABS_CPP_TEST_OUT_DIR"
 fi
 
 # Work around boost v1.62 bug: https://svn.boost.org/trac10/ticket/12507
