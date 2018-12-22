@@ -1,0 +1,84 @@
+#!/usr/bin/env ruby
+
+require 'find'
+require 'set'
+require 'open3'
+
+require 'pp'
+
+OBJ_DIR, TEST_OUT_DIR = ARGV
+
+class LinkRunner
+  def initialize(obj_dir, test_out_dir)
+    @obj_dir = obj_dir
+    @test_out_dir = test_out_dir
+
+    # Initialize
+    @objs = Dir.glob("#{@obj_dir}/**/*.o").reject { |x| x =~ /CompilerIdCXX/ }
+    @link_tmpl = File.read('CMakeFiles/ks_tests.dir/link.txt').gsub(/CMakeFiles\/.*\.o /, '@@@')
+
+    @iteration = 1
+  end
+
+  def run
+    loop {
+      r = run_iteration
+      case r
+      when :retry
+        puts "Retrying..."
+      when :fail
+        puts "Unable to recover more, bailing out."
+        return false
+      when :success
+        puts "Success."
+        return true
+      else
+        raise "Unexpected return status: #{r.inspect}"
+      end
+      @iteration += 1
+    }
+  end
+
+  def run_iteration
+    puts "Linking attempt #{@iteration}..."
+
+    link_cmd = @link_tmpl.gsub(/@@@/, @objs.join(' '))
+    stdout, stderr, status = Open3.capture3(link_cmd)
+    File.write("link.stdout.#{@iteration}", stdout)
+    File.write("link.stderr.#{@iteration}", stderr)
+
+    if status.exitstatus != 0
+      puts "Failed, trying to remove offending files..."
+      obj_files_to_remove = parse_linker(stderr)
+      pp obj_files_to_remove
+      if obj_files_to_remove.empty?
+        return :fail
+      else
+        remove_files(obj_files_to_remove)
+        return :retry
+      end
+    else
+      return :success
+    end
+  end
+
+  def parse_linker(stderr)
+    r = []
+    stderr.gsub(/^.*\/ld: (.*?\.o): .*/) {
+      r << $1
+    }
+    r
+  end
+
+  def remove_files(files)
+    Set.new(files).each { |fn|
+      if @objs.delete(fn).nil?
+        pp @objs
+        raise "Unable to remove #{fn} from obj files"
+      end
+    }
+    return true
+  end
+end
+
+return LinkRunner.new(*ARGV).run ? 1 : 0
