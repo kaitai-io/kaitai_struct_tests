@@ -45,12 +45,15 @@ class LinkRunner
     puts "Linking attempt #{@iteration}..."
 
     link_cmd = @link_tmpl.gsub(/@@@/, @objs.join(' '))
+    puts "Link command template: #{link_cmd.inspect}"
+
     stdout, stderr, status = Open3.capture3(link_cmd)
+    puts "(stdout.size=#{stdout.size}, stderr.size=#{stderr.size}, status=#{status.inspect})"
     File.write("#{@test_out_dir}/link.stdout.#{@iteration}", stdout)
     File.write("#{@test_out_dir}/link.stderr.#{@iteration}", stderr)
 
     if status.exitstatus != 0
-      puts "Failed, trying to remove offending files..."
+      puts "Failed with exitstatus=#{status.exitstatus}, trying to remove offending files..."
       obj_files_to_remove = parse_linker(stderr)
       pp obj_files_to_remove
       if obj_files_to_remove.empty?
