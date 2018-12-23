@@ -16,6 +16,7 @@ class LinkRunner
     # Initialize
     @objs = Dir.glob("#{@obj_dir}/**/*.o").reject { |x| x =~ /CompilerIdCXX/ }
     @link_tmpl = File.read('CMakeFiles/ks_tests.dir/link.txt').gsub(/CMakeFiles\/.*\.o /, '@@@')
+    puts "Link command template: #{@link_tmpl.inspect}"
 
     @iteration = 1
 
@@ -45,7 +46,6 @@ class LinkRunner
     puts "Linking attempt #{@iteration}..."
 
     link_cmd = @link_tmpl.gsub(/@@@/, @objs.join(' '))
-    puts "Link command template: #{link_cmd.inspect}"
 
     stdout, stderr, status = Open3.capture3(link_cmd)
     puts "(stdout.size=#{stdout.size}, stderr.size=#{stderr.size}, status=#{status.inspect})"
