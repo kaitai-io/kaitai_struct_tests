@@ -79,14 +79,22 @@ class LinkRunner
     stderr.gsub(/^([^: ]*?\.o): .*/) {
       r << $1
     }
+
+    # OS X clang++/ld messages
+    stderr.gsub(/^      (.*?) in (.*?)$/) {
+      r << $1
+    }
+
     r
   end
 
   def remove_files(files)
     Set.new(files).each { |fn|
       if @objs.delete(fn).nil?
-        pp @objs
-        raise "Unable to remove #{fn} from obj files"
+        if (@objs.reject! { |x| x.end_with?(fn) }).nil?
+          pp @objs
+          raise "Unable to remove #{fn} from obj files"
+        end
       end
     }
     return true
