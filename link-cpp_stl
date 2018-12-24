@@ -82,7 +82,7 @@ class LinkRunner
 
     # OS X clang++/ld messages
     stderr.gsub(/^      (.*?) in (.*?)$/) {
-      r << $1
+      r << $2
     }
 
     r
