@@ -13,12 +13,21 @@ require_relative 'boost_test_parser'
 require_relative 'nunit_xml_parser'
 require_relative 'build_fail_parser'
 require_relative 'valgrind_xml_parser'
+require_relative 'make_fail_parser'
 
 raise 'Needs exactly 3 arguments' unless ARGV.size == 3
 
-def add_fails(first, second)
-  second.each_pair { |k, v|
-    first[k] = v if v['status'] != 'passed'
+def add_fails(first, *seconds)
+  seconds.each { |second|
+    second.each_pair { |k, v|
+      old_status = (first[k] || {})['status']
+      new_status = v['status']
+
+      first[k] = v if (
+          ((old_status.nil? or old_status == 'passed') and (new_status != 'passed')) or
+          (old_status == 'spec_build_failed' and new_status == 'format_build_failed')
+        )
+    }
   }
   first
 end
@@ -30,6 +39,7 @@ when 'cpp_stl'
   JSON.pretty_generate(
     add_fails(
       BoostTestParser.new("#{infile}/results.xml").to_h,
+      MakeFailParser.new("#{infile}/make.stderr").to_h,
       ValgrindXMLParser.new("#{infile}/valgrind.xml").to_h
     )
   )
