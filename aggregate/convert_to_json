@@ -5,6 +5,8 @@
 #
 # Usage: convert_to_json {lang} {infile} {outfile}
 
+require 'time'
+
 require_relative 'test_result'
 require_relative 'translator_xml_parser'
 require_relative 'junit_xml_parser'
@@ -36,19 +38,20 @@ lang, infile, outfile = ARGV
 
 result = case lang
 when 'cpp_stl'
-  JSON.pretty_generate(
-    add_fails(
-      BoostTestParser.new("#{infile}/results.xml").to_h,
-      MakeFailParser.new("#{infile}/make.stderr").to_h,
-      ValgrindXMLParser.new("#{infile}/valgrind.xml").to_h
-    )
+  add_fails(
+    BoostTestParser.new("#{infile}/results.xml").to_h,
+    MakeFailParser.new("#{infile}/make.stderr").to_h,
+    ValgrindXMLParser.new("#{infile}/valgrind.xml").to_h
   )
 when 'go', 'java', 'javascript', 'lua', 'perl', 'php', 'python', 'rust'
-  JUnitXMLParser.new(infile).to_json
+  JUnitXMLParser.new(infile)
 when 'ruby'
-  RSpecJSONParser.new(infile).to_json
+  RSpecJSONParser.new(infile)
 else
   raise "Unable to handle language #{lang.inspect}"
 end
 
-File.write(outfile, result)
+result['$meta'] = {'timestamp': Time.now.utc.iso8601}
+json = JSON.pretty_generate(result)
+
+File.write(outfile, json)
