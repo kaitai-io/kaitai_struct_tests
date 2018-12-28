@@ -44,9 +44,9 @@ when 'cpp_stl'
     ValgrindXMLParser.new("#{infile}/valgrind.xml").to_h
   )
 when 'go', 'java', 'javascript', 'lua', 'perl', 'php', 'python', 'rust'
-  JUnitXMLParser.new(infile)
+  JUnitXMLParser.new(infile).to_h
 when 'ruby'
-  RSpecJSONParser.new(infile)
+  RSpecJSONParser.new(infile).to_h
 else
   raise "Unable to handle language #{lang.inspect}"
 end
