@@ -48,7 +48,21 @@ compile_everything()
 {
 	echo 'Building project generated with CMake...'
 	if [ -r Makefile ]; then
-		make -j8 -k >"$ABS_CPP_TEST_OUT_DIR/make.stdout" 2>"$ABS_CPP_TEST_OUT_DIR/make.stderr"
+		LC_ALL=en_US.UTF-8 make -j8 -k >"$ABS_CPP_TEST_OUT_DIR/make.stdout" 2>"$ABS_CPP_TEST_OUT_DIR/make.stderr"
+	elif [ -r KS_TEST_CPP_STL.sln ]; then
+		msbuild
+	else
+		echo "No build makefile/project file found, unable to continue."
+		ls -al
+		exit 1
+	fi
+}
+
+compile_failures_seq()
+{
+	echo 'Building project generated with CMake (sequentially)...'
+	if [ -r Makefile ]; then
+		LC_ALL=en_US.UTF-8 make -k >"$ABS_CPP_TEST_OUT_DIR/make.stdout" 2>"$ABS_CPP_TEST_OUT_DIR/make.stderr"
 	elif [ -r KS_TEST_CPP_STL.sln ]; then
 		msbuild
 	else
@@ -70,11 +84,17 @@ if compile_everything; then
 	echo DONE
 else
 	# try to fix up by removing some files from compilation
+	compile_failures_seq || :
 	echo 'FAILED, trying to resolve by linking successfully compiled things...'
 	echo 'Testing ruby...'
 	which ruby
 	ruby --version
-	ruby "$TEST_DIR/link-cpp_stl" "." "$ABS_CPP_TEST_OUT_DIR"
+	if ruby "$TEST_DIR/link-cpp_stl" "." "$ABS_CPP_TEST_OUT_DIR"; then
+		echo 'DONE'
+	else
+		echo 'FAILED'
+	fi
+	ls -al "$ABS_CPP_TEST_OUT_DIR"
 fi
 
 # Work around boost v1.62 bug: https://svn.boost.org/trac10/ticket/12507
