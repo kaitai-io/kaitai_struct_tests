@@ -18,7 +18,8 @@ class ValgrindXMLParser < TestParser
 
       err.elements.each('stack') { |stack|
         stack.elements.each('frame') { |frame|
-          dir = frame.elements['dir']&.text
+          dir1 = frame.elements['dir']
+          dir = dir1.nil? ? nil : dir1.text
           if dir =~ /\/compiled\/cpp_stl$/
             file = frame.elements['file'].text
             test_name = file.gsub(/\.cpp$/, '')

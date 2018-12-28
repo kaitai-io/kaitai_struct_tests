@@ -51,7 +51,7 @@ else
   raise "Unable to handle language #{lang.inspect}"
 end
 
-result['$meta'] = {'timestamp': Time.now.utc.iso8601}
+result['$meta'] = {'timestamp' => Time.now.utc.iso8601}
 json = JSON.pretty_generate(result)
 
 File.write(outfile, json)
