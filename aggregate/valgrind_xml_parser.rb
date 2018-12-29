@@ -1,4 +1,4 @@
-require_relative 'test_result'
+require_relative 'test_parser'
 
 require 'rexml/document'
 require 'set'
@@ -7,7 +7,7 @@ def underscore_to_ucamelcase(s)
   s.split(/_/).map { |x| x.capitalize }.join
 end
 
-class ValgrindXMLParser
+class ValgrindXMLParser < TestParser
   def initialize(fn)
     @doc = REXML::Document.new(File.read(fn))
   end
@@ -18,7 +18,8 @@ class ValgrindXMLParser
 
       err.elements.each('stack') { |stack|
         stack.elements.each('frame') { |frame|
-          dir = frame.elements['dir']&.text
+          dir1 = frame.elements['dir']
+          dir = dir1.nil? ? nil : dir1.text
           if dir =~ /\/compiled\/cpp_stl$/
             file = frame.elements['file'].text
             test_name = file.gsub(/\.cpp$/, '')

@@ -1,10 +1,12 @@
+require_relative 'test_parser'
+
 require 'rexml/document'
 
 def underscore_to_ucamelcase(s)
   s.split(/_/).map { |x| x.capitalize }.join
 end
 
-class JUnitXMLParser
+class JUnitXMLParser < TestParser
   def initialize(fn)
     @docs = if not File.exists?(fn)
       []

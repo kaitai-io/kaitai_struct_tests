@@ -1,6 +1,8 @@
 require 'json'
 
-class RSpecJSONParser
+require_relative 'test_parser'
+
+class RSpecJSONParser < TestParser
   def initialize(fn)
     @doc = JSON.parse(File.read(fn))
   end

@@ -1,4 +1,4 @@
-# (main): /seq/1/type/cases/Name(identifier(AHEM)): invalid ID: 'AHEM', expected /^[a-z][a-z0-9_]*$/
+# switch_cases_malformed_quoting2: /seq/1/type/cases/Name(identifier(AHEM)): invalid ID: 'AHEM', expected /^[a-z][a-z0-9_]*$/
 meta:
   id: switch_cases_malformed_quoting2
 seq:

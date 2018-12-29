@@ -2,8 +2,9 @@ meta:
   id: params_enum
 enums:
   animal:
-    1: cat
-    2: dog
+    4: dog
+    7: cat
+    12: chicken
 seq:
   - id: one
     type: u1

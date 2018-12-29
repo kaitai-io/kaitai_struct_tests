@@ -1,0 +1,57 @@
+#!/usr/bin/env ruby
+
+# Convert tests result from many different languages from test
+# framework's native format to our unified JSON.
+#
+# Usage: convert_to_json {lang} {infile} {outfile}
+
+require 'time'
+
+require_relative 'test_result'
+require_relative 'translator_xml_parser'
+require_relative 'junit_xml_parser'
+require_relative 'rspec_json_parser'
+require_relative 'boost_test_parser'
+require_relative 'nunit_xml_parser'
+require_relative 'build_fail_parser'
+require_relative 'valgrind_xml_parser'
+require_relative 'make_fail_parser'
+
+raise 'Needs exactly 3 arguments' unless ARGV.size == 3
+
+def add_fails(first, *seconds)
+  seconds.each { |second|
+    second.each_pair { |k, v|
+      old_status = (first[k] || {})['status']
+      new_status = v['status']
+
+      first[k] = v if (
+          ((old_status.nil? or old_status == 'passed') and (new_status != 'passed')) or
+          (old_status == 'spec_build_failed' and new_status == 'format_build_failed')
+        )
+    }
+  }
+  first
+end
+
+lang, infile, outfile = ARGV
+
+result = case lang
+when 'cpp_stl'
+  add_fails(
+    BoostTestParser.new("#{infile}/results.xml").to_h,
+    MakeFailParser.new("#{infile}/make.stderr").to_h,
+    ValgrindXMLParser.new("#{infile}/valgrind.xml").to_h
+  )
+when 'go', 'java', 'javascript', 'lua', 'perl', 'php', 'python', 'rust'
+  JUnitXMLParser.new(infile).to_h
+when 'ruby'
+  RSpecJSONParser.new(infile).to_h
+else
+  raise "Unable to handle language #{lang.inspect}"
+end
+
+result['$meta'] = {'timestamp' => Time.now.utc.iso8601}
+json = JSON.pretty_generate(result)
+
+File.write(outfile, json)

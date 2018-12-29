@@ -1,10 +1,12 @@
 require 'rexml/document'
 
+require_relative 'test_parser'
+
 def underscore_to_ucamelcase(s)
   s.split(/_/).map { |x| x.capitalize }.join
 end
 
-class BoostTestParser
+class BoostTestParser < TestParser
   def initialize(fn)
     @doc = REXML::Document.new(File.read(fn))
   end

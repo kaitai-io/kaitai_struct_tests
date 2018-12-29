@@ -1,4 +1,4 @@
-# (main): /seq/1/type/cases/Name(identifier(ahem)): unable to access 'ahem' in switch_cases_malformed_quoting3 context
+# switch_cases_malformed_quoting3: /seq/1/type/cases/Name(identifier(ahem)): unable to access 'ahem' in switch_cases_malformed_quoting3 context
 meta:
   id: switch_cases_malformed_quoting3
 seq:

@@ -1,0 +1,8 @@
+#!/bin/sh -e
+
+. ./config
+
+./run-cpp_stl \
+	"$(pwd)/compiled/cpp_stl_11" \
+	"$(pwd)/spec/cpp_stl_11" \
+	"$TEST_OUT_DIR/cpp_stl_11"
