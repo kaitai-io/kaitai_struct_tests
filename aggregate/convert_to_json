@@ -51,7 +51,19 @@ else
   raise "Unable to handle language #{lang.inspect}"
 end
 
-result['$meta'] = {'timestamp' => Time.now.utc.iso8601}
+meta = {'timestamp' => Time.now.utc.iso8601}
+
+if ENV['TRAVIS_BUILD_ID']
+  meta['ci'] = {
+    'ci' => 'travis',
+    'build_id' => ENV['TRAVIS_BUILD_ID'],
+    'job_id' => ENV['TRAVIS_JOB_ID'],
+    'job_number' => ENV['TRAVIS_JOB_NUMBER'],
+    'url' => ENV['TRAVIS_JOB_WEB_URL'],
+  }
+end
+
+result['$meta'] = meta
 json = JSON.pretty_generate(result)
 
 File.write(outfile, json)
