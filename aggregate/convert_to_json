@@ -51,7 +51,10 @@ else
   raise "Unable to handle language #{lang.inspect}"
 end
 
-meta = {'timestamp' => Time.now.utc.iso8601}
+meta = {
+  'lang' => lang,
+  'timestamp' => Time.now.utc.iso8601,
+}
 
 if ENV['TRAVIS_BUILD_ID']
   meta['ci'] = {
