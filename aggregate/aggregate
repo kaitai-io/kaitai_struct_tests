@@ -141,7 +141,7 @@ class ReportGenerator
       'javascript' => JUnitXMLParser.new("#{@test_root}/javascript/test-output-javascript.xml"),
       'lua' => JUnitXMLParser.new("#{@test_root}/lua/report.xml"),
       'perl' => JUnitXMLParser.new("#{@test_root}/perl/output.xml"),
-      'php' => JUnitXMLParser.new("#{@test_root}/php/results.xml"),
+#      'php' => JUnitXMLParser.new("#{@test_root}/php/results.xml"),
       'python2' => JUnitXMLParser.new("#{@test_root}/python2"),
       'python3' => JUnitXMLParser.new("#{@test_root}/python3"),
       'ruby' => RSpecJSONParser.new("#{@test_root}/ruby/test-output-ruby.json"),

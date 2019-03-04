@@ -39,8 +39,8 @@ echo '#################### perl'
 ./ci-perl
 
 # Run PHP tests, generate JUnit-like report
-echo '#################### php'
-./ci-php
+#echo '#################### php'
+#./ci-php
 
 # Run Python 2 tests, generate bunch of JUnit-like reports
 echo '#################### python2'
