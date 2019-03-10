@@ -20,15 +20,21 @@ TEST_DIR=$(pwd)
 # Create initial list of files to compile, starting with everything
 init_file_lists()
 {
+	echo 'init_file_lists()'
+
+	echo -n "SPEC_CMAKE: $SPEC_CMAKE => "
 	rm -f "$SPEC_CMAKE"
 	echo 'set(SPEC_SOURCES' >>"$SPEC_CMAKE"
 	find "$CPP_SPEC_DIR" -name '*.cpp' >>"$SPEC_CMAKE"
 	echo ')' >>"$SPEC_CMAKE"
+	wc -l "$SPEC_CMAKE"
 
+	echo -n "COMPILED_CMAKE: $COMPILED_CMAKE => "
 	rm -f "$COMPILED_CMAKE"
 	echo 'set(KS_SOURCES' >>"$COMPILED_CMAKE"
 	find "$SRC_DIR" -name '*.cpp' >>"$COMPILED_CMAKE"
 	echo ')' >>"$COMPILED_CMAKE"
+	wc -l "$COMPILED_CMAKE"
 }
 
 # Init CMake, generate platform-specific Makefile / project files
