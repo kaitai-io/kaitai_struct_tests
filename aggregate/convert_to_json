@@ -47,6 +47,8 @@ when 'go', 'java', 'javascript', 'lua', 'perl', 'php', 'python', 'rust'
   JUnitXMLParser.new(infile).to_h
 when 'ruby'
   RSpecJSONParser.new(infile).to_h
+when 'csharp'
+  NUnitXMLParser.new(infile).to_h
 else
   raise "Unable to handle language #{lang.inspect}"
 end

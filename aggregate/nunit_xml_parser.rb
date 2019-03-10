@@ -1,6 +1,8 @@
 require 'rexml/document'
 
-class NUnitXMLParser
+require_relative 'test_parser'
+
+class NUnitXMLParser < TestParser
   def initialize(fn)
     @doc = REXML::Document.new(File.read(fn))
   end
