@@ -25,6 +25,7 @@ init_file_lists()
 	echo -n "SPEC_CMAKE: $SPEC_CMAKE => "
 	rm -f "$SPEC_CMAKE"
 	echo 'set(SPEC_SOURCES' >>"$SPEC_CMAKE"
+	ls "$CPP_SPEC_DIR"
 	find "$CPP_SPEC_DIR" -name '*.cpp' >>"$SPEC_CMAKE"
 	echo ')' >>"$SPEC_CMAKE"
 	wc -l "$SPEC_CMAKE"
