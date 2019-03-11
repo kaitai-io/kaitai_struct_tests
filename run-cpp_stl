@@ -108,9 +108,9 @@ class RunCpp
       compile_failures_seq
       puts 'build_all: FAILED, trying to resolve by linking successfully compiled things...'
       if system("ruby", "#{@test_dir}/link-cpp_stl", ".", @abs_cpp_test_out_dir)
-	puts 'build_all: DONE partially'
+        puts 'build_all: DONE partially'
       else
-	puts 'build_all: FAILED'
+        puts 'build_all: FAILED'
         return false
       end
     end
@@ -188,14 +188,13 @@ class RunCpp
       '--report_level=detailed',
     ]
     puts "tests_cli = #{tests_cli.inspect}"
+    flush_all
 
     # Actually run the tests
     Dir.chdir(@test_dir)
-
-    system("ls -alR #{@obj_dir}")
+    r = system(*tests_cli)
     flush_all
 
-    r = system(*tests_cli)
     raise "Unable to run tests" if r.nil?
   end
 
