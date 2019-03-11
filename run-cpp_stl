@@ -87,17 +87,20 @@ class RunCpp
   def init_cmake
     puts 'init_cmake'
 
-    puts "Using KS_CMAKE_OPTIONS=<$KS_CMAKE_OPTIONS>"
-    # TODO: add KS_CMAKE_OPTIONS to args
-
-    system(
+    cmake_cli = [
       "cmake",
       "-DCMAKE_BUILD_TYPE=Debug",
       "-DINC1_PATH=#{@spec_cmake}",
       "-DINC2_PATH=#{@compiled_cmake}",
       "-DKS_PATH=#{@src_dir}",
-      @cpp_spec_dir
-    )
+    ]
+
+    # Building on Appveyor/Windows requires extra argument to CMake
+    cmake_cli << "-DCMAKE_TOOLCHAIN_FILE=c:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake" if ENV['APPVEYOR']
+
+    cmake_cli << @cpp_spec_dir
+
+    system(*cmake_cli)
   end
 
   # Compile everything:
