@@ -46,6 +46,8 @@ class RunCpp
     init_file_lists
     init_cmake or raise "Failed to initialize CMake"
 
+    debug_cwd
+
     if compile_everything
       # all good, compile finished
       puts 'DONE'
@@ -122,7 +124,7 @@ class RunCpp
     if File.exists?('Makefile')
       system("LC_ALL=en_US.UTF-8 make -j8 -k >\"#{@abs_cpp_test_out_dir}/make.stdout\" 2>\"#{@abs_cpp_test_out_dir}/make.stderr\"")
     elsif File.exists?('KS_TEST_CPP_STL.sln')
-      system("msbuild")
+      system('msbuild', 'KS_TEST_CPP_STL.sln')
     else
       system("ls -al")
       raise "No build makefile/project file found, unable to continue."
@@ -136,7 +138,7 @@ class RunCpp
     if File.exists?('Makefile')
       system("LC_ALL=en_US.UTF-8 make -k >\"#{@abs_cpp_test_out_dir}/make.stdout\" 2>\"#{@abs_cpp_test_out_dir}/make.stderr\"")
     elsif File.exists?('KS_TEST_CPP_STL.sln')
-      system("msbuild")
+      system('msbuild', 'KS_TEST_CPP_STL.sln')
     else
       system("ls -al")
       raise "No build makefile/project file found, unable to continue"
@@ -177,6 +179,13 @@ class RunCpp
   def flush_all
     $stdout.flush
     $stderr.flush
+  end
+
+  def debug_cwd
+    flush_all
+    puts "...... Current directory: #{Dir.pwd}"
+    puts "...... Current dir listing:"
+    system("ls -al")
   end
 end
 
