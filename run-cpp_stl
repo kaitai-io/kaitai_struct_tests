@@ -84,8 +84,8 @@ class RunCpp
     if ENV['APPVEYOR']
       cmake_cli << "-DCMAKE_TOOLCHAIN_FILE=c:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake"
 
-      # TODO: decide on architecture based on extra env variable
-      cmake_cli << "-DCMAKE_GENERATOR_PLATFORM=x64"
+      arch = ENV['ARCH'] || 'x64'
+      cmake_cli << "-DCMAKE_GENERATOR_PLATFORM=#{arch}"
     end
 
     cmake_cli << @cpp_spec_dir
