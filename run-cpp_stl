@@ -171,8 +171,17 @@ class RunCpp
       # ignore
     end
 
+    # Choose test executable
+    if File.exists?("#{@obj_dir}/KS_TEST_CPP_STL.sln")
+      # On Windows/MSVC, executable will be nested in Debug/
+      ks_tests_bin = "#{@obj_dir}/Debug/ks_tests"
+    else
+      # On POSIX systems, it will be directly in obj dir
+      ks_tests_bin = "#{@obj_dir}/ks_tests"
+    end
+
     tests_cli = [
-      "#{@obj_dir}/ks_tests",
+      ks_tests_bin
       '--log_format=XML',
       boost_log_option,
       '--log_level=all',
@@ -183,7 +192,7 @@ class RunCpp
     # Actually run the tests
     Dir.chdir(@test_dir)
 
-    system("ls -al #{@obj_dir}")
+    system("ls -alR #{@obj_dir}")
     flush_all
 
     r = system(*tests_cli)
