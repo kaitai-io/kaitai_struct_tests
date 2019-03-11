@@ -46,7 +46,7 @@ class RunCpp
     init_file_lists
     init_cmake or raise "Failed to initialize CMake"
     build_all or raise "Failed to finish a build"
-    run_tests or raise "Failed to run tests"
+    run_tests
   end
 
   # Create initial list of files to compile, starting with everything
@@ -160,29 +160,34 @@ class RunCpp
     # However, Travis has boost v1.54, which has problems with it, so we
     # won't use the workaround on anything except exactly v1.62
 
-    boost_log_option = "--log_sink=#{@cpp_test_out_dir}/results.xml"
+    boost_log_option = "--log_sink=#{@abs_cpp_test_out_dir}/results.xml"
 
     begin
       if File.read('/usr/include/boost/version.hpp') =~ /BOOST_VERSION 106200/
         # Boost v1.62 detected, enabling workaround
-        boost_log_option = "--logger=JUNIT,test_suite,#{@cpp_test_out_dir}/results.xml"
+        boost_log_option = "--logger=JUNIT,test_suite,#{@abs_cpp_test_out_dir}/results.xml"
       end
     rescue Errno::ENOENT => e
       # ignore
     end
 
-    puts "boost_log_option = #{boost_log_option.inspect}"
-
-    # Actually run the tests
-    Dir.chdir(@test_dir)
-    flush_all
-    system(
+    tests_cli = [
       "#{@obj_dir}/ks_tests",
       '--log_format=XML',
       boost_log_option,
       '--log_level=all',
-      '--report_level=detailed'
-    )
+      '--report_level=detailed',
+    ]
+    puts "tests_cli = #{tests_cli.inspect}"
+
+    # Actually run the tests
+    Dir.chdir(@test_dir)
+
+    system("ls -al #{@obj_dir}")
+    flush_all
+
+    r = system(*tests_cli)
+    raise "Unable to run tests" if r.nil?
   end
 
   def flush_all
