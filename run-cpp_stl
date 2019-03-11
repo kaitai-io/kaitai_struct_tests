@@ -181,7 +181,7 @@ class RunCpp
     end
 
     tests_cli = [
-      ks_tests_bin
+      ks_tests_bin,
       '--log_format=XML',
       boost_log_option,
       '--log_level=all',
