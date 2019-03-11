@@ -96,9 +96,17 @@ class RunCpp
     ]
 
     # Building on Appveyor/Windows requires extra argument to CMake
-    cmake_cli << "-DCMAKE_TOOLCHAIN_FILE=c:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake" if ENV['APPVEYOR']
+    if ENV['APPVEYOR']
+      cmake_cli << "-DCMAKE_TOOLCHAIN_FILE=c:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake"
+
+      # TODO: decide on architecture based on extra env variable
+      cmake_cli << "-DCMAKE_GENERATOR_PLATFORM=x64"
+    end
 
     cmake_cli << @cpp_spec_dir
+
+    puts "cmake_cli = #{cmake_cli.inspect}"
+    flush_all
 
     system(*cmake_cli)
   end
@@ -109,6 +117,8 @@ class RunCpp
   # 3. Test specs
   def compile_everything
     puts 'Building project generated with CMake...'
+    flush_all
+
     if File.exists?('Makefile')
       system("LC_ALL=en_US.UTF-8 make -j8 -k >\"#{@abs_cpp_test_out_dir}/make.stdout\" 2>\"#{@abs_cpp_test_out_dir}/make.stderr\"")
     elsif File.exists?('KS_TEST_CPP_STL.sln')
@@ -121,6 +131,7 @@ class RunCpp
 
   def compile_failures_seq
     puts 'Building project generated with CMake (sequentially)...'
+    flush_all
 
     if File.exists?('Makefile')
       system("LC_ALL=en_US.UTF-8 make -k >\"#{@abs_cpp_test_out_dir}/make.stdout\" 2>\"#{@abs_cpp_test_out_dir}/make.stderr\"")
@@ -153,6 +164,7 @@ class RunCpp
 
     # Actually run the tests
     Dir.chdir(@test_dir)
+    flush_all
     system(
       "#{@obj_dir}/ks_tests",
       '--log_format=XML',
@@ -160,6 +172,11 @@ class RunCpp
       '--log_level=all',
       '--report_level=detailed'
     )
+  end
+
+  def flush_all
+    $stdout.flush
+    $stderr.flush
   end
 end
 
