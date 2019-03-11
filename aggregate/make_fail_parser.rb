@@ -13,22 +13,26 @@ class MakeFailParser < TestParser
 
   def each_test
     buf = []
-    File.open(@fn, 'r') { |f|
-      f.each_line { |l|
-        l.chomp!
-        if l =~ /^make\[\d+\]: \*\*\* \[(.*?)\] Error 1$/
-          # might be just obj file or 
-          # "CMakeFiles/ks_tests.dir/build.make:1181: CMakeFiles/ks_tests.dir/blah/blah/switch_integers2.cpp.o"
-          obj_file = $1
-          obj_file.gsub!(/^.*: /, '')
-          obj_file = File.basename(obj_file).gsub(/\.cpp\.o$/, '')
-          yield get_test_result(obj_file, buf)
-          buf = []
-        else
-          buf << l
-        end
+    begin
+      File.open(@fn, 'r') { |f|
+        f.each_line { |l|
+          l.chomp!
+          if l =~ /^make\[\d+\]: \*\*\* \[(.*?)\] Error 1$/
+            # might be just obj file or
+            # "CMakeFiles/ks_tests.dir/build.make:1181: CMakeFiles/ks_tests.dir/blah/blah/switch_integers2.cpp.o"
+            obj_file = $1
+            obj_file.gsub!(/^.*: /, '')
+            obj_file = File.basename(obj_file).gsub(/\.cpp\.o$/, '')
+            yield get_test_result(obj_file, buf)
+            buf = []
+          else
+            buf << l
+          end
+        }
       }
-    }
+    rescue Errno::ENOENT => e
+      $stderr.puts e.inspect
+    end
   end
 
   def get_test_result(obj_file, buf)
