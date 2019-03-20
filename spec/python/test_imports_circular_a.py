@@ -2,7 +2,7 @@ import unittest
 
 from imports_circular_a import ImportsCircularA
 
-class TestImportsRel1(unittest.TestCase):
+class TestImportsCircularA(unittest.TestCase):
     def test_imports_circular_a(self):
         r = ImportsCircularA.from_file("src/fixed_struct.bin")
 
