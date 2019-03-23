@@ -37,6 +37,7 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
   override def fileName(name: String): String = s"${name}_test.go"
 
   importList.add("\"os\"")
+  importList.add("\"runtime/debug\"")
   importList.add("\"testing\"")
   importList.add("\"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai\"")
   importList.add(". \"test_formats\"")
@@ -44,6 +45,7 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
   override def header() = {
     out.puts(s"func Test$className(t *testing.T) {")
     out.inc
+    handlePanic()
     out.puts("f, err := os.Open(\"../../src/" + spec.data + "\")")
     fatalCheck()
     out.puts("s := kaitai.NewStream(f)")
@@ -90,6 +92,19 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
     out.puts("t.Fatal(err)")
     out.dec
     out.puts("}")
+  }
+
+  def handlePanic() = {
+    out.puts("defer func() {")
+    out.inc
+    out.puts("if r := recover(); r != nil {")
+    out.inc
+    out.puts("debug.PrintStack()")
+    out.puts("t.Fatal(\"unexpected panic:\", r)")
+    out.dec
+    out.puts("}")
+    out.dec
+    out.puts("}()")
   }
 
   lazy val REPLACER: String = "this." + Utils.upperCamelCase(Main.INIT_OBJ_NAME) + "."
