@@ -1,6 +1,7 @@
 package spec
 
 import (
+	"runtime/debug"
 	"os"
 	"testing"
 
@@ -11,6 +12,12 @@ import (
 )
 
 func TestNavParentFalse2(t *testing.T) {
+	defer func() {
+		if r := recover(); r != nil {
+			debug.PrintStack()
+			t.Fatal("unexpected panic:", r)
+		}
+	}()
 	f, err := os.Open("../../src/fixed_struct.bin")
 	if err != nil {
 		t.Fatal(err)
