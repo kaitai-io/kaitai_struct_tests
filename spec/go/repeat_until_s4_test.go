@@ -1,6 +1,7 @@
 package spec
 
 import (
+	"runtime/debug"
 	"os"
 	"testing"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
@@ -9,6 +10,12 @@ import (
 )
 
 func TestRepeatUntilS4(t *testing.T) {
+	defer func() {
+		if r := recover(); r != nil {
+			debug.PrintStack()
+			t.Fatal("unexpected panic:", r)
+		}
+	}()
 	f, err := os.Open("../../src/repeat_until_s4.bin")
 	if err != nil {
 		t.Fatal(err)
