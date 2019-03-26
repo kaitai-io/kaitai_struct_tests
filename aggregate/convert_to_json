@@ -68,6 +68,22 @@ if ENV['TRAVIS_BUILD_ID']
   }
 end
 
+if ENV['APPVEYOR']
+  account = ENV['APPVEYOR_ACCOUNT_NAME']
+  project = ENV['APPVEYOR_PROJECT_SLUG']
+  build_id = ENV['APPVEYOR_BUILD_ID']
+  job_id = ENV['APPVEYOR_JOB_ID']
+  url = "https://ci.appveyor.com/project/#{account}/#{project}/builds/#{build_id}/job/#{job_id}"
+
+  meta['ci'] = {
+    'ci' => 'appveyor',
+    'build_id' => build_id,
+    'job_id' => job_id,
+    'job_number' => ENV['APPVEYOR_JOB_NUMBER'],
+    'url' => url,
+  }
+end
+
 result['$meta'] = meta
 json = JSON.pretty_generate(result)
 
