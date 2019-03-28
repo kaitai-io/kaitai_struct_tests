@@ -5,12 +5,12 @@ import io.kaitai.struct.exprlang.Ast
 import io.kaitai.struct.languages.CppCompiler
 import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 import io.kaitai.struct.translators.CppTranslator
-import io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
+import io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig, RuntimeConfig}
 
-class CppStlSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
+class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntimeConfig) extends BaseGenerator(spec) {
   val compiler = new CppCompiler(provider, RuntimeConfig())
   val className = CppCompiler.types2class(List(spec.id))
-  val translator = new CppTranslator(provider, importList)
+  val translator = new CppTranslator(provider, importList, RuntimeConfig(cppConfig = cppConfig))
 
   override def fileName(name: String): String = s"test_$name.cpp"
 
