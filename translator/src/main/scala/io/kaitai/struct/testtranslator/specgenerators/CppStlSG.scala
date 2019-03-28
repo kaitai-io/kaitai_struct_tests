@@ -5,12 +5,13 @@ import io.kaitai.struct.exprlang.Ast
 import io.kaitai.struct.languages.CppCompiler
 import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 import io.kaitai.struct.translators.CppTranslator
-import io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
+import io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig, RuntimeConfig}
 
-class CppStlSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
-  val compiler = new CppCompiler(provider, RuntimeConfig())
+class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntimeConfig) extends BaseGenerator(spec) {
+  val config = RuntimeConfig(cppConfig = cppConfig)
+  val compiler = new CppCompiler(provider, config)
   val className = CppCompiler.types2class(List(spec.id))
-  val translator = new CppTranslator(provider, importList)
+  val translator = new CppTranslator(provider, importList, config)
 
   override def fileName(name: String): String = s"test_$name.cpp"
 
@@ -53,7 +54,7 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
 
   def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit = {
     importList.add("\"helpers.h\"")
-    val elTypeName = CppCompiler.kaitaiType2NativeType(elType)
+    val elTypeName = compiler.kaitaiType2NativeType(elType)
     val eltsStr = elts.map((x) => translator.translate(x)).mkString(", ")
     val actStr = translateAct(check.actual)
     out.puts(s"COMPARE_ARRAY($elTypeName, $actStr, $eltsStr);")
