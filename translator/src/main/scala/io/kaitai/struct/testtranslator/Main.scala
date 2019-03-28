@@ -145,7 +145,8 @@ object Main extends App {
   //doOneSpec("process_xor4_const")
   //doOneSpec("enum_0")
   //doOneSpec("cpp_stl", "switch_manual_int_else")
-  //doAllSpecs("if_values")
+  doAllSpecs("io_local_var")
+  doAllSpecs("repeat_eos_bit")
 
-  doAll()
+  //doAll()
 }
