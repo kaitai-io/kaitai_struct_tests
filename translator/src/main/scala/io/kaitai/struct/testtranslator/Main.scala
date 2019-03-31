@@ -80,6 +80,7 @@ object Main extends App {
     case "construct" => new ConstructSG(testSpec, provider)
     case "cpp_stl_98" => new CppStlSG(testSpec, provider, CppRuntimeConfig().copyAsCpp98())
     case "cpp_stl_11" => new CppStlSG(testSpec, provider, CppRuntimeConfig().copyAsCpp11())
+    case "csharp" => new CSharpSG(testSpec, provider)
     case "go" => new GoSG(testSpec, provider)
     case "java" => new JavaSG(testSpec, provider)
     case "javascript" => new JavaScriptSG(testSpec, provider)
@@ -93,6 +94,7 @@ object Main extends App {
     "construct",
     "cpp_stl_98",
     "cpp_stl_11",
+    "csharp",
     //"go",
     "java",
     "javascript",
@@ -145,8 +147,8 @@ object Main extends App {
   //doOneSpec("process_xor4_const")
   //doOneSpec("enum_0")
   //doOneSpec("cpp_stl", "switch_manual_int_else")
-  doAllSpecs("io_local_var")
-  doAllSpecs("repeat_eos_bit")
+  //doAllSpecs("io_local_var")
+  //doAllSpecs("repeat_eos_bit")
 
-  //doAll()
+  doAll()
 }
