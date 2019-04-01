@@ -50,11 +50,6 @@ There are a few scripts that automate steps specified above:
 * `ci-$LANGUAGE` also runs all tests for a particular `$LANGUAGE`, but
   logs all output into designated log file instead (mostly useful for
   aggregation within a CI system afterwards).
-* `ci-all`
-  * runs tests for all languages (usually by executing `ci-$LANGUAGE`)
-  * aggregates all testing results into single nice HTML page by
-    running `aggregate/aggregate` result aggregation & formatting
-    script
 
 Obviously, these scripts require Kaitai Struct compiler and
 language-specific runtime modules. They are normally located in
@@ -70,4 +65,4 @@ dependencies in some other places, just edit the `/config`.
 includes a [Travis CI](https://travis-ci.org/kaitai-io/kaitai_struct/)
 configuration. This mean that every commit to main project repository
 gets automatically built and tested throughly. The results are
-published at [Kaitai Struct CI results page](http://kaitai.io/ci).
+published at [Kaitai Struct CI results page](https://ci.kaitai.io).
