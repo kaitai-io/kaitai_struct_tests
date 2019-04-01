@@ -46,6 +46,7 @@ class CSharpSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
     val expStr = translator.translate(check.expected)
     actType match {
       case _ =>
+        // TODO: fix order - actually it is (expected, actual)
         out.puts(s"Assert.AreEqual($actStr, $expStr);")
     }
   }
