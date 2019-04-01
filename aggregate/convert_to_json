@@ -7,8 +7,6 @@
 
 require 'time'
 
-require_relative 'test_result'
-require_relative 'translator_xml_parser'
 require_relative 'junit_xml_parser'
 require_relative 'rspec_json_parser'
 require_relative 'boost_test_parser'
