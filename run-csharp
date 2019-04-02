@@ -10,12 +10,28 @@ CSHARP_COMPILE_LOG_MCS_FORMATS="$CSHARP_TEST_OUT_DIR/_compile-1.log"
 CSHARP_COMPILE_LOG_MCS_SPECS="$CSHARP_TEST_OUT_DIR/_compile-2.log"
 CSHARP_COMPILE_LOG_XBUILD2="$CSHARP_TEST_OUT_DIR/_compile-3.log"
 
+# Detect msbuild
+if xbuild /version; then
+	MSBUILD=xbuild
+elif msbuild /version; then
+	MSBUILD=msbuild
+else
+	echo "Unable to find any working msbuild, bailing out"
+    exit 1
+fi
+
+# If we're running in AppVeyor, add extra logger args
+MSBUILD_ARGS=
+if [ -n "$APPVEYOR" ]; then
+    MSBUILD_ARGS='/logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"'
+fi
+
 rm -rf "$CSHARP_TEST_OUT_DIR"
 mkdir -p "$CSHARP_TEST_OUT_DIR"
 
 # Try and build the project first - if there's no compile errors, we can continue straight away
 echo "run-csharp: building project"
-xbuild "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests.sln" >"$CSHARP_COMPILE_LOG_XBUILD" || {
+$MSBUILD $MSBUILD_ARGS "$CSHARP_SPEC_DIR/kaitai_struct_csharp_tests.sln" >"$CSHARP_COMPILE_LOG_XBUILD" || {
 	# Some formats failed to build - find the failing files and erase them
 	./travis-fold xbuild cat "$CSHARP_COMPILE_LOG_XBUILD"
 	echo "run-csharp: some formats failed to compile, checking each file individually"
