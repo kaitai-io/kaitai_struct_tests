@@ -2,25 +2,7 @@
 
 require 'fileutils'
 
-class ShellConfig
-  def initialize(filename)
-    @entries = {}
-    File.open(filename, 'r') { |f|
-      f.each_line { |l|
-        l.chomp!
-        l.strip!
-        l.gsub!(/#.*$/, '')
-        if l =~ /^([A-Za-z0-9_])=(.*?)$/
-          @entries[$1] = $2
-        end
-      }
-    }
-  end
-
-  def [](key)
-    @entries[key]
-  end
-end
+require_relative 'shellconfig'
 
 class RunCpp
   def initialize(src_dir, cpp_spec_dir, cpp_test_out_dir)
@@ -127,7 +109,7 @@ class RunCpp
     flush_all
 
     if File.exists?('Makefile')
-      system("LC_ALL=en_US.UTF-8 make -j8 -k >\"#{@abs_cpp_test_out_dir}/make.stdout\" 2>\"#{@abs_cpp_test_out_dir}/make.stderr\"")
+      system("LC_ALL=en_US.UTF-8 make -j8 -k >\"#{@abs_cpp_test_out_dir}/make.stdout.1\" 2>\"#{@abs_cpp_test_out_dir}/make.stderr.1\"")
     elsif File.exists?('KS_TEST_CPP_STL.sln')
       system("msbuild KS_TEST_CPP_STL.sln -fl -flp:logfile=#{@abs_cpp_test_out_dir}\\msbuild.log")
     else
