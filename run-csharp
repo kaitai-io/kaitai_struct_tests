@@ -34,7 +34,7 @@ class RunCSharp
     # If we're running in AppVeyor, add extra logger args
     @msbuild_args = []
     if ENV['APPVEYOR']
-      @msbuild_args << '/logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"'
+      @msbuild_args << '/logger:C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll'
     end
 
     # C# compiler
