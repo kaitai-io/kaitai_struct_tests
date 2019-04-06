@@ -8,5 +8,7 @@ asserts:
 
   - actual: pet_1_i
     expected: 7
+  - actual: pet_1_mod
+    expected: 0x8007
   - actual: one_lt_two
     expected: true
