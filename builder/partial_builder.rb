@@ -112,6 +112,7 @@ class PartialBuilder
 
   def run_and_tee(environment, cmd, stdout_file)
     process_status = nil
+    FileUtils.mkdir_p(File.dirname(stdout_file)
     File.open(stdout_file, 'w') { |f|
       Open3.popen2e(environment, *cmd) { |stdin, out, wait_thr|
         while line = out.gets
