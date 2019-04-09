@@ -28,7 +28,7 @@ class PartialBuilder
 
   def command_line(arg)
     if arg == []
-      run
+      exit run
     elsif arg == ['--project']
       create_project(list_mandatory_files, list_disposable_files)
     else
@@ -37,7 +37,16 @@ class PartialBuilder
     end
   end
 
+  # 0 = all good
+  # 2 = build failed
+  # 3 = build good, tests failed
   def run
+    return 2 unless partial_build
+    return 3 unless run_tests
+    0
+  end
+
+  def partial_build
     raise "test_out_dir is undefined" unless @test_out_dir
 
     mand_files = Set.new(list_mandatory_files)
@@ -112,7 +121,7 @@ class PartialBuilder
 
   def run_and_tee(environment, cmd, stdout_file)
     process_status = nil
-    FileUtils.mkdir_p(File.dirname(stdout_file)
+    FileUtils.mkdir_p(File.dirname(stdout_file))
     File.open(stdout_file, 'w') { |f|
       Open3.popen2e(environment, *cmd) { |stdin, out, wait_thr|
         while line = out.gets
