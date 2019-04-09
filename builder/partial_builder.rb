@@ -51,16 +51,17 @@ class PartialBuilder
 
     mand_files = Set.new(list_mandatory_files)
     disp_files = Set.new(list_disposable_files)
+    orig_size = disp_files.size
 
     attempt = 1
     loop {
-      log "create project with #{disp_files.size} files"
+      log "create project with #{disp_files.size}/#{orig_size} files"
       create_project(mand_files, disp_files)
 
       build_log = "#{@test_out_dir}/build-#{attempt}.log"
       log "build attempt #{attempt} (log: #{build_log})"
       if build_project(build_log) == 0
-        log "success"
+        log attempt == 1 ? "perfect build succeeded" : "success on attempt \##{attempt}, #{disp_files.size}/#{orig_size} files survived"
         return true
       else
         log "build failed"
