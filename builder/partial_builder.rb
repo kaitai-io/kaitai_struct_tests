@@ -52,6 +52,11 @@ class PartialBuilder
     disp_files = Set.new(list_disposable_files)
     orig_size = disp_files.size
 
+    @build_failed_files = "#{@test_out_dir}/build_failed_files.txt"
+    @build_failed_tests = "#{@test_out_dir}/build_failed_tests.txt"
+    FileUtils.rm_f(@build_failed_files)
+    FileUtils.rm_f(@build_failed_tests)
+    
     attempt = 1
     loop {
       log "create project with #{disp_files.size}/#{orig_size} files"
@@ -87,6 +92,15 @@ class PartialBuilder
           return false
         end
 
+        # Register bad files we'll exclude
+        File.open(@build_failed_files, 'a') { |f|
+          bad_files.each { |fn| f.puts fn }
+        }
+
+        File.open(@build_failed_tests, 'a') { |f|
+          bad_files.each { |fn| f.puts file_to_test(fn).join("\t") }
+        }
+
         disp_files -= bad_files
         attempt += 1
       end
@@ -119,6 +133,13 @@ class PartialBuilder
   # @return [Array<String>] list of files that have compilation
   #   errors, as reported in the build log file
   def parse_failed_build(log_file)
+    raise NotImplementedError
+  end
+
+  # Converts given file name to [spec or format, test name]. "Spec of
+  # format" must be a :spec or :format symbol. Test name must be in
+  # UpperCamelCase.
+  def file_to_test(filename)
     raise NotImplementedError
   end
 

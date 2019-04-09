@@ -87,6 +87,16 @@ class CSharpBuilder < PartialBuilder
     convert_slashes(list)
   end
 
+  def file_to_test(filename)
+    # File.basename only forwards with forward slashes, so we normalize for that first
+    fn = File.basename(filename.gsub(/\\/, '/'))
+    if fn =~ /^Spec(.*)\.cs$/
+      return [:spec, $1]
+    else
+      return [:format, fn.gsub(/\.cs$/, '')]
+    end
+  end
+
   def run_tests
     xml_log = "#{@test_out_dir}/TestResult.xml"
     FileUtils.mkdir_p(@test_out_dir)
