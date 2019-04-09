@@ -63,7 +63,6 @@ class CSharpBuilder < PartialBuilder
 
   def build_project(log_file)
     cli = [@msbuild] + @msbuild_args + ["#{@spec_dir}/kaitai_struct_csharp_tests.csproj"]
-    puts "run-csharp: running msbuild: #{cli.inspect}"
     run_and_tee({}, cli, log_file).exitstatus
   end
 

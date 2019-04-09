@@ -56,7 +56,7 @@ class PartialBuilder
     @build_failed_tests = "#{@test_out_dir}/build_failed_tests.txt"
     FileUtils.rm_f(@build_failed_files)
     FileUtils.rm_f(@build_failed_tests)
-    
+
     attempt = 1
     loop {
       log "create project with #{disp_files.size}/#{orig_size} files"
@@ -159,6 +159,7 @@ class PartialBuilder
   end
 
   def run_and_tee(environment, cmd, stdout_file)
+    log "running command: #{cmd.inspect}"
     process_status = nil
     FileUtils.mkdir_p(File.dirname(stdout_file))
     File.open(stdout_file, 'w') { |f|
