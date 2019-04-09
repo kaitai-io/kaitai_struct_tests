@@ -3,7 +3,6 @@ require 'open3'
 
 require_relative 'shellconfig'
 
-##
 # Common base for all compiled languages, which follow the same
 # routine to achieve "partial compilation":
 #
@@ -106,11 +105,29 @@ class PartialBuilder
     raise NotImplementedError
   end
 
+  # Runs a build of a project, relying on previously created project
+  # file.
+  # @param log_file [String] path to build's log file that is expected
+  #   to be created during this build operation.
   def build_project(log_file)
     raise NotImplementedError
   end
 
+  # Parses log file for a failed build and returns a list of files
+  # that had compilation errors.
+  # @param log_file [String] path to build's log file
+  # @return [Array<String>] list of files that have compilation
+  #   errors, as reported in the build log file
   def parse_failed_build(log_file)
+    raise NotImplementedError
+  end
+
+  # Runs tests and generates language-specific test results report.
+  # @return [Boolean] true if tests were run successfully, false if no
+  #   tests were able to run; note that this does *not* imply that
+  #   tests passed or failed - this should be reported in test report file
+  #   contents
+  def run_tests
     raise NotImplementedError
   end
 
