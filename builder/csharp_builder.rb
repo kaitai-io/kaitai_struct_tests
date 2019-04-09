@@ -8,10 +8,8 @@ class CSharpBuilder < PartialBuilder
   def initialize
     super
 
-    @mode = :make_posix
-    @mode = :msbuild_windows if ENV['APPVEYOR']
-
     @spec_dir = 'spec/csharp/kaitai_struct_csharp_tests'
+    @packages_dir = 'spec/csharp/packages'
     @compiled_dir = 'compiled/csharp'
     @project_file = "#{@spec_dir}/kaitai_struct_csharp_tests.csproj"
     @project_template = "#{@spec_dir}/kaitai_struct_csharp_tests.csproj.in"
@@ -36,6 +34,9 @@ class CSharpBuilder < PartialBuilder
     if ENV['APPVEYOR']
       @msbuild_args << '/logger:C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll'
     end
+
+    # If mono is available, use it
+    @is_mono = system("mono --version") ? true : false
   end
 
   def list_mandatory_files
@@ -84,6 +85,28 @@ class CSharpBuilder < PartialBuilder
     }
 
     convert_slashes(list)
+  end
+
+  def run_tests
+    xml_log = "#{@test_out_dir}/TestResult.xml"
+    FileUtils.mkdir_p(@test_out_dir)
+    FileUtils.rm_f(xml_log)
+
+    cli = [
+      "#{@packages_dir}/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe",
+      "--result=#{xml_log}",
+      "#{@spec_dir}/bin/Debug/kaitai_struct_csharp_tests.dll",
+    ]
+
+    cli.unshift("mono") if @is_mono
+
+    run_and_tee(
+      {"CSHARP_TEST_SRC_PATH" => "src"},
+      cli,
+      "#{@test_out_dir}/test_run.stdout"
+    )
+
+    File.exists?(xml_log)
   end
 
   private
