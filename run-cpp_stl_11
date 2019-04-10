@@ -1,8 +1,4 @@
-#!/bin/sh -e
+#!/usr/bin/env ruby
 
-. ./config
-
-./run-cpp_stl \
-	"$(pwd)/compiled/cpp_stl_11" \
-	"$(pwd)/spec/cpp_stl_11" \
-	"$TEST_OUT_DIR/cpp_stl_11"
+require_relative 'builder/cpp_builder'
+CppBuilder.new('compiled/cpp_stl_11', 'spec/cpp_stl_11', 'test_out/cpp_stl_11').command_line(ARGV)

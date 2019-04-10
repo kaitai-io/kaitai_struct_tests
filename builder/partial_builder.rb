@@ -47,6 +47,7 @@ class PartialBuilder
 
   def partial_build
     raise "test_out_dir is undefined" unless @test_out_dir
+    FileUtils.mkdir_p(@test_out_dir)
 
     mand_files = Set.new(list_mandatory_files)
     disp_files = Set.new(list_disposable_files)
@@ -162,14 +163,21 @@ class PartialBuilder
 
   # ====================================================================
 
+  # Logs message to stdout, prepending a visible token that can be
+  # used for grepping these logs afterwards. Flushes stdout/stderr
+  # before and after that to sync/straighten CI console
+  # implementations for better readability.
+  # @param msg message to log
   def log(msg)
+    $stdout.flush
+    $stderr.flush
     puts "#### #{self.class}: #{msg}"
     $stdout.flush
     $stderr.flush
   end
 
   def run_and_tee(environment, cmd, stdout_file)
-    log "running command: #{cmd.inspect}"
+    log "running command: #{cmd.inspect}, log: #{stdout_file.inspect}"
     process_status = nil
     FileUtils.mkdir_p(File.dirname(stdout_file))
     File.open(stdout_file, 'w') { |f|

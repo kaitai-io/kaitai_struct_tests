@@ -18,8 +18,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(RUNTIME_SRC_PATH ../../../runtime/cpp_stl)
 set(PREREQ_PATH prereq)
 
-include(${INC1_PATH})
-include(${INC2_PATH})
+include(${INC_PATH})
 
 set(PREREQ_SOURCES
 	${PREREQ_PATH}/my_custom_fx.cpp
@@ -33,8 +32,7 @@ set(RUNTIME_SOURCES
 add_executable (ks_tests
 	${RUNTIME_SOURCES}
 	${PREREQ_SOURCES}
-	${KS_SOURCES}
-	${SPEC_SOURCES}
+	${DISPOSABLE_SOURCES}
 )
 
 include_directories(
