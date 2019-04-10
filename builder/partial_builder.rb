@@ -69,6 +69,12 @@ class PartialBuilder
         return true
       else
         log "build failed"
+        if not File.readable?(build_log)
+          log "no build log to analyze, won't be able to fix the build by removing bad files"
+          log "unable to recover, bailing out :("
+          return false
+        end
+
         bad_files = Set.new(parse_failed_build(build_log))
         if bad_files.empty?
           log "build fails, but unable to detect any bad files"
@@ -123,6 +129,8 @@ class PartialBuilder
   # file.
   # @param log_file [String] path to build's log file that is expected
   #   to be created during this build operation.
+  # @return [Numeric] 0 if project was built successfully, non-zero if
+  #   the build has failed
   def build_project(log_file)
     raise NotImplementedError
   end
@@ -156,6 +164,8 @@ class PartialBuilder
 
   def log(msg)
     puts "#### #{self.class}: #{msg}"
+    $stdout.flush
+    $stderr.flush
   end
 
   def run_and_tee(environment, cmd, stdout_file)
