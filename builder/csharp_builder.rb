@@ -47,10 +47,8 @@ class CSharpBuilder < PartialBuilder
   end
 
   def list_disposable_files
-    orig_pwd = Dir.pwd
-
     rel_files = Dir.glob("#{@spec_dir}/tests/**/*.cs") + Dir.glob("#{@compiled_dir}/**/*.cs")
-    abs_files = rel_files.map { |fn| "#{orig_pwd}/#{fn}" }
+    abs_files = rel_files.map { |fn| File.absolute_path(fn) }
     convert_slashes(abs_files)
   end
 
