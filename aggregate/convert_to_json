@@ -13,7 +13,7 @@ require_relative 'boost_test_parser'
 require_relative 'nunit_xml_parser'
 require_relative 'build_fail_parser'
 require_relative 'valgrind_xml_parser'
-require_relative 'make_fail_parser'
+require_relative 'build_failed_parser'
 
 raise 'Needs exactly 3 arguments' unless ARGV.size == 3
 
@@ -22,6 +22,9 @@ def add_fails(first, *seconds)
     second.each_pair { |k, v|
       old_status = (first[k] || {})['status']
       new_status = v['status']
+
+      # format_build_failed is always more imporant than spec_build_failed
+      next if old_status == 'format_build_failed' and new_status == 'spec_build_failed'
 
       first[k] = v if (
           ((old_status.nil? or old_status == 'passed') and (new_status != 'passed')) or
@@ -38,7 +41,7 @@ result = case lang
 when 'cpp_stl'
   add_fails(
     BoostTestParser.new("#{infile}/results.xml").to_h,
-    MakeFailParser.new("#{infile}/make.stderr").to_h,
+    BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h,
     ValgrindXMLParser.new("#{infile}/valgrind.xml").to_h
   )
 when 'go', 'java', 'javascript', 'lua', 'perl', 'php', 'python', 'rust'
@@ -46,7 +49,10 @@ when 'go', 'java', 'javascript', 'lua', 'perl', 'php', 'python', 'rust'
 when 'ruby'
   RSpecJSONParser.new(infile).to_h
 when 'csharp'
-  NUnitXMLParser.new(infile).to_h
+  add_fails(
+    NUnitXMLParser.new("#{infile}/TestResult.xml").to_h,
+    BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h,
+  )
 else
   raise "Unable to handle language #{lang.inspect}"
 end

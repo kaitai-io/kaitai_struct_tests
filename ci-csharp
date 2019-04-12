@@ -4,4 +4,4 @@
 
 ./run-csharp
 
-aggregate/convert_to_json csharp "$TEST_OUT_DIR/csharp/TestResult.xml" "$TEST_OUT_DIR/csharp/ci.json"
+aggregate/convert_to_json csharp "$TEST_OUT_DIR/csharp" "$TEST_OUT_DIR/csharp/ci.json"
