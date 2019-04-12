@@ -37,6 +37,7 @@ class CppBuilder < PartialBuilder
       (mand_files + disp_files).each { |l| f.puts(l) }
       f.puts(")")
     }
+    @disposable_cmake
   end
 
   def build_project(log_file)
