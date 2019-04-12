@@ -187,6 +187,11 @@ class CppBuilder < PartialBuilder
   end
 
   def file_to_test(filename)
+    # Treat bare files as all others
+    if filename.respond_to?(:[]) and filename[0] == :bare
+      filename = filename[1]
+    end
+
     # File.basename only forwards with forward slashes, and we might
     # get some backslashes on Windows systems, so we normalize for
     # that first.

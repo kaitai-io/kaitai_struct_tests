@@ -45,6 +45,12 @@ RSpec.describe CppBuilder do
           @builder.file_to_test("/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp")
         ).to eq [:format, 'IoLocalVar']
       end
+
+      it 'parses bare spec filename' do
+        expect(
+          @builder.file_to_test([:bare, "test_io_local_var.cpp"])
+        ).to eq [:spec, 'IoLocalVar']
+      end
     end
   end
 
