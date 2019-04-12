@@ -75,21 +75,15 @@ class PartialBuilder
         return true
       else
         log "build failed"
-        if not adjust_files_for_failed_build(build_log, mand_files, disp_files)
+        bad_files = adjust_files_for_failed_build(build_log, mand_files, disp_files)
+
+        if bad_files == false
           log "unable to recover, bailing out :("
           return false
         end
 
-        # Register bad files we'll exclude
-        File.open(@build_failed_files, 'a') { |f|
-          bad_files.each { |fn| f.puts fn }
-        }
+        register_bad_files(bad_files)
 
-        File.open(@build_failed_tests, 'a') { |f|
-          bad_files.each { |fn| f.puts file_to_test(fn).join("\t") }
-        }
-
-        disp_files -= bad_files
         attempt += 1
       end
     }
@@ -99,10 +93,11 @@ class PartialBuilder
   # per a log file of failed build.
   # @param build_log [String] path to build log file
   # @param mand_files [Set] set of mandatory files
-  # @param disp_files [Set] set of disposable files (to be modified)
-  # @return [Boolean] true if disposal of bad files was succesful (and
-  #   we can do another attempt), false if we've encountered some
-  #   unrecoverrable error and thus it's pointless to retry.
+  # @param disp_files [Set] set of disposable files (to be modified!)
+  # @return [Set, FalseClass] set of bad files if disposal of bad
+  #   files was succesful (and we can do another build attempt), false
+  #   if we've encountered some unrecoverrable error and thus it's
+  #   pointless to retry.
   def adjust_files_for_failed_build(build_log, mand_files, disp_files)
     if not File.readable?(build_log)
       log "no build log to analyze, won't be able to fix the build by removing bad files"
@@ -170,7 +165,22 @@ class PartialBuilder
       return false
     end
 
-    return true
+    return bad_files
+  end
+
+  # Register bad files we'll exclude from the next build: writes two
+  # log files "build_failes_files.txt" with a plain list of rejected
+  # files and "build_failed_tests" with two tab-separated columns:
+  # type of file and name of relevant test.
+  # @param bad_files [Set] set of "bad" (rejected) files
+  def register_bad_files(bad_files)
+    File.open(@build_failed_files, 'a') { |f|
+      bad_files.each { |fn| f.puts fn }
+    }
+
+    File.open(@build_failed_tests, 'a') { |f|
+      bad_files.each { |fn| f.puts file_to_test(fn).join("\t") }
+    }
   end
 
   def list_mandatory_files
