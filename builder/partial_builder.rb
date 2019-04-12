@@ -75,61 +75,7 @@ class PartialBuilder
         return true
       else
         log "build failed"
-        if not File.readable?(build_log)
-          log "no build log to analyze, won't be able to fix the build by removing bad files"
-          log "unable to recover, bailing out :("
-          return false
-        end
-
-        bad_files = Set.new(parse_failed_build(build_log))
-        if bad_files.empty?
-          log "build fails, but unable to detect any bad files"
-          log "unable to recover, bailing out :("
-          return false
-        end
-        mand_int = mand_files.intersection(bad_files)
-        if not mand_int.empty?
-          log "errors detected in mandatory files:"
-          log mand_int.sort.to_a.join("\n")
-          log "unable to recover, bailing out :("
-          return false
-        end
-
-        # Test if all "bad files" are actually in disposable files
-        leftover = bad_files - disp_files
-
-        # Treat "bare" files specially
-        leftover_processed = Set.new
-        leftover.each { |x|
-          if x.respond_to?(:[]) and x[0] == :bare
-            # This is indeed a "bare" file - i.e. a file without path
-            bare_file = x[1]
-            log "removing bare file #{bare_file.inspect}"
-
-            to_delete = Set.new
-            disp_files.each { |df|
-              to_delete << df if File.basename(df) == bare_file
-            }
-
-            if to_delete.empty?
-              log "error detected in bare file #{bare_file.inspect}, but unable to file anything like that in disposable files"
-              log disp_files.sort.to_a.join("\n")
-              log "unable to recover, bailing out :("
-              return false
-            end
-
-            log "matching disposable files: #{to_delete.to_a.sort.inspect}"
-
-            disp_files -= to_delete
-            leftover_processed << x
-          end
-        }
-        leftover -= leftover_processed
-
-        # If there are still any left, report it
-        if not leftover.empty?
-          log "errors detected in bogus files:"
-          log leftover.sort.to_a.join("\n")
+        if not adjust_files_for_failed_build(build_log, mand_files, disp_files)
           log "unable to recover, bailing out :("
           return false
         end
@@ -147,6 +93,84 @@ class PartialBuilder
         attempt += 1
       end
     }
+  end
+
+  # Adjusts list of disposable files by disposing of "bad" files, as
+  # per a log file of failed build.
+  # @param build_log [String] path to build log file
+  # @param mand_files [Set] set of mandatory files
+  # @param disp_files [Set] set of disposable files (to be modified)
+  # @return [Boolean] true if disposal of bad files was succesful (and
+  #   we can do another attempt), false if we've encountered some
+  #   unrecoverrable error and thus it's pointless to retry.
+  def adjust_files_for_failed_build(build_log, mand_files, disp_files)
+    if not File.readable?(build_log)
+      log "no build log to analyze, won't be able to fix the build by removing bad files"
+      return false
+    end
+
+    orig_disp_size = disp_files.size
+
+    bad_files = Set.new(parse_failed_build(build_log))
+    if bad_files.empty?
+      log "build fails, but unable to detect any bad files"
+      return false
+    end
+    mand_int = mand_files.intersection(bad_files)
+    if not mand_int.empty?
+      log "errors detected in mandatory files:"
+      log mand_int
+      return false
+    end
+
+    # Test if all "bad files" are actually in disposable files
+    leftover = bad_files - disp_files
+
+    # Treat "bare" files specially
+    leftover_processed = Set.new
+    leftover.each { |x|
+      if x.respond_to?(:[]) and x[0] == :bare
+        # This is indeed a "bare" file - i.e. a file without path
+        bare_file = x[1]
+        log "removing bare file #{bare_file.inspect}"
+
+        to_delete = Set.new
+        disp_files.each { |df|
+          to_delete << df if File.basename(df) == bare_file
+        }
+
+        if to_delete.empty?
+          log "error detected in bare file #{bare_file.inspect}, but unable to file anything like that in disposable files"
+          log disp_files
+          return false
+        end
+
+        log "matching disposable files:"
+        log to_delete
+
+        disp_files.subtract(to_delete)
+        leftover_processed << x
+      end
+    }
+    leftover.subtract(leftover_processed)
+
+    # If there are still any left, report it
+    if not leftover.empty?
+      log "errors detected in bogus files:"
+      log leftover
+      return false
+    end
+
+    disp_files.subtract(bad_files)
+
+    # Sanity check: if size of disp_files haven't diminished, we have
+    # not changed anything => it will result in endless loop.
+    unless disp_files.size < orig_disp_size
+      log "sanity check failed: modified list of disposable files is the same as original, nothing is removed"      
+      return false
+    end
+
+    return true
   end
 
   def list_mandatory_files
@@ -209,7 +233,15 @@ class PartialBuilder
   def log(msg)
     $stdout.flush
     $stderr.flush
-    puts "#### #{self.class}: #{msg}"
+
+    if msg.is_a?(Set)
+      msg.to_a.sort.each { |element|
+        puts "#### #{self.class}: - #{element.inspect}"
+      }
+    else
+      puts "#### #{self.class}: #{msg}"
+    end
+
     $stdout.flush
     $stderr.flush
   end

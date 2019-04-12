@@ -33,6 +33,27 @@ RSpec.describe CppBuilder do
       end
     end
 
+    describe '#adjust_files_for_failed_build' do
+      it 'properly disposes files' do
+        mand_files = Set.new
+        disp_files = Set.new([
+          '/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp',
+          '/home/greycat/git/kaitai_struct/tests/spec/cpp_stl_11/test_io_local_var.cpp',
+          '/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/foo.cpp',
+          '/home/greycat/git/kaitai_struct/tests/spec/cpp_stl_11/test_foo.cpp',
+        ])
+
+        r = @builder.adjust_files_for_failed_build('test_out/cpp_stl_11/build-1.log', mand_files, disp_files)
+
+        expect(r).to be_truthy
+        expect(disp_files.to_a.sort).to match_array [
+          '/home/greycat/git/kaitai_struct/tests/spec/cpp_stl_11/test_io_local_var.cpp',
+          '/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/foo.cpp',
+          '/home/greycat/git/kaitai_struct/tests/spec/cpp_stl_11/test_foo.cpp',
+        ]
+      end
+    end
+
     describe '#file_to_test' do
       it 'parses spec filename' do
         expect(
