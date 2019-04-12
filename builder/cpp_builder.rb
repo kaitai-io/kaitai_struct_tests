@@ -5,8 +5,10 @@ require_relative 'partial_builder'
 require_relative 'shellconfig'
 
 class CppBuilder < PartialBuilder
+  attr_accessor :mode
+
   def initialize(src_dir, cpp_spec_dir, cpp_test_out_dir)
-    @config = ShellConfig.new('config')
+    super()
 
     @src_dir = src_dir
     @cpp_spec_dir = cpp_spec_dir
@@ -27,7 +29,18 @@ class CppBuilder < PartialBuilder
 
   def list_disposable_files
     list = Dir.glob("#{@cpp_spec_dir}/**/*.cpp") + Dir.glob("#{@src_dir}/*.cpp")
-    list.map { |x| File.absolute_path(x) }
+    list.map { |x|
+      r = File.absolute_path(x)
+
+      # On Windows, filesystem is case insensitive, but our Set
+      # implementation is not. So we proactively normalize everything we
+      # can to lower case.
+      if @mode == :msbuild_windows
+        r.downcase!
+      end
+
+      r
+    }
   end
 
   def create_project(mand_files, disp_files)
@@ -82,20 +95,21 @@ class CppBuilder < PartialBuilder
     orig_dir = Dir.pwd
     Dir.chdir(@obj_dir)
 
-    if File.exists?('Makefile')
+    case @mode
+    when :make_posix
       r = run_and_tee(
         {"LC_ALL" => "en_US.UTF-8"},
         ["make", "-j8", "-k"],
         abs_log_file
       )
-    elsif File.exists?('KS_TEST_CPP_STL.sln')
+    when :msbuild_windows
       r = run_and_tee(
         {},
         ["msbuild", "KS_TEST_CPP_STL.sln"], # -fl -flp:logfile=#{@abs_cpp_test_out_dir}\\msbuild.log"
         abs_log_file
       )
     else
-      raise "No build makefile/project file found, unable to continue."
+      raise "Unknown mode=#{@mode}"
     end
 
     Dir.chdir(orig_dir)
@@ -123,8 +137,24 @@ class CppBuilder < PartialBuilder
           end
         }
       }
+    when :msbuild_windows
+      File.open(log_file, 'r') { |f|
+        f.each_line { |l|
+          l.chomp!
+          # c:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.h(18): error C2061: syntax error: identifier 'enum_to_i_class_border_1_t' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+          if l =~ /^\s*(.*?)\((\d+)\): error (.*?): (.*)$/
+            filename = $1
+            #row = $2
+            #code = $3
+            #msg = $4
+
+            # MSBuild is really weird and sometimes uses paths for same files with different upper/lower cases
+            list << filename.downcase
+          end
+        }
+      }
     else
-      raise "Unknown mode={@mode}"
+      raise "Unknown mode=#{@mode}"
     end
 
     list
