@@ -50,10 +50,11 @@ class CppBuilder < PartialBuilder
   end
 
   def run_cmake(log_file)
+    orig_dir = Dir.pwd
+    Dir.chdir(@obj_dir)
+
     cmake_cli = [
       "cmake",
-      "-S", @cpp_spec_dir,
-      "-B", @obj_dir,
       "-DCMAKE_BUILD_TYPE=Debug",
       "-DINC_PATH=#{File.absolute_path(@disposable_cmake)}",
       "-DKS_PATH=#{File.absolute_path(@src_dir)}",
@@ -69,7 +70,9 @@ class CppBuilder < PartialBuilder
 
     cmake_cli << @cpp_spec_dir
 
-    run_and_tee({"LC_ALL" => "en_US.UTF-8"}, cmake_cli, log_file).exitstatus
+    r = run_and_tee({"LC_ALL" => "en_US.UTF-8"}, cmake_cli, log_file).exitstatus
+    Dir.chdir(orig_dir)
+    r
   end
 
   def run_build(log_file)
@@ -91,7 +94,6 @@ class CppBuilder < PartialBuilder
         abs_log_file
       )
     else
-      debug_cwd
       raise "No build makefile/project file found, unable to continue."
     end
 
