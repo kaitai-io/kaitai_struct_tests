@@ -17,9 +17,13 @@ RSpec.describe CppBuilder do
       end
     end
 
-    describe '#list_mandatory_files' do
-      it 'shows no mandatory files' do
-        expect(@builder.list_mandatory_files.to_a.sort).to eq []
+    describe '#list_disposable_files' do
+      it 'shows disposable files' do
+        expect(@builder.list_disposable_files.map { |x| File.basename(x) }.sort).to match_array [
+          "bcd_user_type_be.cpp",
+          "bcd_user_type_le.cpp",
+          "io_local_var.cpp"
+        ]
       end
     end
 
