@@ -97,6 +97,36 @@ class PartialBuilder
 
         # Test if all "bad files" are actually in disposable files
         leftover = bad_files - disp_files
+
+        # Treat "bare" files specially
+        leftover_processed = Set.new
+        leftover.each { |x|
+          if x.respond_to?(:[]) and x[0] == :bare
+            # This is indeed a "bare" file - i.e. a file without path
+            bare_file = x[1]
+            log "removing bare file #{bare_file.inspect}"
+
+            to_delete = Set.new
+            disp_files.each { |df|
+              to_delete << df if File.basename(df) == bare_file
+            }
+
+            if to_delete.empty?
+              log "error detected in bare file #{bare_file.inspect}, but unable to file anything like that in disposable files"
+              log disp_files.sort.to_a.join("\n")
+              log "unable to recover, bailing out :("
+              return false
+            end
+
+            log "matching disposable files: #{to_delete.to_a.sort.inspect}"
+
+            disp_files -= to_delete
+            leftover_processed << x
+          end
+        }
+        leftover -= leftover_processed
+
+        # If there are still any left, report it
         if not leftover.empty?
           log "errors detected in bogus files:"
           log leftover.sort.to_a.join("\n")
