@@ -119,18 +119,33 @@ class CppBuilder < PartialBuilder
   def parse_failed_build(log_file)
     list = Set.new
 
+    orig_cpp_filename = nil
+
     case @mode
     when :make_posix
       File.open(log_file, 'r') { |f|
         f.each_line { |l|
           l.chomp!
-          if l =~ /^(.*?):(\d+):(\d+): error: (.*)$/
+          case l
+          when /^In file included from (.*?):(\d+)(:\d+)?:$/
+            orig_cpp_filename = $1
+          when /^(.*?):(\d+):(\d+): error: (.*)$/
             filename = $1
             #row = $2
             #col = $3
             #msg = $4
+
+            # .h files are not members of disposable_files per se,
+            # they are always included from some other .cpp
+            # files. Thus, we report error against original .cpp file,
+            # which we've memorized previously.
+            if filename =~ /\.h$/
+              raise "Found error in #{filename.inspect} file, but no original .cpp file reference found before" if orig_cpp_filename.nil?
+              filename = orig_cpp_filename
+            end
+
             list << filename
-          elsif l =~ /^(.*?):(\d+): undefined reference/
+          when /^(.*?):(\d+): undefined reference/
             filename = $1
             #row = $2
             list << filename

@@ -1,0 +1,565 @@
+Microsoft (R) Build Engine version 15.9.21+g9802d43bc3 for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+Building the projects in this solution one at a time. To enable parallel build, please add the "/m" switch.
+Build started 4/12/2019 4:11:47 AM.
+Project "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\KS_TEST_CPP_STL.sln" on node 1 (default targets).
+ValidateSolutionConfiguration:
+  Building solution configuration "Debug|x64".
+ValidateProjects:
+  The project "ALL_BUILD" is not selected for building in solution configuration "Debug|x64".
+  The project "RUN_TESTS" is not selected for building in solution configuration "Debug|x64".
+Project "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\KS_TEST_CPP_STL.sln" (1) is building "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ZERO_CHECK.vcxproj" (2) on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "x64\Debug\ZERO_CHECK\".
+  Creating directory "x64\Debug\ZERO_CHECK\ZERO_CHECK.tlog\".
+InitializeBuildStatus:
+  Creating "x64\Debug\ZERO_CHECK\ZERO_CHECK.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+CustomBuild:
+  Checking Build System
+  CMake does not need to re-run because C:/projects/ci-targets/tests/compiled/cpp_stl_98/bin/CMakeFiles/generate.stamp is up-to-date.
+FinalizeBuildStatus:
+  Deleting file "x64\Debug\ZERO_CHECK\ZERO_CHECK.tlog\unsuccessfulbuild".
+  Touching "x64\Debug\ZERO_CHECK\ZERO_CHECK.tlog\ZERO_CHECK.lastbuildstate".
+Done Building Project "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ZERO_CHECK.vcxproj" (default targets).
+Project "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\KS_TEST_CPP_STL.sln" (1) is building "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj.metaproj" (3) on node 1 (default targets).
+Project "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj.metaproj" (3) is building "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj" (4) on node 1 (default targets).
+PrepareForBuild:
+  Creating directory "ks_tests.dir\Debug\".
+  Creating directory "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\Debug\".
+  Creating directory "ks_tests.dir\Debug\ks_tests.tlog\".
+InitializeBuildStatus:
+  Creating "ks_tests.dir\Debug\ks_tests.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+CustomBuild:
+  Building Custom Rule C:/projects/ci-targets/tests/spec/cpp_stl_98/CMakeLists.txt
+  CMake does not need to re-run because C:/projects/ci-targets/tests/compiled/cpp_stl_98/bin/CMakeFiles/generate.stamp is up-to-date.
+VcpkgTripletSelection:
+  Not using Vcpkg because VcpkgEnabled is "false"
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe /c /I"C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin" /I"C:\projects\ci-targets\tests\compiled\cpp_stl_98" /I"C:\projects\ci-targets\tests\spec\cpp_stl_98\..\..\..\runtime\cpp_stl" /I"C:\projects\ci-targets\tests\spec\cpp_stl_98\prereq" /I"C:\Tools\vcpkg\installed\x64-windows\include" /Zi /nologo /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D KS_ZLIB /D KS_STR_ENCODING_ICONV /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"ks_tests.dir\Debug\\" /Fd"ks_tests.dir\Debug\vc141.pdb" /Gd /TP /errorReport:queue  /utf-8 "C:\projects\ci-targets\runtime\cpp_stl\kaitai\kaitaistream.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\prereq\my_custom_fx.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\prereq\custom_fx.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\main.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_bcd_user_type_be.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_bcd_user_type_le.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_bits_byte_aligned.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_bits_enum.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_bits_simple.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_buffered_struct.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_bytes_pad_term.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_cast_nested.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_cast_to_imported.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_cast_to_top.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_debug_0.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_debug_array_user.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_debug_enum_name.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_default_big_endian.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_default_endian_expr_exception.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_default_endian_expr_inherited.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_default_endian_expr_is_be.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_default_endian_expr_is_le.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_default_endian_mod.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_docstrings.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_docstrings_docref.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_enum_0.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_enum_1.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_enum_deep.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_enum_deep_literals.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_enum_fancy.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_enum_for_unknown_id.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_enum_if.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_enum_invalid.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_enum_negative.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_enum_of_value_inst.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_enum_to_i.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_eof_exception_bytes.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_eof_exception_u4.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_expr_0.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_expr_1.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_expr_2.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_expr_3.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_expr_array.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_expr_bytes_cmp.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_expr_enum.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_expr_io_eof.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_expr_io_pos.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_expr_mod.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_fixed_contents.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_fixed_struct.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_floating_points.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_float_to_i.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_hello_world.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_if_instances.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_if_struct.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_if_values.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_imports0.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_imports_abs.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_imports_abs_abs.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_imports_abs_rel.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_imports_circular_a.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_imports_rel_1.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_index_sizes.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_index_to_param_eos.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_index_to_param_expr.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_index_to_param_until.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_instance_io_user.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_instance_std.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_instance_std_array.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_instance_user_array.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_integers.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_io_local_var.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_js_signed_right_shift.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_meta_xref.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_multiple_use.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_nav_parent.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_nav_parent2.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_nav_parent3.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_nav_parent_false.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_nav_parent_false2.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_nav_parent_override.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_nav_parent_switch.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_nav_parent_vs_value_inst.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_nav_root.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_nested_same_name.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_nested_same_name2.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_nested_types.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_nested_types2.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_nested_types3.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_non_standard.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_opaque_external_type.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_opaque_external_type_02_parent.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_opaque_with_param.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_optional_id.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_params_call_short.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_params_def.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_params_enum.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_params_pass_usertype.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_position_abs.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_position_in_seq.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_position_to_end.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_process_coerce_bytes.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_process_coerce_usertype1.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_process_coerce_usertype2.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_process_custom.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_process_rotate.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_process_to_user.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_process_xor4_const.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_process_xor4_value.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_process_xor_const.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_process_xor_value.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_recursive_one.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_repeat_eos_bit.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_repeat_eos_struct.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_repeat_eos_u4.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_repeat_n_struct.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_repeat_n_strz.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_repeat_n_strz_double.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_repeat_until_complex.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_repeat_until_s4.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_repeat_until_sized.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_str_encodings.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_str_encodings_default.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_str_eos.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_str_literals.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_str_literals2.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_str_pad_term.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_str_pad_term_empty.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_switch_bytearray.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_switch_cast.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_switch_integers.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_switch_integers2.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_switch_manual_enum.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_switch_manual_int.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_switch_manual_int_else.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_switch_manual_int_size.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_switch_manual_int_size_else.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_switch_manual_int_size_eos.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_switch_manual_str.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_switch_manual_str_else.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_switch_multi_bool_ops.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_switch_repeat_expr.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_term_bytes.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_term_strz.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_ts_packet_header.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_type_int_unary_op.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_type_ternary.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_type_ternary_opaque.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_user_type.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_yaml_ints.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_zlib_with_header_78.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bcd_user_type_be.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bcd_user_type_le.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bits_byte_aligned.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bits_enum.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bits_simple.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\buffered_struct.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bytes_pad_term.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\cast_nested.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\cast_to_imported.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\cast_to_top.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\debug_0.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\debug_array_user.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\debug_enum_name.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\default_big_endian.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\default_endian_expr_exception.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\default_endian_expr_inherited.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\default_endian_expr_is_be.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\default_endian_expr_is_le.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\default_endian_mod.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\docstrings.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\docstrings_docref.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_0.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_1.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_deep.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_deep_literals.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_fancy.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_for_unknown_id.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_if.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_invalid.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_negative.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_of_value_inst.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_1.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\eof_exception_bytes.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\eof_exception_u4.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_0.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_1.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_2.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_3.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_array.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_bytes_cmp.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_enum.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_io_eof.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_io_pos.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_mod.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\fixed_contents.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\fixed_struct.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\floating_points.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\float_to_i.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\hello_world.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\if_instances.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\if_struct.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\if_values.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\imported_1.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\imported_2.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\imported_and_abs.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\imported_and_rel.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\imported_root.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\imports0.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\imports_abs.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\imports_abs_abs.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\imports_abs_rel.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\imports_circular_a.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\imports_circular_b.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\imports_rel_1.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\index_sizes.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\index_to_param_eos.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\index_to_param_expr.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\index_to_param_until.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\instance_io_user.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\instance_std.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\instance_std_array.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\instance_user_array.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\integers.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\io_local_var.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\js_signed_right_shift.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\meta_xref.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\multiple_use.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\nav_parent.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\nav_parent2.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\nav_parent3.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\nav_parent_false.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\nav_parent_false2.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\nav_parent_override.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\nav_parent_switch.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\nav_parent_vs_value_inst.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\nav_root.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\nested_same_name.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\nested_same_name2.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\nested_types.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\nested_types2.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\nested_types3.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\non_standard.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\opaque_external_type.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\opaque_external_type_02_child.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\opaque_external_type_02_parent.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\opaque_with_param.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\optional_id.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\params_call_short.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\params_def.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\params_enum.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\params_pass_struct.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\params_pass_usertype.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\position_abs.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\position_in_seq.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\position_to_end.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\process_coerce_bytes.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\process_coerce_usertype1.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\process_coerce_usertype2.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\process_custom.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\process_rotate.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\process_to_user.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\process_xor4_const.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\process_xor4_value.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\process_xor_const.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\process_xor_value.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\recursive_one.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\repeat_eos_bit.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\repeat_eos_struct.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\repeat_eos_u4.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\repeat_n_struct.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\repeat_n_strz.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\repeat_n_strz_double.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\repeat_until_complex.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\repeat_until_s4.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\repeat_until_sized.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\str_encodings.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\str_encodings_default.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\str_eos.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\str_literals.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\str_literals2.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\str_pad_term.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\str_pad_term_empty.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\switch_bytearray.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\switch_cast.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\switch_integers.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\switch_integers2.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\switch_manual_enum.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\switch_manual_int.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\switch_manual_int_else.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\switch_manual_int_size.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\switch_manual_int_size_else.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\switch_manual_int_size_eos.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\switch_manual_str.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\switch_manual_str_else.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\switch_multi_bool_ops.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\switch_repeat_expr.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\term_bytes.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\term_strz.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\ts_packet_header.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\type_int_unary_op.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\type_ternary.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\type_ternary_opaque.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\user_type.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\vlq_base128_le.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\yaml_ints.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\zlib_with_header_78.cpp"
+  kaitaistream.cpp
+C:\projects\ci-targets\runtime\cpp_stl\kaitai\kaitaistream.cpp(492): warning C4267: '=': conversion from 'size_t' to 'uInt', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  my_custom_fx.cpp
+C:\projects\ci-targets\tests\spec\cpp_stl_98\prereq\my_custom_fx.cpp(8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  custom_fx.cpp
+  main.cpp
+  test_bcd_user_type_be.cpp
+  test_bcd_user_type_le.cpp
+  test_bits_byte_aligned.cpp
+  test_bits_enum.cpp
+  test_bits_simple.cpp
+C:\Tools\vcpkg\installed\x64-windows\include\boost/test/tools/old/impl.hpp(107): warning C4805: '==': unsafe mix of type 'const Left' and type 'const Right' in operation [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+          with
+          [
+              Left=bool
+          ]
+          and
+          [
+              Right=int
+          ]
+  C:\Tools\vcpkg\installed\x64-windows\include\boost/test/tools/old/impl.hpp(130): note: see reference to function template instantiation 'boost::test_tools::assertion_result boost::test_tools::tt_detail::equal_impl<Left,Right>(const Left &,const Right &)' being compiled
+          with
+          [
+              Left=bool,
+              Right=int
+          ]
+  C:\Tools\vcpkg\installed\x64-windows\include\boost/test/tools/old/impl.hpp(145): note: see reference to function template instantiation 'boost::test_tools::assertion_result boost::test_tools::tt_detail::equal_impl_frwd::call_impl<Left,Right>(const Left &,const Right &,boost::mpl::false_) const' being compiled
+          with
+          [
+              Left=bool,
+              Right=int
+          ]
+  C:\Tools\vcpkg\installed\x64-windows\include\boost/test/tools/old/impl.hpp(92): note: see reference to function template instantiation 'boost::test_tools::assertion_result boost::test_tools::tt_detail::equal_impl_frwd::operator ()<Arg0,Arg1>(const Left &,const Right &) const' being compiled
+          with
+          [
+              Arg0=bool,
+              Arg1=int,
+              Left=bool,
+              Right=int
+          ]
+  C:\projects\ci-targets\tests\spec\cpp_stl_98\test_bits_simple.cpp(19): note: see reference to function template instantiation 'bool boost::test_tools::tt_detail::check_frwd<boost::test_tools::tt_detail::equal_impl_frwd,bool,int>(Pred,const boost::unit_test::lazy_ostream &,boost::unit_test::const_string,size_t,boost::test_tools::tt_detail::tool_level,boost::test_tools::tt_detail::check_type,const Arg0 &,const char *,const Arg1 &,const char *)' being compiled
+          with
+          [
+              Pred=boost::test_tools::tt_detail::equal_impl_frwd,
+              Arg0=bool,
+              Arg1=int
+          ]
+  test_buffered_struct.cpp
+  test_bytes_pad_term.cpp
+  test_cast_nested.cpp
+  test_cast_to_imported.cpp
+  test_cast_to_top.cpp
+  test_debug_0.cpp
+  test_debug_array_user.cpp
+  test_debug_enum_name.cpp
+  test_default_big_endian.cpp
+  test_default_endian_expr_exception.cpp
+  test_default_endian_expr_inherited.cpp
+  Generating Code...
+  Compiling...
+  test_default_endian_expr_is_be.cpp
+  test_default_endian_expr_is_le.cpp
+  test_default_endian_mod.cpp
+  test_docstrings.cpp
+  test_docstrings_docref.cpp
+  test_enum_0.cpp
+  test_enum_1.cpp
+  test_enum_deep.cpp
+  test_enum_deep_literals.cpp
+  test_enum_fancy.cpp
+  test_enum_for_unknown_id.cpp
+  test_enum_if.cpp
+  test_enum_invalid.cpp
+  test_enum_negative.cpp
+  test_enum_of_value_inst.cpp
+  test_enum_to_i.cpp
+  test_eof_exception_bytes.cpp
+  test_eof_exception_u4.cpp
+  test_expr_0.cpp
+  test_expr_1.cpp
+  Generating Code...
+  Compiling...
+  test_expr_2.cpp
+  test_expr_3.cpp
+  test_expr_array.cpp
+  test_expr_bytes_cmp.cpp
+  test_expr_enum.cpp
+  test_expr_io_eof.cpp
+  test_expr_io_pos.cpp
+  test_expr_mod.cpp
+  test_fixed_contents.cpp
+  test_fixed_struct.cpp
+  test_floating_points.cpp
+  test_float_to_i.cpp
+  test_hello_world.cpp
+  test_if_instances.cpp
+  test_if_struct.cpp
+  test_if_values.cpp
+  test_imports0.cpp
+  test_imports_abs.cpp
+  test_imports_abs_abs.cpp
+  test_imports_abs_rel.cpp
+  Generating Code...
+  Compiling...
+  test_imports_circular_a.cpp
+  test_imports_rel_1.cpp
+  test_index_sizes.cpp
+  test_index_to_param_eos.cpp
+  test_index_to_param_expr.cpp
+  test_index_to_param_until.cpp
+  test_instance_io_user.cpp
+  test_instance_std.cpp
+  test_instance_std_array.cpp
+  test_instance_user_array.cpp
+  test_integers.cpp
+  test_io_local_var.cpp
+  test_js_signed_right_shift.cpp
+  test_meta_xref.cpp
+  test_multiple_use.cpp
+  test_nav_parent.cpp
+  test_nav_parent2.cpp
+  test_nav_parent3.cpp
+  test_nav_parent_false.cpp
+  test_nav_parent_false2.cpp
+  Generating Code...
+  Compiling...
+  test_nav_parent_override.cpp
+  test_nav_parent_switch.cpp
+  test_nav_parent_vs_value_inst.cpp
+  test_nav_root.cpp
+  test_nested_same_name.cpp
+  test_nested_same_name2.cpp
+  test_nested_types.cpp
+  test_nested_types2.cpp
+  test_nested_types3.cpp
+  test_non_standard.cpp
+  test_opaque_external_type.cpp
+  test_opaque_external_type_02_parent.cpp
+  test_opaque_with_param.cpp
+  test_optional_id.cpp
+  test_params_call_short.cpp
+  test_params_def.cpp
+  test_params_enum.cpp
+  test_params_pass_usertype.cpp
+  test_position_abs.cpp
+  test_position_in_seq.cpp
+  Generating Code...
+  Compiling...
+  test_position_to_end.cpp
+  test_process_coerce_bytes.cpp
+  test_process_coerce_usertype1.cpp
+  test_process_coerce_usertype2.cpp
+  test_process_custom.cpp
+  test_process_rotate.cpp
+  test_process_to_user.cpp
+  test_process_xor4_const.cpp
+  test_process_xor4_value.cpp
+  test_process_xor_const.cpp
+  test_process_xor_value.cpp
+  test_recursive_one.cpp
+  test_repeat_eos_bit.cpp
+  test_repeat_eos_struct.cpp
+  test_repeat_eos_u4.cpp
+  test_repeat_n_struct.cpp
+  test_repeat_n_strz.cpp
+  test_repeat_n_strz_double.cpp
+  test_repeat_until_complex.cpp
+  test_repeat_until_s4.cpp
+  Generating Code...
+  Compiling...
+  test_repeat_until_sized.cpp
+  test_str_encodings.cpp
+  test_str_encodings_default.cpp
+  test_str_eos.cpp
+  test_str_literals.cpp
+  test_str_literals2.cpp
+  test_str_pad_term.cpp
+  test_str_pad_term_empty.cpp
+  test_switch_bytearray.cpp
+  test_switch_cast.cpp
+  test_switch_integers.cpp
+  test_switch_integers2.cpp
+  test_switch_manual_enum.cpp
+  test_switch_manual_int.cpp
+  test_switch_manual_int_else.cpp
+  test_switch_manual_int_size.cpp
+  test_switch_manual_int_size_else.cpp
+  test_switch_manual_int_size_eos.cpp
+  test_switch_manual_str.cpp
+  test_switch_manual_str_else.cpp
+  Generating Code...
+  Compiling...
+  test_switch_multi_bool_ops.cpp
+  test_switch_repeat_expr.cpp
+  test_term_bytes.cpp
+  test_term_strz.cpp
+  test_ts_packet_header.cpp
+C:\Tools\vcpkg\installed\x64-windows\include\boost/test/tools/old/impl.hpp(107): warning C4805: '==': unsafe mix of type 'const Left' and type 'const Right' in operation [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+          with
+          [
+              Left=bool
+          ]
+          and
+          [
+              Right=int
+          ]
+  C:\Tools\vcpkg\installed\x64-windows\include\boost/test/tools/old/impl.hpp(130): note: see reference to function template instantiation 'boost::test_tools::assertion_result boost::test_tools::tt_detail::equal_impl<Left,Right>(const Left &,const Right &)' being compiled
+          with
+          [
+              Left=bool,
+              Right=int
+          ]
+  C:\Tools\vcpkg\installed\x64-windows\include\boost/test/tools/old/impl.hpp(145): note: see reference to function template instantiation 'boost::test_tools::assertion_result boost::test_tools::tt_detail::equal_impl_frwd::call_impl<Left,Right>(const Left &,const Right &,boost::mpl::false_) const' being compiled
+          with
+          [
+              Left=bool,
+              Right=int
+          ]
+  C:\Tools\vcpkg\installed\x64-windows\include\boost/test/tools/old/impl.hpp(92): note: see reference to function template instantiation 'boost::test_tools::assertion_result boost::test_tools::tt_detail::equal_impl_frwd::operator ()<Arg0,Arg1>(const Left &,const Right &) const' being compiled
+          with
+          [
+              Arg0=bool,
+              Arg1=int,
+              Left=bool,
+              Right=int
+          ]
+  C:\projects\ci-targets\tests\spec\cpp_stl_98\test_ts_packet_header.cpp(21): note: see reference to function template instantiation 'bool boost::test_tools::tt_detail::check_frwd<boost::test_tools::tt_detail::equal_impl_frwd,bool,int>(Pred,const boost::unit_test::lazy_ostream &,boost::unit_test::const_string,size_t,boost::test_tools::tt_detail::tool_level,boost::test_tools::tt_detail::check_type,const Arg0 &,const char *,const Arg1 &,const char *)' being compiled
+          with
+          [
+              Pred=boost::test_tools::tt_detail::equal_impl_frwd,
+              Arg0=bool,
+              Arg1=int
+          ]
+  test_type_int_unary_op.cpp
+  test_type_ternary.cpp
+  test_type_ternary_opaque.cpp
+  test_user_type.cpp
+  test_yaml_ints.cpp
+  test_zlib_with_header_78.cpp
+  bcd_user_type_be.cpp
+  bcd_user_type_le.cpp
+  bits_byte_aligned.cpp
+  bits_enum.cpp
+  bits_simple.cpp
+  buffered_struct.cpp
+  bytes_pad_term.cpp
+  cast_nested.cpp
+  cast_to_imported.cpp
+  Generating Code...
+  Compiling...
+  cast_to_top.cpp
+  debug_0.cpp
+  debug_array_user.cpp
+  debug_enum_name.cpp
+  default_big_endian.cpp
+  default_endian_expr_exception.cpp
+  default_endian_expr_inherited.cpp
+  default_endian_expr_is_be.cpp
+  default_endian_expr_is_le.cpp
+  default_endian_mod.cpp
+  docstrings.cpp
+  docstrings_docref.cpp
+  enum_0.cpp
+  enum_1.cpp
+  enum_deep.cpp
+  enum_deep_literals.cpp
+  enum_fancy.cpp
+  enum_for_unknown_id.cpp
+  enum_if.cpp
+  enum_invalid.cpp
+  Generating Code...
+  Compiling...
+  enum_negative.cpp
+  enum_of_value_inst.cpp
+  enum_to_i.cpp
+  enum_to_i_class_border_1.cpp
+  enum_to_i_class_border_2.cpp
+c:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.h(18): error C2061: syntax error: identifier 'enum_to_i_class_border_1_t' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+c:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.h(34): error C2143: syntax error: missing ';' before '*' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+c:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.h(34): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+c:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.h(34): error C2238: unexpected token(s) preceding ';' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+c:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.h(39): error C2143: syntax error: missing ';' before '*' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+c:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.h(39): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+c:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.h(39): error C2334: unexpected token(s) preceding '{'; skipping apparent function body [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2065: 'enum_to_i_class_border_1_t': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2065: 'p_parent': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2065: 'p__io': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2275: 'kaitai::kstream': illegal use of this type as an expression [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): note: see declaration of 'kaitai::kstream'
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2065: 'p__parent': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2275: 'kaitai::kstruct': illegal use of this type as an expression [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): note: see declaration of 'kaitai::kstruct'
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2065: 'p__root': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2275: 'enum_to_i_class_border_2_t': illegal use of this type as an expression [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2761: '{ctor}': redeclaration of member is not allowed [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2448: 'enum_to_i_class_border_2_t::{ctor}': function-style initializer appears to be a function definition [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2059: syntax error: ':' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(9): error C2065: 'm__parent': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(9): error C2065: 'p__parent': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(9): error C2059: syntax error: ';' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(10): error C2355: 'this': can only be referenced inside non-static member functions or non-static data member initializers [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(11): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(11): error C2065: 'p_parent': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(12): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(14): error C2059: syntax error: '}' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(14): error C2143: syntax error: missing ';' before '}' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(16): error C2143: syntax error: missing ';' before '{' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(16): error C2447: '{': missing function header (old-style formal list?) [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(25): error C3861: 'parent': identifier not found [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  eof_exception_bytes.cpp
+  eof_exception_u4.cpp
+  expr_0.cpp
+  expr_1.cpp
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_1.cpp(35): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  expr_2.cpp
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_2.cpp(128): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  expr_3.cpp
+  expr_array.cpp
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_array.cpp(70): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_array.cpp(78): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_array.cpp(102): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  expr_bytes_cmp.cpp
+  expr_enum.cpp
+  expr_io_eof.cpp
+  expr_io_pos.cpp
+  expr_mod.cpp
+  fixed_contents.cpp
+  fixed_struct.cpp
+  floating_points.cpp
+  Generating Code...
+  Compiling...
+  float_to_i.cpp
+  hello_world.cpp
+  if_instances.cpp
+  if_struct.cpp
+  if_values.cpp
+  imported_1.cpp
+  imported_2.cpp
+  imported_and_abs.cpp
+  imported_and_rel.cpp
+  imported_root.cpp
+  imports0.cpp
+  imports_abs.cpp
+  imports_abs_abs.cpp
+  imports_abs_rel.cpp
+  imports_circular_a.cpp
+  imports_circular_b.cpp
+  imports_rel_1.cpp
+  index_sizes.cpp
+  index_to_param_eos.cpp
+  index_to_param_expr.cpp
+  Generating Code...
+  Compiling...
+  index_to_param_until.cpp
+  instance_io_user.cpp
+  instance_std.cpp
+  instance_std_array.cpp
+  instance_user_array.cpp
+  integers.cpp
+  io_local_var.cpp
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\io_local_var.cpp(29): error C2065: 'n_mess_up': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\io_local_var.cpp(53): error C2065: 'n_mess_up': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\io_local_var.cpp(56): error C2065: 'n_mess_up': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\io_local_var.cpp(63): error C2065: 'n_mess_up': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  js_signed_right_shift.cpp
+  meta_xref.cpp
+  multiple_use.cpp
+  nav_parent.cpp
+  nav_parent2.cpp
+  nav_parent3.cpp
+  nav_parent_false.cpp
+  nav_parent_false2.cpp
+  nav_parent_override.cpp
+  nav_parent_switch.cpp
+  nav_parent_vs_value_inst.cpp
+  nav_root.cpp
+  nested_same_name.cpp
+  Generating Code...
+  Compiling...
+  nested_same_name2.cpp
+  nested_types.cpp
+  nested_types2.cpp
+  nested_types3.cpp
+  non_standard.cpp
+  opaque_external_type.cpp
+  opaque_external_type_02_child.cpp
+  opaque_external_type_02_parent.cpp
+  opaque_with_param.cpp
+  optional_id.cpp
+  params_call_short.cpp
+  params_def.cpp
+  params_enum.cpp
+  params_pass_struct.cpp
+  params_pass_usertype.cpp
+  position_abs.cpp
+  position_in_seq.cpp
+  position_to_end.cpp
+  process_coerce_bytes.cpp
+  process_coerce_usertype1.cpp
+  Generating Code...
+  Compiling...
+  process_coerce_usertype2.cpp
+  process_custom.cpp
+  process_rotate.cpp
+  process_to_user.cpp
+  process_xor4_const.cpp
+  process_xor4_value.cpp
+  process_xor_const.cpp
+  process_xor_value.cpp
+  recursive_one.cpp
+  repeat_eos_bit.cpp
+  repeat_eos_struct.cpp
+  repeat_eos_u4.cpp
+  repeat_n_struct.cpp
+  repeat_n_strz.cpp
+  repeat_n_strz_double.cpp
+  repeat_until_complex.cpp
+  repeat_until_s4.cpp
+  repeat_until_sized.cpp
+  str_encodings.cpp
+  str_encodings_default.cpp
+  Generating Code...
+  Compiling...
+  str_eos.cpp
+  str_literals.cpp
+  str_literals2.cpp
+  str_pad_term.cpp
+  str_pad_term_empty.cpp
+  switch_bytearray.cpp
+  switch_cast.cpp
+  switch_integers.cpp
+  switch_integers2.cpp
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\switch_integers2.cpp(58): warning C4244: 'argument': conversion from 'uint64_t' to 'int', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  switch_manual_enum.cpp
+  switch_manual_int.cpp
+  switch_manual_int_else.cpp
+  switch_manual_int_size.cpp
+  switch_manual_int_size_else.cpp
+  switch_manual_int_size_eos.cpp
+  switch_manual_str.cpp
+  switch_manual_str_else.cpp
+  switch_multi_bool_ops.cpp
+  switch_repeat_expr.cpp
+  term_bytes.cpp
+  Generating Code...
+  Compiling...
+  term_strz.cpp
+  ts_packet_header.cpp
+  type_int_unary_op.cpp
+  type_ternary.cpp
+  type_ternary_opaque.cpp
+  user_type.cpp
+  vlq_base128_le.cpp
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\vlq_base128_le.cpp(71): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\vlq_base128_le.cpp(79): warning C4293: '<<': shift count negative or too big, undefined behavior [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  yaml_ints.cpp
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\yaml_ints.cpp(43): warning C4309: '=': truncation of constant value [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\yaml_ints.cpp(51): warning C4309: '=': truncation of constant value [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  zlib_with_header_78.cpp
+  Generating Code...
+Done Building Project "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj" (default targets) -- FAILED.
+Done Building Project "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj.metaproj" (default targets) -- FAILED.
+Done Building Project "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\KS_TEST_CPP_STL.sln" (default targets) -- FAILED.
+Build FAILED.
+"C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\KS_TEST_CPP_STL.sln" (default target) (1) ->
+"C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj.metaproj" (default target) (3) ->
+"C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj" (default target) (4) ->
+(ClCompile target) -> 
+  C:\projects\ci-targets\runtime\cpp_stl\kaitai\kaitaistream.cpp(492): warning C4267: '=': conversion from 'size_t' to 'uInt', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\spec\cpp_stl_98\prereq\my_custom_fx.cpp(8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\Tools\vcpkg\installed\x64-windows\include\boost/test/tools/old/impl.hpp(107): warning C4805: '==': unsafe mix of type 'const Left' and type 'const Right' in operation [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\Tools\vcpkg\installed\x64-windows\include\boost/test/tools/old/impl.hpp(107): warning C4805: '==': unsafe mix of type 'const Left' and type 'const Right' in operation [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_1.cpp(35): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_2.cpp(128): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_array.cpp(70): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_array.cpp(78): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\expr_array.cpp(102): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\switch_integers2.cpp(58): warning C4244: 'argument': conversion from 'uint64_t' to 'int', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\vlq_base128_le.cpp(71): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\vlq_base128_le.cpp(79): warning C4293: '<<': shift count negative or too big, undefined behavior [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\yaml_ints.cpp(43): warning C4309: '=': truncation of constant value [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\yaml_ints.cpp(51): warning C4309: '=': truncation of constant value [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+"C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\KS_TEST_CPP_STL.sln" (default target) (1) ->
+"C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj.metaproj" (default target) (3) ->
+"C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj" (default target) (4) ->
+(ClCompile target) -> 
+  c:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.h(18): error C2061: syntax error: identifier 'enum_to_i_class_border_1_t' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  c:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.h(34): error C2143: syntax error: missing ';' before '*' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  c:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.h(34): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  c:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.h(34): error C2238: unexpected token(s) preceding ';' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  c:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.h(39): error C2143: syntax error: missing ';' before '*' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  c:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.h(39): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  c:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.h(39): error C2334: unexpected token(s) preceding '{'; skipping apparent function body [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2065: 'enum_to_i_class_border_1_t': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2065: 'p_parent': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2065: 'p__io': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2275: 'kaitai::kstream': illegal use of this type as an expression [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2065: 'p__parent': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2275: 'kaitai::kstruct': illegal use of this type as an expression [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2065: 'p__root': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2275: 'enum_to_i_class_border_2_t': illegal use of this type as an expression [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2761: '{ctor}': redeclaration of member is not allowed [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2448: 'enum_to_i_class_border_2_t::{ctor}': function-style initializer appears to be a function definition [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(8): error C2059: syntax error: ':' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(9): error C2065: 'm__parent': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(9): error C2065: 'p__parent': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(9): error C2059: syntax error: ';' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(10): error C2355: 'this': can only be referenced inside non-static member functions or non-static data member initializers [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(11): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(11): error C2065: 'p_parent': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(12): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(14): error C2059: syntax error: '}' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(14): error C2143: syntax error: missing ';' before '}' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(16): error C2143: syntax error: missing ';' before '{' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(16): error C2447: '{': missing function header (old-style formal list?) [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.cpp(25): error C3861: 'parent': identifier not found [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\io_local_var.cpp(29): error C2065: 'n_mess_up': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\io_local_var.cpp(53): error C2065: 'n_mess_up': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\io_local_var.cpp(56): error C2065: 'n_mess_up': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\io_local_var.cpp(63): error C2065: 'n_mess_up': undeclared identifier [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+    14 Warning(s)
+    36 Error(s)
+Time Elapsed 00:04:53.75

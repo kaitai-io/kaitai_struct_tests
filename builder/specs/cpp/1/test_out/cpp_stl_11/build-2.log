@@ -1,0 +1,13 @@
+Scanning dependencies of target ks_tests
+[  1%] Linking CXX executable ks_tests
+/usr/bin/ld: CMakeFiles/ks_tests.dir/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp.o: in function `main':
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/bin/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp:580: multiple definition of `main'; CMakeFiles/ks_tests.dir/main.cpp.o:/usr/include/boost/test/unit_test.hpp:62: first defined here
+/usr/bin/ld: CMakeFiles/ks_tests.dir/test_io_local_var.cpp.o: in function `test_io_local_var::test_method()':
+/home/greycat/git/kaitai_struct/tests/spec/cpp_stl_11/test_io_local_var.cpp:12: undefined reference to `io_local_var_t::io_local_var_t(kaitai::kstream*, kaitai::kstruct*, io_local_var_t*, bool)'
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/ks_tests.dir/build.make:4737: ks_tests] Error 1
+make[2]: Target 'CMakeFiles/ks_tests.dir/build' not remade because of errors.
+make[1]: *** [CMakeFiles/Makefile2:73: CMakeFiles/ks_tests.dir/all] Error 2
+make[1]: Target 'all' not remade because of errors.
+make: *** [Makefile:95: all] Error 2
+make: Target 'default_target' not remade because of errors.
