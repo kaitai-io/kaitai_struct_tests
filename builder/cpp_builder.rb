@@ -120,6 +120,7 @@ class CppBuilder < PartialBuilder
     list = Set.new
 
     orig_cpp_filename = nil
+    parse_mode = :normal
 
     case @mode
     when :make_posix
@@ -145,10 +146,20 @@ class CppBuilder < PartialBuilder
             end
 
             list << filename
+          # Linux ld
           when /^(.*?):(\d+): undefined reference/
             filename = $1
             #row = $2
             list << filename
+          # Mac OS X ld
+          when /, referenced from:$/
+            parse_mode = :osx_ld
+          when /^\s*(.*?) in (.*?\.cpp)\.o$/
+            if parse_mode == :osx_ld
+              #method = $1
+              filename = $2
+              list << [:bare, filename]
+            end
           end
         }
       }

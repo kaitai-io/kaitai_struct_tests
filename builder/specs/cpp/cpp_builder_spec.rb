@@ -73,10 +73,17 @@ RSpec.describe CppBuilder do
     end
 
     describe '#parse_failed_build' do
-      it 'parses failed build information' do
+      it 'parses failed build information (compiler)' do
         expect(@builder.parse_failed_build('test_out/cpp_stl_11/build-1.log').to_a.sort).to match_array [
           '/Users/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_11/enum_to_i_class_border_2.cpp',
           '/Users/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_11/io_local_var.cpp',
+        ]
+      end
+
+      it 'parses failed build information (linker)' do
+        expect(@builder.parse_failed_build('test_out/cpp_stl_11/build-2.log').to_a.sort).to match_array [
+          [:bare, 'enum_to_i_class_border_1.cpp'],
+          [:bare, 'test_io_local_var.cpp'],
         ]
       end
     end
