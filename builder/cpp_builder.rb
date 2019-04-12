@@ -128,9 +128,9 @@ class CppBuilder < PartialBuilder
         f.each_line { |l|
           l.chomp!
           case l
-          when /^In file included from (.*?):(\d+)(:\d+)?:$/
+          when /^In file included from (.+?):(\d+)(:\d+)?:$/
             orig_cpp_filename = $1
-          when /^(.*?):(\d+):(\d+): error: (.*)$/
+          when /^(.+?):(\d+):(\d+): error: (.*)$/
             filename = $1
             #row = $2
             #col = $3
@@ -147,7 +147,7 @@ class CppBuilder < PartialBuilder
 
             list << filename
           # Linux ld
-          when /^(.*?):(\d+): undefined reference/
+          when /^(.+?):(\d+): undefined reference/
             filename = $1
             #row = $2
             list << filename
