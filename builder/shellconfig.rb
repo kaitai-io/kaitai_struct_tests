@@ -7,7 +7,12 @@ class ShellConfig
         l.strip!
         l.gsub!(/#.*$/, '')
         if l =~ /^([A-Za-z0-9_]+)=(.*?)$/
-          @entries[$1] = $2
+          key = $1
+          value = $2
+
+          value.gsub!(/\$HOME/, ENV['HOME'])
+
+          @entries[key] = value
         end
       }
     }
