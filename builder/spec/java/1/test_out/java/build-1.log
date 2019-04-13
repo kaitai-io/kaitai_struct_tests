@@ -1,0 +1,4 @@
+compiled/java/src/io/kaitai/struct/testformats/ExprMod.java:26: error: illegal start of expression
+        this._root = _root == null ? this : _root +;
+                                                   ^
+1 error
