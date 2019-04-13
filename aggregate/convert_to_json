@@ -44,6 +44,11 @@ when 'cpp_stl'
     BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h,
     ValgrindXMLParser.new("#{infile}/valgrind.xml").to_h
   )
+when 'java'
+  add_fails(
+    JUnitXMLParser.new("#{infile}/junitreports").to_h,
+    BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h
+  )
 when 'go', 'java', 'javascript', 'lua', 'perl', 'php', 'python', 'rust'
   JUnitXMLParser.new(infile).to_h
 when 'ruby'
