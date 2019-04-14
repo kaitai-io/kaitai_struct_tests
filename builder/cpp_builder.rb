@@ -174,11 +174,20 @@ class CppBuilder < PartialBuilder
             #code = $3
             #msg = $4
 
-            # MSBuild is really weird and sometimes uses paths for same files with different upper/lower cases
+            # MSBuild is really weird and sometimes uses paths for
+            # same files with different upper/lower cases
             filename = filename.downcase
 
-            # Also, our original globbing used forward slashes, so convert backslashes to forward slashes
+            # Also, our original globbing used forward slashes, so
+            # convert backslashes to forward slashes
             filename.gsub!(/\\/, '/')
+
+            # .h files are not members of disposable_files per se,
+            # they are always included from some other .cpp
+            # files. However, msbuild logs do not offer any way to get
+            # to know the original culprit, so we'll just ignore all
+            # .h file problems for now.
+            next if filename =~ /\.h$/
 
             list << filename
           end
