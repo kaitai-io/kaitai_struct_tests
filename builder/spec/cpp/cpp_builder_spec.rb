@@ -93,6 +93,13 @@ RSpec.describe CppBuilder do
           "c:/projects/ci-targets/tests/compiled/cpp_stl_98/io_local_var.cpp",
         ]
       end
+
+      it 'parses failed link information for msbuild' do
+        expect(@builder.parse_failed_build('test_out/cpp_stl_98/build-2.log').to_a.sort).to match_array [
+          [:bare, 'test_io_local_var.cpp'],
+          [:bare, 'enum_to_i_class_border_1.cpp'],
+        ]
+      end
     end
   end
 

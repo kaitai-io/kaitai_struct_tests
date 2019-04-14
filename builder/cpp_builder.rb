@@ -168,7 +168,8 @@ class CppBuilder < PartialBuilder
         f.each_line { |l|
           l.chomp!
           # c:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.h(18): error C2061: syntax error: identifier 'enum_to_i_class_border_1_t' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
-          if l =~ /^\s*(.*?)\((\d+)\): error (.*?): (.*)$/
+          case l
+          when /^\s*(.*?)\((\d+)\): error (.*?): (.*)$/
             filename = $1
             #row = $2
             #code = $3
@@ -190,6 +191,9 @@ class CppBuilder < PartialBuilder
             next if filename =~ /\.h$/
 
             list << filename
+          when /^\s*(.*?)\.obj : error LNK2019:/
+            filename = "#{$1}.cpp"
+            list << [:bare, filename]
           end
         }
       }
