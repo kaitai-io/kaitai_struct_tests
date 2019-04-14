@@ -175,7 +175,12 @@ class CppBuilder < PartialBuilder
             #msg = $4
 
             # MSBuild is really weird and sometimes uses paths for same files with different upper/lower cases
-            list << filename.downcase
+            filename = filename.downcase
+
+            # Also, our original globbing used forward slashes, so convert backslashes to forward slashes
+            filename.gsub!(/\\/, '/')
+
+            list << filename
           end
         }
       }
@@ -227,12 +232,15 @@ class CppBuilder < PartialBuilder
     end
 
     # Choose test executable
-    if File.exists?("#{@obj_dir}/KS_TEST_CPP_STL.sln")
+    case @mode
+    when :msbuild_windows
       # On Windows/MSVC, executable will be nested in Debug/
       ks_tests_bin = "#{@obj_dir}/Debug/ks_tests"
-    else
+    when :make_posix
       # On POSIX systems, it will be directly in obj dir
       ks_tests_bin = "#{@obj_dir}/ks_tests"
+    else
+      raise "Unknown mode=#{@mode}"
     end
 
     tests_cli = [
