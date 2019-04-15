@@ -1,6 +1,6 @@
 # https://github.com/kaitai-io/kaitai_struct/issues/300
 meta:
-  id: switch_manual_enum_invalid
+  id: switch_manual_enum_invalid_else
 seq:
   - id: opcodes
     type: opcode
@@ -17,6 +17,7 @@ types:
           cases:
             code_enum::intval: intval
             code_enum::strval: strval
+            _: defval
     enums:
       code_enum:
         73: intval # 'I'
@@ -31,3 +32,7 @@ types:
           - id: value
             type: strz
             encoding: ASCII
+      defval:
+        instances:
+          value:
+            value: 123
