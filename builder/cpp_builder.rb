@@ -146,8 +146,13 @@ class CppBuilder < PartialBuilder
             end
 
             list << filename
-          # Linux ld
-          when /^(.+?):(\d+): undefined reference/
+          # Linux ld, variant 1
+          when /^\/usr\/bin\/ld: ([^:]+?):(\d+): undefined reference/
+            filename = $1
+            #row = $2
+            list << filename
+          # Linux ld, variant 2
+          when /^([^:]+?):(\d+): undefined reference/
             filename = $1
             #row = $2
             list << filename

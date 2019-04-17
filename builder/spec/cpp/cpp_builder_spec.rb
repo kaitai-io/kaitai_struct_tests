@@ -79,6 +79,25 @@ RSpec.describe CppBuilder do
     end
   end
 
+  context '2' do
+    before :context do
+      Dir.chdir("#{@spec_dir}/2")
+      @builder = CppBuilder.new('compiled/cpp_stl_98', 'spec/cpp_stl_98', 'test_out/cpp_stl_98')
+    end
+
+    describe '#parse_failed_build' do
+      it 'parses failed build information for make' do
+        expect(@builder.parse_failed_build('test_out/cpp_stl_98/build-2.log').to_a.sort).to match_array [
+          '/home/greycat/git/kaitai_struct/tests/spec/cpp_stl_98/test_cast_nested.cpp',
+          '/home/greycat/git/kaitai_struct/tests/spec/cpp_stl_98/test_imports_abs.cpp',
+          '/home/greycat/git/kaitai_struct/tests/spec/cpp_stl_98/test_io_local_var.cpp',
+          '/home/greycat/git/kaitai_struct/tests/spec/cpp_stl_98/test_repeat_n_struct.cpp',
+          '/home/greycat/git/kaitai_struct/tests/spec/cpp_stl_98/test_repeat_until_sized.cpp',
+        ]
+      end
+    end
+  end
+
   context 'msbuild_1' do
     before :context do
       Dir.chdir("#{@spec_dir}/msbuild_1")
