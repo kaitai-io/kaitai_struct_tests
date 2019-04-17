@@ -2,8 +2,9 @@ require_relative 'test_parser'
 
 # Parses fails of unified *Builder compilation process as evidenced by `build_failed_tests.txt`.
 class BuildFailedParser < TestParser
-  def initialize(fn)
+  def initialize(fn, is_luc = false)
     @fn = fn
+    @is_luc = is_luc
   end
 
   def each_test
@@ -18,6 +19,8 @@ class BuildFailedParser < TestParser
           when 'format' then :format_build_failed
           when 'spec' then :spec_build_failed
           end
+
+          name = underscore_to_ucamelcase(name) if @is_luc
 
           yield TestResult.new(name, what_failed, 0)
         }
