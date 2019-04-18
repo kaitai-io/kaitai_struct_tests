@@ -5,7 +5,7 @@ import io.kaitai.struct.testformats.SwitchManualEnumInvalid.Opcode.*;
 
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 public class TestSwitchManualEnumInvalid extends CommonSpec {
     @Test
@@ -14,10 +14,10 @@ public class TestSwitchManualEnumInvalid extends CommonSpec {
 
         assertEquals(r.opcodes().size(), 2);
 
-        assertEquals(r.opcodes().get(0).code(), CodeEnum.STRVAL);
-        assertEquals(((Strval) r.opcodes().get(0).body()).value(), "foobar");
+        assertNull(r.opcodes().get(0).code());
+        assertNull(r.opcodes().get(0).body());
 
-        assertEquals(r.opcodes().get(1).code(), CodeEnum.INTVAL);
-        assertEquals(((Intval) r.opcodes().get(1).body()).value(), 0x42);
+        assertNull(r.opcodes().get(1).code());
+        assertNull(r.opcodes().get(1).body());
     }
 }
