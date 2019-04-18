@@ -84,6 +84,7 @@ object Main extends App {
     case "go" => new GoSG(testSpec, provider)
     case "java" => new JavaSG(testSpec, provider)
     case "javascript" => new JavaScriptSG(testSpec, provider)
+    case "perl" => new PerlSG(testSpec, provider)
     case "php" => new PHPSG(testSpec, provider)
     case "python" => new PythonSG(testSpec, provider)
     case "ruby" => new RubySG(testSpec, provider)
@@ -98,6 +99,7 @@ object Main extends App {
     //"go",
     "java",
     "javascript",
+    "perl",
     "php",
     "python",
     "ruby",
