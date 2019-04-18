@@ -36,6 +36,18 @@ def add_fails(first, *seconds)
   first
 end
 
+def report_summary(result)
+  by_status = {}
+  result.each_pair { |name, test_result|
+    next if name[0] == '$'
+    status = test_result['status']
+    by_status[status] ||= 0
+    by_status[status] += 1
+  }
+
+  puts "SUMMARY: #{by_status.inspect}"
+end
+
 lang, infile, outfile = ARGV
 
 result = case lang
@@ -103,3 +115,5 @@ result['$meta'] = meta
 json = JSON.pretty_generate(result)
 
 File.write(outfile, json)
+
+report_summary(result)
