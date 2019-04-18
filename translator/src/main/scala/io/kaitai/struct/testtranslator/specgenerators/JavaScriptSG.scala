@@ -1,12 +1,12 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import io.kaitai.struct.ClassTypeProvider
-import io.kaitai.struct.datatype.DataType
-import io.kaitai.struct.datatype.DataType.BytesType
-import io.kaitai.struct.exprlang.Ast
-import io.kaitai.struct.languages.JavaScriptCompiler
-import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
-import io.kaitai.struct.translators.JavaScriptTranslator
+import _root_.io.kaitai.struct.ClassTypeProvider
+import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.datatype.DataType.BytesType
+import _root_.io.kaitai.struct.exprlang.Ast
+import _root_.io.kaitai.struct.languages.JavaScriptCompiler
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.translators.JavaScriptTranslator
 
 class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   val className = JavaScriptCompiler.type2class(spec.id)

@@ -1,11 +1,11 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import io.kaitai.struct.datatype.DataType
-import io.kaitai.struct.exprlang.Ast
-import io.kaitai.struct.languages.CppCompiler
-import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
-import io.kaitai.struct.translators.CppTranslator
-import io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig, RuntimeConfig}
+import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.exprlang.Ast
+import _root_.io.kaitai.struct.languages.CppCompiler
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.translators.CppTranslator
+import _root_.io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig, RuntimeConfig}
 
 class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntimeConfig) extends BaseGenerator(spec) {
   val config = RuntimeConfig(cppConfig = cppConfig)

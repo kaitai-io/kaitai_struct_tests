@@ -2,12 +2,12 @@ package io.kaitai.struct.testtranslator
 
 import java.io.{File, FileReader, FileWriter}
 
-import io.kaitai.struct.JavaMain.CLIConfig
-import io.kaitai.struct.datatype.DataType.UserTypeInstream
-import io.kaitai.struct.format._
-import io.kaitai.struct.formats.JavaKSYParser
-import io.kaitai.struct.testtranslator.specgenerators._
-import io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig}
+import _root_.io.kaitai.struct.JavaMain.CLIConfig
+import _root_.io.kaitai.struct.datatype.DataType.UserTypeInstream
+import _root_.io.kaitai.struct.format._
+import _root_.io.kaitai.struct.formats.JavaKSYParser
+import _root_.io.kaitai.struct.testtranslator.specgenerators._
+import _root_.io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig}
 
 object Main extends App {
   val baseDir = ".."

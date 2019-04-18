@@ -1,11 +1,11 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import io.kaitai.struct.ClassTypeProvider
-import io.kaitai.struct.datatype.DataType
-import io.kaitai.struct.exprlang.Ast
-import io.kaitai.struct.languages.PythonCompiler
-import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
-import io.kaitai.struct.translators.PythonTranslator
+import _root_.io.kaitai.struct.ClassTypeProvider
+import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.exprlang.Ast
+import _root_.io.kaitai.struct.languages.PythonCompiler
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.translators.PythonTranslator
 
 class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   importList.add("import unittest")

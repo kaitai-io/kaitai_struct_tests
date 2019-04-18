@@ -1,10 +1,10 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import io.kaitai.struct.datatype.DataType
-import io.kaitai.struct.datatype.DataType.{ArrayType, BytesType}
-import io.kaitai.struct.exprlang.Ast
-import io.kaitai.struct.testtranslator.{TestAssert, TestSpec}
-import io.kaitai.struct.translators.{AbstractTranslator, TypeDetector}
+import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.datatype.DataType.{ArrayType, BytesType}
+import _root_.io.kaitai.struct.exprlang.Ast
+import _root_.io.kaitai.struct.testtranslator.{TestAssert, TestSpec}
+import _root_.io.kaitai.struct.translators.{AbstractTranslator, TypeDetector}
 
 abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
   val translator: AbstractTranslator with TypeDetector

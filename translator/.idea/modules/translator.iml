@@ -14,8 +14,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="sbt: com.github.scopt:scopt_2.12:3.6.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.12.8:jar" level="project" />
     <orderEntry type="library" name="sbt: org.yaml:snakeyaml:1.16:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.12.4:jar" level="project" />
     <orderEntry type="library" name="sbt: io.kaitai:kaitai-struct-compiler_2.12:0.9-SNAPSHOT:jar" level="project" />
     <orderEntry type="library" name="sbt: com.lihaoyi:sourcecode_2.12:0.1.4:jar" level="project" />
     <orderEntry type="library" name="sbt: com.lihaoyi:fastparse_2.12:1.0.0:jar" level="project" />

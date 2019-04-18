@@ -1,6 +1,6 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import io.kaitai.struct.{ImportList, StringLanguageOutputWriter}
+import _root_.io.kaitai.struct.{ImportList, StringLanguageOutputWriter}
 
 abstract class SpecGenerator {
   val importList = new ImportList()
