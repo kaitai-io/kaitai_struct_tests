@@ -3,6 +3,7 @@
 package spec
 
 import (
+	"runtime/debug"
 	"os"
 	"testing"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
@@ -11,6 +12,12 @@ import (
 )
 
 func TestBcdUserTypeBe(t *testing.T) {
+	defer func() {
+		if r := recover(); r != nil {
+			debug.PrintStack()
+			t.Fatal("unexpected panic:", r)
+		}
+	}()
 	f, err := os.Open("../../src/bcd_user_type_be.bin")
 	if err != nil {
 		t.Fatal(err)

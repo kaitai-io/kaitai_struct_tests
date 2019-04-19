@@ -1,6 +1,7 @@
 package spec
 
 import (
+	"runtime/debug"
 	"os"
 	"testing"
 	"github.com/stretchr/testify/assert"
@@ -9,6 +10,12 @@ import (
 )
 
 func TestRepeatEosU4(t *testing.T) {
+	defer func() {
+		if r := recover(); r != nil {
+			debug.PrintStack()
+			t.Fatal("unexpected panic:", r)
+		}
+	}()
 	f, err := os.Open("../../src/repeat_eos_struct.bin")
 	if err != nil {
 		t.Fatal(err)

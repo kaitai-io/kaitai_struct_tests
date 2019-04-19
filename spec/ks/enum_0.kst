@@ -1,5 +1,5 @@
 id: enum_0
-data: enum_0.bin
+data: term_strz.bin
 asserts:
   - actual: pet_1
     expected: animal::cat

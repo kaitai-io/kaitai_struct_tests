@@ -1,12 +1,12 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
-import io.kaitai.struct.datatype.DataType
-import io.kaitai.struct.datatype.DataType._
-import io.kaitai.struct.exprlang.Ast
-import io.kaitai.struct.languages.RustCompiler
-import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
-import io.kaitai.struct.translators.RustTranslator
+import _root_.io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
+import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.datatype.DataType._
+import _root_.io.kaitai.struct.exprlang.Ast
+import _root_.io.kaitai.struct.languages.RustCompiler
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.translators.RustTranslator
 
 class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   val className = RustCompiler.type2class(spec.id)

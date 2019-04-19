@@ -6,7 +6,8 @@ rm -rf "$FORMATS_COMPILED_DIR"
 mkdir -p "$FORMATS_COMPILED_DIR"
 "$COMPILER_DIR/jvm/target/universal/stage/bin/kaitai-struct-compiler" -- \
 	--verbose all -t all -d "$FORMATS_COMPILED_DIR" \
-	-I "$FORMATS_REPO_DIR:$FORMATS_KSY_DIR/ks_path" \
+	--import-path "$FORMATS_REPO_DIR" \
+	--import-path "$FORMATS_KSY_DIR/ks_path" \
 	--java-package io.kaitai.struct.testformats \
 	--php-namespace 'Kaitai\Struct\Tests' \
 	--go-package test_formats \

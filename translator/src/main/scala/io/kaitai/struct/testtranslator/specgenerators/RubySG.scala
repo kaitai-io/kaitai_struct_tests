@@ -1,11 +1,11 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import io.kaitai.struct.datatype.DataType
-import io.kaitai.struct.exprlang.Ast
-import io.kaitai.struct.languages.RubyCompiler
-import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
-import io.kaitai.struct.translators.RubyTranslator
-import io.kaitai.struct.{ClassTypeProvider, Utils}
+import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.exprlang.Ast
+import _root_.io.kaitai.struct.languages.RubyCompiler
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.translators.RubyTranslator
+import _root_.io.kaitai.struct.{ClassTypeProvider, Utils}
 
 class RubySG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   val translator = new RubyTranslator(provider)

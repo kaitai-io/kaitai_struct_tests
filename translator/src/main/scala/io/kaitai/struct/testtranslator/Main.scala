@@ -2,12 +2,12 @@ package io.kaitai.struct.testtranslator
 
 import java.io.{File, FileReader, FileWriter}
 
-import io.kaitai.struct.ClassTypeProvider
-import io.kaitai.struct.JavaMain.CLIConfig
-import io.kaitai.struct.datatype.DataType.UserTypeInstream
-import io.kaitai.struct.format._
-import io.kaitai.struct.formats.JavaKSYParser
-import io.kaitai.struct.testtranslator.specgenerators._
+import _root_.io.kaitai.struct.JavaMain.CLIConfig
+import _root_.io.kaitai.struct.datatype.DataType.UserTypeInstream
+import _root_.io.kaitai.struct.format._
+import _root_.io.kaitai.struct.formats.JavaKSYParser
+import _root_.io.kaitai.struct.testtranslator.specgenerators._
+import _root_.io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig}
 
 object Main extends App {
   val baseDir = ".."
@@ -76,6 +76,36 @@ object Main extends App {
     origSpecs
   }
 
+  def getSG(lang: String, testSpec: TestSpec, provider: ClassTypeProvider): BaseGenerator = lang match {
+    case "construct" => new ConstructSG(testSpec, provider)
+    case "cpp_stl_98" => new CppStlSG(testSpec, provider, CppRuntimeConfig().copyAsCpp98())
+    case "cpp_stl_11" => new CppStlSG(testSpec, provider, CppRuntimeConfig().copyAsCpp11())
+    case "csharp" => new CSharpSG(testSpec, provider)
+    case "go" => new GoSG(testSpec, provider)
+    case "java" => new JavaSG(testSpec, provider)
+    case "javascript" => new JavaScriptSG(testSpec, provider)
+    case "perl" => new PerlSG(testSpec, provider)
+    case "php" => new PHPSG(testSpec, provider)
+    case "python" => new PythonSG(testSpec, provider)
+    case "ruby" => new RubySG(testSpec, provider)
+    case "rust" => new RustSG(testSpec, provider)
+  }
+
+  final val ALL_LANGS = List(
+    "construct",
+    "cpp_stl_98",
+    "cpp_stl_11",
+    "csharp",
+    //"go",
+    "java",
+    "javascript",
+    "perl",
+    "php",
+    "python",
+    "ruby",
+    "rust"
+  )
+
   def doAllSpecs(testName: String): Unit = {
     Console.println(s"doAllSpecs($testName)")
 
@@ -84,26 +114,15 @@ object Main extends App {
     val initObj = classSpecs(INIT_OBJ_TYPE)
     val provider = new ClassTypeProvider(classSpecs, initObj)
 
-    val sgs = Map(
-      "construct" -> new ConstructSG(testSpec, provider),
-      "cpp_stl" -> new CppStlSG(testSpec, provider),
-      //"go" -> new GoSG(testSpec, provider),
-      "java" -> new JavaSG(testSpec, provider),
-      "javascript" -> new JavaScriptSG(testSpec, provider),
-      "php" -> new PHPSG(testSpec, provider),
-      "python" -> new PythonSG(testSpec, provider),
-      "ruby" -> new RubySG(testSpec, provider),
-      "rust" -> new RustSG(testSpec, provider)
-    )
-
-    sgs.foreach { case (langName, sg) =>
+    ALL_LANGS.foreach((langName) => {
+      val sg = getSG(langName, testSpec, provider)
       try {
         sg.run()
         writeFile(s"$outDir/$langName/${sg.fileName(testName)}", sg.results)
       } catch {
         case e => e.printStackTrace(Console.err)
       }
-    }
+    })
   }
 
   def doOneSpec(langName: String, testName: String) {
@@ -112,8 +131,7 @@ object Main extends App {
     val initObj = classSpecs(INIT_OBJ_TYPE)
     val provider = new ClassTypeProvider(classSpecs, initObj)
 
-//    val sg = new PythonSG(testSpec, provider)
-    val sg = new CppStlSG(testSpec, provider)
+    val sg = getSG(langName, testSpec, provider)
     sg.run()
 
     writeFile(outDir + "/" + langName + "/" + sg.fileName(testName), sg.results)
@@ -131,7 +149,8 @@ object Main extends App {
   //doOneSpec("process_xor4_const")
   //doOneSpec("enum_0")
   //doOneSpec("cpp_stl", "switch_manual_int_else")
-  //doAllSpecs("if_values")
+  //doAllSpecs("io_local_var")
+  //doAllSpecs("repeat_eos_bit")
 
   doAll()
 }

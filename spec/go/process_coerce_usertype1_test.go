@@ -3,6 +3,7 @@
 package spec
 
 import (
+	"runtime/debug"
 	"os"
 	"testing"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
@@ -11,6 +12,12 @@ import (
 )
 
 func TestProcessCoerceUsertype1(t *testing.T) {
+	defer func() {
+		if r := recover(); r != nil {
+			debug.PrintStack()
+			t.Fatal("unexpected panic:", r)
+		}
+	}()
 	f, err := os.Open("../../src/process_coerce_bytes.bin")
 	if err != nil {
 		t.Fatal(err)

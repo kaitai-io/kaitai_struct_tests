@@ -1,7 +1,7 @@
 package io.kaitai.struct.testtranslator
 
-import io.kaitai.struct.exprlang.{Ast, Expressions}
-import io.kaitai.struct.format.ParseUtils
+import _root_.io.kaitai.struct.exprlang.{Ast, Expressions}
+import _root_.io.kaitai.struct.format.ParseUtils
 
 case class TestAssert(actual: Ast.expr, expected: Ast.expr)
 

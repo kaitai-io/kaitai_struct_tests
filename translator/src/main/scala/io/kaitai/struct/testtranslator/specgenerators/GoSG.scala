@@ -1,11 +1,11 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import io.kaitai.struct.datatype.DataType
-import io.kaitai.struct.exprlang.Ast
-import io.kaitai.struct.languages.GoCompiler
-import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
-import io.kaitai.struct.translators.GoTranslator
-import io.kaitai.struct.{ClassTypeProvider, RuntimeConfig, StringLanguageOutputWriter, Utils}
+import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.exprlang.Ast
+import _root_.io.kaitai.struct.languages.GoCompiler
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.translators.GoTranslator
+import _root_.io.kaitai.struct.{ClassTypeProvider, RuntimeConfig, StringLanguageOutputWriter, Utils}
 
 class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   /**

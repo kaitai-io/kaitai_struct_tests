@@ -1,1 +1,1 @@
-A simple test aggregation framework that unifies all test runs in single HTML report.
+A simple test aggregation framework that converts different test report formats into unified JSON.

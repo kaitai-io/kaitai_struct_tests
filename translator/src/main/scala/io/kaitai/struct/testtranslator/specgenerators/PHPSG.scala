@@ -1,12 +1,12 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
-import io.kaitai.struct.datatype.DataType
-import io.kaitai.struct.datatype.DataType.BytesType
-import io.kaitai.struct.exprlang.Ast
-import io.kaitai.struct.languages.PHPCompiler
-import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
-import io.kaitai.struct.translators.PHPTranslator
+import _root_.io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
+import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.datatype.DataType.BytesType
+import _root_.io.kaitai.struct.exprlang.Ast
+import _root_.io.kaitai.struct.languages.PHPCompiler
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.translators.PHPTranslator
 
 class PHPSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   val namespace = "Kaitai\\Struct\\Tests"

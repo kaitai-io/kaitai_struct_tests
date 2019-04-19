@@ -1,10 +1,10 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import io.kaitai.struct.{ClassTypeProvider, Utils}
-import io.kaitai.struct.datatype.DataType
-import io.kaitai.struct.exprlang.Ast
-import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
-import io.kaitai.struct.translators.ConstructTranslator
+import _root_.io.kaitai.struct.{ClassTypeProvider, Utils}
+import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.exprlang.Ast
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.translators.ConstructTranslator
 
 class ConstructSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   importList.add("import unittest")
