@@ -14,7 +14,7 @@ class TestTranslator(options: CLIOptions) {
   import Main._
 
   def run(): Unit = {
-    options.srcFiles.foreach((testName) =>
+    options.srcFiles.foreach(testName =>
       doTestSpec(testName, options.targets, options.outDir)
     )
   }
@@ -31,7 +31,9 @@ class TestTranslator(options: CLIOptions) {
       val sg = getSG(langName, testSpec, provider)
       try {
         sg.run()
-        writeFile(s"$outDir/$langName/${sg.fileName(testName)}", sg.results)
+        val outFile = s"$outDir/$langName/${sg.fileName(testName)}"
+        Console.println(s"... generating $outFile")
+        writeFile(outFile, sg.results)
       } catch {
         case e: Throwable => e.printStackTrace(Console.err)
       }

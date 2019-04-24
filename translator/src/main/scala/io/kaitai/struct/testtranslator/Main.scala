@@ -49,7 +49,7 @@ object Main extends App {
       c.copy(srcFiles = c.srcFiles :+ testName)
     } text("source test names (.kst)")
 
-    opt[String]('t', "target") required() unbounded() valueName("<language>") action { (x, c) =>
+    opt[String]('t', "target") unbounded() valueName("<language>") action { (x, c) =>
       if (x == "all") {
         c.copy(targets = ALL_LANGS)
       } else {
@@ -71,7 +71,7 @@ object Main extends App {
       c.copy(srcFiles = list.toSeq)
     } text("process all KST files available")
 
-    opt[Boolean]('f', "force") action { (x, c) =>
+    opt[Unit]('f', "force") action { (x, c) =>
       c.copy(outDir = specDir)
     } text(s"force overwrite specs in production spec dirs (default: generate in $defaultOutDir)")
   }
