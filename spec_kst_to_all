@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd translator
-sbt run
+sbt run $@
