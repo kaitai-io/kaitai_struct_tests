@@ -12,12 +12,12 @@ object Main extends App {
   val formatsDir = s"$baseDir/formats"
   val defaultOutDir = s"$specKsDir/out"
 
-  final val ALL_LANGS = List(
+  val ALL_LANGS = List(
     "construct",
     "cpp_stl_98",
     "cpp_stl_11",
     "csharp",
-    //"go",
+    "go",
     "java",
     "javascript",
     "perl",
@@ -27,8 +27,10 @@ object Main extends App {
     "rust"
   )
 
-  final val INIT_OBJ_TYPE = "unique_top_level_container"
-  final val INIT_OBJ_NAME = "q1w2e3"
+  val ALL_GOOD_LANGS = ALL_LANGS.filterNot(_ == "go")
+
+  val INIT_OBJ_TYPE = "unique_top_level_container"
+  val INIT_OBJ_NAME = "q1w2e3"
 
   case class CLIOptions(
     srcFiles: Seq[String] = Seq(),
@@ -56,7 +58,7 @@ object Main extends App {
 
     opt[String]('t', "target") unbounded() valueName("<language>") action { (x, c) =>
       if (x == "all") {
-        c.copy(targets = ALL_LANGS)
+        c.copy(targets = ALL_GOOD_LANGS)
       } else {
         c.copy(targets = c.targets :+ x)
       }
@@ -85,7 +87,7 @@ object Main extends App {
     case None => System.exit(1)
     case Some(config0) =>
       val config = if (config0.targets.isEmpty) {
-        config0.copy(targets = ALL_LANGS)
+        config0.copy(targets = ALL_GOOD_LANGS)
       } else {
         config0
       }
