@@ -17,6 +17,7 @@ class RubySG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
   override def header(): Unit = {
     out.puts(s"require '${spec.id}'")
+    spec.extraImports.foreach(fn => out.puts(s"require '$fn'"))
     out.puts
     out.puts(s"RSpec.describe $className do")
     out.inc
