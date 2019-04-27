@@ -1,5 +1,6 @@
 id: imports0
 data: fixed_struct.bin
+imports: hello_world
 asserts:
   - actual: two
     expected: 0x50

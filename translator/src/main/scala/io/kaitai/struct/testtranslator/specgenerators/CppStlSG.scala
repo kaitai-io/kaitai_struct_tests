@@ -17,6 +17,7 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
 
   importList.add("<boost/test/unit_test.hpp>")
   importList.add(s"<${spec.id}.h>")
+  spec.extraImports.foreach(entry => importList.add(s"<$entry.h>"))
   importList.add("<iostream>")
   importList.add("<fstream>")
   importList.add("<vector>")

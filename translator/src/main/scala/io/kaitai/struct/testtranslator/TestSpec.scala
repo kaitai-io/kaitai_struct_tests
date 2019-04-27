@@ -8,7 +8,12 @@ import io.kaitai.struct.formats.JavaKSYParser
 
 case class TestAssert(actual: Ast.expr, expected: Ast.expr)
 
-case class TestSpec(id: String, data: String, asserts: List[TestAssert])
+case class TestSpec(
+  id: String,
+  data: String,
+  asserts: List[TestAssert],
+  extraImports: List[String]
+)
 
 object TestSpec {
   def testAssertFromYaml(src: Any, path: List[String]): TestAssert = {
@@ -29,8 +34,9 @@ object TestSpec {
     val id = ParseUtils.getValueStr(srcMap, "id", List())
     val data = ParseUtils.getValueStr(srcMap, "data", List())
     val asserts = ParseUtils.getList[TestAssert](srcMap, "asserts", testAssertFromYaml, List())
+    val extraImports = ParseUtils.getListStr(srcMap, "imports", List())
 
-    TestSpec(id, data, asserts)
+    TestSpec(id, data, asserts, extraImports)
   }
 
   def fromFile(fileName: String): TestSpec = {
