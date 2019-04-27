@@ -55,4 +55,5 @@ COUNT_PASS=$(grep '^--- PASS' "$ABS_REPORT_LOG" | wc -l)
 
 echo "Totals: $COUNT_TOTAL ran, $COUNT_PASS passed, $COUNT_FAIL failed"
 
-aggregate/convert_to_json go "$TEST_OUT_DIR/go/report.xml" "$TEST_OUT_DIR/go/ci.json"
+./kst-adoption-report go
+aggregate/convert_to_json go "$TEST_OUT_DIR/go" "$TEST_OUT_DIR/go/ci.json"
