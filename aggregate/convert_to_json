@@ -69,11 +69,14 @@ when 'cpp_stl'
     ValgrindXMLParser.new("#{infile}/valgrind.xml").to_h
   )
 when 'java'
-  add_fails(
-    JUnitXMLParser.new("#{infile}/junitreports").to_h,
-    BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h
+  add_kst_adoption(
+    add_fails(
+      JUnitXMLParser.new("#{infile}/junitreports").to_h,
+      BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h
+    ),
+    infile
   )
-when 'go', 'java', 'javascript', 'lua', 'perl', 'php', 'rust'
+when 'go', 'javascript', 'lua', 'perl', 'php', 'rust'
   JUnitXMLParser.new(infile).to_h
 when 'python'
   add_kst_adoption(
