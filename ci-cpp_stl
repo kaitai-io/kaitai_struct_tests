@@ -24,4 +24,5 @@ else
 	echo '<?xml version="1.0"?><valgrindoutput></valgrindoutput>' >"$CPP_TEST_OUT_DIR/valgrind.xml"
 fi
 
+./kst-adoption-report $(basename "$SRC_DIR")
 aggregate/convert_to_json cpp_stl "$CPP_TEST_OUT_DIR" "$CPP_TEST_OUT_DIR/ci.json"

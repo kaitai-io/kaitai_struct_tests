@@ -63,10 +63,13 @@ lang, infile, outfile = ARGV
 
 result = case lang
 when 'cpp_stl'
-  add_fails(
-    BoostTestParser.new("#{infile}/results.xml").to_h,
-    BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h,
-    ValgrindXMLParser.new("#{infile}/valgrind.xml").to_h
+  add_kst_adoption(
+    add_fails(
+      BoostTestParser.new("#{infile}/results.xml").to_h,
+      BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h,
+      ValgrindXMLParser.new("#{infile}/valgrind.xml").to_h
+    ),
+    infile
   )
 when 'java'
   add_kst_adoption(
