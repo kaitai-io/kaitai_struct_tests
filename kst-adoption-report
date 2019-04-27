@@ -10,6 +10,8 @@ end
 
 def glob_spec_files(lang)
   case lang
+  when 'python'
+    Dir.glob('spec/python/**/test_*.py')
   when 'ruby'
     Dir.glob('spec/ruby/**/*_spec.rb')
   else
@@ -19,6 +21,9 @@ end
 
 def spec_file_to_test_name(lang, fn)
   case lang
+  when 'python'
+    raise "Unable to extract test name from #{fn.inspect}" unless fn =~ /^test_(.*?)\.py$/
+    underscore_to_ucamelcase($1)
   when 'ruby'
     raise "Unable to extract test name from #{fn.inspect}" unless fn =~ /^(.*?)_spec\.rb$/
     underscore_to_ucamelcase($1)
