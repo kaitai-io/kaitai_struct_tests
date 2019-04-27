@@ -14,6 +14,8 @@ def glob_spec_files(lang)
     Dir.glob("spec/#{lang}/test_*.cpp")
   when 'java'
     Dir.glob('spec/java/src/**/Test*.java')
+  when 'javascript'
+    Dir.glob('spec/javascript/test_*.js')
   when 'python'
     Dir.glob('spec/python/**/test_*.py')
   when 'ruby'
@@ -31,6 +33,9 @@ def spec_file_to_test_name(lang, fn)
   when 'java'
     raise "Unable to extract test name from #{fn.inspect}" unless fn =~ /^Test(.*?)\.java$/
     $1
+  when 'javascript'
+    raise "Unable to extract test name from #{fn.inspect}" unless fn =~ /^test_(.*?)\.js$/
+    underscore_to_ucamelcase($1)
   when 'python'
     raise "Unable to extract test name from #{fn.inspect}" unless fn =~ /^test_(.*?)\.py$/
     underscore_to_ucamelcase($1)
