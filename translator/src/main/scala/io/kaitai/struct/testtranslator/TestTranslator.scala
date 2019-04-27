@@ -56,7 +56,8 @@ class TestTranslator(options: CLIOptions) {
     TestSpec.fromFile(s"$specKsDir/$testName.kst")
 
   def loadClassSpecs(testName: String): ClassSpecs = {
-    val origSpecs = JavaKSYParser.localFileToSpecs(s"$formatsDir/$testName.ksy", CLIConfig())
+    val cliConfig = CLIConfig(importPaths = Seq(importsDir))
+    val origSpecs = JavaKSYParser.localFileToSpecs(s"$formatsDir/$testName.ksy", cliConfig)
 
     val userType = UserTypeInstream(origSpecs.firstSpec.name, None)
     userType.classSpec = Some(origSpecs.firstSpec)
