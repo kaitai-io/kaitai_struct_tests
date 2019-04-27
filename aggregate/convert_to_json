@@ -36,13 +36,24 @@ def add_fails(first, *seconds)
   first
 end
 
+def add_kst_adoption(tests, log_dir)
+  kst_tests = File.readlines("#{log_dir}/kst_adoption.log")
+  kst_tests.each { |name|
+    name.chomp!
+    tests[name] ||= {}
+    tests[name]['is_kst'] = true
+  }
+  tests
+end
+
 def report_summary(result)
-  by_status = {}
+  by_status = {'kst' => 0}
   result.each_pair { |name, test_result|
     next if name[0] == '$'
     status = test_result['status']
     by_status[status] ||= 0
     by_status[status] += 1
+    by_status['kst'] += 1 if test_result['is_kst']
   }
 
   puts "SUMMARY: #{by_status.inspect}"
@@ -65,7 +76,10 @@ when 'java'
 when 'go', 'java', 'javascript', 'lua', 'perl', 'php', 'python', 'rust'
   JUnitXMLParser.new(infile).to_h
 when 'ruby'
-  RSpecJSONParser.new(infile).to_h
+  add_kst_adoption(
+    RSpecJSONParser.new("#{infile}/test-output-ruby.json").to_h,
+    infile
+  )
 when 'csharp'
   add_fails(
     NUnitXMLParser.new("#{infile}/TestResult.xml").to_h,
