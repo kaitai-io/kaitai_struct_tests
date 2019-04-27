@@ -45,7 +45,14 @@ class PartialBuilder
   # 3 = build good, tests failed
   def run
     return 2 unless partial_build
-    return 3 unless run_tests
+
+    log "running tests"
+    t1 = Time.now
+    tests_result = run_tests
+    t2 = Time.now
+    log "running tests: elapsed: #{t2 - t1}s"
+
+    return 3 unless tests_result
     0
   end
 
@@ -70,7 +77,11 @@ class PartialBuilder
 
       build_log = "#{@test_out_dir}/build-#{attempt}.log"
       log "build attempt #{attempt} (log: #{build_log})"
-      if build_project(build_log) == 0
+      t1 = Time.now
+      result = build_project(build_log)
+      t2 = Time.now
+      log "build attempt #{attempt}: elapsed: #{(t2 - t1).to_i}s"
+      if result == 0
         log attempt == 1 ? "perfect build succeeded" : "success on attempt \##{attempt}, #{disp_files.size}/#{orig_size} files survived"
         return true
       else
