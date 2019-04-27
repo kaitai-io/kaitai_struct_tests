@@ -79,14 +79,14 @@ when 'java'
     ),
     infile
   )
-when 'go', 'lua', 'perl', 'php', 'rust'
+when 'go', 'lua', 'perl', 'rust'
   JUnitXMLParser.new(infile).to_h
 when 'javascript'
   add_kst_adoption(
     JUnitXMLParser.new("#{infile}/test-output-javascript.xml").to_h,
     infile
   )
-when 'python'
+when 'php', 'python'
   add_kst_adoption(
     JUnitXMLParser.new(infile).to_h,
     infile
