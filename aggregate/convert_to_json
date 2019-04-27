@@ -79,9 +79,9 @@ when 'java'
     ),
     infile
   )
-when 'lua', 'perl', 'rust'
+when 'lua', 'rust'
   JUnitXMLParser.new(infile).to_h
-when 'go'
+when 'go', 'perl'
   add_kst_adoption(
     JUnitXMLParser.new("#{infile}/report.xml").to_h,
     infile

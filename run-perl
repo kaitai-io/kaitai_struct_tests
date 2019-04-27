@@ -6,4 +6,5 @@ mkdir -p "$TEST_OUT_DIR"/perl
 
 PERLLIB="$PERL_RUNTIME_DIR:compiled/perl" perl spec/perl/_run.pl
 
-aggregate/convert_to_json perl "$TEST_OUT_DIR/perl/output.xml" "$TEST_OUT_DIR/perl/ci.json"
+./kst-adoption-report perl
+aggregate/convert_to_json perl "$TEST_OUT_DIR/perl" "$TEST_OUT_DIR/perl/ci.json"
