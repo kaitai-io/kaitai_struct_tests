@@ -3,6 +3,7 @@ package io.kaitai.struct.testtranslator
 import java.io.File
 
 import _root_.io.kaitai.struct.format._
+import io.kaitai.struct.Version
 
 object Main extends App {
   val baseDir = ".."
@@ -34,6 +35,10 @@ object Main extends App {
     targets: Seq[String] = Seq(),
     outDir: String = defaultOutDir
   )
+
+  // Stupid ksc build-time issue: no simple way to get that generated constant
+  // into xplatform sources, so we copy it in run-time.
+  KSVersion.current = Version.version
 
   val parser = new scopt.OptionParser[CLIOptions]("kst_translator") {
     override def showUsageOnError = true
