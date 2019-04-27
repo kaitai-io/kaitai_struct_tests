@@ -41,7 +41,7 @@ class PerlSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
   override def nullAssert(actual: Ast.expr): Unit = {
     val actStr = translateAct(actual)
-    out.puts(s"$$this->assertEquals(null, $actStr);")
+    out.puts(s"ok(!defined($actStr), 'nil');")
   }
 
   override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit = {
