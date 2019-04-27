@@ -4,4 +4,5 @@
 
 ./run-csharp
 
+./kst-adoption-report csharp
 aggregate/convert_to_json csharp "$TEST_OUT_DIR/csharp" "$TEST_OUT_DIR/csharp/ci.json"

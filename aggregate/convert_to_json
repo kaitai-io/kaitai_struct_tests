@@ -97,9 +97,12 @@ when 'ruby'
     infile
   )
 when 'csharp'
-  add_fails(
-    NUnitXMLParser.new("#{infile}/TestResult.xml").to_h,
-    BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h,
+  add_kst_adoption(
+    add_fails(
+      NUnitXMLParser.new("#{infile}/TestResult.xml").to_h,
+      BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h,
+    ),
+    infile
   )
 when 'graphviz'
   add_fails(
