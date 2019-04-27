@@ -45,6 +45,12 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
     out.puts(s"BOOST_CHECK_EQUAL($actStr, $expStr);")
   }
 
+  override def floatAssert(check: TestAssert): Unit = {
+    val actStr = translateAct(check.actual)
+    val expStr = translator.translate(check.expected)
+    out.puts(s"BOOST_CHECK_CLOSE($actStr, $expStr, $FLOAT_DELTA);")
+  }
+
   def nullAssert(actual: Ast.expr): Unit = {
     val nullCheckStr = actual match {
       case Ast.expr.Attribute(x, Ast.identifier(attrName)) =>

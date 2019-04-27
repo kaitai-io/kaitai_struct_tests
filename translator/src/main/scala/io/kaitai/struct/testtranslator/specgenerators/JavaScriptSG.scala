@@ -40,6 +40,12 @@ class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGene
     }
   }
 
+  override def floatAssert(check: TestAssert): Unit = {
+    val actStr = translateAct(check.actual)
+    val expStr = translator.translate(check.expected)
+    out.puts(s"assert(Math.abs($actStr - $expStr) < $FLOAT_DELTA);")
+  }
+
   override def nullAssert(actual: Ast.expr): Unit = {
     val actStr = translateAct(actual)
     out.puts(s"assert.strictEqual($actStr, undefined);")

@@ -65,6 +65,13 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
     out.puts(s"assert.EqualValues(t, $expStr, $actStr)")
   }
 
+  override def floatAssert(check: TestAssert): Unit = {
+    val actStr = translateAct(check.actual)
+    val expStr = translator.translate(check.expected)
+    importList.add("\"github.com/stretchr/testify/assert\"")
+    out.puts(s"assert.InDelta(t, $expStr, $actStr, $FLOAT_DELTA)")
+  }
+
   def nullAssert(actual: Ast.expr): Unit = {
     importList.add("\"github.com/stretchr/testify/assert\"")
     val actStr = translateAct(actual)

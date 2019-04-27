@@ -47,6 +47,12 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     }
   }
 
+  override def floatAssert(check: TestAssert): Unit = {
+    val actStr = translateAct(check.actual)
+    val expStr = translator.translate(check.expected)
+    out.puts(s"assertEquals($actStr, $expStr, $FLOAT_DELTA);")
+  }
+
   override def nullAssert(actual: Ast.expr): Unit = {
     val actStr = translateAct(actual)
     out.puts(s"assertNull($actStr);")

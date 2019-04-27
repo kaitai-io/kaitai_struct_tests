@@ -39,6 +39,12 @@ class RubySG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     out.puts(s"expect($actStr).to eq $expStr")
   }
 
+  override def floatAssert(check: TestAssert): Unit = {
+    val actStr = translateAct(check.actual)
+    val expStr = translator.translate(check.expected)
+    out.puts(s"expect($actStr).to be_within($FLOAT_DELTA).of $expStr")
+  }
+
   override def nullAssert(actual: Ast.expr): Unit = {
     val actStr = translateAct(actual)
     out.puts(s"expect($actStr).to be_nil")
