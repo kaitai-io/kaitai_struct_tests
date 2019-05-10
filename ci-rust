@@ -1,12 +1,11 @@
 #!/bin/sh
-
+set -eu
 . ./config
 
 mkdir -p "$TEST_OUT_DIR/rust"
 
 cd spec/rust
-mkdir src
+mkdir -p src
 touch src/lib.rs
 cargo build
-cargo test-junit \
-      --name "../../$TEST_OUT_DIR/rust/results.xml"
+cargo junit --name "../../$TEST_OUT_DIR/rust/results.xml"

@@ -34,8 +34,6 @@ fn remove_existing(destination_path: &Path) -> io::Result<()> {
 fn copy_new(source_path: &Path, destination_path: &Path) -> io::Result<()> {
     let mut librs = fs::File::create(source_path.join("lib.rs"))?;
 
-    write!(librs, "extern crate kaitai_struct;")?;
-    
     for entry in fs::read_dir(source_path)? {
         let entry = entry?;
         let path = entry.path();
