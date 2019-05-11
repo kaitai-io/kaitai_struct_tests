@@ -48,7 +48,7 @@ object Main extends App {
 
     head("KST translator", KSVersion.current.toString)
 
-    arg[String]("<test_name>...") unbounded() action { (x, c) =>
+    arg[String]("<test_name>...") unbounded() optional() action { (x, c) =>
       val testName: String = if (x.endsWith("kst")) {
         x.substring(0, x.length - 4)
       } else {
@@ -92,6 +92,8 @@ object Main extends App {
       } else {
         config0
       }
+      if (config.srcFiles.isEmpty)
+        parser.showUsage()
       new TestTranslator(config).run()
   }
 }
