@@ -40,7 +40,6 @@ fn copy_new(source_path: &Path, destination_path: &Path) -> io::Result<()> {
 
         if let Some(file_name) = path.file_name() {
             fs::copy(path.clone(), destination_path.join(file_name))?;
-
             write!(librs, "pub mod {};\n",
                    path.file_stem().unwrap().to_str().unwrap())?;
         }
