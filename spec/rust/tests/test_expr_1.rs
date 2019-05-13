@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_expr_1() {
-    let data = fs::read("src/str_encodings.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/str_encodings.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = Expr1::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.len_of_1, 10);

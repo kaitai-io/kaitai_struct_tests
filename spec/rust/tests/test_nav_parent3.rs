@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_nav_parent3() {
-    let data = fs::read("src/nav_parent2.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/nav_parent2.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = NavParent3::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.ofs_tags, 8);

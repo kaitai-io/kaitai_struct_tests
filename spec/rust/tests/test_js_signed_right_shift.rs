@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_js_signed_right_shift() {
-    let data = fs::read("src/fixed_struct.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/fixed_struct.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = JsSignedRightShift::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.should_be_40000000, 1073741824);

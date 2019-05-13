@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_term_bytes() {
-    let data = fs::read("src/term_strz.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/term_strz.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = TermBytes::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.s1, vec!([0x66, 0x6f, 0x6f]));

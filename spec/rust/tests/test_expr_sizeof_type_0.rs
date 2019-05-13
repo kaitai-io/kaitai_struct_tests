@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_expr_sizeof_type_0() {
-    let data = fs::read("src/fixed_struct.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/fixed_struct.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = ExprSizeofType0::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.sizeof_block, ((1 + 4) + 2));

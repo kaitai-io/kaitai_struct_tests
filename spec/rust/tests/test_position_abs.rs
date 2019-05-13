@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_position_abs() {
-    let data = fs::read("src/position_abs.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/position_abs.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = PositionAbs::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.index_offset, 32);

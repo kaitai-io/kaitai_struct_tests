@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_integers() {
-    let data = fs::read("src/fixed_struct.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/fixed_struct.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = Integers::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.uint8, 255);

@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_index_to_param_expr() {
-    let data = fs::read("src/index_sizes.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/index_sizes.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = IndexToParamExpr::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.qty, 3);

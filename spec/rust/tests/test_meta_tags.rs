@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_meta_tags() {
-    let data = fs::read("src/fixed_struct.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/fixed_struct.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = MetaTags::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
 }

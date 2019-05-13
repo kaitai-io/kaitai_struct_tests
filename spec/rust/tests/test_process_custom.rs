@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_process_custom() {
-    let data = fs::read("src/process_rotate.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/process_rotate.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = ProcessCustom::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.buf1, vec!([0x10, 0xb3, 0x94, 0x94, 0xf4]));

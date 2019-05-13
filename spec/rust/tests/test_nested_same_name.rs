@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_nested_same_name() {
-    let data = fs::read("src/repeat_n_struct.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/repeat_n_struct.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = NestedSameName::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.main_data.main_size, 2);

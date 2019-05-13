@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_enum_deep_literals() {
-    let data = fs::read("src/enum_0.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/enum_0.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = EnumDeepLiterals::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.is_pet_1_ok, true);

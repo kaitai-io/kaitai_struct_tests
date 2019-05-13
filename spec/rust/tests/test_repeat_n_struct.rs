@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_repeat_n_struct() {
-    let data = fs::read("src/repeat_n_struct.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/repeat_n_struct.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = RepeatNStruct::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.chunks.len(), 2);

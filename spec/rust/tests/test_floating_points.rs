@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_floating_points() {
-    let data = fs::read("src/floating_points.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/floating_points.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = FloatingPoints::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.single_value, 0.5);

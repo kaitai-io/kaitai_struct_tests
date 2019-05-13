@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_ts_packet_header() {
-    let data = fs::read("src/ts_packet.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/ts_packet.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = TsPacketHeader::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.sync_byte, 71);

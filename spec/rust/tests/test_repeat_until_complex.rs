@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_repeat_until_complex() {
-    let data = fs::read("src/repeat_until_complex.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/repeat_until_complex.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = RepeatUntilComplex::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.first.len(), 3);

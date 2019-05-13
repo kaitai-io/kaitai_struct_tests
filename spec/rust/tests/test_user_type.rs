@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_user_type() {
-    let data = fs::read("src/repeat_until_s4.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/repeat_until_s4.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = UserType::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.one.width, 66);

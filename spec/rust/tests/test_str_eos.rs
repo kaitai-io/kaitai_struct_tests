@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_str_eos() {
-    let data = fs::read("src/term_strz.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/term_strz.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = StrEos::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.str, "foo|bar|baz@");

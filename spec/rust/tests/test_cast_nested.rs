@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_cast_nested() {
-    let data = fs::read("src/switch_opcodes.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/switch_opcodes.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = CastNested::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.opcodes_0_str.value, "foobar");

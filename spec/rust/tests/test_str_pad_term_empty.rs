@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_str_pad_term_empty() {
-    let data = fs::read("src/str_pad_term_empty.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/str_pad_term_empty.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = StrPadTermEmpty::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.str_pad, "");

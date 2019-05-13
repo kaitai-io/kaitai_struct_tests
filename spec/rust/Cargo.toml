@@ -2,7 +2,6 @@
 name = "kaitai_test"
 version = "0.1.0"
 authors = ["Connor Wood <connorwood71@gmail.com>", "Bradlee Speice<bradlee@speice.io>"]
-build = "build.rs"
 edition = "2018"
 
 [dependencies]

@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_enum_0() {
-    let data = fs::read("src/enum_0.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/enum_0.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = Enum0::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.pet_1, animal::CAT);

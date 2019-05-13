@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_instance_std_array() {
-    let data = fs::read("src/instance_std_array.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/instance_std_array.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = InstanceStdArray::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.ofs, 16);

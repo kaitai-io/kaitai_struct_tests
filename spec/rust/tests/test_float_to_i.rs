@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_float_to_i() {
-    let data = fs::read("src/floating_points.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/floating_points.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = FloatToI::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.single_value, 0.5);

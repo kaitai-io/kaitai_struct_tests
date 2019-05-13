@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_process_xor_const() {
-    let data = fs::read("src/process_xor_1.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/process_xor_1.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = ProcessXorConst::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.key, 255);

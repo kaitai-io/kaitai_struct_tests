@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_repeat_until_s4() {
-    let data = fs::read("src/repeat_until_s4.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/repeat_until_s4.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = RepeatUntilS4::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.entries, [66, 4919, -251658241, -1]);

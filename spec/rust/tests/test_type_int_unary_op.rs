@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_type_int_unary_op() {
-    let data = fs::read("src/fixed_struct.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/fixed_struct.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = TypeIntUnaryOp::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.value_s2, 16720);

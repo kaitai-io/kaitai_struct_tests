@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_expr_enum() {
-    let data = fs::read("src/term_strz.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/term_strz.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = ExprEnum::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.const_dog, animal::DOG);

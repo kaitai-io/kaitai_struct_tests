@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_bits_simple() {
-    let data = fs::read("src/fixed_struct.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/fixed_struct.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = BitsSimple::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.byte_1, 80);

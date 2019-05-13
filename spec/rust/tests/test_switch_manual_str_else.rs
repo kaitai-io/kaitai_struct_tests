@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_switch_manual_str_else() {
-    let data = fs::read("src/switch_opcodes2.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/switch_opcodes2.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = SwitchManualStrElse::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.opcodes.len(), 4);

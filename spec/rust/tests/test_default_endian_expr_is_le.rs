@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_default_endian_expr_is_le() {
-    let data = fs::read("src/endian_expr.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/endian_expr.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = DefaultEndianExprIsLe::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.docs[0].indicator, vec!([0x49, 0x49]));

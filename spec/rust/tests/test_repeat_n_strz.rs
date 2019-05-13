@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_repeat_n_strz() {
-    let data = fs::read("src/repeat_n_strz.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/repeat_n_strz.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = RepeatNStrz::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.qty, 2);

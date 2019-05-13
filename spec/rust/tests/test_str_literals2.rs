@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_str_literals2() {
-    let data = fs::read("src/fixed_struct.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/fixed_struct.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = StrLiterals2::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.dollar1, "$foo");

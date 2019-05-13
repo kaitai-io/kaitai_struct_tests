@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_enum_if() {
-    let data = fs::read("src/if_struct.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/if_struct.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = EnumIf::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.op1.opcode, opcodes::A_STRING);

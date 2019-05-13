@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_default_big_endian() {
-    let data = fs::read("src/enum_0.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/enum_0.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = DefaultBigEndian::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.one, 117440512);

@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_expr_array() {
-    let data = fs::read("src/expr_array.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/expr_array.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = ExprArray::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.aint_size, 4);

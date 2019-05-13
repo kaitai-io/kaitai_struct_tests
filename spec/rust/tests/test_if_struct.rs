@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_if_struct() {
-    let data = fs::read("src/if_struct.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/if_struct.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = IfStruct::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.op1.opcode, 83);

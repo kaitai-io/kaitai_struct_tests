@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_nested_types3() {
-    let data = fs::read("src/fixed_struct.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/fixed_struct.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = NestedTypes3::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.a_cc.value_cc, 80);

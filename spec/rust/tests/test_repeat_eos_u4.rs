@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_repeat_eos_u4() {
-    let data = fs::read("src/repeat_eos_struct.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/repeat_eos_struct.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = RepeatEosU4::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.numbers, [0, 66, 66, 2069]);

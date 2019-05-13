@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_process_coerce_bytes() {
-    let data = fs::read("src/process_coerce_bytes.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/process_coerce_bytes.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = ProcessCoerceBytes::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.records[0].flag, 0);

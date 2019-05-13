@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_enum_negative() {
-    let data = fs::read("src/enum_negative.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/enum_negative.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = EnumNegative::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.f1, constants::NEGATIVE_ONE);

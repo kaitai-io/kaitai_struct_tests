@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_str_encodings() {
-    let data = fs::read("src/str_encodings.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/str_encodings.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = StrEncodings::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.str1, "Some ASCII");

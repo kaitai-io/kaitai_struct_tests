@@ -6,7 +6,7 @@ use std::fs;
 
 #[test]
 fn test_params_pass_usertype() {
-    let data = fs::read("src/position_in_seq.bin").expect("Unable to read data.");
+    let data = fs::read("../../src/position_in_seq.bin").expect("Unable to read data.");
     let reader = BytesReader::new(&data[..]);
     let r = ParamsPassUsertype::default().read(&reader, None, KStructUnit::parent_stack()).unwrap();
     // assert_eq!(r.first.foo, 1);
