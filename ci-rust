@@ -4,7 +4,7 @@ set -eu
 
 mkdir -p "$TEST_OUT_DIR/rust"
 
-rm -r "spec/rust/src"
+rm -rf "spec/rust/src"
 mkdir -p "spec/rust/src/"
 for rs in $(ls "$FORMATS_COMPILED_DIR/rust/"); do
     cp "$FORMATS_COMPILED_DIR/rust/$rs" "spec/rust/src"
