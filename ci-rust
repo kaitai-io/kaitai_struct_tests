@@ -12,4 +12,5 @@ for rs in $(ls "$FORMATS_COMPILED_DIR/rust/"); do
     echo "pub mod $mod_name;" >> "spec/rust/src/lib.rs"
 done
 
+cd "spec/rust"
 cargo junit --name "../../$TEST_OUT_DIR/rust/results.xml"
