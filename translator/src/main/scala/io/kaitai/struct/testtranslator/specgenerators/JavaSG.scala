@@ -30,6 +30,7 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   }
 
   override def runParseExpectError(exception: KSError): Unit = {
+    importList.add("io.kaitai.struct.KaitaiStream")
     out.puts(s"@Test(expectedExceptions = ${JavaCompiler.ksErrorName(exception)}.class)")
     runParseCommon()
   }
