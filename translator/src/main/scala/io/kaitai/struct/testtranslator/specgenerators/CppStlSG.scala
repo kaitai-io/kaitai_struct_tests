@@ -26,6 +26,9 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
     out.puts
     out.puts(s"BOOST_AUTO_TEST_CASE(test_${spec.id}) {")
     out.inc
+  }
+
+  override def runParse(): Unit = {
     out.puts("std::ifstream ifs(\"src/" + spec.data + "\", std::ifstream::binary);")
     out.puts("kaitai::kstream ks(&ifs);")
     out.puts(s"$className* r = new $className(&ks);")

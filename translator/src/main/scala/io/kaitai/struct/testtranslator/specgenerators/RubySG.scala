@@ -1,11 +1,11 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.exprlang.Ast
-import _root_.io.kaitai.struct.languages.RubyCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 import _root_.io.kaitai.struct.translators.RubyTranslator
 import _root_.io.kaitai.struct.{ClassTypeProvider, Utils}
+import io.kaitai.struct.languages.RubyCompiler
 
 class RubySG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   val translator = new RubyTranslator(provider)
@@ -23,8 +23,18 @@ class RubySG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     out.inc
     out.puts(s"it 'parses test properly' do")
     out.inc
+  }
+
+  override def runParse(): Unit = {
     out.puts(s"r = $className.from_file('src/${spec.data}')")
-    out.puts
+  }
+
+  override def runParseExpectError(exception: KSError): Unit = {
+    out.puts("expect {")
+    out.inc
+    runParse()
+    out.dec
+    out.puts(s"}.to raise_error(${RubyCompiler.ksErrorName(exception)})")
   }
 
   override def footer(): Unit = {

@@ -1,6 +1,6 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.datatype.DataType.{ArrayType, BytesType, FloatType}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.testtranslator.{TestAssert, TestSpec}
@@ -12,6 +12,8 @@ abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
   val FLOAT_DELTA = "1e-6"
 
   def header(): Unit
+  def runParse(): Unit = {}
+  def runParseExpectError(exception: KSError): Unit = ???
   def footer(): Unit
 
   def simpleAssert(check: TestAssert): Unit
@@ -22,8 +24,14 @@ abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
 
   override def run(): Unit = {
     header()
+    spec.exception match {
+      case None => runParse()
+      case Some(ex) => runParseExpectError(ex)
+    }
 
-    spec.asserts.foreach { (check) =>
+    out.puts
+
+    spec.asserts.foreach { check =>
       check.expected match {
         case Ast.expr.Name(Ast.identifier("null")) =>
           nullAssert(check.actual)

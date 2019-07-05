@@ -1,7 +1,7 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.ClassTypeProvider
-import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.datatype.DataType._
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.JavaCompiler
@@ -21,11 +21,23 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   override def header(): Unit = {
     out.puts(s"public class Test$className extends CommonSpec {")
     out.inc
+    out.puts
+  }
+
+  override def runParse(): Unit = {
     out.puts("@Test")
+    runParseCommon()
+  }
+
+  override def runParseExpectError(exception: KSError): Unit = {
+    out.puts(s"@Test(expectedExceptions = ${JavaCompiler.ksErrorName(exception)}.class)")
+    runParseCommon()
+  }
+
+  def runParseCommon(): Unit = {
     out.puts(s"public void test$className() throws Exception {")
     out.inc
     out.puts(s"$className r = $className.fromFile(SRC_DIR + " + "\"" + spec.data + "\");")
-    out.puts
   }
 
   override def footer(): Unit = {
