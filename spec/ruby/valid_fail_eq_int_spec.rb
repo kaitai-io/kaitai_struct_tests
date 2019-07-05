@@ -4,7 +4,9 @@ require 'valid_fail_eq_int'
 
 RSpec.describe ValidFailEqInt do
   it 'parses test properly' do
-    r = ValidFailEqInt.from_file('src/fixed_struct.bin')
+    expect {
+      r = ValidFailEqInt.from_file('src/fixed_struct.bin')
+    }.to raise_error(Kaitai::Struct::ValidationNotEqualError)
 
   end
 end
