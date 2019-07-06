@@ -36,12 +36,7 @@ object TestSpec {
     val id = ParseUtils.getValueStr(srcMap, "id", List())
     val data = ParseUtils.getValueStr(srcMap, "data", List())
     val asserts = ParseUtils.getList[TestAssert](srcMap, "asserts", testAssertFromYaml, List())
-    val exception = ParseUtils.getOptValueStr(srcMap, "exception", List()).map {
-      case "UndecidedEndiannessError" => UndecidedEndiannessError
-      case "ValidationNotEqualError" => ValidationNotEqualError
-      case other =>
-        throw new RuntimeException(s"unable to handle exception type '$other'")
-    }
+    val exception = ParseUtils.getOptValueStr(srcMap, "exception", List()).map(KSError.fromName)
     val extraImports = ParseUtils.getListStr(srcMap, "imports", List())
 
     TestSpec(id, data, asserts, exception, extraImports)
