@@ -4,5 +4,5 @@ import ../../compiled/nim/default_big_endian
 
 suite "Default big endian":
   test "Value read":
-    let value = DefaultBigEndian.read("../../src/enum_0.bin")
+    let value = DefaultBigEndian.fromFile("src/enum_0.bin")
     check(value.one == 117440512)
