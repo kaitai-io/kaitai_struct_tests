@@ -1,0 +1,11 @@
+#!/bin/sh
+
+. ./config
+
+rm -rf "$TEST_OUT_DIR/nim"
+mkdir -p "$TEST_OUT_DIR/nim"
+nim c -r --outdir:"$TEST_OUT_DIR/nim/bin" "spec/nim/generate_test_suite" "ci"
+nim c -r --outdir:"$TEST_OUT_DIR/nim/bin" "spec/nim/test" 
+
+touch "$TEST_OUT_DIR/nim/kst_adoption.log"
+aggregate/convert_to_json nim "$TEST_OUT_DIR/nim" "$TEST_OUT_DIR/nim/ci.json"

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+. ./config
+
+mkdir -p "$TEST_OUT_DIR/nim/bin"
+nim c -r --outdir:"$TEST_OUT_DIR/nim/bin" "spec/nim/generate_test_suite"
