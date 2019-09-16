@@ -1,16 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 
 . ./config
 
 if [ ! -f "spec/nim/test.nim" ]; then
-  RED='\033[1;31m'
-  YELLOW='\033[1;33m'
-  CYAN='\033[0;36m'
-  NC='\033[0m'
+	RED='\033[1;31m'
+	YELLOW='\033[1;33m'
+	CYAN='\033[0;36m'
+	NC='\033[0m'
 
-  printf "${RED}Error:${NC} Test suite doesn't exist\n"
-  printf "${YELLOW}Hint:${NC} Must first run the ${CYAN}run-nim_generate_suite${NC} script\n"
-  exit
+	printf "${RED}Error:${NC} Test suite doesn't exist\n"
+	printf "${YELLOW}Hint:${NC} Must first run the ${CYAN}run-nim_generate_suite${NC} script\n"
+	exit
 fi
 
 rm -rf "$TEST_OUT_DIR/nim"
@@ -19,9 +19,8 @@ mkdir -p "$TEST_OUT_DIR/nim/bin"
 i=0 args=()
 for var in "$@"
 do
-  args[$i]="Kaitai Struct Compiler Test Suite::Nim: $var"
-  ((++i))
+	args[$i]="Kaitai Struct Compiler Test Suite::Nim: $var"
+	((++i))
 done
 
-echo $arguments
 nim c -r --outdir:"$TEST_OUT_DIR/nim/bin" "spec/nim/test" "${args[@]}"
