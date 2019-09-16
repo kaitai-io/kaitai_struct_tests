@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 . ./config
 
@@ -16,11 +16,9 @@ fi
 rm -rf "$TEST_OUT_DIR/nim"
 mkdir -p "$TEST_OUT_DIR/nim/bin"
 
-i=0 args=()
+args=()
 for var in "$@"
 do
-	args[$i]="Kaitai Struct Compiler Test Suite::Nim: $var"
-	((++i))
+	args="$args \"Kaitai Struct Compiler Test Suite::Nim: $var\""
 done
-
-nim c -r --outdir:"$TEST_OUT_DIR/nim/bin" "spec/nim/test" "${args[@]}"
+eval nim c -r --outdir:"$TEST_OUT_DIR/nim/bin" "spec/nim/test" "$args"
