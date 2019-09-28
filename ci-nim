@@ -2,6 +2,9 @@
 
 . ./config
 
+nimble refresh
+nimble test
+
 rm -rf "$TEST_OUT_DIR/nim"
 mkdir -p "$TEST_OUT_DIR/nim"
 nim c -r --outdir:"$TEST_OUT_DIR/nim/bin" "spec/nim/generate_test_suite" "ci"
