@@ -26,6 +26,8 @@ let excluded = @[
   "index_to_param_eos",
   "index_to_param_expr",
   "instance_io_user",
+  "instance_std_array",
+  "instance_user_array",
   "integers",
   "io_local_var",
   "multiple_use",
