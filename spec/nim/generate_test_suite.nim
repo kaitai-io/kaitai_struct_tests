@@ -4,6 +4,7 @@ let excluded = @[
   "imports0",
   "cast_nested",
   "cast_to_imported",
+  "cast_to_top",
   "str_pad_term",
   "nested_same_name2",
   "expr_io_pos",
@@ -99,11 +100,11 @@ var
   imports = newSeq[string]()
 
 for _, name in walkDir("tests", true):
-  if name[1..^5] notin excluded:
+  let file = ".." / ".." / "compiled" / "nim" / name[1..^1]
+  if name[1..^5] notin excluded and fileExists(file):
+    imports.add(".." / ".." / "compiled" / "nim" / name[1..^5])
     names.add("Nim: " & name[1..^5].split("_").mapIt(capitalizeAscii(it)).join)
     tests.add(readFile("tests" / name))
-    if fileExists(".." / ".." / "compiled" / "nim" / name[1..^1]):
-      imports.add(".." / ".." / "compiled" / "nim" / name[1..^5])
 
 addCode(code):
   import os, options, unittest, "../../../runtime/nim/kaitai"
@@ -127,7 +128,7 @@ addCode(code):
     x == uint64(y)
   proc `==`[T: SomeInteger](x: seq[T]; y: seq[int]): bool =
     result = true
-    for i in 0 .. x.len:
+    for i in 0 ..< x.len:
       if int(x[i]) != y[i]:
         return false
   template `[]`[T](x: Option[T], idx: untyped): untyped = get(x)[idx]
