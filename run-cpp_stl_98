@@ -5,4 +5,5 @@
 ./run-cpp_stl \
 	"$(pwd)/compiled/cpp_stl_98" \
 	"$(pwd)/spec/cpp_stl_98" \
-	"$TEST_OUT_DIR/cpp_stl_98"
+	"$TEST_OUT_DIR/cpp_stl_98" \
+	$@
