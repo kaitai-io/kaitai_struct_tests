@@ -1,6 +1,7 @@
 /compiled/
 /test_out/
 /node_modules/
+/spec/ks/out/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -67,3 +68,7 @@ target/
 
 # pyenv
 .python-version
+
+# Nim
+spec/nim/test.nim
+spec_kst_to_nim
