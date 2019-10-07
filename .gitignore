@@ -72,3 +72,5 @@ target/
 # Nim
 spec/nim/test.nim
 spec_kst_to_nim
+build-compiler_jvm
+build-formats_nim
