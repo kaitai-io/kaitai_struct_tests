@@ -2,11 +2,13 @@ import os, strutils, sequtils, macros
 
 let excluded = @[
   "imports0",
+  "bits_simple",
   "cast_nested",
   "cast_to_imported",
   "cast_to_top",
   "str_pad_term",
   "nested_same_name2",
+  "default_endian_expr_is_be",
   "expr_io_pos",
   "process_coerce_usertype2",
   "switch_manual_str",
@@ -21,6 +23,8 @@ let excluded = @[
   "fixed_contents",
   "fixed_struct",
   "if_struct",
+  "if_instances",
+  "if_values",
   "index_sizes",
   "index_to_param_until",
   "index_to_param_eos",
@@ -49,6 +53,7 @@ let excluded = @[
   "process_coerce_switch",
   "process_to_user",
   "position_abs",
+  "position_to_end",
   "str_eos",
   "str_encodings",
   "str_encodings_default",
@@ -64,6 +69,7 @@ let excluded = @[
   "repeat_n_strz",
   "repeat_n_strz_double",
   "repeat_until_s4",
+  "type_ternary",
   "term_strz",
   "valid_short",
 ]
@@ -125,17 +131,13 @@ for i in imports:
   code.addImport(i)
 
 addCode(code):
-  converter dropOption[T](x: Option[T]): T = get(x)
-  proc `==`[T: SomeSignedInt](x: uint64, y: T): bool =
-    x == uint64(y)
   proc `==`[T: SomeInteger](x: seq[T]; y: seq[int]): bool =
     result = true
     for i in 0 ..< x.len:
       if int(x[i]) != y[i]:
         return false
-  template `[]`[T](x: Option[T], idx: untyped): untyped = get(x)[idx]
-  {.experimental: "dotOperators".}
-  template `.`[T](x: Option[T], field: untyped): untyped = get(x).field
+  proc `==`[T](x: Option[T], y: T): bool =
+    get(x) == y
 
 code.add("\nsuite \"Kaitai Struct Compiler Test Suite\":\n")
 
