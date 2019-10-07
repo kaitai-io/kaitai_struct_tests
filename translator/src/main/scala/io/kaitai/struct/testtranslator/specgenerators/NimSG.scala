@@ -3,12 +3,12 @@ package io.kaitai.struct.testtranslator.specgenerators
 import _root_.io.kaitai.struct.{ClassTypeProvider, Utils}
 import _root_.io.kaitai.struct.exprlang.Ast.expr
 import _root_.io.kaitai.struct.datatype.DataType
-import _root_.io.kaitai.struct.languages.NimCompiler
 import _root_.io.kaitai.struct.translators.NimTranslator
+import _root_.io.kaitai.struct.Utils
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 
 class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
-  val className = NimCompiler.type2class(spec.id)
+  val className = Utils.upperCamelCase(spec.id)
   val translator = new NimTranslator(provider, importList)
 
   // Members declared in io.kaitai.struct.testtranslator.specgenerators.BaseGenerator
