@@ -37,27 +37,7 @@ var
 for _, name in walkDir("spec" / "nim" / "tests", true):
   let file = "compiled" / "nim" / name[1..^1]
   if fileExists(file):
-    let
-      i = ".." / ".." / "compiled" / "nim" / name[1..^5]
-      t = readFile("spec" / "nim" / "tests" / name)
-    var test = ""
-    addCode(test):
-      import os, options, unittest, "../../../runtime/nim/kaitai"
-    test.addImport(i)
-    test.add("\n")
-    addCode(test):
-      proc `==`[T: SomeInteger](x: seq[T]; y: seq[int]): bool =
-        result = true
-        for i in 0 ..< x.len:
-          if int(x[i]) != y[i]:
-            return false
-      proc `==`[T](x: Option[T], y: T): bool =
-        get(x) == y
-    test.add(t)
-
-    let path = testOutDir / "currentlyTesting.nim"
-    writeFile(path, test)
-    let code = execShellCmd(&"nim c -r --outdir:\"{testOutDir}/bin\" \"{path}\"")
+    let code = execShellCmd(&"nim c --outdir:\"{testOutDir}/bin\" \"{file}")
     if code == 0:
       imports.add(i)
       names.add("Nim: " & name[1..^5].split("_").mapIt(capitalizeAscii(it)).join)
