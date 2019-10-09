@@ -10,7 +10,7 @@ let excluded = @[
   "cast_nested",
   "cast_to_imported",
   "cast_to_top",
-  "default_big_endian",
+  #"default_big_endian",
   "default_endian_expr_inherited",
   "default_endian_expr_is_be",
   "default_endian_expr_is_le",
