@@ -2,19 +2,19 @@
 
 . ./config
 
-#nimble refresh
-#nimble test
+nimble refresh
+nimble test
 
-#rm -rf "$TEST_OUT_DIR/nim"
-#mkdir -p "$TEST_OUT_DIR/nim/junitreports"
+rm -rf "$TEST_OUT_DIR/nim"
+mkdir -p "$TEST_OUT_DIR/nim/junitreports"
 
-#./kst-adoption-report nim
+./kst-adoption-report nim
 
-#for file in spec/nim/tests/*
-#do
-#  nim c -r --outdir:"$TEST_OUT_DIR/nim/bin" "$file"
-#done
-#rm -r "$TEST_OUT_DIR/nim/bin"
+for file in spec/nim/tests/*
+do
+  nim c -r --outdir:"$TEST_OUT_DIR/nim/bin" "$file"
+done
+rm -r "$TEST_OUT_DIR/nim/bin"
 
 for file in $TEST_OUT_DIR/nim/junitreports/*
 do
