@@ -12,15 +12,15 @@ mkdir -p "$TEST_OUT_DIR/nim/junitreports"
 
 for file in spec/nim/tests/*
 do
-  nim c -r --outdir:"$TEST_OUT_DIR/nim/bin" "$file"
+	nim c -r --outdir:"$TEST_OUT_DIR/nim/bin" "$file"
 done
 rm -r "$TEST_OUT_DIR/nim/bin"
 
 for file in $TEST_OUT_DIR/nim/junitreports/*
 do
-  xmllint --format "$file"
-  if [ $? -ne 0 ]
-  then rm "$file"
-  fi
+	xmllint --format "$file"
+	if [ $? -ne 0 ]; then
+		rm "$file"
+	fi
 done
 aggregate/convert_to_json nim "$TEST_OUT_DIR/nim" "$TEST_OUT_DIR/nim/ci.json"
