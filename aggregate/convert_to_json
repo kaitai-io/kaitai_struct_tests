@@ -71,7 +71,7 @@ when 'cpp_stl'
     ),
     infile
   )
-when 'java'
+when 'java', 'nim'
   add_kst_adoption(
     add_fails(
       JUnitXMLParser.new("#{infile}/junitreports").to_h,
@@ -81,7 +81,7 @@ when 'java'
   )
 when 'lua', 'rust'
   JUnitXMLParser.new(infile).to_h
-when 'go', 'perl', 'nim'
+when 'go', 'perl'
   add_kst_adoption(
     JUnitXMLParser.new("#{infile}/report.xml").to_h,
     infile
