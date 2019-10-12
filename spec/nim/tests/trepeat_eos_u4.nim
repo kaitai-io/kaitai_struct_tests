@@ -12,6 +12,6 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: RepeatEosU4":
     let r = RepeatEosU4.fromFile("src/repeat_eos_struct.bin")
 
-    check(r.numbers == @[0, 66, 66, 2069])
+    check(r.numbers == seq[uint32](@[0, 66, 66, 2069]))
 
 close(outputFormatter)

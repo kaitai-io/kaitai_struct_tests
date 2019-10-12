@@ -12,11 +12,11 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: BcdUserTypeBe":
     let r = BcdUserTypeBe.fromFile("src/bcd_user_type_be.bin")
 
-    check(r.ltr.asInt == 12345678)
-    check(r.ltr.asStr == "12345678")
-    check(r.rtl.asInt == 87654321)
-    check(r.rtl.asStr == "87654321")
-    check(r.leadingZeroLtr.asInt == 123456)
-    check(r.leadingZeroLtr.asStr == "00123456")
+    check(r.ltr.asInt == int(12345678))
+    check(r.ltr.asStr == string("12345678"))
+    check(r.rtl.asInt == int(87654321))
+    check(r.rtl.asStr == string("87654321"))
+    check(r.leadingZeroLtr.asInt == int(123456))
+    check(r.leadingZeroLtr.asStr == string("00123456"))
 
 close(outputFormatter)

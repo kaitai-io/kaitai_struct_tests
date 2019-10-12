@@ -3,7 +3,7 @@ package io.kaitai.struct.testtranslator.specgenerators
 import _root_.io.kaitai.struct.{ClassTypeProvider, Utils}
 import _root_.io.kaitai.struct.exprlang.Ast.expr
 import _root_.io.kaitai.struct.datatype.DataType
-import _root_.io.kaitai.struct.translators.NimTranslator
+import _root_.io.kaitai.struct.translators.{NimTranslator, TypeDetector}
 import _root_.io.kaitai.struct.Utils
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 
@@ -40,7 +40,9 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
   override def simpleAssert(check: TestAssert): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
-    out.puts(s"check($actStr == $expStr)")
+    val td = new TypeDetector(provider)
+    val t = _root_.io.kaitai.struct.NimClassCompiler.ksToNim(td.detectType(check.actual))
+    out.puts(s"check($actStr == $t($expStr))")
   }
   override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[expr]): Unit = {
     simpleAssert(check)

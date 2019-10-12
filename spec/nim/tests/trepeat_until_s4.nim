@@ -12,7 +12,7 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: RepeatUntilS4":
     let r = RepeatUntilS4.fromFile("src/repeat_until_s4.bin")
 
-    check(r.entries == @[66, 4919, -251658241, -1])
-    check(r.afterall == "foobar")
+    check(r.entries == seq[int32](@[66, 4919, -251658241, -1]))
+    check(r.afterall == string("foobar"))
 
 close(outputFormatter)

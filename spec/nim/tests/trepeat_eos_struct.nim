@@ -12,10 +12,10 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: RepeatEosStruct":
     let r = RepeatEosStruct.fromFile("src/repeat_eos_struct.bin")
 
-    check(len(r.chunks) == 2)
-    check(r.chunks[0].offset == 0)
-    check(r.chunks[0].len == 66)
-    check(r.chunks[1].offset == 66)
-    check(r.chunks[1].len == 2069)
+    check(len(r.chunks) == int(2))
+    check(r.chunks[0].offset == uint32(0))
+    check(r.chunks[0].len == uint32(66))
+    check(r.chunks[1].offset == uint32(66))
+    check(r.chunks[1].len == uint32(2069))
 
 close(outputFormatter)

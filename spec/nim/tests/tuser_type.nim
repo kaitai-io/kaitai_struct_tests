@@ -12,7 +12,7 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: UserType":
     let r = UserType.fromFile("src/repeat_until_s4.bin")
 
-    check(r.one.width == 66)
-    check(r.one.height == 4919)
+    check(r.one.width == uint32(66))
+    check(r.one.height == uint32(4919))
 
 close(outputFormatter)

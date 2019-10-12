@@ -12,8 +12,8 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: TermStrz":
     let r = TermStrz.fromFile("src/term_strz.bin")
 
-    check(r.s1 == "foo")
-    check(r.s2 == "bar")
-    check(r.s3 == "|baz@")
+    check(r.s1 == string("foo"))
+    check(r.s2 == string("bar"))
+    check(r.s3 == string("|baz@"))
 
 close(outputFormatter)

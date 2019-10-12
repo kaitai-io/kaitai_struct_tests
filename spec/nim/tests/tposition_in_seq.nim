@@ -12,6 +12,6 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: PositionInSeq":
     let r = PositionInSeq.fromFile("src/position_in_seq.bin")
 
-    check(r.numbers == @[(0 + 1), 2, 3])
+    check(r.numbers == seq[uint8](@[(0 + 1), 2, 3]))
 
 close(outputFormatter)

@@ -12,6 +12,6 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: StrEos":
     let r = StrEos.fromFile("src/term_strz.bin")
 
-    check(r.str == "foo|bar|baz@")
+    check(r.str == string("foo|bar|baz@"))
 
 close(outputFormatter)

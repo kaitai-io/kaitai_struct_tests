@@ -12,6 +12,6 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: NonStandard":
     let r = NonStandard.fromFile("src/fixed_struct.bin")
 
-    check(r.foo == 80)
+    check(r.foo == uint8(80))
 
 close(outputFormatter)

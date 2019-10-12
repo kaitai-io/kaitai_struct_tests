@@ -12,8 +12,8 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: NavParentOverride":
     let r = NavParentOverride.fromFile("src/nav_parent_codes.bin")
 
-    check(r.childSize == 3)
-    check(r.child1.data == @[73, 49, 50])
-    check(r.mediator2.child2.data == @[51, 66, 98])
+    check(r.childSize == uint8(3))
+    check(r.child1.data == seq[byte](@[73, 49, 50]))
+    check(r.mediator2.child2.data == seq[byte](@[51, 66, 98]))
 
 close(outputFormatter)

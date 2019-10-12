@@ -12,8 +12,8 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: ProcessRotate":
     let r = ProcessRotate.fromFile("src/process_rotate.bin")
 
-    check(r.buf1 == @[72, 101, 108, 108, 111])
-    check(r.buf2 == @[87, 111, 114, 108, 100])
-    check(r.buf3 == @[84, 104, 101, 114, 101])
+    check(r.buf1 == seq[byte](@[72, 101, 108, 108, 111]))
+    check(r.buf2 == seq[byte](@[87, 111, 114, 108, 100]))
+    check(r.buf3 == seq[byte](@[84, 104, 101, 114, 101]))
 
 close(outputFormatter)

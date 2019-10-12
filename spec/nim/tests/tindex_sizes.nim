@@ -12,12 +12,12 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: IndexSizes":
     let r = IndexSizes.fromFile("src/index_sizes.bin")
 
-    check(r.qty == 3)
-    check(r.sizes[0] == 1)
-    check(r.sizes[1] == 8)
-    check(r.sizes[2] == 4)
-    check(r.bufs[0] == "A")
-    check(r.bufs[1] == "BBBBBBBB")
-    check(r.bufs[2] == "CCCC")
+    check(r.qty == uint32(3))
+    check(r.sizes[0] == uint32(1))
+    check(r.sizes[1] == uint32(8))
+    check(r.sizes[2] == uint32(4))
+    check(r.bufs[0] == string("A"))
+    check(r.bufs[1] == string("BBBBBBBB"))
+    check(r.bufs[2] == string("CCCC"))
 
 close(outputFormatter)

@@ -12,8 +12,8 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: RepeatNStrzDouble":
     let r = RepeatNStrzDouble.fromFile("src/repeat_n_strz.bin")
 
-    check(r.qty == 2)
-    check(r.lines1 == @["foo"])
-    check(r.lines2 == @["bar"])
+    check(r.qty == uint32(2))
+    check(r.lines1 == seq[string](@["foo"]))
+    check(r.lines2 == seq[string](@["bar"]))
 
 close(outputFormatter)

@@ -12,12 +12,12 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: NestedTypes2":
     let r = NestedTypes2.fromFile("src/fixed_struct.bin")
 
-    check(r.one.typedAtRoot.valueB == 80)
-    check(r.one.typedHere1.valueC == 65)
-    check(r.one.typedHere1.typedHere.valueD == 67)
-    check(r.one.typedHere1.typedParent.valueCc == 75)
-    check(r.one.typedHere1.typedRoot.valueB == 45)
-    check(r.one.typedHere2.valueCc == 49)
-    check(r.two.valueB == -1)
+    check(r.one.typedAtRoot.valueB == int8(80))
+    check(r.one.typedHere1.valueC == int8(65))
+    check(r.one.typedHere1.typedHere.valueD == int8(67))
+    check(r.one.typedHere1.typedParent.valueCc == int8(75))
+    check(r.one.typedHere1.typedRoot.valueB == int8(45))
+    check(r.one.typedHere2.valueCc == int8(49))
+    check(r.two.valueB == int8(-1))
 
 close(outputFormatter)

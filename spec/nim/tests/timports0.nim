@@ -12,8 +12,8 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: Imports0":
     let r = Imports0.fromFile("src/fixed_struct.bin")
 
-    check(r.two == 80)
-    check(r.hw.one == 65)
-    check(r.hwOne == 65)
+    check(r.two == uint8(80))
+    check(r.hw.one == uint8(65))
+    check(r.hwOne == uint8(65))
 
 close(outputFormatter)

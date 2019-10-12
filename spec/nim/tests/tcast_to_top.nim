@@ -12,8 +12,8 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: CastToTop":
     let r = CastToTop.fromFile("src/fixed_struct.bin")
 
-    check(r.code == 80)
-    check(r.header.code == 65)
-    check(r.headerCasted.code == 65)
+    check(r.code == uint8(80))
+    check(r.header.code == uint8(65))
+    check(r.headerCasted.code == uint8(65))
 
 close(outputFormatter)

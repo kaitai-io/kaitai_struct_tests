@@ -12,13 +12,13 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: FloatToI":
     let r = FloatToI.fromFile("src/floating_points.bin")
 
-    check(r.singleValue == 0.5)
-    check(r.doubleValue == 0.25)
-    check(r.singleI == 0)
-    check(r.doubleI == 0)
-    check(r.float1I == 1)
-    check(r.float2I == 1)
-    check(r.float3I == 1)
-    check(r.float4I == -2)
+    check(r.singleValue == float32(0.5))
+    check(r.doubleValue == float64(0.25))
+    check(r.singleI == int(0))
+    check(r.doubleI == int(0))
+    check(r.float1I == int(1))
+    check(r.float2I == int(1))
+    check(r.float3I == int(1))
+    check(r.float4I == int(-2))
 
 close(outputFormatter)

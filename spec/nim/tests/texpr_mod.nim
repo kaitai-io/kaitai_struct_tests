@@ -12,11 +12,11 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: ExprMod":
     let r = ExprMod.fromFile("src/fixed_struct.bin")
 
-    check(r.intU == 1262698832)
-    check(r.intS == -52947)
-    check(r.modPosConst == 9)
-    check(r.modNegConst == 4)
-    check(r.modPosSeq == 5)
-    check(r.modNegSeq == 2)
+    check(r.intU == uint32(1262698832))
+    check(r.intS == int32(-52947))
+    check(r.modPosConst == int(9))
+    check(r.modNegConst == int(4))
+    check(r.modPosSeq == int(5))
+    check(r.modNegSeq == int(2))
 
 close(outputFormatter)

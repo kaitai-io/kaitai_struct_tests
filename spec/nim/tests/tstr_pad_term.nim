@@ -12,9 +12,9 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: StrPadTerm":
     let r = StrPadTerm.fromFile("src/str_pad_term.bin")
 
-    check(r.strPad == "str1")
-    check(r.strTerm == "str2foo")
-    check(r.strTermAndPad == "str+++3bar+++")
-    check(r.strTermInclude == "str4baz@")
+    check(r.strPad == string("str1"))
+    check(r.strTerm == string("str2foo"))
+    check(r.strTermAndPad == string("str+++3bar+++"))
+    check(r.strTermInclude == string("str4baz@"))
 
 close(outputFormatter)

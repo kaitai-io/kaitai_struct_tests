@@ -12,9 +12,9 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: BytesPadTerm":
     let r = BytesPadTerm.fromFile("src/str_pad_term.bin")
 
-    check(r.strPad == @[115, 116, 114, 49])
-    check(r.strTerm == @[115, 116, 114, 50, 102, 111, 111])
-    check(r.strTermAndPad == @[115, 116, 114, 43, 43, 43, 51, 98, 97, 114, 43, 43, 43])
-    check(r.strTermInclude == @[115, 116, 114, 52, 98, 97, 122, 64])
+    check(r.strPad == seq[byte](@[115, 116, 114, 49]))
+    check(r.strTerm == seq[byte](@[115, 116, 114, 50, 102, 111, 111]))
+    check(r.strTermAndPad == seq[byte](@[115, 116, 114, 43, 43, 43, 51, 98, 97, 114, 43, 43, 43]))
+    check(r.strTermInclude == seq[byte](@[115, 116, 114, 52, 98, 97, 122, 64]))
 
 close(outputFormatter)

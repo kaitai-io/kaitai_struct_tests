@@ -12,10 +12,10 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: SwitchIntegers2":
     let r = SwitchIntegers2.fromFile("src/switch_integers.bin")
 
-    check(r.code == 1)
-    check(r.len == 7)
-    check(r.ham == @[2, 64, 64, 4, 55, 19, 0])
-    check(r.padding == 0)
-    check(r.lenModStr == "13")
+    check(r.code == uint8(1))
+    check(r.len == uint64(7))
+    check(r.ham == seq[byte](@[2, 64, 64, 4, 55, 19, 0]))
+    check(r.padding == uint8(0))
+    check(r.lenModStr == string("13"))
 
 close(outputFormatter)

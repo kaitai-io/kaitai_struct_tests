@@ -12,8 +12,8 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: TermBytes":
     let r = TermBytes.fromFile("src/term_strz.bin")
 
-    check(r.s1 == @[102, 111, 111])
-    check(r.s2 == @[98, 97, 114])
-    check(r.s3 == @[124, 98, 97, 122, 64])
+    check(r.s1 == seq[byte](@[102, 111, 111]))
+    check(r.s2 == seq[byte](@[98, 97, 114]))
+    check(r.s3 == seq[byte](@[124, 98, 97, 122, 64]))
 
 close(outputFormatter)

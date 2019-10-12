@@ -12,6 +12,6 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: InstanceStd":
     let r = InstanceStd.fromFile("src/str_encodings.bin")
 
-    check(r.header == "Some ")
+    check(r.header == string("Some "))
 
 close(outputFormatter)

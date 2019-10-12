@@ -12,10 +12,10 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: NestedSameName2":
     let r = NestedSameName2.fromFile("src/nested_same_name2.bin")
 
-    check(r.version == 66)
-    check(r.mainData.mainSize == 2)
-    check(r.mainData.foo.data1 == @[17, 17, 17, 17])
-    check(r.dummy.dummySize == 3)
-    check(r.dummy.foo.data2 == @[34, 34, 34, 34, 34, 34])
+    check(r.version == uint32(66))
+    check(r.mainData.mainSize == int32(2))
+    check(r.mainData.foo.data1 == seq[byte](@[17, 17, 17, 17]))
+    check(r.dummy.dummySize == int32(3))
+    check(r.dummy.foo.data2 == seq[byte](@[34, 34, 34, 34, 34, 34]))
 
 close(outputFormatter)

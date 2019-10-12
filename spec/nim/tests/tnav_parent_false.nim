@@ -12,10 +12,10 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: NavParentFalse":
     let r = NavParentFalse.fromFile("src/nav_parent_codes.bin")
 
-    check(r.childSize == 3)
-    check(r.elementA.foo.code == 73)
-    check(r.elementA.foo.more == @[49, 50, 51])
-    check(r.elementA.bar.foo.code == 66)
-    check(r.elementB.foo.code == 98)
+    check(r.childSize == uint8(3))
+    check(r.elementA.foo.code == uint8(73))
+    check(r.elementA.foo.more == seq[byte](@[49, 50, 51]))
+    check(r.elementA.bar.foo.code == uint8(66))
+    check(r.elementB.foo.code == uint8(98))
 
 close(outputFormatter)

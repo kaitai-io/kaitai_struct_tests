@@ -12,7 +12,7 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: PositionToEnd":
     let r = PositionToEnd.fromFile("src/position_to_end.bin")
 
-    check(r.index.foo == 66)
-    check(r.index.bar == 4660)
+    check(r.index.foo == uint32(66))
+    check(r.index.bar == uint32(4660))
 
 close(outputFormatter)

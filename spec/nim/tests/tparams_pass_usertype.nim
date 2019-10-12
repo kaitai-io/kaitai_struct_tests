@@ -12,7 +12,7 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: ParamsPassUsertype":
     let r = ParamsPassUsertype.fromFile("src/position_in_seq.bin")
 
-    check(r.first.foo == 1)
-    check(r.one.buf == @[2])
+    check(r.first.foo == uint8(1))
+    check(r.one.buf == seq[byte](@[2]))
 
 close(outputFormatter)

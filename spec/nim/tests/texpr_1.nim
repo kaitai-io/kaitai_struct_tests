@@ -12,9 +12,9 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: Expr1":
     let r = Expr1.fromFile("src/str_encodings.bin")
 
-    check(r.lenOf1 == 10)
-    check(r.lenOf1Mod == 8)
-    check(r.str1 == "Some ASC")
-    check(r.str1Len == 8)
+    check(r.lenOf1 == uint16(10))
+    check(r.lenOf1Mod == int(8))
+    check(r.str1 == string("Some ASC"))
+    check(r.str1Len == int(8))
 
 close(outputFormatter)

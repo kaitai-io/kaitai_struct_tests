@@ -12,8 +12,8 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: ParamsCallShort":
     let r = ParamsCallShort.fromFile("src/term_strz.bin")
 
-    check(r.buf1.body == "foo|b")
-    check(r.buf2.body == "ar|ba")
-    check(r.buf2.trailer == 122)
+    check(r.buf1.body == string("foo|b"))
+    check(r.buf2.body == string("ar|ba"))
+    check(r.buf2.trailer == uint8(122))
 
 close(outputFormatter)

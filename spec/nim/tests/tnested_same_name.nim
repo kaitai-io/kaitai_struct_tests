@@ -12,7 +12,7 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: NestedSameName":
     let r = NestedSameName.fromFile("src/repeat_n_struct.bin")
 
-    check(r.mainData.mainSize == 2)
-    check(r.mainData.foo.data == @[16, 0, 0, 0])
+    check(r.mainData.mainSize == int32(2))
+    check(r.mainData.foo.data == seq[byte](@[16, 0, 0, 0]))
 
 close(outputFormatter)

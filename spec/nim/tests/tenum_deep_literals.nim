@@ -12,7 +12,7 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: EnumDeepLiterals":
     let r = EnumDeepLiterals.fromFile("src/enum_0.bin")
 
-    check(r.isPet1Ok == true)
-    check(r.isPet2Ok == true)
+    check(r.isPet1Ok == bool(true))
+    check(r.isPet2Ok == bool(true))
 
 close(outputFormatter)

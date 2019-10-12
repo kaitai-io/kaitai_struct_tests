@@ -18,7 +18,7 @@ rm -r "$TEST_OUT_DIR/nim/bin"
 
 for file in $TEST_OUT_DIR/nim/junitreports/*
 do
-  xmllint --format "$file"
+  xmllint --noout --format "$file"
   if [ $? -ne 0 ]
   then rm "$file"
   fi

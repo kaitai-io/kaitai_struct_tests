@@ -12,7 +12,7 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: ProcessXor4Value":
     let r = ProcessXor4Value.fromFile("src/process_xor_4.bin")
 
-    check(r.key == @[-20, -69, -93, 20])
-    check(r.buf == @[102, 111, 111, 32, 98, 97, 114])
+    check(r.key == seq[byte](@[-20, -69, -93, 20]))
+    check(r.buf == seq[byte](@[102, 111, 111, 32, 98, 97, 114]))
 
 close(outputFormatter)

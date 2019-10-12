@@ -12,8 +12,8 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: ProcessCoerceSwitch":
     let r = ProcessCoerceSwitch.fromFile("src/process_coerce_switch.bin")
 
-    check(r.bufType == 0)
-    check(r.flag == 0)
-    check(r.buf.bar == @[65, 65, 65, 65])
+    check(r.bufType == uint8(0))
+    check(r.flag == uint8(0))
+    check(r.buf.bar == seq[byte](@[65, 65, 65, 65]))
 
 close(outputFormatter)

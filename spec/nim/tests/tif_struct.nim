@@ -12,12 +12,12 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: IfStruct":
     let r = IfStruct.fromFile("src/if_struct.bin")
 
-    check(r.op1.opcode == 83)
-    check(r.op1.argStr.str == "foo")
-    check(r.op2.opcode == 84)
-    check(r.op2.argTuple.num1 == 66)
-    check(r.op2.argTuple.num2 == 67)
-    check(r.op3.opcode == 83)
-    check(r.op3.argStr.str == "bar")
+    check(r.op1.opcode == uint8(83))
+    check(r.op1.argStr.str == string("foo"))
+    check(r.op2.opcode == uint8(84))
+    check(r.op2.argTuple.num1 == uint8(66))
+    check(r.op2.argTuple.num2 == uint8(67))
+    check(r.op3.opcode == uint8(83))
+    check(r.op3.argStr.str == string("bar"))
 
 close(outputFormatter)

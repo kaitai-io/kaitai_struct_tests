@@ -12,7 +12,7 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: CastToImported":
     let r = CastToImported.fromFile("src/fixed_struct.bin")
 
-    check(r.one.one == 80)
-    check(r.oneCasted.one == 80)
+    check(r.one.one == uint8(80))
+    check(r.oneCasted.one == uint8(80))
 
 close(outputFormatter)

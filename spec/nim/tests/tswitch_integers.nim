@@ -12,14 +12,14 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: SwitchIntegers":
     let r = SwitchIntegers.fromFile("src/switch_integers.bin")
 
-    check(len(r.opcodes) == 4)
-    check(r.opcodes[0].code == 1)
-    check(r.opcodes[0].body == 7)
-    check(r.opcodes[1].code == 2)
-    check(r.opcodes[1].body == 16448)
-    check(r.opcodes[2].code == 4)
-    check(r.opcodes[2].body == 4919)
-    check(r.opcodes[3].code == 8)
-    check(r.opcodes[3].body == 4919)
+    check(len(r.opcodes) == int(4))
+    check(r.opcodes[0].code == uint8(1))
+    check(r.opcodes[0].body == uint64(7))
+    check(r.opcodes[1].code == uint8(2))
+    check(r.opcodes[1].body == uint64(16448))
+    check(r.opcodes[2].code == uint8(4))
+    check(r.opcodes[2].body == uint64(4919))
+    check(r.opcodes[3].code == uint8(8))
+    check(r.opcodes[3].body == uint64(4919))
 
 close(outputFormatter)

@@ -12,9 +12,9 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: InstanceIoUser":
     let r = InstanceIoUser.fromFile("src/instance_io.bin")
 
-    check(r.qtyEntries == 3)
-    check(r.entries[0].name == "the")
-    check(r.entries[1].name == "rainy")
-    check(r.entries[2].name == "day it is")
+    check(r.qtyEntries == uint32(3))
+    check(r.entries[0].name == string("the"))
+    check(r.entries[1].name == string("rainy"))
+    check(r.entries[2].name == string("day it is"))
 
 close(outputFormatter)

@@ -12,6 +12,6 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: ZlibWithHeader78":
     let r = ZlibWithHeader78.fromFile("src/zlib_with_header_78.bin")
 
-    check(r.data == @[97, 32, 113, 117, 105, 99, 107, 32, 98, 114, 111, 119, 110, 32, 102, 111, 120, 32, 106, 117, 109, 112, 115, 32, 111, 118, 101, 114])
+    check(r.data == seq[byte](@[97, 32, 113, 117, 105, 99, 107, 32, 98, 114, 111, 119, 110, 32, 102, 111, 120, 32, 106, 117, 109, 112, 115, 32, 111, 118, 101, 114]))
 
 close(outputFormatter)

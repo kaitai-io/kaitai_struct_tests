@@ -12,9 +12,9 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: CastNested":
     let r = CastNested.fromFile("src/switch_opcodes.bin")
 
-    check(r.opcodes0Str.value == "foobar")
-    check(r.opcodes0StrValue == "foobar")
-    check(r.opcodes1Int.value == 66)
-    check(r.opcodes1IntValue == 66)
+    check(r.opcodes0Str.value == string("foobar"))
+    check(r.opcodes0StrValue == string("foobar"))
+    check(r.opcodes1Int.value == uint8(66))
+    check(r.opcodes1IntValue == uint8(66))
 
 close(outputFormatter)

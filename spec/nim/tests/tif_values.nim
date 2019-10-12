@@ -12,11 +12,11 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: IfValues":
     let r = IfValues.fromFile("src/fixed_struct.bin")
 
-    check(r.codes[0].opcode == 80)
-    check(r.codes[0].halfOpcode == 40)
-    check(r.codes[1].opcode == 65)
+    check(r.codes[0].opcode == uint8(80))
+    check(r.codes[0].halfOpcode == int(40))
+    check(r.codes[1].opcode == uint8(65))
     check(r.codes[1].halfOpcode == none(typeof(r.codes[1].halfOpcode)))
-    check(r.codes[2].opcode == 67)
+    check(r.codes[2].opcode == uint8(67))
     check(r.codes[2].halfOpcode == none(typeof(r.codes[2].halfOpcode)))
 
 close(outputFormatter)

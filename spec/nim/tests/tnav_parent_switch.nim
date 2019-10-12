@@ -12,8 +12,8 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: NavParentSwitch":
     let r = NavParentSwitch.fromFile("src/nav_parent_switch.bin")
 
-    check(r.category == 1)
-    check(r.content.foo == 66)
-    check(r.content.subelement.bar == 255)
+    check(r.category == uint8(1))
+    check(r.content.foo == uint8(66))
+    check(r.content.subelement.bar == uint8(255))
 
 close(outputFormatter)

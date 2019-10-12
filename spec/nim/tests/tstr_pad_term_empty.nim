@@ -12,9 +12,9 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: StrPadTermEmpty":
     let r = StrPadTermEmpty.fromFile("src/str_pad_term_empty.bin")
 
-    check(r.strPad == "")
-    check(r.strTerm == "")
-    check(r.strTermAndPad == "")
-    check(r.strTermInclude == "@")
+    check(r.strPad == string(""))
+    check(r.strTerm == string(""))
+    check(r.strTermAndPad == string(""))
+    check(r.strTermInclude == string("@"))
 
 close(outputFormatter)

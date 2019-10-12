@@ -12,6 +12,6 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: ProcessToUser":
     let r = ProcessToUser.fromFile("src/process_rotate.bin")
 
-    check(r.buf1.str == "Hello")
+    check(r.buf1.str == string("Hello"))
 
 close(outputFormatter)

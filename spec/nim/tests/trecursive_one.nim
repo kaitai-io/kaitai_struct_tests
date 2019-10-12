@@ -12,9 +12,9 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: RecursiveOne":
     let r = RecursiveOne.fromFile("src/fixed_struct.bin")
 
-    check(r.one == 80)
-    check(r.next.one == 65)
-    check(r.next.next.one == 67)
-    check(r.next.next.next.finisher == 11595)
+    check(r.one == uint8(80))
+    check(r.next.one == uint8(65))
+    check(r.next.next.one == uint8(67))
+    check(r.next.next.next.finisher == uint16(11595))
 
 close(outputFormatter)

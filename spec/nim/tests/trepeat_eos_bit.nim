@@ -12,6 +12,6 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: RepeatEosBit":
     let r = RepeatEosBit.fromFile("src/enum_0.bin")
 
-    check(len(r.nibbles) == 16)
+    check(len(r.nibbles) == int(16))
 
 close(outputFormatter)

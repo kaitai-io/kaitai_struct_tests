@@ -12,6 +12,6 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: NavParentFalse2":
     let r = NavParentFalse2.fromFile("src/fixed_struct.bin")
 
-    check(r.parentless.foo == 80)
+    check(r.parentless.foo == uint8(80))
 
 close(outputFormatter)

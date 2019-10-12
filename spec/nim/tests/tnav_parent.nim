@@ -12,10 +12,10 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: NavParent":
     let r = NavParent.fromFile("src/nav.bin")
 
-    check(r.header.qtyEntries == 2)
-    check(r.header.filenameLen == 8)
-    check(len(r.index.entries) == 2)
-    check(r.index.entries[0].filename == "FIRST___")
-    check(r.index.entries[1].filename == "SECOND__")
+    check(r.header.qtyEntries == uint32(2))
+    check(r.header.filenameLen == uint32(8))
+    check(len(r.index.entries) == int(2))
+    check(r.index.entries[0].filename == string("FIRST___"))
+    check(r.index.entries[1].filename == string("SECOND__"))
 
 close(outputFormatter)

@@ -12,6 +12,6 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: TypeTernary":
     let r = TypeTernary.fromFile("src/term_strz.bin")
 
-    check(r.dif.value == 101)
+    check(r.dif.value == uint8(101))
 
 close(outputFormatter)

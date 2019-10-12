@@ -12,9 +12,9 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: TypeIntUnaryOp":
     let r = TypeIntUnaryOp.fromFile("src/fixed_struct.bin")
 
-    check(r.valueS2 == 16720)
-    check(r.valueS8 == 4706543082108963651'i64)
-    check(r.unaryS2 == -16720)
-    check(r.unaryS8 == -4706543082108963651'i64)
+    check(r.valueS2 == int16(16720))
+    check(r.valueS8 == int64(4706543082108963651'i64))
+    check(r.unaryS2 == int(-16720))
+    check(r.unaryS8 == int64(-4706543082108963651'i64))
 
 close(outputFormatter)

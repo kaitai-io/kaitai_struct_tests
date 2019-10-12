@@ -12,9 +12,9 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: ProcessCoerceUsertype1":
     let r = ProcessCoerceUsertype1.fromFile("src/process_coerce_bytes.bin")
 
-    check(r.records[0].flag == 0)
-    check(r.records[0].buf.value == 1094795585)
-    check(r.records[1].flag == 1)
-    check(r.records[1].buf.value == 1111638594)
+    check(r.records[0].flag == uint8(0))
+    check(r.records[0].buf.value == uint32(1094795585))
+    check(r.records[1].flag == uint8(1))
+    check(r.records[1].buf.value == uint32(1111638594))
 
 close(outputFormatter)

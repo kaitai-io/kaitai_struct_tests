@@ -12,8 +12,8 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: DefaultEndianMod":
     let r = DefaultEndianMod.fromFile("src/fixed_struct.bin")
 
-    check(r.main.one == 1262698832)
-    check(r.main.nest.two == -52947)
-    check(r.main.nestBe.two == 1346454347)
+    check(r.main.one == int32(1262698832))
+    check(r.main.nest.two == int32(-52947))
+    check(r.main.nestBe.two == int32(1346454347))
 
 close(outputFormatter)

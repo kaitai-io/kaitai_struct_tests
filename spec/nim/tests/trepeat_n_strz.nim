@@ -12,7 +12,7 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: RepeatNStrz":
     let r = RepeatNStrz.fromFile("src/repeat_n_strz.bin")
 
-    check(r.qty == 2)
-    check(r.lines == @["foo", "bar"])
+    check(r.qty == uint32(2))
+    check(r.lines == seq[string](@["foo", "bar"]))
 
 close(outputFormatter)

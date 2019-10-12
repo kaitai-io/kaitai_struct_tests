@@ -12,7 +12,7 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: ExprSizeofType1":
     let r = ExprSizeofType1.fromFile("src/fixed_struct.bin")
 
-    check(r.sizeofBlock == (((1 + 4) + 2) + 4))
-    check(r.sizeofSubblock == 4)
+    check(r.sizeofBlock == int((((1 + 4) + 2) + 4)))
+    check(r.sizeofSubblock == int(4))
 
 close(outputFormatter)

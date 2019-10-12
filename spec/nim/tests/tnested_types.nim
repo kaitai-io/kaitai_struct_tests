@@ -12,8 +12,8 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: NestedTypes":
     let r = NestedTypes.fromFile("src/fixed_struct.bin")
 
-    check(r.one.typedAtRoot.valueB == 80)
-    check(r.one.typedHere.valueC == 65)
-    check(r.two.valueB == 67)
+    check(r.one.typedAtRoot.valueB == int8(80))
+    check(r.one.typedHere.valueC == int8(65))
+    check(r.two.valueB == int8(67))
 
 close(outputFormatter)

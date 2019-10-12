@@ -12,12 +12,12 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: InstanceStdArray":
     let r = InstanceStdArray.fromFile("src/instance_std_array.bin")
 
-    check(r.ofs == 16)
-    check(r.qtyEntries == 3)
-    check(r.entrySize == 4)
-    check(len(r.entries) == 3)
-    check(r.entries[0] == @[17, 17, 17, 17])
-    check(r.entries[1] == @[34, 34, 34, 34])
-    check(r.entries[2] == @[51, 51, 51, 51])
+    check(r.ofs == uint32(16))
+    check(r.qtyEntries == uint32(3))
+    check(r.entrySize == uint32(4))
+    check(len(r.entries) == int(3))
+    check(r.entries[0] == seq[byte](@[17, 17, 17, 17]))
+    check(r.entries[1] == seq[byte](@[34, 34, 34, 34]))
+    check(r.entries[2] == seq[byte](@[51, 51, 51, 51]))
 
 close(outputFormatter)

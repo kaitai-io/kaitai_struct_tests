@@ -12,7 +12,7 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: JsSignedRightShift":
     let r = JsSignedRightShift.fromFile("src/fixed_struct.bin")
 
-    check(r.shouldBe40000000 == 1073741824)
-    check(r.shouldBeA00000 == 10485760)
+    check(r.shouldBe40000000 == int(1073741824))
+    check(r.shouldBeA00000 == int(10485760))
 
 close(outputFormatter)

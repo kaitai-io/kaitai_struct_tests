@@ -12,12 +12,12 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: IndexToParamEos":
     let r = IndexToParamEos.fromFile("src/index_sizes.bin")
 
-    check(r.qty == 3)
-    check(r.sizes[0] == 1)
-    check(r.sizes[1] == 8)
-    check(r.sizes[2] == 4)
-    check(r.blocks[0].buf == "A")
-    check(r.blocks[1].buf == "BBBBBBBB")
-    check(r.blocks[2].buf == "CCCC")
+    check(r.qty == uint32(3))
+    check(r.sizes[0] == uint32(1))
+    check(r.sizes[1] == uint32(8))
+    check(r.sizes[2] == uint32(4))
+    check(r.blocks[0].buf == string("A"))
+    check(r.blocks[1].buf == string("BBBBBBBB"))
+    check(r.blocks[2].buf == string("CCCC"))
 
 close(outputFormatter)

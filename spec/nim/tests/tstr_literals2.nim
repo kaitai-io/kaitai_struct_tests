@@ -12,9 +12,9 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: StrLiterals2":
     let r = StrLiterals2.fromFile("src/fixed_struct.bin")
 
-    check(r.dollar1 == "$foo")
-    check(r.dollar2 == "${foo}")
-    check(r.hash == "#{foo}")
-    check(r.atSign == "@foo")
+    check(r.dollar1 == string("$foo"))
+    check(r.dollar2 == string("${foo}"))
+    check(r.hash == string("#{foo}"))
+    check(r.atSign == string("@foo"))
 
 close(outputFormatter)

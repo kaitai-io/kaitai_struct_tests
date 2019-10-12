@@ -12,7 +12,7 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: MultipleUse":
     let r = MultipleUse.fromFile("src/position_abs.bin")
 
-    check(r.t1.firstUse.value == 32)
-    check(r.t2.secondUse.value == 32)
+    check(r.t1.firstUse.value == int32(32))
+    check(r.t2.secondUse.value == int32(32))
 
 close(outputFormatter)

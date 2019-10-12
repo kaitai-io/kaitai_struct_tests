@@ -12,6 +12,6 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: NavParentVsValueInst":
     let r = NavParentVsValueInst.fromFile("src/term_strz.bin")
 
-    check(r.s1 == "foo")
+    check(r.s1 == string("foo"))
 
 close(outputFormatter)

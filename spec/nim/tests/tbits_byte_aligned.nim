@@ -12,14 +12,14 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: BitsByteAligned":
     let r = BitsByteAligned.fromFile("src/fixed_struct.bin")
 
-    check(r.one == 20)
-    check(r.byte1 == 65)
-    check(r.two == 2)
-    check(r.three == false)
-    check(r.byte2 == 75)
-    check(r.four == 2892)
-    check(r.byte3 == @[-1])
-    check(r.fullByte == 255)
-    check(r.byte4 == 80)
+    check(r.one == uint64(20))
+    check(r.byte1 == uint8(65))
+    check(r.two == uint64(2))
+    check(r.three == bool(false))
+    check(r.byte2 == uint8(75))
+    check(r.four == uint64(2892))
+    check(r.byte3 == seq[byte](@[-1]))
+    check(r.fullByte == uint64(255))
+    check(r.byte4 == uint8(80))
 
 close(outputFormatter)

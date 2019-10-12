@@ -12,9 +12,9 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: ProcessCoerceBytes":
     let r = ProcessCoerceBytes.fromFile("src/process_coerce_bytes.bin")
 
-    check(r.records[0].flag == 0)
-    check(r.records[0].buf == @[65, 65, 65, 65])
-    check(r.records[1].flag == 1)
-    check(r.records[1].buf == @[66, 66, 66, 66])
+    check(r.records[0].flag == uint8(0))
+    check(r.records[0].buf == seq[byte](@[65, 65, 65, 65]))
+    check(r.records[1].flag == uint8(1))
+    check(r.records[1].buf == seq[byte](@[66, 66, 66, 66]))
 
 close(outputFormatter)

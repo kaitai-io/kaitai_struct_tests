@@ -12,7 +12,7 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: Expr0":
     let r = Expr0.fromFile("src/str_encodings.bin")
 
-    check(r.mustBeF7 == 247)
-    check(r.mustBeAbc123 == "abc123")
+    check(r.mustBeF7 == int(247))
+    check(r.mustBeAbc123 == string("abc123"))
 
 close(outputFormatter)

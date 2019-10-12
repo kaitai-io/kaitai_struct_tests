@@ -12,10 +12,10 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: RepeatNStruct":
     let r = RepeatNStruct.fromFile("src/repeat_n_struct.bin")
 
-    check(len(r.chunks) == 2)
-    check(r.chunks[0].offset == 16)
-    check(r.chunks[0].len == 8312)
-    check(r.chunks[1].offset == 8328)
-    check(r.chunks[1].len == 15)
+    check(len(r.chunks) == int(2))
+    check(r.chunks[0].offset == uint32(16))
+    check(r.chunks[0].len == uint32(8312))
+    check(r.chunks[1].offset == uint32(8328))
+    check(r.chunks[1].len == uint32(15))
 
 close(outputFormatter)

@@ -12,7 +12,7 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: PositionAbs":
     let r = PositionAbs.fromFile("src/position_abs.bin")
 
-    check(r.indexOffset == 32)
-    check(r.index.entry == "foo")
+    check(r.indexOffset == uint32(32))
+    check(r.index.entry == string("foo"))
 
 close(outputFormatter)

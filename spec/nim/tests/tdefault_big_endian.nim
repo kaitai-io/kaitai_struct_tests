@@ -12,6 +12,6 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: DefaultBigEndian":
     let r = DefaultBigEndian.fromFile("src/enum_0.bin")
 
-    check(r.one == 117440512)
+    check(r.one == uint32(117440512))
 
 close(outputFormatter)

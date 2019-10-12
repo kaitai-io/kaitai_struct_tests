@@ -12,6 +12,6 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: HelloWorld":
     let r = HelloWorld.fromFile("src/fixed_struct.bin")
 
-    check(r.one == 80)
+    check(r.one == uint8(80))
 
 close(outputFormatter)

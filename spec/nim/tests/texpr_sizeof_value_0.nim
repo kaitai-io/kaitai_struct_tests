@@ -12,10 +12,10 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: ExprSizeofValue0":
     let r = ExprSizeofValue0.fromFile("src/fixed_struct.bin")
 
-    check(r.selfSizeof == (((1 + 4) + 2) + 2))
-    check(r.sizeofBlock == ((1 + 4) + 2))
-    check(r.sizeofBlockA == 1)
-    check(r.sizeofBlockB == 4)
-    check(r.sizeofBlockC == 2)
+    check(r.selfSizeof == int((((1 + 4) + 2) + 2)))
+    check(r.sizeofBlock == int(((1 + 4) + 2)))
+    check(r.sizeofBlockA == int(1))
+    check(r.sizeofBlockB == int(4))
+    check(r.sizeofBlockC == int(2))
 
 close(outputFormatter)

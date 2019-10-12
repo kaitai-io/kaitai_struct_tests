@@ -12,10 +12,10 @@ suite "Kaitai Struct Compiler Test Suite":
   test "Nim: NestedTypes3":
     let r = NestedTypes3.fromFile("src/fixed_struct.bin")
 
-    check(r.aCc.valueCc == 80)
-    check(r.aCD.valueD == 65)
-    check(r.b.valueB == 67)
-    check(r.b.aCc.valueCc == 75)
-    check(r.b.aCD.valueD == 45)
+    check(r.aCc.valueCc == int8(80))
+    check(r.aCD.valueD == int8(65))
+    check(r.b.valueB == int8(67))
+    check(r.b.aCc.valueCc == int8(75))
+    check(r.b.aCD.valueD == int8(45))
 
 close(outputFormatter)
