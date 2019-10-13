@@ -7,3 +7,5 @@ proc `==`*[T: SomeInteger](x: seq[T]; y: seq[int]): bool =
       return false
 proc `==`*[T](x: Option[T], y: T): bool =
   get(x) == y
+converter toByte*(x: int): byte =
+  if x < 0: byte(256 + x) else: byte(x)

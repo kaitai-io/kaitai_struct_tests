@@ -71,12 +71,17 @@ when 'cpp_stl'
     ),
     infile
   )
-when 'java', 'nim'
+when 'java'
   add_kst_adoption(
     add_fails(
       JUnitXMLParser.new("#{infile}/junitreports").to_h,
       BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h
     ),
+    infile
+  )
+when 'nim'
+  add_kst_adoption(
+    JUnitXMLParser.new("#{infile}/junitreports").to_h,
     infile
   )
 when 'lua', 'rust'
