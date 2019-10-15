@@ -75,18 +75,20 @@ class PartialBuilder
 
     attempt = 1
     loop {
+      attempt_str = @max_attempts ? "#{attempt}/#{@max_attempts}" : attempt
+
       log "creating project with #{disp_files.size}/#{orig_size} files"
       fn = create_project(mand_files, disp_files)
       log "project file created: #{fn.inspect}"
 
       build_log = "#{@test_out_dir}/build-#{attempt}.log"
-      log "build attempt #{attempt} (log: #{build_log})"
+      log "build attempt #{attempt_str} (log: #{build_log})"
       t1 = Time.now
       result = build_project(build_log)
       t2 = Time.now
-      log "build attempt #{attempt}: elapsed: #{(t2 - t1).to_i}s"
+      log "build attempt #{attempt_str}: elapsed: #{(t2 - t1).to_i}s"
       if result == 0
-        log attempt == 1 ? "perfect build succeeded" : "success on attempt \##{attempt}, #{disp_files.size}/#{orig_size} files survived"
+        log attempt == 1 ? "perfect build succeeded" : "success on attempt \##{attempt_str}, #{disp_files.size}/#{orig_size} files survived"
         return true
       else
         log "build failed"
@@ -101,7 +103,7 @@ class PartialBuilder
 
         attempt += 1
 
-        if attempt >= @max_attempts
+        if @max_attempts and attempt >= @max_attempts
           log "maximum number of attempts reached, bailing out"
           return false
         end
@@ -181,7 +183,7 @@ class PartialBuilder
     # Sanity check: if size of disp_files haven't diminished, we have
     # not changed anything => it will result in endless loop.
     unless disp_files.size < orig_disp_size
-      log "sanity check failed: modified list of disposable files is the same as original, nothing is removed"      
+      log "sanity check failed: modified list of disposable files is the same as original, nothing is removed"
       return false
     end
 
