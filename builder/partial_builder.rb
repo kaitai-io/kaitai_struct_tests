@@ -22,6 +22,7 @@ require_relative 'shellconfig'
 class PartialBuilder
   def initialize
     @config = ShellConfig.new
+    @max_attempts = nil
     log 'initialized'
   end
 
@@ -34,8 +35,11 @@ class PartialBuilder
       log "creating project with #{(l1 + l2).size} files"
       fn = create_project(l1, l2)
       log "project file created: #{fn.inspect}"
+    elsif arg == ['--once']
+      @max_attempts = 1
+      exit run
     else
-      puts "Usage: [--project]"
+      puts "Usage: [--project|--once]"
       exit 1
     end
   end
@@ -96,6 +100,11 @@ class PartialBuilder
         register_bad_files(bad_files)
 
         attempt += 1
+
+        if attempt >= @max_attempts
+          log "maximum number of attempts reached, bailing out"
+          return false
+        end
       end
     }
   end
