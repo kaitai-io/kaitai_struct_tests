@@ -12,25 +12,39 @@ abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
   val FLOAT_DELTA = "1e-6"
 
   def header(): Unit
+
   def runParse(): Unit = {}
+
   def runParseExpectError(exception: KSError): Unit = ???
+
   def footer(): Unit
 
   def simpleAssert(check: TestAssert): Unit
+
   def floatAssert(check: TestAssert): Unit = simpleAssert(check)
+
   def nullAssert(actual: Ast.expr): Unit
+
   def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit
+
   def noAsserts(): Unit = {}
 
   override def run(): Unit = {
     header()
+
     spec.exception match {
-      case None => runParse()
-      case Some(ex) => runParseExpectError(ex)
+      case None =>
+        runParse()
+        out.puts
+        runAsserts()
+      case Some(ex) =>
+        runParseExpectError(ex)
     }
 
-    out.puts
+    footer()
+  }
 
+  def runAsserts(): Unit = {
     spec.asserts.foreach { check =>
       check.expected match {
         case Ast.expr.Name(Ast.identifier("null")) =>
@@ -59,7 +73,5 @@ abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
 
     if (spec.asserts.isEmpty)
       noAsserts()
-
-    footer()
   }
 }

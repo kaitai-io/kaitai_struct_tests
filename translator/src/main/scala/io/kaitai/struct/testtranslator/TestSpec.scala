@@ -2,10 +2,10 @@ package io.kaitai.struct.testtranslator
 
 import java.io.FileReader
 
+import io.kaitai.struct.datatype.KSError
 import io.kaitai.struct.exprlang.{Ast, Expressions}
 import io.kaitai.struct.format.ParseUtils
 import io.kaitai.struct.formats.JavaKSYParser
-import io.kaitai.struct.datatype.{KSError, UndecidedEndiannessError, ValidationNotEqualError}
 
 case class TestAssert(actual: Ast.expr, expected: Ast.expr)
 

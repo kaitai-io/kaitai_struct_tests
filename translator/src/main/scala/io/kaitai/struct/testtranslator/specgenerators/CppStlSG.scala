@@ -1,6 +1,6 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.CppCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
@@ -29,10 +29,27 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
   }
 
   override def runParse(): Unit = {
-    out.puts("std::ifstream ifs(\"src/" + spec.data + "\", std::ifstream::binary);")
-    out.puts("kaitai::kstream ks(&ifs);")
+    runParseCommon1()
     out.puts(s"$className* r = new $className(&ks);")
     out.puts
+  }
+
+  override def runParseExpectError(exception: KSError): Unit = {
+    importList.add("<kaitai/exceptions.h>")
+
+    runParseCommon1()
+    out.puts(s"$className* r = ${compiler.nullPtr};")
+    out.puts("BOOST_CHECK_THROW(")
+    out.inc
+    out.puts(s"r = new $className(&ks),")
+    out.puts(compiler.ksErrorName(exception))
+    out.dec
+    out.puts(");")
+  }
+
+  def runParseCommon1(): Unit = {
+    out.puts("std::ifstream ifs(\"src/" + spec.data + "\", std::ifstream::binary);")
+    out.puts("kaitai::kstream ks(&ifs);")
   }
 
   override def footer() = {
