@@ -37,6 +37,7 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
     out.puts(s"with self.assertRaises(${PythonCompiler.ksErrorName(exception)}):")
     out.inc
     runParse()
+    out.puts("pass")
   }
 
   override def footer(): Unit = {}
