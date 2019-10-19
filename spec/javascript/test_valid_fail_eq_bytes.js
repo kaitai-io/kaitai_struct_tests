@@ -5,4 +5,3 @@ var testHelperThrows = require('testHelperThrows');
 var KaitaiStream = require('kaitai-struct/KaitaiStream');
 
 testHelperThrows('ValidFailEqBytes', 'src/fixed_struct.bin', KaitaiStream.ValidationNotEqualError);
-

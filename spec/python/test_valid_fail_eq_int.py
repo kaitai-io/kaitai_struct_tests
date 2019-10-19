@@ -9,5 +9,4 @@ class TestValidFailEqInt(unittest.TestCase):
     def test_valid_fail_eq_int(self):
         with self.assertRaises(kaitaistruct.ValidationNotEqualError):
             with ValidFailEqInt.from_file('src/fixed_struct.bin') as r:
-
                 pass

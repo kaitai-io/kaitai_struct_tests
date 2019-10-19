@@ -7,6 +7,5 @@ RSpec.describe ValidFailEqInt do
     expect {
       r = ValidFailEqInt.from_file('src/fixed_struct.bin')
     }.to raise_error(Kaitai::Struct::ValidationNotEqualError)
-
   end
 end
