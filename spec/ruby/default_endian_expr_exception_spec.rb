@@ -7,6 +7,5 @@ RSpec.describe DefaultEndianExprException do
     expect {
       r = DefaultEndianExprException.from_file('src/endian_expr.bin')
     }.to raise_error(Kaitai::Struct::UndecidedEndiannessError)
-
   end
 end
