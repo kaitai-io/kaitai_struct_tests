@@ -16,7 +16,7 @@ BOOST_AUTO_TEST_CASE(test_switch_cast) {
 
     // Unable to test "err_cast": C++ static casts with pointer types
     // don't do any type checking and do not throw relevant
-    // std::bast_cast.
+    // std::bad_cast.
 
     delete r;
 }
