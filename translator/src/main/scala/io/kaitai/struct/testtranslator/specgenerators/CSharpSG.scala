@@ -1,7 +1,7 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.{ClassTypeProvider, Utils}
-import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.CSharpCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
@@ -27,8 +27,24 @@ class CSharpSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
     out.puts(s"public void Test$className()")
     out.puts("{")
     out.inc
+  }
+
+  override def runParse(): Unit = {
     out.puts(s"var r = $className.FromFile(SourceFile(" + "\"" + spec.data + "\"));")
     out.puts
+  }
+
+  override def runParseExpectError(exception: KSError): Unit = {
+    out.puts(s"Assert.Throws<${CSharpCompiler.ksErrorName(exception)}>(")
+    out.inc
+    out.puts("delegate")
+    out.puts("{")
+    out.inc
+    out.puts(s"$className.FromFile(SourceFile(" + "\"" + spec.data + "\"));")
+    out.dec
+    out.puts("}")
+    out.dec
+    out.puts(");")
   }
 
   override def footer(): Unit = {
