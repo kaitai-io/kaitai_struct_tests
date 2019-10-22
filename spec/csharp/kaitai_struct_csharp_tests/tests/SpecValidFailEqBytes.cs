@@ -5,15 +5,15 @@ using NUnit.Framework;
 namespace Kaitai
 {
     [TestFixture]
-    public class SpecEosExceptionU4 : CommonSpec
+    public class SpecValidFailEqBytes : CommonSpec
     {
         [Test]
-        public void TestEosExceptionU4()
+        public void TestValidFailEqBytes()
         {
-            Assert.Throws<EndOfStreamException>(
+            Assert.Throws<ValidationNotEqualError>(
                 delegate
                 {
-                    EosExceptionU4.FromFile(SourceFile("term_strz.bin"));
+                    ValidFailEqBytes.FromFile(SourceFile("fixed_struct.bin"));
                 }
             );
         }
