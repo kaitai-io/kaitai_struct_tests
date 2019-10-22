@@ -153,7 +153,7 @@ class PartialBuilder
 
         to_delete = Set.new
         disp_files.each { |df|
-          to_delete << df if File.basename(df) == bare_file
+          to_delete << df if File.basename(df.gsub(/\\/, '/')) == bare_file
         }
 
         if to_delete.empty?
