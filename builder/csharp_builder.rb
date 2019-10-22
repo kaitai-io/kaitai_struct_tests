@@ -93,8 +93,13 @@ class CSharpBuilder < PartialBuilder
   end
 
   def file_to_test(filename)
-    # File.basename only forwards with forward slashes, so we normalize for that first
-    fn = File.basename(filename.gsub(/\\/, '/'))
+    fn = if filename.respond_to?(:[]) and filename[0] == :bare
+      # If bare name, then it's exactly what we're looking for
+      filename[1]
+    else
+      # File.basename only forwards with forward slashes, so we normalize for that first
+      File.basename(filename.gsub(/\\/, '/'))
+    end
     if fn =~ /^Spec(.*)\.cs$/
       return [:spec, $1]
     else

@@ -53,9 +53,9 @@ RSpec.describe CSharpBuilder do
 
     describe '#parse_failed_build' do
       it 'parses failed build information' do
-        expect(@builder.parse_failed_build('test_out/csharp/build-3.log').to_a.sort).to eq(
-          [[:bare, "SpecExprBytesOps.cs"]]
-        )
+        expect(@builder.parse_failed_build('test_out/csharp/build-3.log').to_a.sort).to eq([
+          [:bare, "SpecExprBytesOps.cs"],
+        ])
       end
     end
 
@@ -64,9 +64,15 @@ RSpec.describe CSharpBuilder do
         mand_files = Set.new(@builder.list_mandatory_files)
         disp_files = Set.new(@builder.list_disposable_files)
         bad_files = @builder.adjust_files_for_failed_build('test_out/csharp/build-3.log', mand_files, disp_files)
-        expect(bad_files.to_a.sort).to eq(
-          [[:bare, "SpecExprBytesOps.cs"]]
-        )
+        expect(bad_files.to_a.sort).to eq([
+          [:bare, "SpecExprBytesOps.cs"],
+        ])
+      end
+    end
+
+    describe '#file_to_test' do
+      it 'parses bare file name' do
+        expect(@builder.file_to_test([:bare, "SpecExprBytesOps.cs"])).to eq([:spec, "ExprBytesOps"])
       end
     end
   end
