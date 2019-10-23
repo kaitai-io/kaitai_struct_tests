@@ -146,7 +146,7 @@ class PartialBuilder
     # Treat "bare" files specially
     leftover_processed = Set.new
     leftover.each { |x|
-      if x.respond_to?(:[]) and x[0] == :bare
+      if is_bare?(x)
         # This is indeed a "bare" file - i.e. a file without path
         bare_file = x[1]
         log "removing bare file #{bare_file.inspect}"
@@ -293,5 +293,9 @@ class PartialBuilder
     }
     log "process_status: #{process_status.inspect}"
     return process_status
+  end
+
+  def is_bare?(x)
+    x.respond_to?(:[]) and x[0] == :bare
   end
 end

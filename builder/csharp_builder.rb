@@ -93,7 +93,7 @@ class CSharpBuilder < PartialBuilder
   end
 
   def file_to_test(filename)
-    fn = if filename.respond_to?(:[]) and filename[0] == :bare
+    fn = if is_bare?(filename)
       # If bare name, then it's exactly what we're looking for
       filename[1]
     else
@@ -129,10 +129,14 @@ class CSharpBuilder < PartialBuilder
     File.exists?(xml_log)
   end
 
-  private
+#  private
   def convert_slashes(list)
-    list.sort.map { |f|
-      if f.respond_to?(:[]) and f[0] == :bare
+    list.sort { |a, b|
+      aa = is_bare?(a) ? a[1] : a
+      bb = is_bare?(b) ? b[1] : b
+      aa <=> bb
+    }.map { |f|
+      if is_bare?(f)
         # bare file, return as is, no slashes expected anyway
         f
       else

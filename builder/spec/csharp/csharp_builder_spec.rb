@@ -75,5 +75,17 @@ RSpec.describe CSharpBuilder do
         expect(@builder.file_to_test([:bare, "SpecExprBytesOps.cs"])).to eq([:spec, "ExprBytesOps"])
       end
     end
+
+    describe '#convert_slashes' do
+      it 'parses bare file name' do
+        expect(@builder.convert_slashes([
+          "a/b/c/FooBar.cs",
+          [:bare, "SpecExprBytesOps.cs"],
+        ])).to eq([
+          [:bare, "SpecExprBytesOps.cs"],
+          "a\\b\\c\\FooBar.cs",
+        ])
+      end
+    end
   end
 end
