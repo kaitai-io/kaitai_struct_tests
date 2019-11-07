@@ -4,4 +4,5 @@
 
 ./run-java
 
-aggregate/convert_to_json java "$TEST_OUT_DIR/java/junitreports" "$TEST_OUT_DIR/java/ci.json"
+./kst-adoption-report java
+aggregate/convert_to_json java "$TEST_OUT_DIR/java" "$TEST_OUT_DIR/java/ci.json"

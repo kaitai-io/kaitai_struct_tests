@@ -1,16 +1,18 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import io.kaitai.struct.ClassTypeProvider
-import io.kaitai.struct.datatype.DataType
+import io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
 import io.kaitai.struct.datatype.DataType._
+import io.kaitai.struct.datatype.{DataType, KSError}
 import io.kaitai.struct.exprlang.Ast
 import io.kaitai.struct.languages.JavaCompiler
 import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 import io.kaitai.struct.translators.JavaTranslator
 
 class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
+  val config = RuntimeConfig()
   val className = JavaCompiler.type2class(spec.id)
   val translator = new JavaTranslator(provider, importList)
+  val compiler = new JavaCompiler(provider, config)
 
   importList.add(s"io.kaitai.struct.testformats.$className")
   importList.add("org.testng.annotations.Test")
@@ -21,11 +23,24 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   override def header(): Unit = {
     out.puts(s"public class Test$className extends CommonSpec {")
     out.inc
+    out.puts
+  }
+
+  override def runParse(): Unit = {
     out.puts("@Test")
+    runParseCommon()
+  }
+
+  override def runParseExpectError(exception: KSError): Unit = {
+    importList.add("io.kaitai.struct.KaitaiStream")
+    out.puts(s"@Test(expectedExceptions = ${compiler.ksErrorName(exception)}.class)")
+    runParseCommon()
+  }
+
+  def runParseCommon(): Unit = {
     out.puts(s"public void test$className() throws Exception {")
     out.inc
     out.puts(s"$className r = $className.fromFile(SRC_DIR + " + "\"" + spec.data + "\");")
-    out.puts
   }
 
   override def footer(): Unit = {
@@ -45,6 +60,12 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
       case _ =>
         out.puts(s"assertEquals($actStr, $expStr);")
     }
+  }
+
+  override def floatAssert(check: TestAssert): Unit = {
+    val actStr = translateAct(check.actual)
+    val expStr = translator.translate(check.expected)
+    out.puts(s"assertEquals($actStr, $expStr, $FLOAT_DELTA);")
   }
 
   override def nullAssert(actual: Ast.expr): Unit = {

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -ef
 
 . ./config
 
@@ -11,15 +11,12 @@ SRC_DIR="$1"
 CPP_SPEC_DIR="$2"
 CPP_TEST_OUT_DIR="$3"
 
-OBJ_DIR="$SRC_DIR/bin"
-TEST_DIR=$(pwd)
-
 ./run-cpp_stl "$SRC_DIR" "$CPP_SPEC_DIR" "$CPP_TEST_OUT_DIR"
 
 # Run C++/STL valgrind check, generates Valgrind XML report
 echo 'Running Valgrind checks...'
 if valgrind --version; then
-	./valgrind-cpp_stl "$SRC_DIR" "$CPP_TEST_OUT_DIR"
+	./valgrind-cpp_stl "$SRC_DIR" "$CPP_TEST_OUT_DIR" || :
 else
 	echo 'Valgrind not found :-('
 
@@ -27,4 +24,5 @@ else
 	echo '<?xml version="1.0"?><valgrindoutput></valgrindoutput>' >"$CPP_TEST_OUT_DIR/valgrind.xml"
 fi
 
+./kst-adoption-report $(basename "$SRC_DIR")
 aggregate/convert_to_json cpp_stl "$CPP_TEST_OUT_DIR" "$CPP_TEST_OUT_DIR/ci.json"

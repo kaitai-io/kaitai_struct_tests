@@ -1,11 +1,11 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import io.kaitai.struct.ClassTypeProvider
-import io.kaitai.struct.datatype.DataType
-import io.kaitai.struct.exprlang.Ast
-import io.kaitai.struct.languages.PythonCompiler
-import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
-import io.kaitai.struct.translators.PythonTranslator
+import _root_.io.kaitai.struct.ClassTypeProvider
+import _root_.io.kaitai.struct.datatype.{DataType, KSError}
+import _root_.io.kaitai.struct.exprlang.Ast
+import _root_.io.kaitai.struct.languages.PythonCompiler
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.translators.PythonTranslator
 
 class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   importList.add("import unittest")
@@ -25,8 +25,19 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
     out.inc
     out.puts(s"def test_${spec.id}(self):")
     out.inc
+  }
+
+  override def runParse(): Unit = {
     out.puts(s"with $className.from_file('src/${spec.data}') as r:")
     out.inc
+  }
+
+  override def runParseExpectError(exception: KSError): Unit = {
+    importList.add("import kaitaistruct")
+    out.puts(s"with self.assertRaises(${PythonCompiler.ksErrorName(exception)}):")
+    out.inc
+    runParse()
+    out.puts("pass")
   }
 
   override def footer(): Unit = {}
@@ -35,6 +46,12 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
     val actStr = translateAct(check.actual)
     val expStr = translateExp(check.expected)
     out.puts(s"self.assertEqual($actStr, $expStr)")
+  }
+
+  override def floatAssert(check: TestAssert): Unit = {
+    val actStr = translateAct(check.actual)
+    val expStr = translator.translate(check.expected)
+    out.puts(s"self.assertAlmostEqual($actStr, $expStr, 6)")
   }
 
   override def nullAssert(actual: Ast.expr): Unit = {

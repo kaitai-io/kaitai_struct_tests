@@ -66,3 +66,7 @@ includes a [Travis CI](https://travis-ci.org/kaitai-io/kaitai_struct/)
 configuration. This mean that every commit to main project repository
 gets automatically built and tested throughly. The results are
 published at [Kaitai Struct CI results page](https://ci.kaitai.io).
+
+Please refer to [CI documentation](https://doc.kaitai.io/ci.html) for
+a throughout overview of how this all is tied together in a bigger
+picture.

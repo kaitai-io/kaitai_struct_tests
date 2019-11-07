@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Only runs one test (the argument) and prints result on console
+
+. ./config
+
+nim c -r --outdir:"$TEST_OUT_DIR/nim/bin" "spec/nim/test_stdout" "$1"
+nim c -r "spec/nim/tests/test"
+rm "spec/nim/tests/test" "spec/nim/tests/test.nim"

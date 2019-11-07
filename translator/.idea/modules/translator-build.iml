@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="translator-build" external.linked.project.path="$MODULE_DIR$/../../project" external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" sbt.imports="_root_.sbt.Keys._, _root_.sbt._, _root_.sbt.plugins.IvyPlugin, _root_.sbt.plugins.JvmPlugin, _root_.sbt.plugins.CorePlugin, _root_.sbt.plugins.JUnitXmlReportPlugin, _root_.sbt.plugins.Giter8TemplatePlugin, _root_.scala.xml.{TopScope=&gt;SUB:DOLLARscope}" sbt.resolvers="https://repo1.maven.org/maven2/|maven|public, file:/home/greycat/.sbt/preloaded|maven|local-preloaded, https://oss.sonatype.org/content/repositories/snapshots|maven|Sonatype OSS Snapshots, /home/greycat/.ivy2/cache|ivy|Local cache" type="SBT_MODULE" version="4">
+<module external.linked.project.id="translator-build" external.linked.project.path="$MODULE_DIR$/../../project" external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" sbt.imports="_root_.sbt.Keys._, _root_.sbt._, _root_.sbt.plugins.IvyPlugin, _root_.sbt.plugins.JvmPlugin, _root_.sbt.plugins.CorePlugin, _root_.sbt.plugins.JUnitXmlReportPlugin, _root_.sbt.plugins.Giter8TemplatePlugin, _root_.scala.xml.{TopScope=&amp;gt;SUB:DOLLARscope}" sbt.resolvers="file:$USER_HOME$/.sbt/preloaded|maven|local-preloaded, /home/greycat/.ivy2/cache|ivy|Local cache, https://oss.sonatype.org/content/repositories/public|maven|sonatype-public, https://oss.sonatype.org/content/repositories/snapshots|maven|Sonatype OSS Snapshots, https://repo1.maven.org/maven2/|maven|public" type="SBT_MODULE" version="4">
   <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/../../project/target/idea-classes" />
     <output-test url="file://$MODULE_DIR$/../../project/target/idea-test-classes" />
@@ -99,5 +99,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+  </component>
+  <component name="SbtModule">
+    <option name="buildForURI" value="file:$MODULE_DIR$/../../" />
+    <option name="imports" value="_root_.sbt.Keys._, _root_.sbt._, _root_.sbt.plugins.IvyPlugin, _root_.sbt.plugins.JvmPlugin, _root_.sbt.plugins.CorePlugin, _root_.sbt.plugins.JUnitXmlReportPlugin, _root_.sbt.plugins.Giter8TemplatePlugin, _root_.scala.xml.{TopScope=&gt;SUB:DOLLARscope}" />
   </component>
 </module>

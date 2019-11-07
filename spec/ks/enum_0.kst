@@ -1,7 +1,7 @@
 id: enum_0
-data: term_strz.bin
+data: enum_0.bin
 asserts:
   - actual: pet_1
-    expected: animal::cat
+    expected: enum_0::animal::cat
   - actual: pet_2
-    expected: animal::chicken
+    expected: enum_0::animal::chicken

@@ -10,8 +10,10 @@ rspec -I compiled/ruby -I "$RUBY_RUNTIME_DIR" -f json --out "$TEST_OUT_DIR/ruby/
 if [ -n "$TRAVIS" ]; then
 	echo 'Running in Travis, running system Ruby explicitly.'
 	/usr/bin/ruby --version
-	/usr/bin/ruby aggregate/convert_to_json ruby "$TEST_OUT_DIR/ruby/test-output-ruby.json" "$TEST_OUT_DIR/ruby/ci.json"
+	/usr/bin/ruby ./kst-adoption-report ruby
+	/usr/bin/ruby aggregate/convert_to_json ruby "$TEST_OUT_DIR/ruby" "$TEST_OUT_DIR/ruby/ci.json"
 else
 	# This one will run Ruby through shebang, which would use /usr/bin/env to find `ruby` in $PATH.
-	aggregate/convert_to_json ruby "$TEST_OUT_DIR/ruby/test-output-ruby.json" "$TEST_OUT_DIR/ruby/ci.json"
+	./kst-adoption-report ruby
+	aggregate/convert_to_json ruby "$TEST_OUT_DIR/ruby" "$TEST_OUT_DIR/ruby/ci.json"
 fi

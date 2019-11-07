@@ -1,4 +1,5 @@
 #!/bin/sh
 
 cd translator
-sbt run
+arg="run $@"
+sbt "$arg"

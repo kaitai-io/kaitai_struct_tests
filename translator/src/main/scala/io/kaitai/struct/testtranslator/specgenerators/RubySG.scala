@@ -1,11 +1,11 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import io.kaitai.struct.datatype.DataType
-import io.kaitai.struct.exprlang.Ast
+import _root_.io.kaitai.struct.datatype.{DataType, KSError}
+import _root_.io.kaitai.struct.exprlang.Ast
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.translators.RubyTranslator
+import _root_.io.kaitai.struct.{ClassTypeProvider, Utils}
 import io.kaitai.struct.languages.RubyCompiler
-import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
-import io.kaitai.struct.translators.RubyTranslator
-import io.kaitai.struct.{ClassTypeProvider, Utils}
 
 class RubySG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   val translator = new RubyTranslator(provider)
@@ -17,13 +17,24 @@ class RubySG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
   override def header(): Unit = {
     out.puts(s"require '${spec.id}'")
+    spec.extraImports.foreach(fn => out.puts(s"require '$fn'"))
     out.puts
     out.puts(s"RSpec.describe $className do")
     out.inc
     out.puts(s"it 'parses test properly' do")
     out.inc
+  }
+
+  override def runParse(): Unit = {
     out.puts(s"r = $className.from_file('src/${spec.data}')")
-    out.puts
+  }
+
+  override def runParseExpectError(exception: KSError): Unit = {
+    out.puts("expect {")
+    out.inc
+    runParse()
+    out.dec
+    out.puts(s"}.to raise_error(${RubyCompiler.ksErrorName(exception)})")
   }
 
   override def footer(): Unit = {
@@ -37,6 +48,12 @@ class RubySG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"expect($actStr).to eq $expStr")
+  }
+
+  override def floatAssert(check: TestAssert): Unit = {
+    val actStr = translateAct(check.actual)
+    val expStr = translator.translate(check.expected)
+    out.puts(s"expect($actStr).to be_within($FLOAT_DELTA).of $expStr")
   }
 
   override def nullAssert(actual: Ast.expr): Unit = {

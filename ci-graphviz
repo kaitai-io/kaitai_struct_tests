@@ -1,0 +1,32 @@
+#!/bin/sh -e
+
+. ./config
+
+
+DOT_LOG="$TEST_OUT_DIR/graphviz/dot.log"
+PASSED_LOG="$TEST_OUT_DIR/graphviz/passed.log"
+FAILED_BUILDS="$TEST_OUT_DIR/graphviz/build_failed_tests.txt"
+
+init()
+{
+	mkdir -p "$FORMATS_COMPILED_DIR/graphviz/svg"
+	mkdir -p "$TEST_OUT_DIR/graphviz"
+	rm -f "$DOT_LOG" "$PASSED_LOG" "$FAILED_BUILDS"
+}
+
+build()
+{
+	for DOT in "$FORMATS_COMPILED_DIR/graphviz/"*.dot; do
+		NAME=$(basename "$DOT" | sed 's/\.dot$//')
+		SVG="$NAME.svg"
+		echo "$DOT => $NAME => $SVG"
+		echo "$DOT => $NAME => $SVG" >>"$DOT_LOG"
+		dot -Tsvg "$DOT" -o "$FORMATS_COMPILED_DIR/graphviz/svg/$SVG" 2>>"$DOT_LOG" \
+			&& echo "$NAME" >>"$PASSED_LOG" \
+			|| echo "format	$NAME" >>"$FAILED_BUILDS"
+	done
+}
+
+init
+build
+aggregate/convert_to_json graphviz "$TEST_OUT_DIR/graphviz" "$TEST_OUT_DIR/graphviz/ci.json"

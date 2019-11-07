@@ -3,4 +3,5 @@
 . ./config
 
 ./run-php
+./kst-adoption-report php
 aggregate/convert_to_json php "$TEST_OUT_DIR/php" "$TEST_OUT_DIR/php/ci.json"

@@ -1,5 +1,10 @@
 require_relative 'test_result'
 
+# Common helper method: converts `lower_under_score` to `UpperCamelCase`
+def underscore_to_ucamelcase(s)
+  s.split(/_/).map { |x| x.capitalize }.join
+end
+
 class TestParser
   def each_test
     raise 'Abstract method'

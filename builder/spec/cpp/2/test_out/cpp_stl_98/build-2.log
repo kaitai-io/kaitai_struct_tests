@@ -1,0 +1,24 @@
+Scanning dependencies of target ks_tests
+[  1%] Linking CXX executable ks_tests
+/usr/bin/ld: CMakeFiles/ks_tests.dir/test_imports_abs.cpp.o: in function `test_imports_abs::test_method()':
+/home/greycat/git/kaitai_struct/tests/spec/cpp_stl_98/test_imports_abs.cpp:13: undefined reference to `imports_abs_t::imports_abs_t(kaitai::kstream*, kaitai::kstruct*, imports_abs_t*, bool)'
+/usr/bin/ld: /home/greycat/git/kaitai_struct/tests/spec/cpp_stl_98/test_imports_abs.cpp:15: undefined reference to `vlq_base128_le_t::value()'
+/usr/bin/ld: CMakeFiles/ks_tests.dir/test_cast_nested.cpp.o: in function `test_cast_nested::test_method()':
+/home/greycat/git/kaitai_struct/tests/spec/cpp_stl_98/test_cast_nested.cpp:12: undefined reference to `cast_nested_t::cast_nested_t(kaitai::kstream*, kaitai::kstruct*, cast_nested_t*, bool)'
+/usr/bin/ld: /home/greycat/git/kaitai_struct/tests/spec/cpp_stl_98/test_cast_nested.cpp:14: undefined reference to `cast_nested_t::opcodes_0_str()'
+/usr/bin/ld: /home/greycat/git/kaitai_struct/tests/spec/cpp_stl_98/test_cast_nested.cpp:15: undefined reference to `cast_nested_t::opcodes_0_str_value[abi:cxx11]()'
+/usr/bin/ld: /home/greycat/git/kaitai_struct/tests/spec/cpp_stl_98/test_cast_nested.cpp:16: undefined reference to `cast_nested_t::opcodes_1_int()'
+/usr/bin/ld: /home/greycat/git/kaitai_struct/tests/spec/cpp_stl_98/test_cast_nested.cpp:17: undefined reference to `cast_nested_t::opcodes_1_int_value()'
+/usr/bin/ld: CMakeFiles/ks_tests.dir/test_repeat_until_sized.cpp.o: in function `test_repeat_until_sized::test_method()':
+/home/greycat/git/kaitai_struct/tests/spec/cpp_stl_98/test_repeat_until_sized.cpp:12: undefined reference to `repeat_until_sized_t::repeat_until_sized_t(kaitai::kstream*, kaitai::kstruct*, repeat_until_sized_t*, bool)'
+/usr/bin/ld: CMakeFiles/ks_tests.dir/test_io_local_var.cpp.o: in function `test_io_local_var::test_method()':
+/home/greycat/git/kaitai_struct/tests/spec/cpp_stl_98/test_io_local_var.cpp:12: undefined reference to `io_local_var_t::io_local_var_t(kaitai::kstream*, kaitai::kstruct*, io_local_var_t*, bool)'
+/usr/bin/ld: CMakeFiles/ks_tests.dir/test_repeat_n_struct.cpp.o: in function `test_repeat_n_struct::test_method()':
+/home/greycat/git/kaitai_struct/tests/spec/cpp_stl_98/test_repeat_n_struct.cpp:12: undefined reference to `repeat_n_struct_t::repeat_n_struct_t(kaitai::kstream*, kaitai::kstruct*, repeat_n_struct_t*, bool)'
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/ks_tests.dir/build.make:4677: ks_tests] Error 1
+make[2]: Target 'CMakeFiles/ks_tests.dir/build' not remade because of errors.
+make[1]: *** [CMakeFiles/Makefile2:73: CMakeFiles/ks_tests.dir/all] Error 2
+make[1]: Target 'all' not remade because of errors.
+make: *** [Makefile:95: all] Error 2
+make: Target 'default_target' not remade because of errors.

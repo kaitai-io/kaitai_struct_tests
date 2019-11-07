@@ -1,4 +1,4 @@
-# /seq/0/repeat-expr: unknown key found, expected: consume, doc, eos-error, id, if, include, repeat, repeat-until, terminator, type
+# /seq/0/repeat-expr: unknown key found, expected: consume, doc, doc-ref, eos-error, id, if, include, repeat, repeat-until, terminator, type
 meta:
   id: repeat_incompatible3
 seq:
