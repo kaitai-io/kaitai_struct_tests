@@ -16,7 +16,7 @@ class ExprCalcArrayOpsTest extends TestCase {
         $this->assertEquals(1000, $r->intArrayMax());
         $this->assertEquals(5, $r->doubleArraySize());
         $this->assertEquals($r->doubleArrayFirst(), 10.0, '', 1e-6);
-        $this->assertEquals($r->doubleArrayMin(), 25.0, '', 1e-6);
+        $this->assertEquals($r->doubleArrayMid(), 25.0, '', 1e-6);
         $this->assertEquals($r->doubleArrayLast(), 3.14159, '', 1e-6);
         $this->assertEquals($r->doubleArrayMin(), 3.14159, '', 1e-6);
         $this->assertEquals($r->doubleArrayMax(), 100.0, '', 1e-6);
@@ -25,6 +25,6 @@ class ExprCalcArrayOpsTest extends TestCase {
         $this->assertEquals("deux", $r->strArrayMid());
         $this->assertEquals("quatre", $r->strArrayLast());
         $this->assertEquals("deux", $r->strArrayMin());
-        $this->assertEquals("quatre", $r->strArrayMax());
+        $this->assertEquals("un", $r->strArrayMax());
     }
 }

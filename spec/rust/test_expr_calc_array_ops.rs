@@ -18,7 +18,7 @@ fn test_expr_calc_array_ops() {
         assert_eq!(r.int_array_max, 1000);
         assert_eq!(r.double_array_size, 5);
         assert_eq!(r.double_array_first, 10.0);
-        assert_eq!(r.double_array_min, 25.0);
+        assert_eq!(r.double_array_mid, 25.0);
         assert_eq!(r.double_array_last, 3.14159);
         assert_eq!(r.double_array_min, 3.14159);
         assert_eq!(r.double_array_max, 100.0);
@@ -27,6 +27,6 @@ fn test_expr_calc_array_ops() {
         assert_eq!(r.str_array_mid, "deux");
         assert_eq!(r.str_array_last, "quatre");
         assert_eq!(r.str_array_min, "deux");
-        assert_eq!(r.str_array_max, "quatre");
+        assert_eq!(r.str_array_max, "un");
     }
 }

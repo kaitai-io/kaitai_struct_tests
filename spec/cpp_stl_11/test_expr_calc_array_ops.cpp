@@ -20,7 +20,7 @@ BOOST_AUTO_TEST_CASE(test_expr_calc_array_ops) {
     BOOST_CHECK_EQUAL(r->int_array_max(), 1000);
     BOOST_CHECK_EQUAL(r->double_array_size(), 5);
     BOOST_CHECK_CLOSE(r->double_array_first(), 10.0, 1e-6);
-    BOOST_CHECK_CLOSE(r->double_array_min(), 25.0, 1e-6);
+    BOOST_CHECK_CLOSE(r->double_array_mid(), 25.0, 1e-6);
     BOOST_CHECK_CLOSE(r->double_array_last(), 3.14159, 1e-6);
     BOOST_CHECK_CLOSE(r->double_array_min(), 3.14159, 1e-6);
     BOOST_CHECK_CLOSE(r->double_array_max(), 100.0, 1e-6);
@@ -29,7 +29,7 @@ BOOST_AUTO_TEST_CASE(test_expr_calc_array_ops) {
     BOOST_CHECK_EQUAL(r->str_array_mid(), std::string("deux"));
     BOOST_CHECK_EQUAL(r->str_array_last(), std::string("quatre"));
     BOOST_CHECK_EQUAL(r->str_array_min(), std::string("deux"));
-    BOOST_CHECK_EQUAL(r->str_array_max(), std::string("quatre"));
+    BOOST_CHECK_EQUAL(r->str_array_max(), std::string("un"));
 
     delete r;
 }

@@ -20,7 +20,7 @@ suite "Kaitai Struct Compiler Test Suite":
     check(r.intArrayMax == int(1000))
     check(r.doubleArraySize == int(5))
     check(r.doubleArrayFirst == float64(10.0))
-    check(r.doubleArrayMin == float64(25.0))
+    check(r.doubleArrayMid == float64(25.0))
     check(r.doubleArrayLast == float64(3.14159))
     check(r.doubleArrayMin == float64(3.14159))
     check(r.doubleArrayMax == float64(100.0))
@@ -29,6 +29,6 @@ suite "Kaitai Struct Compiler Test Suite":
     check(r.strArrayMid == string("deux"))
     check(r.strArrayLast == string("quatre"))
     check(r.strArrayMin == string("deux"))
-    check(r.strArrayMax == string("quatre"))
+    check(r.strArrayMax == string("un"))
 
 close(outputFormatter)

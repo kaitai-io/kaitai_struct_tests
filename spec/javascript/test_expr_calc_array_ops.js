@@ -13,7 +13,7 @@ testHelper('ExprCalcArrayOps', 'src/fixed_struct.bin', function(r, ExprCalcArray
   assert.strictEqual(r.intArrayMax, 1000);
   assert.strictEqual(r.doubleArraySize, 5);
   assert(Math.abs(r.doubleArrayFirst - 10.0) < 1e-6);
-  assert(Math.abs(r.doubleArrayMin - 25.0) < 1e-6);
+  assert(Math.abs(r.doubleArrayMid - 25.0) < 1e-6);
   assert(Math.abs(r.doubleArrayLast - 3.14159) < 1e-6);
   assert(Math.abs(r.doubleArrayMin - 3.14159) < 1e-6);
   assert(Math.abs(r.doubleArrayMax - 100.0) < 1e-6);
@@ -22,5 +22,5 @@ testHelper('ExprCalcArrayOps', 'src/fixed_struct.bin', function(r, ExprCalcArray
   assert.strictEqual(r.strArrayMid, "deux");
   assert.strictEqual(r.strArrayLast, "quatre");
   assert.strictEqual(r.strArrayMin, "deux");
-  assert.strictEqual(r.strArrayMax, "quatre");
+  assert.strictEqual(r.strArrayMax, "un");
 });

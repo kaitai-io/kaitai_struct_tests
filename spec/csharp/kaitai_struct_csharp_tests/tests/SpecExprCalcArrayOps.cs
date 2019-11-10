@@ -21,7 +21,7 @@ namespace Kaitai
             Assert.AreEqual(r.IntArrayMax, 1000);
             Assert.AreEqual(r.DoubleArraySize, 5);
             Assert.AreEqual(r.DoubleArrayFirst, 10.0, 1e-6);
-            Assert.AreEqual(r.DoubleArrayMin, 25.0, 1e-6);
+            Assert.AreEqual(r.DoubleArrayMid, 25.0, 1e-6);
             Assert.AreEqual(r.DoubleArrayLast, 3.14159, 1e-6);
             Assert.AreEqual(r.DoubleArrayMin, 3.14159, 1e-6);
             Assert.AreEqual(r.DoubleArrayMax, 100.0, 1e-6);
@@ -30,7 +30,7 @@ namespace Kaitai
             Assert.AreEqual(r.StrArrayMid, "deux");
             Assert.AreEqual(r.StrArrayLast, "quatre");
             Assert.AreEqual(r.StrArrayMin, "deux");
-            Assert.AreEqual(r.StrArrayMax, "quatre");
+            Assert.AreEqual(r.StrArrayMax, "un");
         }
     }
 }

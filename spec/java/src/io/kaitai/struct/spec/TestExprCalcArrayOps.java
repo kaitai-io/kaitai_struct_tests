@@ -19,7 +19,7 @@ public class TestExprCalcArrayOps extends CommonSpec {
         assertIntEquals(r.intArrayMax(), 1000);
         assertIntEquals(r.doubleArraySize(), 5);
         assertEquals(r.doubleArrayFirst(), 10.0, 1e-6);
-        assertEquals(r.doubleArrayMin(), 25.0, 1e-6);
+        assertEquals(r.doubleArrayMid(), 25.0, 1e-6);
         assertEquals(r.doubleArrayLast(), 3.14159, 1e-6);
         assertEquals(r.doubleArrayMin(), 3.14159, 1e-6);
         assertEquals(r.doubleArrayMax(), 100.0, 1e-6);
@@ -28,6 +28,6 @@ public class TestExprCalcArrayOps extends CommonSpec {
         assertEquals(r.strArrayMid(), "deux");
         assertEquals(r.strArrayLast(), "quatre");
         assertEquals(r.strArrayMin(), "deux");
-        assertEquals(r.strArrayMax(), "quatre");
+        assertEquals(r.strArrayMax(), "un");
     }
 }

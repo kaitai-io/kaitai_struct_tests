@@ -14,7 +14,7 @@ RSpec.describe ExprCalcArrayOps do
     expect(r.int_array_max).to eq 1000
     expect(r.double_array_size).to eq 5
     expect(r.double_array_first).to be_within(1e-6).of 10.0
-    expect(r.double_array_min).to be_within(1e-6).of 25.0
+    expect(r.double_array_mid).to be_within(1e-6).of 25.0
     expect(r.double_array_last).to be_within(1e-6).of 3.14159
     expect(r.double_array_min).to be_within(1e-6).of 3.14159
     expect(r.double_array_max).to be_within(1e-6).of 100.0
@@ -23,6 +23,6 @@ RSpec.describe ExprCalcArrayOps do
     expect(r.str_array_mid).to eq "deux"
     expect(r.str_array_last).to eq "quatre"
     expect(r.str_array_min).to eq "deux"
-    expect(r.str_array_max).to eq "quatre"
+    expect(r.str_array_max).to eq "un"
   end
 end

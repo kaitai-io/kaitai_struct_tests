@@ -20,7 +20,7 @@ sub test_expr_calc_array_ops: Test(18) {
     is($r->int_array_max(), 1000, 'Equals');
     is($r->double_array_size(), 5, 'Equals');
     ok(abs($r->double_array_first() - 10.0) < 1e-6, 'Approx equals');
-    ok(abs($r->double_array_min() - 25.0) < 1e-6, 'Approx equals');
+    ok(abs($r->double_array_mid() - 25.0) < 1e-6, 'Approx equals');
     ok(abs($r->double_array_last() - 3.14159) < 1e-6, 'Approx equals');
     ok(abs($r->double_array_min() - 3.14159) < 1e-6, 'Approx equals');
     ok(abs($r->double_array_max() - 100.0) < 1e-6, 'Approx equals');
@@ -29,7 +29,7 @@ sub test_expr_calc_array_ops: Test(18) {
     is($r->str_array_mid(), "deux", 'Equals');
     is($r->str_array_last(), "quatre", 'Equals');
     is($r->str_array_min(), "deux", 'Equals');
-    is($r->str_array_max(), "quatre", 'Equals');
+    is($r->str_array_max(), "un", 'Equals');
 }
 
 Test::Class->runtests;

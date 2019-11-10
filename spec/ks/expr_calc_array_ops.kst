@@ -20,7 +20,7 @@ asserts:
     expected: 5
   - actual: double_array_first
     expected: 10.0
-  - actual: double_array_min
+  - actual: double_array_mid
     expected: 25.0
   - actual: double_array_last
     expected: 3.14159
@@ -41,4 +41,4 @@ asserts:
   - actual: str_array_min
     expected: '"deux"'
   - actual: str_array_max
-    expected: '"quatre"'
+    expected: '"un"'
