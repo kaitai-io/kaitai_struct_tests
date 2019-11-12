@@ -15,7 +15,7 @@ RSpec.describe CSharpBuilder do
 
     describe '#list_mandatory_files' do
       it 'shows no mandatory files' do
-        expect(@builder.list_mandatory_files.to_a.sort).to eq ["CommonSpec.cs", "Properties\\AssemblyInfo.cs"]
+        expect(@builder.list_mandatory_files.to_a.sort).to eq ["CommonSpec.cs"]
       end
     end
 

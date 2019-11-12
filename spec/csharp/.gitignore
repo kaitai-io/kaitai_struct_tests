@@ -253,4 +253,4 @@ paket-files/
 *.sln.iml
 
 # Kaitai Struct test builder specific: this file is generated in `run-csharp`
-kaitai_struct_csharp_tests/kaitai_struct_csharp_tests.csproj
+kaitai_struct_csharp_tests/parsers/*

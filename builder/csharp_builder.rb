@@ -12,7 +12,6 @@ class CSharpBuilder < PartialBuilder
     @packages_dir = 'spec/csharp/packages'
     @compiled_dir = 'compiled/csharp'
     @project_file = "#{@spec_dir}/kaitai_struct_csharp_tests.csproj"
-    @project_template = "#{@spec_dir}/kaitai_struct_csharp_tests.csproj.in"
 
     @test_out_dir = "#{@config['TEST_OUT_DIR']}/csharp"
 
@@ -35,13 +34,15 @@ class CSharpBuilder < PartialBuilder
       @msbuild_args << '/logger:C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll'
     end
 
+    # New csproj format requires NuGet restore before build
+    @msbuild_args << '/restore'
+
     # If mono is available, use it
     @is_mono = system("mono --version") ? true : false
   end
 
   def list_mandatory_files
     convert_slashes([
-      'Properties/AssemblyInfo.cs',
       'CommonSpec.cs',
     ])
   end
@@ -53,11 +54,16 @@ class CSharpBuilder < PartialBuilder
   end
 
   def create_project(mand_files, disp_files)
-    tmpl = File.read(@project_template)
-    files_xml = (mand_files + disp_files).map { |x| "    <Compile Include=\"#{x}\" />" }.join("\n")
-    project = tmpl.gsub(/%%%FILES%%%/, files_xml)
-    File.write(@project_file, project)
+    Dir[@compiled_dir + "/**/*.{cs}"].each do |original_parser_filepath| 
+      new_parser_filepath = original_parser_filepath.gsub(@compiled_dir, @spec_dir + "/parsers/")
+      copy_with_path(original_parser_filepath, new_parser_filepath);
+    end
     @project_file
+  end
+
+  def copy_with_path(src, dst)
+    FileUtils.mkdir_p(File.dirname(dst))
+    FileUtils.cp(src, dst)
   end
 
   def build_project(log_file)
