@@ -20,6 +20,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\..\..\compiled\csharp\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="NUnit" Version="3.4.1" />
     <PackageReference Include="NUnit.ConsoleRunner" version="3.4.1" />
     <PackageReference Include="NUnit.Extension.NUnitProjectLoader" version="3.4.1" />

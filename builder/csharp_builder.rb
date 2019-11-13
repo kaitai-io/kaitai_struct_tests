@@ -11,8 +11,7 @@ class CSharpBuilder < PartialBuilder
     @spec_dir = 'spec/csharp/kaitai_struct_csharp_tests'
     @packages_dir = 'spec/csharp/packages'
     @compiled_dir = 'compiled/csharp'
-    @project_file = "#{@spec_dir}/kaitai_struct_csharp_tests.csproj"
-
+    @project_file = "#{@spec_dir}/kaitai_struct_csharp_tests.csproj"    
     @test_out_dir = "#{@config['TEST_OUT_DIR']}/csharp"
 
     detect_tools
@@ -54,10 +53,10 @@ class CSharpBuilder < PartialBuilder
   end
 
   def create_project(mand_files, disp_files)
-    Dir[@compiled_dir + "/**/*.{cs}"].each do |original_parser_filepath| 
-      new_parser_filepath = original_parser_filepath.gsub(@compiled_dir, @spec_dir + "/parsers/")
-      copy_with_path(original_parser_filepath, new_parser_filepath);
-    end
+    tmpl = File.read(@project_file)
+    files_xml = (disp_files).map { |x| "    <Compile Include=\"#{x}\" />" }.join("\n")
+    project = tmpl.gsub(/    <Compile Include="..\\..\\..\\compiled\\csharp\\\*\*\\\*.cs" \/>/, files_xml)
+    File.write(@project_file, project)
     @project_file
   end
 
