@@ -88,4 +88,26 @@ RSpec.describe CSharpBuilder do
       end
     end
   end
+
+  context '3' do
+    before :context do
+      Dir.chdir("#{@spec_dir}/3")
+      @builder = CSharpBuilder.new
+    end
+
+    describe '#parse_failed_build' do
+      it 'parses failed build information' do
+        expect(@builder.parse_failed_build('test_out/csharp/build-2.log').to_a.sort).to eq([
+          "C:\\projects\\ci-targets\\tests\\compiled\\csharp\\EnumToIClassBorder2.cs",
+          "C:\\projects\\ci-targets\\tests\\compiled\\csharp\\ExprBytesOps.cs",
+          "C:\\projects\\ci-targets\\tests\\compiled\\csharp\\YamlInts.cs",
+          [:bare, "SpecEofExceptionBytes.cs"],
+          [:bare, "SpecEofExceptionU4.cs"],
+          [:bare, "SpecEosExceptionBytes.cs"],
+          [:bare, "SpecEosExceptionU4.cs"],
+          [:bare, "SpecExprCalcArrayOps.cs"],
+        ])
+      end
+    end
+  end
 end
