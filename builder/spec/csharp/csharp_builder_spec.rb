@@ -97,7 +97,9 @@ RSpec.describe CSharpBuilder do
 
     describe '#parse_failed_build' do
       it 'parses failed build information' do
-        expect(@builder.parse_failed_build('test_out/csharp/build-2.log').to_a.sort).to eq([
+        r = @builder.parse_failed_build('test_out/csharp/build-2.log')
+        r = @builder.sort_list_with_bare(r.to_a)
+        expect(r).to eq([
           "C:\\projects\\ci-targets\\tests\\compiled\\csharp\\EnumToIClassBorder2.cs",
           "C:\\projects\\ci-targets\\tests\\compiled\\csharp\\ExprBytesOps.cs",
           "C:\\projects\\ci-targets\\tests\\compiled\\csharp\\YamlInts.cs",
