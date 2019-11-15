@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+./compile
+
+FULL=$(ls -1 ../formats | sed -ne '/.ksy/ { s/\.ksy//; p }' | sort -u)
+COVERED=$(sed -ne '/class="node"/ { s/^.*<title>//; s,</title>$,,; p }' test_coverage_order.svg | sort -u)
+
+diff -u <(echo "$FULL") <(echo "$COVERED")

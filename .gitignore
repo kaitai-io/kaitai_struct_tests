@@ -1,6 +1,7 @@
 /compiled/
 /test_out/
 /node_modules/
+/spec/ks/out/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -53,10 +54,6 @@ coverage.xml
 *.mo
 *.pot
 
-# Django stuff:
-*.log
-local_settings.py
-
 # Flask instance folder
 instance/
 
@@ -71,3 +68,10 @@ target/
 
 # pyenv
 .python-version
+
+# Nim
+spec/nim/test.nim
+spec_kst_to_nim
+build-compiler_jvm
+build-formats_nim
+build-nim

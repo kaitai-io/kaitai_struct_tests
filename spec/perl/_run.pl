@@ -5,7 +5,7 @@ use warnings;
 use TAP::Harness::JUnit;
 
 my $harness = TAP::Harness::JUnit->new( {
-    xmlfile => 'test_out/perl/output.xml',
+    xmlfile => 'test_out/perl/report.xml',
 } );
 
 my @tests = glob "spec/perl/*.t";

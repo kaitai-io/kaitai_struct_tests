@@ -1,4 +1,4 @@
-# /instances/foo/size: invalid key found in value instance, allowed: doc, enum, if, value
+# /instances/foo/size: invalid key found in value instance, allowed: doc, doc-ref, enum, if, value
 meta:
   id: instance_value_with_size
 instances:

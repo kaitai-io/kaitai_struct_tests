@@ -1,6 +1,9 @@
 # Transport stream packet
 # see H.222.0 F.1.1
 
+# |7,6,5,4,2,1,0|7,6,5,4,3,2,1,0|7,6,5,4,3,2,1,0|7,6,5,4,3,2,1,0|
+# | sync_byte   | , , ,<-------pid------------->|   ,afc,<-cc-->|
+
 meta:
   id: ts_packet_header
   endian: le

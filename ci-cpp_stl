@@ -1,3 +1,28 @@
-#!/bin/sh
+#!/bin/sh -ef
 
-./run-cpp_stl
+. ./config
+
+if [ "$#" -ne 3 ]; then
+	echo "$0 <src_dir> <spec_dir> <test_out_dir>"
+	exit 1
+fi
+
+SRC_DIR="$1"
+CPP_SPEC_DIR="$2"
+CPP_TEST_OUT_DIR="$3"
+
+./run-cpp_stl "$SRC_DIR" "$CPP_SPEC_DIR" "$CPP_TEST_OUT_DIR"
+
+# Run C++/STL valgrind check, generates Valgrind XML report
+echo 'Running Valgrind checks...'
+if valgrind --version; then
+	./valgrind-cpp_stl "$SRC_DIR" "$CPP_TEST_OUT_DIR" || :
+else
+	echo 'Valgrind not found :-('
+
+	# Generate empty valgrind output - this is normal and it should not stop `ci.json` generation
+	echo '<?xml version="1.0"?><valgrindoutput></valgrindoutput>' >"$CPP_TEST_OUT_DIR/valgrind.xml"
+fi
+
+./kst-adoption-report $(basename "$SRC_DIR")
+aggregate/convert_to_json cpp_stl "$CPP_TEST_OUT_DIR" "$CPP_TEST_OUT_DIR/ci.json"

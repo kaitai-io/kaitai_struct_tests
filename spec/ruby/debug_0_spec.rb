@@ -10,16 +10,16 @@ RSpec.describe Debug0 do
 
     expect(Debug0::SEQ_FIELDS).to eq ['one', 'array_of_ints', '_unnamed2']
     expect(r._debug['one']).to eq({
-      start: 0,
-      end: 1,
+      :start => 0,
+      :end => 1,
     })
     expect(r._debug['array_of_ints']).to eq({
-      start: 1,
-      end: 4,
-      arr: [
-        {start: 1, end: 2},
-        {start: 2, end: 3},
-        {start: 3, end: 4},
+      :start => 1,
+      :end => 4,
+      :arr => [
+        {:start => 1, :end => 2},
+        {:start => 2, :end => 3},
+        {:start => 3, :end => 4},
       ]
     })
   end

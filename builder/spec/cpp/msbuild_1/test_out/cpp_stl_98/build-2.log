@@ -1,0 +1,378 @@
+Microsoft (R) Build Engine version 15.9.21+g9802d43bc3 for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+Building the projects in this solution one at a time. To enable parallel build, please add the "/m" switch.
+Build started 4/14/2019 1:51:37 PM.
+Project "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\KS_TEST_CPP_STL.sln" on node 1 (default targets).
+ValidateSolutionConfiguration:
+  Building solution configuration "Debug|x64".
+ValidateProjects:
+  The project "ALL_BUILD" is not selected for building in solution configuration "Debug|x64".
+  The project "RUN_TESTS" is not selected for building in solution configuration "Debug|x64".
+Project "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\KS_TEST_CPP_STL.sln" (1) is building "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ZERO_CHECK.vcxproj" (2) on node 1 (default targets).
+InitializeBuildStatus:
+  Creating "x64\Debug\ZERO_CHECK\ZERO_CHECK.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+CustomBuild:
+  All outputs are up-to-date.
+FinalizeBuildStatus:
+  Deleting file "x64\Debug\ZERO_CHECK\ZERO_CHECK.tlog\unsuccessfulbuild".
+  Touching "x64\Debug\ZERO_CHECK\ZERO_CHECK.tlog\ZERO_CHECK.lastbuildstate".
+Done Building Project "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ZERO_CHECK.vcxproj" (default targets).
+Project "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\KS_TEST_CPP_STL.sln" (1) is building "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj.metaproj" (3) on node 1 (default targets).
+Project "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj.metaproj" (3) is building "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj" (4) on node 1 (default targets).
+InitializeBuildStatus:
+  Touching "ks_tests.dir\Debug\ks_tests.tlog\unsuccessfulbuild".
+CustomBuild:
+  All outputs are up-to-date.
+VcpkgTripletSelection:
+  Not using Vcpkg because VcpkgEnabled is "false"
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe /c /I"C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin" /I"C:\projects\ci-targets\tests\compiled\cpp_stl_98" /I"C:\projects\ci-targets\tests\spec\cpp_stl_98\..\..\..\runtime\cpp_stl" /I"C:\projects\ci-targets\tests\spec\cpp_stl_98\prereq" /I"C:\Tools\vcpkg\installed\x64-windows\include" /Zi /nologo /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D KS_ZLIB /D KS_STR_ENCODING_ICONV /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"ks_tests.dir\Debug\\" /Fd"ks_tests.dir\Debug\vc141.pdb" /Gd /TP /errorReport:queue  /utf-8 "C:\projects\ci-targets\runtime\cpp_stl\kaitai\kaitaistream.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_default_endian_expr_is_be.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_expr_2.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_imports_circular_a.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_nav_parent_override.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_position_to_end.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_repeat_until_sized.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_98\test_switch_multi_bool_ops.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\cast_to_top.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_negative.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\eof_exception_bytes.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\float_to_i.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\index_to_param_until.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\js_signed_right_shift.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\nested_same_name2.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\process_coerce_usertype2.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_98\str_eos.cpp"
+  kaitaistream.cpp
+C:\projects\ci-targets\runtime\cpp_stl\kaitai\kaitaistream.cpp(492): warning C4267: '=': conversion from 'size_t' to 'uInt', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  test_default_endian_expr_is_be.cpp
+  test_expr_2.cpp
+  test_imports_circular_a.cpp
+  test_nav_parent_override.cpp
+  test_position_to_end.cpp
+  test_repeat_until_sized.cpp
+  test_switch_multi_bool_ops.cpp
+  cast_to_top.cpp
+  enum_negative.cpp
+  eof_exception_bytes.cpp
+  float_to_i.cpp
+  index_to_param_until.cpp
+  js_signed_right_shift.cpp
+  nested_same_name2.cpp
+  process_coerce_usertype2.cpp
+  str_eos.cpp
+  Generating Code...
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\Debug\ks_tests.exe" /INCREMENTAL /NOLOGO "C:\Tools\vcpkg\installed\x64-windows\debug\lib\boost_unit_test_framework-vc140-mt-gd.lib" "C:\Tools\vcpkg\installed\x64-windows\debug\lib\zlibd.lib" "C:\Tools\vcpkg\installed\x64-windows\debug\lib\libiconv.lib" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/projects/ci-targets/tests/compiled/cpp_stl_98/bin/Debug/ks_tests.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/projects/ci-targets/tests/compiled/cpp_stl_98/bin/Debug/ks_tests.lib" /MACHINE:X64  /machine:x64 ks_tests.dir\Debug\kaitaistream.obj
+  ks_tests.dir\Debug\my_custom_fx.obj
+  ks_tests.dir\Debug\custom_fx.obj
+  ks_tests.dir\Debug\main.obj
+  ks_tests.dir\Debug\test_bcd_user_type_be.obj
+  ks_tests.dir\Debug\test_bcd_user_type_le.obj
+  ks_tests.dir\Debug\test_bits_byte_aligned.obj
+  ks_tests.dir\Debug\test_bits_enum.obj
+  ks_tests.dir\Debug\test_bits_simple.obj
+  ks_tests.dir\Debug\test_buffered_struct.obj
+  ks_tests.dir\Debug\test_bytes_pad_term.obj
+  ks_tests.dir\Debug\test_cast_nested.obj
+  ks_tests.dir\Debug\test_cast_to_imported.obj
+  ks_tests.dir\Debug\test_cast_to_top.obj
+  ks_tests.dir\Debug\test_debug_0.obj
+  ks_tests.dir\Debug\test_debug_array_user.obj
+  ks_tests.dir\Debug\test_debug_enum_name.obj
+  ks_tests.dir\Debug\test_default_big_endian.obj
+  ks_tests.dir\Debug\test_default_endian_expr_exception.obj
+  ks_tests.dir\Debug\test_default_endian_expr_inherited.obj
+  ks_tests.dir\Debug\test_default_endian_expr_is_be.obj
+  ks_tests.dir\Debug\test_default_endian_expr_is_le.obj
+  ks_tests.dir\Debug\test_default_endian_mod.obj
+  ks_tests.dir\Debug\test_docstrings.obj
+  ks_tests.dir\Debug\test_docstrings_docref.obj
+  ks_tests.dir\Debug\test_enum_0.obj
+  ks_tests.dir\Debug\test_enum_1.obj
+  ks_tests.dir\Debug\test_enum_deep.obj
+  ks_tests.dir\Debug\test_enum_deep_literals.obj
+  ks_tests.dir\Debug\test_enum_fancy.obj
+  ks_tests.dir\Debug\test_enum_for_unknown_id.obj
+  ks_tests.dir\Debug\test_enum_if.obj
+  ks_tests.dir\Debug\test_enum_invalid.obj
+  ks_tests.dir\Debug\test_enum_negative.obj
+  ks_tests.dir\Debug\test_enum_of_value_inst.obj
+  ks_tests.dir\Debug\test_enum_to_i.obj
+  ks_tests.dir\Debug\test_eof_exception_bytes.obj
+  ks_tests.dir\Debug\test_eof_exception_u4.obj
+  ks_tests.dir\Debug\test_expr_0.obj
+  ks_tests.dir\Debug\test_expr_1.obj
+  ks_tests.dir\Debug\test_expr_2.obj
+  ks_tests.dir\Debug\test_expr_3.obj
+  ks_tests.dir\Debug\test_expr_array.obj
+  ks_tests.dir\Debug\test_expr_bytes_cmp.obj
+  ks_tests.dir\Debug\test_expr_enum.obj
+  ks_tests.dir\Debug\test_expr_io_eof.obj
+  ks_tests.dir\Debug\test_expr_io_pos.obj
+  ks_tests.dir\Debug\test_expr_mod.obj
+  ks_tests.dir\Debug\test_fixed_contents.obj
+  ks_tests.dir\Debug\test_fixed_struct.obj
+  ks_tests.dir\Debug\test_floating_points.obj
+  ks_tests.dir\Debug\test_float_to_i.obj
+  ks_tests.dir\Debug\test_hello_world.obj
+  ks_tests.dir\Debug\test_if_instances.obj
+  ks_tests.dir\Debug\test_if_struct.obj
+  ks_tests.dir\Debug\test_if_values.obj
+  ks_tests.dir\Debug\test_imports0.obj
+  ks_tests.dir\Debug\test_imports_abs.obj
+  ks_tests.dir\Debug\test_imports_abs_abs.obj
+  ks_tests.dir\Debug\test_imports_abs_rel.obj
+  ks_tests.dir\Debug\test_imports_circular_a.obj
+  ks_tests.dir\Debug\test_imports_rel_1.obj
+  ks_tests.dir\Debug\test_index_sizes.obj
+  ks_tests.dir\Debug\test_index_to_param_eos.obj
+  ks_tests.dir\Debug\test_index_to_param_expr.obj
+  ks_tests.dir\Debug\test_index_to_param_until.obj
+  ks_tests.dir\Debug\test_instance_io_user.obj
+  ks_tests.dir\Debug\test_instance_std.obj
+  ks_tests.dir\Debug\test_instance_std_array.obj
+  ks_tests.dir\Debug\test_instance_user_array.obj
+  ks_tests.dir\Debug\test_integers.obj
+  ks_tests.dir\Debug\test_io_local_var.obj
+  ks_tests.dir\Debug\test_js_signed_right_shift.obj
+  ks_tests.dir\Debug\test_meta_xref.obj
+  ks_tests.dir\Debug\test_multiple_use.obj
+  ks_tests.dir\Debug\test_nav_parent.obj
+  ks_tests.dir\Debug\test_nav_parent2.obj
+  ks_tests.dir\Debug\test_nav_parent3.obj
+  ks_tests.dir\Debug\test_nav_parent_false.obj
+  ks_tests.dir\Debug\test_nav_parent_false2.obj
+  ks_tests.dir\Debug\test_nav_parent_override.obj
+  ks_tests.dir\Debug\test_nav_parent_switch.obj
+  ks_tests.dir\Debug\test_nav_parent_vs_value_inst.obj
+  ks_tests.dir\Debug\test_nav_root.obj
+  ks_tests.dir\Debug\test_nested_same_name.obj
+  ks_tests.dir\Debug\test_nested_same_name2.obj
+  ks_tests.dir\Debug\test_nested_types.obj
+  ks_tests.dir\Debug\test_nested_types2.obj
+  ks_tests.dir\Debug\test_nested_types3.obj
+  ks_tests.dir\Debug\test_non_standard.obj
+  ks_tests.dir\Debug\test_opaque_external_type.obj
+  ks_tests.dir\Debug\test_opaque_external_type_02_parent.obj
+  ks_tests.dir\Debug\test_opaque_with_param.obj
+  ks_tests.dir\Debug\test_optional_id.obj
+  ks_tests.dir\Debug\test_params_call_short.obj
+  ks_tests.dir\Debug\test_params_def.obj
+  ks_tests.dir\Debug\test_params_enum.obj
+  ks_tests.dir\Debug\test_params_pass_usertype.obj
+  ks_tests.dir\Debug\test_position_abs.obj
+  ks_tests.dir\Debug\test_position_in_seq.obj
+  ks_tests.dir\Debug\test_position_to_end.obj
+  ks_tests.dir\Debug\test_process_coerce_bytes.obj
+  ks_tests.dir\Debug\test_process_coerce_usertype1.obj
+  ks_tests.dir\Debug\test_process_coerce_usertype2.obj
+  ks_tests.dir\Debug\test_process_custom.obj
+  ks_tests.dir\Debug\test_process_rotate.obj
+  ks_tests.dir\Debug\test_process_to_user.obj
+  ks_tests.dir\Debug\test_process_xor4_const.obj
+  ks_tests.dir\Debug\test_process_xor4_value.obj
+  ks_tests.dir\Debug\test_process_xor_const.obj
+  ks_tests.dir\Debug\test_process_xor_value.obj
+  ks_tests.dir\Debug\test_recursive_one.obj
+  ks_tests.dir\Debug\test_repeat_eos_bit.obj
+  ks_tests.dir\Debug\test_repeat_eos_struct.obj
+  ks_tests.dir\Debug\test_repeat_eos_u4.obj
+  ks_tests.dir\Debug\test_repeat_n_struct.obj
+  ks_tests.dir\Debug\test_repeat_n_strz.obj
+  ks_tests.dir\Debug\test_repeat_n_strz_double.obj
+  ks_tests.dir\Debug\test_repeat_until_complex.obj
+  ks_tests.dir\Debug\test_repeat_until_s4.obj
+  ks_tests.dir\Debug\test_repeat_until_sized.obj
+  ks_tests.dir\Debug\test_str_encodings.obj
+  ks_tests.dir\Debug\test_str_encodings_default.obj
+  ks_tests.dir\Debug\test_str_eos.obj
+  ks_tests.dir\Debug\test_str_literals.obj
+  ks_tests.dir\Debug\test_str_literals2.obj
+  ks_tests.dir\Debug\test_str_pad_term.obj
+  ks_tests.dir\Debug\test_str_pad_term_empty.obj
+  ks_tests.dir\Debug\test_switch_bytearray.obj
+  ks_tests.dir\Debug\test_switch_cast.obj
+  ks_tests.dir\Debug\test_switch_integers.obj
+  ks_tests.dir\Debug\test_switch_integers2.obj
+  ks_tests.dir\Debug\test_switch_manual_enum.obj
+  ks_tests.dir\Debug\test_switch_manual_int.obj
+  ks_tests.dir\Debug\test_switch_manual_int_else.obj
+  ks_tests.dir\Debug\test_switch_manual_int_size.obj
+  ks_tests.dir\Debug\test_switch_manual_int_size_else.obj
+  ks_tests.dir\Debug\test_switch_manual_int_size_eos.obj
+  ks_tests.dir\Debug\test_switch_manual_str.obj
+  ks_tests.dir\Debug\test_switch_manual_str_else.obj
+  ks_tests.dir\Debug\test_switch_multi_bool_ops.obj
+  ks_tests.dir\Debug\test_switch_repeat_expr.obj
+  ks_tests.dir\Debug\test_term_bytes.obj
+  ks_tests.dir\Debug\test_term_strz.obj
+  ks_tests.dir\Debug\test_ts_packet_header.obj
+  ks_tests.dir\Debug\test_type_int_unary_op.obj
+  ks_tests.dir\Debug\test_type_ternary.obj
+  ks_tests.dir\Debug\test_type_ternary_opaque.obj
+  ks_tests.dir\Debug\test_user_type.obj
+  ks_tests.dir\Debug\test_yaml_ints.obj
+  ks_tests.dir\Debug\test_zlib_with_header_78.obj
+  ks_tests.dir\Debug\bcd_user_type_be.obj
+  ks_tests.dir\Debug\bcd_user_type_le.obj
+  ks_tests.dir\Debug\bits_byte_aligned.obj
+  ks_tests.dir\Debug\bits_enum.obj
+  ks_tests.dir\Debug\bits_simple.obj
+  ks_tests.dir\Debug\buffered_struct.obj
+  ks_tests.dir\Debug\bytes_pad_term.obj
+  ks_tests.dir\Debug\cast_nested.obj
+  ks_tests.dir\Debug\cast_to_imported.obj
+  ks_tests.dir\Debug\cast_to_top.obj
+  ks_tests.dir\Debug\debug_0.obj
+  ks_tests.dir\Debug\debug_array_user.obj
+  ks_tests.dir\Debug\debug_enum_name.obj
+  ks_tests.dir\Debug\default_big_endian.obj
+  ks_tests.dir\Debug\default_endian_expr_exception.obj
+  ks_tests.dir\Debug\default_endian_expr_inherited.obj
+  ks_tests.dir\Debug\default_endian_expr_is_be.obj
+  ks_tests.dir\Debug\default_endian_expr_is_le.obj
+  ks_tests.dir\Debug\default_endian_mod.obj
+  ks_tests.dir\Debug\docstrings.obj
+  ks_tests.dir\Debug\docstrings_docref.obj
+  ks_tests.dir\Debug\enum_0.obj
+  ks_tests.dir\Debug\enum_1.obj
+  ks_tests.dir\Debug\enum_deep.obj
+  ks_tests.dir\Debug\enum_deep_literals.obj
+  ks_tests.dir\Debug\enum_fancy.obj
+  ks_tests.dir\Debug\enum_for_unknown_id.obj
+  ks_tests.dir\Debug\enum_if.obj
+  ks_tests.dir\Debug\enum_invalid.obj
+  ks_tests.dir\Debug\enum_negative.obj
+  ks_tests.dir\Debug\enum_of_value_inst.obj
+  ks_tests.dir\Debug\enum_to_i.obj
+  ks_tests.dir\Debug\enum_to_i_class_border_1.obj
+  ks_tests.dir\Debug\eof_exception_bytes.obj
+  ks_tests.dir\Debug\eof_exception_u4.obj
+  ks_tests.dir\Debug\expr_0.obj
+  ks_tests.dir\Debug\expr_1.obj
+  ks_tests.dir\Debug\expr_2.obj
+  ks_tests.dir\Debug\expr_3.obj
+  ks_tests.dir\Debug\expr_array.obj
+  ks_tests.dir\Debug\expr_bytes_cmp.obj
+  ks_tests.dir\Debug\expr_enum.obj
+  ks_tests.dir\Debug\expr_io_eof.obj
+  ks_tests.dir\Debug\expr_io_pos.obj
+  ks_tests.dir\Debug\expr_mod.obj
+  ks_tests.dir\Debug\fixed_contents.obj
+  ks_tests.dir\Debug\fixed_struct.obj
+  ks_tests.dir\Debug\floating_points.obj
+  ks_tests.dir\Debug\float_to_i.obj
+  ks_tests.dir\Debug\hello_world.obj
+  ks_tests.dir\Debug\if_instances.obj
+  ks_tests.dir\Debug\if_struct.obj
+  ks_tests.dir\Debug\if_values.obj
+  ks_tests.dir\Debug\imported_1.obj
+  ks_tests.dir\Debug\imported_2.obj
+  ks_tests.dir\Debug\imported_and_abs.obj
+  ks_tests.dir\Debug\imported_and_rel.obj
+  ks_tests.dir\Debug\imported_root.obj
+  ks_tests.dir\Debug\imports0.obj
+  ks_tests.dir\Debug\imports_abs.obj
+  ks_tests.dir\Debug\imports_abs_abs.obj
+  ks_tests.dir\Debug\imports_abs_rel.obj
+  ks_tests.dir\Debug\imports_circular_a.obj
+  ks_tests.dir\Debug\imports_circular_b.obj
+  ks_tests.dir\Debug\imports_rel_1.obj
+  ks_tests.dir\Debug\index_sizes.obj
+  ks_tests.dir\Debug\index_to_param_eos.obj
+  ks_tests.dir\Debug\index_to_param_expr.obj
+  ks_tests.dir\Debug\index_to_param_until.obj
+  ks_tests.dir\Debug\instance_io_user.obj
+  ks_tests.dir\Debug\instance_std.obj
+  ks_tests.dir\Debug\instance_std_array.obj
+  ks_tests.dir\Debug\instance_user_array.obj
+  ks_tests.dir\Debug\integers.obj
+  ks_tests.dir\Debug\js_signed_right_shift.obj
+  ks_tests.dir\Debug\meta_xref.obj
+  ks_tests.dir\Debug\multiple_use.obj
+  ks_tests.dir\Debug\nav_parent.obj
+  ks_tests.dir\Debug\nav_parent2.obj
+  ks_tests.dir\Debug\nav_parent3.obj
+  ks_tests.dir\Debug\nav_parent_false.obj
+  ks_tests.dir\Debug\nav_parent_false2.obj
+  ks_tests.dir\Debug\nav_parent_override.obj
+  ks_tests.dir\Debug\nav_parent_switch.obj
+  ks_tests.dir\Debug\nav_parent_vs_value_inst.obj
+  ks_tests.dir\Debug\nav_root.obj
+  ks_tests.dir\Debug\nested_same_name.obj
+  ks_tests.dir\Debug\nested_same_name2.obj
+  ks_tests.dir\Debug\nested_types.obj
+  ks_tests.dir\Debug\nested_types2.obj
+  ks_tests.dir\Debug\nested_types3.obj
+  ks_tests.dir\Debug\non_standard.obj
+  ks_tests.dir\Debug\opaque_external_type.obj
+  ks_tests.dir\Debug\opaque_external_type_02_child.obj
+  ks_tests.dir\Debug\opaque_external_type_02_parent.obj
+  ks_tests.dir\Debug\opaque_with_param.obj
+  ks_tests.dir\Debug\optional_id.obj
+  ks_tests.dir\Debug\params_call_short.obj
+  ks_tests.dir\Debug\params_def.obj
+  ks_tests.dir\Debug\params_enum.obj
+  ks_tests.dir\Debug\params_pass_struct.obj
+  ks_tests.dir\Debug\params_pass_usertype.obj
+  ks_tests.dir\Debug\position_abs.obj
+  ks_tests.dir\Debug\position_in_seq.obj
+  ks_tests.dir\Debug\position_to_end.obj
+  ks_tests.dir\Debug\process_coerce_bytes.obj
+  ks_tests.dir\Debug\process_coerce_usertype1.obj
+  ks_tests.dir\Debug\process_coerce_usertype2.obj
+  ks_tests.dir\Debug\process_custom.obj
+  ks_tests.dir\Debug\process_rotate.obj
+  ks_tests.dir\Debug\process_to_user.obj
+  ks_tests.dir\Debug\process_xor4_const.obj
+  ks_tests.dir\Debug\process_xor4_value.obj
+  ks_tests.dir\Debug\process_xor_const.obj
+  ks_tests.dir\Debug\process_xor_value.obj
+  ks_tests.dir\Debug\recursive_one.obj
+  ks_tests.dir\Debug\repeat_eos_bit.obj
+  ks_tests.dir\Debug\repeat_eos_struct.obj
+  ks_tests.dir\Debug\repeat_eos_u4.obj
+  ks_tests.dir\Debug\repeat_n_struct.obj
+  ks_tests.dir\Debug\repeat_n_strz.obj
+  ks_tests.dir\Debug\repeat_n_strz_double.obj
+  ks_tests.dir\Debug\repeat_until_complex.obj
+  ks_tests.dir\Debug\repeat_until_s4.obj
+  ks_tests.dir\Debug\repeat_until_sized.obj
+  ks_tests.dir\Debug\str_encodings.obj
+  ks_tests.dir\Debug\str_encodings_default.obj
+  ks_tests.dir\Debug\str_eos.obj
+  ks_tests.dir\Debug\str_literals.obj
+  ks_tests.dir\Debug\str_literals2.obj
+  ks_tests.dir\Debug\str_pad_term.obj
+  ks_tests.dir\Debug\str_pad_term_empty.obj
+  ks_tests.dir\Debug\switch_bytearray.obj
+  ks_tests.dir\Debug\switch_cast.obj
+  ks_tests.dir\Debug\switch_integers.obj
+  ks_tests.dir\Debug\switch_integers2.obj
+  ks_tests.dir\Debug\switch_manual_enum.obj
+  ks_tests.dir\Debug\switch_manual_int.obj
+  ks_tests.dir\Debug\switch_manual_int_else.obj
+  ks_tests.dir\Debug\switch_manual_int_size.obj
+  ks_tests.dir\Debug\switch_manual_int_size_else.obj
+  ks_tests.dir\Debug\switch_manual_int_size_eos.obj
+  ks_tests.dir\Debug\switch_manual_str.obj
+  ks_tests.dir\Debug\switch_manual_str_else.obj
+  ks_tests.dir\Debug\switch_multi_bool_ops.obj
+  ks_tests.dir\Debug\switch_repeat_expr.obj
+  ks_tests.dir\Debug\term_bytes.obj
+  ks_tests.dir\Debug\term_strz.obj
+  ks_tests.dir\Debug\ts_packet_header.obj
+  ks_tests.dir\Debug\type_int_unary_op.obj
+  ks_tests.dir\Debug\type_ternary.obj
+  ks_tests.dir\Debug\type_ternary_opaque.obj
+  ks_tests.dir\Debug\user_type.obj
+  ks_tests.dir\Debug\vlq_base128_le.obj
+  ks_tests.dir\Debug\yaml_ints.obj
+  ks_tests.dir\Debug\zlib_with_header_78.obj
+test_io_local_var.obj : error LNK2019: unresolved external symbol "public: __cdecl io_local_var_t::io_local_var_t(class kaitai::kstream *,class kaitai::kstruct *,class io_local_var_t *)" (??0io_local_var_t@@QEAA@PEAVkstream@kaitai@@PEAVkstruct@2@PEAV0@@Z) referenced in function "public: void __cdecl test_io_local_var::test_method(void)" (?test_method@test_io_local_var@@QEAAXXZ) [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+enum_to_i_class_border_1.obj : error LNK2019: unresolved external symbol "public: __cdecl enum_to_i_class_border_2_t::enum_to_i_class_border_2_t(class enum_to_i_class_border_1_t *,class kaitai::kstream *,class kaitai::kstruct *,class enum_to_i_class_border_2_t *)" (??0enum_to_i_class_border_2_t@@QEAA@PEAVenum_to_i_class_border_1_t@@PEAVkstream@kaitai@@PEAVkstruct@3@PEAV0@@Z) referenced in function "public: class enum_to_i_class_border_2_t * __cdecl enum_to_i_class_border_1_t::checker(void)" (?checker@enum_to_i_class_border_1_t@@QEAAPEAVenum_to_i_class_border_2_t@@XZ) [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\Debug\ks_tests.exe : fatal error LNK1120: 2 unresolved externals [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+Done Building Project "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj" (default targets) -- FAILED.
+Done Building Project "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj.metaproj" (default targets) -- FAILED.
+Done Building Project "C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\KS_TEST_CPP_STL.sln" (default targets) -- FAILED.
+Build FAILED.
+"C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\KS_TEST_CPP_STL.sln" (default target) (1) ->
+"C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj.metaproj" (default target) (3) ->
+"C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj" (default target) (4) ->
+(ClCompile target) -> 
+  C:\projects\ci-targets\runtime\cpp_stl\kaitai\kaitaistream.cpp(492): warning C4267: '=': conversion from 'size_t' to 'uInt', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+"C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\KS_TEST_CPP_STL.sln" (default target) (1) ->
+"C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj.metaproj" (default target) (3) ->
+"C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj" (default target) (4) ->
+(Link target) -> 
+  test_io_local_var.obj : error LNK2019: unresolved external symbol "public: __cdecl io_local_var_t::io_local_var_t(class kaitai::kstream *,class kaitai::kstruct *,class io_local_var_t *)" (??0io_local_var_t@@QEAA@PEAVkstream@kaitai@@PEAVkstruct@2@PEAV0@@Z) referenced in function "public: void __cdecl test_io_local_var::test_method(void)" (?test_method@test_io_local_var@@QEAAXXZ) [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  enum_to_i_class_border_1.obj : error LNK2019: unresolved external symbol "public: __cdecl enum_to_i_class_border_2_t::enum_to_i_class_border_2_t(class enum_to_i_class_border_1_t *,class kaitai::kstream *,class kaitai::kstruct *,class enum_to_i_class_border_2_t *)" (??0enum_to_i_class_border_2_t@@QEAA@PEAVenum_to_i_class_border_1_t@@PEAVkstream@kaitai@@PEAVkstruct@3@PEAV0@@Z) referenced in function "public: class enum_to_i_class_border_2_t * __cdecl enum_to_i_class_border_1_t::checker(void)" (?checker@enum_to_i_class_border_1_t@@QEAAPEAVenum_to_i_class_border_2_t@@XZ) [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\Debug\ks_tests.exe : fatal error LNK1120: 2 unresolved externals [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+    1 Warning(s)
+    3 Error(s)
+Time Elapsed 00:00:18.68

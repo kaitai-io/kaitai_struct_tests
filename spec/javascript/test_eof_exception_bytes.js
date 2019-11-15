@@ -1,3 +1,4 @@
 var testHelperThrows = require('testHelperThrows');
+var KaitaiStream = require('kaitai-struct/KaitaiStream');
 
-testHelperThrows('EofExceptionBytes', 'src/term_strz.bin', KaitaiEOFError);
+testHelperThrows('EofExceptionBytes', 'src/term_strz.bin', KaitaiStream.EOFError);

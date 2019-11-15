@@ -1,0 +1,236 @@
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp: In member function ‘void io_local_var_t::_read()’:
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:21:5: error: ‘m__io__raw_for_io’ was not declared in this scope
+     m__io__raw_for_io = new kaitai::kstream(m__raw_for_io);
+     ^~~~~~~~~~~~~~~~~
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:21:5: note: suggested alternative: ‘m__raw_for_io’
+     m__io__raw_for_io = new kaitai::kstream(m__raw_for_io);
+     ^~~~~~~~~~~~~~~~~
+     m__raw_for_io
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:22:53: error: ‘L’ was not declared in this scope
+     m_for_io = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, f, o, r, _, i, o, this, m__root));
+                                                     ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:22:56: error: ‘i’ was not declared in this scope
+     m_for_io = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, f, o, r, _, i, o, this, m__root));
+                                                        ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:22:59: error: ‘s’ was not declared in this scope
+     m_for_io = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, f, o, r, _, i, o, this, m__root));
+                                                           ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:22:62: error: ‘t’ was not declared in this scope
+     m_for_io = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, f, o, r, _, i, o, this, m__root));
+                                                              ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:22:62: note: suggested alternative: ‘tm’
+     m_for_io = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, f, o, r, _, i, o, this, m__root));
+                                                              ^
+                                                              tm
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:22:71: error: ‘m’ was not declared in this scope
+     m_for_io = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, f, o, r, _, i, o, this, m__root));
+                                                                       ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:22:71: note: suggested alternative: ‘tm’
+     m_for_io = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, f, o, r, _, i, o, this, m__root));
+                                                                       ^
+                                                                       tm
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:22:74: error: ‘_’ was not declared in this scope
+     m_for_io = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, f, o, r, _, i, o, this, m__root));
+                                                                          ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:22:83: error: ‘o’ was not declared in this scope
+     m_for_io = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, f, o, r, _, i, o, this, m__root));
+                                                                                   ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:22:92: error: ‘r’ was not declared in this scope
+     m_for_io = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, f, o, r, _, i, o, this, m__root));
+                                                                                            ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:22:95: error: ‘a’ was not declared in this scope
+     m_for_io = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, f, o, r, _, i, o, this, m__root));
+                                                                                               ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:22:98: error: ‘w’ was not declared in this scope
+     m_for_io = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, f, o, r, _, i, o, this, m__root));
+                                                                                                  ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:22:104: error: ‘f’ was not declared in this scope
+     m_for_io = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, f, o, r, _, i, o, this, m__root));
+                                                                                                        ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:22:40: error: expected primary-expression before ‘(’ token
+     m_for_io = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, f, o, r, _, i, o, this, m__root));
+                                        ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:22:66: error: expected primary-expression before ‘,’ token
+     m_for_io = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, f, o, r, _, i, o, this, m__root));
+                                                                  ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:22:68: error: expected primary-expression before ‘)’ token
+     m_for_io = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, f, o, r, _, i, o, this, m__root));
+                                                                    ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp: In destructor ‘virtual io_local_var_t::~io_local_var_t()’:
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:32:12: error: ‘m__io__raw_for_io’ was not declared in this scope
+     delete m__io__raw_for_io;
+            ^~~~~~~~~~~~~~~~~
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:32:12: note: suggested alternative: ‘m__raw_for_io’
+     delete m__io__raw_for_io;
+            ^~~~~~~~~~~~~~~~~
+            m__raw_for_io
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:35:23: error: ‘n_mess_up’ was not declared in this scope
+     if (f_mess_up && !n_mess_up) {
+                       ^~~~~~~~~
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:35:23: note: suggested alternative: ‘f_mess_up’
+     if (f_mess_up && !n_mess_up) {
+                       ^~~~~~~~~
+                       f_mess_up
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:36:16: error: ‘m__io__raw_mess_up’ was not declared in this scope
+         delete m__io__raw_mess_up;
+                ^~~~~~~~~~~~~~~~~~
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:36:16: note: suggested alternative: ‘m__raw_mess_up’
+         delete m__io__raw_mess_up;
+                ^~~~~~~~~~~~~~~~~~
+                m__raw_mess_up
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp: In member function ‘io_local_var_t::dummy_t* io_local_var_t::mess_up()’:
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:60:5: error: ‘n_mess_up’ was not declared in this scope
+     n_mess_up = true;
+     ^~~~~~~~~
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:60:5: note: suggested alternative: ‘f_mess_up’
+     n_mess_up = true;
+     ^~~~~~~~~
+     f_mess_up
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:65:9: error: ‘m__io__raw_mess_up’ was not declared in this scope
+         m__io__raw_mess_up = new kaitai::kstream(m__raw_mess_up);
+         ^~~~~~~~~~~~~~~~~~
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:65:9: note: suggested alternative: ‘m__raw_mess_up’
+         m__io__raw_mess_up = new kaitai::kstream(m__raw_mess_up);
+         ^~~~~~~~~~~~~~~~~~
+         m__raw_mess_up
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:58: error: ‘L’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                          ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:61: error: ‘i’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                             ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:61: note: suggested alternative: ‘io’
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                             ^
+                                                             io
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:64: error: ‘s’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:67: error: ‘t’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                   ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:67: note: suggested alternative: ‘tm’
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                   ^
+                                                                   tm
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:76: error: ‘m’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                            ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:76: note: suggested alternative: ‘tm’
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                            ^
+                                                                            tm
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:79: error: ‘_’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                               ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:88: error: ‘o’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                                        ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:88: note: suggested alternative: ‘io’
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                                        ^
+                                                                                        io
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:97: error: ‘r’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                                                 ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:100: error: ‘a’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                                                    ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:103: error: ‘w’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                                                       ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:112: error: ‘e’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                                                                ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:124: error: ‘u’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                                                                            ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:127: error: ‘p’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                                                                               ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:45: error: expected primary-expression before ‘(’ token
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                             ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:71: error: expected primary-expression before ‘,’ token
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                       ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:66:73: error: expected primary-expression before ‘)’ token
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                         ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:72:9: error: ‘m__io__raw_mess_up’ was not declared in this scope
+         m__io__raw_mess_up = new kaitai::kstream(m__raw_mess_up);
+         ^~~~~~~~~~~~~~~~~~
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:72:9: note: suggested alternative: ‘m__raw_mess_up’
+         m__io__raw_mess_up = new kaitai::kstream(m__raw_mess_up);
+         ^~~~~~~~~~~~~~~~~~
+         m__raw_mess_up
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:58: error: ‘L’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                          ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:61: error: ‘i’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                             ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:61: note: suggested alternative: ‘io’
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                             ^
+                                                             io
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:64: error: ‘s’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:67: error: ‘t’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                   ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:67: note: suggested alternative: ‘tm’
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                   ^
+                                                                   tm
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:76: error: ‘m’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                            ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:76: note: suggested alternative: ‘tm’
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                            ^
+                                                                            tm
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:79: error: ‘_’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                               ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:88: error: ‘o’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                                        ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:88: note: suggested alternative: ‘io’
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                                        ^
+                                                                                        io
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:97: error: ‘r’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                                                 ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:100: error: ‘a’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                                                    ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:103: error: ‘w’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                                                       ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:112: error: ‘e’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                                                                ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:124: error: ‘u’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                                                                            ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:127: error: ‘p’ was not declared in this scope
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                                                                               ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:45: error: expected primary-expression before ‘(’ token
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                             ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:71: error: expected primary-expression before ‘,’ token
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                       ^
+/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp:73:73: error: expected primary-expression before ‘)’ token
+         m_mess_up = std::unique_ptr<dummy_t>(new dummy_t(L, i, s, t, (, ), m, _, _, i, o, _, _, r, a, w, _, m, e, s, s, _, u, p, this, m__root));
+                                                                         ^
+make[2]: *** [CMakeFiles/ks_tests.dir/build.make:1103: CMakeFiles/ks_tests.dir/home/greycat/git/kaitai_struct/tests/compiled/cpp_stl_11/io_local_var.cpp.o] Error 1
+make[2]: Target 'CMakeFiles/ks_tests.dir/build' not remade because of errors.
+make[1]: *** [CMakeFiles/Makefile2:73: CMakeFiles/ks_tests.dir/all] Error 2
+make[1]: Target 'all' not remade because of errors.
+make: *** [Makefile:95: all] Error 2
+make: Target 'default_target' not remade because of errors.

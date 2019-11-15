@@ -1,0 +1,5 @@
+#!/bin/sh -ef
+
+. ./config
+
+PYTHONPATH="compiled/construct" python -m unittest discover -s spec/construct

@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+
+# Parses aggregated test report in HTML (full.html), extracts
+# per-language test completion data and generates GraphViz dot file
+# based on "test_coverage_order.dot" with individual failing/passing
+# tests highlighted accordingly.
+
+wanted_lang = ARGV[0]
+
+def to_ucc(s)
+  s.split(/_/).map { |word| word.capitalize }.join
+end
+
+def collect_test_names
+  @ucc2luc = {}
+  Dir.glob('../formats/*.ksy').each { |fn|
+    luc = File.basename(fn).gsub(/\.ksy$/, '')
+    ucc = to_ucc(luc)
+    @ucc2luc[ucc] = luc    
+  }
+end
+
+collect_test_names
+
+lines = `cat ../test_out/full.html | sed -ne '/KSY compilation/,$ p' | grep 'title="'`.split(/\n/)
+
+dot_file = File.readlines('test_coverage_order.dot')
+dot_file.pop
+
+puts dot_file.join
+puts
+puts "// Colored for #{wanted_lang}"
+
+lines.each { |l|
+  raise l unless l.strip =~ /<td class=\"(.*?)\" title=\"(.*?): (.*?)\">/
+  result, lang, test_name = $1, $2, $3
+  next if lang != wanted_lang
+  next if result == 'no-run'
+
+  color = case result
+          when 'failed' then '[fillcolor="#FF8080"]'
+          when 'passed' then '[fillcolor="#A0FFA0"]'
+          else '[fillcolor="#8090A0"] // ' + result
+          end
+
+  puts "\t#{@ucc2luc[test_name]} #{color}"
+}
+
+puts "\tnode [style=filled];"
+puts "}"

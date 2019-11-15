@@ -34,7 +34,7 @@ public class TestFixedStruct extends CommonSpec {
         r.setSint16be((short) -66);
         r.setSint32be(-66);
         r.setSint64be(-66);
-        
+
         assertEqualToFile(r, "fixed_struct.bin");
     }
 }

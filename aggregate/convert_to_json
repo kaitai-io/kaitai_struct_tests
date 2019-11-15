@@ -1,0 +1,162 @@
+#!/usr/bin/env ruby
+
+# Convert tests result from many different languages from test
+# framework's native format to our unified JSON.
+#
+# Usage: convert_to_json {lang} {infile} {outfile}
+
+require 'time'
+
+require_relative 'junit_xml_parser'
+require_relative 'rspec_json_parser'
+require_relative 'boost_test_parser'
+require_relative 'nunit_xml_parser'
+require_relative 'build_fail_parser'
+require_relative 'valgrind_xml_parser'
+require_relative 'build_failed_parser'
+require_relative 'text_list_parser'
+
+raise 'Needs exactly 3 arguments' unless ARGV.size == 3
+
+def add_fails(first, *seconds)
+  seconds.each { |second|
+    second.each_pair { |k, v|
+      old_status = (first[k] || {})['status']
+      new_status = v['status']
+
+      # format_build_failed is always more imporant than spec_build_failed
+      next if old_status == 'format_build_failed' and new_status == 'spec_build_failed'
+
+      first[k] = v if (
+          ((old_status.nil? or old_status == 'passed') and (new_status != 'passed')) or
+          (old_status == 'spec_build_failed' and new_status == 'format_build_failed')
+        )
+    }
+  }
+  first
+end
+
+def add_kst_adoption(tests, log_dir)
+  kst_tests = File.readlines("#{log_dir}/kst_adoption.log")
+  kst_tests.each { |name|
+    name.chomp!
+    tests[name] ||= {}
+    tests[name]['is_kst'] = true
+  }
+  tests
+end
+
+def report_summary(result)
+  by_status = {'kst' => 0}
+  result.each_pair { |name, test_result|
+    next if name[0] == '$'
+    status = test_result['status']
+    by_status[status] ||= 0
+    by_status[status] += 1
+    by_status['kst'] += 1 if test_result['is_kst']
+  }
+
+  puts "SUMMARY: #{by_status.inspect}"
+end
+
+lang, infile, outfile = ARGV
+
+result = case lang
+when 'cpp_stl'
+  add_kst_adoption(
+    add_fails(
+      BoostTestParser.new("#{infile}/results.xml").to_h,
+      BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h,
+      ValgrindXMLParser.new("#{infile}/valgrind.xml").to_h
+    ),
+    infile
+  )
+when 'java'
+  add_kst_adoption(
+    add_fails(
+      JUnitXMLParser.new("#{infile}/junitreports").to_h,
+      BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h
+    ),
+    infile
+  )
+when 'nim'
+  add_kst_adoption(
+    JUnitXMLParser.new("#{infile}/junitreports").to_h,
+    infile
+  )
+when 'lua', 'rust'
+  JUnitXMLParser.new(infile).to_h
+when 'go', 'perl'
+  add_kst_adoption(
+    JUnitXMLParser.new("#{infile}/report.xml").to_h,
+    infile
+  )
+when 'javascript'
+  add_kst_adoption(
+    JUnitXMLParser.new("#{infile}/test-output-javascript.xml").to_h,
+    infile
+  )
+when 'php', 'python'
+  add_kst_adoption(
+    JUnitXMLParser.new(infile).to_h,
+    infile
+  )
+when 'ruby'
+  add_kst_adoption(
+    RSpecJSONParser.new("#{infile}/test-output-ruby.json").to_h,
+    infile
+  )
+when 'csharp'
+  add_kst_adoption(
+    add_fails(
+      NUnitXMLParser.new("#{infile}/TestResult.xml").to_h,
+      BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h,
+    ),
+    infile
+  )
+when 'graphviz'
+  add_fails(
+    TextListParser.new("#{infile}/passed.log").to_h,
+    BuildFailedParser.new("#{infile}/build_failed_tests.txt", true).to_h,
+  )
+else
+  raise "Unable to handle language #{lang.inspect}"
+end
+
+meta = {
+  'lang' => lang,
+  'timestamp' => Time.now.utc.iso8601,
+}
+
+if ENV['TRAVIS_BUILD_ID']
+  meta['ci'] = {
+    'ci' => 'travis',
+    'build_id' => ENV['TRAVIS_BUILD_ID'],
+    'job_id' => ENV['TRAVIS_JOB_ID'],
+    'job_number' => ENV['TRAVIS_JOB_NUMBER'],
+    'url' => ENV['TRAVIS_JOB_WEB_URL'],
+  }
+end
+
+if ENV['APPVEYOR']
+  account = ENV['APPVEYOR_ACCOUNT_NAME']
+  project = ENV['APPVEYOR_PROJECT_SLUG']
+  build_id = ENV['APPVEYOR_BUILD_ID']
+  job_id = ENV['APPVEYOR_JOB_ID']
+  url = "https://ci.appveyor.com/project/#{account}/#{project}/builds/#{build_id}/job/#{job_id}"
+
+  meta['ci'] = {
+    'ci' => 'appveyor',
+    'build_id' => build_id,
+    'job_id' => job_id,
+    'job_number' => ENV['APPVEYOR_JOB_NUMBER'],
+    'url' => url,
+  }
+end
+
+result['$meta'] = meta
+json = JSON.pretty_generate(result)
+
+File.write(outfile, json)
+
+report_summary(result)

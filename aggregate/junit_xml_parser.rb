@@ -1,10 +1,8 @@
+require_relative 'test_parser'
+
 require 'rexml/document'
 
-def underscore_to_ucamelcase(s)
-  s.split(/_/).map { |x| x.capitalize }.join
-end
-
-class JUnitXMLParser
+class JUnitXMLParser < TestParser
   def initialize(fn)
     @docs = if not File.exists?(fn)
       []
@@ -29,8 +27,14 @@ class JUnitXMLParser
         elsif name == 'parses test properly'
           # Mocha output, use classname
           name = tc.attribute('classname').value
+        elsif name =~ /^Test.*\.test_/
+          # Lua output, use classname
+          name = tc.attribute('classname').value.gsub(/^Test/, '')
+        elsif name =~ /^Nim: (.*?)$/
+          # Nim output, extract test from classname
+          name = $1
         else
-          raise "Unable to parse name: \"#{name}\"" unless name =~ /^test(.*?)$/
+          raise "Unable to parse name: \"#{name}\"" unless name =~ /^[Tt]est(.*?)$/
           if $1[0] == '_'
             name = underscore_to_ucamelcase($1)
           else
