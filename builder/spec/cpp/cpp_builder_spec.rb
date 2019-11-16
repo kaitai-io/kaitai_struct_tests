@@ -191,4 +191,20 @@ RSpec.describe CppBuilder do
       end
     end
   end
+
+  context 'msbuild_enoent' do
+    before :context do
+      Dir.chdir("#{@spec_dir}/msbuild_enoent")
+      @builder = CppBuilder.new('compiled/cpp_stl_98', 'spec/cpp_stl_98', 'test_out/cpp_stl_98')
+      @builder.mode = :msbuild_windows
+    end
+
+    describe '#parse_failed_build' do
+      it 'parses failed build information' do
+        expect(@builder.parse_failed_build('test_out/cpp_stl_98/build-2.log').to_a.sort).to match_array [
+          'c:/projects/ci-targets/tests/spec/cpp_stl_98/test_expr_calc_array_ops.cpp',
+        ]
+      end
+    end
+  end
 end
