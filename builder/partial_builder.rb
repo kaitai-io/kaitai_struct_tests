@@ -298,4 +298,12 @@ class PartialBuilder
   def is_bare?(x)
     x.respond_to?(:[]) and x[0] == :bare
   end
+
+  def sort_list_with_bare(list)
+    list.sort { |a, b|
+      aa = is_bare?(a) ? a[1] : a
+      bb = is_bare?(b) ? b[1] : b
+      aa <=> bb
+    }
+  end
 end

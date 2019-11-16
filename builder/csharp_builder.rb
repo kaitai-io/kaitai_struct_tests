@@ -78,9 +78,9 @@ class CSharpBuilder < PartialBuilder
           #code = $4
           #msg = $5
 
-          if filename =~ /^tests\/([^\/].*)$/
-            # No absolute path, this happens for some files in xbuild
-            # mono builds - treat that as bare files
+          if filename =~ /^tests[\\\/]([^\/].*)$/
+            # Not an absolute path, this happens when we hit problems
+            # originating in spec files - treat these as bare files
             list << [:bare, $1]
           else
             list << filename
@@ -131,11 +131,7 @@ class CSharpBuilder < PartialBuilder
 
 #  private
   def convert_slashes(list)
-    list.sort { |a, b|
-      aa = is_bare?(a) ? a[1] : a
-      bb = is_bare?(b) ? b[1] : b
-      aa <=> bb
-    }.map { |f|
+    sort_list_with_bare(list).map { |f|
       if is_bare?(f)
         # bare file, return as is, no slashes expected anyway
         f
