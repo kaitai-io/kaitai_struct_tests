@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd translator
+arg="run $@"
+sbt "$arg"

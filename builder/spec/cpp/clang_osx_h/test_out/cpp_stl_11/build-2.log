@@ -1,0 +1,15 @@
+Scanning dependencies of target ks_tests
+[  1%] Linking CXX executable ks_tests
+Undefined symbols for architecture x86_64:
+  "io_local_var_t::io_local_var_t(kaitai::kstream*, kaitai::kstruct*, io_local_var_t*)", referenced from:
+      test_io_local_var::test_method() in test_io_local_var.cpp.o
+  "enum_to_i_class_border_2_t::enum_to_i_class_border_2_t(enum_to_i_class_border_1_t*, kaitai::kstream*, kaitai::kstruct*, enum_to_i_class_border_2_t*)", referenced from:
+      enum_to_i_class_border_1_t::checker() in enum_to_i_class_border_1.cpp.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[2]: *** [ks_tests] Error 1
+make[2]: Target `CMakeFiles/ks_tests.dir/build' not remade because of errors.
+make[1]: *** [CMakeFiles/ks_tests.dir/all] Error 2
+make[1]: Target `all' not remade because of errors.
+make: *** [all] Error 2
+make: Target `default_target' not remade because of errors.

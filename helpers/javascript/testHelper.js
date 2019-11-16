@@ -1,7 +1,7 @@
 function testHelper(className, fileName, testFunc) {
   var fs = require("fs");
 //  var DataStream = require("DataStream");
-  var KaitaiStream = require("KaitaiStream");
+  var KaitaiStream = global.KaitaiStream = require("kaitai-struct/KaitaiStream");
   var parser = require(className);
 
   describe(className, function() {

@@ -1,6 +1,7 @@
 package io.kaitai.struct.specwrite;
 
 import io.kaitai.struct.KaitaiStream;
+import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 
 import java.io.FileInputStream;
@@ -15,7 +16,7 @@ public class CommonSpec {
     protected void assertEqualToFullFile(KaitaiStruct.ReadWrite struct, String fn) throws IOException {
         byte[] actual = structToByteArray(struct);
 
-        KaitaiStream expFile = new KaitaiStream(SRC_DIR + fn);
+        KaitaiStream expFile = new ByteBufferKaitaiStream(SRC_DIR + fn);
         byte[] expected = expFile.readBytesFull();
         expFile.close();
 
@@ -37,7 +38,7 @@ public class CommonSpec {
 
     protected byte[] structToByteArray(KaitaiStruct.ReadWrite struct) {
         struct._check();
-        KaitaiStream io = new KaitaiStream(1024 * 1024);
+        KaitaiStream io = new ByteBufferKaitaiStream(1024 * 1024);
         struct._write(io);
         long size = io.pos();
         io.seek(0);
@@ -45,7 +46,7 @@ public class CommonSpec {
     }
 
     protected KaitaiStream structToReadStream(KaitaiStruct.ReadWrite struct) {
-        return new KaitaiStream(structToByteArray(struct));
+        return new ByteBufferKaitaiStream(structToByteArray(struct));
     }
 
     private String byteArrayToHex(byte[] arr) {

@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+
+# Convert camel case to snake case
+class String
+    def underscore
+        self.gsub(/::/, '/').
+        gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+        gsub(/([a-z\d])([A-Z])/,'\1_\2').
+        tr("-", "_").
+        downcase
+    end
+end
+
+s = $stdin.read
+
+raise "Unable to detect source name" unless s =~ /require ['"](.*?)['"]/
+src_name = $1
+
+raise "Unable to detect class name" unless s =~ /RSpec\.describe (.*?) do/
+class_name = $1
+test_class_name = "Test#{class_name}"
+
+raise "Unable to detect binary file name" unless s =~ /r = .*\.from_file\(['"](.*?)['"]\)/
+bin_name = $1
+
+s.gsub!(/^.*it .parses test properly. do\n/m, '')
+s.gsub!(/ *r = .*\.from_file\(.*\n\n/, '')
+
+s.gsub!(/expect\(/, 'luaunit.assertEquals(')
+s.gsub!(/\)\.to eq (.*?)$/) { ", #{$1})" }
+s.gsub!(/\)\.to eq\((.*?)\)$/) { ", #{$1})" }
+s.gsub!(/'/, '"')
+s.gsub!(/^\s*end\n/, '')
+
+puts <<__EOF__
+local luaunit = require("luaunit")
+
+require("#{src_name}")
+
+#{test_class_name} = {}
+
+function #{test_class_name}:#{test_class_name.underscore}()
+    local r = #{class_name}:from_file("#{bin_name}")
+
+__EOF__
+
+print s
+puts "end"

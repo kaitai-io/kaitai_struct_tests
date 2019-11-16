@@ -11,6 +11,15 @@ class TestResult
       @message = message
       @trace = trace
     end
+
+    def to_h
+      {
+        'file_name' => file_name,
+        'line_num' => line_num,
+        'message' => message,
+        'trace' => trace,
+      }
+    end
   end
 
   attr_reader :name
@@ -23,5 +32,15 @@ class TestResult
     @status = status
     @elapsed = elapsed
     @failure = failure
+  end
+
+  def to_h
+    h = {
+#      'name' => name,
+      'status' => status.to_s,
+      'elapsed' => elapsed,
+    }
+    h['failure'] = failure.to_h unless failure.nil?
+    h
   end
 end

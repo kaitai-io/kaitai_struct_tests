@@ -1,0 +1,7 @@
+#!/bin/sh -ef
+
+. ./config
+
+export LUA_PATH="$LUA_PATH;$LUA_RUNTIME_DIR/?.lua;spec/lua/?.lua;spec/lua/extra/?.lua;compiled/lua/?.lua;;"
+
+lua5.3 spec/lua/run_test_suite.lua -v
