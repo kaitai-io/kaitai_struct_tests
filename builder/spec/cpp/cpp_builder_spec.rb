@@ -176,4 +176,19 @@ RSpec.describe CppBuilder do
       end
     end
   end
+
+  context 'gcc_enoent' do
+    before :context do
+      Dir.chdir("#{@spec_dir}/gcc_enoent")
+      @builder = CppBuilder.new('compiled/cpp_stl_11', 'spec/cpp_stl_11', 'test_out/cpp_stl_11')
+    end
+
+    describe '#parse_failed_build' do
+      it 'parses failed build information' do
+        expect(@builder.parse_failed_build('test_out/cpp_stl_11/build-2.log').to_a.sort).to match_array [
+          '/home/travis/build/kaitai-io/ci_targets/tests/spec/cpp_stl_11/test_expr_calc_array_ops.cpp',
+        ]
+      end
+    end
+  end
 end

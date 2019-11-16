@@ -130,7 +130,7 @@ class CppBuilder < PartialBuilder
           case l
           when /^In file included from (.+?):(\d+)(:\d+)?:$/
             orig_cpp_filename = $1
-          when /^(.+?):(\d+):(\d+): error: (.*)$/
+          when /^(.+?):(\d+):(\d+): (?:fatal )?error: (.*)$/
             filename = $1
             #row = $2
             #col = $3
