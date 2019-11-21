@@ -11,7 +11,9 @@ class CSharpBuilder < PartialBuilder
     @spec_dir = 'spec/csharp/kaitai_struct_csharp_tests'
     @packages_dir = 'spec/csharp/packages'
     @compiled_dir = 'compiled/csharp'
-    @project_file = "#{@spec_dir}/kaitai_struct_csharp_tests.csproj"    
+    @project_file = "#{@spec_dir}/kaitai_struct_csharp_tests.csproj"
+    @project_template = "#{@spec_dir}/kaitai_struct_csharp_tests.csproj.in"
+
     @test_out_dir = "#{@config['TEST_OUT_DIR']}/csharp"
 
     detect_tools
@@ -53,16 +55,11 @@ class CSharpBuilder < PartialBuilder
   end
 
   def create_project(mand_files, disp_files)
-    tmpl = File.read(@project_file)
-    files_xml = (disp_files).map { |x| "    <Compile Include=\"#{x}\" />" }.join("\n")
-    project = tmpl.gsub(/    <Compile Include="..\\..\\..\\compiled\\csharp\\\*\*\\\*.cs" \/>/, files_xml)
+    tmpl = File.read(@project_template)
+    files_xml = (mand_files + disp_files).map { |x| "    <Compile Include=\"#{x}\" />" }.join("\n")
+    project = tmpl.gsub(/%%%FILES%%%/, files_xml)
     File.write(@project_file, project)
     @project_file
-  end
-
-  def copy_with_path(src, dst)
-    FileUtils.mkdir_p(File.dirname(dst))
-    FileUtils.cp(src, dst)
   end
 
   def build_project(log_file)

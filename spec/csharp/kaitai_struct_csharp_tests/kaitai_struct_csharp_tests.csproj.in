@@ -17,10 +17,12 @@
     <FileVersion>0.7.0.0</FileVersion>
     <Version>0.7.0.0</Version>
 
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\..\compiled\csharp\**\*.cs" />
+%%%FILES%%%
   </ItemGroup>
 
   <ItemGroup>
