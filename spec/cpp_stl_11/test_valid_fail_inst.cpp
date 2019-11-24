@@ -13,7 +13,7 @@ BOOST_AUTO_TEST_CASE(test_valid_fail_inst) {
     valid_fail_inst_t* r = nullptr;
     BOOST_CHECK_THROW(
         r = new valid_fail_inst_t(&ks),
-        kaitai::validation_not_equal_error<std::string>
+        kaitai::validation_not_equal_error<uint8_t>
     );
 
     delete r;
