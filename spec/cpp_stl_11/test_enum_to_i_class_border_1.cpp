@@ -2,6 +2,7 @@
 
 #include <boost/test/unit_test.hpp>
 #include <enum_to_i_class_border_1.h>
+#include <enum_to_i_class_border_2.h>
 #include <iostream>
 #include <fstream>
 #include <vector>
