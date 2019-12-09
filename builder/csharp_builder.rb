@@ -20,17 +20,21 @@ class CSharpBuilder < PartialBuilder
   end
 
   def detect_tools
+    @msbuild_args = []
+
     # msbuild
     if system("msbuild /version")
       @msbuild = 'msbuild'
     elsif system("xbuild /version")
       @msbuild = 'xbuild'
+    elsif system("dotnet build /version")
+      @msbuild = 'dotnet'
+      @msbuild_args = ['build']
     else
       raise 'Unable to find msbuild/xbuild, bailing out'
     end
 
     # If we're running in AppVeyor, add extra logger args
-    @msbuild_args = []
     if ENV['APPVEYOR']
       @msbuild_args << '/logger:C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll'
     end
