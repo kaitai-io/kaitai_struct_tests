@@ -3,6 +3,8 @@
 package io.kaitai.struct.spec;
 
 import io.kaitai.struct.testformats.EnumImport;
+import io.kaitai.struct.testformats.Enum0;
+import io.kaitai.struct.testformats.EnumDeep;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestEnumImport extends CommonSpec {
