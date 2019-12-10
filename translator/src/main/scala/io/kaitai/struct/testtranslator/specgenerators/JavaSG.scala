@@ -15,6 +15,10 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   val compiler = new JavaCompiler(provider, config)
 
   importList.add(s"io.kaitai.struct.testformats.$className")
+  spec.extraImports.foreach(entry =>
+    importList.add(s"io.kaitai.struct.testformats.${JavaCompiler.type2class(entry)}")
+  )
+
   importList.add("org.testng.annotations.Test")
   importList.add("static org.testng.Assert.*")
 
