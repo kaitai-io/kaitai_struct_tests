@@ -29,7 +29,7 @@ class CSharpBuilder < PartialBuilder
       @msbuild = 'xbuild'
     elsif system("dotnet build /version")
       @msbuild = 'dotnet'
-      @msbuild_args = ['build']
+      @msbuild_args = ['build', '--framework', 'netstandard1.3']
     else
       raise 'Unable to find msbuild/xbuild, bailing out'
     end
