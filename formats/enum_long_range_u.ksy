@@ -1,7 +1,7 @@
 # Assert that enum id's can handle values in Long's range
 meta:
   id: enum_long_range_u
-  endian:  be
+  endian: be
 
 enums:
   constants:
