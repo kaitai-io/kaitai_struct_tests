@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require_relative 'builder/csharp_async_builder'
+CSharpBuilder.new.command_line(ARGV)

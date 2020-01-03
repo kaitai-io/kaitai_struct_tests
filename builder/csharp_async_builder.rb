@@ -8,44 +8,24 @@ class CSharpBuilder < PartialBuilder
   def initialize
     super
 
-    @spec_dir = 'spec/csharp/Kaitai.Struct.Tests'
-    @packages_dir = 'spec/csharp/packages'
-    @compiled_dir = 'compiled/csharp'
+    @spec_dir = 'spec/csharp_async/Kaitai.Struct.Tests'
+    @compiled_dir = 'compiled/csharpasync'
     @project_file = "#{@spec_dir}/Kaitai.Struct.Tests.csproj"
     @project_template = "#{@spec_dir}/Kaitai.Struct.Tests.csproj.in"
 
-    @test_out_dir = "#{@config['TEST_OUT_DIR']}/csharp"
+    @test_out_dir = "#{@config['TEST_OUT_DIR']}/csharp_async"
 
     detect_tools
   end
 
-  def detect_tools
-    @msbuild_args = []
-
-    # msbuild
-    if system("msbuild /version")
-      @msbuild = 'msbuild'
-    elsif system("xbuild /version")
-      @msbuild = 'xbuild'
-    elsif system("dotnet build /version")
-      @msbuild = 'dotnet'
-      @msbuild_args = ['build', '--framework', 'netstandard1.3']
-    else
-      raise 'Unable to find msbuild/xbuild, bailing out'
+  def detect_tools   
+    if !system("dotnet build /version")
+      raise 'Unable to find dotnet cli, bailing out'
     end
-
-    # If we're running in AppVeyor, add extra logger args
-    if ENV['APPVEYOR']
-      @msbuild_args << '/logger:C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll'
-    end
-
-    # If mono is available, use it
-    @is_mono = system("mono --version") ? true : false
   end
 
   def list_mandatory_files
     convert_slashes([
-      'Properties/AssemblyInfo.cs',
       'CommonSpec.cs',
     ])
   end
@@ -65,7 +45,7 @@ class CSharpBuilder < PartialBuilder
   end
 
   def build_project(log_file)
-    cli = [@msbuild] + @msbuild_args + ["#{@spec_dir}/Kaitai.Struct.Tests.csproj"]
+    cli = "dotnet build #{@spec_dir}/Kaitai.Struct.Tests.csproj"
     run_and_tee({}, cli, log_file).exitstatus
   end
 
@@ -116,13 +96,7 @@ class CSharpBuilder < PartialBuilder
     FileUtils.mkdir_p(@test_out_dir)
     FileUtils.rm_f(xml_log)
 
-    cli = [
-      "#{@packages_dir}/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe",
-      "--result=#{xml_log}",
-      "#{@spec_dir}/bin/Debug/Kaitai.Struct.Tests.dll",
-    ]
-
-    cli.unshift("mono") if @is_mono
+    cli = "dotnet test #{@spec_dir}/bin/Debug/Kaitai.Struct.Tests.dll --test-adapter-path:. --logger:\"nunit;LogFilePath=#{xml_log}\""
 
     run_and_tee(
       {"CSHARP_TEST_SRC_PATH" => "src"},
