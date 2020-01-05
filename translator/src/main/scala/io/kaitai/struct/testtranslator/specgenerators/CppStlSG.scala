@@ -1,26 +1,28 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import _root_.io.kaitai.struct.datatype.{DataType, KSError}
-import _root_.io.kaitai.struct.exprlang.Ast
-import _root_.io.kaitai.struct.languages.CppCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
-import _root_.io.kaitai.struct.translators.CppTranslator
-import _root_.io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig, RuntimeConfig}
+import io.kaitai.struct.datatype.{DataType, KSError}
+import io.kaitai.struct.exprlang.Ast
+import io.kaitai.struct.languages.CppCompiler
+import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import io.kaitai.struct.translators.CppTranslator
+import io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig, RuntimeConfig}
+import io.kaitai.struct.languages.components.CppImportList
 
 class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntimeConfig) extends BaseGenerator(spec) {
   val config = RuntimeConfig(cppConfig = cppConfig)
   val compiler = new CppCompiler(provider, config)
   val className = CppCompiler.types2class(List(spec.id))
-  val translator = new CppTranslator(provider, importList, config)
+  val cppImportList = new CppImportList
+  val translator = new CppTranslator(provider, cppImportList, config)
 
   override def fileName(name: String): String = s"test_$name.cpp"
 
-  importList.add("<boost/test/unit_test.hpp>")
-  importList.add(s"<${spec.id}.h>")
-  spec.extraImports.foreach(entry => importList.add(s"<$entry.h>"))
-  importList.add("<iostream>")
-  importList.add("<fstream>")
-  importList.add("<vector>")
+  cppImportList.addSystem("boost/test/unit_test.hpp")
+  cppImportList.addLocal(s"${spec.id}.h")
+  spec.extraImports.foreach(entry => cppImportList.addLocal(s"$entry.h"))
+  cppImportList.addSystem("iostream")
+  cppImportList.addSystem("fstream")
+  cppImportList.addSystem("vector")
 
   override def header() = {
     out.puts
@@ -35,7 +37,7 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
   }
 
   override def runParseExpectError(exception: KSError): Unit = {
-    importList.add("<kaitai/exceptions.h>")
+    cppImportList.addKaitai("kaitai/exceptions.h")
 
     runParseCommon1()
     out.puts(s"$className* r = ${compiler.nullPtr};")
@@ -80,7 +82,7 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
   }
 
   def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit = {
-    importList.add("\"helpers.h\"")
+    cppImportList.addLocal("helpers.h")
     val elTypeName = compiler.kaitaiType2NativeType(elType)
     val eltsStr = elts.map((x) => translator.translate(x)).mkString(", ")
     val actStr = translateAct(check.actual)
@@ -91,7 +93,7 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
 
   override def results: String = {
     "// " + AUTOGEN_COMMENT + "\n\n" +
-      importList.toList.map((x) => s"#include $x").mkString("", "\n", "\n") +
+      cppImportList.result + "\n" +
       out.result
   }
 
