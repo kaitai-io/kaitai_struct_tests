@@ -23,5 +23,10 @@ public class TestExprStrOps extends CommonSpec {
         assertEquals(r.twoSubstr0To7(), "0123456");
         assertEquals(r.twoSubstr4To10(), "456789");
         assertEquals(r.twoSubstr0To10(), "0123456789");
+        assertIntEquals(r.toIAttr(), 9173);
+        assertIntEquals(r.toIR10(), -72);
+        assertIntEquals(r.toIR2(), 86);
+        assertIntEquals(r.toIR8(), 465);
+        assertIntEquals(r.toIR16(), 18383);
     }
 }

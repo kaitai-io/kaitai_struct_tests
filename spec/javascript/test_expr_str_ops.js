@@ -17,4 +17,9 @@ testHelper('ExprStrOps', 'src/term_strz.bin', function(r, ExprStrOps) {
   assert.strictEqual(r.twoSubstr0To7, "0123456");
   assert.strictEqual(r.twoSubstr4To10, "456789");
   assert.strictEqual(r.twoSubstr0To10, "0123456789");
+  assert.strictEqual(r.toIAttr, 9173);
+  assert.strictEqual(r.toIR10, -72);
+  assert.strictEqual(r.toIR2, 86);
+  assert.strictEqual(r.toIR8, 465);
+  assert.strictEqual(r.toIR16, 18383);
 });

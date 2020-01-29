@@ -20,5 +20,10 @@ class ExprStrOpsTest extends TestCase {
         $this->assertEquals("0123456", $r->twoSubstr0To7());
         $this->assertEquals("456789", $r->twoSubstr4To10());
         $this->assertEquals("0123456789", $r->twoSubstr0To10());
+        $this->assertEquals(9173, $r->toIAttr());
+        $this->assertEquals(-72, $r->toIR10());
+        $this->assertEquals(86, $r->toIR2());
+        $this->assertEquals(465, $r->toIR8());
+        $this->assertEquals(18383, $r->toIR16());
     }
 }

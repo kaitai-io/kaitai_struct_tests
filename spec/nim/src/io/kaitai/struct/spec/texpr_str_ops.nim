@@ -24,5 +24,10 @@ suite "Kaitai Struct Compiler Test Suite":
     check(r.twoSubstr0To7 == string("0123456"))
     check(r.twoSubstr4To10 == string("456789"))
     check(r.twoSubstr0To10 == string("0123456789"))
+    check(r.toIAttr == int(9173))
+    check(r.toIR10 == int(-72))
+    check(r.toIR2 == int(86))
+    check(r.toIR8 == int(465))
+    check(r.toIR16 == int(18383))
 
 close(outputFormatter)

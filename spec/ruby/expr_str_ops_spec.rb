@@ -18,5 +18,10 @@ RSpec.describe ExprStrOps do
     expect(r.two_substr_0_to_7).to eq "0123456"
     expect(r.two_substr_4_to_10).to eq "456789"
     expect(r.two_substr_0_to_10).to eq "0123456789"
+    expect(r.to_i_attr).to eq 9173
+    expect(r.to_i_r10).to eq -72
+    expect(r.to_i_r2).to eq 86
+    expect(r.to_i_r8).to eq 465
+    expect(r.to_i_r16).to eq 18383
   end
 end

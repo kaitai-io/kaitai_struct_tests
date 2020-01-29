@@ -25,6 +25,11 @@ BOOST_AUTO_TEST_CASE(test_expr_str_ops) {
     BOOST_CHECK_EQUAL(r->two_substr_0_to_7(), std::string("0123456"));
     BOOST_CHECK_EQUAL(r->two_substr_4_to_10(), std::string("456789"));
     BOOST_CHECK_EQUAL(r->two_substr_0_to_10(), std::string("0123456789"));
+    BOOST_CHECK_EQUAL(r->to_i_attr(), 9173);
+    BOOST_CHECK_EQUAL(r->to_i_r10(), -72);
+    BOOST_CHECK_EQUAL(r->to_i_r2(), 86);
+    BOOST_CHECK_EQUAL(r->to_i_r8(), 465);
+    BOOST_CHECK_EQUAL(r->to_i_r16(), 18383);
 
     delete r;
 }

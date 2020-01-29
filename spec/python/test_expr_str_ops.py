@@ -20,3 +20,8 @@ class TestExprStrOps(unittest.TestCase):
             self.assertEqual(r.two_substr_0_to_7, u"0123456")
             self.assertEqual(r.two_substr_4_to_10, u"456789")
             self.assertEqual(r.two_substr_0_to_10, u"0123456789")
+            self.assertEqual(r.to_i_attr, 9173)
+            self.assertEqual(r.to_i_r10, -72)
+            self.assertEqual(r.to_i_r2, 86)
+            self.assertEqual(r.to_i_r8, 465)
+            self.assertEqual(r.to_i_r16, 18383)

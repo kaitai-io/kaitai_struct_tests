@@ -22,5 +22,10 @@ fn test_expr_str_ops() {
         assert_eq!(r.two_substr_0_to_7, "0123456");
         assert_eq!(r.two_substr_4_to_10, "456789");
         assert_eq!(r.two_substr_0_to_10, "0123456789");
+        assert_eq!(r.to_i_attr, 9173);
+        assert_eq!(r.to_i_r10, -72);
+        assert_eq!(r.to_i_r2, 86);
+        assert_eq!(r.to_i_r8, 465);
+        assert_eq!(r.to_i_r16, 18383);
     }
 }

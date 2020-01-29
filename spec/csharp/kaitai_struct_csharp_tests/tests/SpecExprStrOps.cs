@@ -25,6 +25,11 @@ namespace Kaitai
             Assert.AreEqual(r.TwoSubstr0To7, "0123456");
             Assert.AreEqual(r.TwoSubstr4To10, "456789");
             Assert.AreEqual(r.TwoSubstr0To10, "0123456789");
+            Assert.AreEqual(r.ToIAttr, 9173);
+            Assert.AreEqual(r.ToIR10, -72);
+            Assert.AreEqual(r.ToIR2, 86);
+            Assert.AreEqual(r.ToIR8, 465);
+            Assert.AreEqual(r.ToIR16, 18383);
         }
     }
 }
