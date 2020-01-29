@@ -26,3 +26,14 @@ asserts:
     expected: '"456789"'
   - actual: two_substr_0_to_10
     expected: '"0123456789"'
+
+  - actual: to_i_attr
+    expected: 9173
+  - actual: to_i_r10
+    expected: -72
+  - actual: to_i_r2
+    expected: 0b1010110
+  - actual: to_i_r8
+    expected: 0o721
+  - actual: to_i_r16
+    expected: 0x47cf

@@ -29,3 +29,14 @@ instances:
     value: two.substring(4, 10)
   two_substr_0_to_10:
     value: two.substring(0, 10)
+
+  to_i_attr:
+    value: '"9173".to_i'
+  to_i_r10:
+    value: '"-072".to_i(10)'
+  to_i_r2:
+    value: '"1010110".to_i(2)'
+  to_i_r8:
+    value: '"721".to_i(8)'
+  to_i_r16:
+    value: '"47cf".to_i(16)'
