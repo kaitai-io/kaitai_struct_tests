@@ -3,6 +3,7 @@
 package spec
 
 import (
+	"runtime/debug"
 	"os"
 	"testing"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
@@ -11,6 +12,12 @@ import (
 )
 
 func TestNavParent2(t *testing.T) {
+	defer func() {
+		if r := recover(); r != nil {
+			debug.PrintStack()
+			t.Fatal("unexpected panic:", r)
+		}
+	}()
 	f, err := os.Open("../../src/nav_parent2.bin")
 	if err != nil {
 		t.Fatal(err)
@@ -21,7 +28,6 @@ func TestNavParent2(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-
 
 	assert.EqualValues(t, 8, r.OfsTags)
 	assert.EqualValues(t, 2, r.NumTags)

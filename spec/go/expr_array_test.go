@@ -63,22 +63,22 @@ func TestExprArray(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, -2.6839530254859364E-121, tmp7)
+	assert.InDelta(t, -2.6839530254859364E-121, tmp7, 1e-6)
 	tmp8, err := r.AfloatLast()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, -1.1103359815095273E-175, tmp8)
+	assert.InDelta(t, -1.1103359815095273E-175, tmp8, 1e-6)
 	tmp9, err := r.AfloatMin()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, -8.754689149998834E+288, tmp9)
+	assert.InDelta(t, -8.754689149998834E+288, tmp9, 1e-6)
 	tmp10, err := r.AfloatMax()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, -1.1103359815095273E-175, tmp10)
+	assert.InDelta(t, -1.1103359815095273E-175, tmp10, 1e-6)
 	tmp11, err := r.AstrSize()
 	if err != nil {
 		t.Fatal(err)

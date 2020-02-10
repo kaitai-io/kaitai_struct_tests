@@ -29,8 +29,8 @@ func TestFloatToI(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, 0.5, r.SingleValue)
-	assert.EqualValues(t, 0.25, r.DoubleValue)
+	assert.InDelta(t, 0.5, r.SingleValue, 1e-6)
+	assert.InDelta(t, 0.25, r.DoubleValue, 1e-6)
 	tmp1, err := r.SingleI()
 	if err != nil {
 		t.Fatal(err)

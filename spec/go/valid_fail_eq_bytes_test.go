@@ -3,6 +3,7 @@
 package spec
 
 import (
+	"runtime/debug"
 	"os"
 	"testing"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
@@ -10,6 +11,12 @@ import (
 )
 
 func TestValidFailEqBytes(t *testing.T) {
+	defer func() {
+		if r := recover(); r != nil {
+			debug.PrintStack()
+			t.Fatal("unexpected panic:", r)
+		}
+	}()
 	f, err := os.Open("../../src/fixed_struct.bin")
 	if err != nil {
 		t.Fatal(err)
@@ -23,5 +30,4 @@ func TestValidFailEqBytes(t *testing.T) {
 	default:
 		t.Fatalf("expected kaitai.ValidationNotEqualError, got %T", v)
 	}
-
 }
