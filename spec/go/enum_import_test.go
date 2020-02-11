@@ -8,24 +8,27 @@ import (
 	"testing"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	. "test_formats"
+	"github.com/stretchr/testify/assert"
 )
 
-func TestDocstringsDocrefMulti(t *testing.T) {
+func TestEnumImport(t *testing.T) {
 	defer func() {
 		if r := recover(); r != nil {
 			debug.PrintStack()
 			t.Fatal("unexpected panic:", r)
 		}
 	}()
-	f, err := os.Open("../../src/fixed_struct.bin")
+	f, err := os.Open("../../src/enum_0.bin")
 	if err != nil {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r DocstringsDocrefMulti
+	var r EnumImport
 	err = r.Read(s, &r, &r)
 	if err != nil {
 		t.Fatal(err)
 	}
 
+	assert.EqualValues(t, Enum0_Animal__Cat, r.Pet1)
+	assert.EqualValues(t, EnumDeep_Container1_Container2_Animal__Hare, r.Pet2)
 }

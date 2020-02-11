@@ -3,6 +3,7 @@
 package spec
 
 import (
+	"runtime/debug"
 	"os"
 	"testing"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
@@ -11,6 +12,12 @@ import (
 )
 
 func TestSwitchIntegers2(t *testing.T) {
+	defer func() {
+		if r := recover(); r != nil {
+			debug.PrintStack()
+			t.Fatal("unexpected panic:", r)
+		}
+	}()
 	f, err := os.Open("../../src/switch_integers.bin")
 	if err != nil {
 		t.Fatal(err)
@@ -21,7 +28,6 @@ func TestSwitchIntegers2(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-
 
 	assert.EqualValues(t, 1, r.Code)
 	assert.EqualValues(t, 7, r.Len)

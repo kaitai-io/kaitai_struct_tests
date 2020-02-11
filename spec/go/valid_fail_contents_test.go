@@ -10,7 +10,7 @@ import (
 	. "test_formats"
 )
 
-func TestDocstringsDocrefMulti(t *testing.T) {
+func TestValidFailContents(t *testing.T) {
 	defer func() {
 		if r := recover(); r != nil {
 			debug.PrintStack()
@@ -22,10 +22,12 @@ func TestDocstringsDocrefMulti(t *testing.T) {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r DocstringsDocrefMulti
+	var r ValidFailContents
 	err = r.Read(s, &r, &r)
-	if err != nil {
-		t.Fatal(err)
+	switch v := err.(type) {
+	case kaitai.ValidationNotEqualError:
+		break
+	default:
+		t.Fatalf("expected kaitai.ValidationNotEqualError, got %T", v)
 	}
-
 }

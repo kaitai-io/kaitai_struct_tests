@@ -8,24 +8,27 @@ import (
 	"testing"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	. "test_formats"
+	"github.com/stretchr/testify/assert"
 )
 
-func TestDocstringsDocrefMulti(t *testing.T) {
+func TestEnumIntRangeU(t *testing.T) {
 	defer func() {
 		if r := recover(); r != nil {
 			debug.PrintStack()
 			t.Fatal("unexpected panic:", r)
 		}
 	}()
-	f, err := os.Open("../../src/fixed_struct.bin")
+	f, err := os.Open("../../src/enum_int_range_u.bin")
 	if err != nil {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r DocstringsDocrefMulti
+	var r EnumIntRangeU
 	err = r.Read(s, &r, &r)
 	if err != nil {
 		t.Fatal(err)
 	}
 
+	assert.EqualValues(t, EnumIntRangeU_Constants__Zero, r.F1)
+	assert.EqualValues(t, EnumIntRangeU_Constants__IntMax, r.F2)
 }
