@@ -19,6 +19,7 @@ include(${INC_PATH})
 set(PREREQ_SOURCES
 	${PREREQ_PATH}/my_custom_fx.cpp
 	${PREREQ_PATH}/custom_fx.cpp
+	${PREREQ_PATH}/custom_fx_no_args.cpp
 )
 
 set(RUNTIME_SOURCES
