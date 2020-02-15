@@ -3,9 +3,9 @@
 
 #include <kaitai/custom_decoder.h>
 
-class custom_fx_t : public kaitai::custom_decoder {
+class custom_fx_no_args_t : public kaitai::custom_decoder {
 public:
-    custom_fx_t();
+    custom_fx_no_args_t();
     std::string decode(std::string src);
 };
 
