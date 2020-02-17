@@ -13,7 +13,8 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
   val compiler = new CppCompiler(provider, config)
   val className = CppCompiler.types2class(List(spec.id))
   val cppImportList = new CppImportList
-  val translator = new CppTranslator(provider, cppImportList, config)
+  val hdrImportList = new CppImportList
+  val translator = new CppTranslator(provider, cppImportList, hdrImportList, config)
 
   override def fileName(name: String): String = s"test_$name.cpp"
 
