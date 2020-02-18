@@ -1,11 +1,11 @@
 local luaunit = require("luaunit")
 
-require("expr_array")
+require("expr_calc_array_ops")
 
 TestExprCalcArrayOps = {}
 
-function TestExprCalcArrayOps:test_expr_array()
-    local r = ExprArray:from_file("src/fixed_struct.bin")
+function TestExprCalcArrayOps:test_expr_calc_array_ops()
+    local r = ExprCalcArrayOps:from_file("src/fixed_struct.bin")
     local prec = 0.000001
 
     luaunit.assertEquals(r.int_array_size, 7)
