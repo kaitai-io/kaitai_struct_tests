@@ -13,7 +13,9 @@ class TestParser
   def to_h
     r = {}
     each_test { |t|
-      r[t.name] = t.to_h
+      if (not r.key?(t.name)) || r[t.name]['status'] == 'passed'
+        r[t.name] = t.to_h
+      end
     }
     r
   end
