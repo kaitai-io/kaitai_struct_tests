@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <NoWarn>1701;1702</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors />
+    <Company>Kaitai Project</Company>
+    <Product>Kaitai Struct Tests</Product>
+    <Copyright>Copyright © Kaitai Project 2016-2020</Copyright>
+    <AssemblyName>Kaitai.Struct.Tests</AssemblyName>
+    <RootNamespace>Kaitai</RootNamespace>
+
+    <AssemblyVersion>0.9.0.0</AssemblyVersion>
+    <FileVersion>0.9.0.0</FileVersion>
+    <Version>0.9.0.0</Version>
+
+    <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
+
+    <AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    %%%FILES%%%
+  </ItemGroup>
+
+<!-- For CI debugging
+  <ItemGroup>
+    <Compile Include="*.cs" />
+    <Compile Include="tests\*.cs" />
+    <Compile Include="..\..\..\compiled\csharp\**\*.cs" />
+  </ItemGroup>
+-->
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
+    <PackageReference Include="NunitXml.TestLogger" Version="2.1.41" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\runtime\csharp\Kaitai.Struct.Runtime\Kaitai.Struct.Runtime.csproj" />
+  </ItemGroup>
+
+</Project>

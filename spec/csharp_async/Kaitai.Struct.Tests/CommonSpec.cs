@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using NUnit.Framework;
 
 namespace Kaitai
 {
@@ -10,8 +11,7 @@ namespace Kaitai
             string testPath = Environment.GetEnvironmentVariable("CSHARP_TEST_SRC_PATH");
             if (testPath == null)
             {
-                char slash = Path.DirectorySeparatorChar;
-                testPath = ".." + slash + ".." + slash + ".." + slash + "src";
+                testPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "src");
             }
             return Path.Combine(testPath, filename);
         }

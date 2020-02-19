@@ -6,7 +6,7 @@
     <ProjectGuid>{6EAD43BD-81C8-44BF-BF8D-A8E90B8A9809}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>kscsharptesting</RootNamespace>
-    <AssemblyName>kaitai_struct_csharp_tests</AssemblyName>
+    <AssemblyName>Kaitai.Struct.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -48,9 +48,9 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\runtime\csharp\kaitai_struct_runtime_csharp.csproj">
+    <ProjectReference Include="..\..\..\..\runtime\csharp\Kaitai.Struct.Runtime\Kaitai.Struct.Runtime.csproj">
       <Project>{8339A750-C407-4CE8-8E31-51CB2EFD3A4B}</Project>
-      <Name>kaitai_struct_runtime_csharp</Name>
+      <Name>Kaitai.Struct.Runtime</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
