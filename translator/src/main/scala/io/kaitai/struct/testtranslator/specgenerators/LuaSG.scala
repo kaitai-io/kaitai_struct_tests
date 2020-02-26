@@ -21,7 +21,7 @@ class LuaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
 
   override def header(): Unit = {
     out.puts
-    out.puts(s"""require("""" + spec.id + """")""")
+    out.puts(s"""require("${spec.id}")""")
     out.puts
     out.puts(s"Test$className = {}")
     out.puts
@@ -30,7 +30,7 @@ class LuaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
   }
 
   override def runParse(): Unit = {
-    out.puts(s"""local r = $className:from_file("src/""" + spec.data + """")""")
+    out.puts(s"""local r = $className:from_file("src/${spec.data}")""")
   }
 
   override def footer(): Unit = {
