@@ -1,5 +1,8 @@
 package io.kaitai.struct.spec;
 
+import io.kaitai.struct.ArraySpan;
+import io.kaitai.struct.PositionInfo;
+import io.kaitai.struct.Span;
 import io.kaitai.struct.testformats.Debug0;
 import org.testng.annotations.Test;
 
@@ -10,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 public class TestDebug0 extends CommonSpec {
     @Test
@@ -23,25 +28,30 @@ public class TestDebug0 extends CommonSpec {
 
         assertEquals(Debug0._seqFields, new String[] { "one", "arrayOfInts", "_unnamed2" });
 
-        Map<String, Integer> attrStartExpected = new HashMap<>();
-        Map<String, Integer> attrEndExpected = new HashMap<>();
-        Map<String, List<Integer>> arrStartExpected = new HashMap<>();
-        Map<String, List<Integer>> arrEndExpected = new HashMap<>();
+        assertTrue(r instanceof PositionInfo, "Structure in debug mode should implement PositionInfo");
+        assertEquals(r._spans().size(), 3, "Position information should exists for each field");
 
-        attrStartExpected.put("one", 0);
-        attrEndExpected.put("one", 1);
+        final Span oneSpan = r._spans().get("one");
+        assertFalse(oneSpan instanceof ArraySpan, "Non-Array span shouldn't be instanceof ArraySpan");
+        assertEquals(oneSpan.start, 0);
+        assertEquals(oneSpan.end,   1);
 
-        attrStartExpected.put("arrayOfInts", 1);
-        arrStartExpected.put("arrayOfInts", Arrays.asList(1, 2, 3));
-        arrEndExpected.put("arrayOfInts", Arrays.asList(2, 3, 4));
-        attrEndExpected.put("arrayOfInts", 4);
+        final Span arraySpan = r._spans().get("arrayOfInts");
+        assertEquals(arraySpan.start, 1);
+        assertEquals(arraySpan.end, 4);
 
-        attrStartExpected.put("_unnamed2", 4);
-        attrEndExpected.put("_unnamed2", 5);
+        assertTrue(arraySpan instanceof ArraySpan, "Array span should be instanceof ArraySpan");
 
-        assertEquals(r._attrStart, attrStartExpected);
-        assertEquals(r._attrEnd, attrEndExpected);
-        assertEquals(r._arrStart, arrStartExpected);
-        assertEquals(r._arrEnd, arrEndExpected);
+        final ArraySpan array = (ArraySpan)arraySpan;
+        assertEquals(array.items.size(), 3);
+
+        final long[] starts = { 1, 2, 3 };
+        final long[] ends   = { 2, 3, 4 };
+        int i = 0;
+        for (final Span span : array.items) {
+            assertEquals(span.start, starts[i]);
+            assertEquals(span.end,   ends[i]);
+            ++i;
+        }
     }
 }
