@@ -1,4 +1,4 @@
-id: switch_default_only
+id: switch_else_only
 data: switch_opcodes.bin
 asserts:
   - actual: opcode

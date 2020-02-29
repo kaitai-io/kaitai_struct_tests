@@ -1,5 +1,5 @@
 meta:
-  id: switch_default_only
+  id: switch_else_only
 seq:
   - id: opcode
     type: s1
