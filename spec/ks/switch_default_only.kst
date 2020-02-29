@@ -3,7 +3,7 @@ data: switch_opcodes.bin
 asserts:
   - actual: opcode
     expected: 0x53
-  - actual: byte
+  - actual: prim_byte
     expected: 0x66
   - actual: struct.value
     expected: '[0x6f, 0x6f, 0x62, 0x61]'

@@ -3,7 +3,7 @@ meta:
 seq:
   - id: opcode
     type: s1
-  - id: byte
+  - id: prim_byte
     type:
       switch-on: opcode
       cases:
