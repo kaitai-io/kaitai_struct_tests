@@ -21,6 +21,7 @@ object Main extends App {
     "go",
     "java",
     "javascript",
+    "lua",
     "nim",
     "perl",
     "php",
