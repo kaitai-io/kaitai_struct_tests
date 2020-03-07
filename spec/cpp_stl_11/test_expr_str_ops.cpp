@@ -6,12 +6,10 @@
 #include <fstream>
 #include <vector>
 
-
 BOOST_AUTO_TEST_CASE(test_expr_str_ops) {
     std::ifstream ifs("src/term_strz.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     expr_str_ops_t* r = new expr_str_ops_t(&ks);
-
 
     BOOST_CHECK_EQUAL(r->one(), std::string("foo|b"));
     BOOST_CHECK_EQUAL(r->one_len(), 5);

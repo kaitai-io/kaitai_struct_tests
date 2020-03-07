@@ -6,12 +6,10 @@
 #include <fstream>
 #include <vector>
 
-
 BOOST_AUTO_TEST_CASE(test_str_combine) {
     std::ifstream ifs("src/term_strz.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     str_combine_t* r = new str_combine_t(&ks);
-
 
     BOOST_CHECK_EQUAL(r->str_term(), std::string("foo"));
     BOOST_CHECK_EQUAL(r->str_limit(), std::string("bar|"));
