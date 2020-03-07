@@ -26,7 +26,6 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
   cppImportList.addSystem("vector")
 
   override def header() = {
-    out.puts
     out.puts(s"BOOST_AUTO_TEST_CASE(test_${spec.id}) {")
     out.inc
   }
@@ -34,7 +33,6 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
   override def runParse(): Unit = {
     runParseCommon1()
     out.puts(s"$className* r = new $className(&ks);")
-    out.puts
   }
 
   override def runParseExpectError(exception: KSError): Unit = {
