@@ -7,6 +7,5 @@ class DebugEnumNameTest extends TestCase {
 
         # this test is meaningful only for languages that have --debug and do
         # not save enum type info
-        $this->markTestSkipped();
     }
 }
