@@ -11,14 +11,14 @@ BOOST_AUTO_TEST_CASE(test_floating_points) {
     kaitai::kstream ks(&ifs);
     floating_points_t* r = new floating_points_t(&ks);
 
-    BOOST_CHECK_CLOSE(r->single_value(), static_cast<float>(0.5), 1e-6);
-    BOOST_CHECK_CLOSE(r->single_value_be(), static_cast<float>(0.5), 1e-6);
-    BOOST_CHECK_CLOSE(r->double_value(), 0.25, 1e-6);
-    BOOST_CHECK_CLOSE(r->double_value_be(), 0.25, 1e-6);
-    BOOST_CHECK_CLOSE(r->approximate_value(), 1.2345, 1e-6);
-    BOOST_CHECK_CLOSE(r->single_value_plus_int(), 1.5, 1e-6);
-    BOOST_CHECK_CLOSE(r->single_value_plus_float(), 1.0, 1e-6);
-    BOOST_CHECK_CLOSE(r->double_value_plus_float(), 0.3, 1e-6);
+    BOOST_CHECK_CLOSE(r->single_value(), static_cast<float>(0.5), 100 * (1e-6) / (static_cast<float>(0.5)));
+    BOOST_CHECK_CLOSE(r->single_value_be(), static_cast<float>(0.5), 100 * (1e-6) / (static_cast<float>(0.5)));
+    BOOST_CHECK_CLOSE(r->double_value(), 0.25, 100 * (1e-6) / (0.25));
+    BOOST_CHECK_CLOSE(r->double_value_be(), 0.25, 100 * (1e-6) / (0.25));
+    BOOST_CHECK_CLOSE(r->approximate_value(), 1.2345, 100 * (1e-6) / (1.2345));
+    BOOST_CHECK_CLOSE(r->single_value_plus_int(), 1.5, 100 * (1e-6) / (1.5));
+    BOOST_CHECK_CLOSE(r->single_value_plus_float(), 1.0, 100 * (1e-6) / (1.0));
+    BOOST_CHECK_CLOSE(r->double_value_plus_float(), 0.3, 100 * (1e-6) / (0.3));
 
     delete r;
 }
