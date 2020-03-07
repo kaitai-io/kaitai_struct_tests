@@ -7,7 +7,6 @@
 #include <vector>
 #include "kaitai/exceptions.h"
 
-
 BOOST_AUTO_TEST_CASE(test_valid_fail_range_float) {
     std::ifstream ifs("src/floating_points.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);

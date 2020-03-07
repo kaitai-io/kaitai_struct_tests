@@ -6,12 +6,10 @@
 #include <fstream>
 #include <vector>
 
-
 BOOST_AUTO_TEST_CASE(test_expr_bits) {
     std::ifstream ifs("src/switch_opcodes.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     expr_bits_t* r = new expr_bits_t(&ks);
-
 
     BOOST_CHECK_EQUAL(r->a(), 2);
     BOOST_CHECK_EQUAL(r->enum_seq(), expr_bits_t::ITEMS_FOO);

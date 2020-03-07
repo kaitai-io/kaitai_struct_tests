@@ -6,12 +6,10 @@
 #include <fstream>
 #include <vector>
 
-
 BOOST_AUTO_TEST_CASE(test_switch_else_only) {
     std::ifstream ifs("src/switch_opcodes.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     switch_else_only_t* r = new switch_else_only_t(&ks);
-
 
     BOOST_CHECK_EQUAL(r->opcode(), 83);
     BOOST_CHECK_EQUAL(r->prim_byte(), 102);
