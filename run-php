@@ -6,4 +6,5 @@ mkdir -p "$TEST_OUT_DIR/php"
 
 phpunit spec/php \
 	--bootstrap spec/php/_bootstrap.php \
-	--log-junit "$TEST_OUT_DIR/php/results.xml"
+	--log-junit "$TEST_OUT_DIR/php/results.xml" \
+	--dont-report-useless-tests
