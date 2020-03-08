@@ -84,7 +84,12 @@ when 'nim'
     JUnitXMLParser.new("#{infile}/junitreports").to_h,
     infile
   )
-when 'lua', 'rust'
+when 'lua'
+  add_kst_adoption(
+    JUnitXMLParser.new("#{infile}/report.xml").to_h,
+    infile
+  )
+when 'rust'
   JUnitXMLParser.new(infile).to_h
 when 'go', 'perl'
   add_kst_adoption(
