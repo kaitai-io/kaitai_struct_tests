@@ -21,4 +21,5 @@ fi
 
 "$LUA_BIN" spec/lua/run_test_suite.lua -v -o junit -n "$TEST_OUT_DIR/lua/report"
 
-aggregate/convert_to_json lua "$TEST_OUT_DIR/lua/report.xml" "$TEST_OUT_DIR/lua/ci.json"
+./kst-adoption-report lua
+aggregate/convert_to_json lua "$TEST_OUT_DIR/lua" "$TEST_OUT_DIR/lua/ci.json"

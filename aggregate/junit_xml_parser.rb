@@ -49,7 +49,7 @@ class JUnitXMLParser < TestParser
           failure = nil
         else
           status = :failed
-          failure_msg = failure_xml.attribute('message')
+          failure_msg = failure_xml.attribute('message') || failure_xml.attribute('type')
           failure_msg = failure_msg.value if failure_msg
           failure = TestResult::Failure.new(
             nil,
