@@ -1,7 +1,7 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
-import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.datatype.DataType.BytesType
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.PHPCompiler
@@ -20,10 +20,21 @@ class PHPSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     out.puts
     out.puts(s"class ${className}Test extends TestCase {")
     out.inc
+  }
+
+  override def runParse(): Unit = {
+    runParseCommon()
+  }
+
+  override def runParseExpectError(exception: KSError): Unit = {
+    out.puts(s"/** @expectedException ${PHPCompiler.ksErrorName(exception)} */")
+    runParseCommon()
+  }
+
+  def runParseCommon(): Unit = {
     out.puts(s"public function test$className() {")
     out.inc
     out.puts(s"$$r = $className::fromFile(self::SRC_DIR_PATH . '/${spec.data}');")
-    out.puts
   }
 
   override def footer(): Unit = {
