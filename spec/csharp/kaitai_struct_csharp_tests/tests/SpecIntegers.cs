@@ -10,28 +10,37 @@ namespace Kaitai
         [Test]
         public void TestIntegers()
         {
-            var r = Integers.FromFile(SourceFile("fixed_struct.bin"));
+            var r = Integers.FromFile(SourceFile("integers.bin"));
 
-            Assert.AreEqual(r.Uint8, 255);
-            Assert.AreEqual(r.Uint16, 65535);
-            Assert.AreEqual(r.Uint32, 4294967295);
-            Assert.AreEqual(r.Uint64, 18446744073709551615);
-            Assert.AreEqual(r.Sint8, -1);
-            Assert.AreEqual(r.Sint16, -1);
-            Assert.AreEqual(r.Sint32, -1);
-            Assert.AreEqual(r.Sint64, -1);
-            Assert.AreEqual(r.Uint16le, 66);
-            Assert.AreEqual(r.Uint32le, 66);
-            Assert.AreEqual(r.Uint64le, 66);
-            Assert.AreEqual(r.Sint16le, -66);
-            Assert.AreEqual(r.Sint32le, -66);
-            Assert.AreEqual(r.Sint64le, -66);
-            Assert.AreEqual(r.Uint16be, 66);
-            Assert.AreEqual(r.Uint32be, 66);
-            Assert.AreEqual(r.Uint64be, 66);
-            Assert.AreEqual(r.Sint16be, -66);
-            Assert.AreEqual(r.Sint32be, -66);
-            Assert.AreEqual(r.Sint64be, -66);
+
+            Assert.AreEqual(r.UnsignedMin.U1, 0);
+            Assert.AreEqual(r.UnsignedMin.U2le, 0);
+            Assert.AreEqual(r.UnsignedMin.U4le, 0);
+            Assert.AreEqual(r.UnsignedMin.U8le, 0);
+            Assert.AreEqual(r.UnsignedMin.U2be, 0);
+            Assert.AreEqual(r.UnsignedMin.U4be, 0);
+            Assert.AreEqual(r.UnsignedMin.U8be, 0);
+            Assert.AreEqual(r.UnsignedMax.U1, 255);
+            Assert.AreEqual(r.UnsignedMax.U2le, 65535);
+            Assert.AreEqual(r.UnsignedMax.U4le, 4294967295);
+            Assert.AreEqual(r.UnsignedMax.U8le, 18446744073709551615);
+            Assert.AreEqual(r.UnsignedMax.U2be, 65535);
+            Assert.AreEqual(r.UnsignedMax.U4be, 4294967295);
+            Assert.AreEqual(r.UnsignedMax.U8be, 18446744073709551615);
+            Assert.AreEqual(r.SignedMin.S1, -128);
+            Assert.AreEqual(r.SignedMin.S2le, -32768);
+            Assert.AreEqual(r.SignedMin.S4le, -2147483648);
+            Assert.AreEqual(r.SignedMin.S8le, -9223372036854775808);
+            Assert.AreEqual(r.SignedMin.S2be, -32768);
+            Assert.AreEqual(r.SignedMin.S4be, -2147483648);
+            Assert.AreEqual(r.SignedMin.S8be, -9223372036854775808);
+            Assert.AreEqual(r.SignedMax.S1, 127);
+            Assert.AreEqual(r.SignedMax.S2le, 32767);
+            Assert.AreEqual(r.SignedMax.S4le, 2147483647);
+            Assert.AreEqual(r.SignedMax.S8le, 9223372036854775807);
+            Assert.AreEqual(r.SignedMax.S2be, 32767);
+            Assert.AreEqual(r.SignedMax.S4be, 2147483647);
+            Assert.AreEqual(r.SignedMax.S8be, 9223372036854775807);
         }
     }
 }

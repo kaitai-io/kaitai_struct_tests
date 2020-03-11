@@ -6,29 +6,38 @@ import io.kaitai.struct.testformats.Integers;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestIntegers extends CommonSpec {
+
     @Test
     public void testIntegers() throws Exception {
-        Integers r = Integers.fromFile(SRC_DIR + "fixed_struct.bin");
+        Integers r = Integers.fromFile(SRC_DIR + "integers.bin");
 
-        assertIntEquals(r.uint8(), 255);
-        assertIntEquals(r.uint16(), 65535);
-        assertIntEquals(r.uint32(), 4294967295L);
-        assertIntEquals(r.uint64(), 0xffffffffffffffffL);
-        assertIntEquals(r.sint8(), -1);
-        assertIntEquals(r.sint16(), -1);
-        assertIntEquals(r.sint32(), -1);
-        assertIntEquals(r.sint64(), -1);
-        assertIntEquals(r.uint16le(), 66);
-        assertIntEquals(r.uint32le(), 66);
-        assertIntEquals(r.uint64le(), 66);
-        assertIntEquals(r.sint16le(), -66);
-        assertIntEquals(r.sint32le(), -66);
-        assertIntEquals(r.sint64le(), -66);
-        assertIntEquals(r.uint16be(), 66);
-        assertIntEquals(r.uint32be(), 66);
-        assertIntEquals(r.uint64be(), 66);
-        assertIntEquals(r.sint16be(), -66);
-        assertIntEquals(r.sint32be(), -66);
-        assertIntEquals(r.sint64be(), -66);
+        assertIntEquals(r.unsignedMin().u1(), 0);
+        assertIntEquals(r.unsignedMin().u2le(), 0);
+        assertIntEquals(r.unsignedMin().u4le(), 0);
+        assertIntEquals(r.unsignedMin().u8le(), 0);
+        assertIntEquals(r.unsignedMin().u2be(), 0);
+        assertIntEquals(r.unsignedMin().u4be(), 0);
+        assertIntEquals(r.unsignedMin().u8be(), 0);
+        assertIntEquals(r.unsignedMax().u1(), 255);
+        assertIntEquals(r.unsignedMax().u2le(), 65535);
+        assertIntEquals(r.unsignedMax().u4le(), 4294967295L);
+        assertIntEquals(r.unsignedMax().u8le(), 0xffffffffffffffffL);
+        assertIntEquals(r.unsignedMax().u2be(), 65535);
+        assertIntEquals(r.unsignedMax().u4be(), 4294967295L);
+        assertIntEquals(r.unsignedMax().u8be(), 0xffffffffffffffffL);
+        assertIntEquals(r.signedMin().s1(), -128);
+        assertIntEquals(r.signedMin().s2le(), -32768);
+        assertIntEquals(r.signedMin().s4le(), -2147483648L);
+        assertIntEquals(r.signedMin().s8le(), -0x8000000000000000L);
+        assertIntEquals(r.signedMin().s2be(), -32768);
+        assertIntEquals(r.signedMin().s4be(), -2147483648L);
+        assertIntEquals(r.signedMin().s8be(), -0x8000000000000000L);
+        assertIntEquals(r.signedMax().s1(), 127);
+        assertIntEquals(r.signedMax().s2le(), 32767);
+        assertIntEquals(r.signedMax().s4le(), 2147483647);
+        assertIntEquals(r.signedMax().s8le(), 9223372036854775807L);
+        assertIntEquals(r.signedMax().s2be(), 32767);
+        assertIntEquals(r.signedMax().s4be(), 2147483647);
+        assertIntEquals(r.signedMax().s8be(), 9223372036854775807L);
     }
 }

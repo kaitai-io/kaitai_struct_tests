@@ -8,29 +8,38 @@ use base qw(Test::Class);
 use Test::More;
 use Integers;
 
-sub test_integers: Test(20) {
-    my $r = Integers->from_file('src/fixed_struct.bin');
+sub test_integers: Test(28) {
+    my $r = Integers->from_file('src/integers.bin');
 
-    is($r->uint8(), 255, 'Equals');
-    is($r->uint16(), 65535, 'Equals');
-    is($r->uint32(), 4294967295, 'Equals');
-    is($r->uint64(), 18446744073709551615, 'Equals');
-    is($r->sint8(), -1, 'Equals');
-    is($r->sint16(), -1, 'Equals');
-    is($r->sint32(), -1, 'Equals');
-    is($r->sint64(), -1, 'Equals');
-    is($r->uint16le(), 66, 'Equals');
-    is($r->uint32le(), 66, 'Equals');
-    is($r->uint64le(), 66, 'Equals');
-    is($r->sint16le(), -66, 'Equals');
-    is($r->sint32le(), -66, 'Equals');
-    is($r->sint64le(), -66, 'Equals');
-    is($r->uint16be(), 66, 'Equals');
-    is($r->uint32be(), 66, 'Equals');
-    is($r->uint64be(), 66, 'Equals');
-    is($r->sint16be(), -66, 'Equals');
-    is($r->sint32be(), -66, 'Equals');
-    is($r->sint64be(), -66, 'Equals');
+
+    is($r->unsigned_min()->u1(), 0, 'Equals');
+    is($r->unsigned_min()->u2le(), 0, 'Equals');
+    is($r->unsigned_min()->u4le(), 0, 'Equals');
+    is($r->unsigned_min()->u8le(), 0, 'Equals');
+    is($r->unsigned_min()->u2be(), 0, 'Equals');
+    is($r->unsigned_min()->u4be(), 0, 'Equals');
+    is($r->unsigned_min()->u8be(), 0, 'Equals');
+    is($r->unsigned_max()->u1(), 255, 'Equals');
+    is($r->unsigned_max()->u2le(), 65535, 'Equals');
+    is($r->unsigned_max()->u4le(), 4294967295, 'Equals');
+    is($r->unsigned_max()->u8le(), 18446744073709551615, 'Equals');
+    is($r->unsigned_max()->u2be(), 65535, 'Equals');
+    is($r->unsigned_max()->u4be(), 4294967295, 'Equals');
+    is($r->unsigned_max()->u8be(), 18446744073709551615, 'Equals');
+    is($r->signed_min()->s1(), -128, 'Equals');
+    is($r->signed_min()->s2le(), -32768, 'Equals');
+    is($r->signed_min()->s4le(), -2147483648, 'Equals');
+    is($r->signed_min()->s8le(), -9223372036854775808, 'Equals');
+    is($r->signed_min()->s2be(), -32768, 'Equals');
+    is($r->signed_min()->s4be(), -2147483648, 'Equals');
+    is($r->signed_min()->s8be(), -9223372036854775808, 'Equals');
+    is($r->signed_max()->s1(), 127, 'Equals');
+    is($r->signed_max()->s2le(), 32767, 'Equals');
+    is($r->signed_max()->s4le(), 2147483647, 'Equals');
+    is($r->signed_max()->s8le(), 9223372036854775807, 'Equals');
+    is($r->signed_max()->s2be(), 32767, 'Equals');
+    is($r->signed_max()->s4be(), 2147483647, 'Equals');
+    is($r->signed_max()->s8be(), 9223372036854775807, 'Equals');
 }
 
 Test::Class->runtests;

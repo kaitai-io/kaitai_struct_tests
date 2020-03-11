@@ -4,27 +4,35 @@ require 'integers'
 
 RSpec.describe Integers do
   it 'parses test properly' do
-    r = Integers.from_file('src/fixed_struct.bin')
+    r = Integers.from_file('src/integers.bin')
 
-    expect(r.uint8).to eq 255
-    expect(r.uint16).to eq 65535
-    expect(r.uint32).to eq 4294967295
-    expect(r.uint64).to eq 18446744073709551615
-    expect(r.sint8).to eq -1
-    expect(r.sint16).to eq -1
-    expect(r.sint32).to eq -1
-    expect(r.sint64).to eq -1
-    expect(r.uint16le).to eq 66
-    expect(r.uint32le).to eq 66
-    expect(r.uint64le).to eq 66
-    expect(r.sint16le).to eq -66
-    expect(r.sint32le).to eq -66
-    expect(r.sint64le).to eq -66
-    expect(r.uint16be).to eq 66
-    expect(r.uint32be).to eq 66
-    expect(r.uint64be).to eq 66
-    expect(r.sint16be).to eq -66
-    expect(r.sint32be).to eq -66
-    expect(r.sint64be).to eq -66
+    expect(r.unsigned_min.u1).to eq 0
+    expect(r.unsigned_min.u2le).to eq 0
+    expect(r.unsigned_min.u4le).to eq 0
+    expect(r.unsigned_min.u8le).to eq 0
+    expect(r.unsigned_min.u2be).to eq 0
+    expect(r.unsigned_min.u4be).to eq 0
+    expect(r.unsigned_min.u8be).to eq 0
+    expect(r.unsigned_max.u1).to eq 255
+    expect(r.unsigned_max.u2le).to eq 65535
+    expect(r.unsigned_max.u4le).to eq 4294967295
+    expect(r.unsigned_max.u8le).to eq 18446744073709551615
+    expect(r.unsigned_max.u2be).to eq 65535
+    expect(r.unsigned_max.u4be).to eq 4294967295
+    expect(r.unsigned_max.u8be).to eq 18446744073709551615
+    expect(r.signed_min.s1).to eq -128
+    expect(r.signed_min.s2le).to eq -32768
+    expect(r.signed_min.s4le).to eq -2147483648
+    expect(r.signed_min.s8le).to eq -9223372036854775808
+    expect(r.signed_min.s2be).to eq -32768
+    expect(r.signed_min.s4be).to eq -2147483648
+    expect(r.signed_min.s8be).to eq -9223372036854775808
+    expect(r.signed_max.s1).to eq 127
+    expect(r.signed_max.s2le).to eq 32767
+    expect(r.signed_max.s4le).to eq 2147483647
+    expect(r.signed_max.s8le).to eq 9223372036854775807
+    expect(r.signed_max.s2be).to eq 32767
+    expect(r.signed_max.s4be).to eq 2147483647
+    expect(r.signed_max.s8be).to eq 9223372036854775807
   end
 end

@@ -3,25 +3,34 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('Integers', 'src/fixed_struct.bin', function(r, Integers) {
-  assert.strictEqual(r.uint8, 255);
-  assert.strictEqual(r.uint16, 65535);
-  assert.strictEqual(r.uint32, 4294967295);
-  assert.strictEqual(r.uint64, 18446744073709551615);
-  assert.strictEqual(r.sint8, -1);
-  assert.strictEqual(r.sint16, -1);
-  assert.strictEqual(r.sint32, -1);
-  assert.strictEqual(r.sint64, -1);
-  assert.strictEqual(r.uint16le, 66);
-  assert.strictEqual(r.uint32le, 66);
-  assert.strictEqual(r.uint64le, 66);
-  assert.strictEqual(r.sint16le, -66);
-  assert.strictEqual(r.sint32le, -66);
-  assert.strictEqual(r.sint64le, -66);
-  assert.strictEqual(r.uint16be, 66);
-  assert.strictEqual(r.uint32be, 66);
-  assert.strictEqual(r.uint64be, 66);
-  assert.strictEqual(r.sint16be, -66);
-  assert.strictEqual(r.sint32be, -66);
-  assert.strictEqual(r.sint64be, -66);
+testHelper('Integers', 'src/integers.bin', function(r, Integers) {
+
+  assert.strictEqual(r.unsignedMin.u1, 0);
+  assert.strictEqual(r.unsignedMin.u2le, 0);
+  assert.strictEqual(r.unsignedMin.u4le, 0);
+  assert.strictEqual(r.unsignedMin.u8le, 0);
+  assert.strictEqual(r.unsignedMin.u2be, 0);
+  assert.strictEqual(r.unsignedMin.u4be, 0);
+  assert.strictEqual(r.unsignedMin.u8be, 0);
+  assert.strictEqual(r.unsignedMax.u1, 255);
+  assert.strictEqual(r.unsignedMax.u2le, 65535);
+  assert.strictEqual(r.unsignedMax.u4le, 4294967295);
+  assert.strictEqual(r.unsignedMax.u8le, 18446744073709551615);
+  assert.strictEqual(r.unsignedMax.u2be, 65535);
+  assert.strictEqual(r.unsignedMax.u4be, 4294967295);
+  assert.strictEqual(r.unsignedMax.u8be, 18446744073709551615);
+  assert.strictEqual(r.signedMin.s1, -128);
+  assert.strictEqual(r.signedMin.s2le, -32768);
+  assert.strictEqual(r.signedMin.s4le, -2147483648);
+  assert.strictEqual(r.signedMin.s8le, -9223372036854775808);
+  assert.strictEqual(r.signedMin.s2be, -32768);
+  assert.strictEqual(r.signedMin.s4be, -2147483648);
+  assert.strictEqual(r.signedMin.s8be, -9223372036854775808);
+  assert.strictEqual(r.signedMax.s1, 127);
+  assert.strictEqual(r.signedMax.s2le, 32767);
+  assert.strictEqual(r.signedMax.s4le, 2147483647);
+  assert.strictEqual(r.signedMax.s8le, 9223372036854775807);
+  assert.strictEqual(r.signedMax.s2be, 32767);
+  assert.strictEqual(r.signedMax.s4be, 2147483647);
+  assert.strictEqual(r.signedMax.s8be, 9223372036854775807);
 });
