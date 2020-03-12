@@ -64,9 +64,6 @@ class PHPSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
   override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit =
     simpleAssert(check)
 
-  override def noAsserts(): Unit =
-    out.puts("$this->markTestAsNotRisky();")
-
   override def indentStr: String = "    "
 
   override def results: String = {
