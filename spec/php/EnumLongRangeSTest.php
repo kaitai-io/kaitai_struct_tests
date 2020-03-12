@@ -7,7 +7,6 @@ class EnumLongRangeSTest extends TestCase {
     public function testEnumLongRangeS() {
         $r = EnumLongRangeS::fromFile(self::SRC_DIR_PATH . '/enum_long_range_s.bin');
 
-
         $this->assertEquals(\Kaitai\Struct\Tests\EnumLongRangeS\Constants::LONG_MIN, $r->f1());
         $this->assertEquals(\Kaitai\Struct\Tests\EnumLongRangeS\Constants::INT_BELOW_MIN, $r->f2());
         $this->assertEquals(\Kaitai\Struct\Tests\EnumLongRangeS\Constants::INT_MIN, $r->f3());

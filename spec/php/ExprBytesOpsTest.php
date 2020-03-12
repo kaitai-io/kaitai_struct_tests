@@ -7,7 +7,6 @@ class ExprBytesOpsTest extends TestCase {
     public function testExprBytesOps() {
         $r = ExprBytesOps::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-
         $this->assertEquals(3, $r->oneSize());
         $this->assertEquals(80, $r->oneFirst());
         $this->assertEquals(65, $r->oneMid());

@@ -7,7 +7,6 @@ class StrCombineTest extends TestCase {
     public function testStrCombine() {
         $r = StrCombine::fromFile(self::SRC_DIR_PATH . '/term_strz.bin');
 
-
         $this->assertEquals("foo", $r->strTerm());
         $this->assertEquals("bar|", $r->strLimit());
         $this->assertEquals("baz@", $r->strEos());

@@ -7,7 +7,6 @@ class ExprBitsTest extends TestCase {
     public function testExprBits() {
         $r = ExprBits::fromFile(self::SRC_DIR_PATH . '/switch_opcodes.bin');
 
-
         $this->assertEquals(2, $r->a());
         $this->assertEquals(\Kaitai\Struct\Tests\ExprBits\Items::FOO, $r->enumSeq());
         $this->assertEquals("\x66\x6F", $r->byteSize());

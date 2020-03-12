@@ -7,7 +7,6 @@ class EnumToIClassBorder1Test extends TestCase {
     public function testEnumToIClassBorder1() {
         $r = EnumToIClassBorder1::fromFile(self::SRC_DIR_PATH . '/enum_0.bin');
 
-
         $this->assertEquals(\Kaitai\Struct\Tests\EnumToIClassBorder1\Animal::CAT, $r->pet1());
         $this->assertEquals(\Kaitai\Struct\Tests\EnumToIClassBorder1\Animal::CHICKEN, $r->pet2());
         $this->assertEquals(true, $r->checker()->isDog());

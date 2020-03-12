@@ -7,7 +7,6 @@ class ProcessRepeatUsertypeTest extends TestCase {
     public function testProcessRepeatUsertype() {
         $r = ProcessRepeatUsertype::fromFile(self::SRC_DIR_PATH . '/process_xor_4.bin');
 
-
         $this->assertEquals(-1975704206, $r->blocks()[0]->a());
         $this->assertEquals(20, $r->blocks()[0]->b());
         $this->assertEquals(279597642, $r->blocks()[1]->a());

@@ -7,7 +7,6 @@ class ExprCalcArrayOpsTest extends TestCase {
     public function testExprCalcArrayOps() {
         $r = ExprCalcArrayOps::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-
         $this->assertEquals(7, $r->intArraySize());
         $this->assertEquals(10, $r->intArrayFirst());
         $this->assertEquals(25, $r->intArrayMid());

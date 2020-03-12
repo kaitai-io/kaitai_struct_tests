@@ -7,7 +7,6 @@ class ExprStrOpsTest extends TestCase {
     public function testExprStrOps() {
         $r = ExprStrOps::fromFile(self::SRC_DIR_PATH . '/term_strz.bin');
 
-
         $this->assertEquals("foo|b", $r->one());
         $this->assertEquals(5, $r->oneLen());
         $this->assertEquals("b|oof", $r->oneRev());

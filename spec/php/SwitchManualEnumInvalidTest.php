@@ -7,7 +7,6 @@ class SwitchManualEnumInvalidTest extends TestCase {
     public function testSwitchManualEnumInvalid() {
         $r = SwitchManualEnumInvalid::fromFile(self::SRC_DIR_PATH . '/enum_negative.bin');
 
-
         $this->assertEquals(2, count($r->opcodes()));
         $this->assertEquals(255, $r->opcodes()[0]->code());
         $this->assertEquals(null, $r->opcodes()[0]->body());

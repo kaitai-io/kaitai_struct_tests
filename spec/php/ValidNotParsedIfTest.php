@@ -7,7 +7,5 @@ class ValidNotParsedIfTest extends TestCase {
     public function testValidNotParsedIf() {
         $r = ValidNotParsedIf::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-
-        $this->markTestAsNotRisky();
     }
 }
