@@ -7,10 +7,10 @@ class ExprSizeofValue0Test extends TestCase {
     public function testExprSizeofValue0() {
         $r = ExprSizeofValue0::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-        $this->assertEquals((((1 + 4) + 2) + 2), $r->selfSizeof());
-        $this->assertEquals(((1 + 4) + 2), $r->sizeofBlock());
-        $this->assertEquals(1, $r->sizeofBlockA());
-        $this->assertEquals(4, $r->sizeofBlockB());
-        $this->assertEquals(2, $r->sizeofBlockC());
+        $this->assertSame((((1 + 4) + 2) + 2), $r->selfSizeof());
+        $this->assertSame(((1 + 4) + 2), $r->sizeofBlock());
+        $this->assertSame(1, $r->sizeofBlockA());
+        $this->assertSame(4, $r->sizeofBlockB());
+        $this->assertSame(2, $r->sizeofBlockC());
     }
 }

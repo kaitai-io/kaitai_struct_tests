@@ -7,7 +7,7 @@ class PositionToEndTest extends TestCase {
     public function testPositionToEnd() {
         $r = PositionToEnd::fromFile(self::SRC_DIR_PATH . '/position_to_end.bin');
 
-        $this->assertEquals(66, $r->index()->foo());
-        $this->assertEquals(4660, $r->index()->bar());
+        $this->assertSame(66, $r->index()->foo());
+        $this->assertSame(4660, $r->index()->bar());
     }
 }

@@ -7,7 +7,7 @@ class EnumDeepTest extends TestCase {
     public function testEnumDeep() {
         $r = EnumDeep::fromFile(self::SRC_DIR_PATH . '/enum_0.bin');
 
-        $this->assertEquals(\Kaitai\Struct\Tests\EnumDeep\Container1\Animal::CAT, $r->pet1());
-        $this->assertEquals(\Kaitai\Struct\Tests\EnumDeep\Container1\Container2\Animal::HARE, $r->pet2());
+        $this->assertSame(\Kaitai\Struct\Tests\EnumDeep\Container1\Animal::CAT, $r->pet1());
+        $this->assertSame(\Kaitai\Struct\Tests\EnumDeep\Container1\Container2\Animal::HARE, $r->pet2());
     }
 }

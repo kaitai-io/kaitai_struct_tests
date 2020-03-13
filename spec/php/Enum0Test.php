@@ -7,7 +7,7 @@ class Enum0Test extends TestCase {
     public function testEnum0() {
         $r = Enum0::fromFile(self::SRC_DIR_PATH . '/enum_0.bin');
 
-        $this->assertEquals(\Kaitai\Struct\Tests\Enum0\Animal::CAT, $r->pet1());
-        $this->assertEquals(\Kaitai\Struct\Tests\Enum0\Animal::CHICKEN, $r->pet2());
+        $this->assertSame(\Kaitai\Struct\Tests\Enum0\Animal::CAT, $r->pet1());
+        $this->assertSame(\Kaitai\Struct\Tests\Enum0\Animal::CHICKEN, $r->pet2());
     }
 }

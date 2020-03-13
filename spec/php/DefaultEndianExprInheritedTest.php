@@ -7,20 +7,20 @@ class DefaultEndianExprInheritedTest extends TestCase {
     public function testDefaultEndianExprInherited() {
         $r = DefaultEndianExprInherited::fromFile(self::SRC_DIR_PATH . '/endian_expr.bin');
 
-        $this->assertEquals("\x49\x49", $r->docs()[0]->indicator());
-        $this->assertEquals(66, $r->docs()[0]->main()->insides()->someInt());
-        $this->assertEquals(16896, $r->docs()[0]->main()->insides()->more()->someInt1());
-        $this->assertEquals(66, $r->docs()[0]->main()->insides()->more()->someInt2());
-        $this->assertEquals(66, $r->docs()[0]->main()->insides()->more()->someInst());
-        $this->assertEquals("\x4D\x4D", $r->docs()[1]->indicator());
-        $this->assertEquals(66, $r->docs()[1]->main()->insides()->someInt());
-        $this->assertEquals(66, $r->docs()[1]->main()->insides()->more()->someInt1());
-        $this->assertEquals(16896, $r->docs()[1]->main()->insides()->more()->someInt2());
-        $this->assertEquals(1107296256, $r->docs()[1]->main()->insides()->more()->someInst());
-        $this->assertEquals("\x58\x58", $r->docs()[2]->indicator());
-        $this->assertEquals(66, $r->docs()[2]->main()->insides()->someInt());
-        $this->assertEquals(66, $r->docs()[2]->main()->insides()->more()->someInt1());
-        $this->assertEquals(16896, $r->docs()[2]->main()->insides()->more()->someInt2());
-        $this->assertEquals(1107296256, $r->docs()[2]->main()->insides()->more()->someInst());
+        $this->assertSame("\x49\x49", $r->docs()[0]->indicator());
+        $this->assertSame(66, $r->docs()[0]->main()->insides()->someInt());
+        $this->assertSame(16896, $r->docs()[0]->main()->insides()->more()->someInt1());
+        $this->assertSame(66, $r->docs()[0]->main()->insides()->more()->someInt2());
+        $this->assertSame(66, $r->docs()[0]->main()->insides()->more()->someInst());
+        $this->assertSame("\x4D\x4D", $r->docs()[1]->indicator());
+        $this->assertSame(66, $r->docs()[1]->main()->insides()->someInt());
+        $this->assertSame(66, $r->docs()[1]->main()->insides()->more()->someInt1());
+        $this->assertSame(16896, $r->docs()[1]->main()->insides()->more()->someInt2());
+        $this->assertSame(1107296256, $r->docs()[1]->main()->insides()->more()->someInst());
+        $this->assertSame("\x58\x58", $r->docs()[2]->indicator());
+        $this->assertSame(66, $r->docs()[2]->main()->insides()->someInt());
+        $this->assertSame(66, $r->docs()[2]->main()->insides()->more()->someInt1());
+        $this->assertSame(16896, $r->docs()[2]->main()->insides()->more()->someInt2());
+        $this->assertSame(1107296256, $r->docs()[2]->main()->insides()->more()->someInst());
     }
 }

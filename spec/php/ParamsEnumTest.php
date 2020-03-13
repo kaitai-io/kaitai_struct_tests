@@ -7,7 +7,7 @@ class ParamsEnumTest extends TestCase {
     public function testParamsEnum() {
         $r = ParamsEnum::fromFile(self::SRC_DIR_PATH . '/enum_0.bin');
 
-        $this->assertEquals(\Kaitai\Struct\Tests\ParamsEnum\Animal::CAT, $r->one());
-        $this->assertEquals(true, $r->invokeWithParam()->isCat());
+        $this->assertSame(\Kaitai\Struct\Tests\ParamsEnum\Animal::CAT, $r->one());
+        $this->assertSame(true, $r->invokeWithParam()->isCat());
     }
 }

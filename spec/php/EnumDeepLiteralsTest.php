@@ -7,7 +7,7 @@ class EnumDeepLiteralsTest extends TestCase {
     public function testEnumDeepLiterals() {
         $r = EnumDeepLiterals::fromFile(self::SRC_DIR_PATH . '/enum_0.bin');
 
-        $this->assertEquals(true, $r->isPet1Ok());
-        $this->assertEquals(true, $r->isPet2Ok());
+        $this->assertSame(true, $r->isPet1Ok());
+        $this->assertSame(true, $r->isPet2Ok());
     }
 }

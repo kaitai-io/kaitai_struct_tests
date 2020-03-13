@@ -7,8 +7,8 @@ class ProcessRotateTest extends TestCase {
     public function testProcessRotate() {
         $r = ProcessRotate::fromFile(self::SRC_DIR_PATH . '/process_rotate.bin');
 
-        $this->assertEquals("\x48\x65\x6C\x6C\x6F", $r->buf1());
-        $this->assertEquals("\x57\x6F\x72\x6C\x64", $r->buf2());
-        $this->assertEquals("\x54\x68\x65\x72\x65", $r->buf3());
+        $this->assertSame("\x48\x65\x6C\x6C\x6F", $r->buf1());
+        $this->assertSame("\x57\x6F\x72\x6C\x64", $r->buf2());
+        $this->assertSame("\x54\x68\x65\x72\x65", $r->buf3());
     }
 }

@@ -7,7 +7,7 @@ class JsSignedRightShiftTest extends TestCase {
     public function testJsSignedRightShift() {
         $r = JsSignedRightShift::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-        $this->assertEquals(1073741824, $r->shouldBe40000000());
-        $this->assertEquals(10485760, $r->shouldBeA00000());
+        $this->assertSame(1073741824, $r->shouldBe40000000());
+        $this->assertSame(10485760, $r->shouldBeA00000());
     }
 }

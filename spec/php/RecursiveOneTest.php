@@ -7,9 +7,9 @@ class RecursiveOneTest extends TestCase {
     public function testRecursiveOne() {
         $r = RecursiveOne::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-        $this->assertEquals(80, $r->one());
-        $this->assertEquals(65, $r->next()->one());
-        $this->assertEquals(67, $r->next()->next()->one());
-        $this->assertEquals(11595, $r->next()->next()->next()->finisher());
+        $this->assertSame(80, $r->one());
+        $this->assertSame(65, $r->next()->one());
+        $this->assertSame(67, $r->next()->next()->one());
+        $this->assertSame(11595, $r->next()->next()->next()->finisher());
     }
 }

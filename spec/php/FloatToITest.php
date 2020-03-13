@@ -9,11 +9,11 @@ class FloatToITest extends TestCase {
 
         $this->assertEquals($r->singleValue(), 0.5, '', 1e-6);
         $this->assertEquals($r->doubleValue(), 0.25, '', 1e-6);
-        $this->assertEquals(0, $r->singleI());
-        $this->assertEquals(0, $r->doubleI());
-        $this->assertEquals(1, $r->float1I());
-        $this->assertEquals(1, $r->float2I());
-        $this->assertEquals(1, $r->float3I());
-        $this->assertEquals(-2, $r->float4I());
+        $this->assertSame(0, $r->singleI());
+        $this->assertSame(0, $r->doubleI());
+        $this->assertSame(1, $r->float1I());
+        $this->assertSame(1, $r->float2I());
+        $this->assertSame(1, $r->float3I());
+        $this->assertSame(-2, $r->float4I());
     }
 }

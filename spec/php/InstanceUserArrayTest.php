@@ -7,15 +7,15 @@ class InstanceUserArrayTest extends TestCase {
     public function testInstanceUserArray() {
         $r = InstanceUserArray::fromFile(self::SRC_DIR_PATH . '/instance_std_array.bin');
 
-        $this->assertEquals(16, $r->ofs());
-        $this->assertEquals(3, $r->qtyEntries());
-        $this->assertEquals(4, $r->entrySize());
-        $this->assertEquals(3, count($r->userEntries()));
-        $this->assertEquals(4369, $r->userEntries()[0]->word1());
-        $this->assertEquals(4369, $r->userEntries()[0]->word2());
-        $this->assertEquals(8738, $r->userEntries()[1]->word1());
-        $this->assertEquals(8738, $r->userEntries()[1]->word2());
-        $this->assertEquals(13107, $r->userEntries()[2]->word1());
-        $this->assertEquals(13107, $r->userEntries()[2]->word2());
+        $this->assertSame(16, $r->ofs());
+        $this->assertSame(3, $r->qtyEntries());
+        $this->assertSame(4, $r->entrySize());
+        $this->assertSame(3, count($r->userEntries()));
+        $this->assertSame(4369, $r->userEntries()[0]->word1());
+        $this->assertSame(4369, $r->userEntries()[0]->word2());
+        $this->assertSame(8738, $r->userEntries()[1]->word1());
+        $this->assertSame(8738, $r->userEntries()[1]->word2());
+        $this->assertSame(13107, $r->userEntries()[2]->word1());
+        $this->assertSame(13107, $r->userEntries()[2]->word2());
     }
 }

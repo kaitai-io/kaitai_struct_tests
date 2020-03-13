@@ -7,12 +7,12 @@ class TsPacketHeaderTest extends TestCase {
     public function testTsPacketHeader() {
         $r = TsPacketHeader::fromFile(self::SRC_DIR_PATH . '/ts_packet.bin');
 
-        $this->assertEquals(71, $r->syncByte());
-        $this->assertEquals(false, $r->transportErrorIndicator());
-        $this->assertEquals(false, $r->payloadUnitStartIndicator());
-        $this->assertEquals(true, $r->transportPriority());
-        $this->assertEquals(33, $r->pid());
-        $this->assertEquals(0, $r->transportScramblingControl());
-        $this->assertEquals(\Kaitai\Struct\Tests\TsPacketHeader\AdaptationFieldControlEnum::PAYLOAD_ONLY, $r->adaptationFieldControl());
+        $this->assertSame(71, $r->syncByte());
+        $this->assertSame(false, $r->transportErrorIndicator());
+        $this->assertSame(false, $r->payloadUnitStartIndicator());
+        $this->assertSame(true, $r->transportPriority());
+        $this->assertSame(33, $r->pid());
+        $this->assertSame(0, $r->transportScramblingControl());
+        $this->assertSame(\Kaitai\Struct\Tests\TsPacketHeader\AdaptationFieldControlEnum::PAYLOAD_ONLY, $r->adaptationFieldControl());
     }
 }

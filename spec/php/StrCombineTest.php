@@ -7,20 +7,20 @@ class StrCombineTest extends TestCase {
     public function testStrCombine() {
         $r = StrCombine::fromFile(self::SRC_DIR_PATH . '/term_strz.bin');
 
-        $this->assertEquals("foo", $r->strTerm());
-        $this->assertEquals("bar|", $r->strLimit());
-        $this->assertEquals("baz@", $r->strEos());
-        $this->assertEquals("bar", $r->strCalc());
-        $this->assertEquals("baz", $r->strCalcBytes());
-        $this->assertEquals("foo", $r->termOrLimit());
-        $this->assertEquals("baz@", $r->termOrEos());
-        $this->assertEquals("foo", $r->termOrCalc());
-        $this->assertEquals("baz", $r->termOrCalcBytes());
-        $this->assertEquals("bar|", $r->limitOrEos());
-        $this->assertEquals("bar", $r->limitOrCalc());
-        $this->assertEquals("bar|", $r->limitOrCalcBytes());
-        $this->assertEquals("bar", $r->eosOrCalc());
-        $this->assertEquals("baz@", $r->eosOrCalcBytes());
-        $this->assertEquals("baz", $r->calcOrCalcBytes());
+        $this->assertSame("foo", $r->strTerm());
+        $this->assertSame("bar|", $r->strLimit());
+        $this->assertSame("baz@", $r->strEos());
+        $this->assertSame("bar", $r->strCalc());
+        $this->assertSame("baz", $r->strCalcBytes());
+        $this->assertSame("foo", $r->termOrLimit());
+        $this->assertSame("baz@", $r->termOrEos());
+        $this->assertSame("foo", $r->termOrCalc());
+        $this->assertSame("baz", $r->termOrCalcBytes());
+        $this->assertSame("bar|", $r->limitOrEos());
+        $this->assertSame("bar", $r->limitOrCalc());
+        $this->assertSame("bar|", $r->limitOrCalcBytes());
+        $this->assertSame("bar", $r->eosOrCalc());
+        $this->assertSame("baz@", $r->eosOrCalcBytes());
+        $this->assertSame("baz", $r->calcOrCalcBytes());
     }
 }

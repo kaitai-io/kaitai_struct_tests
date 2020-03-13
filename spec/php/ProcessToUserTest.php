@@ -7,6 +7,6 @@ class ProcessToUserTest extends TestCase {
     public function testProcessToUser() {
         $r = ProcessToUser::fromFile(self::SRC_DIR_PATH . '/process_rotate.bin');
 
-        $this->assertEquals("Hello", $r->buf1()->str());
+        $this->assertSame("Hello", $r->buf1()->str());
     }
 }

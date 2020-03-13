@@ -7,7 +7,7 @@ class ProcessXor4ConstTest extends TestCase {
     public function testProcessXor4Const() {
         $r = ProcessXor4Const::fromFile(self::SRC_DIR_PATH . '/process_xor_4.bin');
 
-        $this->assertEquals("\xEC\xBB\xA3\x14", $r->key());
-        $this->assertEquals("\x66\x6F\x6F\x20\x62\x61\x72", $r->buf());
+        $this->assertSame("\xEC\xBB\xA3\x14", $r->key());
+        $this->assertSame("\x66\x6F\x6F\x20\x62\x61\x72", $r->buf());
     }
 }

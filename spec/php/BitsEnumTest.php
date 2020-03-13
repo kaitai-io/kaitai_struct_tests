@@ -7,8 +7,8 @@ class BitsEnumTest extends TestCase {
     public function testBitsEnum() {
         $r = BitsEnum::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-        $this->assertEquals(\Kaitai\Struct\Tests\BitsEnum\Animal::PLATYPUS, $r->one());
-        $this->assertEquals(\Kaitai\Struct\Tests\BitsEnum\Animal::HORSE, $r->two());
-        $this->assertEquals(\Kaitai\Struct\Tests\BitsEnum\Animal::CAT, $r->three());
+        $this->assertSame(\Kaitai\Struct\Tests\BitsEnum\Animal::PLATYPUS, $r->one());
+        $this->assertSame(\Kaitai\Struct\Tests\BitsEnum\Animal::HORSE, $r->two());
+        $this->assertSame(\Kaitai\Struct\Tests\BitsEnum\Animal::CAT, $r->three());
     }
 }

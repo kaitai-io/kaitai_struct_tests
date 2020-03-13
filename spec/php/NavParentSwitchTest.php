@@ -7,8 +7,8 @@ class NavParentSwitchTest extends TestCase {
     public function testNavParentSwitch() {
         $r = NavParentSwitch::fromFile(self::SRC_DIR_PATH . '/nav_parent_switch.bin');
 
-        $this->assertEquals(1, $r->category());
-        $this->assertEquals(66, $r->content()->foo());
-        $this->assertEquals(255, $r->content()->subelement()->bar());
+        $this->assertSame(1, $r->category());
+        $this->assertSame(66, $r->content()->foo());
+        $this->assertSame(255, $r->content()->subelement()->bar());
     }
 }

@@ -7,9 +7,9 @@ class ProcessCoerceBytesTest extends TestCase {
     public function testProcessCoerceBytes() {
         $r = ProcessCoerceBytes::fromFile(self::SRC_DIR_PATH . '/process_coerce_bytes.bin');
 
-        $this->assertEquals(0, $r->records()[0]->flag());
-        $this->assertEquals("\x41\x41\x41\x41", $r->records()[0]->buf());
-        $this->assertEquals(1, $r->records()[1]->flag());
-        $this->assertEquals("\x42\x42\x42\x42", $r->records()[1]->buf());
+        $this->assertSame(0, $r->records()[0]->flag());
+        $this->assertSame("\x41\x41\x41\x41", $r->records()[0]->buf());
+        $this->assertSame(1, $r->records()[1]->flag());
+        $this->assertSame("\x42\x42\x42\x42", $r->records()[1]->buf());
     }
 }

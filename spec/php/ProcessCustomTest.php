@@ -7,8 +7,8 @@ class ProcessCustomTest extends TestCase {
     public function testProcessCustom() {
         $r = ProcessCustom::fromFile(self::SRC_DIR_PATH . '/process_rotate.bin');
 
-        $this->assertEquals("\x10\xB3\x94\x94\xF4", $r->buf1());
-        $this->assertEquals("\x5F\xBA\x7B\x93\x63\x23\x5F", $r->buf2());
-        $this->assertEquals("\x29\x33\xB1\x38\xB1", $r->buf3());
+        $this->assertSame("\x10\xB3\x94\x94\xF4", $r->buf1());
+        $this->assertSame("\x5F\xBA\x7B\x93\x63\x23\x5F", $r->buf2());
+        $this->assertSame("\x29\x33\xB1\x38\xB1", $r->buf3());
     }
 }
