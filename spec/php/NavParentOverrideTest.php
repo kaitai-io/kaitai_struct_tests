@@ -7,8 +7,8 @@ class NavParentOverrideTest extends TestCase {
     public function testNavParentOverride() {
         $r = NavParentOverride::fromFile(self::SRC_DIR_PATH . '/nav_parent_codes.bin');
 
-        $this->assertEquals(3, $r->childSize());
-        $this->assertEquals("\x49\x31\x32", $r->child1()->data());
-        $this->assertEquals("\x33\x42\x62", $r->mediator2()->child2()->data());
+        $this->assertSame(3, $r->childSize());
+        $this->assertSame("\x49\x31\x32", $r->child1()->data());
+        $this->assertSame("\x33\x42\x62", $r->mediator2()->child2()->data());
     }
 }

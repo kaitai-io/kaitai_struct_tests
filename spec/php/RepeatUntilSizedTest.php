@@ -7,12 +7,12 @@ class RepeatUntilSizedTest extends TestCase {
     public function testRepeatUntilSized() {
         $r = RepeatUntilSized::fromFile(self::SRC_DIR_PATH . '/repeat_until_process.bin');
 
-        $this->assertEquals(3, count($r->records()));
-        $this->assertEquals(232, $r->records()[0]->marker());
-        $this->assertEquals(2863311546, $r->records()[0]->body());
-        $this->assertEquals(250, $r->records()[1]->marker());
-        $this->assertEquals(2863315102, $r->records()[1]->body());
-        $this->assertEquals(170, $r->records()[2]->marker());
-        $this->assertEquals(1431655765, $r->records()[2]->body());
+        $this->assertSame(3, count($r->records()));
+        $this->assertSame(232, $r->records()[0]->marker());
+        $this->assertSame(2863311546, $r->records()[0]->body());
+        $this->assertSame(250, $r->records()[1]->marker());
+        $this->assertSame(2863315102, $r->records()[1]->body());
+        $this->assertSame(170, $r->records()[2]->marker());
+        $this->assertSame(1431655765, $r->records()[2]->body());
     }
 }

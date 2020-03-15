@@ -7,6 +7,6 @@ class ProcessCustomNoArgsTest extends TestCase {
     public function testProcessCustomNoArgs() {
         $r = ProcessCustomNoArgs::fromFile(self::SRC_DIR_PATH . '/process_rotate.bin');
 
-        $this->assertEquals("\x5F\x09\xAC\x8D\x8D\xED\x5F", $r->buf());
+        $this->assertSame("\x5F\x09\xAC\x8D\x8D\xED\x5F", $r->buf());
     }
 }

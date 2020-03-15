@@ -7,7 +7,7 @@ class MultipleUseTest extends TestCase {
     public function testMultipleUse() {
         $r = MultipleUse::fromFile(self::SRC_DIR_PATH . '/position_abs.bin');
 
-        $this->assertEquals(32, $r->t1()->firstUse()->value());
-        $this->assertEquals(32, $r->t2()->secondUse()->value());
+        $this->assertSame(32, $r->t1()->firstUse()->value());
+        $this->assertSame(32, $r->t2()->secondUse()->value());
     }
 }

@@ -7,8 +7,8 @@ class CastToTopTest extends TestCase {
     public function testCastToTop() {
         $r = CastToTop::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-        $this->assertEquals(80, $r->code());
-        $this->assertEquals(65, $r->header()->code());
-        $this->assertEquals(65, $r->headerCasted()->code());
+        $this->assertSame(80, $r->code());
+        $this->assertSame(65, $r->header()->code());
+        $this->assertSame(65, $r->headerCasted()->code());
     }
 }

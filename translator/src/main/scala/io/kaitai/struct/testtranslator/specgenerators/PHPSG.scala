@@ -47,7 +47,7 @@ class PHPSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
   override def simpleAssert(check: TestAssert): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
-    out.puts(s"$$this->assertEquals($expStr, $actStr);")
+    out.puts(s"$$this->assertSame($expStr, $actStr);")
   }
 
   override def floatAssert(check: TestAssert): Unit = {
@@ -58,7 +58,7 @@ class PHPSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
 
   override def nullAssert(actual: Ast.expr): Unit = {
     val actStr = translateAct(actual)
-    out.puts(s"$$this->assertEquals(null, $actStr);")
+    out.puts(s"$$this->assertNull($actStr);")
   }
 
   override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit =

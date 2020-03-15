@@ -7,7 +7,7 @@ class UserTypeTest extends TestCase {
     public function testUserType() {
         $r = UserType::fromFile(self::SRC_DIR_PATH . '/repeat_until_s4.bin');
 
-        $this->assertEquals(66, $r->one()->width());
-        $this->assertEquals(4919, $r->one()->height());
+        $this->assertSame(66, $r->one()->width());
+        $this->assertSame(4919, $r->one()->height());
     }
 }

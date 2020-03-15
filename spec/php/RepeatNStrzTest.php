@@ -7,7 +7,7 @@ class RepeatNStrzTest extends TestCase {
     public function testRepeatNStrz() {
         $r = RepeatNStrz::fromFile(self::SRC_DIR_PATH . '/repeat_n_strz.bin');
 
-        $this->assertEquals(2, $r->qty());
-        $this->assertEquals(["foo", "bar"], $r->lines());
+        $this->assertSame(2, $r->qty());
+        $this->assertSame(["foo", "bar"], $r->lines());
     }
 }

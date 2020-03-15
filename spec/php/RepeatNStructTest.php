@@ -7,10 +7,10 @@ class RepeatNStructTest extends TestCase {
     public function testRepeatNStruct() {
         $r = RepeatNStruct::fromFile(self::SRC_DIR_PATH . '/repeat_n_struct.bin');
 
-        $this->assertEquals(2, count($r->chunks()));
-        $this->assertEquals(16, $r->chunks()[0]->offset());
-        $this->assertEquals(8312, $r->chunks()[0]->len());
-        $this->assertEquals(8328, $r->chunks()[1]->offset());
-        $this->assertEquals(15, $r->chunks()[1]->len());
+        $this->assertSame(2, count($r->chunks()));
+        $this->assertSame(16, $r->chunks()[0]->offset());
+        $this->assertSame(8312, $r->chunks()[0]->len());
+        $this->assertSame(8328, $r->chunks()[1]->offset());
+        $this->assertSame(15, $r->chunks()[1]->len());
     }
 }

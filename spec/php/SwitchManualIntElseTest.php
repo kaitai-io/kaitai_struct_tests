@@ -7,14 +7,14 @@ class SwitchManualIntElseTest extends TestCase {
     public function testSwitchManualIntElse() {
         $r = SwitchManualIntElse::fromFile(self::SRC_DIR_PATH . '/switch_opcodes2.bin');
 
-        $this->assertEquals(4, count($r->opcodes()));
-        $this->assertEquals(83, $r->opcodes()[0]->code());
-        $this->assertEquals("foo", $r->opcodes()[0]->body()->value());
-        $this->assertEquals(88, $r->opcodes()[1]->code());
-        $this->assertEquals(66, $r->opcodes()[1]->body()->filler());
-        $this->assertEquals(89, $r->opcodes()[2]->code());
-        $this->assertEquals(51966, $r->opcodes()[2]->body()->filler());
-        $this->assertEquals(73, $r->opcodes()[3]->code());
-        $this->assertEquals(7, $r->opcodes()[3]->body()->value());
+        $this->assertSame(4, count($r->opcodes()));
+        $this->assertSame(83, $r->opcodes()[0]->code());
+        $this->assertSame("foo", $r->opcodes()[0]->body()->value());
+        $this->assertSame(88, $r->opcodes()[1]->code());
+        $this->assertSame(66, $r->opcodes()[1]->body()->filler());
+        $this->assertSame(89, $r->opcodes()[2]->code());
+        $this->assertSame(51966, $r->opcodes()[2]->body()->filler());
+        $this->assertSame(73, $r->opcodes()[3]->code());
+        $this->assertSame(7, $r->opcodes()[3]->body()->value());
     }
 }

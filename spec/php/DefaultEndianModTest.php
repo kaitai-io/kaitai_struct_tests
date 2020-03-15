@@ -7,8 +7,8 @@ class DefaultEndianModTest extends TestCase {
     public function testDefaultEndianMod() {
         $r = DefaultEndianMod::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-        $this->assertEquals(1262698832, $r->main()->one());
-        $this->assertEquals(-52947, $r->main()->nest()->two());
-        $this->assertEquals(1346454347, $r->main()->nestBe()->two());
+        $this->assertSame(1262698832, $r->main()->one());
+        $this->assertSame(-52947, $r->main()->nest()->two());
+        $this->assertSame(1346454347, $r->main()->nestBe()->two());
     }
 }

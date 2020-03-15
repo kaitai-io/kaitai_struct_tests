@@ -7,7 +7,7 @@ class ParamsPassUsertypeTest extends TestCase {
     public function testParamsPassUsertype() {
         $r = ParamsPassUsertype::fromFile(self::SRC_DIR_PATH . '/position_in_seq.bin');
 
-        $this->assertEquals(1, $r->first()->foo());
-        $this->assertEquals("\x02", $r->one()->buf());
+        $this->assertSame(1, $r->first()->foo());
+        $this->assertSame("\x02", $r->one()->buf());
     }
 }

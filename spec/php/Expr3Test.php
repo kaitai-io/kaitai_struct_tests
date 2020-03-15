@@ -7,17 +7,17 @@ class Expr3Test extends TestCase {
     public function testExpr3() {
         $r = Expr3::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-        $this->assertEquals(80, $r->one());
-        $this->assertEquals("ACK", $r->two());
-        $this->assertEquals("@ACK", $r->three());
-        $this->assertEquals("_ACK_", $r->four());
-        $this->assertEquals(true, $r->isStrEq());
-        $this->assertEquals(false, $r->isStrNe());
-        $this->assertEquals(true, $r->isStrLt());
-        $this->assertEquals(false, $r->isStrGt());
-        $this->assertEquals(true, $r->isStrLe());
-        $this->assertEquals(false, $r->isStrGe());
-        $this->assertEquals(true, $r->isStrLt2());
-        $this->assertEquals(true, $r->testNot());
+        $this->assertSame(80, $r->one());
+        $this->assertSame("ACK", $r->two());
+        $this->assertSame("@ACK", $r->three());
+        $this->assertSame("_ACK_", $r->four());
+        $this->assertSame(true, $r->isStrEq());
+        $this->assertSame(false, $r->isStrNe());
+        $this->assertSame(true, $r->isStrLt());
+        $this->assertSame(false, $r->isStrGt());
+        $this->assertSame(true, $r->isStrLe());
+        $this->assertSame(false, $r->isStrGe());
+        $this->assertSame(true, $r->isStrLt2());
+        $this->assertSame(true, $r->testNot());
     }
 }

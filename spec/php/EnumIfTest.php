@@ -7,12 +7,12 @@ class EnumIfTest extends TestCase {
     public function testEnumIf() {
         $r = EnumIf::fromFile(self::SRC_DIR_PATH . '/if_struct.bin');
 
-        $this->assertEquals(\Kaitai\Struct\Tests\EnumIf\Opcodes::A_STRING, $r->op1()->opcode());
-        $this->assertEquals("foo", $r->op1()->argStr()->str());
-        $this->assertEquals(\Kaitai\Struct\Tests\EnumIf\Opcodes::A_TUPLE, $r->op2()->opcode());
-        $this->assertEquals(66, $r->op2()->argTuple()->num1());
-        $this->assertEquals(67, $r->op2()->argTuple()->num2());
-        $this->assertEquals(\Kaitai\Struct\Tests\EnumIf\Opcodes::A_STRING, $r->op3()->opcode());
-        $this->assertEquals("bar", $r->op3()->argStr()->str());
+        $this->assertSame(\Kaitai\Struct\Tests\EnumIf\Opcodes::A_STRING, $r->op1()->opcode());
+        $this->assertSame("foo", $r->op1()->argStr()->str());
+        $this->assertSame(\Kaitai\Struct\Tests\EnumIf\Opcodes::A_TUPLE, $r->op2()->opcode());
+        $this->assertSame(66, $r->op2()->argTuple()->num1());
+        $this->assertSame(67, $r->op2()->argTuple()->num2());
+        $this->assertSame(\Kaitai\Struct\Tests\EnumIf\Opcodes::A_STRING, $r->op3()->opcode());
+        $this->assertSame("bar", $r->op3()->argStr()->str());
     }
 }
