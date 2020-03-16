@@ -33,7 +33,7 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     simpleAssert(check)
   }
   override def runParse(): Unit = {
-    importList.add("os, streams, options, sequtils, ../testhelpers")
+    importList.add("os, streams, options, sequtils")
     importList.add("../../../compiled/nim/" + spec.id)
   }
 
