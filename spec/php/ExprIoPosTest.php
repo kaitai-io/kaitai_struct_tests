@@ -7,11 +7,11 @@ class ExprIoPosTest extends TestCase {
     public function testExprIoPos() {
         $r = ExprIoPos::fromFile(self::SRC_DIR_PATH . '/expr_io_pos.bin');
 
-        $this->assertEquals("CURIOSITY", $r->substream1()->myStr());
-        $this->assertEquals("\x11\x22\x33\x44", $r->substream1()->body());
-        $this->assertEquals(66, $r->substream1()->number());
-        $this->assertEquals("KILLED", $r->substream2()->myStr());
-        $this->assertEquals("\x61\x20\x63\x61\x74", $r->substream2()->body());
-        $this->assertEquals(103, $r->substream2()->number());
+        $this->assertSame("CURIOSITY", $r->substream1()->myStr());
+        $this->assertSame("\x11\x22\x33\x44", $r->substream1()->body());
+        $this->assertSame(66, $r->substream1()->number());
+        $this->assertSame("KILLED", $r->substream2()->myStr());
+        $this->assertSame("\x61\x20\x63\x61\x74", $r->substream2()->body());
+        $this->assertSame(103, $r->substream2()->number());
     }
 }

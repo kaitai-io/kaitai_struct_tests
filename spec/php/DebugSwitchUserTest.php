@@ -8,8 +8,7 @@ class DebugSwitchUserTest extends TestCase {
         $r = DebugSwitchUser::fromFile(self::SRC_DIR_PATH . '/nav_parent_switch.bin');
         $r->_read();
 
-
-        $this->assertEquals(1, $r->code());
-        $this->assertEquals(-190, $r->data()->val());
+        $this->assertSame(1, $r->code());
+        $this->assertSame(-190, $r->data()->val());
     }
 }

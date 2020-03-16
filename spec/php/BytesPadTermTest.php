@@ -7,9 +7,9 @@ class BytesPadTermTest extends TestCase {
     public function testBytesPadTerm() {
         $r = BytesPadTerm::fromFile(self::SRC_DIR_PATH . '/str_pad_term.bin');
 
-        $this->assertEquals("\x73\x74\x72\x31", $r->strPad());
-        $this->assertEquals("\x73\x74\x72\x32\x66\x6F\x6F", $r->strTerm());
-        $this->assertEquals("\x73\x74\x72\x2B\x2B\x2B\x33\x62\x61\x72\x2B\x2B\x2B", $r->strTermAndPad());
-        $this->assertEquals("\x73\x74\x72\x34\x62\x61\x7A\x40", $r->strTermInclude());
+        $this->assertSame("\x73\x74\x72\x31", $r->strPad());
+        $this->assertSame("\x73\x74\x72\x32\x66\x6F\x6F", $r->strTerm());
+        $this->assertSame("\x73\x74\x72\x2B\x2B\x2B\x33\x62\x61\x72\x2B\x2B\x2B", $r->strTermAndPad());
+        $this->assertSame("\x73\x74\x72\x34\x62\x61\x7A\x40", $r->strTermInclude());
     }
 }

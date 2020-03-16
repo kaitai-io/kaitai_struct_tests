@@ -7,23 +7,22 @@ class ExprStrOpsTest extends TestCase {
     public function testExprStrOps() {
         $r = ExprStrOps::fromFile(self::SRC_DIR_PATH . '/term_strz.bin');
 
-
-        $this->assertEquals("foo|b", $r->one());
-        $this->assertEquals(5, $r->oneLen());
-        $this->assertEquals("b|oof", $r->oneRev());
-        $this->assertEquals("foo", $r->oneSubstr0To3());
-        $this->assertEquals("o|b", $r->oneSubstr2To5());
-        $this->assertEquals("", $r->oneSubstr3To3());
-        $this->assertEquals("0123456789", $r->two());
-        $this->assertEquals(10, $r->twoLen());
-        $this->assertEquals("9876543210", $r->twoRev());
-        $this->assertEquals("0123456", $r->twoSubstr0To7());
-        $this->assertEquals("456789", $r->twoSubstr4To10());
-        $this->assertEquals("0123456789", $r->twoSubstr0To10());
-        $this->assertEquals(9173, $r->toIAttr());
-        $this->assertEquals(-72, $r->toIR10());
-        $this->assertEquals(86, $r->toIR2());
-        $this->assertEquals(465, $r->toIR8());
-        $this->assertEquals(18383, $r->toIR16());
+        $this->assertSame("foo|b", $r->one());
+        $this->assertSame(5, $r->oneLen());
+        $this->assertSame("b|oof", $r->oneRev());
+        $this->assertSame("foo", $r->oneSubstr0To3());
+        $this->assertSame("o|b", $r->oneSubstr2To5());
+        $this->assertSame("", $r->oneSubstr3To3());
+        $this->assertSame("0123456789", $r->two());
+        $this->assertSame(10, $r->twoLen());
+        $this->assertSame("9876543210", $r->twoRev());
+        $this->assertSame("0123456", $r->twoSubstr0To7());
+        $this->assertSame("456789", $r->twoSubstr4To10());
+        $this->assertSame("0123456789", $r->twoSubstr0To10());
+        $this->assertSame(9173, $r->toIAttr());
+        $this->assertSame(-72, $r->toIR10());
+        $this->assertSame(86, $r->toIR2());
+        $this->assertSame(465, $r->toIR8());
+        $this->assertSame(18383, $r->toIR16());
     }
 }

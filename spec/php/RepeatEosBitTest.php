@@ -7,6 +7,6 @@ class RepeatEosBitTest extends TestCase {
     public function testRepeatEosBit() {
         $r = RepeatEosBit::fromFile(self::SRC_DIR_PATH . '/enum_0.bin');
 
-        $this->assertEquals(16, count($r->nibbles()));
+        $this->assertSame(16, count($r->nibbles()));
     }
 }

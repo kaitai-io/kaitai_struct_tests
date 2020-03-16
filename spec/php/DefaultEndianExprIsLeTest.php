@@ -7,17 +7,17 @@ class DefaultEndianExprIsLeTest extends TestCase {
     public function testDefaultEndianExprIsLe() {
         $r = DefaultEndianExprIsLe::fromFile(self::SRC_DIR_PATH . '/endian_expr.bin');
 
-        $this->assertEquals("\x49\x49", $r->docs()[0]->indicator());
-        $this->assertEquals(66, $r->docs()[0]->main()->someInt());
-        $this->assertEquals(66, $r->docs()[0]->main()->someIntBe());
-        $this->assertEquals(66, $r->docs()[0]->main()->someIntLe());
-        $this->assertEquals("\x4D\x4D", $r->docs()[1]->indicator());
-        $this->assertEquals(66, $r->docs()[1]->main()->someInt());
-        $this->assertEquals(66, $r->docs()[1]->main()->someIntBe());
-        $this->assertEquals(66, $r->docs()[1]->main()->someIntLe());
-        $this->assertEquals("\x58\x58", $r->docs()[2]->indicator());
-        $this->assertEquals(66, $r->docs()[2]->main()->someInt());
-        $this->assertEquals(66, $r->docs()[2]->main()->someIntBe());
-        $this->assertEquals(66, $r->docs()[2]->main()->someIntLe());
+        $this->assertSame("\x49\x49", $r->docs()[0]->indicator());
+        $this->assertSame(66, $r->docs()[0]->main()->someInt());
+        $this->assertSame(66, $r->docs()[0]->main()->someIntBe());
+        $this->assertSame(66, $r->docs()[0]->main()->someIntLe());
+        $this->assertSame("\x4D\x4D", $r->docs()[1]->indicator());
+        $this->assertSame(66, $r->docs()[1]->main()->someInt());
+        $this->assertSame(66, $r->docs()[1]->main()->someIntBe());
+        $this->assertSame(66, $r->docs()[1]->main()->someIntLe());
+        $this->assertSame("\x58\x58", $r->docs()[2]->indicator());
+        $this->assertSame(66, $r->docs()[2]->main()->someInt());
+        $this->assertSame(66, $r->docs()[2]->main()->someIntBe());
+        $this->assertSame(66, $r->docs()[2]->main()->someIntLe());
     }
 }

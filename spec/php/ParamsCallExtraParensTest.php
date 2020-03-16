@@ -7,7 +7,6 @@ class ParamsCallExtraParensTest extends TestCase {
     public function testParamsCallExtraParens() {
         $r = ParamsCallExtraParens::fromFile(self::SRC_DIR_PATH . '/term_strz.bin');
 
-
-        $this->assertEquals("foo|b", $r->buf1()->body());
+        $this->assertSame("foo|b", $r->buf1()->body());
     }
 }

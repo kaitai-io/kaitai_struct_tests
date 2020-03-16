@@ -7,8 +7,8 @@ class ParamsCallShortTest extends TestCase {
     public function testParamsCallShort() {
         $r = ParamsCallShort::fromFile(self::SRC_DIR_PATH . '/term_strz.bin');
 
-        $this->assertEquals("foo|b", $r->buf1()->body());
-        $this->assertEquals("ar|ba", $r->buf2()->body());
-        $this->assertEquals(122, $r->buf2()->trailer());
+        $this->assertSame("foo|b", $r->buf1()->body());
+        $this->assertSame("ar|ba", $r->buf2()->body());
+        $this->assertSame(122, $r->buf2()->trailer());
     }
 }

@@ -7,7 +7,7 @@ class EnumFancyTest extends TestCase {
     public function testEnumFancy() {
         $r = EnumFancy::fromFile(self::SRC_DIR_PATH . '/enum_0.bin');
 
-        $this->assertEquals(\Kaitai\Struct\Tests\EnumFancy\Animal::CAT, $r->pet1());
-        $this->assertEquals(\Kaitai\Struct\Tests\EnumFancy\Animal::CHICKEN, $r->pet2());
+        $this->assertSame(\Kaitai\Struct\Tests\EnumFancy\Animal::CAT, $r->pet1());
+        $this->assertSame(\Kaitai\Struct\Tests\EnumFancy\Animal::CHICKEN, $r->pet2());
     }
 }

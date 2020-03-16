@@ -7,18 +7,17 @@ class ExprBytesOpsTest extends TestCase {
     public function testExprBytesOps() {
         $r = ExprBytesOps::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-
-        $this->assertEquals(3, $r->oneSize());
-        $this->assertEquals(80, $r->oneFirst());
-        $this->assertEquals(65, $r->oneMid());
-        $this->assertEquals(67, $r->oneLast());
-        $this->assertEquals(65, $r->oneMin());
-        $this->assertEquals(80, $r->oneMax());
-        $this->assertEquals(3, $r->twoSize());
-        $this->assertEquals(65, $r->twoFirst());
-        $this->assertEquals(67, $r->twoMid());
-        $this->assertEquals(75, $r->twoLast());
-        $this->assertEquals(65, $r->twoMin());
-        $this->assertEquals(75, $r->twoMax());
+        $this->assertSame(3, $r->oneSize());
+        $this->assertSame(80, $r->oneFirst());
+        $this->assertSame(65, $r->oneMid());
+        $this->assertSame(67, $r->oneLast());
+        $this->assertSame(65, $r->oneMin());
+        $this->assertSame(80, $r->oneMax());
+        $this->assertSame(3, $r->twoSize());
+        $this->assertSame(65, $r->twoFirst());
+        $this->assertSame(67, $r->twoMid());
+        $this->assertSame(75, $r->twoLast());
+        $this->assertSame(65, $r->twoMin());
+        $this->assertSame(75, $r->twoMax());
     }
 }

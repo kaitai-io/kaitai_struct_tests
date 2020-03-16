@@ -7,7 +7,5 @@ class ValidSwitchTest extends TestCase {
     public function testValidSwitch() {
         $r = ValidSwitch::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-
-        $this->markTestAsNotRisky();
     }
 }

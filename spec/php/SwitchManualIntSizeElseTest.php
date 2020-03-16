@@ -7,15 +7,15 @@ class SwitchManualIntSizeElseTest extends TestCase {
     public function testSwitchManualIntSizeElse() {
         $r = SwitchManualIntSizeElse::fromFile(self::SRC_DIR_PATH . '/switch_tlv.bin');
 
-        $this->assertEquals(4, count($r->chunks()));
-        $this->assertEquals(17, $r->chunks()[0]->code());
-        $this->assertEquals("Stuff", $r->chunks()[0]->body()->title());
-        $this->assertEquals("Me", $r->chunks()[0]->body()->author());
-        $this->assertEquals(34, $r->chunks()[1]->code());
-        $this->assertEquals(["AAAA", "BBBB", "CCCC"], $r->chunks()[1]->body()->entries());
-        $this->assertEquals(51, $r->chunks()[2]->code());
-        $this->assertEquals("\x10\x20\x30\x40\x50\x60\x70\x80", $r->chunks()[2]->body()->rest());
-        $this->assertEquals(255, $r->chunks()[3]->code());
-        $this->assertEquals("", $r->chunks()[3]->body()->rest());
+        $this->assertSame(4, count($r->chunks()));
+        $this->assertSame(17, $r->chunks()[0]->code());
+        $this->assertSame("Stuff", $r->chunks()[0]->body()->title());
+        $this->assertSame("Me", $r->chunks()[0]->body()->author());
+        $this->assertSame(34, $r->chunks()[1]->code());
+        $this->assertSame(["AAAA", "BBBB", "CCCC"], $r->chunks()[1]->body()->entries());
+        $this->assertSame(51, $r->chunks()[2]->code());
+        $this->assertSame("\x10\x20\x30\x40\x50\x60\x70\x80", $r->chunks()[2]->body()->rest());
+        $this->assertSame(255, $r->chunks()[3]->code());
+        $this->assertSame("", $r->chunks()[3]->body()->rest());
     }
 }

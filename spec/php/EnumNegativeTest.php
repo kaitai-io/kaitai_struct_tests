@@ -7,7 +7,7 @@ class EnumNegativeTest extends TestCase {
     public function testEnumNegative() {
         $r = EnumNegative::fromFile(self::SRC_DIR_PATH . '/enum_negative.bin');
 
-        $this->assertEquals(\Kaitai\Struct\Tests\EnumNegative\Constants::NEGATIVE_ONE, $r->f1());
-        $this->assertEquals(\Kaitai\Struct\Tests\EnumNegative\Constants::POSITIVE_ONE, $r->f2());
+        $this->assertSame(\Kaitai\Struct\Tests\EnumNegative\Constants::NEGATIVE_ONE, $r->f1());
+        $this->assertSame(\Kaitai\Struct\Tests\EnumNegative\Constants::POSITIVE_ONE, $r->f2());
     }
 }

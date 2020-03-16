@@ -7,8 +7,7 @@ class ProcessRepeatBytesTest extends TestCase {
     public function testProcessRepeatBytes() {
         $r = ProcessRepeatBytes::fromFile(self::SRC_DIR_PATH . '/process_xor_4.bin');
 
-
-        $this->assertEquals("\x72\x25\x3D\x8A\x14", $r->bufs()[0]);
-        $this->assertEquals("\x4A\x52\xAA\x10\x44", $r->bufs()[1]);
+        $this->assertSame("\x72\x25\x3D\x8A\x14", $r->bufs()[0]);
+        $this->assertSame("\x4A\x52\xAA\x10\x44", $r->bufs()[1]);
     }
 }

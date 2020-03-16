@@ -7,24 +7,23 @@ class ExprCalcArrayOpsTest extends TestCase {
     public function testExprCalcArrayOps() {
         $r = ExprCalcArrayOps::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-
-        $this->assertEquals(7, $r->intArraySize());
-        $this->assertEquals(10, $r->intArrayFirst());
-        $this->assertEquals(25, $r->intArrayMid());
-        $this->assertEquals(1000, $r->intArrayLast());
-        $this->assertEquals(10, $r->intArrayMin());
-        $this->assertEquals(1000, $r->intArrayMax());
-        $this->assertEquals(5, $r->doubleArraySize());
+        $this->assertSame(7, $r->intArraySize());
+        $this->assertSame(10, $r->intArrayFirst());
+        $this->assertSame(25, $r->intArrayMid());
+        $this->assertSame(1000, $r->intArrayLast());
+        $this->assertSame(10, $r->intArrayMin());
+        $this->assertSame(1000, $r->intArrayMax());
+        $this->assertSame(5, $r->doubleArraySize());
         $this->assertEquals($r->doubleArrayFirst(), 10.0, '', 1e-6);
         $this->assertEquals($r->doubleArrayMid(), 25.0, '', 1e-6);
         $this->assertEquals($r->doubleArrayLast(), 3.14159, '', 1e-6);
         $this->assertEquals($r->doubleArrayMin(), 3.14159, '', 1e-6);
         $this->assertEquals($r->doubleArrayMax(), 100.0, '', 1e-6);
-        $this->assertEquals(4, $r->strArraySize());
-        $this->assertEquals("un", $r->strArrayFirst());
-        $this->assertEquals("deux", $r->strArrayMid());
-        $this->assertEquals("quatre", $r->strArrayLast());
-        $this->assertEquals("deux", $r->strArrayMin());
-        $this->assertEquals("un", $r->strArrayMax());
+        $this->assertSame(4, $r->strArraySize());
+        $this->assertSame("un", $r->strArrayFirst());
+        $this->assertSame("deux", $r->strArrayMid());
+        $this->assertSame("quatre", $r->strArrayLast());
+        $this->assertSame("deux", $r->strArrayMin());
+        $this->assertSame("un", $r->strArrayMax());
     }
 }

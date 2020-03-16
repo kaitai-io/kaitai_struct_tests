@@ -7,10 +7,10 @@ class NestedTypes3Test extends TestCase {
     public function testNestedTypes3() {
         $r = NestedTypes3::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-        $this->assertEquals(80, $r->aCc()->valueCc());
-        $this->assertEquals(65, $r->aCD()->valueD());
-        $this->assertEquals(67, $r->b()->valueB());
-        $this->assertEquals(75, $r->b()->aCc()->valueCc());
-        $this->assertEquals(45, $r->b()->aCD()->valueD());
+        $this->assertSame(80, $r->aCc()->valueCc());
+        $this->assertSame(65, $r->aCD()->valueD());
+        $this->assertSame(67, $r->b()->valueB());
+        $this->assertSame(75, $r->b()->aCc()->valueCc());
+        $this->assertSame(45, $r->b()->aCD()->valueD());
     }
 }

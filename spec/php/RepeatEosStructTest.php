@@ -7,10 +7,10 @@ class RepeatEosStructTest extends TestCase {
     public function testRepeatEosStruct() {
         $r = RepeatEosStruct::fromFile(self::SRC_DIR_PATH . '/repeat_eos_struct.bin');
 
-        $this->assertEquals(2, count($r->chunks()));
-        $this->assertEquals(0, $r->chunks()[0]->offset());
-        $this->assertEquals(66, $r->chunks()[0]->len());
-        $this->assertEquals(66, $r->chunks()[1]->offset());
-        $this->assertEquals(2069, $r->chunks()[1]->len());
+        $this->assertSame(2, count($r->chunks()));
+        $this->assertSame(0, $r->chunks()[0]->offset());
+        $this->assertSame(66, $r->chunks()[0]->len());
+        $this->assertSame(66, $r->chunks()[1]->offset());
+        $this->assertSame(2069, $r->chunks()[1]->len());
     }
 }

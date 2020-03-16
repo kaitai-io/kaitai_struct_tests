@@ -7,8 +7,7 @@ class EnumIntRangeUTest extends TestCase {
     public function testEnumIntRangeU() {
         $r = EnumIntRangeU::fromFile(self::SRC_DIR_PATH . '/enum_int_range_u.bin');
 
-
-        $this->assertEquals(\Kaitai\Struct\Tests\EnumIntRangeU\Constants::ZERO, $r->f1());
-        $this->assertEquals(\Kaitai\Struct\Tests\EnumIntRangeU\Constants::INT_MAX, $r->f2());
+        $this->assertSame(\Kaitai\Struct\Tests\EnumIntRangeU\Constants::ZERO, $r->f1());
+        $this->assertSame(\Kaitai\Struct\Tests\EnumIntRangeU\Constants::INT_MAX, $r->f2());
     }
 }

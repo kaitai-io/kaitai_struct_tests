@@ -7,12 +7,12 @@ class IfStructTest extends TestCase {
     public function testIfStruct() {
         $r = IfStruct::fromFile(self::SRC_DIR_PATH . '/if_struct.bin');
 
-        $this->assertEquals(83, $r->op1()->opcode());
-        $this->assertEquals("foo", $r->op1()->argStr()->str());
-        $this->assertEquals(84, $r->op2()->opcode());
-        $this->assertEquals(66, $r->op2()->argTuple()->num1());
-        $this->assertEquals(67, $r->op2()->argTuple()->num2());
-        $this->assertEquals(83, $r->op3()->opcode());
-        $this->assertEquals("bar", $r->op3()->argStr()->str());
+        $this->assertSame(83, $r->op1()->opcode());
+        $this->assertSame("foo", $r->op1()->argStr()->str());
+        $this->assertSame(84, $r->op2()->opcode());
+        $this->assertSame(66, $r->op2()->argTuple()->num1());
+        $this->assertSame(67, $r->op2()->argTuple()->num2());
+        $this->assertSame(83, $r->op3()->opcode());
+        $this->assertSame("bar", $r->op3()->argStr()->str());
     }
 }

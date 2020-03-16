@@ -7,7 +7,7 @@ class NestedSameNameTest extends TestCase {
     public function testNestedSameName() {
         $r = NestedSameName::fromFile(self::SRC_DIR_PATH . '/repeat_n_struct.bin');
 
-        $this->assertEquals(2, $r->mainData()->mainSize());
-        $this->assertEquals("\x10\x00\x00\x00", $r->mainData()->foo()->data());
+        $this->assertSame(2, $r->mainData()->mainSize());
+        $this->assertSame("\x10\x00\x00\x00", $r->mainData()->foo()->data());
     }
 }
