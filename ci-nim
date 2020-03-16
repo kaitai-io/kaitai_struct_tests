@@ -3,7 +3,6 @@
 . ./config
 
 nimble refresh
-nimble test
 nimble install testify
 
 rm -rf "$TEST_OUT_DIR/nim"
