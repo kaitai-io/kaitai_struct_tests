@@ -30,9 +30,9 @@ class JUnitXMLParser < TestParser
         elsif name =~ /^Test.*\.test_/
           # Lua output, use classname
           name = tc.attribute('classname').value.gsub(/^Test/, '')
-        elsif name =~ /^Nim: (.*?)$/
-          # Nim output, extract test from classname
-          name = $1
+        elsif name =~ /^t(.*?)$/
+          # Nim output
+          name = underscore_to_ucamelcase($1)
         else
           raise "Unable to parse name: \"#{name}\"" unless name =~ /^[Tt]est(.*?)$/
           if $1[0] == '_'

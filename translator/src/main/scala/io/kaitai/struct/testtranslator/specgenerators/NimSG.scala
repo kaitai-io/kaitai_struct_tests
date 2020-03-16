@@ -12,43 +12,28 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
   val translator = new NimTranslator(provider, importList)
 
   // Members declared in io.kaitai.struct.testtranslator.specgenerators.BaseGenerator
-  override def fileName(name: String): String = s"src/io/kaitai/struct/spec/t${spec.id}.nim"
+  override def fileName(name: String): String = s"t${spec.id}.nim"
   override def header(): Unit = {
-    out.puts("var")
-    out.inc
-    out.puts("stream = newFileStream(\"" + s"test_out/nim/junitreports/${spec.id}.xml" + "\", fmWrite)")
-    out.puts("outputFormatter = newJUnitOutputFormatter(stream)")
-    out.dec
-    out.puts("addOutputFormatter(outputFormatter)")
-    out.puts
-    out.puts("suite \"Kaitai Struct Compiler Test Suite\":")
-    out.inc
-    out.puts("test \"" + "Nim: " + Utils.upperCamelCase(spec.id) + "\":")
-    out.inc
     out.puts(s"let r = ${className}.fromFile" + "(\"src/" + spec.data + "\")")
   }
   override def footer(): Unit = {
-    out.puts
-    out.dec
-    out.dec
-    out.puts("close(outputFormatter)")
   }
   override def nullAssert(actual: expr): Unit = {
     val actStr = translateAct(actual)
-    out.puts(s"check($actStr == none(typeof($actStr)))")
+    out.puts(s"doAssert($actStr == none(typeof($actStr)))")
   }
   override def simpleAssert(check: TestAssert): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     val td = new TypeDetector(provider)
     val t = _root_.io.kaitai.struct.NimClassCompiler.ksToNim(td.detectType(check.actual))
-    out.puts(s"check($actStr == $t($expStr))")
+    out.puts(s"doAssert($actStr == $t($expStr))")
   }
   override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[expr]): Unit = {
     simpleAssert(check)
   }
   override def runParse(): Unit = {
-    importList.add("unittest, os, streams, options, sequtils, ../testhelpers")
+    importList.add("os, streams, options, sequtils, ../testhelpers")
     importList.add("../../../compiled/nim/" + spec.id)
   }
 

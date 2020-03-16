@@ -79,12 +79,7 @@ when 'java'
     ),
     infile
   )
-when 'nim'
-  add_kst_adoption(
-    JUnitXMLParser.new("#{infile}/junitreports").to_h,
-    infile
-  )
-when 'lua'
+when 'lua', 'nim'
   add_kst_adoption(
     JUnitXMLParser.new("#{infile}/report.xml").to_h,
     infile
