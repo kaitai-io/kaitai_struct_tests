@@ -4,6 +4,7 @@
 
 nimble refresh
 nimble install testify
+nimble install kaitai_struct_nim_runtime
 
 rm -rf "$TEST_OUT_DIR/nim"
 mkdir -p "$TEST_OUT_DIR/nim"
