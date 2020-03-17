@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/str_combine
+import ../test_utils
 
 let r = StrCombine.fromFile("src/term_strz.bin")
 

@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/nav_parent_switch_cast
+import ../test_utils
 
 let r = NavParentSwitchCast.fromFile("src/switch_integers.bin")
 

@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/expr_bits
+import ../test_utils
 
 let r = ExprBits.fromFile("src/switch_opcodes.bin")
 

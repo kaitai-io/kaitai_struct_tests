@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/switch_manual_enum
+import ../test_utils
 
 let r = SwitchManualEnum.fromFile("src/switch_opcodes.bin")
 

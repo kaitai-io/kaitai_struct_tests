@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/process_custom_no_args
+import ../test_utils
 
 let r = ProcessCustomNoArgs.fromFile("src/process_rotate.bin")
 

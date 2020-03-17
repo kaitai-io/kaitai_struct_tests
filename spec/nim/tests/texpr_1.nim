@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/expr_1
+import ../test_utils
 
 let r = Expr1.fromFile("src/str_encodings.bin")
 

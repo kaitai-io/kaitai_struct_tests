@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/default_endian_expr_is_be
+import ../test_utils
 
 let r = DefaultEndianExprIsBe.fromFile("src/endian_expr.bin")
 

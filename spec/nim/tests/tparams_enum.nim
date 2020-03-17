@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/params_enum
+import ../test_utils
 
 let r = ParamsEnum.fromFile("src/enum_0.bin")
 

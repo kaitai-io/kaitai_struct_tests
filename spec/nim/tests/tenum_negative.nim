@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/enum_negative
+import ../test_utils
 
 let r = EnumNegative.fromFile("src/enum_negative.bin")
 

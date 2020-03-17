@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/zlib_with_header_78
+import ../test_utils
 
 let r = ZlibWithHeader78.fromFile("src/zlib_with_header_78.bin")
 

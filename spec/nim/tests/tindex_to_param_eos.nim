@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/index_to_param_eos
+import ../test_utils
 
 let r = IndexToParamEos.fromFile("src/index_sizes.bin")
 

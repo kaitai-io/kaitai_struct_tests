@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/process_to_user
+import ../test_utils
 
 let r = ProcessToUser.fromFile("src/process_rotate.bin")
 

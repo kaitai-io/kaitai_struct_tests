@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/docstrings_docref
+import ../test_utils
 
 let r = DocstringsDocref.fromFile("src/fixed_struct.bin")
 

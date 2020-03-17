@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/str_encodings
+import ../test_utils
 
 let r = StrEncodings.fromFile("src/str_encodings.bin")
 

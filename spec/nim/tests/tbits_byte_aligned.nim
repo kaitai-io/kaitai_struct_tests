@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/bits_byte_aligned
+import ../test_utils
 
 let r = BitsByteAligned.fromFile("src/fixed_struct.bin")
 

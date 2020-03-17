@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/nested_types3
+import ../test_utils
 
 let r = NestedTypes3.fromFile("src/fixed_struct.bin")
 

@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/index_sizes
+import ../test_utils
 
 let r = IndexSizes.fromFile("src/index_sizes.bin")
 

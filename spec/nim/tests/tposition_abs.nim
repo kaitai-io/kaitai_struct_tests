@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/position_abs
+import ../test_utils
 
 let r = PositionAbs.fromFile("src/position_abs.bin")
 

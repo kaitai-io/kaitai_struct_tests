@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/repeat_until_sized
+import ../test_utils
 
 let r = RepeatUntilSized.fromFile("src/repeat_until_process.bin")
 

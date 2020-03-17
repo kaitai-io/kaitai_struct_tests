@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/recursive_one
+import ../test_utils
 
 let r = RecursiveOne.fromFile("src/fixed_struct.bin")
 

@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/process_repeat_bytes
+import ../test_utils
 
 let r = ProcessRepeatBytes.fromFile("src/process_xor_4.bin")
 

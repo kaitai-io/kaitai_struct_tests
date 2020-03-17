@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/process_xor4_value
+import ../test_utils
 
 let r = ProcessXor4Value.fromFile("src/process_xor_4.bin")
 

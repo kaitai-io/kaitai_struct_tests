@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/bcd_user_type_be
+import ../test_utils
 
 let r = BcdUserTypeBe.fromFile("src/bcd_user_type_be.bin")
 

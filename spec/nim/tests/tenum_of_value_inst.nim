@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/enum_of_value_inst
+import ../test_utils
 
 let r = EnumOfValueInst.fromFile("src/enum_0.bin")
 

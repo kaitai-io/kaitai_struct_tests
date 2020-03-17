@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/str_pad_term
+import ../test_utils
 
 let r = StrPadTerm.fromFile("src/str_pad_term.bin")
 

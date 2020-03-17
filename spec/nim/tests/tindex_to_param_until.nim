@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/index_to_param_until
+import ../test_utils
 
 let r = IndexToParamUntil.fromFile("src/index_sizes.bin")
 

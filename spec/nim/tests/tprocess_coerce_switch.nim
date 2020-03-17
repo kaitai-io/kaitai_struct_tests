@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/process_coerce_switch
+import ../test_utils
 
 let r = ProcessCoerceSwitch.fromFile("src/process_coerce_switch.bin")
 

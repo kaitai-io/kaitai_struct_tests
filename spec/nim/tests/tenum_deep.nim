@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/enum_deep
+import ../test_utils
 
 let r = EnumDeep.fromFile("src/enum_0.bin")
 

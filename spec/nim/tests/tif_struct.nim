@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/if_struct
+import ../test_utils
 
 let r = IfStruct.fromFile("src/if_struct.bin")
 

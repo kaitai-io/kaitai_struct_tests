@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/instance_io_user
+import ../test_utils
 
 let r = InstanceIoUser.fromFile("src/instance_io.bin")
 

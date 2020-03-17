@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/enum_long_range_s
+import ../test_utils
 
 let r = EnumLongRangeS.fromFile("src/enum_long_range_s.bin")
 

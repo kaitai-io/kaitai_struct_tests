@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/expr_str_ops
+import ../test_utils
 
 let r = ExprStrOps.fromFile("src/term_strz.bin")
 

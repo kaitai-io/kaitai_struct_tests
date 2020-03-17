@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/cast_to_top
+import ../test_utils
 
 let r = CastToTop.fromFile("src/fixed_struct.bin")
 

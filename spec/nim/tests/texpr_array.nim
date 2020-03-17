@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/expr_array
+import ../test_utils
 
 let r = ExprArray.fromFile("src/expr_array.bin")
 

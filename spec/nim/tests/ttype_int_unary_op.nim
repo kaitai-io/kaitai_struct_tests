@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/type_int_unary_op
+import ../test_utils
 
 let r = TypeIntUnaryOp.fromFile("src/fixed_struct.bin")
 

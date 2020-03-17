@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/switch_manual_int_else
+import ../test_utils
 
 let r = SwitchManualIntElse.fromFile("src/switch_opcodes2.bin")
 

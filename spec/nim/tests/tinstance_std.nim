@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/instance_std
+import ../test_utils
 
 let r = InstanceStd.fromFile("src/str_encodings.bin")
 

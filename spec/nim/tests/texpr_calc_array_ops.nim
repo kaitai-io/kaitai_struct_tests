@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/expr_calc_array_ops
+import ../test_utils
 
 let r = ExprCalcArrayOps.fromFile("src/fixed_struct.bin")
 

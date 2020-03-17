@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/hello_world
+import ../test_utils
 
 let r = HelloWorld.fromFile("src/fixed_struct.bin")
 

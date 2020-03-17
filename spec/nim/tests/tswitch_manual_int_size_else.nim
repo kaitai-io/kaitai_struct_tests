@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/switch_manual_int_size_else
+import ../test_utils
 
 let r = SwitchManualIntSizeElse.fromFile("src/switch_tlv.bin")
 

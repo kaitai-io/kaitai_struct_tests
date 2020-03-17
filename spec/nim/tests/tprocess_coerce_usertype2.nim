@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/process_coerce_usertype2
+import ../test_utils
 
 let r = ProcessCoerceUsertype2.fromFile("src/process_coerce_bytes.bin")
 

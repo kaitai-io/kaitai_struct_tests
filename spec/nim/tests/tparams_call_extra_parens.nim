@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/params_call_extra_parens
+import ../test_utils
 
 let r = ParamsCallExtraParens.fromFile("src/term_strz.bin")
 

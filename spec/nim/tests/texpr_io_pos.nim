@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/expr_io_pos
+import ../test_utils
 
 let r = ExprIoPos.fromFile("src/expr_io_pos.bin")
 

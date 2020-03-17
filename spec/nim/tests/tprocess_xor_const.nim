@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/process_xor_const
+import ../test_utils
 
 let r = ProcessXorConst.fromFile("src/process_xor_1.bin")
 

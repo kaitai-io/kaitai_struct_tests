@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/multiple_use
+import ../test_utils
 
 let r = MultipleUse.fromFile("src/position_abs.bin")
 

@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/process_coerce_bytes
+import ../test_utils
 
 let r = ProcessCoerceBytes.fromFile("src/process_coerce_bytes.bin")
 

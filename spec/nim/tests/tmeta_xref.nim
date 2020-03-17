@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/meta_xref
+import ../test_utils
 
 let r = MetaXref.fromFile("src/fixed_struct.bin")
 

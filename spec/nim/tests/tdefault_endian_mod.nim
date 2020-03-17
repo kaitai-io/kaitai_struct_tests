@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/default_endian_mod
+import ../test_utils
 
 let r = DefaultEndianMod.fromFile("src/fixed_struct.bin")
 

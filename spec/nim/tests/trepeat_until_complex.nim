@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/repeat_until_complex
+import ../test_utils
 
 let r = RepeatUntilComplex.fromFile("src/repeat_until_complex.bin")
 

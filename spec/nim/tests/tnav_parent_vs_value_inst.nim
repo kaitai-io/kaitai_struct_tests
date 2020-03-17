@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/nav_parent_vs_value_inst
+import ../test_utils
 
 let r = NavParentVsValueInst.fromFile("src/term_strz.bin")
 

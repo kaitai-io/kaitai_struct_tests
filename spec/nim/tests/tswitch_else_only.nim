@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/switch_else_only
+import ../test_utils
 
 let r = SwitchElseOnly.fromFile("src/switch_opcodes.bin")
 

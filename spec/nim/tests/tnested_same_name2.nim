@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/nested_same_name2
+import ../test_utils
 
 let r = NestedSameName2.fromFile("src/nested_same_name2.bin")
 

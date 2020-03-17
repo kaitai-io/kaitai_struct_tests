@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/cast_nested
+import ../test_utils
 
 let r = CastNested.fromFile("src/switch_opcodes.bin")
 

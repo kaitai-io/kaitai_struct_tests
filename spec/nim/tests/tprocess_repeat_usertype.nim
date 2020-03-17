@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/process_repeat_usertype
+import ../test_utils
 
 let r = ProcessRepeatUsertype.fromFile("src/process_xor_4.bin")
 

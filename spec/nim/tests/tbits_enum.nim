@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/bits_enum
+import ../test_utils
 
 let r = BitsEnum.fromFile("src/fixed_struct.bin")
 

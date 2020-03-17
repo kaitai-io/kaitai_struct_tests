@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/str_literals2
+import ../test_utils
 
 let r = StrLiterals2.fromFile("src/fixed_struct.bin")
 

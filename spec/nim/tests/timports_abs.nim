@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/imports_abs
+import ../test_utils
 
 let r = ImportsAbs.fromFile("src/fixed_struct.bin")
 

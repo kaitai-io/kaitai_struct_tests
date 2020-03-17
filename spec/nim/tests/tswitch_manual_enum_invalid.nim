@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/switch_manual_enum_invalid
+import ../test_utils
 
 let r = SwitchManualEnumInvalid.fromFile("src/enum_negative.bin")
 

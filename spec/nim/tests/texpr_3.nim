@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/expr_3
+import ../test_utils
 
 let r = Expr3.fromFile("src/fixed_struct.bin")
 

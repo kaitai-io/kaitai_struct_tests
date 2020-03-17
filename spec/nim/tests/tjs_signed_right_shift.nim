@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/js_signed_right_shift
+import ../test_utils
 
 let r = JsSignedRightShift.fromFile("src/fixed_struct.bin")
 

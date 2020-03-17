@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/repeat_n_struct
+import ../test_utils
 
 let r = RepeatNStruct.fromFile("src/repeat_n_struct.bin")
 

@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/instance_user_array
+import ../test_utils
 
 let r = InstanceUserArray.fromFile("src/instance_std_array.bin")
 

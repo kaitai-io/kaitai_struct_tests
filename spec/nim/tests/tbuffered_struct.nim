@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/buffered_struct
+import ../test_utils
 
 let r = BufferedStruct.fromFile("src/buffered_struct.bin")
 

@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/nested_same_name
+import ../test_utils
 
 let r = NestedSameName.fromFile("src/repeat_n_struct.bin")
 

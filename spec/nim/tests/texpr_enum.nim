@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/expr_enum
+import ../test_utils
 
 let r = ExprEnum.fromFile("src/term_strz.bin")
 

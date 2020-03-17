@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/nav_parent
+import ../test_utils
 
 let r = NavParent.fromFile("src/nav.bin")
 

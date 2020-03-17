@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/user_type
+import ../test_utils
 
 let r = UserType.fromFile("src/repeat_until_s4.bin")
 

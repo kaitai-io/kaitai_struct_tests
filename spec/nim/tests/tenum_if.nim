@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/enum_if
+import ../test_utils
 
 let r = EnumIf.fromFile("src/if_struct.bin")
 

@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/if_instances
+import ../test_utils
 
 let r = IfInstances.fromFile("src/fixed_struct.bin")
 

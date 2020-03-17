@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/nav_parent_false2
+import ../test_utils
 
 let r = NavParentFalse2.fromFile("src/fixed_struct.bin")
 

@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/floating_points
+import ../test_utils
 
 let r = FloatingPoints.fromFile("src/floating_points.bin")
 

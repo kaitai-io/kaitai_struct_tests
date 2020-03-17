@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/repeat_eos_struct
+import ../test_utils
 
 let r = RepeatEosStruct.fromFile("src/repeat_eos_struct.bin")
 

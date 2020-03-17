@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/enum_to_i_class_border_1
+import ../test_utils
 
 let r = EnumToIClassBorder1.fromFile("src/enum_0.bin")
 

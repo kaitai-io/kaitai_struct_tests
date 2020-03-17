@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/default_big_endian
+import ../test_utils
 
 let r = DefaultBigEndian.fromFile("src/enum_0.bin")
 

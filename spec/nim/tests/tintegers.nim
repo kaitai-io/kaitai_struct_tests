@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/integers
+import ../test_utils
 
 let r = Integers.fromFile("src/fixed_struct.bin")
 

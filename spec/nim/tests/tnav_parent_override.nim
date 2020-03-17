@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/nav_parent_override
+import ../test_utils
 
 let r = NavParentOverride.fromFile("src/nav_parent_codes.bin")
 

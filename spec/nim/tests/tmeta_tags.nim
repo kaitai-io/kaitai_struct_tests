@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/meta_tags
+import ../test_utils
 
 let r = MetaTags.fromFile("src/fixed_struct.bin")
 

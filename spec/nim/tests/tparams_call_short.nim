@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/params_call_short
+import ../test_utils
 
 let r = ParamsCallShort.fromFile("src/term_strz.bin")
 

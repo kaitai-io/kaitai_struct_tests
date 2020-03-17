@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/switch_bytearray
+import ../test_utils
 
 let r = SwitchBytearray.fromFile("src/switch_opcodes.bin")
 

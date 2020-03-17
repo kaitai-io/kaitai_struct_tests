@@ -35,6 +35,7 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
   override def runParse(): Unit = {
     importList.add("os, streams, options, sequtils")
     importList.add("../../../compiled/nim/" + spec.id)
+    importList.add("../test_utils")
   }
 
   // Members declared in io.kaitai.struct.testtranslator.specgenerators.SpecGenerator

@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/position_in_seq
+import ../test_utils
 
 let r = PositionInSeq.fromFile("src/position_in_seq.bin")
 

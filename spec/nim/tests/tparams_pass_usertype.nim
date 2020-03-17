@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/params_pass_usertype
+import ../test_utils
 
 let r = ParamsPassUsertype.fromFile("src/position_in_seq.bin")
 

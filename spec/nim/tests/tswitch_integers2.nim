@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/switch_integers2
+import ../test_utils
 
 let r = SwitchIntegers2.fromFile("src/switch_integers.bin")
 

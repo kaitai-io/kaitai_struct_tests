@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/expr_bytes_ops
+import ../test_utils
 
 let r = ExprBytesOps.fromFile("src/fixed_struct.bin")
 

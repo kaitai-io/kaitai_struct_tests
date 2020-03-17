@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/expr_sizeof_value_0
+import ../test_utils
 
 let r = ExprSizeofValue0.fromFile("src/fixed_struct.bin")
 

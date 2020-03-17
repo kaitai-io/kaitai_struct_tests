@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/term_strz
+import ../test_utils
 
 let r = TermStrz.fromFile("src/term_strz.bin")
 

@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/position_to_end
+import ../test_utils
 
 let r = PositionToEnd.fromFile("src/position_to_end.bin")
 

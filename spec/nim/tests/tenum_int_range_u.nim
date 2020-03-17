@@ -2,6 +2,7 @@
 
 import os, streams, options, sequtils
 import ../../../compiled/nim/enum_int_range_u
+import ../test_utils
 
 let r = EnumIntRangeU.fromFile("src/enum_int_range_u.bin")
 
