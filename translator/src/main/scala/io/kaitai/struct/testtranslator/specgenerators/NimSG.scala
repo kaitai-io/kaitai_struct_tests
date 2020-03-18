@@ -15,25 +15,28 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
   override def fileName(name: String): String = s"t${spec.id}.nim"
   override def header(): Unit = {
     out.puts(s"let r = ${className}.fromFile" + "(\"src/" + spec.data + "\")")
+    out.puts
+    out.puts("test \"" + s"${className}" + "\":")
+    out.inc
   }
   override def footer(): Unit = {
   }
   override def nullAssert(actual: expr): Unit = {
     val actStr = translateAct(actual)
-    out.puts(s"doAssert($actStr == none(typeof($actStr)))")
+    out.puts(s"check($actStr == none(typeof($actStr)))")
   }
   override def simpleAssert(check: TestAssert): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     val td = new TypeDetector(provider)
     val t = _root_.io.kaitai.struct.NimClassCompiler.ksToNim(td.detectType(check.actual))
-    out.puts(s"doAssert($actStr == $t($expStr))")
+    out.puts(s"check($actStr == $t($expStr))")
   }
   override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[expr]): Unit = {
     simpleAssert(check)
   }
   override def runParse(): Unit = {
-    importList.add("os, streams, options, sequtils")
+    importList.add("os, streams, options, sequtils, unittest")
     importList.add("../../../compiled/nim/" + spec.id)
     importList.add("../test_utils")
   }

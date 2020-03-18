@@ -6,3 +6,8 @@ proc toByte*(n: SomeInteger): byte =
     byte(255 + n + 1)
   else:
     byte(n)
+
+proc toString*(data: seq[byte]): string =
+  result = newStringOfCap(data.len)
+  for b in data:
+    result.add(b.char)
