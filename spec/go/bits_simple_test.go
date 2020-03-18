@@ -18,7 +18,6 @@ func TestBitsSimple(t *testing.T) {
 			t.Fatal("unexpected panic:", r)
 		}
 	}()
-		t.Fatal(nil)
 	f, err := os.Open("../../src/fixed_struct.bin")
 	if err != nil {
 		t.Fatal(err)
