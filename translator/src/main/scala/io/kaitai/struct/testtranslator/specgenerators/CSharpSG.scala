@@ -1,7 +1,7 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.{ClassTypeProvider, Utils}
-import _root_.io.kaitai.struct.datatype.{DataType, KSError}
+import _root_.io.kaitai.struct.datatype.{DataType, KSError, EndOfStreamError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.CSharpCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
@@ -34,6 +34,8 @@ class CSharpSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
   }
 
   override def runParseExpectError(exception: KSError): Unit = {
+    if (exception == EndOfStreamError)
+      importList.add("System.IO")
     out.puts(s"Assert.Throws<${CSharpCompiler.ksErrorName(exception)}>(")
     out.inc
     out.puts("delegate")
