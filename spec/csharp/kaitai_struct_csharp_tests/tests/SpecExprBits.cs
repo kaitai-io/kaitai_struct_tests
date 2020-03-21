@@ -12,7 +12,6 @@ namespace Kaitai
         {
             var r = ExprBits.FromFile(SourceFile("switch_opcodes.bin"));
 
-
             Assert.AreEqual(r.A, 2);
             Assert.AreEqual(r.EnumSeq, ExprBits.Items.Foo);
             Assert.AreEqual(r.ByteSize, new byte[] { 102, 111 });

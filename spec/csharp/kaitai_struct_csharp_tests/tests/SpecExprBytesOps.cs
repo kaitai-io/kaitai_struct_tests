@@ -12,7 +12,6 @@ namespace Kaitai
         {
             var r = ExprBytesOps.FromFile(SourceFile("fixed_struct.bin"));
 
-
             Assert.AreEqual(r.OneSize, 3);
             Assert.AreEqual(r.OneFirst, 80);
             Assert.AreEqual(r.OneMid, 65);

@@ -12,7 +12,6 @@ namespace Kaitai
         {
             var r = EnumLongRangeS.FromFile(SourceFile("enum_long_range_s.bin"));
 
-
             Assert.AreEqual(r.F1, EnumLongRangeS.Constants.LongMin);
             Assert.AreEqual(r.F2, EnumLongRangeS.Constants.IntBelowMin);
             Assert.AreEqual(r.F3, EnumLongRangeS.Constants.IntMin);

@@ -12,7 +12,6 @@ namespace Kaitai
         {
             var r = ValidNotParsedIf.FromFile(SourceFile("fixed_struct.bin"));
 
-
         }
     }
 }

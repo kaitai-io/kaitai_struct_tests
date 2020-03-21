@@ -12,7 +12,6 @@ namespace Kaitai
         {
             var r = IntegersMinMax.FromFile(SourceFile("integers_min_max.bin"));
 
-
             Assert.AreEqual(r.UnsignedMin.U1, 0);
             Assert.AreEqual(r.UnsignedMin.U2le, 0);
             Assert.AreEqual(r.UnsignedMin.U4le, 0);

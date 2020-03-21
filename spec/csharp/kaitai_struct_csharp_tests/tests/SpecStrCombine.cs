@@ -12,7 +12,6 @@ namespace Kaitai
         {
             var r = StrCombine.FromFile(SourceFile("term_strz.bin"));
 
-
             Assert.AreEqual(r.StrTerm, "foo");
             Assert.AreEqual(r.StrLimit, "bar|");
             Assert.AreEqual(r.StrEos, "baz@");

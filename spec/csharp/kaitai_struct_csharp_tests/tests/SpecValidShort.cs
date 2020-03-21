@@ -12,7 +12,6 @@ namespace Kaitai
         {
             var r = ValidShort.FromFile(SourceFile("fixed_struct.bin"));
 
-
         }
     }
 }

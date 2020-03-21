@@ -12,7 +12,6 @@ namespace Kaitai
         {
             var r = ExprCalcArrayOps.FromFile(SourceFile("fixed_struct.bin"));
 
-
             Assert.AreEqual(r.IntArraySize, 7);
             Assert.AreEqual(r.IntArrayFirst, 10);
             Assert.AreEqual(r.IntArrayMid, 25);

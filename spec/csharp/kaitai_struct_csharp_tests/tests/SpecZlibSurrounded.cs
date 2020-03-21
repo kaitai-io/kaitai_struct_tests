@@ -12,7 +12,6 @@ namespace Kaitai
         {
             var r = ZlibSurrounded.FromFile(SourceFile("zlib_surrounded.bin"));
 
-
             Assert.AreEqual(r.Zlib.Inflated, -1);
         }
     }

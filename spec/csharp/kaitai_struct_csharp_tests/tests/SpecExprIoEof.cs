@@ -12,7 +12,6 @@ namespace Kaitai
         {
             var r = ExprIoEof.FromFile(SourceFile("fixed_struct.bin"));
 
-
             Assert.AreEqual(r.Substream1.One, 1262698832);
             Assert.IsNull(r.Substream1.Two);
             Assert.AreEqual(r.Substream2.One, 4294914349);

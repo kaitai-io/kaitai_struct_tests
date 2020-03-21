@@ -12,7 +12,6 @@ namespace Kaitai
         {
             var r = EnumToIClassBorder1.FromFile(SourceFile("enum_0.bin"));
 
-
             Assert.AreEqual(r.Pet1, EnumToIClassBorder1.Animal.Cat);
             Assert.AreEqual(r.Pet2, EnumToIClassBorder1.Animal.Chicken);
             Assert.AreEqual(r.Checker.IsDog, true);

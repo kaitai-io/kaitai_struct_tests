@@ -12,7 +12,6 @@ namespace Kaitai
         {
             var r = ExprStrOps.FromFile(SourceFile("term_strz.bin"));
 
-
             Assert.AreEqual(r.One, "foo|b");
             Assert.AreEqual(r.OneLen, 5);
             Assert.AreEqual(r.OneRev, "b|oof");
