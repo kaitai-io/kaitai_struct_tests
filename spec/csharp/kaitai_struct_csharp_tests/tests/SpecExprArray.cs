@@ -18,10 +18,10 @@ namespace Kaitai
             Assert.AreEqual(r.AintMin, 49185);
             Assert.AreEqual(r.AintMax, 1123362332);
             Assert.AreEqual(r.AfloatSize, 3);
-            Assert.AreEqual(r.AfloatFirst, -2.6839530254859364E-121);
-            Assert.AreEqual(r.AfloatLast, -1.1103359815095273E-175);
-            Assert.AreEqual(r.AfloatMin, -8.754689149998834E+288);
-            Assert.AreEqual(r.AfloatMax, -1.1103359815095273E-175);
+            Assert.AreEqual(r.AfloatFirst, -2.6839530254859364E-121, 1e-6);
+            Assert.AreEqual(r.AfloatLast, -1.1103359815095273E-175, 1e-6);
+            Assert.AreEqual(r.AfloatMin, -8.754689149998834E+288, 1e-6);
+            Assert.AreEqual(r.AfloatMax, -1.1103359815095273E-175, 1e-6);
             Assert.AreEqual(r.AstrSize, 3);
             Assert.AreEqual(r.AstrFirst, "foo");
             Assert.AreEqual(r.AstrLast, "baz");
