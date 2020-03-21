@@ -31,7 +31,6 @@ class CSharpSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
 
   override def runParse(): Unit = {
     out.puts(s"var r = $className.FromFile(SourceFile(" + "\"" + spec.data + "\"));")
-    out.puts
   }
 
   override def runParseExpectError(exception: KSError): Unit = {
