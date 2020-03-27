@@ -3,9 +3,9 @@
 
 namespace Kaitai\Struct\Tests;
 
-class StrCombineTest extends TestCase {
-    public function testStrCombine() {
-        $r = StrCombine::fromFile(self::SRC_DIR_PATH . '/term_strz.bin');
+class CombineStrTest extends TestCase {
+    public function testCombineStr() {
+        $r = CombineStr::fromFile(self::SRC_DIR_PATH . '/term_strz.bin');
 
         $this->assertSame("foo", $r->strTerm());
         $this->assertSame("bar|", $r->strLimit());

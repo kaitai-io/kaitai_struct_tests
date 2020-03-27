@@ -4,11 +4,11 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::StrCombine;
+use rust::CombineStr;
 
 #[test]
-fn test_str_combine() {
-    if let Ok(r) = StrCombine::from_file("src/term_strz.bin") {
+fn test_combine_str() {
+    if let Ok(r) = CombineStr::from_file("src/term_strz.bin") {
 
         assert_eq!(r.str_term, "foo");
         assert_eq!(r.str_limit, "bar|");

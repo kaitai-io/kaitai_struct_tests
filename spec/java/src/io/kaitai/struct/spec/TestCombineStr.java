@@ -2,14 +2,14 @@
 
 package io.kaitai.struct.spec;
 
-import io.kaitai.struct.testformats.StrCombine;
+import io.kaitai.struct.testformats.CombineStr;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
-public class TestStrCombine extends CommonSpec {
+public class TestCombineStr extends CommonSpec {
 
     @Test
-    public void testStrCombine() throws Exception {
-        StrCombine r = StrCombine.fromFile(SRC_DIR + "term_strz.bin");
+    public void testCombineStr() throws Exception {
+        CombineStr r = CombineStr.fromFile(SRC_DIR + "term_strz.bin");
 
         assertEquals(r.strTerm(), "foo");
         assertEquals(r.strLimit(), "bar|");

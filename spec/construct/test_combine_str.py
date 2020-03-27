@@ -2,10 +2,10 @@
 
 import unittest
 
-from str_combine import _schema
+from combine_str import _schema
 
-class TestStrCombine(unittest.TestCase):
-    def test_str_combine(self):
+class TestCombineStr(unittest.TestCase):
+    def test_combine_str(self):
         r = _schema.parse_file('src/term_strz.bin')
 
         self.assertEqual(r.str_term, u"foo")

@@ -1,5 +1,5 @@
 meta:
-  id: str_combine
+  id: combine_str
   encoding: ASCII
 seq:
   - id: str_term

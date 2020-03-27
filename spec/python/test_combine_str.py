@@ -2,11 +2,11 @@
 
 import unittest
 
-from str_combine import StrCombine
+from combine_str import CombineStr
 
-class TestStrCombine(unittest.TestCase):
-    def test_str_combine(self):
-        with StrCombine.from_file('src/term_strz.bin') as r:
+class TestCombineStr(unittest.TestCase):
+    def test_combine_str(self):
+        with CombineStr.from_file('src/term_strz.bin') as r:
 
             self.assertEqual(r.str_term, u"foo")
             self.assertEqual(r.str_limit, u"bar|")

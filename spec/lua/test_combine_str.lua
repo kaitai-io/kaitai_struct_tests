@@ -2,12 +2,12 @@
 
 local luaunit = require("luaunit")
 
-require("str_combine")
+require("combine_str")
 
-TestStrCombine = {}
+TestCombineStr = {}
 
-function TestStrCombine:test_str_combine()
-    local r = StrCombine:from_file("src/term_strz.bin")
+function TestCombineStr:test_combine_str()
+    local r = CombineStr:from_file("src/term_strz.bin")
 
     luaunit.assertEquals(r.str_term, "foo")
     luaunit.assertEquals(r.str_limit, "bar|")

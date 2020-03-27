@@ -5,12 +5,12 @@ using NUnit.Framework;
 namespace Kaitai
 {
     [TestFixture]
-    public class SpecStrCombine : CommonSpec
+    public class SpecCombineStr : CommonSpec
     {
         [Test]
-        public void TestStrCombine()
+        public void TestCombineStr()
         {
-            var r = StrCombine.FromFile(SourceFile("term_strz.bin"));
+            var r = CombineStr.FromFile(SourceFile("term_strz.bin"));
 
             Assert.AreEqual(r.StrTerm, "foo");
             Assert.AreEqual(r.StrLimit, "bar|");

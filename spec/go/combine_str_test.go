@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestStrCombine(t *testing.T) {
+func TestCombineStr(t *testing.T) {
 	defer func() {
 		if r := recover(); r != nil {
 			debug.PrintStack()
@@ -23,7 +23,7 @@ func TestStrCombine(t *testing.T) {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r StrCombine
+	var r CombineStr
 	err = r.Read(s, &r, &r)
 	if err != nil {
 		t.Fatal(err)
