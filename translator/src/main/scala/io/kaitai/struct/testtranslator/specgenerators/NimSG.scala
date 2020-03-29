@@ -29,7 +29,7 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     val td = new TypeDetector(provider)
-    val t = _root_.io.kaitai.struct.NimClassCompiler.ksToNim(td.detectType(check.actual))
+    val t = _root_.io.kaitai.struct.languages.NimCompiler.ksToNim(td.detectType(check.actual))
     out.puts(s"check($actStr == $t($expStr))")
   }
   override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[expr]): Unit = {
