@@ -8,5 +8,5 @@ let r = EnumNegative.fromFile("src/enum_negative.bin")
 
 test "EnumNegative":
 
-  check(r.f1 == Constants())
-  check(r.f2 == Constants())
+  check(r.f1 == EnumNegative_Constants.negative_one)
+  check(r.f2 == EnumNegative_Constants.positive_one)

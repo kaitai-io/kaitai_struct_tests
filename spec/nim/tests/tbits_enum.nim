@@ -8,6 +8,6 @@ let r = BitsEnum.fromFile("src/fixed_struct.bin")
 
 test "BitsEnum":
 
-  check(r.one == Animal())
-  check(r.two == Animal())
-  check(r.three == Animal())
+  check(r.one == BitsEnum_Animal.platypus)
+  check(r.two == BitsEnum_Animal.horse)
+  check(r.three == BitsEnum_Animal.cat)

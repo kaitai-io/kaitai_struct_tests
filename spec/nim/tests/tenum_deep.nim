@@ -8,5 +8,5 @@ let r = EnumDeep.fromFile("src/enum_0.bin")
 
 test "EnumDeep":
 
-  check(r.pet1 == Container1animal())
-  check(r.pet2 == Container1container2animal())
+  check(r.pet1 == EnumDeep_Container1_Animal.cat)
+  check(r.pet2 == EnumDeep_Container1_Container2_Animal.hare)

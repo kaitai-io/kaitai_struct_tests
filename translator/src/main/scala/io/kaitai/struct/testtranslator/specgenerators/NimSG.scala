@@ -3,9 +3,11 @@ package io.kaitai.struct.testtranslator.specgenerators
 import _root_.io.kaitai.struct.{ClassTypeProvider, Utils}
 import _root_.io.kaitai.struct.exprlang.Ast.expr
 import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.datatype.DataType._
 import _root_.io.kaitai.struct.translators.{NimTranslator, TypeDetector}
 import _root_.io.kaitai.struct.Utils
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.languages.NimCompiler.{ksToNim, namespaced}
 
 class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   val className = Utils.upperCamelCase(spec.id)
@@ -29,8 +31,11 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     val td = new TypeDetector(provider)
-    val t = _root_.io.kaitai.struct.languages.NimCompiler.ksToNim(td.detectType(check.actual))
-    out.puts(s"check($actStr == $t($expStr))")
+    val ta = ksToNim(td.detectType(check.actual))
+    td.detectType(check.expected) match {
+      case t: EnumType => out.puts(s"check($actStr == $expStr)")
+      case _ => out.puts(s"check($actStr == $ta($expStr))")
+    }
   }
   override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[expr]): Unit = {
     simpleAssert(check)
@@ -49,7 +54,7 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
       importList.toList.map((x) => s"import $x").mkString("", "\n", "\n") + "\n" + out.result
   }
 
-  // Memebers declared here
+  // Members declared here
   def translateAct(x: expr) =
-    translator.translate(x).replace(Utils.lowerCamelCase(Main.INIT_OBJ_NAME), "r")
+    translator.translate(x).replace(Utils.lowerCamelCase(Main.INIT_OBJ_NAME), "r").replace("this.","");
 }

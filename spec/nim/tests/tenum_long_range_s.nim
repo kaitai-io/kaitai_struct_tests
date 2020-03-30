@@ -8,10 +8,10 @@ let r = EnumLongRangeS.fromFile("src/enum_long_range_s.bin")
 
 test "EnumLongRangeS":
 
-  check(r.f1 == Constants())
-  check(r.f2 == Constants())
-  check(r.f3 == Constants())
-  check(r.f4 == Constants())
-  check(r.f5 == Constants())
-  check(r.f6 == Constants())
-  check(r.f7 == Constants())
+  check(r.f1 == EnumLongRangeS_Constants.long_min)
+  check(r.f2 == EnumLongRangeS_Constants.int_below_min)
+  check(r.f3 == EnumLongRangeS_Constants.int_min)
+  check(r.f4 == EnumLongRangeS_Constants.zero)
+  check(r.f5 == EnumLongRangeS_Constants.int_max)
+  check(r.f6 == EnumLongRangeS_Constants.int_over_max)
+  check(r.f7 == EnumLongRangeS_Constants.long_max)

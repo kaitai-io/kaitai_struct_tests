@@ -8,7 +8,7 @@ let r = EnumOfValueInst.fromFile("src/enum_0.bin")
 
 test "EnumOfValueInst":
 
-  check(r.pet1 == Animal())
-  check(r.pet2 == Animal())
-  check(r.pet3 == Animal())
-  check(r.pet4 == Animal())
+  check(r.pet1 == EnumOfValueInst_Animal.cat)
+  check(r.pet2 == EnumOfValueInst_Animal.chicken)
+  check(r.pet3 == EnumOfValueInst_Animal.dog)
+  check(r.pet4 == EnumOfValueInst_Animal.dog)

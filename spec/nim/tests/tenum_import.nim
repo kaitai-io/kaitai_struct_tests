@@ -8,5 +8,5 @@ let r = EnumImport.fromFile("src/enum_0.bin")
 
 test "EnumImport":
 
-  check(r.pet1 == Enum0animal())
-  check(r.pet2 == EnumDeepcontainer1container2animal())
+  check(r.pet1 == Enum0_Animal.cat)
+  check(r.pet2 == EnumDeep_Container1_Container2_Animal.hare)

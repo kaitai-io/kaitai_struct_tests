@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Script for building all the tests for a specific target language
+# Usage: build-tests <lang>
+
+. ./config
+
+cd ../compiler
+sbt publishLocal
+cd ../tests/translator
+sbt "run -t $1 --all-specs"
+cd ..
+mkdir -p "spec/$1/tests"
+mv "spec/ks/out/$1"/* "spec/$1/tests"
+rm -rf "spec/ks/out"

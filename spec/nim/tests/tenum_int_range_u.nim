@@ -8,5 +8,5 @@ let r = EnumIntRangeU.fromFile("src/enum_int_range_u.bin")
 
 test "EnumIntRangeU":
 
-  check(r.f1 == Constants())
-  check(r.f2 == Constants())
+  check(r.f1 == EnumIntRangeU_Constants.zero)
+  check(r.f2 == EnumIntRangeU_Constants.int_max)

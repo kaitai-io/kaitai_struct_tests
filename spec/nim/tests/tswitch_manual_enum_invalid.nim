@@ -9,7 +9,7 @@ let r = SwitchManualEnumInvalid.fromFile("src/enum_negative.bin")
 test "SwitchManualEnumInvalid":
 
   check(len(r.opcodes) == int(2))
-  check(r.opcodes[0].code == CodeEnum(255))
+  check(r.opcodes[0].code == SwitchManualEnumInvalid_Opcode_CodeEnum(255))
   check(r.opcodes[0].body == none(typeof(r.opcodes[0].body)))
-  check(r.opcodes[1].code == CodeEnum(1))
+  check(r.opcodes[1].code == SwitchManualEnumInvalid_Opcode_CodeEnum(1))
   check(r.opcodes[1].body == none(typeof(r.opcodes[1].body)))

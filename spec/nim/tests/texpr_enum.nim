@@ -8,6 +8,6 @@ let r = ExprEnum.fromFile("src/term_strz.bin")
 
 test "ExprEnum":
 
-  check(r.constDog == Animal())
-  check(r.derivedBoom == Animal())
-  check(r.derivedDog == Animal())
+  check(r.constDog == ExprEnum_Animal.dog)
+  check(r.derivedBoom == ExprEnum_Animal.boom)
+  check(r.derivedDog == ExprEnum_Animal.dog)
