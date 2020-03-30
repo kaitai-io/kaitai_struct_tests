@@ -56,5 +56,5 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
 
   // Members declared here
   def translateAct(x: expr) =
-    translator.translate(x).replace(Utils.lowerCamelCase(Main.INIT_OBJ_NAME), "r").replace("this.","");
+    translator.translate(x).replace(Utils.lowerCamelCase(Main.INIT_OBJ_NAME), "r");
 }
