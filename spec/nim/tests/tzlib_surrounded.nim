@@ -9,3 +9,4 @@ let r = ZlibSurrounded.fromFile("src/zlib_surrounded.bin")
 test "ZlibSurrounded":
 
   check(r.zlib.inflated == int32(-1))
+  discard

@@ -14,3 +14,4 @@ test "ExprMod":
   check(r.modNegConst == int(4))
   check(r.modPosSeq == int(5))
   check(r.modNegSeq == int(2))
+  discard

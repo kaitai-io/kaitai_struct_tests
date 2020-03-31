@@ -10,3 +10,4 @@ test "ImportsAbs":
 
   check(r.len.value == int(80))
   check(len(r.body) == int(80))
+  discard

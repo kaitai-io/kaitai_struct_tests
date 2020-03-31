@@ -13,3 +13,4 @@ test "NavParent":
   check(len(r.index.entries) == int(2))
   check(r.index.entries[0].filename == string("FIRST___"))
   check(r.index.entries[1].filename == string("SECOND__"))
+  discard

@@ -14,3 +14,4 @@ test "BcdUserTypeBe":
   check(r.rtl.asStr == string("87654321"))
   check(r.leadingZeroLtr.asInt == int(123456))
   check(r.leadingZeroLtr.asStr == string("00123456"))
+  discard

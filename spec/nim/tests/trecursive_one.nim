@@ -9,6 +9,7 @@ let r = RecursiveOne.fromFile("src/fixed_struct.bin")
 test "RecursiveOne":
 
   check(r.one == uint8(80))
-  check(r.next.one == uint8(65))
-  check(r.next.next.one == uint8(67))
-  check(r.next.next.next.finisher == uint16(11595))
+  check((RecursiveOne(r.next)).one == uint8(65))
+  check((RecursiveOne((RecursiveOne(r.next)).next)).one == uint8(67))
+  check((RecursiveOne_Fini((RecursiveOne((RecursiveOne(r.next)).next)).next)).finisher == uint16(11595))
+  discard

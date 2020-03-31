@@ -9,4 +9,5 @@ let r = RepeatNStrz.fromFile("src/repeat_n_strz.bin")
 test "RepeatNStrz":
 
   check(r.qty == uint32(2))
-  check(r.lines == seq[string](@["foo", "bar"].mapIt(string(it))))
+  check(r.lines == seq[string](@["foo", "bar"]))
+  discard

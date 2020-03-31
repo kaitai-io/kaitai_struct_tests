@@ -25,3 +25,4 @@ test "ExprStrOps":
   check(r.toIR2 == int(86))
   check(r.toIR8 == int(465))
   check(r.toIR16 == int(18383))
+  discard

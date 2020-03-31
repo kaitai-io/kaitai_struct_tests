@@ -11,3 +11,4 @@ test "Imports0":
   check(r.two == uint8(80))
   check(r.hw.one == uint8(65))
   check(r.hwOne == uint8(65))
+  discard

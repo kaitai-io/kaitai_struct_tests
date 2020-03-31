@@ -9,3 +9,4 @@ let r = NavParentVsValueInst.fromFile("src/term_strz.bin")
 test "NavParentVsValueInst":
 
   check(r.s1 == string("foo"))
+  discard

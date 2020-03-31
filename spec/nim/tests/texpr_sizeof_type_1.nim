@@ -10,3 +10,4 @@ test "ExprSizeofType1":
 
   check(r.sizeofBlock == int((((1 + 4) + 2) + 4)))
   check(r.sizeofSubblock == int(4))
+  discard

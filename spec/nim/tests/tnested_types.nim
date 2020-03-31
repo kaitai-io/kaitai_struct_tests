@@ -11,3 +11,4 @@ test "NestedTypes":
   check(r.one.typedAtRoot.valueB == int8(80))
   check(r.one.typedHere.valueC == int8(65))
   check(r.two.valueB == int8(67))
+  discard

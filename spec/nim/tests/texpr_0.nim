@@ -10,3 +10,4 @@ test "Expr0":
 
   check(r.mustBeF7 == int(247))
   check(r.mustBeAbc123 == string("abc123"))
+  discard

@@ -8,18 +8,19 @@ let r = DefaultEndianExprInherited.fromFile("src/endian_expr.bin")
 
 test "DefaultEndianExprInherited":
 
-  check(r.docs[0].indicator == string(@[73, 73].mapIt(it.toByte).toString))
+  check(r.docs[0].indicator == string(@[73'u8, 73].toString))
   check(r.docs[0].main.insides.someInt == uint32(66))
   check(r.docs[0].main.insides.more.someInt1 == uint16(16896))
   check(r.docs[0].main.insides.more.someInt2 == uint16(66))
   check(r.docs[0].main.insides.more.someInst == uint32(66))
-  check(r.docs[1].indicator == string(@[77, 77].mapIt(it.toByte).toString))
+  check(r.docs[1].indicator == string(@[77'u8, 77].toString))
   check(r.docs[1].main.insides.someInt == uint32(66))
   check(r.docs[1].main.insides.more.someInt1 == uint16(66))
   check(r.docs[1].main.insides.more.someInt2 == uint16(16896))
   check(r.docs[1].main.insides.more.someInst == uint32(1107296256))
-  check(r.docs[2].indicator == string(@[88, 88].mapIt(it.toByte).toString))
+  check(r.docs[2].indicator == string(@[88'u8, 88].toString))
   check(r.docs[2].main.insides.someInt == uint32(66))
   check(r.docs[2].main.insides.more.someInt1 == uint16(66))
   check(r.docs[2].main.insides.more.someInt2 == uint16(16896))
   check(r.docs[2].main.insides.more.someInst == uint32(1107296256))
+  discard

@@ -9,3 +9,4 @@ let r = RepeatEosBit.fromFile("src/enum_0.bin")
 test "RepeatEosBit":
 
   check(len(r.nibbles) == int(16))
+  discard

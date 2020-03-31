@@ -15,3 +15,4 @@ test "EnumLongRangeS":
   check(r.f5 == EnumLongRangeS_Constants.int_max)
   check(r.f6 == EnumLongRangeS_Constants.int_over_max)
   check(r.f7 == EnumLongRangeS_Constants.long_max)
+  discard

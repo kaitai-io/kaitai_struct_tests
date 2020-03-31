@@ -12,3 +12,4 @@ test "CastNested":
   check(r.opcodes0StrValue == string("foobar"))
   check(r.opcodes1Int.value == uint8(66))
   check(r.opcodes1IntValue == uint8(66))
+  discard

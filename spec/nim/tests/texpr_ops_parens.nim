@@ -16,3 +16,4 @@ test "ExprOpsParens":
   check(r.boolEq == int(0))
   check(r.boolAnd == int(0))
   check(r.boolOr == int(1))
+  discard

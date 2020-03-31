@@ -22,3 +22,4 @@ test "BitsSimple":
   check(r.byte15To19 == uint64(293220057087'i64))
   check(r.byte20To27 == uint64(18446744073709551615'u64))
   check(r.testIfB1 == int8(123))
+  discard

@@ -23,3 +23,4 @@ test "StrCombine":
   check(r.eosOrCalc == string("bar"))
   check(r.eosOrCalcBytes == string("baz@"))
   check(r.calcOrCalcBytes == string("baz"))
+  discard

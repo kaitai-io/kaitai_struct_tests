@@ -12,3 +12,4 @@ test "InstanceIoUser":
   check(r.entries[0].name == string("the"))
   check(r.entries[1].name == string("rainy"))
   check(r.entries[2].name == string("day it is"))
+  discard

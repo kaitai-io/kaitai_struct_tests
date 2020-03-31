@@ -8,3 +8,4 @@ let r = DocstringsDocrefMulti.fromFile("src/fixed_struct.bin")
 
 test "DocstringsDocrefMulti":
 
+  discard

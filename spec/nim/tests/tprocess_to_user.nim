@@ -9,3 +9,4 @@ let r = ProcessToUser.fromFile("src/process_rotate.bin")
 test "ProcessToUser":
 
   check(r.buf1.str == string("Hello"))
+  discard

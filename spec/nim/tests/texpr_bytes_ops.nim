@@ -20,3 +20,4 @@ test "ExprBytesOps":
   check(r.twoLast == uint8(75))
   check(r.twoMin == uint8(65))
   check(r.twoMax == uint8(75))
+  discard

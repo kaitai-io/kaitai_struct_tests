@@ -9,3 +9,4 @@ let r = ParamsCallExtraParens.fromFile("src/term_strz.bin")
 test "ParamsCallExtraParens":
 
   check(r.buf1.body == string("foo|b"))
+  discard

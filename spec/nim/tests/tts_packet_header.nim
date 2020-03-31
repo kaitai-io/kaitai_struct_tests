@@ -15,3 +15,4 @@ test "TsPacketHeader":
   check(r.pid == uint64(33))
   check(r.transportScramblingControl == uint64(0))
   check(r.adaptationFieldControl == TsPacketHeader_AdaptationFieldControlEnum.payload_only)
+  discard

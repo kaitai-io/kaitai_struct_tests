@@ -12,3 +12,4 @@ test "EnumOfValueInst":
   check(r.pet2 == EnumOfValueInst_Animal.chicken)
   check(r.pet3 == EnumOfValueInst_Animal.dog)
   check(r.pet4 == EnumOfValueInst_Animal.dog)
+  discard

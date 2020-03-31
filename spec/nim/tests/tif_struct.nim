@@ -15,3 +15,4 @@ test "IfStruct":
   check(r.op2.argTuple.num2 == uint8(67))
   check(r.op3.opcode == uint8(83))
   check(r.op3.argStr.str == string("bar"))
+  discard

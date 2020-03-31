@@ -15,3 +15,4 @@ test "IndexToParamEos":
   check(r.blocks[0].buf == string("A"))
   check(r.blocks[1].buf == string("BBBBBBBB"))
   check(r.blocks[2].buf == string("CCCC"))
+  discard

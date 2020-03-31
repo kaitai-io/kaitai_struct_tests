@@ -10,3 +10,4 @@ test "ParamsEnum":
 
   check(r.one == ParamsEnum_Animal.cat)
   check(r.invokeWithParam.isCat == bool(true))
+  discard

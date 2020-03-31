@@ -8,3 +8,4 @@ let r = Docstrings.fromFile("src/fixed_struct.bin")
 
 test "Docstrings":
 
+  discard

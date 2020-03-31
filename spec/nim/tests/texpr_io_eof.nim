@@ -12,3 +12,4 @@ test "ExprIoEof":
   check(r.substream1.two == none(typeof(r.substream1.two)))
   check(r.substream2.one == uint32(4294914349'u32))
   check(r.substream2.two == uint32(1262698832))
+  discard

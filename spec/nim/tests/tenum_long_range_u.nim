@@ -12,3 +12,4 @@ test "EnumLongRangeU":
   check(r.f2 == EnumLongRangeU_Constants.int_max)
   check(r.f3 == EnumLongRangeU_Constants.int_over_max)
   check(r.f4 == EnumLongRangeU_Constants.long_max)
+  discard

@@ -10,3 +10,4 @@ test "EnumDeepLiterals":
 
   check(r.isPet1Ok == bool(true))
   check(r.isPet2Ok == bool(true))
+  discard

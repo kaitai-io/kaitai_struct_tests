@@ -9,3 +9,4 @@ let r = NavParentFalse2.fromFile("src/fixed_struct.bin")
 test "NavParentFalse2":
 
   check(r.parentless.foo == uint8(80))
+  discard

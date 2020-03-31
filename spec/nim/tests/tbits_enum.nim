@@ -11,3 +11,4 @@ test "BitsEnum":
   check(r.one == BitsEnum_Animal.platypus)
   check(r.two == BitsEnum_Animal.horse)
   check(r.three == BitsEnum_Animal.cat)
+  discard

@@ -12,3 +12,4 @@ test "ProcessCoerceUsertype2":
   check(r.records[0].buf.value == uint32(1094795585))
   check(r.records[1].flag == uint8(1))
   check(r.records[1].buf.value == uint32(1111638594))
+  discard

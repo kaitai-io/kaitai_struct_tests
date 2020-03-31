@@ -22,6 +22,7 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     out.inc
   }
   override def footer(): Unit = {
+    out.puts("discard")
   }
   override def nullAssert(actual: expr): Unit = {
     val actStr = translateAct(actual)
@@ -56,5 +57,5 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
 
   // Members declared here
   def translateAct(x: expr) =
-    translator.translate(x).replace(Utils.lowerCamelCase(Main.INIT_OBJ_NAME), "r");
+    translator.translate(x).replace(Utils.lowerCamelCase(Main.INIT_OBJ_NAME), "r").replace("this.", "");
 }

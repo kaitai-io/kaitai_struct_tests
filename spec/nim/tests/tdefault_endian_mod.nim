@@ -11,3 +11,4 @@ test "DefaultEndianMod":
   check(r.main.one == int32(1262698832))
   check(r.main.nest.two == int32(-52947))
   check(r.main.nestBe.two == int32(1346454347))
+  discard

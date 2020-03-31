@@ -12,3 +12,4 @@ test "StrPadTerm":
   check(r.strTerm == string("str2foo"))
   check(r.strTermAndPad == string("str+++3bar+++"))
   check(r.strTermInclude == string("str4baz@"))
+  discard

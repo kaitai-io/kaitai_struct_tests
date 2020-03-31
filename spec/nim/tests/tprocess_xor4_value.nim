@@ -8,5 +8,6 @@ let r = ProcessXor4Value.fromFile("src/process_xor_4.bin")
 
 test "ProcessXor4Value":
 
-  check(r.key == string(@[-20, -69, -93, 20].mapIt(it.toByte).toString))
-  check(r.buf == string(@[102, 111, 111, 32, 98, 97, 114].mapIt(it.toByte).toString))
+  check(r.key == string(@[-20'u8, -69, -93, 20].toString))
+  check(r.buf == string(@[102'u8, 111, 111, 32, 98, 97, 114].toString))
+  discard

@@ -20,3 +20,4 @@ test "Expr3":
   check(r.isStrGe == bool(false))
   check(r.isStrLt2 == bool(true))
   check(r.testNot == bool(true))
+  discard

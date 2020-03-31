@@ -9,3 +9,4 @@ let r = InstanceStd.fromFile("src/str_encodings.bin")
 test "InstanceStd":
 
   check(r.header == string("Some "))
+  discard

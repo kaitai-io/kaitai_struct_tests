@@ -10,7 +10,7 @@ test "ExprBits":
 
   check(r.a == uint64(2))
   check(r.enumSeq == ExprBits_Items.foo)
-  check(r.byteSize == string(@[102, 111].mapIt(it.toByte).toString))
+  check(r.byteSize == string(@[102'u8, 111].toString))
   check(len(r.repeatExpr) == int(2))
   check(r.repeatExpr[0] == int8(111))
   check(r.repeatExpr[1] == int8(98))
@@ -18,3 +18,4 @@ test "ExprBits":
   check(r.switchOnEndian.foo == int16(29184))
   check(r.enumInst == ExprBits_Items.bar)
   check(r.instPos == int8(111))
+  discard

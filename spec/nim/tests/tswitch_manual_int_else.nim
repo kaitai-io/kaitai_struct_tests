@@ -10,10 +10,11 @@ test "SwitchManualIntElse":
 
   check(len(r.opcodes) == int(4))
   check(r.opcodes[0].code == uint8(83))
-  check(r.opcodes[0].body.value == string("foo"))
+  check((SwitchManualIntElse_Opcode_Strval(r.opcodes[0].body)).value == string("foo"))
   check(r.opcodes[1].code == uint8(88))
-  check(r.opcodes[1].body.filler == uint32(66))
+  check((SwitchManualIntElse_Opcode_Noneval(r.opcodes[1].body)).filler == uint32(66))
   check(r.opcodes[2].code == uint8(89))
-  check(r.opcodes[2].body.filler == uint32(51966))
+  check((SwitchManualIntElse_Opcode_Noneval(r.opcodes[2].body)).filler == uint32(51966))
   check(r.opcodes[3].code == uint8(73))
-  check(r.opcodes[3].body.value == uint8(7))
+  check((SwitchManualIntElse_Opcode_Intval(r.opcodes[3].body)).value == uint8(7))
+  discard

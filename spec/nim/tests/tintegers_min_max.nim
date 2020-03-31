@@ -36,3 +36,4 @@ test "IntegersMinMax":
   check(r.signedMax.s2be == int16(32767))
   check(r.signedMax.s4be == int32(2147483647))
   check(r.signedMax.s8be == int64(9223372036854775807'i64))
+  discard

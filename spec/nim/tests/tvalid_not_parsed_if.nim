@@ -8,3 +8,4 @@ let r = ValidNotParsedIf.fromFile("src/fixed_struct.bin")
 
 test "ValidNotParsedIf":
 
+  discard

@@ -9,4 +9,5 @@ let r = NestedSameName.fromFile("src/repeat_n_struct.bin")
 test "NestedSameName":
 
   check(r.mainData.mainSize == int32(2))
-  check(r.mainData.foo.data == string(@[16, 0, 0, 0].mapIt(it.toByte).toString))
+  check(r.mainData.foo.data == string(@[16'u8, 0, 0, 0].toString))
+  discard

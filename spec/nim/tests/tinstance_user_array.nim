@@ -18,3 +18,4 @@ test "InstanceUserArray":
   check(r.userEntries[1].word2 == uint16(8738))
   check(r.userEntries[2].word1 == uint16(13107))
   check(r.userEntries[2].word2 == uint16(13107))
+  discard

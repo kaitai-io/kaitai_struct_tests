@@ -10,3 +10,4 @@ test "MultipleUse":
 
   check(r.t1.firstUse.value == int32(32))
   check(r.t2.secondUse.value == int32(32))
+  discard

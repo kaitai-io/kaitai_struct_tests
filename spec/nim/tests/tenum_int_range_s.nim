@@ -11,3 +11,4 @@ test "EnumIntRangeS":
   check(r.f1 == EnumIntRangeS_Constants.int_min)
   check(r.f2 == EnumIntRangeS_Constants.zero)
   check(r.f3 == EnumIntRangeS_Constants.int_max)
+  discard

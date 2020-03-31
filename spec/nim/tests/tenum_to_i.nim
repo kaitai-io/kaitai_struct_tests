@@ -13,3 +13,4 @@ test "EnumToI":
   check(r.pet1I == int(7))
   check(r.pet1Mod == int(32775))
   check(r.oneLtTwo == bool(true))
+  discard

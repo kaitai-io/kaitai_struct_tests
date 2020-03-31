@@ -26,3 +26,4 @@ test "ExprCalcArrayOps":
   check(r.strArrayLast == string("quatre"))
   check(r.strArrayMin == string("deux"))
   check(r.strArrayMax == string("un"))
+  discard

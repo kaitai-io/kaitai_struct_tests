@@ -23,3 +23,4 @@ test "ExprArray":
   check(r.astrLast == string("baz"))
   check(r.astrMin == string("bar"))
   check(r.astrMax == string("foo"))
+  discard

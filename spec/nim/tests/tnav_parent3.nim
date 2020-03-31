@@ -18,3 +18,4 @@ test "NavParent3":
   check(r.tags[1].ofs == uint32(35))
   check(r.tags[1].numItems == uint32(6))
   check(r.tags[1].tagContent.content == string("barbaz"))
+  discard

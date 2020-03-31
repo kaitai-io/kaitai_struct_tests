@@ -10,3 +10,4 @@ test "CastToImported":
 
   check(r.one.one == uint8(80))
   check(r.oneCasted.one == uint8(80))
+  discard

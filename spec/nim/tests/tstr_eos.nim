@@ -9,3 +9,4 @@ let r = StrEos.fromFile("src/term_strz.bin")
 test "StrEos":
 
   check(r.str == string("foo|bar|baz@"))
+  discard

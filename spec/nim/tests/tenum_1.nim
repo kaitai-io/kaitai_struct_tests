@@ -10,3 +10,4 @@ test "Enum1":
 
   check(r.main.submain.pet1 == Enum1_MainObj_Animal.cat)
   check(r.main.submain.pet2 == Enum1_MainObj_Animal.chicken)
+  discard

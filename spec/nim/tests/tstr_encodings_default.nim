@@ -12,3 +12,4 @@ test "StrEncodingsDefault":
   check(r.rest.str2 == string("\u3053\u3093\u306b\u3061\u306f"))
   check(r.rest.str3 == string("\u3053\u3093\u306b\u3061\u306f"))
   check(r.rest.str4 == string("\u2591\u2592\u2593"))
+  discard

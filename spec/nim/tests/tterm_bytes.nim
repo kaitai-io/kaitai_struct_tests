@@ -8,6 +8,7 @@ let r = TermBytes.fromFile("src/term_strz.bin")
 
 test "TermBytes":
 
-  check(r.s1 == string(@[102, 111, 111].mapIt(it.toByte).toString))
-  check(r.s2 == string(@[98, 97, 114].mapIt(it.toByte).toString))
-  check(r.s3 == string(@[124, 98, 97, 122, 64].mapIt(it.toByte).toString))
+  check(r.s1 == string(@[102'u8, 111, 111].toString))
+  check(r.s2 == string(@[98'u8, 97, 114].toString))
+  check(r.s3 == string(@[124'u8, 98, 97, 122, 64].toString))
+  discard

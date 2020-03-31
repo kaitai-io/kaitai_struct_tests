@@ -11,3 +11,4 @@ test "ParamsCallShort":
   check(r.buf1.body == string("foo|b"))
   check(r.buf2.body == string("ar|ba"))
   check(r.buf2.trailer == uint8(122))
+  discard

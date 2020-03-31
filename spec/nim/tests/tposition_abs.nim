@@ -10,3 +10,4 @@ test "PositionAbs":
 
   check(r.indexOffset == uint32(32))
   check(r.index.entry == string("foo"))
+  discard

@@ -9,3 +9,4 @@ let r = IfInstances.fromFile("src/fixed_struct.bin")
 test "IfInstances":
 
   check(r.neverHappens == none(typeof(r.neverHappens)))
+  discard

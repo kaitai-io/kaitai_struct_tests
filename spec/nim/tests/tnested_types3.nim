@@ -13,3 +13,4 @@ test "NestedTypes3":
   check(r.b.valueB == int8(67))
   check(r.b.aCc.valueCc == int8(75))
   check(r.b.aCD.valueD == int8(45))
+  discard

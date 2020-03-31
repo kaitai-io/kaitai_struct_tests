@@ -9,3 +9,4 @@ let r = HelloWorld.fromFile("src/fixed_struct.bin")
 test "HelloWorld":
 
   check(r.one == uint8(80))
+  discard

@@ -9,3 +9,4 @@ let r = ExprSizeofType0.fromFile("src/fixed_struct.bin")
 test "ExprSizeofType0":
 
   check(r.sizeofBlock == int(((1 + 4) + 2)))
+  discard

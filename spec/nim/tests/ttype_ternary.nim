@@ -9,3 +9,4 @@ let r = TypeTernary.fromFile("src/term_strz.bin")
 test "TypeTernary":
 
   check(r.dif.value == uint8(101))
+  discard

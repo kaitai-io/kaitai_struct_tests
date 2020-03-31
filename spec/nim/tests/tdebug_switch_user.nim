@@ -9,4 +9,5 @@ let r = DebugSwitchUser.fromFile("src/nav_parent_switch.bin")
 test "DebugSwitchUser":
 
   check(r.code == uint8(1))
-  check(r.data.val == int16(-190))
+  check((DebugSwitchUser_One(r.data)).val == int16(-190))
+  discard

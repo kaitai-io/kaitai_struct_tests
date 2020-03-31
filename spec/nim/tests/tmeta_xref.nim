@@ -8,3 +8,4 @@ let r = MetaXref.fromFile("src/fixed_struct.bin")
 
 test "MetaXref":
 
+  discard

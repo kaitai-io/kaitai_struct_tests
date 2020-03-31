@@ -10,4 +10,5 @@ test "NavParentSwitchCast":
 
   check(r.foo.bufType == uint8(1))
   check(r.foo.flag == uint8(7))
-  check(r.foo.buf.bar.flag == uint8(7))
+  check((NavParentSwitchCast_Foo_One(r.foo.buf)).bar.flag == uint8(7))
+  discard

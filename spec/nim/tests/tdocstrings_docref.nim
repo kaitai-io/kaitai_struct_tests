@@ -8,3 +8,4 @@ let r = DocstringsDocref.fromFile("src/fixed_struct.bin")
 
 test "DocstringsDocref":
 
+  discard

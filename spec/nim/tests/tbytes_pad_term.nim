@@ -8,7 +8,8 @@ let r = BytesPadTerm.fromFile("src/str_pad_term.bin")
 
 test "BytesPadTerm":
 
-  check(r.strPad == string(@[115, 116, 114, 49].mapIt(it.toByte).toString))
-  check(r.strTerm == string(@[115, 116, 114, 50, 102, 111, 111].mapIt(it.toByte).toString))
-  check(r.strTermAndPad == string(@[115, 116, 114, 43, 43, 43, 51, 98, 97, 114, 43, 43, 43].mapIt(it.toByte).toString))
-  check(r.strTermInclude == string(@[115, 116, 114, 52, 98, 97, 122, 64].mapIt(it.toByte).toString))
+  check(r.strPad == string(@[115'u8, 116, 114, 49].toString))
+  check(r.strTerm == string(@[115'u8, 116, 114, 50, 102, 111, 111].toString))
+  check(r.strTermAndPad == string(@[115'u8, 116, 114, 43, 43, 43, 51, 98, 97, 114, 43, 43, 43].toString))
+  check(r.strTermInclude == string(@[115'u8, 116, 114, 52, 98, 97, 122, 64].toString))
+  discard

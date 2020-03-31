@@ -10,4 +10,5 @@ test "ProcessCoerceSwitch":
 
   check(r.bufType == uint8(0))
   check(r.flag == uint8(0))
-  check(r.buf.bar == string(@[65, 65, 65, 65].mapIt(it.toByte).toString))
+  check((ProcessCoerceSwitch_Foo(r.buf)).bar == string(@[65'u8, 65, 65, 65].toString))
+  discard

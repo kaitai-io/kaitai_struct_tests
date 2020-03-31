@@ -13,3 +13,4 @@ test "RepeatEosStruct":
   check(r.chunks[0].len == uint32(66))
   check(r.chunks[1].offset == uint32(66))
   check(r.chunks[1].len == uint32(2069))
+  discard

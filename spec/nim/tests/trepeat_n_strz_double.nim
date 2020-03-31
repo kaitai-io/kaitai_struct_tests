@@ -9,5 +9,6 @@ let r = RepeatNStrzDouble.fromFile("src/repeat_n_strz.bin")
 test "RepeatNStrzDouble":
 
   check(r.qty == uint32(2))
-  check(r.lines1 == seq[string](@["foo"].mapIt(string(it))))
-  check(r.lines2 == seq[string](@["bar"].mapIt(string(it))))
+  check(r.lines1 == seq[string](@["foo"]))
+  check(r.lines2 == seq[string](@["bar"]))
+  discard

@@ -25,3 +25,4 @@ test "Expr2":
   check(r.str2Tuple5.byte1 == uint8(32))
   check(r.str2Tuple5.byte2 == uint8(65))
   check(r.str2Tuple5.avg == int(48))
+  discard

@@ -12,3 +12,4 @@ test "ProcessRepeatUsertype":
   check(r.blocks[0].b == int8(20))
   check(r.blocks[1].a == int32(279597642))
   check(r.blocks[1].b == int8(68))
+  discard

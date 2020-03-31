@@ -8,3 +8,4 @@ let r = FixedContents.fromFile("src/fixed_struct.bin")
 
 test "FixedContents":
 
+  discard

@@ -8,5 +8,6 @@ let r = ProcessRepeatBytes.fromFile("src/process_xor_4.bin")
 
 test "ProcessRepeatBytes":
 
-  check(r.bufs[0] == string(@[114, 37, 61, -118, 20].mapIt(it.toByte).toString))
-  check(r.bufs[1] == string(@[74, 82, -86, 16, 68].mapIt(it.toByte).toString))
+  check(r.bufs[0] == string(@[114'u8, 37, 61, -118, 20].toString))
+  check(r.bufs[1] == string(@[74'u8, 82, -86, 16, 68].toString))
+  discard

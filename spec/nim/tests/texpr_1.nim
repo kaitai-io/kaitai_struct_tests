@@ -12,3 +12,4 @@ test "Expr1":
   check(r.lenOf1Mod == int(8))
   check(r.str1 == string("Some ASC"))
   check(r.str1Len == int(8))
+  discard

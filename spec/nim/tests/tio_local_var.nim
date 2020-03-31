@@ -8,5 +8,6 @@ let r = IoLocalVar.fromFile("src/full256.bin")
 
 test "IoLocalVar":
 
-  check(r.skip == string(@[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19].mapIt(it.toByte).toString))
+  check(r.skip == string(@[0'u8, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19].toString))
   check(r.followup == uint8(20))
+  discard

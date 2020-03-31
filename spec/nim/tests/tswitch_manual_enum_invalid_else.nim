@@ -10,6 +10,7 @@ test "SwitchManualEnumInvalidElse":
 
   check(len(r.opcodes) == int(2))
   check(r.opcodes[0].code == SwitchManualEnumInvalidElse_Opcode_CodeEnum(255))
-  check(r.opcodes[0].body.value == int8(123))
+  check((SwitchManualEnumInvalidElse_Opcode_Defval(r.opcodes[0].body)).value == int8(123))
   check(r.opcodes[1].code == SwitchManualEnumInvalidElse_Opcode_CodeEnum(1))
-  check(r.opcodes[1].body.value == int8(123))
+  check((SwitchManualEnumInvalidElse_Opcode_Defval(r.opcodes[1].body)).value == int8(123))
+  discard

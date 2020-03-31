@@ -14,3 +14,4 @@ test "IfValues":
   check(r.codes[1].halfOpcode == none(typeof(r.codes[1].halfOpcode)))
   check(r.codes[2].opcode == uint8(67))
   check(r.codes[2].halfOpcode == none(typeof(r.codes[2].halfOpcode)))
+  discard

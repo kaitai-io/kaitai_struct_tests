@@ -28,3 +28,4 @@ test "FixedStruct":
   check(r.hdr.sint16be == int16(-66))
   check(r.hdr.sint32be == int32(-66))
   check(r.hdr.sint64be == int64(-66))
+  discard

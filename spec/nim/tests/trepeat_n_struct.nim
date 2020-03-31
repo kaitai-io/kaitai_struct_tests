@@ -13,3 +13,4 @@ test "RepeatNStruct":
   check(r.chunks[0].len == uint32(8312))
   check(r.chunks[1].offset == uint32(8328))
   check(r.chunks[1].len == uint32(15))
+  discard

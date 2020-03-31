@@ -12,3 +12,4 @@ test "StrLiterals2":
   check(r.dollar2 == string("${foo}"))
   check(r.hash == string("#{foo}"))
   check(r.atSign == string("@foo"))
+  discard

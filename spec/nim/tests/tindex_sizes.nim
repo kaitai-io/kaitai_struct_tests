@@ -15,3 +15,4 @@ test "IndexSizes":
   check(r.bufs[0] == string("A"))
   check(r.bufs[1] == string("BBBBBBBB"))
   check(r.bufs[2] == string("CCCC"))
+  discard

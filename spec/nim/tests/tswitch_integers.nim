@@ -17,3 +17,4 @@ test "SwitchIntegers":
   check(r.opcodes[2].body == uint64(4919))
   check(r.opcodes[3].code == uint8(8))
   check(r.opcodes[3].body == uint64(4919))
+  discard

@@ -8,3 +8,4 @@ let r = MetaTags.fromFile("src/fixed_struct.bin")
 
 test "MetaTags":
 
+  discard

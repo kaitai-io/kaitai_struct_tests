@@ -9,3 +9,4 @@ let r = DefaultBigEndian.fromFile("src/enum_0.bin")
 test "DefaultBigEndian":
 
   check(r.one == uint32(117440512))
+  discard

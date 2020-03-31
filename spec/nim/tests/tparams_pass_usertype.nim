@@ -9,4 +9,5 @@ let r = ParamsPassUsertype.fromFile("src/position_in_seq.bin")
 test "ParamsPassUsertype":
 
   check(r.first.foo == uint8(1))
-  check(r.one.buf == string(@[2].mapIt(it.toByte).toString))
+  check(r.one.buf == string(@[2'u8, ].toString))
+  discard

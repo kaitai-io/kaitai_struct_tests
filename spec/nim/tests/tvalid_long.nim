@@ -8,3 +8,4 @@ let r = ValidLong.fromFile("src/fixed_struct.bin")
 
 test "ValidLong":
 
+  discard

@@ -9,3 +9,4 @@ let r = NonStandard.fromFile("src/fixed_struct.bin")
 test "NonStandard":
 
   check(r.foo == uint8(80))
+  discard

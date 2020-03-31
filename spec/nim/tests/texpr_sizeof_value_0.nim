@@ -13,3 +13,4 @@ test "ExprSizeofValue0":
   check(r.sizeofBlockA == int(1))
   check(r.sizeofBlockB == int(4))
   check(r.sizeofBlockC == int(2))
+  discard

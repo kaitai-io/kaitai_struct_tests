@@ -11,3 +11,4 @@ test "TermStrz":
   check(r.s1 == string("foo"))
   check(r.s2 == string("bar"))
   check(r.s3 == string("|baz@"))
+  discard

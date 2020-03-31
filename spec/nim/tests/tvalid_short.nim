@@ -8,3 +8,4 @@ let r = ValidShort.fromFile("src/fixed_struct.bin")
 
 test "ValidShort":
 
+  discard

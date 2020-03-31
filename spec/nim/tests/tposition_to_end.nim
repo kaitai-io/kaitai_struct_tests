@@ -10,3 +10,4 @@ test "PositionToEnd":
 
   check(r.index.foo == uint32(66))
   check(r.index.bar == uint32(4660))
+  discard

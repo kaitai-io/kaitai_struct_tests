@@ -10,6 +10,7 @@ test "NestedSameName2":
 
   check(r.version == uint32(66))
   check(r.mainData.mainSize == int32(2))
-  check(r.mainData.foo.data1 == string(@[17, 17, 17, 17].mapIt(it.toByte).toString))
+  check(r.mainData.foo.data1 == string(@[17'u8, 17, 17, 17].toString))
   check(r.dummy.dummySize == int32(3))
-  check(r.dummy.foo.data2 == string(@[34, 34, 34, 34, 34, 34].mapIt(it.toByte).toString))
+  check(r.dummy.foo.data2 == string(@[34'u8, 34, 34, 34, 34, 34].toString))
+  discard

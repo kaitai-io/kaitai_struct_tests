@@ -16,3 +16,4 @@ test "FloatToI":
   check(r.float2I == int(1))
   check(r.float3I == int(1))
   check(r.float4I == int(-2))
+  discard

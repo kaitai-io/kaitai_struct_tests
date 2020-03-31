@@ -8,5 +8,6 @@ let r = RepeatUntilS4.fromFile("src/repeat_until_s4.bin")
 
 test "RepeatUntilS4":
 
-  check(r.entries == seq[int32](@[66, 4919, -251658241, -1].mapIt(int(it))))
+  check(r.entries == seq[int32](@[66, 4919, -251658241, -1]))
   check(r.afterall == string("foobar"))
+  discard

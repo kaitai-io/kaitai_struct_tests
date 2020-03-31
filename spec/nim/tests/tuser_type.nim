@@ -10,3 +10,4 @@ test "UserType":
 
   check(r.one.width == uint32(66))
   check(r.one.height == uint32(4919))
+  discard

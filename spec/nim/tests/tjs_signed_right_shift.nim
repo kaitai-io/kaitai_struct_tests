@@ -10,3 +10,4 @@ test "JsSignedRightShift":
 
   check(r.shouldBe40000000 == int(1073741824))
   check(r.shouldBeA00000 == int(10485760))
+  discard

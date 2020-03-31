@@ -10,5 +10,6 @@ test "SwitchElseOnly":
 
   check(r.opcode == int8(83))
   check(r.primByte == int8(102))
-  check(r.struct.value == string(@[111, 111, 98, 97].mapIt(it.toByte).toString))
-  check(r.structSized.value == string(@[114, 0, 73, 66].mapIt(it.toByte).toString))
+  check(r.struct.value == string(@[111'u8, 111, 98, 97].toString))
+  check(r.structSized.value == string(@[114'u8, 0, 73, 66].toString))
+  discard

@@ -12,3 +12,4 @@ test "StrPadTermEmpty":
   check(r.strTerm == string(""))
   check(r.strTermAndPad == string(""))
   check(r.strTermInclude == string("@"))
+  discard

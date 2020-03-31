@@ -28,3 +28,4 @@ test "Integers":
   check(r.sint16be == int16(-66))
   check(r.sint32be == int32(-66))
   check(r.sint64be == int64(-66))
+  discard

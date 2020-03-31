@@ -12,6 +12,7 @@ test "InstanceStdArray":
   check(r.qtyEntries == uint32(3))
   check(r.entrySize == uint32(4))
   check(len(r.entries) == int(3))
-  check(r.entries[0] == string(@[17, 17, 17, 17].mapIt(it.toByte).toString))
-  check(r.entries[1] == string(@[34, 34, 34, 34].mapIt(it.toByte).toString))
-  check(r.entries[2] == string(@[51, 51, 51, 51].mapIt(it.toByte).toString))
+  check(r.entries[0] == string(@[17'u8, 17, 17, 17].toString))
+  check(r.entries[1] == string(@[34'u8, 34, 34, 34].toString))
+  check(r.entries[2] == string(@[51'u8, 51, 51, 51].toString))
+  discard

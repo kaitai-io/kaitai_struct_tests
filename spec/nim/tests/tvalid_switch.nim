@@ -8,3 +8,4 @@ let r = ValidSwitch.fromFile("src/fixed_struct.bin")
 
 test "ValidSwitch":
 
+  discard

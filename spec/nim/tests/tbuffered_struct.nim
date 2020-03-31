@@ -15,3 +15,4 @@ test "BufferedStruct":
   check(r.block2.number1 == uint32(68))
   check(r.block2.number2 == uint32(69))
   check(r.finisher == uint32(238))
+  discard
