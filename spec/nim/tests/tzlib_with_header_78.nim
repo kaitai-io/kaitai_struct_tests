@@ -8,5 +8,5 @@ let r = ZlibWithHeader78.fromFile("src/zlib_with_header_78.bin")
 
 test "ZlibWithHeader78":
 
-  check(r.data == string(@[97'u8, 32, 113, 117, 105, 99, 107, 32, 98, 114, 111, 119, 110, 32, 102, 111, 120, 32, 106, 117, 109, 112, 115, 32, 111, 118, 101, 114].toString))
+  check(r.data == string(@[97'i8, 32, 113, 117, 105, 99, 107, 32, 98, 114, 111, 119, 110, 32, 102, 111, 120, 32, 106, 117, 109, 112, 115, 32, 111, 118, 101, 114].toString))
   discard

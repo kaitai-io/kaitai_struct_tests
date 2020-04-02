@@ -8,7 +8,7 @@ let r = EnumToIClassBorder1.fromFile("src/enum_0.bin")
 
 test "EnumToIClassBorder1":
 
-  check(r.pet1 == EnumToIClassBorder1_Animal.cat)
-  check(r.pet2 == EnumToIClassBorder1_Animal.chicken)
+  check(r.pet1 == EnumToIClassBorder1_Animal(cat))
+  check(r.pet2 == EnumToIClassBorder1_Animal(chicken))
   check(r.checker.isDog == bool(true))
   discard

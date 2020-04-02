@@ -14,7 +14,7 @@ test "BitsByteAligned":
   check(r.three == bool(false))
   check(r.byte2 == uint8(75))
   check(r.four == uint64(2892))
-  check(r.byte3 == string(@[-1'u8, ].toString))
+  check(r.byte3 == string(@[-1'i8, ].toString))
   check(r.fullByte == uint64(255))
   check(r.byte4 == uint8(80))
   discard

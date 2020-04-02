@@ -8,6 +8,6 @@ let r = EnumFancy.fromFile("src/enum_0.bin")
 
 test "EnumFancy":
 
-  check(r.pet1 == EnumFancy_Animal.cat)
-  check(r.pet2 == EnumFancy_Animal.chicken)
+  check(r.pet1 == EnumFancy_Animal(cat))
+  check(r.pet2 == EnumFancy_Animal(chicken))
   discard

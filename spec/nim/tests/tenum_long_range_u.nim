@@ -8,8 +8,8 @@ let r = EnumLongRangeU.fromFile("src/enum_long_range_u.bin")
 
 test "EnumLongRangeU":
 
-  check(r.f1 == EnumLongRangeU_Constants.zero)
-  check(r.f2 == EnumLongRangeU_Constants.int_max)
-  check(r.f3 == EnumLongRangeU_Constants.int_over_max)
-  check(r.f4 == EnumLongRangeU_Constants.long_max)
+  check(r.f1 == EnumLongRangeU_Constants(zero))
+  check(r.f2 == EnumLongRangeU_Constants(int_max))
+  check(r.f3 == EnumLongRangeU_Constants(int_over_max))
+  check(r.f4 == EnumLongRangeU_Constants(long_max))
   discard

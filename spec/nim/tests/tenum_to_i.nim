@@ -8,8 +8,8 @@ let r = EnumToI.fromFile("src/enum_0.bin")
 
 test "EnumToI":
 
-  check(r.pet1 == EnumToI_Animal.cat)
-  check(r.pet2 == EnumToI_Animal.chicken)
+  check(r.pet1 == EnumToI_Animal(cat))
+  check(r.pet2 == EnumToI_Animal(chicken))
   check(r.pet1I == int(7))
   check(r.pet1Mod == int(32775))
   check(r.oneLtTwo == bool(true))

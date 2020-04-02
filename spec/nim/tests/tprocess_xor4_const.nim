@@ -8,6 +8,6 @@ let r = ProcessXor4Const.fromFile("src/process_xor_4.bin")
 
 test "ProcessXor4Const":
 
-  check(r.key == string(@[-20'u8, -69, -93, 20].toString))
-  check(r.buf == string(@[102'u8, 111, 111, 32, 98, 97, 114].toString))
+  check(r.key == string(@[-20'i8, -69, -93, 20].toString))
+  check(r.buf == string(@[102'i8, 111, 111, 32, 98, 97, 114].toString))
   discard

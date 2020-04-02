@@ -8,8 +8,8 @@ let r = ExprBytesCmp.fromFile("src/fixed_struct.bin")
 
 test "ExprBytesCmp":
 
-  check(r.one == string(@[80'u8, ].toString))
-  check(r.two == string(@[65'u8, 67, 75].toString))
+  check(r.one == string(@[80'i8, ].toString))
+  check(r.two == string(@[65'i8, 67, 75].toString))
   check(r.isEq == bool(true))
   check(r.isNe == bool(false))
   check(r.isLt == bool(true))

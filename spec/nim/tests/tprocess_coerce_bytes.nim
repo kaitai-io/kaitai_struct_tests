@@ -9,7 +9,7 @@ let r = ProcessCoerceBytes.fromFile("src/process_coerce_bytes.bin")
 test "ProcessCoerceBytes":
 
   check(r.records[0].flag == uint8(0))
-  check(r.records[0].buf == string(@[65'u8, 65, 65, 65].toString))
+  check(r.records[0].buf == string(@[65'i8, 65, 65, 65].toString))
   check(r.records[1].flag == uint8(1))
-  check(r.records[1].buf == string(@[66'u8, 66, 66, 66].toString))
+  check(r.records[1].buf == string(@[66'i8, 66, 66, 66].toString))
   discard

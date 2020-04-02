@@ -8,15 +8,15 @@ let r = DefaultEndianExprIsLe.fromFile("src/endian_expr.bin")
 
 test "DefaultEndianExprIsLe":
 
-  check(r.docs[0].indicator == string(@[73'u8, 73].toString))
+  check(r.docs[0].indicator == string(@[73'i8, 73].toString))
   check(r.docs[0].main.someInt == uint32(66))
   check(r.docs[0].main.someIntBe == uint16(66))
   check(r.docs[0].main.someIntLe == uint16(66))
-  check(r.docs[1].indicator == string(@[77'u8, 77].toString))
+  check(r.docs[1].indicator == string(@[77'i8, 77].toString))
   check(r.docs[1].main.someInt == uint32(66))
   check(r.docs[1].main.someIntBe == uint16(66))
   check(r.docs[1].main.someIntLe == uint16(66))
-  check(r.docs[2].indicator == string(@[88'u8, 88].toString))
+  check(r.docs[2].indicator == string(@[88'i8, 88].toString))
   check(r.docs[2].main.someInt == uint32(66))
   check(r.docs[2].main.someIntBe == uint16(66))
   check(r.docs[2].main.someIntLe == uint16(66))
