@@ -1,0 +1,7 @@
+id: nested_type_param
+data: fixed_struct.bin
+asserts:
+  - actual: seq_block.repeated_thing[0]
+    expected: -52947
+  - actual: seq_block.repeated_thing[1]
+    expected: 1262698832
