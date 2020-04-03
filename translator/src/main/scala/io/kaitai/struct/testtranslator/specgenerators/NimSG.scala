@@ -26,7 +26,38 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
   }
   override def nullAssert(actual: expr): Unit = {
     val actStr = translateAct(actual)
-    out.puts(s"check($actStr == none(typeof($actStr)))")
+    val td = new TypeDetector(provider)
+    val expStr = td.detectType(actual) match {
+      case Int1Type(false) => "0'u8"
+      case IntMultiType(false, Width2, _) => "0'u16"
+      case IntMultiType(false, Width4, _) => "0'u32"
+      case IntMultiType(false, Width8, _) => "0'u64"
+
+      case Int1Type(true) => "0'i8"
+
+      case IntMultiType(true, Width2, _) => "0'i16"
+      case IntMultiType(true, Width4, _) => "0'i32"
+      case IntMultiType(true, Width8, _) => "0'i64"
+
+      case FloatMultiType(Width4, _) => "0'f32"
+      case FloatMultiType(Width8, _) => "0'f64"
+
+      case BitsType(_) => "0'u64"
+
+      case _: BooleanType => "false"
+      case CalcIntType => "0"
+      case CalcFloatType => "0'f64"
+
+      case _: StrType => "\"\""
+      case _: BytesType => "\"\""
+
+      case KaitaiStructType | CalcKaitaiStructType => "nil"
+      case KaitaiStreamType => "nil"
+
+      case t: UserType => "nil"
+    }
+
+    out.puts(s"check($actStr == $expStr)")
   }
   override def simpleAssert(check: TestAssert): Unit = {
     val actStr = translateAct(check.actual)
