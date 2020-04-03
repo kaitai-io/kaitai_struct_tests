@@ -1,18 +1,15 @@
 meta:
-  id: test
-  endian: be
+  id: nested_type_param
 seq:
-  - id: seq_block
-    type: test::my_type(2)
+  - id: main_seq
+    type: nested_type_param::my_type(5)
 types:
   my_type:
     params:
-      - id: repeat_count
-        type: s4
+      - id: my_len
+        type: u4
     seq:
-      - id: world
-        type: s4
-      - id: repeated_thing
-        type: s4
-        repeat: expr
-        repeat-expr: repeat_count
+      - id: body
+        type: str
+        size: my_len
+        encoding: UTF-8
