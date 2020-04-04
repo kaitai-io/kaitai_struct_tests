@@ -13,4 +13,5 @@ translator-tests eol=lf
 *.ksy linguist-language=yaml
 
 # Mark generated files for GitHub
-spec/** linguist-generated
+spec/** linguist-generated=true
+spec/ks/*.kst linguist-generated=false
