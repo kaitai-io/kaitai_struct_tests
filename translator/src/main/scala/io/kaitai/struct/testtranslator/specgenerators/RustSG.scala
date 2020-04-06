@@ -10,7 +10,6 @@ import _root_.io.kaitai.struct.translators.RustTranslator
 
 class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   val className = RustCompiler.type2class(spec.id)
-  val importList = new CppImportList
   val translator = new RustTranslator(provider, importList, RuntimeConfig())
 
   override def fileName(name: String): String = s"test_$name.rs"
