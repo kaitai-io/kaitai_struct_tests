@@ -194,8 +194,9 @@ class CppBuilder < PartialBuilder
             # files. However, msbuild logs do not offer any way to get
             # to know the original culprit, so we'll just ignore all
             # .h file problems for now.
-            next if filename =~ /\.h$/
-
+            if filename =~ /(.*)\.h$/
+              filename = "#{$1}.cpp"
+            end
             list << filename
           when /^\s*(.*?)\.obj : error LNK2019:/
             filename = "#{$1}.cpp"
