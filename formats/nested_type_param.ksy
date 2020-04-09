@@ -12,4 +12,4 @@ types:
       - id: body
         type: str
         size: my_len
-        encoding: UTF-8
+        encoding: ASCII
