@@ -12,7 +12,7 @@ function require_err_handler(t)
     return function(err)
         local first = t:sub(1, 1)
         local rest = t:sub(2)
-        local class_name = first:upper() .. rest:gsub("_(%l)", function(c) return c:upper() end)
+        local class_name = first:upper() .. rest:gsub("_(%w)", function(c) return c:upper() end)
         _G[class_name] = {}
         _G[class_name][t] = function()
             luaunit.fail(err)
