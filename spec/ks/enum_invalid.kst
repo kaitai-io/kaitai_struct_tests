@@ -2,6 +2,6 @@ id: enum_invalid
 data: term_strz.bin
 asserts:
   - actual: pet_1
-    expected: animal::dog
+    expected: enum_invalid::animal::dog
   - actual: pet_2
-    expected: 'null'
+    expected: 0x6f
