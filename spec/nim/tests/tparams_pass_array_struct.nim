@@ -9,6 +9,6 @@ let r = ParamsPassArrayStruct.fromFile("src/position_to_end.bin")
 test "ParamsPassArrayStruct":
 
   check(len(r.passStructs.structs) == int(2))
-  check(r.passStructs.structs[0].f == uint8(1))
-  check(r.passStructs.structs[1].b == uint8(2))
+  check((ParamsPassArrayStruct_Foo(r.passStructs.structs[0])).f == uint8(1))
+  check((ParamsPassArrayStruct_Bar(r.passStructs.structs[1])).b == uint8(2))
   discard
