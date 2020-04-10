@@ -10,7 +10,7 @@ function TestStrEncodingsDefault:test_str_encodings_default()
     local r = StrEncodingsDefault:from_file("src/str_encodings.bin")
 
     luaunit.assertEquals(r.str1, "Some ASCII")
-    luaunit.assertEquals(r.rest.str2, "\u{0103}\u{fffd}\u{201c}\u{0103}\u{201a}\u{201c}\u{0103}\u{fffd}\253\u{0103}\u{fffd}\u{02c7}\u{0103}\u{fffd}\u{017b}")
-    luaunit.assertEquals(r.rest.str3, "\u{0103}\u{fffd}\u{201c}\u{0103}\u{201a}\u{201c}\u{0103}\u{fffd}\253\u{0103}\u{fffd}\u{02c7}\u{0103}\u{fffd}\u{017b}")
-    luaunit.assertEquals(r.rest.str4, "\342\u{2013}\u{2018}\342\u{2013}\u{2019}\342\u{2013}\u{201c}")
+    luaunit.assertEquals(r.rest.str2, "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}")
+    luaunit.assertEquals(r.rest.str3, "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}")
+    luaunit.assertEquals(r.rest.str4, "\u{2591}\u{2592}\u{2593}")
 end
