@@ -1,8 +1,10 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
+var hexString = require('hexString');
 
-testHelper('OptionalId', 'src/fixed_struct.bin', function(r) {
-  assert.equal(r._unnamed0, 0x50);
-  assert.equal(r._unnamed1, 0x41);
-  assert.equal(r._unnamed2.toString(), [0x43, 0x4b, 0x2d, 0x31, 0xff].toString());
+testHelper('OptionalId', 'src/fixed_struct.bin', function(r, OptionalId) {
+
+  assert.strictEqual(r._unnamed0, 80);
+  assert.strictEqual(r._unnamed1, 65);
+  assert.strictEqual(hexString(r._unnamed2), hexString([67, 75, 45, 49, 255]));
 });
