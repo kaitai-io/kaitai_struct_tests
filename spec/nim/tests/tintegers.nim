@@ -10,7 +10,7 @@ test "Integers":
 
   check(r.uint8 == uint8(255))
   check(r.uint16 == uint16(65535))
-  check(r.uint32 == uint32(4294967295'u32))
+  check(r.uint32 == uint32(4294967295'u64))
   check(r.uint64 == uint64(18446744073709551615'u64))
   check(r.sint8 == int8(-1))
   check(r.sint16 == int16(-1))

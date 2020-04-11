@@ -10,9 +10,9 @@ test "RepeatUntilSized":
 
   check(len(r.records) == int(3))
   check(r.records[0].marker == uint8(232))
-  check(r.records[0].body == uint32(2863311546'u32))
+  check(r.records[0].body == uint32(2863311546'u64))
   check(r.records[1].marker == uint8(250))
-  check(r.records[1].body == uint32(2863315102'u32))
+  check(r.records[1].body == uint32(2863315102'u64))
   check(r.records[2].marker == uint8(170))
   check(r.records[2].body == uint32(1431655765))
   discard
