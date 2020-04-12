@@ -10,7 +10,7 @@ test "FixedStruct":
 
   check(r.hdr.uint8 == uint8(255))
   check(r.hdr.uint16 == uint16(65535))
-  check(r.hdr.uint32 == uint32(4294967295'u64))
+  check(r.hdr.uint32 == uint32(4294967295'i64))
   check(r.hdr.uint64 == uint64(18446744073709551615'u64))
   check(r.hdr.sint8 == int8(-1))
   check(r.hdr.sint16 == int16(-1))

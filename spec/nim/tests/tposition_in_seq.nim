@@ -8,5 +8,5 @@ let r = PositionInSeq.fromFile("src/position_in_seq.bin")
 
 test "PositionInSeq":
 
-  check(r.numbers == seq[uint8](@[(0 + 1), 2, 3]))
+  check(r.numbers == @[uint8((0 + 1)), 2, 3])
   discard

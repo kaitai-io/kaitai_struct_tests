@@ -18,3 +18,5 @@ proc toString*(nums: seq[int8]): string =
     let b = if n < 0: 255 + n + 1
             else: n
     add(result, char(b))
+
+proc `-`*(n: uint64): int64 = -int64(n-1) - 1

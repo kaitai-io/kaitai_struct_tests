@@ -74,7 +74,15 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     }
   }
   override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[expr]): Unit = {
-    simpleAssert(check)
+    val arr = elts.map(v => translator.translate(v))
+    val first = s"${ksToNim(elType)}(${arr.head})"
+    val rvalue = {
+      if (arr.size == 0)
+        s"@[]"
+      else
+        s"@[${first + ", " + arr.tail.mkString(", ")}]"
+    }
+    out.puts(s"check(${translateAct(check.actual)} == $rvalue)")
   }
   override def runParse(): Unit = {
     importList.add("os, streams, options, sequtils, unittest")
