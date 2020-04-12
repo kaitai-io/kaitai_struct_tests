@@ -9,13 +9,13 @@ let r = ExprBits.fromFile("src/switch_opcodes.bin")
 test "ExprBits":
 
   check(r.a == uint64(2))
-  check(r.enumSeq == ExprBits_Items(foo))
+  check(r.enumSeq == expr_bits.foo)
   check(r.byteSize == string(@[102'i8, 111].toString))
   check(len(r.repeatExpr) == int(2))
   check(r.repeatExpr[0] == int8(111))
   check(r.repeatExpr[1] == int8(98))
   check(r.switchOnType == int8(97))
   check(r.switchOnEndian.foo == int16(29184))
-  check(r.enumInst == ExprBits_Items(bar))
+  check(r.enumInst == expr_bits.bar)
   check(r.instPos == int8(111))
   discard

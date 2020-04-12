@@ -8,6 +8,6 @@ let r = ParamsEnum.fromFile("src/enum_0.bin")
 
 test "ParamsEnum":
 
-  check(r.one == ParamsEnum_Animal(cat))
+  check(r.one == params_enum.cat)
   check(r.invokeWithParam.isCat == bool(true))
   discard

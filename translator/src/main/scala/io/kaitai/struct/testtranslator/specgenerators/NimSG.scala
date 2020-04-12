@@ -13,6 +13,10 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
   val className = Utils.upperCamelCase(spec.id)
   val translator = new NimTranslator(provider, importList)
 
+  spec.extraImports.foreach(entry =>
+    importList.add(s"../../../compiled/nim/$entry")
+  )
+
   // Members declared in io.kaitai.struct.testtranslator.specgenerators.BaseGenerator
   override def fileName(name: String): String = s"t${spec.id}.nim"
   override def header(): Unit = {

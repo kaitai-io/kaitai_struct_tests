@@ -8,6 +8,6 @@ let r = EnumInvalid.fromFile("src/term_strz.bin")
 
 test "EnumInvalid":
 
-  check(r.pet1 == EnumInvalid_Animal(dog))
+  check(r.pet1 == enum_invalid.dog)
   check(r.pet2 == EnumInvalid_Animal(111))
   discard

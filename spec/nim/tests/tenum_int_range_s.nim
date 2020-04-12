@@ -8,7 +8,7 @@ let r = EnumIntRangeS.fromFile("src/enum_int_range_s.bin")
 
 test "EnumIntRangeS":
 
-  check(r.f1 == EnumIntRangeS_Constants(int_min))
-  check(r.f2 == EnumIntRangeS_Constants(zero))
-  check(r.f3 == EnumIntRangeS_Constants(int_max))
+  check(r.f1 == enum_int_range_s.int_min)
+  check(r.f2 == enum_int_range_s.zero)
+  check(r.f3 == enum_int_range_s.int_max)
   discard

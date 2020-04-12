@@ -14,5 +14,5 @@ test "TsPacketHeader":
   check(r.transportPriority == bool(true))
   check(r.pid == uint64(33))
   check(r.transportScramblingControl == uint64(0))
-  check(r.adaptationFieldControl == TsPacketHeader_AdaptationFieldControlEnum(payload_only))
+  check(r.adaptationFieldControl == ts_packet_header.payload_only)
   discard
