@@ -8,6 +8,6 @@ let r = ProcessRepeatBytes.fromFile("src/process_xor_4.bin")
 
 test "ProcessRepeatBytes":
 
-  check(r.bufs[0] == seq[byte](@[114'u8, 37, 61, -118, 20]))
-  check(r.bufs[1] == seq[byte](@[74'u8, 82, -86, 16, 68]))
+  check(r.bufs[0] == @[114'u8, 37'u8, 61'u8, -118'u8, 20'u8])
+  check(r.bufs[1] == @[74'u8, 82'u8, -86'u8, 16'u8, 68'u8])
   discard

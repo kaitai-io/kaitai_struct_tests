@@ -12,7 +12,7 @@ test "InstanceStdArray":
   check(r.qtyEntries == uint32(3))
   check(r.entrySize == uint32(4))
   check(len(r.entries) == int(3))
-  check(r.entries[0] == seq[byte](@[17'u8, 17, 17, 17]))
-  check(r.entries[1] == seq[byte](@[34'u8, 34, 34, 34]))
-  check(r.entries[2] == seq[byte](@[51'u8, 51, 51, 51]))
+  check(r.entries[0] == @[17'u8, 17'u8, 17'u8, 17'u8])
+  check(r.entries[1] == @[34'u8, 34'u8, 34'u8, 34'u8])
+  check(r.entries[2] == @[51'u8, 51'u8, 51'u8, 51'u8])
   discard

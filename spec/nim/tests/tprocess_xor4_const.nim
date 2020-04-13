@@ -8,6 +8,6 @@ let r = ProcessXor4Const.fromFile("src/process_xor_4.bin")
 
 test "ProcessXor4Const":
 
-  check(r.key == seq[byte](@[-20'u8, -69, -93, 20]))
-  check(r.buf == seq[byte](@[102'u8, 111, 111, 32, 98, 97, 114]))
+  check(r.key == @[-20'u8, -69'u8, -93'u8, 20'u8])
+  check(r.buf == @[102'u8, 111'u8, 111'u8, 32'u8, 98'u8, 97'u8, 114'u8])
   discard

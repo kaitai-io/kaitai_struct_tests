@@ -8,7 +8,7 @@ let r = TermBytes.fromFile("src/term_strz.bin")
 
 test "TermBytes":
 
-  check(r.s1 == seq[byte](@[102'u8, 111, 111]))
-  check(r.s2 == seq[byte](@[98'u8, 97, 114]))
-  check(r.s3 == seq[byte](@[124'u8, 98, 97, 122, 64]))
+  check(r.s1 == @[102'u8, 111'u8, 111'u8])
+  check(r.s2 == @[98'u8, 97'u8, 114'u8])
+  check(r.s3 == @[124'u8, 98'u8, 97'u8, 122'u8, 64'u8])
   discard

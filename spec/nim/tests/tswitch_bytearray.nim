@@ -9,12 +9,12 @@ let r = SwitchBytearray.fromFile("src/switch_opcodes.bin")
 test "SwitchBytearray":
 
   check(len(r.opcodes) == int(4))
-  check(r.opcodes[0].code == seq[byte](@[83'u8, ]))
+  check(r.opcodes[0].code == @[83'u8])
   check((SwitchBytearray_Opcode_Strval(r.opcodes[0].body)).value == string("foobar"))
-  check(r.opcodes[1].code == seq[byte](@[73'u8, ]))
+  check(r.opcodes[1].code == @[73'u8])
   check((SwitchBytearray_Opcode_Intval(r.opcodes[1].body)).value == uint8(66))
-  check(r.opcodes[2].code == seq[byte](@[73'u8, ]))
+  check(r.opcodes[2].code == @[73'u8])
   check((SwitchBytearray_Opcode_Intval(r.opcodes[2].body)).value == uint8(55))
-  check(r.opcodes[3].code == seq[byte](@[83'u8, ]))
+  check(r.opcodes[3].code == @[83'u8])
   check((SwitchBytearray_Opcode_Strval(r.opcodes[3].body)).value == string(""))
   discard

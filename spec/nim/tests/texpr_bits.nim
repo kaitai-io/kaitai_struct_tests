@@ -10,7 +10,7 @@ test "ExprBits":
 
   check(r.a == uint64(2))
   check(r.enumSeq == expr_bits.foo)
-  check(r.byteSize == seq[byte](@[102'u8, 111]))
+  check(r.byteSize == @[102'u8, 111'u8])
   check(len(r.repeatExpr) == int(2))
   check(r.repeatExpr[0] == int8(111))
   check(r.repeatExpr[1] == int8(98))

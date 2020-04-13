@@ -10,5 +10,5 @@ test "ProcessCoerceSwitch":
 
   check(r.bufType == uint8(0))
   check(r.flag == uint8(0))
-  check((ProcessCoerceSwitch_Foo(r.buf)).bar == seq[byte](@[65'u8, 65, 65, 65]))
+  check((ProcessCoerceSwitch_Foo(r.buf)).bar == @[65'u8, 65'u8, 65'u8, 65'u8])
   discard

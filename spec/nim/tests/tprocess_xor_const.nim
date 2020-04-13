@@ -9,5 +9,5 @@ let r = ProcessXorConst.fromFile("src/process_xor_1.bin")
 test "ProcessXorConst":
 
   check(r.key == uint8(255))
-  check(r.buf == seq[byte](@[102'u8, 111, 111, 32, 98, 97, 114]))
+  check(r.buf == @[102'u8, 111'u8, 111'u8, 32'u8, 98'u8, 97'u8, 114'u8])
   discard

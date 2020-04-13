@@ -8,7 +8,7 @@ let r = ProcessCustom.fromFile("src/process_rotate.bin")
 
 test "ProcessCustom":
 
-  check(r.buf1 == seq[byte](@[16'u8, -77, -108, -108, -12]))
-  check(r.buf2 == seq[byte](@[95'u8, -70, 123, -109, 99, 35, 95]))
-  check(r.buf3 == seq[byte](@[41'u8, 51, -79, 56, -79]))
+  check(r.buf1 == @[16'u8, -77'u8, -108'u8, -108'u8, -12'u8])
+  check(r.buf2 == @[95'u8, -70'u8, 123'u8, -109'u8, 99'u8, 35'u8, 95'u8])
+  check(r.buf3 == @[41'u8, 51'u8, -79'u8, 56'u8, -79'u8])
   discard

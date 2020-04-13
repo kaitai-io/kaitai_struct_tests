@@ -10,6 +10,6 @@ test "SwitchElseOnly":
 
   check(r.opcode == int8(83))
   check(r.primByte == int8(102))
-  check(r.struct.value == seq[byte](@[111'u8, 111, 98, 97]))
-  check(r.structSized.value == seq[byte](@[114'u8, 0, 73, 66]))
+  check(r.struct.value == @[111'u8, 111'u8, 98'u8, 97'u8])
+  check(r.structSized.value == @[114'u8, 0'u8, 73'u8, 66'u8])
   discard

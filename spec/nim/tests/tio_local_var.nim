@@ -8,6 +8,6 @@ let r = IoLocalVar.fromFile("src/full256.bin")
 
 test "IoLocalVar":
 
-  check(r.skip == seq[byte](@[0'u8, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]))
+  check(r.skip == @[0'u8, 1'u8, 2'u8, 3'u8, 4'u8, 5'u8, 6'u8, 7'u8, 8'u8, 9'u8, 10'u8, 11'u8, 12'u8, 13'u8, 14'u8, 15'u8, 16'u8, 17'u8, 18'u8, 19'u8])
   check(r.followup == uint8(20))
   discard

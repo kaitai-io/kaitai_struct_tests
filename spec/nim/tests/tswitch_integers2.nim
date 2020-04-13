@@ -10,7 +10,7 @@ test "SwitchIntegers2":
 
   check(r.code == uint8(1))
   check(r.len == uint64(7))
-  check(r.ham == seq[byte](@[2'u8, 64, 64, 4, 55, 19, 0]))
+  check(r.ham == @[2'u8, 64'u8, 64'u8, 4'u8, 55'u8, 19'u8, 0'u8])
   check(r.padding == uint8(0))
   check(r.lenModStr == string("13"))
   discard

@@ -8,8 +8,8 @@ let r = ExprBytesCmp.fromFile("src/fixed_struct.bin")
 
 test "ExprBytesCmp":
 
-  check(r.one == seq[byte](@[80'u8, ]))
-  check(r.two == seq[byte](@[65'u8, 67, 75]))
+  check(r.one == @[80'u8])
+  check(r.two == @[65'u8, 67'u8, 75'u8])
   check(r.isEq == bool(true))
   check(r.isNe == bool(false))
   check(r.isLt == bool(true))

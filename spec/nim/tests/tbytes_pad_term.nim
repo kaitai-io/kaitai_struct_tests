@@ -8,8 +8,8 @@ let r = BytesPadTerm.fromFile("src/str_pad_term.bin")
 
 test "BytesPadTerm":
 
-  check(r.strPad == seq[byte](@[115'u8, 116, 114, 49]))
-  check(r.strTerm == seq[byte](@[115'u8, 116, 114, 50, 102, 111, 111]))
-  check(r.strTermAndPad == seq[byte](@[115'u8, 116, 114, 43, 43, 43, 51, 98, 97, 114, 43, 43, 43]))
-  check(r.strTermInclude == seq[byte](@[115'u8, 116, 114, 52, 98, 97, 122, 64]))
+  check(r.strPad == @[115'u8, 116'u8, 114'u8, 49'u8])
+  check(r.strTerm == @[115'u8, 116'u8, 114'u8, 50'u8, 102'u8, 111'u8, 111'u8])
+  check(r.strTermAndPad == @[115'u8, 116'u8, 114'u8, 43'u8, 43'u8, 43'u8, 51'u8, 98'u8, 97'u8, 114'u8, 43'u8, 43'u8, 43'u8])
+  check(r.strTermInclude == @[115'u8, 116'u8, 114'u8, 52'u8, 98'u8, 97'u8, 122'u8, 64'u8])
   discard

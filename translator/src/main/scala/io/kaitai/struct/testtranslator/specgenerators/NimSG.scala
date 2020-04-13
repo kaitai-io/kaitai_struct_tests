@@ -69,7 +69,7 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     val td = new TypeDetector(provider)
     val ta = ksToNim(td.detectType(check.actual))
     td.detectType(check.expected) match {
-      case t: EnumType => out.puts(s"check($actStr == $expStr)")
+      case _: EnumType | _: BytesType | _: ArrayType => out.puts(s"check($actStr == $expStr)")
       case _ => out.puts(s"check($actStr == $ta($expStr))")
     }
   }
