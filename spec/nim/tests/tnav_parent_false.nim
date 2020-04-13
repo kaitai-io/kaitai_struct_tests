@@ -10,7 +10,7 @@ test "NavParentFalse":
 
   check(r.childSize == uint8(3))
   check(r.elementA.foo.code == uint8(73))
-  check(r.elementA.foo.more == string(@[49'i8, 50, 51].toString))
+  check(r.elementA.foo.more == seq[byte](@[49'u8, 50, 51]))
   check(r.elementA.bar.foo.code == uint8(66))
   check(r.elementB.foo.code == uint8(98))
   discard

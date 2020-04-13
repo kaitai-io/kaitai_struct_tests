@@ -11,6 +11,6 @@ test "ParamsPassArrayUsertype":
   check(len(r.passBlocks.bar) == int(2))
   check(r.passBlocks.bar[0].foo == uint8(1))
   check(r.passBlocks.bar[1].foo == uint8(2))
-  check(r.passBlocks.one == string(@[3'i8, ].toString))
-  check(r.passBlocks.two == string(@[4'i8, 5].toString))
+  check(r.passBlocks.one == seq[byte](@[3'u8, ]))
+  check(r.passBlocks.two == seq[byte](@[4'u8, 5]))
   discard

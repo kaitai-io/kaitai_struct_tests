@@ -8,5 +8,5 @@ let r = ProcessCustomNoArgs.fromFile("src/process_rotate.bin")
 
 test "ProcessCustomNoArgs":
 
-  check(r.buf == string(@[95'i8, 9, -84, -115, -115, -19, 95].toString))
+  check(r.buf == seq[byte](@[95'u8, 9, -84, -115, -115, -19, 95]))
   discard

@@ -8,7 +8,7 @@ let r = ProcessRotate.fromFile("src/process_rotate.bin")
 
 test "ProcessRotate":
 
-  check(r.buf1 == string(@[72'i8, 101, 108, 108, 111].toString))
-  check(r.buf2 == string(@[87'i8, 111, 114, 108, 100].toString))
-  check(r.buf3 == string(@[84'i8, 104, 101, 114, 101].toString))
+  check(r.buf1 == seq[byte](@[72'u8, 101, 108, 108, 111]))
+  check(r.buf2 == seq[byte](@[87'u8, 111, 114, 108, 100]))
+  check(r.buf3 == seq[byte](@[84'u8, 104, 101, 114, 101]))
   discard

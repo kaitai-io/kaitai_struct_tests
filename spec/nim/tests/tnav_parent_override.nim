@@ -9,6 +9,6 @@ let r = NavParentOverride.fromFile("src/nav_parent_codes.bin")
 test "NavParentOverride":
 
   check(r.childSize == uint8(3))
-  check(r.child1.data == string(@[73'i8, 49, 50].toString))
-  check(r.mediator2.child2.data == string(@[51'i8, 66, 98].toString))
+  check(r.child1.data == seq[byte](@[73'u8, 49, 50]))
+  check(r.mediator2.child2.data == seq[byte](@[51'u8, 66, 98]))
   discard

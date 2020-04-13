@@ -9,5 +9,5 @@ let r = ProcessXorValue.fromFile("src/process_xor_1.bin")
 test "ProcessXorValue":
 
   check(r.key == uint8(255))
-  check(r.buf == string(@[102'i8, 111, 111, 32, 98, 97, 114].toString))
+  check(r.buf == seq[byte](@[102'u8, 111, 111, 32, 98, 97, 114]))
   discard
