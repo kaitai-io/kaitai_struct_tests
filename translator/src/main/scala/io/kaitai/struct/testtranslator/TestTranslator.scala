@@ -76,6 +76,7 @@ class TestTranslator(options: CLIOptions) {
         imports = List()
       ),
       DocSpec.EMPTY,
+      toStringExpr = None,
       params = List(),
       seq = List(
         AttrSpec(
