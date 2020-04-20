@@ -46,7 +46,7 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
       case FloatMultiType(Width4, _) => "0'f32"
       case FloatMultiType(Width8, _) => "0'f64"
 
-      case BitsType(_) => "0'u64"
+      case BitsType(_, _) => "0'u64"
 
       case _: BooleanType => "false"
       case CalcIntType => "0"

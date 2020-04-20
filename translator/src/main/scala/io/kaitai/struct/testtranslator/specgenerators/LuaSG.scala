@@ -42,7 +42,7 @@ class LuaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     val actStr = translateAct(check.actual)
     val bool2Int = (n: Boolean) => { if (n) "1" else "0" }
     val expStr = (translator.detectType(check.actual), translator.detectType(check.expected)) match {
-      case (BitsType1, _: BooleanType) => {
+      case (_: BitsType1, _: BooleanType) => {
         (check.expected) match {
           case Ast.expr.Bool(l) => s"${bool2Int(l)}"
           case _ => translateExp(check.expected)
