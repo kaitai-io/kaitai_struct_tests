@@ -70,6 +70,7 @@ class TestTranslator(options: CLIOptions) {
         isOpaque = false,
         id = Some(INIT_OBJ_TYPE),
         endian = None,
+        bitEndian = None,
         encoding = None,
         forceDebug = false,
         opaqueTypes = None,
