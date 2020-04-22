@@ -1,7 +1,7 @@
 meta:
   id: nav_parent_switch_cast
 seq:
-  - id: foo
+  - id: main
     type: foo
 types:
   foo:
@@ -20,13 +20,13 @@ types:
     types:
       zero:
         seq:
-        - id: bar
-          type: bar
+        - id: branch
+          type: common
       one:
         seq:
-        - id: bar
-          type: bar
-      bar:
+        - id: branch
+          type: common
+      common:
         instances:
           flag:
             value: '_parent._parent.as<foo>.flag'
