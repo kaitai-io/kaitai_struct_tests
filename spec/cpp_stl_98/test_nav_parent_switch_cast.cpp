@@ -11,9 +11,9 @@ BOOST_AUTO_TEST_CASE(test_nav_parent_switch_cast) {
     kaitai::kstream ks(&ifs);
     nav_parent_switch_cast_t* r = new nav_parent_switch_cast_t(&ks);
 
-    BOOST_CHECK_EQUAL(r->foo()->buf_type(), 1);
-    BOOST_CHECK_EQUAL(r->foo()->flag(), 7);
-    BOOST_CHECK_EQUAL(static_cast<nav_parent_switch_cast_t::foo_t::one_t*>(r->foo()->buf())->bar()->flag(), 7);
+    BOOST_CHECK_EQUAL(r->main()->buf_type(), 1);
+    BOOST_CHECK_EQUAL(r->main()->flag(), 7);
+    BOOST_CHECK_EQUAL(static_cast<nav_parent_switch_cast_t::foo_t::one_t*>(r->main()->buf())->branch()->flag(), 7);
 
     delete r;
 }

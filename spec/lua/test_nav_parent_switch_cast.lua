@@ -9,7 +9,7 @@ TestNavParentSwitchCast = {}
 function TestNavParentSwitchCast:test_nav_parent_switch_cast()
     local r = NavParentSwitchCast:from_file("src/switch_integers.bin")
 
-    luaunit.assertEquals(r.foo.buf_type, 1)
-    luaunit.assertEquals(r.foo.flag, 7)
-    luaunit.assertEquals(r.foo.buf.bar.flag, 7)
+    luaunit.assertEquals(r.main.buf_type, 1)
+    luaunit.assertEquals(r.main.flag, 7)
+    luaunit.assertEquals(r.main.buf.branch.flag, 7)
 end

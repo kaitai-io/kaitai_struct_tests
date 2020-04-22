@@ -10,8 +10,8 @@ use rust::NavParentSwitchCast;
 fn test_nav_parent_switch_cast() {
     if let Ok(r) = NavParentSwitchCast::from_file("src/switch_integers.bin") {
 
-        assert_eq!(r.foo.buf_type, 1);
-        assert_eq!(r.foo.flag, 7);
-        assert_eq!(r.foo.buf.bar.flag, 7);
+        assert_eq!(r.main.buf_type, 1);
+        assert_eq!(r.main.flag, 7);
+        assert_eq!(r.main.buf.branch.flag, 7);
     }
 }

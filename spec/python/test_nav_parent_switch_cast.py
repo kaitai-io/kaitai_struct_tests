@@ -8,6 +8,6 @@ class TestNavParentSwitchCast(unittest.TestCase):
     def test_nav_parent_switch_cast(self):
         with NavParentSwitchCast.from_file('src/switch_integers.bin') as r:
 
-            self.assertEqual(r.foo.buf_type, 1)
-            self.assertEqual(r.foo.flag, 7)
-            self.assertEqual(r.foo.buf.bar.flag, 7)
+            self.assertEqual(r.main.buf_type, 1)
+            self.assertEqual(r.main.flag, 7)
+            self.assertEqual(r.main.buf.branch.flag, 7)

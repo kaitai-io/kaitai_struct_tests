@@ -7,8 +7,8 @@ class NavParentSwitchCastTest extends TestCase {
     public function testNavParentSwitchCast() {
         $r = NavParentSwitchCast::fromFile(self::SRC_DIR_PATH . '/switch_integers.bin');
 
-        $this->assertSame(1, $r->foo()->bufType());
-        $this->assertSame(7, $r->foo()->flag());
-        $this->assertSame(7, $r->foo()->buf()->bar()->flag());
+        $this->assertSame(1, $r->main()->bufType());
+        $this->assertSame(7, $r->main()->flag());
+        $this->assertSame(7, $r->main()->buf()->branch()->flag());
     }
 }

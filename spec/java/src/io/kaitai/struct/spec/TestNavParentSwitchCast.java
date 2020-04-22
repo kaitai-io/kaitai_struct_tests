@@ -11,8 +11,8 @@ public class TestNavParentSwitchCast extends CommonSpec {
     public void testNavParentSwitchCast() throws Exception {
         NavParentSwitchCast r = NavParentSwitchCast.fromFile(SRC_DIR + "switch_integers.bin");
 
-        assertIntEquals(r.foo().bufType(), 1);
-        assertIntEquals(r.foo().flag(), 7);
-        assertIntEquals(((NavParentSwitchCast.Foo.One) (r.foo().buf())).bar().flag(), 7);
+        assertIntEquals(r.main().bufType(), 1);
+        assertIntEquals(r.main().flag(), 7);
+        assertIntEquals(((NavParentSwitchCast.Foo.One) (r.main().buf())).branch().flag(), 7);
     }
 }

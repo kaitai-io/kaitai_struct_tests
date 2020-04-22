@@ -6,8 +6,8 @@ RSpec.describe NavParentSwitchCast do
   it 'parses test properly' do
     r = NavParentSwitchCast.from_file('src/switch_integers.bin')
 
-    expect(r.foo.buf_type).to eq 1
-    expect(r.foo.flag).to eq 7
-    expect(r.foo.buf.bar.flag).to eq 7
+    expect(r.main.buf_type).to eq 1
+    expect(r.main.flag).to eq 7
+    expect(r.main.buf.branch.flag).to eq 7
   end
 end
