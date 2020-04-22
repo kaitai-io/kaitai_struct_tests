@@ -8,4 +8,4 @@ class TestZlibSurrounded(unittest.TestCase):
     def test_zlib_surrounded(self):
         r = _schema.parse_file('src/zlib_surrounded.bin')
 
-        self.assertEqual(r.zlib.inflated, -1)
+        self.assertEqual(r.zlib.num, -1)

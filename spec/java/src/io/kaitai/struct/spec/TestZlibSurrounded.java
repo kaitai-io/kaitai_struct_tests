@@ -11,6 +11,6 @@ public class TestZlibSurrounded extends CommonSpec {
     public void testZlibSurrounded() throws Exception {
         ZlibSurrounded r = ZlibSurrounded.fromFile(SRC_DIR + "zlib_surrounded.bin");
 
-        assertIntEquals(r.zlib().inflated(), -1);
+        assertIntEquals(r.zlib().num(), -1);
     }
 }

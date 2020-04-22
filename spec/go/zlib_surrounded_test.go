@@ -29,5 +29,5 @@ func TestZlibSurrounded(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, -1, r.Zlib.Inflated)
+	assert.EqualValues(t, -1, r.Zlib.Num)
 }

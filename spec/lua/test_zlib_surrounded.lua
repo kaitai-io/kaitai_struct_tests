@@ -9,5 +9,5 @@ TestZlibSurrounded = {}
 function TestZlibSurrounded:test_zlib_surrounded()
     local r = ZlibSurrounded:from_file("src/zlib_surrounded.bin")
 
-    luaunit.assertEquals(r.zlib.inflated, -1)
+    luaunit.assertEquals(r.zlib.num, -1)
 end

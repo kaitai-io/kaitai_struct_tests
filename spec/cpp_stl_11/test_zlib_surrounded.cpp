@@ -11,7 +11,7 @@ BOOST_AUTO_TEST_CASE(test_zlib_surrounded) {
     kaitai::kstream ks(&ifs);
     zlib_surrounded_t* r = new zlib_surrounded_t(&ks);
 
-    BOOST_CHECK_EQUAL(r->zlib()->inflated(), -1);
+    BOOST_CHECK_EQUAL(r->zlib()->num(), -1);
 
     delete r;
 }

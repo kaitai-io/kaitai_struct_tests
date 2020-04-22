@@ -7,7 +7,6 @@ class ZlibSurroundedTest extends TestCase {
     public function testZlibSurrounded() {
         $r = ZlibSurrounded::fromFile(self::SRC_DIR_PATH . '/zlib_surrounded.bin');
 
-
-        $this->assertEquals(-1, $r->zlib()->inflated());
+        $this->assertSame(-1, $r->zlib()->num());
     }
 }

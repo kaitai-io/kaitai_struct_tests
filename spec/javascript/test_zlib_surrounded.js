@@ -5,5 +5,5 @@ var testHelper = require('testHelper');
 
 testHelper('ZlibSurrounded', 'src/zlib_surrounded.bin', function(r, ZlibSurrounded) {
 
-  assert.strictEqual(r.zlib.inflated, -1);
+  assert.strictEqual(r.zlib.num, -1);
 });

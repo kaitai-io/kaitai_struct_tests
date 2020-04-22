@@ -10,6 +10,6 @@ use rust::ZlibSurrounded;
 fn test_zlib_surrounded() {
     if let Ok(r) = ZlibSurrounded::from_file("src/zlib_surrounded.bin") {
 
-        assert_eq!(r.zlib.inflated, -1);
+        assert_eq!(r.zlib.num, -1);
     }
 }

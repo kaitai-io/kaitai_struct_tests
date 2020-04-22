@@ -6,6 +6,6 @@ RSpec.describe ZlibSurrounded do
   it 'parses test properly' do
     r = ZlibSurrounded.from_file('src/zlib_surrounded.bin')
 
-    expect(r.zlib.inflated).to eq -1
+    expect(r.zlib.num).to eq -1
   end
 end
