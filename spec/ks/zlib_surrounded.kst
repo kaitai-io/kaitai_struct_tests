@@ -1,5 +1,5 @@
 id: zlib_surrounded
 data: zlib_surrounded.bin
 asserts:
-  - actual: zlib.inflated
+  - actual: zlib.num
     expected: -1

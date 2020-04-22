@@ -12,5 +12,5 @@ seq:
 types:
   inflated:
     seq:
-      - id: inflated
+      - id: num
         type: s4le
