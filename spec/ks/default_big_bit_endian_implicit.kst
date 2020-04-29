@@ -1,5 +1,0 @@
-id: default_big_bit_endian_implicit
-data: nav_parent_codes.bin
-asserts:
-  - actual: one
-    expected: 0x03_49_3
