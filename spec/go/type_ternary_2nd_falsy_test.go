@@ -44,7 +44,7 @@ func TestTypeTernary2ndFalsy(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 0, tmp3)
+	assert.EqualValues(t, -0, tmp3)
 	tmp4, err := r.VFloatZero()
 	if err != nil {
 		t.Fatal(err)
