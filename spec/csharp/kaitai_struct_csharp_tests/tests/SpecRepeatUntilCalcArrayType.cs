@@ -12,7 +12,6 @@ namespace Kaitai
         {
             var r = RepeatUntilCalcArrayType.FromFile(SourceFile("repeat_until_process.bin"));
 
-
             Assert.AreEqual(r.Records.Count, 3);
             Assert.AreEqual(r.Records[0].Marker, 232);
             Assert.AreEqual(r.Records[0].Body, 2863311546);

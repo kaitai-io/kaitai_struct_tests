@@ -6,12 +6,10 @@
 #include <fstream>
 #include <vector>
 
-
 BOOST_AUTO_TEST_CASE(test_repeat_until_calc_array_type) {
     std::ifstream ifs("src/repeat_until_process.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     repeat_until_calc_array_type_t* r = new repeat_until_calc_array_type_t(&ks);
-
 
     BOOST_CHECK_EQUAL(r->records()->size(), 3);
     BOOST_CHECK_EQUAL(r->records()->at(0)->marker(), 232);
