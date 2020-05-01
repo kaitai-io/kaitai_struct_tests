@@ -8,7 +8,7 @@ let r = NavParentSwitchCast.fromFile("src/switch_integers.bin")
 
 test "NavParentSwitchCast":
 
-  check(r.foo.bufType == uint8(1))
-  check(r.foo.flag == uint8(7))
-  check((NavParentSwitchCast_Foo_One(r.foo.buf)).bar.flag == uint8(7))
+  check(r.main.bufType == uint8(1))
+  check(r.main.flag == uint8(7))
+  check((NavParentSwitchCast_Foo_One(r.main.buf)).branch.flag == uint8(7))
   discard

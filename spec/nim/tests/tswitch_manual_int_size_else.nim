@@ -17,5 +17,5 @@ test "SwitchManualIntSizeElse":
   check(r.chunks[2].code == uint8(51))
   check((SwitchManualIntSizeElse_Chunk_Dummy(r.chunks[2].body)).rest == @[16'u8, 32'u8, 48'u8, 64'u8, 80'u8, 96'u8, 112'u8, -128'u8])
   check(r.chunks[3].code == uint8(255))
-  check((SwitchManualIntSizeElse_Chunk_Dummy(r.chunks[3].body)).rest.len == 0)
+  check((SwitchManualIntSizeElse_Chunk_Dummy(r.chunks[3].body)).rest == @[])
   discard
