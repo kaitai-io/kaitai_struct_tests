@@ -16,7 +16,6 @@ class TypeTernary2ndFalsyTest extends TestCase {
         $this->assertSame(1, strlen($r->vStrWZero()));
         $this->assertSame(7, $r->ut()->m());
         $this->assertNull($r->vNullUt());
-        $this->assertNull($r->vNullUtInst());
         $this->assertSame("", $r->vStrEmpty());
         $this->assertSame(0, strlen($r->vStrEmpty()));
         $this->assertSame(2, count($r->intArray()));

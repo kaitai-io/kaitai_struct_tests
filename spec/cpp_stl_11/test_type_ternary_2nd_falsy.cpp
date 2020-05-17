@@ -20,7 +20,6 @@ BOOST_AUTO_TEST_CASE(test_type_ternary_2nd_falsy) {
     BOOST_CHECK_EQUAL(r->v_str_w_zero().length(), 1);
     BOOST_CHECK_EQUAL(r->ut()->m(), 7);
     BOOST_CHECK(r->_is_null_v_null_ut());
-    BOOST_CHECK(r->_is_null_v_null_ut_inst());
     BOOST_CHECK_EQUAL(r->v_str_empty(), std::string(""));
     BOOST_CHECK_EQUAL(r->v_str_empty().length(), 0);
     BOOST_CHECK_EQUAL(r->int_array()->size(), 2);

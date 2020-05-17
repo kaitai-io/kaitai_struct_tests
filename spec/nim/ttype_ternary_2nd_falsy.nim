@@ -17,7 +17,6 @@ test "TypeTernary2ndFalsy":
   check(len(r.vStrWZero) == int(1))
   check(r.ut.m == uint8(7))
   check(r.vNullUt == nil)
-  check(r.vNullUtInst == nil)
   check(r.vStrEmpty == string(""))
   check(len(r.vStrEmpty) == int(0))
   check(len(r.intArray) == int(2))

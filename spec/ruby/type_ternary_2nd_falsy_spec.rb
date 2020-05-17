@@ -15,7 +15,6 @@ RSpec.describe TypeTernary2ndFalsy do
     expect(r.v_str_w_zero.size).to eq 1
     expect(r.ut.m).to eq 7
     expect(r.v_null_ut).to be_nil
-    expect(r.v_null_ut_inst).to be_nil
     expect(r.v_str_empty).to eq ""
     expect(r.v_str_empty.size).to eq 0
     expect(r.int_array.length).to eq 2

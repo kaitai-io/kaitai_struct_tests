@@ -8,7 +8,7 @@ use base qw(Test::Class);
 use Test::More;
 use TypeTernary2ndFalsy;
 
-sub test_type_ternary_2nd_falsy: Test(14) {
+sub test_type_ternary_2nd_falsy: Test(13) {
     my $r = TypeTernary2ndFalsy->from_file('src/switch_integers.bin');
 
 
@@ -21,7 +21,6 @@ sub test_type_ternary_2nd_falsy: Test(14) {
     is(length($r->v_str_w_zero()), 1, 'Equals');
     is($r->ut()->m(), 7, 'Equals');
     ok(!defined($r->v_null_ut()), 'nil');
-    ok(!defined($r->v_null_ut_inst()), 'nil');
     is($r->v_str_empty(), "", 'Equals');
     is(length($r->v_str_empty()), 0, 'Equals');
     is(scalar(@{$r->int_array()}), 2, 'Equals');

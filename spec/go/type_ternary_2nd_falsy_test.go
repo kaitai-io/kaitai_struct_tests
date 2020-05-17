@@ -69,25 +69,20 @@ func TestTypeTernary2ndFalsy(t *testing.T) {
 		t.Fatal(err)
 	}
 	assert.Nil(t, tmp8)
-	tmp9, err := r.VNullUtInst()
+	tmp9, err := r.VStrEmpty()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.Nil(t, tmp9)
+	assert.EqualValues(t, "", tmp9)
 	tmp10, err := r.VStrEmpty()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, "", tmp10)
-	tmp11, err := r.VStrEmpty()
-	if err != nil {
-		t.Fatal(err)
-	}
-	assert.EqualValues(t, 0, utf8.RuneCountInString(tmp11))
+	assert.EqualValues(t, 0, utf8.RuneCountInString(tmp10))
 	assert.EqualValues(t, 2, len(r.IntArray))
-	tmp12, err := r.VIntArrayEmpty()
+	tmp11, err := r.VIntArrayEmpty()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 0, len(tmp12))
+	assert.EqualValues(t, 0, len(tmp11))
 }

@@ -20,7 +20,6 @@ public class TestTypeTernary2ndFalsy extends CommonSpec {
         assertIntEquals(r.vStrWZero().length(), 1);
         assertIntEquals(r.ut().m(), 7);
         assertNull(r.vNullUt());
-        assertNull(r.vNullUtInst());
         assertEquals(r.vStrEmpty(), "");
         assertIntEquals(r.vStrEmpty().length(), 0);
         assertIntEquals(r.intArray().size(), 2);

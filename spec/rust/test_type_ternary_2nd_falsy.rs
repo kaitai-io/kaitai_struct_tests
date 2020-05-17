@@ -19,7 +19,6 @@ fn test_type_ternary_2nd_falsy() {
         assert_eq!(r.v_str_w_zero.len(), 1);
         assert_eq!(r.ut.m, 7);
         assertNull(r.v_null_ut);
-        assertNull(r.v_null_ut_inst);
         assert_eq!(r.v_str_empty, "");
         assert_eq!(r.v_str_empty.len(), 0);
         assert_eq!(r.int_array.len(), 2);

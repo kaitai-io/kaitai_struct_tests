@@ -21,7 +21,6 @@ namespace Kaitai
             Assert.AreEqual(r.VStrWZero.Length, 1);
             Assert.AreEqual(r.Ut.M, 7);
             Assert.IsNull(r.VNullUt);
-            Assert.IsNull(r.VNullUtInst);
             Assert.AreEqual(r.VStrEmpty, "");
             Assert.AreEqual(r.VStrEmpty.Length, 0);
             Assert.AreEqual(r.IntArray.Count, 2);

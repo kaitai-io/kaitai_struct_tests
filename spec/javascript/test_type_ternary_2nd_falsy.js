@@ -14,7 +14,6 @@ testHelper('TypeTernary2ndFalsy', 'src/switch_integers.bin', function(r, TypeTer
   assert.strictEqual(r.vStrWZero.length, 1);
   assert.strictEqual(r.ut.m, 7);
   assert.strictEqual(r.vNullUt, undefined);
-  assert.strictEqual(r.vNullUtInst, undefined);
   assert.strictEqual(r.vStrEmpty, "");
   assert.strictEqual(r.vStrEmpty.length, 0);
   assert.strictEqual(r.intArray.length, 2);

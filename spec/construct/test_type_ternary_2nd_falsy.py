@@ -17,7 +17,6 @@ class TestTypeTernary2ndFalsy(unittest.TestCase):
         self.assertEqual(len(r.v_str_w_zero), 1)
         self.assertEqual(r.ut.m, 7)
         self.assertIsNone(r.v_null_ut)
-        self.assertIsNone(r.v_null_ut_inst)
         self.assertEqual(r.v_str_empty, u"")
         self.assertEqual(len(r.v_str_empty), 0)
         self.assertEqual(len(r.int_array), 2)
