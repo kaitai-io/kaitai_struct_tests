@@ -19,8 +19,6 @@ asserts:
     expected: 7
   - actual: v_null_ut
     expected: 'null'
-  - actual: v_null_ut_inst
-    expected: 'null'
   - actual: v_str_empty
     expected: '""'
   - actual: v_str_empty.length

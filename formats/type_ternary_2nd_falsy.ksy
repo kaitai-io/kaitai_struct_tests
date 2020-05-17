@@ -7,9 +7,6 @@ seq:
     type: u1
   - id: ut
     type: foo
-  - id: null_ut
-    type: foo
-    if: false
   - id: int_array
     type: u1
     repeat: expr
@@ -26,7 +23,7 @@ types:
 instances:
   t:
     value: true
-  null_ut_inst:
+  null_ut:
     value: ut
     if: false
   v_false:
@@ -43,8 +40,6 @@ instances:
     value: 't ? "0" : "30"'
   v_null_ut:
     value: 't ? null_ut : ut'
-  v_null_ut_inst:
-    value: 't ? null_ut_inst : ut'
   v_str_empty:
     value: 't ? "" : "kaitai"'
   v_int_array_empty:
