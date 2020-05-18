@@ -6,6 +6,4 @@ asserts:
   - actual: prim_byte
     expected: 0x66
   - actual: struct.value
-    expected: '[0x6f, 0x6f, 0x62, 0x61]'
-  - actual: struct_sized.value
     expected: '[0x72, 0x00, 0x49, 0x42]'

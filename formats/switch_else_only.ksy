@@ -8,17 +8,13 @@ seq:
       switch-on: opcode
       cases:
         _: s1
+  - id: indicator
+    size: 4
   - id: struct
     type:
-      switch-on: opcode
+      switch-on: indicator
       cases:
         _: data
-  - id: struct_sized
-    type:
-      switch-on: opcode
-      cases:
-        _: data
-    size: 4
 types:
   data:
     seq:
