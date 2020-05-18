@@ -11,6 +11,5 @@ function TestSwitchElseOnly:test_switch_else_only()
 
     luaunit.assertEquals(r.opcode, 83)
     luaunit.assertEquals(r.prim_byte, 102)
-    luaunit.assertEquals(r.struct.value, "\111\111\098\097")
-    luaunit.assertEquals(r.struct_sized.value, "\114\000\073\066")
+    luaunit.assertEquals(r.struct.value, "\114\000\073\066")
 end

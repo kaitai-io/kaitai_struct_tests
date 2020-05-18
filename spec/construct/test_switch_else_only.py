@@ -10,5 +10,4 @@ class TestSwitchElseOnly(unittest.TestCase):
 
         self.assertEqual(r.opcode, 83)
         self.assertEqual(r.prim_byte, 102)
-        self.assertEqual(r.struct.value, b"\x6F\x6F\x62\x61")
-        self.assertEqual(r.struct_sized.value, b"\x72\x00\x49\x42")
+        self.assertEqual(r.struct.value, b"\x72\x00\x49\x42")
