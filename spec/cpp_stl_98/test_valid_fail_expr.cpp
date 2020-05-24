@@ -13,7 +13,7 @@ BOOST_AUTO_TEST_CASE(test_valid_fail_expr) {
     valid_fail_expr_t* r = 0;
     BOOST_CHECK_THROW(
         r = new valid_fail_expr_t(&ks),
-        kaitai::validation_expr_error<uint16_t>
+        kaitai::validation_expr_error<int16_t>
     );
 
     delete r;
