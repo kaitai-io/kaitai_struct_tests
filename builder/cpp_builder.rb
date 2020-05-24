@@ -116,7 +116,7 @@ class CppBuilder < PartialBuilder
     r
   end
 
-  def parse_failed_build(log_file)
+  def parse_failed_build(log_file, disp_files)
     list = Set.new
 
     orig_cpp_filename = nil
@@ -176,7 +176,7 @@ class CppBuilder < PartialBuilder
           # C:\projects\ci-targets\tests\spec\cpp_stl_98\test_expr_calc_array_ops.cpp(4): fatal error C1083: Cannot open include file: 'expr_calc_array_ops.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
           case l
           when /^\s+([a-z0-9_]+\.cpp)$/
-            orig_cpp_filename = $1
+            orig_cpp_filename = disp_files.find { |path| path.end_with?($1) }
           when /^\s*(.*?)\((\d+)\): (:?fatal )?error (.*?): (.*)$/
             filename = $1
             #row = $2
