@@ -39,13 +39,15 @@ class CSharpBuilder < PartialBuilder
       @msbuild_args << '/logger:C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll'
     end
 
+    # New csproj format requires NuGet restore before build
+    @msbuild_args << '/restore'
+
     # If mono is available, use it
     @is_mono = system("mono --version") ? true : false
   end
 
   def list_mandatory_files
     convert_slashes([
-      'Properties/AssemblyInfo.cs',
       'CommonSpec.cs',
     ])
   end
