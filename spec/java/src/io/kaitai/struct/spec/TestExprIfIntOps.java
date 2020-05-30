@@ -9,19 +9,9 @@ public class TestExprIfIntOps extends CommonSpec {
 
     @Test
     public void testExprIfIntOps() throws Exception {
-        ExprIfIntOps r = ExprIfIntOps.fromFile(SRC_DIR + "enum_negative.bin");
+        ExprIfIntOps r = ExprIfIntOps.fromFile(SRC_DIR + "process_coerce_switch.bin");
 
-        assertIntEquals(r.negBoxed(), 1);
         assertIntEquals(r.isEqPrim(), true);
-        assertIntEquals(r.isEqBoxed(), false);
-        assertIntEquals(r.isEqNegBoxed(), true);
-        assertIntEquals(r.isLtPrim(), false);
-        assertIntEquals(r.isLtBoxed(), true);
-        assertIntEquals(r.plusPrim(), -2);
-        assertIntEquals(r.plusBoxed(), 0);
-        assertIntEquals(r.divPrim(), 1);
-        assertIntEquals(r.divBoxed(), -1);
-        assertIntEquals(r.modPrim(), 0);
-        assertIntEquals(r.modBoxed(), 0);
+        assertIntEquals(r.isEqBoxed(), true);
     }
 }
