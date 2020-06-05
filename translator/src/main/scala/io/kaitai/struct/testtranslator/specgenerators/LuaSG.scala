@@ -33,6 +33,15 @@ class LuaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     out.puts(s"""local r = $className:from_file("src/${spec.data}")""")
   }
 
+  override def runParseExpectError(exception: KSError): Unit = {
+    val errName = LuaCompiler.ksErrorName(exception)
+    val msg = errName match {
+      case "ValidationNotEqualError" => "not equal, expected .*, but got .*"
+      case _ => errName
+    }
+    out.puts(s"""luaunit.assertErrorMsgMatches(".+: $msg", $className.from_file, $className, "src/${spec.data}")""")
+  }
+
   override def footer(): Unit = {
     out.dec
     out.puts("end")
