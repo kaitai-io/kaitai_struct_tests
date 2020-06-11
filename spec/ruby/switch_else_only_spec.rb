@@ -8,6 +8,6 @@ RSpec.describe SwitchElseOnly do
 
     expect(r.opcode).to eq 83
     expect(r.prim_byte).to eq 102
-    expect(r.struct.value).to eq [114, 0, 73, 66].pack('C*')
+    expect(r.ut.value).to eq [114, 0, 73, 66].pack('C*')
   end
 end

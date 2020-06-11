@@ -31,5 +31,5 @@ func TestSwitchElseOnly(t *testing.T) {
 
 	assert.EqualValues(t, 83, r.Opcode)
 	assert.EqualValues(t, 102, r.PrimByte)
-	assert.EqualValues(t, []uint8{114, 0, 73, 66}, r.Struct.Value)
+	assert.EqualValues(t, []uint8{114, 0, 73, 66}, r.Ut.Value)
 }

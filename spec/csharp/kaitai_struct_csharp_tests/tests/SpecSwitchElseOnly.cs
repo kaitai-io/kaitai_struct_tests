@@ -14,7 +14,7 @@ namespace Kaitai
 
             Assert.AreEqual(r.Opcode, 83);
             Assert.AreEqual(r.PrimByte, 102);
-            Assert.AreEqual(r.Struct.Value, new byte[] { 114, 0, 73, 66 });
+            Assert.AreEqual(r.Ut.Value, new byte[] { 114, 0, 73, 66 });
         }
     }
 }

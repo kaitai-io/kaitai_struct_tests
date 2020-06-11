@@ -10,5 +10,5 @@ test "SwitchElseOnly":
 
   check(r.opcode == int8(83))
   check(r.primByte == int8(102))
-  check(r.struct.value == @[114'u8, 0'u8, 73'u8, 66'u8])
+  check(r.ut.value == @[114'u8, 0'u8, 73'u8, 66'u8])
   discard

@@ -9,6 +9,6 @@ class SwitchElseOnlyTest extends TestCase {
 
         $this->assertSame(83, $r->opcode());
         $this->assertSame(102, $r->primByte());
-        $this->assertSame("\x72\x00\x49\x42", $r->struct()->value());
+        $this->assertSame("\x72\x00\x49\x42", $r->ut()->value());
     }
 }

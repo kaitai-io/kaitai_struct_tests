@@ -13,6 +13,6 @@ public class TestSwitchElseOnly extends CommonSpec {
 
         assertIntEquals(r.opcode(), 83);
         assertIntEquals(r.primByte(), 102);
-        assertEquals(r.struct().value(), new byte[] { 114, 0, 73, 66 });
+        assertEquals(r.ut().value(), new byte[] { 114, 0, 73, 66 });
     }
 }

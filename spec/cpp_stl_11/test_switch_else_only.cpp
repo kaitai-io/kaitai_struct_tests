@@ -13,7 +13,7 @@ BOOST_AUTO_TEST_CASE(test_switch_else_only) {
 
     BOOST_CHECK_EQUAL(r->opcode(), 83);
     BOOST_CHECK_EQUAL(r->prim_byte(), 102);
-    BOOST_CHECK_EQUAL(r->struct()->value(), std::string("\x72\x00\x49\x42", 4));
+    BOOST_CHECK_EQUAL(r->ut()->value(), std::string("\x72\x00\x49\x42", 4));
 
     delete r;
 }

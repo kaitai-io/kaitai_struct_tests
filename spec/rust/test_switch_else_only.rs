@@ -12,6 +12,6 @@ fn test_switch_else_only() {
 
         assert_eq!(r.opcode, 83);
         assert_eq!(r.prim_byte, 102);
-        assert_eq!(r.struct.value, vec!([0x72, 0x0, 0x49, 0x42]));
+        assert_eq!(r.ut.value, vec!([0x72, 0x0, 0x49, 0x42]));
     }
 }
