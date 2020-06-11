@@ -18,11 +18,11 @@ BOOST_AUTO_TEST_CASE(test_expr_calc_array_ops) {
     BOOST_CHECK_EQUAL(r->int_array_min(), 10);
     BOOST_CHECK_EQUAL(r->int_array_max(), 1000);
     BOOST_CHECK_EQUAL(r->double_array_size(), 5);
-    BOOST_CHECK_CLOSE(r->double_array_first(), 10.0, 100 * (1e-6) / (10.0));
-    BOOST_CHECK_CLOSE(r->double_array_mid(), 25.0, 100 * (1e-6) / (25.0));
-    BOOST_CHECK_CLOSE(r->double_array_last(), 3.14159, 100 * (1e-6) / (3.14159));
-    BOOST_CHECK_CLOSE(r->double_array_min(), 3.14159, 100 * (1e-6) / (3.14159));
-    BOOST_CHECK_CLOSE(r->double_array_max(), 100.0, 100 * (1e-6) / (100.0));
+    BOOST_CHECK_CLOSE(r->double_array_first(), 10.0, 1e-4);
+    BOOST_CHECK_CLOSE(r->double_array_mid(), 25.0, 1e-4);
+    BOOST_CHECK_CLOSE(r->double_array_last(), 3.14159, 1e-4);
+    BOOST_CHECK_CLOSE(r->double_array_min(), 3.14159, 1e-4);
+    BOOST_CHECK_CLOSE(r->double_array_max(), 100.0, 1e-4);
     BOOST_CHECK_EQUAL(r->str_array_size(), 4);
     BOOST_CHECK_EQUAL(r->str_array_first(), std::string("un"));
     BOOST_CHECK_EQUAL(r->str_array_mid(), std::string("deux"));

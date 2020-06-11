@@ -6,12 +6,10 @@
 #include <fstream>
 #include <vector>
 
-
 BOOST_AUTO_TEST_CASE(test_expr_ops_parens) {
     std::ifstream ifs("src/enum_negative.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     expr_ops_parens_t* r = new expr_ops_parens_t(&ks);
-
 
     BOOST_CHECK_EQUAL(r->i_sum_to_str(), std::string("29"));
     BOOST_CHECK_EQUAL(r->str_concat_len(), 10);

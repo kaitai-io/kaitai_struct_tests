@@ -11,8 +11,8 @@ BOOST_AUTO_TEST_CASE(test_float_to_i) {
     kaitai::kstream ks(&ifs);
     float_to_i_t* r = new float_to_i_t(&ks);
 
-    BOOST_CHECK_CLOSE(r->single_value(), 0.5, 100 * (1e-6) / (0.5));
-    BOOST_CHECK_CLOSE(r->double_value(), 0.25, 100 * (1e-6) / (0.25));
+    BOOST_CHECK_CLOSE(r->single_value(), 0.5, 1e-4);
+    BOOST_CHECK_CLOSE(r->double_value(), 0.25, 1e-4);
     BOOST_CHECK_EQUAL(r->single_i(), 0);
     BOOST_CHECK_EQUAL(r->double_i(), 0);
     BOOST_CHECK_EQUAL(r->float1_i(), 1);
