@@ -10,7 +10,7 @@ seq:
         _: s1
   - id: indicator
     size: 4
-  - id: struct
+  - id: ut
     type:
       switch-on: indicator
       cases:

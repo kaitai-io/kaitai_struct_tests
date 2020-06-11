@@ -5,5 +5,5 @@ asserts:
     expected: 0x53
   - actual: prim_byte
     expected: 0x66
-  - actual: struct.value
+  - actual: ut.value
     expected: '[0x72, 0x00, 0x49, 0x42]'
