@@ -154,6 +154,16 @@ if ENV['APPVEYOR']
   }
 end
 
+if ENV['GITHUB_ACTIONS']
+  meta['ci'] = {
+    'ci' => 'github',
+    'run_id' => ENV['GITHUB_RUN_ID'],
+    'run_number' => ENV['GITHUB_RUN_NUMBER'],
+    'job_id' => ENV['GH_JOB_ID'],
+    'url' => ENV['GH_HTML_URL'],
+  }
+end
+
 result['$meta'] = meta
 json = JSON.pretty_generate(result)
 
