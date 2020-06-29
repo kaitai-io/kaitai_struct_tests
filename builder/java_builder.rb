@@ -62,7 +62,7 @@ class JavaBuilder < PartialBuilder
       f.each_line { |l|
         l.chomp!
         if l =~ /^*(.+?\.java):(\d+): error: (.*?)$/
-          filename = $1
+          filename = $1.gsub('\\', '/')
           #row = $2
           #msg = $3
           list << filename
