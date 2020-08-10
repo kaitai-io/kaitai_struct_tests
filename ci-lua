@@ -10,8 +10,8 @@ export LUA_PATH="$LUA_PATH;$LUA_RUNTIME_DIR/?.lua;spec/lua/?.lua;spec/lua/extra/
 export PATH=$PATH:$PWD/../lua_install/bin
 
 # Detect lua executable
-if lua5.3 -v; then
-	LUA_BIN=lua5.3
+if lua5.1 -v; then
+	LUA_BIN=lua5.1
 elif lua -v; then
 	LUA_BIN=lua
 else
