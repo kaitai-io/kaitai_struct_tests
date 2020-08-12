@@ -4,7 +4,7 @@ local luaunit = require("luaunit")
 local lfs = require("lfs")
 
 function srequire(t)
-    local success, err = xpcall(require(t), require_err_handler(t))
+    local success, err = xpcall(function() require(t) end, require_err_handler(t))
     return success
 end
 

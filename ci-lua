@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash -x
 
 . ./config
 
@@ -37,7 +37,7 @@ else
 	exit 1
 fi
 
-"$LUA_BIN" spec/lua/run_test_suite.lua -v -o junit -n "${LUA_OUT_DIR}/report"
+"$LUA_BIN" spec/lua/run_test_suite.lua --output junit --name "${LUA_OUT_DIR}/report"
 
 ./kst-adoption-report "lua${CURRENT_LUA_VERSION}"
 aggregate/convert_to_json "lua${CURRENT_LUA_VERSION}" "${LUA_OUT_DIR}" "${LUA_OUT_DIR}/ci.json"
