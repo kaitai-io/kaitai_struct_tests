@@ -21,7 +21,7 @@ def glob_spec_files(lang)
   when 'javascript'
     Dir.glob('spec/javascript/test_*.js')
   when 'lua'
-    Dir.glob("spec/lua/test_*.lua")
+    Dir.glob('spec/lua/test_*.lua')
   when 'nim'
     Dir.glob('spec/nim/tests/t*.nim')
   when 'perl'
