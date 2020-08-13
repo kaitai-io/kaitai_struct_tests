@@ -8,10 +8,10 @@ class JUnitXMLParser < TestParser
       []
     elsif File.directory?(fn)
       Dir.glob("#{fn}/*.xml").map { |x|
-        REXML::Document.new(File.read(x))
+        REXML::Document.new(File.read(x).encode('UTF-8', :invalid=>:replace, :replace=>"?"))
       }
     else
-      [REXML::Document.new(File.read(fn))]
+      [REXML::Document.new(File.read(fn).encode('UTF-8', :invalid=>:replace, :replace=>"?"))]
     end
   end
 
