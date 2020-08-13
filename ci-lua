@@ -2,21 +2,6 @@
 
 . ./config
 
-ALLOWED_LUA_VERSIONS='5.1 5.2 5.3'
-CURRENT_LUA_VERSION=
-
-# try to use $VARIETY from env
-for allowed_version in $ALLOWED_LUA_VERSIONS; do
-	if [ "${allowed_version}" = "${VARIETY}" ]; then
-		CURRENT_LUA_VERSION="${VARIETY}"
-	fi
-done
-
-if [ -z "${CURRENT_LUA_VERSION}" ]; then
-  # fallback to version 5.1
-  CURRENT_LUA_VERSION="5.1"
-fi
-
 LUA_OUT_DIR="${TEST_OUT_DIR}/lua"
 
 rm -rf "${LUA_OUT_DIR}"
@@ -27,17 +12,7 @@ export LUA_PATH="$LUA_PATH;$LUA_RUNTIME_DIR/?.lua;spec/lua/?.lua;spec/lua/extra/
 # Add `lua_install` dir to PATH, as this is where hererocks installs Lua at CI
 export PATH=$PATH:$PWD/../lua_install/bin
 
-# Detect lua executable
-if lua${CURRENT_LUA_VERSION} -v; then
-	LUA_BIN=lua${CURRENT_LUA_VERSION}
-elif lua -v; then
-	LUA_BIN=lua
-else
-	echo "Unable to detect lua executable, bailing out :("
-	exit 1
-fi
+lua spec/lua/run_test_suite.lua --output junit --name "${LUA_OUT_DIR}/report"
 
-"$LUA_BIN" spec/lua/run_test_suite.lua --output junit --name "${LUA_OUT_DIR}/report"
-
-./kst-adoption-report "lua$"
-aggregate/convert_to_json "lua" "${LUA_OUT_DIR}" "${LUA_OUT_DIR}/ci.json"
+./kst-adoption-report lua
+aggregate/convert_to_json lua "${LUA_OUT_DIR}" "${LUA_OUT_DIR}/ci.json"
