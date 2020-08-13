@@ -2,14 +2,14 @@
 
 . ./config
 
-ALLOWED_LUA_VERSIONS=("5.1" "5.2" "5.3")
-CURRENT_LUA_VERSION=""
+ALLOWED_LUA_VERSIONS='5.1 5.2 5.3'
+CURRENT_LUA_VERSION=
 
 # try to use $VARIETY from env
-for allowed_version in "${ALLOWED_LUA_VERSIONS[@]}"; do
-  if [[ "${allowed_version}" = "${VARIETY}" ]]; then
-    CURRENT_LUA_VERSION="${VARIETY}"
-  fi
+for allowed_version in $ALLOWED_LUA_VERSIONS; do
+	if [ "${allowed_version}" = "${VARIETY}" ]; then
+		CURRENT_LUA_VERSION="${VARIETY}"
+	fi
 done
 
 if [ -z "${CURRENT_LUA_VERSION}" ]; then
