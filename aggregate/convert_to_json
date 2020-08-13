@@ -79,7 +79,7 @@ when 'java'
     ),
     infile
   )
-when 'lua5.1', 'lua5.2', 'lua5.3', 'nim'
+when 'lua', 'nim'
   add_kst_adoption(
     JUnitXMLParser.new("#{infile}/report.xml").to_h,
     infile

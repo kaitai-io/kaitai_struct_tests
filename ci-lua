@@ -17,7 +17,7 @@ if [ -z "${CURRENT_LUA_VERSION}" ]; then
   CURRENT_LUA_VERSION="5.1"
 fi
 
-LUA_OUT_DIR="${TEST_OUT_DIR}/lua${CURRENT_LUA_VERSION}"
+LUA_OUT_DIR="${TEST_OUT_DIR}/lua"
 
 rm -rf "${LUA_OUT_DIR}"
 mkdir -p "${LUA_OUT_DIR}"
@@ -39,5 +39,5 @@ fi
 
 "$LUA_BIN" spec/lua/run_test_suite.lua --output junit --name "${LUA_OUT_DIR}/report"
 
-./kst-adoption-report "lua${CURRENT_LUA_VERSION}"
-aggregate/convert_to_json "lua${CURRENT_LUA_VERSION}" "${LUA_OUT_DIR}" "${LUA_OUT_DIR}/ci.json"
+./kst-adoption-report "lua$"
+aggregate/convert_to_json "lua" "${LUA_OUT_DIR}" "${LUA_OUT_DIR}/ci.json"
