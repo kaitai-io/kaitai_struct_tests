@@ -12,5 +12,7 @@ class EnumToITest extends TestCase {
         $this->assertSame(7, $r->pet1I());
         $this->assertSame(32775, $r->pet1Mod());
         $this->assertSame(true, $r->oneLtTwo());
+        $this->assertSame(true, $r->pet1EqInt());
+        $this->assertSame(false, $r->pet2EqInt());
     }
 }

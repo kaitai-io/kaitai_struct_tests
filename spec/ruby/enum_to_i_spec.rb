@@ -9,6 +9,9 @@ RSpec.describe EnumToI do
     expect(r.pet_1).to eq :animal_cat
     expect(r.pet_2).to eq :animal_chicken
     expect(r.pet_1_i).to eq 7
+    expect(r.pet_1_mod).to eq 32775
     expect(r.one_lt_two).to eq true
+    expect(r.pet_1_eq_int).to eq true
+    expect(r.pet_2_eq_int).to eq false
   end
 end

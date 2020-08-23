@@ -14,4 +14,6 @@ function TestEnumToI:test_enum_to_i()
     luaunit.assertEquals(r.pet_1_i, 7)
     luaunit.assertEquals(r.pet_1_mod, 32775)
     luaunit.assertEquals(r.one_lt_two, true)
+    luaunit.assertEquals(r.pet_1_eq_int, true)
+    luaunit.assertEquals(r.pet_2_eq_int, false)
 end

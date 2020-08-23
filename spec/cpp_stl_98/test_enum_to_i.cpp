@@ -16,6 +16,8 @@ BOOST_AUTO_TEST_CASE(test_enum_to_i) {
     BOOST_CHECK_EQUAL(r->pet_1_i(), 7);
     BOOST_CHECK_EQUAL(r->pet_1_mod(), 32775);
     BOOST_CHECK_EQUAL(r->one_lt_two(), true);
+    BOOST_CHECK_EQUAL(r->pet_1_eq_int(), true);
+    BOOST_CHECK_EQUAL(r->pet_2_eq_int(), false);
 
     delete r;
 }

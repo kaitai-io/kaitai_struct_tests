@@ -8,14 +8,17 @@ use base qw(Test::Class);
 use Test::More;
 use EnumToI;
 
-sub test_enum_to_i: Test(5) {
+sub test_enum_to_i: Test(7) {
     my $r = EnumToI->from_file('src/enum_0.bin');
+
 
     is($r->pet_1(), $EnumToI::ANIMAL_CAT, 'Equals');
     is($r->pet_2(), $EnumToI::ANIMAL_CHICKEN, 'Equals');
     is($r->pet_1_i(), 7, 'Equals');
     is($r->pet_1_mod(), 32775, 'Equals');
     is($r->one_lt_two(), 1, 'Equals');
+    is($r->pet_1_eq_int(), 1, 'Equals');
+    is($r->pet_2_eq_int(), 0, 'Equals');
 }
 
 Test::Class->runtests;
