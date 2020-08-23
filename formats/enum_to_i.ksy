@@ -20,3 +20,7 @@ instances:
     value: pet_1.to_i + 0x8000
   one_lt_two:
     value: pet_1.to_i < pet_2.to_i
+  pet_1_eq_int:
+    value: pet_1.to_i == 7
+  pet_2_eq_int:
+    value: pet_2.to_i == 5
