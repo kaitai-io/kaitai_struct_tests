@@ -96,7 +96,7 @@ when 'javascript'
     JUnitXMLParser.new("#{infile}/test-output-javascript.xml").to_h,
     infile
   )
-when 'php', 'python'
+when 'php', 'python', 'construct'
   add_kst_adoption(
     JUnitXMLParser.new(infile).to_h,
     infile
