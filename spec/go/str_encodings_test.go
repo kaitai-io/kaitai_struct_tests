@@ -30,7 +30,7 @@ func TestStrEncodings(t *testing.T) {
 	}
 
 	assert.EqualValues(t, "Some ASCII", r.Str1)
-	assert.EqualValues(t, "\u0103\ufffd\u201c\u0103\u201a\u201c\u0103\ufffd\253\u0103\ufffd\u02c7\u0103\ufffd\u017b", r.Str2)
-	assert.EqualValues(t, "\u0103\ufffd\u201c\u0103\u201a\u201c\u0103\ufffd\253\u0103\ufffd\u02c7\u0103\ufffd\u017b", r.Str3)
-	assert.EqualValues(t, "\342\u2013\u2018\342\u2013\u2019\342\u2013\u201c", r.Str4)
+	assert.EqualValues(t, "\u3053\u3093\u306b\u3061\u306f", r.Str2)
+	assert.EqualValues(t, "\u3053\u3093\u306b\u3061\u306f", r.Str3)
+	assert.EqualValues(t, "\u2591\u2592\u2593", r.Str4)
 }
