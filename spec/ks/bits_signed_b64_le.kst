@@ -1,0 +1,13 @@
+id: bits_signed_b64_le
+data: bits_signed_b64_le.bin
+asserts:
+  - actual: a_num
+    expected: 0
+  - actual: a_bit
+    expected: true
+  - actual: b_num
+    expected: '0x7fff_ffff_ffff_ffff'
+  - actual: b_bit
+    expected: false
+    # this is the important one,
+    # it will be `true` in languages using signed 64-bit right shift `>>` (e.g. Java)
