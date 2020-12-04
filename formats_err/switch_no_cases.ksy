@@ -1,4 +1,4 @@
-# switch_no_cases.ksy: /seq/0/cases:
+# switch_no_cases.ksy: /seq/0:
 # 	error: missing mandatory argument `cases`
 #
 meta:
