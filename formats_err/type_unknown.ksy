@@ -1,4 +1,4 @@
-# type_unknown.ksy: /seq/0:
+# type_unknown.ksy: /seq/0/type:
 # 	error: unable to find type 'some_unknown_name', searching from type_unknown
 #
 meta:

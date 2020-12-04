@@ -1,4 +1,4 @@
-# params_def_unknown_type.ksy: /params/0:
+# params_def_unknown_type.ksy: /params/0/type:
 # 	error: unable to find type 'bar', searching from params_def_unknown_type
 #
 meta:

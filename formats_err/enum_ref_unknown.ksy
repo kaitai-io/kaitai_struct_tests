@@ -1,4 +1,4 @@
-# enum_ref_unknown.ksy: /seq/0:
+# enum_ref_unknown.ksy: /seq/0/enum:
 # 	error: unable to find enum 'animal', searching from enum_ref_unknown
 #
 meta:
