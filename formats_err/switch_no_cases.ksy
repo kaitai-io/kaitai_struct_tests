@@ -1,4 +1,4 @@
-# /seq/0/cases: missing mandatory argument `cases`
+# /seq/0: missing mandatory argument `cases`
 meta:
   id: switch_no_cases
 seq:
