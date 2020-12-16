@@ -10,6 +10,35 @@
 name=$1
 shift
 
-echo -n "travis_fold:start:$name\r"
-$@
-echo -n "travis_fold:end:$name\r"
+echo "travis_fold:start:$name"
+{ $@; status=$?; } || true
+echo "travis_fold:end:$name"
+exit $status
+
+# Test cases for this script:
+#
+# Case 1:
+#   Command:
+#     $ { ./travis-fold 'exit_0' echo "hello"; echo $?; }
+#   Expected output:
+#     travis_fold:start:exit_0
+#     hello
+#     travis_fold:end:exit_0
+#     0
+#
+# Case 2:
+#   Command:
+#     $ { ./travis-fold 'exit_1' false; echo $?; }
+#   Expected output:
+#     travis_fold:start:exit_1
+#     travis_fold:end:exit_1
+#     1
+#
+# Case 3:
+#   Command:
+#     $ { ./travis-fold 'exit_127' not-existing_command; echo $?; }
+#   Expected output:
+#     travis_fold:start:exit_127
+#     ./travis-fold: line 14: not-existing_command: command not found
+#     travis_fold:end:exit_127
+#     127
