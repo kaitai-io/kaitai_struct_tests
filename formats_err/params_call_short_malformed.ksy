@@ -1,4 +1,4 @@
-# /seq/0: parsing expression '2 + 3, ' failed on 1:6
+# /seq/0: parsing expression '2 + 3, ' failed on 1:6, expected CharsWhile(Set( , n)) | "\\\n" | End
 meta:
   id: params_call_short_malformed
 seq:
