@@ -1,4 +1,4 @@
-# /seq/0/bar: unknown key found, expected: cases, switch-on
+# /seq/0/type/bar: unknown key found, expected: cases, switch-on
 meta:
   id: switch_invalid_key
 seq:

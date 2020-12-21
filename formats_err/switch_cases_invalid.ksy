@@ -1,4 +1,4 @@
-# /seq/0/cases: expected map, got foo (class java.lang.String)
+# /seq/0/type/cases: expected map, got foo (class java.lang.String)
 meta:
   id: switch_cases_invalid
 seq:
