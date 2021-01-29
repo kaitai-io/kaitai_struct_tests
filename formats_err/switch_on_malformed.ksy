@@ -1,4 +1,4 @@
-# /seq/0/switch-on: parsing expression '42/' failed on 1:3, expected "or" | CharsWhile(Set( , n)) | "\\\n" | End
+# switch_on_malformed.ksy: /seq/0/switch-on: error: parsing expression '42/' failed on 1:3, expected "or" | CharsWhile(Set( , n)) | "\\\n" | End
 meta:
   id: switch_on_malformed
 seq:

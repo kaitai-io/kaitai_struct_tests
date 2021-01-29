@@ -1,4 +1,4 @@
-# /instances/bar: duplicate attribute ID 'bar', previously defined at /seq/1
+# seq_value_inst_id_clash.ksy: /instances/bar: error: duplicate attribute ID 'bar', previously defined at /seq/1
 meta:
   id: seq_value_inst_id_clash
 seq:

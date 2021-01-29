@@ -1,1 +1,1 @@
-# /: expected map, got null
+# top_empty.ksy: /: error: expected map, got null

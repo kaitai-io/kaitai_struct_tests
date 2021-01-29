@@ -1,4 +1,4 @@
-# /seq/0/repeat: `repeat: expr` requires a `repeat-expr` expression
+# repeat_wo_expr.ksy: /seq/0/repeat: error: `repeat: expr` requires a `repeat-expr` expression
 meta:
   id: repeat_wo_expr
 seq:

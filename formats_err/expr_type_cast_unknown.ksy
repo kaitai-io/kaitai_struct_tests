@@ -1,4 +1,4 @@
-# (main): /instances/foo_bar/value: unable to find type 'bar', searching from expr_type_cast_unknown
+# expr_type_cast_unknown.ksy: /instances/foo_bar/value: error: unable to find type 'bar', searching from expr_type_cast_unknown
 meta:
   id: expr_type_cast_unknown
 seq:
