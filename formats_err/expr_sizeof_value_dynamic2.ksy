@@ -3,10 +3,10 @@ meta:
   id: expr_sizeof_value_dynamic2
   endian: le
 seq:
-  - id: len
+  - id: len_body
     type: u1
   - id: body
-    size: len
+    size: len_body
 instances:
   body_sizeof:
     value: body._sizeof
