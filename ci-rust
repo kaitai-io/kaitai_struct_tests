@@ -1,12 +1,16 @@
 #!/bin/sh
-
+set -eu
 . ./config
 
 mkdir -p "$TEST_OUT_DIR/rust"
 
-cd spec/rust
-mkdir src
-touch src/lib.rs
-cargo build
-cargo test-junit \
-      --name "../../$TEST_OUT_DIR/rust/results.xml"
+rm -rf "spec/rust/src"
+mkdir -p "spec/rust/src/"
+for rs in $(ls "$FORMATS_COMPILED_DIR/rust/"); do
+    cp "$FORMATS_COMPILED_DIR/rust/$rs" "spec/rust/src"
+    mod_name="$(echo "$rs" | cut -d'.' -f1)"
+    echo "pub mod $mod_name;" >> "spec/rust/src/lib.rs"
+done
+
+cd "spec/rust"
+cargo junit --name "../../$TEST_OUT_DIR/rust/results.xml"
