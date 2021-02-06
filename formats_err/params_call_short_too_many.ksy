@@ -1,4 +1,4 @@
-# params_call_short_too_many: /seq/0/type: error: parameter count mismatch: 2 declared, but 3 used
+# params_call_short_too_many.ksy: /seq/0/type: error: parameter count mismatch: 2 declared, but 3 used
 meta:
   id: params_call_short_too_many
 seq:
