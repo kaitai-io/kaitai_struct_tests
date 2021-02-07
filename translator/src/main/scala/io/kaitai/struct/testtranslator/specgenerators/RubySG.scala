@@ -16,13 +16,39 @@ class RubySG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   override def indentStr: String = "  "
 
   override def header(): Unit = {
+    // Wrap loading of results of test .ksy to Ruby compilation in rescue block:
+    // if we'll encounter any SyntaxError/LoadError during loading, initialize
+    // className with nil to remember this and store the exception in `load_err`
+    out.puts("load_err = nil")
+    out.puts("begin")
+    out.inc
     out.puts(s"require '${spec.id}'")
     spec.extraImports.foreach(fn => out.puts(s"require '$fn'"))
+    out.dec
+    out.puts("rescue SyntaxError => e")
+    out.inc
+    out.puts("load_err = e")
+    out.puts(s"$className = nil")
+    out.dec
+    out.puts("rescue LoadError => e")
+    out.inc
+    out.puts("load_err = e")
+    out.puts(s"$className = nil")
+    out.dec
+    out.puts("end")
+
     out.puts
     out.puts(s"RSpec.describe $className do")
     out.inc
     out.puts(s"it 'parses test properly' do")
     out.inc
+
+    // Safeguard against situation when className failed to load: we'll end up having
+    // className constant as nil and we can rethrow exception from inside the test.
+    // If we don't do it, rest of the tests will still work (we'll get NoMethodError
+    // on attempt to use `from_file`), but it will be harder to debug as we'll lose
+    // original LoadError/SyntaxError.
+    out.puts(s"raise load_err if $className.nil?")
   }
 
   override def runParse(): Unit = {
