@@ -5,7 +5,7 @@ seq:
     size: 3
 instances:
   two:
-    value: '[0x41, 0x43, 0x4b]'
+    value: '[0x41, 0xff, 0x4b]'
 
   one_size:
     value: one.size
