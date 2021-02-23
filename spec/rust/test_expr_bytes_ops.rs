@@ -8,19 +8,23 @@ use rust::ExprBytesOps;
 
 #[test]
 fn test_expr_bytes_ops() {
-    if let Ok(r) = ExprBytesOps::from_file("src/fixed_struct.bin") {
+    if let Ok(r) = ExprBytesOps::from_file("src/nav_parent_switch.bin") {
 
         assert_eq!(r.one_size, 3);
-        assert_eq!(r.one_first, 80);
-        assert_eq!(r.one_mid, 65);
-        assert_eq!(r.one_last, 67);
-        assert_eq!(r.one_min, 65);
-        assert_eq!(r.one_max, 80);
+        assert_eq!(r.one_first, 1);
+        assert_eq!(r.one_mid, 66);
+        assert_eq!(r.one_last, 255);
+        assert_eq!(r.one_last.to_string(), "255");
+        assert_eq!(r.one_min, 1);
+        assert_eq!(r.one_max, 255);
+        assert_eq!(r.one_max.to_string(), "255");
         assert_eq!(r.two_size, 3);
         assert_eq!(r.two_first, 65);
-        assert_eq!(r.two_mid, 67);
+        assert_eq!(r.two_mid, 255);
+        assert_eq!(r.two_mid.to_string(), "255");
         assert_eq!(r.two_last, 75);
         assert_eq!(r.two_min, 65);
-        assert_eq!(r.two_max, 75);
+        assert_eq!(r.two_max, 255);
+        assert_eq!(r.two_max.to_string(), "255");
     }
 }

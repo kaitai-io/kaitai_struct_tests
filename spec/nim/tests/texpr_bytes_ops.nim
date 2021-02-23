@@ -3,21 +3,26 @@
 import os, streams, options, sequtils, unittest
 import ../../../compiled/nim/expr_bytes_ops
 import ../test_utils
+import strutils
 
-let r = ExprBytesOps.fromFile("src/fixed_struct.bin")
+let r = ExprBytesOps.fromFile("src/nav_parent_switch.bin")
 
 test "ExprBytesOps":
 
   check(r.oneSize == int(3))
-  check(r.oneFirst == uint8(80))
-  check(r.oneMid == uint8(65))
-  check(r.oneLast == uint8(67))
-  check(r.oneMin == uint8(65))
-  check(r.oneMax == uint8(80))
+  check(r.oneFirst == uint8(1))
+  check(r.oneMid == uint8(66))
+  check(r.oneLast == uint8(255))
+  check(intToStr(int(r.oneLast)) == string("255"))
+  check(r.oneMin == uint8(1))
+  check(r.oneMax == uint8(255))
+  check(intToStr(int(r.oneMax)) == string("255"))
   check(r.twoSize == int(3))
   check(r.twoFirst == uint8(65))
-  check(r.twoMid == uint8(67))
+  check(r.twoMid == uint8(255))
+  check(intToStr(int(r.twoMid)) == string("255"))
   check(r.twoLast == uint8(75))
   check(r.twoMin == uint8(65))
-  check(r.twoMax == uint8(75))
+  check(r.twoMax == uint8(255))
+  check(intToStr(int(r.twoMax)) == string("255"))
   discard

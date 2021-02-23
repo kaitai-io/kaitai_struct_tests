@@ -9,19 +9,23 @@ public class TestExprBytesOps extends CommonSpec {
 
     @Test
     public void testExprBytesOps() throws Exception {
-        ExprBytesOps r = ExprBytesOps.fromFile(SRC_DIR + "fixed_struct.bin");
+        ExprBytesOps r = ExprBytesOps.fromFile(SRC_DIR + "nav_parent_switch.bin");
 
         assertIntEquals(r.oneSize(), 3);
-        assertIntEquals(r.oneFirst(), 80);
-        assertIntEquals(r.oneMid(), 65);
-        assertIntEquals(r.oneLast(), 67);
-        assertIntEquals(r.oneMin(), 65);
-        assertIntEquals(r.oneMax(), 80);
+        assertIntEquals(r.oneFirst(), 1);
+        assertIntEquals(r.oneMid(), 66);
+        assertIntEquals(r.oneLast(), 255);
+        assertEquals(Long.toString(r.oneLast(), 10), "255");
+        assertIntEquals(r.oneMin(), 1);
+        assertIntEquals(r.oneMax(), 255);
+        assertEquals(Long.toString(r.oneMax(), 10), "255");
         assertIntEquals(r.twoSize(), 3);
         assertIntEquals(r.twoFirst(), 65);
-        assertIntEquals(r.twoMid(), 67);
+        assertIntEquals(r.twoMid(), 255);
+        assertEquals(Long.toString(r.twoMid(), 10), "255");
         assertIntEquals(r.twoLast(), 75);
         assertIntEquals(r.twoMin(), 65);
-        assertIntEquals(r.twoMax(), 75);
+        assertIntEquals(r.twoMax(), 255);
+        assertEquals(Long.toString(r.twoMax(), 10), "255");
     }
 }
