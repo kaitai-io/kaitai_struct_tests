@@ -9,6 +9,7 @@ class TestExprOpsParens(unittest.TestCase):
         r = _schema.parse_file('src/enum_negative.bin')
 
         self.assertEqual(r.i_sum_to_str, u"29")
+        self.assertEqual(r.f_sum_to_int, 9)
         self.assertEqual(r.str_concat_len, 10)
         self.assertEqual(r.str_concat_rev, u"9876543210")
         self.assertEqual(r.str_concat_substr_2_to_7, u"23456")

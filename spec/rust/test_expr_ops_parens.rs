@@ -11,6 +11,7 @@ fn test_expr_ops_parens() {
     if let Ok(r) = ExprOpsParens::from_file("src/enum_negative.bin") {
 
         assert_eq!(r.i_sum_to_str, "29");
+        assert_eq!(r.f_sum_to_int, 9);
         assert_eq!(r.str_concat_len, 10);
         assert_eq!(r.str_concat_rev, "9876543210");
         assert_eq!(r.str_concat_substr_2_to_7, "23456");

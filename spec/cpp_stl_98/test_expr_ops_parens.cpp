@@ -12,6 +12,7 @@ BOOST_AUTO_TEST_CASE(test_expr_ops_parens) {
     expr_ops_parens_t* r = new expr_ops_parens_t(&ks);
 
     BOOST_CHECK_EQUAL(r->i_sum_to_str(), std::string("29"));
+    BOOST_CHECK_EQUAL(r->f_sum_to_int(), 9);
     BOOST_CHECK_EQUAL(r->str_concat_len(), 10);
     BOOST_CHECK_EQUAL(r->str_concat_rev(), std::string("9876543210"));
     BOOST_CHECK_EQUAL(r->str_concat_substr_2_to_7(), std::string("23456"));

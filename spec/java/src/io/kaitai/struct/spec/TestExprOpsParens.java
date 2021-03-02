@@ -12,6 +12,7 @@ public class TestExprOpsParens extends CommonSpec {
         ExprOpsParens r = ExprOpsParens.fromFile(SRC_DIR + "enum_negative.bin");
 
         assertEquals(r.iSumToStr(), "29");
+        assertIntEquals(r.fSumToInt(), 9);
         assertIntEquals(r.strConcatLen(), 10);
         assertEquals(r.strConcatRev(), "9876543210");
         assertEquals(r.strConcatSubstr2To7(), "23456");

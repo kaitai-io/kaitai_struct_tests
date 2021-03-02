@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = ExprOpsParens.FromFile(SourceFile("enum_negative.bin"));
 
-
             Assert.AreEqual(r.ISumToStr, "29");
+            Assert.AreEqual(r.FSumToInt, 9);
             Assert.AreEqual(r.StrConcatLen, 10);
             Assert.AreEqual(r.StrConcatRev, "9876543210");
             Assert.AreEqual(r.StrConcatSubstr2To7, "23456");

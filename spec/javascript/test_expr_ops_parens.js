@@ -6,6 +6,7 @@ var testHelper = require('testHelper');
 testHelper('ExprOpsParens', 'src/enum_negative.bin', function(r, ExprOpsParens) {
 
   assert.strictEqual(r.iSumToStr, "29");
+  assert.strictEqual(r.fSumToInt, 9);
   assert.strictEqual(r.strConcatLen, 10);
   assert.strictEqual(r.strConcatRev, "9876543210");
   assert.strictEqual(r.strConcatSubstr2To7, "23456");

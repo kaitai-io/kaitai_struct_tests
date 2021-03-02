@@ -9,6 +9,7 @@ let r = ExprOpsParens.fromFile("src/enum_negative.bin")
 test "ExprOpsParens":
 
   check(r.iSumToStr == string("29"))
+  check(r.fSumToInt == int(9))
   check(r.strConcatLen == int(10))
   check(r.strConcatRev == string("9876543210"))
   check(r.strConcatSubstr2To7 == string("23456"))
