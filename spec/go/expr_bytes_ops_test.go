@@ -9,7 +9,7 @@ import (
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	. "test_formats"
 	"github.com/stretchr/testify/assert"
-	strconv
+	"strconv"
 )
 
 func TestExprBytesOps(t *testing.T) {
