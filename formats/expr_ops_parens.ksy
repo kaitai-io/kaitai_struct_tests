@@ -8,12 +8,12 @@ instances:
   i_sum_to_str:
     value: (i_42 + i_m13).to_s
 
-  f_pi:
-    value: 3.14
+  f_2pi:
+    value: 6.28
   f_e:
     value: 2.72
   f_sum_to_int:
-    value: (f_pi + f_e).to_i
+    value: (f_2pi + f_e).to_i
 
   str_0_to_4:
     value: '"01234"'

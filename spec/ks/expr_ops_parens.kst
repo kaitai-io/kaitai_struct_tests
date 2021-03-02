@@ -3,6 +3,8 @@ data: enum_negative.bin
 asserts:
   - actual: i_sum_to_str
     expected: '"29"'
+  - actual: f_sum_to_int
+    expected: 9
   - actual: str_concat_len
     expected: 10
   - actual: str_concat_rev
