@@ -6,7 +6,7 @@ seq:
     type: str
     terminator: 0x7c
   - id: s2
-    type: strz
+    type: str
     terminator: 0x7c
 to-string: |
   "s1 = " + s1 + ", s2 = " + s2
