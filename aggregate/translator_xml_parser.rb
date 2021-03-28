@@ -22,13 +22,14 @@ class TranslatorXMLParser
         status = :failed
         failure_msg = failure_xml.attribute('message')
         failure_msg = failure_msg.value if failure_msg
+        failure_trace = (failure_xml.texts.map {|t| t.value }).join('').strip
 
         status = :no_spec if failure_msg == 'no expected result'
         failure = TestResult::Failure.new(
           nil,
           nil,
           failure_msg,
-          failure_xml.children
+          failure_trace
         )
       end
 

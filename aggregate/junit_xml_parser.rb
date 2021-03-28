@@ -51,11 +51,12 @@ class JUnitXMLParser < TestParser
           status = :failed
           failure_msg = failure_xml.attribute('message') || failure_xml.attribute('type')
           failure_msg = failure_msg.value if failure_msg
+          failure_trace = (failure_xml.texts.map {|t| t.value }).join('').strip
           failure = TestResult::Failure.new(
             nil,
             nil,
             failure_msg,
-            failure_xml.children
+            failure_trace
           )
         end
 
