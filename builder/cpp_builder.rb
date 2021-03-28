@@ -193,7 +193,7 @@ class CppBuilder < PartialBuilder
 
             # .h files are not members of disposable_files per se,
             # they are always included from some other .cpp
-            # files. Msbuild logs print the original .cpp filename
+            # files. MSBuild logs print the original .cpp filename
             # indented with 2 spaces just before any error
             # occurs, so we just use it.
             if filename =~ /(.*)\.h$/
