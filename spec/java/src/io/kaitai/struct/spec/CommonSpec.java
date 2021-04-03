@@ -3,7 +3,7 @@ package io.kaitai.struct.spec;
 import static org.testng.Assert.assertEquals;
 
 public class CommonSpec {
-    public String SRC_DIR = "../../src/";
+    public static String SRC_DIR = "../../src/";
 
     // Family of assertIntEquals methods helps to compare integer-like values in Java,
     // ignoring whether the value was a boxed type (Integer) or primitive type (int).
