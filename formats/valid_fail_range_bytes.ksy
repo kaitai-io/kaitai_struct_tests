@@ -4,5 +4,5 @@ seq:
   - id: foo
     size: 2
     valid:
-      min: '[72, 64]'
-      max: '[79, 126]' # there is actually [80, 65] in the file
+      min: '[80]'
+      max: '[80, 49]' # there is actually [80, 65] in the file

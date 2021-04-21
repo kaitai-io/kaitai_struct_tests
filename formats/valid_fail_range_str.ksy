@@ -5,6 +5,7 @@ seq:
   - id: foo
     size: 2
     type: str
+    # there is actually [80, 65] ("PA") in the file
     valid:
-      min: '"H@"'
-      max: '"O~"' # there is actually [80, 65] in the file
+      min: '"P"' # [80]
+      max: '"P1"' # [80, 49]
