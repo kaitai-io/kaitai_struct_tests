@@ -3,13 +3,17 @@
 # Script for building all the tests for a specific target language
 # Usage: build-tests <lang>
 
+if [ "$#" -ne 1 ]; then
+    echo "Usage: build-tests <lang>"
+    exit 1
+fi
+
 . ./config
 
 cd ../compiler
 sbt publishLocal
-cd ../tests/translator
-sbt "run -t $1 --all-specs"
-cd ..
-mkdir -p "spec/$1/tests"
-mv "spec/ks/out/$1"/* "spec/$1/tests"
-rm -rf "spec/ks/out"
+cd ../tests
+./spec_kst_to_all -t "$1" --all-specs
+cd spec
+mv "ks/out/$1/tests"/* "$1/"
+rm -rf ks/out
