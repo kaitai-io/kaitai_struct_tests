@@ -5,6 +5,6 @@
 rm -rf "$TEST_OUT_DIR/nim"
 mkdir -p "$TEST_OUT_DIR/nim"
 
-testify $TEST_OUT_DIR/nim/report.xml spec/nim/tests
+testify $TEST_OUT_DIR/nim/report.xml spec/nim
 ./kst-adoption-report nim
 aggregate/convert_to_json nim "$TEST_OUT_DIR/nim" "$TEST_OUT_DIR/nim/ci.json"

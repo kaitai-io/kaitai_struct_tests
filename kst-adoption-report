@@ -23,7 +23,7 @@ def glob_spec_files(lang)
   when 'lua'
     Dir.glob('spec/lua/test_*.lua')
   when 'nim'
-    Dir.glob('spec/nim/tests/t*.nim')
+    Dir.glob('spec/nim/t*.nim')
   when 'perl'
     Dir.glob('spec/perl/Test*.t')
   when 'php'

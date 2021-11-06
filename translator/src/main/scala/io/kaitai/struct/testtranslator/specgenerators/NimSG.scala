@@ -14,20 +14,15 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
   val translator = new NimTranslator(provider, importList)
 
   spec.extraImports.foreach(entry =>
-    importList.add(s"../../../compiled/nim/$entry")
+    importList.add(s"../../compiled/nim/$entry")
   )
 
   // Members declared in io.kaitai.struct.testtranslator.specgenerators.BaseGenerator
   override def fileName(name: String): String = s"tests/t${spec.id}.nim"
   override def header(): Unit = {
     out.puts(s"let r = ${className}.fromFile" + "(\"src/" + spec.data + "\")")
-    out.puts
-    out.puts("test \"" + s"${className}" + "\":")
-    out.inc
   }
-  override def footer(): Unit = {
-    out.puts("discard")
-  }
+  override def footer(): Unit = { }
   override def nullAssert(actual: expr): Unit = {
     val actStr = translateAct(actual)
     val td = new TypeDetector(provider)
@@ -61,7 +56,7 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
       case t: UserType => "nil"
     }
 
-    out.puts(s"check($actStr == $expStr)")
+    out.puts(s"assert $actStr == $expStr")
   }
   override def simpleAssert(check: TestAssert): Unit = {
     val actStr = translateAct(check.actual)
@@ -69,8 +64,8 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     val td = new TypeDetector(provider)
     val ta = ksToNim(td.detectType(check.actual))
     td.detectType(check.expected) match {
-      case _: EnumType | _: BytesType | _: ArrayType => out.puts(s"check($actStr == $expStr)")
-      case _ => out.puts(s"check($actStr == $ta($expStr))")
+      case _: EnumType | _: BytesType | _: ArrayType => out.puts(s"assert $actStr == $expStr")
+      case _ => out.puts(s"assert $actStr == $ta($expStr)")
     }
   }
   override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[expr]): Unit = {
@@ -82,12 +77,12 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
       else
         s"@[${first + ", " + arr.tail.mkString(", ")}]"
     }
-    out.puts(s"check(${translateAct(check.actual)} == $rvalue)")
+    out.puts(s"assert ${translateAct(check.actual)} == $rvalue")
   }
   override def runParse(): Unit = {
-    importList.add("os, streams, options, sequtils, unittest")
-    importList.add("../../../compiled/nim/" + spec.id)
-    importList.add("../test_utils")
+    importList.add("os, streams, options, sequtils")
+    importList.add("../../compiled/nim/" + spec.id)
+    importList.add("auxiliary/test_utils")
   }
 
   // Members declared in io.kaitai.struct.testtranslator.specgenerators.SpecGenerator

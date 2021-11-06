@@ -4,4 +4,4 @@
 
 . ./config
 
-nim c -r -w:off --hints:off --outdir:"spec/nim/tests/bin" "spec/nim/tests/t$1"
+nim c -r -w:off --hints:off --outdir:"spec/nim/tests/bin" "spec/nim/t$1"
