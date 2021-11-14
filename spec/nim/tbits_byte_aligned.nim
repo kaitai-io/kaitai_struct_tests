@@ -12,6 +12,6 @@ assert r.two == uint64(2)
 assert r.three == bool(false)
 assert r.byte2 == uint8(75)
 assert r.four == uint64(2892)
-assert r.byte3 == @[-1'u8]
+assert r.byte3 == @[255'u8]
 assert r.fullByte == uint64(255)
 assert r.byte4 == uint8(80)

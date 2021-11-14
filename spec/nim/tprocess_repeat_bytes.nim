@@ -6,5 +6,5 @@ import auxiliary/test_utils
 
 let r = ProcessRepeatBytes.fromFile("src/process_xor_4.bin")
 
-assert r.bufs[0] == @[114'u8, 37'u8, 61'u8, -118'u8, 20'u8]
-assert r.bufs[1] == @[74'u8, 82'u8, -86'u8, 16'u8, 68'u8]
+assert r.bufs[0] == @[114'u8, 37'u8, 61'u8, 138'u8, 20'u8]
+assert r.bufs[1] == @[74'u8, 82'u8, 170'u8, 16'u8, 68'u8]

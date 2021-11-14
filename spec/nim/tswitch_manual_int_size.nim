@@ -13,6 +13,6 @@ assert (SwitchManualIntSize_Chunk_ChunkMeta(r.chunks[0].body)).author == string(
 assert r.chunks[1].code == uint8(34)
 assert (SwitchManualIntSize_Chunk_ChunkDir(r.chunks[1].body)).entries == @[string("AAAA"), "BBBB", "CCCC"]
 assert r.chunks[2].code == uint8(51)
-assert (seq[byte](r.chunks[2].body)) == @[16'u8, 32'u8, 48'u8, 64'u8, 80'u8, 96'u8, 112'u8, -128'u8]
+assert (seq[byte](r.chunks[2].body)) == @[16'u8, 32'u8, 48'u8, 64'u8, 80'u8, 96'u8, 112'u8, 128'u8]
 assert r.chunks[3].code == uint8(255)
 assert (seq[byte](r.chunks[3].body)) == @[]

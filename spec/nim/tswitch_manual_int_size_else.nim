@@ -13,6 +13,6 @@ assert (SwitchManualIntSizeElse_Chunk_ChunkMeta(r.chunks[0].body)).author == str
 assert r.chunks[1].code == uint8(34)
 assert (SwitchManualIntSizeElse_Chunk_ChunkDir(r.chunks[1].body)).entries == @[string("AAAA"), "BBBB", "CCCC"]
 assert r.chunks[2].code == uint8(51)
-assert (SwitchManualIntSizeElse_Chunk_Dummy(r.chunks[2].body)).rest == @[16'u8, 32'u8, 48'u8, 64'u8, 80'u8, 96'u8, 112'u8, -128'u8]
+assert (SwitchManualIntSizeElse_Chunk_Dummy(r.chunks[2].body)).rest == @[16'u8, 32'u8, 48'u8, 64'u8, 80'u8, 96'u8, 112'u8, 128'u8]
 assert r.chunks[3].code == uint8(255)
 assert (SwitchManualIntSizeElse_Chunk_Dummy(r.chunks[3].body)).rest == @[]
