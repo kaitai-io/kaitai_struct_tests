@@ -7,4 +7,4 @@ import auxiliary/test_utils
 let r = EnumInvalid.fromFile("src/term_strz.bin")
 
 assert r.pet1 == enum_invalid.dog
-assert r.pet2 == EnumInvalid_Animal(111)
+assert r.pet2 == 111

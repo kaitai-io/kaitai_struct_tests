@@ -6,6 +6,6 @@ import auxiliary/test_utils
 
 let r = RepeatNStrzDouble.fromFile("src/repeat_n_strz.bin")
 
-assert r.qty == uint32(2)
+assert r.qty == 2
 assert r.lines1 == @[string("foo"), ]
 assert r.lines2 == @[string("bar"), ]

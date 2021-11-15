@@ -6,5 +6,5 @@ import auxiliary/test_utils
 
 let r = NestedSameName.fromFile("src/repeat_n_struct.bin")
 
-assert r.mainData.mainSize == int32(2)
+assert r.mainData.mainSize == 2
 assert r.mainData.foo.data == @[16'u8, 0'u8, 0'u8, 0'u8]

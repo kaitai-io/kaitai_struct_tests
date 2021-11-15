@@ -7,8 +7,8 @@ import auxiliary/test_utils
 
 let r = ImportsCircularA.fromFile("src/fixed_struct.bin")
 
-assert r.code == uint8(80)
-assert r.two.initial == uint8(65)
-assert r.two.backRef.code == uint8(67)
-assert r.two.backRef.two.initial == uint8(75)
+assert r.code == 80
+assert r.two.initial == 65
+assert r.two.backRef.code == 67
+assert r.two.backRef.two.initial == 75
 assert r.two.backRef.two.backRef == nil

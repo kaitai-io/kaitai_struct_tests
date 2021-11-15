@@ -6,5 +6,5 @@ import auxiliary/test_utils
 
 let r = PositionToEnd.fromFile("src/position_to_end.bin")
 
-assert r.index.foo == uint32(66)
-assert r.index.bar == uint32(4660)
+assert r.index.foo == 66
+assert r.index.bar == 4660

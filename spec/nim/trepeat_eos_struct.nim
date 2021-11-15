@@ -6,8 +6,8 @@ import auxiliary/test_utils
 
 let r = RepeatEosStruct.fromFile("src/repeat_eos_struct.bin")
 
-assert len(r.chunks) == int(2)
-assert r.chunks[0].offset == uint32(0)
-assert r.chunks[0].len == uint32(66)
-assert r.chunks[1].offset == uint32(66)
-assert r.chunks[1].len == uint32(2069)
+assert len(r.chunks) == 2
+assert r.chunks[0].offset == 0
+assert r.chunks[0].len == 66
+assert r.chunks[1].offset == 66
+assert r.chunks[1].len == 2069

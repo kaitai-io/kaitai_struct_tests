@@ -6,6 +6,6 @@ import auxiliary/test_utils
 
 let r = TermStrz.fromFile("src/term_strz.bin")
 
-assert r.s1 == string("foo")
-assert r.s2 == string("bar")
-assert r.s3 == string("|baz@")
+assert r.s1 == "foo"
+assert r.s2 == "bar"
+assert r.s3 == "|baz@"

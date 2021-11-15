@@ -7,6 +7,6 @@ import auxiliary/test_utils
 
 let r = Imports0.fromFile("src/fixed_struct.bin")
 
-assert r.two == uint8(80)
-assert r.hw.one == uint8(65)
-assert r.hwOne == uint8(65)
+assert r.two == 80
+assert r.hw.one == 65
+assert r.hwOne == 65

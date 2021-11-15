@@ -6,6 +6,6 @@ import auxiliary/test_utils
 
 let r = ParamsCallShort.fromFile("src/term_strz.bin")
 
-assert r.buf1.body == string("foo|b")
-assert r.buf2.body == string("ar|ba")
-assert r.buf2.trailer == uint8(122)
+assert r.buf1.body == "foo|b"
+assert r.buf2.body == "ar|ba"
+assert r.buf2.trailer == 122

@@ -6,7 +6,7 @@ import auxiliary/test_utils
 
 let r = ParamsPassStruct.fromFile("src/enum_negative.bin")
 
-assert r.first.foo == uint8(255)
-assert r.one.bar.qux == uint8(1)
-assert (ParamsPassStruct_Block(r.one.foo)).foo == uint8(255)
-assert (ParamsPassStruct_Block(r.one.bar.foo)).foo == uint8(255)
+assert r.first.foo == 255
+assert r.one.bar.qux == 1
+assert (ParamsPassStruct_Block(r.one.foo)).foo == 255
+assert (ParamsPassStruct_Block(r.one.bar.foo)).foo == 255

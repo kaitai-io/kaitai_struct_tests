@@ -6,4 +6,4 @@ import auxiliary/test_utils
 
 let r = NavParentFalse2.fromFile("src/fixed_struct.bin")
 
-assert r.parentless.foo == uint8(80)
+assert r.parentless.foo == 80

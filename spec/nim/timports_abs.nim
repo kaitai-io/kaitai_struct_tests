@@ -7,5 +7,5 @@ import auxiliary/test_utils
 
 let r = ImportsAbs.fromFile("src/fixed_struct.bin")
 
-assert r.len.value == int(80)
-assert len(r.body) == int(80)
+assert r.len.value == 80
+assert len(r.body) == 80

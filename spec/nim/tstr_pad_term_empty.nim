@@ -6,7 +6,7 @@ import auxiliary/test_utils
 
 let r = StrPadTermEmpty.fromFile("src/str_pad_term_empty.bin")
 
-assert r.strPad == string("")
-assert r.strTerm == string("")
-assert r.strTermAndPad == string("")
-assert r.strTermInclude == string("@")
+assert r.strPad == ""
+assert r.strTerm == ""
+assert r.strTermAndPad == ""
+assert r.strTermInclude == "@"

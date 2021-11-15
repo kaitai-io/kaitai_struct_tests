@@ -6,5 +6,5 @@ import auxiliary/test_utils
 
 let r = ExprIfIntOps.fromFile("src/process_coerce_switch.bin")
 
-assert r.isEqPrim == bool(true)
-assert r.isEqBoxed == bool(true)
+assert r.isEqPrim == true
+assert r.isEqBoxed == true

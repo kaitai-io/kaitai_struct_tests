@@ -6,5 +6,5 @@ import auxiliary/test_utils
 
 let r = EnumDeepLiterals.fromFile("src/enum_0.bin")
 
-assert r.isPet1Ok == bool(true)
-assert r.isPet2Ok == bool(true)
+assert r.isPet1Ok == true
+assert r.isPet2Ok == true

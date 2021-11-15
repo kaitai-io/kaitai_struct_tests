@@ -6,4 +6,4 @@ import auxiliary/test_utils
 
 let r = TypeTernary.fromFile("src/term_strz.bin")
 
-assert r.dif.value == uint8(101)
+assert r.dif.value == 101

@@ -6,17 +6,17 @@ import auxiliary/test_utils
 
 let r = ParamsPassBool.fromFile("src/term_strz.bin")
 
-assert r.sFalse == bool(false)
-assert r.sTrue == bool(true)
-assert r.seqB1.arg == bool(true)
-assert len(r.seqB1.foo) == int(1)
-assert r.seqBool.arg == bool(false)
-assert len(r.seqBool.foo) == int(2)
-assert r.literalB1.arg == bool(false)
-assert len(r.literalB1.foo) == int(2)
-assert r.literalBool.arg == bool(true)
-assert len(r.literalBool.foo) == int(1)
-assert r.instB1.arg == bool(true)
-assert len(r.instB1.foo) == int(1)
-assert r.instBool.arg == bool(false)
-assert len(r.instBool.foo) == int(2)
+assert r.sFalse == false
+assert r.sTrue == true
+assert r.seqB1.arg == true
+assert len(r.seqB1.foo) == 1
+assert r.seqBool.arg == false
+assert len(r.seqBool.foo) == 2
+assert r.literalB1.arg == false
+assert len(r.literalB1.foo) == 2
+assert r.literalBool.arg == true
+assert len(r.literalBool.foo) == 1
+assert r.instB1.arg == true
+assert len(r.instB1.foo) == 1
+assert r.instBool.arg == false
+assert len(r.instBool.foo) == 2

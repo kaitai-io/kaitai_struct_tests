@@ -6,6 +6,6 @@ import auxiliary/test_utils
 
 let r = NavParentSwitchCast.fromFile("src/switch_integers.bin")
 
-assert r.main.bufType == uint8(1)
-assert r.main.flag == uint8(7)
-assert (NavParentSwitchCast_Foo_One(r.main.buf)).branch.flag == uint8(7)
+assert r.main.bufType == 1
+assert r.main.flag == 7
+assert (NavParentSwitchCast_Foo_One(r.main.buf)).branch.flag == 7

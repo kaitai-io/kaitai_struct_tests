@@ -6,7 +6,7 @@ import auxiliary/test_utils
 
 let r = InstanceIoUser.fromFile("src/instance_io.bin")
 
-assert r.qtyEntries == uint32(3)
-assert r.entries[0].name == string("the")
-assert r.entries[1].name == string("rainy")
-assert r.entries[2].name == string("day it is")
+assert r.qtyEntries == 3
+assert r.entries[0].name == "the"
+assert r.entries[1].name == "rainy"
+assert r.entries[2].name == "day it is"

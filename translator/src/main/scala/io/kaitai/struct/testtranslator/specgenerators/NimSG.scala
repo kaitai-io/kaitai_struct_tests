@@ -61,12 +61,7 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
   override def simpleAssert(check: TestAssert): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
-    val td = new TypeDetector(provider)
-    val ta = ksToNim(td.detectType(check.actual))
-    td.detectType(check.expected) match {
-      case _: EnumType | _: BytesType | _: ArrayType => out.puts(s"assert $actStr == $expStr")
-      case _ => out.puts(s"assert $actStr == $ta($expStr)")
-    }
+    out.puts(s"assert $actStr == $expStr")
   }
   override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[expr]): Unit = {
     val arr = elts.map(v => translator.translate(v))

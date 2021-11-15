@@ -6,5 +6,5 @@ import auxiliary/test_utils
 
 let r = UserType.fromFile("src/repeat_until_s4.bin")
 
-assert r.one.width == uint32(66)
-assert r.one.height == uint32(4919)
+assert r.one.width == 66
+assert r.one.height == 4919

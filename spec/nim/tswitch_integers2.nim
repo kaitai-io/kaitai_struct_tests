@@ -6,8 +6,8 @@ import auxiliary/test_utils
 
 let r = SwitchIntegers2.fromFile("src/switch_integers.bin")
 
-assert r.code == uint8(1)
-assert r.len == uint64(7)
+assert r.code == 1
+assert r.len == 7
 assert r.ham == @[2'u8, 64'u8, 64'u8, 4'u8, 55'u8, 19'u8, 0'u8]
-assert r.padding == uint8(0)
-assert r.lenModStr == string("13")
+assert r.padding == 0
+assert r.lenModStr == "13"

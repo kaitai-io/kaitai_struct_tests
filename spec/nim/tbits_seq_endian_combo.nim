@@ -6,11 +6,11 @@ import auxiliary/test_utils
 
 let r = BitsSeqEndianCombo.fromFile("src/process_xor_4.bin")
 
-assert r.be1 == uint64(59)
-assert r.be2 == uint64(187)
-assert r.le3 == uint64(163)
-assert r.be4 == uint64(20)
-assert r.le5 == uint64(10)
-assert r.le6 == uint64(36)
-assert r.le7 == uint64(26)
-assert r.be8 == bool(true)
+assert r.be1 == 59
+assert r.be2 == 187
+assert r.le3 == 163
+assert r.be4 == 20
+assert r.le5 == 10
+assert r.le6 == 36
+assert r.le7 == 26
+assert r.be8 == true

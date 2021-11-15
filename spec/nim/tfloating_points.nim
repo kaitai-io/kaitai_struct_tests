@@ -6,11 +6,11 @@ import auxiliary/test_utils
 
 let r = FloatingPoints.fromFile("src/floating_points.bin")
 
-assert r.singleValue == float32((float32(0.5)))
-assert r.singleValueBe == float32((float32(0.5)))
-assert r.doubleValue == float64(0.25)
-assert r.doubleValueBe == float64(0.25)
-assert r.approximateValue == float32(1.2345)
-assert r.singleValuePlusInt == float64(1.5)
-assert r.singleValuePlusFloat == float64(1.0)
-assert r.doubleValuePlusFloat == float64(0.3)
+assert r.singleValue == (float32(0.5))
+assert r.singleValueBe == (float32(0.5))
+assert r.doubleValue == 0.25
+assert r.doubleValueBe == 0.25
+assert r.approximateValue == 1.2345
+assert r.singleValuePlusInt == 1.5
+assert r.singleValuePlusFloat == 1.0
+assert r.doubleValuePlusFloat == 0.3

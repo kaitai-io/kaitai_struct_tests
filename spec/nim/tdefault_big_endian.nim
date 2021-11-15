@@ -6,4 +6,4 @@ import auxiliary/test_utils
 
 let r = DefaultBigEndian.fromFile("src/enum_0.bin")
 
-assert r.one == uint32(117440512)
+assert r.one == 117440512

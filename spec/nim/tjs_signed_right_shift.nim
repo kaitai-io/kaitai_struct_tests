@@ -6,5 +6,5 @@ import auxiliary/test_utils
 
 let r = JsSignedRightShift.fromFile("src/fixed_struct.bin")
 
-assert r.shouldBe40000000 == int(1073741824)
-assert r.shouldBeA00000 == int(10485760)
+assert r.shouldBe40000000 == 1073741824
+assert r.shouldBeA00000 == 10485760

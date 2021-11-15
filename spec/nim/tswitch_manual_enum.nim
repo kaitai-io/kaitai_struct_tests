@@ -6,12 +6,12 @@ import auxiliary/test_utils
 
 let r = SwitchManualEnum.fromFile("src/switch_opcodes.bin")
 
-assert len(r.opcodes) == int(4)
+assert len(r.opcodes) == 4
 assert r.opcodes[0].code == switch_manual_enum.strval
-assert (SwitchManualEnum_Opcode_Strval(r.opcodes[0].body)).value == string("foobar")
+assert (SwitchManualEnum_Opcode_Strval(r.opcodes[0].body)).value == "foobar"
 assert r.opcodes[1].code == switch_manual_enum.intval
-assert (SwitchManualEnum_Opcode_Intval(r.opcodes[1].body)).value == uint8(66)
+assert (SwitchManualEnum_Opcode_Intval(r.opcodes[1].body)).value == 66
 assert r.opcodes[2].code == switch_manual_enum.intval
-assert (SwitchManualEnum_Opcode_Intval(r.opcodes[2].body)).value == uint8(55)
+assert (SwitchManualEnum_Opcode_Intval(r.opcodes[2].body)).value == 55
 assert r.opcodes[3].code == switch_manual_enum.strval
-assert (SwitchManualEnum_Opcode_Strval(r.opcodes[3].body)).value == string("")
+assert (SwitchManualEnum_Opcode_Strval(r.opcodes[3].body)).value == ""

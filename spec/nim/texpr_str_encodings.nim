@@ -6,10 +6,10 @@ import auxiliary/test_utils
 
 let r = ExprStrEncodings.fromFile("src/str_encodings.bin")
 
-assert r.str1Eq == bool(true)
-assert r.str2Eq == bool(true)
-assert r.str3Eq == bool(true)
-assert r.str3EqStr2 == bool(true)
-assert r.str4Eq == bool(true)
-assert r.str4GtStrCalc == bool(true)
-assert r.str4GtStrFromBytes == bool(true)
+assert r.str1Eq == true
+assert r.str2Eq == true
+assert r.str3Eq == true
+assert r.str3EqStr2 == true
+assert r.str4Eq == true
+assert r.str4GtStrCalc == true
+assert r.str4GtStrFromBytes == true

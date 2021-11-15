@@ -6,6 +6,6 @@ import auxiliary/test_utils
 
 let r = ExprBytesLiteral.fromFile("src/enum_negative.bin")
 
-assert len(r.literal) == int(2)
-assert r.literal[0] == uint8(-1)
-assert r.literal[1] == uint8(1)
+assert len(r.literal) == 2
+assert r.literal[0] == -1
+assert r.literal[1] == 1

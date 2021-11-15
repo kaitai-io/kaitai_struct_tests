@@ -6,13 +6,13 @@ import auxiliary/test_utils
 
 let r = InstanceUserArray.fromFile("src/instance_std_array.bin")
 
-assert r.ofs == uint32(16)
-assert r.qtyEntries == uint32(3)
-assert r.entrySize == uint32(4)
-assert len(r.userEntries) == int(3)
-assert r.userEntries[0].word1 == uint16(4369)
-assert r.userEntries[0].word2 == uint16(4369)
-assert r.userEntries[1].word1 == uint16(8738)
-assert r.userEntries[1].word2 == uint16(8738)
-assert r.userEntries[2].word1 == uint16(13107)
-assert r.userEntries[2].word2 == uint16(13107)
+assert r.ofs == 16
+assert r.qtyEntries == 3
+assert r.entrySize == 4
+assert len(r.userEntries) == 3
+assert r.userEntries[0].word1 == 4369
+assert r.userEntries[0].word2 == 4369
+assert r.userEntries[1].word1 == 8738
+assert r.userEntries[1].word2 == 8738
+assert r.userEntries[2].word1 == 13107
+assert r.userEntries[2].word2 == 13107

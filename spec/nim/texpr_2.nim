@@ -6,20 +6,20 @@ import auxiliary/test_utils
 
 let r = Expr2.fromFile("src/str_encodings.bin")
 
-assert r.str1.lenOrig == uint16(10)
-assert r.str1.lenMod == int(7)
-assert r.str1.str == string("Some AS")
-assert r.str1Len == int(7)
-assert r.str1LenMod == int(7)
-assert r.str1Byte1 == uint8(73)
-assert r.str1Avg == int(73)
-assert r.str1Char5 == string("e")
-assert r.str1Tuple5.byte0 == uint8(101)
-assert r.str1Tuple5.byte0 == uint8(101)
-assert r.str1Tuple5.byte1 == uint8(32)
-assert r.str1Tuple5.byte2 == uint8(65)
-assert r.str1Tuple5.avg == int(48)
-assert r.str2Tuple5.byte0 == uint8(101)
-assert r.str2Tuple5.byte1 == uint8(32)
-assert r.str2Tuple5.byte2 == uint8(65)
-assert r.str2Tuple5.avg == int(48)
+assert r.str1.lenOrig == 10
+assert r.str1.lenMod == 7
+assert r.str1.str == "Some AS"
+assert r.str1Len == 7
+assert r.str1LenMod == 7
+assert r.str1Byte1 == 73
+assert r.str1Avg == 73
+assert r.str1Char5 == "e"
+assert r.str1Tuple5.byte0 == 101
+assert r.str1Tuple5.byte0 == 101
+assert r.str1Tuple5.byte1 == 32
+assert r.str1Tuple5.byte2 == 65
+assert r.str1Tuple5.avg == 48
+assert r.str2Tuple5.byte0 == 101
+assert r.str2Tuple5.byte1 == 32
+assert r.str2Tuple5.byte2 == 65
+assert r.str2Tuple5.avg == 48

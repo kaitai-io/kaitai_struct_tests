@@ -6,7 +6,7 @@ import auxiliary/test_utils
 
 let r = Expr1.fromFile("src/str_encodings.bin")
 
-assert r.lenOf1 == uint16(10)
-assert r.lenOf1Mod == int(8)
-assert r.str1 == string("Some ASC")
-assert r.str1Len == int(8)
+assert r.lenOf1 == 10
+assert r.lenOf1Mod == 8
+assert r.str1 == "Some ASC"
+assert r.str1Len == 8

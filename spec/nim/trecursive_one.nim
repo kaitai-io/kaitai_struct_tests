@@ -6,7 +6,7 @@ import auxiliary/test_utils
 
 let r = RecursiveOne.fromFile("src/fixed_struct.bin")
 
-assert r.one == uint8(80)
-assert (RecursiveOne(r.next)).one == uint8(65)
-assert (RecursiveOne((RecursiveOne(r.next)).next)).one == uint8(67)
-assert (RecursiveOne_Fini((RecursiveOne((RecursiveOne(r.next)).next)).next)).finisher == uint16(11595)
+assert r.one == 80
+assert (RecursiveOne(r.next)).one == 65
+assert (RecursiveOne((RecursiveOne(r.next)).next)).one == 67
+assert (RecursiveOne_Fini((RecursiveOne((RecursiveOne(r.next)).next)).next)).finisher == 11595

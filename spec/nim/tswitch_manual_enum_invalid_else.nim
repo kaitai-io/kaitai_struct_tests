@@ -6,8 +6,8 @@ import auxiliary/test_utils
 
 let r = SwitchManualEnumInvalidElse.fromFile("src/enum_negative.bin")
 
-assert len(r.opcodes) == int(2)
-assert r.opcodes[0].code == SwitchManualEnumInvalidElse_Opcode_CodeEnum(255)
-assert (SwitchManualEnumInvalidElse_Opcode_Defval(r.opcodes[0].body)).value == int8(123)
-assert r.opcodes[1].code == SwitchManualEnumInvalidElse_Opcode_CodeEnum(1)
-assert (SwitchManualEnumInvalidElse_Opcode_Defval(r.opcodes[1].body)).value == int8(123)
+assert len(r.opcodes) == 2
+assert r.opcodes[0].code == 255
+assert (SwitchManualEnumInvalidElse_Opcode_Defval(r.opcodes[0].body)).value == 123
+assert r.opcodes[1].code == 1
+assert (SwitchManualEnumInvalidElse_Opcode_Defval(r.opcodes[1].body)).value == 123

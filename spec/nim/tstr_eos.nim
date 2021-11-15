@@ -6,4 +6,4 @@ import auxiliary/test_utils
 
 let r = StrEos.fromFile("src/term_strz.bin")
 
-assert r.str == string("foo|bar|baz@")
+assert r.str == "foo|bar|baz@"

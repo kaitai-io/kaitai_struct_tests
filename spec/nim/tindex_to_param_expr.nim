@@ -6,10 +6,10 @@ import auxiliary/test_utils
 
 let r = IndexToParamExpr.fromFile("src/index_sizes.bin")
 
-assert r.qty == uint32(3)
-assert r.sizes[0] == uint32(1)
-assert r.sizes[1] == uint32(8)
-assert r.sizes[2] == uint32(4)
-assert r.blocks[0].buf == string("A")
-assert r.blocks[1].buf == string("BBBBBBBB")
-assert r.blocks[2].buf == string("CCCC")
+assert r.qty == 3
+assert r.sizes[0] == 1
+assert r.sizes[1] == 8
+assert r.sizes[2] == 4
+assert r.blocks[0].buf == "A"
+assert r.blocks[1].buf == "BBBBBBBB"
+assert r.blocks[2].buf == "CCCC"

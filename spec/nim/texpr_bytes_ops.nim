@@ -7,19 +7,19 @@ import strutils
 
 let r = ExprBytesOps.fromFile("src/nav_parent_switch.bin")
 
-assert r.oneSize == int(3)
-assert r.oneFirst == uint8(1)
-assert r.oneMid == uint8(66)
-assert r.oneLast == uint8(255)
-assert intToStr(int(r.oneLast)) == string("255")
-assert r.oneMin == uint8(1)
-assert r.oneMax == uint8(255)
-assert intToStr(int(r.oneMax)) == string("255")
-assert r.twoSize == int(3)
-assert r.twoFirst == uint8(65)
-assert r.twoMid == uint8(255)
-assert intToStr(int(r.twoMid)) == string("255")
-assert r.twoLast == uint8(75)
-assert r.twoMin == uint8(65)
-assert r.twoMax == uint8(255)
-assert intToStr(int(r.twoMax)) == string("255")
+assert r.oneSize == 3
+assert r.oneFirst == 1
+assert r.oneMid == 66
+assert r.oneLast == 255
+assert intToStr(int(r.oneLast)) == "255"
+assert r.oneMin == 1
+assert r.oneMax == 255
+assert intToStr(int(r.oneMax)) == "255"
+assert r.twoSize == 3
+assert r.twoFirst == 65
+assert r.twoMid == 255
+assert intToStr(int(r.twoMid)) == "255"
+assert r.twoLast == 75
+assert r.twoMin == 65
+assert r.twoMax == 255
+assert intToStr(int(r.twoMax)) == "255"

@@ -6,7 +6,7 @@ import auxiliary/test_utils
 
 let r = StrLiterals2.fromFile("src/fixed_struct.bin")
 
-assert r.dollar1 == string("$foo")
-assert r.dollar2 == string("${foo}")
-assert r.hash == string("#{foo}")
-assert r.atSign == string("@foo")
+assert r.dollar1 == "$foo"
+assert r.dollar2 == "${foo}"
+assert r.hash == "#{foo}"
+assert r.atSign == "@foo"

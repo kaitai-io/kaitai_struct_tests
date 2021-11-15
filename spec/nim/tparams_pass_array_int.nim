@@ -6,10 +6,10 @@ import auxiliary/test_utils
 
 let r = ParamsPassArrayInt.fromFile("src/position_to_end.bin")
 
-assert len(r.passInts.nums) == int(3)
-assert r.passInts.nums[0] == uint16(513)
-assert r.passInts.nums[1] == uint16(1027)
-assert r.passInts.nums[2] == uint16(1541)
-assert len(r.passIntsCalc.nums) == int(2)
-assert r.passIntsCalc.nums[0] == uint16(27643)
-assert r.passIntsCalc.nums[1] == uint16(7)
+assert len(r.passInts.nums) == 3
+assert r.passInts.nums[0] == 513
+assert r.passInts.nums[1] == 1027
+assert r.passInts.nums[2] == 1541
+assert len(r.passIntsCalc.nums) == 2
+assert r.passIntsCalc.nums[0] == 27643
+assert r.passIntsCalc.nums[1] == 7

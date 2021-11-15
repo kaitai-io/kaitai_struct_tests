@@ -6,7 +6,7 @@ import auxiliary/test_utils
 
 let r = BitsSignedB64Le.fromFile("src/bits_signed_b64_le.bin")
 
-assert r.aNum == uint64(0)
-assert r.aBit == bool(true)
-assert r.bNum == uint64(9223372036854775807'i64)
-assert r.bBit == bool(false)
+assert r.aNum == 0
+assert r.aBit == true
+assert r.bNum == 9223372036854775807'i64
+assert r.bBit == false

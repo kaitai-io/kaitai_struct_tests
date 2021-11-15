@@ -6,13 +6,13 @@ import auxiliary/test_utils
 
 let r = NavParent2.fromFile("src/nav_parent2.bin")
 
-assert r.ofsTags == uint32(8)
-assert r.numTags == uint32(2)
-assert r.tags[0].name == string("RAHC")
-assert r.tags[0].ofs == uint32(32)
-assert r.tags[0].numItems == uint32(3)
-assert r.tags[0].tagContent.content == string("foo")
-assert r.tags[1].name == string("RAHC")
-assert r.tags[1].ofs == uint32(35)
-assert r.tags[1].numItems == uint32(6)
-assert r.tags[1].tagContent.content == string("barbaz")
+assert r.ofsTags == 8
+assert r.numTags == 2
+assert r.tags[0].name == "RAHC"
+assert r.tags[0].ofs == 32
+assert r.tags[0].numItems == 3
+assert r.tags[0].tagContent.content == "foo"
+assert r.tags[1].name == "RAHC"
+assert r.tags[1].ofs == 35
+assert r.tags[1].numItems == 6
+assert r.tags[1].tagContent.content == "barbaz"

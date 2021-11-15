@@ -6,9 +6,9 @@ import auxiliary/test_utils
 
 let r = IfValues.fromFile("src/fixed_struct.bin")
 
-assert r.codes[0].opcode == uint8(80)
-assert r.codes[0].halfOpcode == int(40)
-assert r.codes[1].opcode == uint8(65)
+assert r.codes[0].opcode == 80
+assert r.codes[0].halfOpcode == 40
+assert r.codes[1].opcode == 65
 assert r.codes[1].halfOpcode == 0
-assert r.codes[2].opcode == uint8(67)
+assert r.codes[2].opcode == 67
 assert r.codes[2].halfOpcode == 0

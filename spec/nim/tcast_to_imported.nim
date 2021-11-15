@@ -7,5 +7,5 @@ import auxiliary/test_utils
 
 let r = CastToImported.fromFile("src/fixed_struct.bin")
 
-assert r.one.one == uint8(80)
-assert r.oneCasted.one == uint8(80)
+assert r.one.one == 80
+assert r.oneCasted.one == 80

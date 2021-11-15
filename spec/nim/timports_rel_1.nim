@@ -8,6 +8,6 @@ import auxiliary/test_utils
 
 let r = ImportsRel1.fromFile("src/fixed_struct.bin")
 
-assert r.one == uint8(80)
-assert r.two.one == uint8(65)
-assert r.two.two.one == uint8(67)
+assert r.one == 80
+assert r.two.one == 65
+assert r.two.two.one == 67

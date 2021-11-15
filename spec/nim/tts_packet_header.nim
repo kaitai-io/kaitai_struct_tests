@@ -6,10 +6,10 @@ import auxiliary/test_utils
 
 let r = TsPacketHeader.fromFile("src/ts_packet.bin")
 
-assert r.syncByte == uint8(71)
-assert r.transportErrorIndicator == bool(false)
-assert r.payloadUnitStartIndicator == bool(false)
-assert r.transportPriority == bool(true)
-assert r.pid == uint64(33)
-assert r.transportScramblingControl == uint64(0)
+assert r.syncByte == 71
+assert r.transportErrorIndicator == false
+assert r.payloadUnitStartIndicator == false
+assert r.transportPriority == true
+assert r.pid == 33
+assert r.transportScramblingControl == 0
 assert r.adaptationFieldControl == ts_packet_header.payload_only

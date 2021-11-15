@@ -6,10 +6,10 @@ import auxiliary/test_utils
 
 let r = ParamsPassArrayStr.fromFile("src/term_strz.bin")
 
-assert len(r.passStrArray.strs) == int(3)
-assert r.passStrArray.strs[0] == string("fo")
-assert r.passStrArray.strs[1] == string("o|")
-assert r.passStrArray.strs[2] == string("ba")
-assert len(r.passStrArrayCalc.strs) == int(2)
-assert r.passStrArrayCalc.strs[0] == string("aB")
-assert r.passStrArrayCalc.strs[1] == string("Cd")
+assert len(r.passStrArray.strs) == 3
+assert r.passStrArray.strs[0] == "fo"
+assert r.passStrArray.strs[1] == "o|"
+assert r.passStrArray.strs[2] == "ba"
+assert len(r.passStrArrayCalc.strs) == 2
+assert r.passStrArrayCalc.strs[0] == "aB"
+assert r.passStrArrayCalc.strs[1] == "Cd"

@@ -6,6 +6,6 @@ import auxiliary/test_utils
 
 let r = DefaultEndianMod.fromFile("src/fixed_struct.bin")
 
-assert r.main.one == int32(1262698832)
-assert r.main.nest.two == int32(-52947)
-assert r.main.nestBe.two == int32(1346454347)
+assert r.main.one == 1262698832
+assert r.main.nest.two == -52947
+assert r.main.nestBe.two == 1346454347

@@ -6,8 +6,8 @@ import auxiliary/test_utils
 
 let r = NavParent.fromFile("src/nav.bin")
 
-assert r.header.qtyEntries == uint32(2)
-assert r.header.filenameLen == uint32(8)
-assert len(r.index.entries) == int(2)
-assert r.index.entries[0].filename == string("FIRST___")
-assert r.index.entries[1].filename == string("SECOND__")
+assert r.header.qtyEntries == 2
+assert r.header.filenameLen == 8
+assert len(r.index.entries) == 2
+assert r.index.entries[0].filename == "FIRST___"
+assert r.index.entries[1].filename == "SECOND__"

@@ -6,7 +6,7 @@ import auxiliary/test_utils
 
 let r = StrPadTerm.fromFile("src/str_pad_term.bin")
 
-assert r.strPad == string("str1")
-assert r.strTerm == string("str2foo")
-assert r.strTermAndPad == string("str+++3bar+++")
-assert r.strTermInclude == string("str4baz@")
+assert r.strPad == "str1"
+assert r.strTerm == "str2foo"
+assert r.strTermAndPad == "str+++3bar+++"
+assert r.strTermInclude == "str4baz@"

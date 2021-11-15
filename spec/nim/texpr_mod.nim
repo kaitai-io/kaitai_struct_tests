@@ -6,9 +6,9 @@ import auxiliary/test_utils
 
 let r = ExprMod.fromFile("src/fixed_struct.bin")
 
-assert r.intU == uint32(1262698832)
-assert r.intS == int32(-52947)
-assert r.modPosConst == int(9)
-assert r.modNegConst == int(4)
-assert r.modPosSeq == int(5)
-assert r.modNegSeq == int(2)
+assert r.intU == 1262698832
+assert r.intS == -52947
+assert r.modPosConst == 9
+assert r.modNegConst == 4
+assert r.modPosSeq == 5
+assert r.modNegSeq == 2

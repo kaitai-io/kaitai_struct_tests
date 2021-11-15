@@ -6,17 +6,17 @@ import auxiliary/test_utils
 
 let r = BitsSimpleLe.fromFile("src/fixed_struct.bin")
 
-assert r.byte1 == uint64(80)
-assert r.byte2 == uint64(65)
-assert r.bitsA == bool(true)
-assert r.bitsB == uint64(1)
-assert r.bitsC == uint64(4)
-assert r.largeBits1 == uint64(331)
-assert r.spacer == uint64(3)
-assert r.largeBits2 == uint64(393)
-assert r.normalS2 == int16(-1)
-assert r.byte8910 == uint64(4407632)
-assert r.byte11To14 == uint64(760556875)
-assert r.byte15To19 == uint64(1099499455812'i64)
-assert r.byte20To27 == uint64(18446744073709551615'u64)
-assert r.testIfB1 == int8(123)
+assert r.byte1 == 80
+assert r.byte2 == 65
+assert r.bitsA == true
+assert r.bitsB == 1
+assert r.bitsC == 4
+assert r.largeBits1 == 331
+assert r.spacer == 3
+assert r.largeBits2 == 393
+assert r.normalS2 == -1
+assert r.byte8910 == 4407632
+assert r.byte11To14 == 760556875
+assert r.byte15To19 == 1099499455812'i64
+assert r.byte20To27 == 18446744073709551615'u64
+assert r.testIfB1 == 123

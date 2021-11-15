@@ -6,6 +6,6 @@ import auxiliary/test_utils
 
 let r = ParamsPassArrayStruct.fromFile("src/position_to_end.bin")
 
-assert len(r.passStructs.structs) == int(2)
-assert (ParamsPassArrayStruct_Foo(r.passStructs.structs[0])).f == uint8(1)
-assert (ParamsPassArrayStruct_Bar(r.passStructs.structs[1])).b == uint8(2)
+assert len(r.passStructs.structs) == 2
+assert (ParamsPassArrayStruct_Foo(r.passStructs.structs[0])).f == 1
+assert (ParamsPassArrayStruct_Bar(r.passStructs.structs[1])).b == 2

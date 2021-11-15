@@ -6,4 +6,4 @@ import auxiliary/test_utils
 
 let r = InstanceStd.fromFile("src/str_encodings.bin")
 
-assert r.header == string("Some ")
+assert r.header == "Some "

@@ -6,9 +6,9 @@ import auxiliary/test_utils
 
 let r = ExprIntDiv.fromFile("src/fixed_struct.bin")
 
-assert r.intU == uint32(1262698832)
-assert r.intS == int32(-52947)
-assert r.divPosConst == int(756)
-assert r.divNegConst == int(-757)
-assert r.divPosSeq == int(97130679)
-assert r.divNegSeq == int(-4073)
+assert r.intU == 1262698832
+assert r.intS == -52947
+assert r.divPosConst == 756
+assert r.divNegConst == -757
+assert r.divPosSeq == 97130679
+assert r.divNegSeq == -4073

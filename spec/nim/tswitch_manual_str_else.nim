@@ -6,12 +6,12 @@ import auxiliary/test_utils
 
 let r = SwitchManualStrElse.fromFile("src/switch_opcodes2.bin")
 
-assert len(r.opcodes) == int(4)
-assert r.opcodes[0].code == string("S")
-assert (SwitchManualStrElse_Opcode_Strval(r.opcodes[0].body)).value == string("foo")
-assert r.opcodes[1].code == string("X")
-assert (SwitchManualStrElse_Opcode_Noneval(r.opcodes[1].body)).filler == uint32(66)
-assert r.opcodes[2].code == string("Y")
-assert (SwitchManualStrElse_Opcode_Noneval(r.opcodes[2].body)).filler == uint32(51966)
-assert r.opcodes[3].code == string("I")
-assert (SwitchManualStrElse_Opcode_Intval(r.opcodes[3].body)).value == uint8(7)
+assert len(r.opcodes) == 4
+assert r.opcodes[0].code == "S"
+assert (SwitchManualStrElse_Opcode_Strval(r.opcodes[0].body)).value == "foo"
+assert r.opcodes[1].code == "X"
+assert (SwitchManualStrElse_Opcode_Noneval(r.opcodes[1].body)).filler == 66
+assert r.opcodes[2].code == "Y"
+assert (SwitchManualStrElse_Opcode_Noneval(r.opcodes[2].body)).filler == 51966
+assert r.opcodes[3].code == "I"
+assert (SwitchManualStrElse_Opcode_Intval(r.opcodes[3].body)).value == 7

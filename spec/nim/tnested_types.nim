@@ -6,6 +6,6 @@ import auxiliary/test_utils
 
 let r = NestedTypes.fromFile("src/fixed_struct.bin")
 
-assert r.one.typedAtRoot.valueB == int8(80)
-assert r.one.typedHere.valueC == int8(65)
-assert r.two.valueB == int8(67)
+assert r.one.typedAtRoot.valueB == 80
+assert r.one.typedHere.valueC == 65
+assert r.two.valueB == 67

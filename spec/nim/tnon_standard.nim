@@ -6,4 +6,4 @@ import auxiliary/test_utils
 
 let r = NonStandard.fromFile("src/fixed_struct.bin")
 
-assert r.foo == uint8(80)
+assert r.foo == 80

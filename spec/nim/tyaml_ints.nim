@@ -6,7 +6,7 @@ import auxiliary/test_utils
 
 let r = YamlInts.fromFile("src/fixed_struct.bin")
 
-assert r.testU4Dec == int(4294967295'i64)
-assert r.testU4Hex == int(4294967295'i64)
-assert r.testU8Dec == int(18446744073709551615'u64)
-assert r.testU8Hex == int(18446744073709551615'u64)
+assert r.testU4Dec == 4294967295'i64
+assert r.testU4Hex == 4294967295'i64
+assert r.testU8Dec == 18446744073709551615'u64
+assert r.testU8Hex == 18446744073709551615'u64

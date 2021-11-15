@@ -7,17 +7,17 @@ import auxiliary/test_utils
 let r = DefaultEndianExprInherited.fromFile("src/endian_expr.bin")
 
 assert r.docs[0].indicator == @[73'u8, 73'u8]
-assert r.docs[0].main.insides.someInt == uint32(66)
-assert r.docs[0].main.insides.more.someInt1 == uint16(16896)
-assert r.docs[0].main.insides.more.someInt2 == uint16(66)
-assert r.docs[0].main.insides.more.someInst == uint32(66)
+assert r.docs[0].main.insides.someInt == 66
+assert r.docs[0].main.insides.more.someInt1 == 16896
+assert r.docs[0].main.insides.more.someInt2 == 66
+assert r.docs[0].main.insides.more.someInst == 66
 assert r.docs[1].indicator == @[77'u8, 77'u8]
-assert r.docs[1].main.insides.someInt == uint32(66)
-assert r.docs[1].main.insides.more.someInt1 == uint16(66)
-assert r.docs[1].main.insides.more.someInt2 == uint16(16896)
-assert r.docs[1].main.insides.more.someInst == uint32(1107296256)
+assert r.docs[1].main.insides.someInt == 66
+assert r.docs[1].main.insides.more.someInt1 == 66
+assert r.docs[1].main.insides.more.someInt2 == 16896
+assert r.docs[1].main.insides.more.someInst == 1107296256
 assert r.docs[2].indicator == @[88'u8, 88'u8]
-assert r.docs[2].main.insides.someInt == uint32(66)
-assert r.docs[2].main.insides.more.someInt1 == uint16(66)
-assert r.docs[2].main.insides.more.someInt2 == uint16(16896)
-assert r.docs[2].main.insides.more.someInst == uint32(1107296256)
+assert r.docs[2].main.insides.someInt == 66
+assert r.docs[2].main.insides.more.someInt1 == 66
+assert r.docs[2].main.insides.more.someInt2 == 16896
+assert r.docs[2].main.insides.more.someInst == 1107296256

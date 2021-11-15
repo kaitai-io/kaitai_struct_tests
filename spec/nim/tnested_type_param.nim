@@ -6,5 +6,5 @@ import auxiliary/test_utils
 
 let r = NestedTypeParam.fromFile("src/term_strz.bin")
 
-assert r.mainSeq.myLen == uint32(5)
-assert r.mainSeq.body == string("foo|b")
+assert r.mainSeq.myLen == 5
+assert r.mainSeq.body == "foo|b"

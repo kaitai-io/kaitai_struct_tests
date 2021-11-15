@@ -6,10 +6,10 @@ import auxiliary/test_utils
 
 let r = IfStruct.fromFile("src/if_struct.bin")
 
-assert r.op1.opcode == uint8(83)
-assert r.op1.argStr.str == string("foo")
-assert r.op2.opcode == uint8(84)
-assert r.op2.argTuple.num1 == uint8(66)
-assert r.op2.argTuple.num2 == uint8(67)
-assert r.op3.opcode == uint8(83)
-assert r.op3.argStr.str == string("bar")
+assert r.op1.opcode == 83
+assert r.op1.argStr.str == "foo"
+assert r.op2.opcode == 84
+assert r.op2.argTuple.num1 == 66
+assert r.op2.argTuple.num2 == 67
+assert r.op3.opcode == 83
+assert r.op3.argStr.str == "bar"

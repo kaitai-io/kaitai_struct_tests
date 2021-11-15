@@ -6,18 +6,18 @@ import auxiliary/test_utils
 
 let r = RepeatUntilComplex.fromFile("src/repeat_until_complex.bin")
 
-assert len(r.first) == int(3)
-assert r.first[0].count == uint8(4)
+assert len(r.first) == 3
+assert r.first[0].count == 4
 assert r.first[0].values == @[uint8((0 + 1)), 2, 3, 4]
-assert r.first[1].count == uint8(2)
+assert r.first[1].count == 2
 assert r.first[1].values == @[uint8((0 + 1)), 2]
-assert r.first[2].count == uint8(0)
-assert len(r.second) == int(4)
-assert r.second[0].count == uint16(6)
+assert r.first[2].count == 0
+assert len(r.second) == 4
+assert r.second[0].count == 6
 assert r.second[0].values == @[uint16((0 + 1)), 2, 3, 4, 5, 6]
-assert r.second[1].count == uint16(3)
+assert r.second[1].count == 3
 assert r.second[1].values == @[uint16((0 + 1)), 2, 3]
-assert r.second[2].count == uint16(4)
+assert r.second[2].count == 4
 assert r.second[2].values == @[uint16((0 + 1)), 2, 3, 4]
-assert r.second[3].count == uint16(0)
+assert r.second[3].count == 0
 assert r.third == @[uint8((0 + 102)), 111, 111, 98, 97, 114, 0]

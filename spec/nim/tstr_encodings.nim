@@ -6,7 +6,7 @@ import auxiliary/test_utils
 
 let r = StrEncodings.fromFile("src/str_encodings.bin")
 
-assert r.str1 == string("Some ASCII")
-assert r.str2 == string("\u3053\u3093\u306b\u3061\u306f")
-assert r.str3 == string("\u3053\u3093\u306b\u3061\u306f")
-assert r.str4 == string("\u2591\u2592\u2593")
+assert r.str1 == "Some ASCII"
+assert r.str2 == "\u3053\u3093\u306b\u3061\u306f"
+assert r.str3 == "\u3053\u3093\u306b\u3061\u306f"
+assert r.str4 == "\u2591\u2592\u2593"

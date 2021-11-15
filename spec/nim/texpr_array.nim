@@ -6,18 +6,18 @@ import auxiliary/test_utils
 
 let r = ExprArray.fromFile("src/expr_array.bin")
 
-assert r.aintSize == int(4)
-assert r.aintFirst == uint32(7657765)
-assert r.aintLast == uint32(16272640)
-assert r.aintMin == uint32(49185)
-assert r.aintMax == uint32(1123362332)
-assert r.afloatSize == int(3)
-assert r.afloatFirst == float64(-2.6839530254859364E-121)
-assert r.afloatLast == float64(-1.1103359815095273E-175)
-assert r.afloatMin == float64(-8.754689149998834E+288)
-assert r.afloatMax == float64(-1.1103359815095273E-175)
-assert r.astrSize == int(3)
-assert r.astrFirst == string("foo")
-assert r.astrLast == string("baz")
-assert r.astrMin == string("bar")
-assert r.astrMax == string("foo")
+assert r.aintSize == 4
+assert r.aintFirst == 7657765
+assert r.aintLast == 16272640
+assert r.aintMin == 49185
+assert r.aintMax == 1123362332
+assert r.afloatSize == 3
+assert r.afloatFirst == -2.6839530254859364E-121
+assert r.afloatLast == -1.1103359815095273E-175
+assert r.afloatMin == -8.754689149998834E+288
+assert r.afloatMax == -1.1103359815095273E-175
+assert r.astrSize == 3
+assert r.astrFirst == "foo"
+assert r.astrLast == "baz"
+assert r.astrMin == "bar"
+assert r.astrMax == "foo"

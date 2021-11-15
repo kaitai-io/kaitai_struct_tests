@@ -6,18 +6,18 @@ import auxiliary/test_utils
 
 let r = CombineStr.fromFile("src/term_strz.bin")
 
-assert r.strTerm == string("foo")
-assert r.strLimit == string("bar|")
-assert r.strEos == string("baz@")
-assert r.strCalc == string("bar")
-assert r.strCalcBytes == string("baz")
-assert r.termOrLimit == string("foo")
-assert r.termOrEos == string("baz@")
-assert r.termOrCalc == string("foo")
-assert r.termOrCalcBytes == string("baz")
-assert r.limitOrEos == string("bar|")
-assert r.limitOrCalc == string("bar")
-assert r.limitOrCalcBytes == string("bar|")
-assert r.eosOrCalc == string("bar")
-assert r.eosOrCalcBytes == string("baz@")
-assert r.calcOrCalcBytes == string("baz")
+assert r.strTerm == "foo"
+assert r.strLimit == "bar|"
+assert r.strEos == "baz@"
+assert r.strCalc == "bar"
+assert r.strCalcBytes == "baz"
+assert r.termOrLimit == "foo"
+assert r.termOrEos == "baz@"
+assert r.termOrCalc == "foo"
+assert r.termOrCalcBytes == "baz"
+assert r.limitOrEos == "bar|"
+assert r.limitOrCalc == "bar"
+assert r.limitOrCalcBytes == "bar|"
+assert r.eosOrCalc == "bar"
+assert r.eosOrCalcBytes == "baz@"
+assert r.calcOrCalcBytes == "baz"

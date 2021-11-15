@@ -7,4 +7,4 @@ import auxiliary/test_utils
 let r = RepeatUntilS4.fromFile("src/repeat_until_s4.bin")
 
 assert r.entries == @[int32(66), 4919, -251658241, -1]
-assert r.afterall == string("foobar")
+assert r.afterall == "foobar"

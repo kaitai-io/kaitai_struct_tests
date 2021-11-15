@@ -6,8 +6,8 @@ import auxiliary/test_utils
 
 let r = NestedSameName2.fromFile("src/nested_same_name2.bin")
 
-assert r.version == uint32(66)
-assert r.mainData.mainSize == int32(2)
+assert r.version == 66
+assert r.mainData.mainSize == 2
 assert r.mainData.foo.data1 == @[17'u8, 17'u8, 17'u8, 17'u8]
-assert r.dummy.dummySize == int32(3)
+assert r.dummy.dummySize == 3
 assert r.dummy.foo.data2 == @[34'u8, 34'u8, 34'u8, 34'u8, 34'u8, 34'u8]

@@ -6,7 +6,7 @@ import auxiliary/test_utils
 
 let r = ExprIoEof.fromFile("src/fixed_struct.bin")
 
-assert r.substream1.one == uint32(1262698832)
+assert r.substream1.one == 1262698832
 assert r.substream1.two == 0'u32
-assert r.substream2.one == uint32(4294914349'i64)
-assert r.substream2.two == uint32(1262698832)
+assert r.substream2.one == 4294914349'i64
+assert r.substream2.two == 1262698832

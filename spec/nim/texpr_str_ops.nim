@@ -6,20 +6,20 @@ import auxiliary/test_utils
 
 let r = ExprStrOps.fromFile("src/term_strz.bin")
 
-assert r.one == string("foo|b")
-assert r.oneLen == int(5)
-assert r.oneRev == string("b|oof")
-assert r.oneSubstr0To3 == string("foo")
-assert r.oneSubstr2To5 == string("o|b")
-assert r.oneSubstr3To3 == string("")
-assert r.two == string("0123456789")
-assert r.twoLen == int(10)
-assert r.twoRev == string("9876543210")
-assert r.twoSubstr0To7 == string("0123456")
-assert r.twoSubstr4To10 == string("456789")
-assert r.twoSubstr0To10 == string("0123456789")
-assert r.toIAttr == int(9173)
-assert r.toIR10 == int(-72)
-assert r.toIR2 == int(86)
-assert r.toIR8 == int(465)
-assert r.toIR16 == int(18383)
+assert r.one == "foo|b"
+assert r.oneLen == 5
+assert r.oneRev == "b|oof"
+assert r.oneSubstr0To3 == "foo"
+assert r.oneSubstr2To5 == "o|b"
+assert r.oneSubstr3To3 == ""
+assert r.two == "0123456789"
+assert r.twoLen == 10
+assert r.twoRev == "9876543210"
+assert r.twoSubstr0To7 == "0123456"
+assert r.twoSubstr4To10 == "456789"
+assert r.twoSubstr0To10 == "0123456789"
+assert r.toIAttr == 9173
+assert r.toIR10 == -72
+assert r.toIR2 == 86
+assert r.toIR8 == 465
+assert r.toIR16 == 18383

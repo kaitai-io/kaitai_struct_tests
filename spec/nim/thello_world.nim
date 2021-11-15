@@ -6,4 +6,4 @@ import auxiliary/test_utils
 
 let r = HelloWorld.fromFile("src/fixed_struct.bin")
 
-assert r.one == uint8(80)
+assert r.one == 80

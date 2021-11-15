@@ -6,10 +6,10 @@ import auxiliary/test_utils
 
 let r = InstanceStdArray.fromFile("src/instance_std_array.bin")
 
-assert r.ofs == uint32(16)
-assert r.qtyEntries == uint32(3)
-assert r.entrySize == uint32(4)
-assert len(r.entries) == int(3)
+assert r.ofs == 16
+assert r.qtyEntries == 3
+assert r.entrySize == 4
+assert len(r.entries) == 3
 assert r.entries[0] == @[17'u8, 17'u8, 17'u8, 17'u8]
 assert r.entries[1] == @[34'u8, 34'u8, 34'u8, 34'u8]
 assert r.entries[2] == @[51'u8, 51'u8, 51'u8, 51'u8]

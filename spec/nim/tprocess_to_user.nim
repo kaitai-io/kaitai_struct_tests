@@ -6,4 +6,4 @@ import auxiliary/test_utils
 
 let r = ProcessToUser.fromFile("src/process_rotate.bin")
 
-assert r.buf1.str == string("Hello")
+assert r.buf1.str == "Hello"

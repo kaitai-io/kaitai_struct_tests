@@ -6,13 +6,13 @@ import auxiliary/test_utils
 
 let r = ExprBits.fromFile("src/switch_opcodes.bin")
 
-assert r.a == uint64(2)
+assert r.a == 2
 assert r.enumSeq == expr_bits.foo
 assert r.byteSize == @[102'u8, 111'u8]
-assert len(r.repeatExpr) == int(2)
-assert r.repeatExpr[0] == int8(111)
-assert r.repeatExpr[1] == int8(98)
-assert r.switchOnType == int8(97)
-assert r.switchOnEndian.foo == int16(29184)
+assert len(r.repeatExpr) == 2
+assert r.repeatExpr[0] == 111
+assert r.repeatExpr[1] == 98
+assert r.switchOnType == 97
+assert r.switchOnEndian.foo == 29184
 assert r.enumInst == expr_bits.bar
-assert r.instPos == int8(111)
+assert r.instPos == 111

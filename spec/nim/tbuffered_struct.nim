@@ -6,10 +6,10 @@ import auxiliary/test_utils
 
 let r = BufferedStruct.fromFile("src/buffered_struct.bin")
 
-assert r.len1 == uint32(16)
-assert r.block1.number1 == uint32(66)
-assert r.block1.number2 == uint32(67)
-assert r.len2 == uint32(8)
-assert r.block2.number1 == uint32(68)
-assert r.block2.number2 == uint32(69)
-assert r.finisher == uint32(238)
+assert r.len1 == 16
+assert r.block1.number1 == 66
+assert r.block1.number2 == 67
+assert r.len2 == 8
+assert r.block2.number1 == 68
+assert r.block2.number2 == 69
+assert r.finisher == 238

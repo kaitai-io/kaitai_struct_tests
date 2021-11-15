@@ -6,4 +6,4 @@ import auxiliary/test_utils
 
 let r = RepeatEosBit.fromFile("src/enum_0.bin")
 
-assert len(r.nibbles) == int(16)
+assert len(r.nibbles) == 16

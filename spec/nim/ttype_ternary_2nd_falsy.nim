@@ -6,16 +6,16 @@ import auxiliary/test_utils
 
 let r = TypeTernary2ndFalsy.fromFile("src/switch_integers.bin")
 
-assert r.vFalse == bool(false)
-assert r.vIntZero == int8(0)
-assert r.vIntNegZero == int(-0)
-assert r.vFloatZero == float64(0.0)
-assert r.vFloatNegZero == float64(-0.0)
-assert r.vStrWZero == string("0")
-assert len(r.vStrWZero) == int(1)
-assert r.ut.m == uint8(7)
+assert r.vFalse == false
+assert r.vIntZero == 0
+assert r.vIntNegZero == -0
+assert r.vFloatZero == 0.0
+assert r.vFloatNegZero == -0.0
+assert r.vStrWZero == "0"
+assert len(r.vStrWZero) == 1
+assert r.ut.m == 7
 assert r.vNullUt == nil
-assert r.vStrEmpty == string("")
-assert len(r.vStrEmpty) == int(0)
-assert len(r.intArray) == int(2)
-assert len(r.vIntArrayEmpty) == int(0)
+assert r.vStrEmpty == ""
+assert len(r.vStrEmpty) == 0
+assert len(r.intArray) == 2
+assert len(r.vIntArrayEmpty) == 0

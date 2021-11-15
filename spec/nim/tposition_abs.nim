@@ -6,5 +6,5 @@ import auxiliary/test_utils
 
 let r = PositionAbs.fromFile("src/position_abs.bin")
 
-assert r.indexOffset == uint32(32)
-assert r.index.entry == string("foo")
+assert r.indexOffset == 32
+assert r.index.entry == "foo"

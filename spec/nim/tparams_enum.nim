@@ -7,4 +7,4 @@ import auxiliary/test_utils
 let r = ParamsEnum.fromFile("src/enum_0.bin")
 
 assert r.one == params_enum.cat
-assert r.invokeWithParam.isCat == bool(true)
+assert r.invokeWithParam.isCat == true

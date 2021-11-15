@@ -6,5 +6,5 @@ import auxiliary/test_utils
 
 let r = MultipleUse.fromFile("src/position_abs.bin")
 
-assert r.t1.firstUse.value == int32(32)
-assert r.t2.secondUse.value == int32(32)
+assert r.t1.firstUse.value == 32
+assert r.t2.secondUse.value == 32

@@ -6,9 +6,9 @@ import auxiliary/test_utils
 
 let r = ExprIoPos.fromFile("src/expr_io_pos.bin")
 
-assert r.substream1.myStr == string("CURIOSITY")
+assert r.substream1.myStr == "CURIOSITY"
 assert r.substream1.body == @[17'u8, 34'u8, 51'u8, 68'u8]
-assert r.substream1.number == uint16(66)
-assert r.substream2.myStr == string("KILLED")
+assert r.substream1.number == 66
+assert r.substream2.myStr == "KILLED"
 assert r.substream2.body == @[97'u8, 32'u8, 99'u8, 97'u8, 116'u8]
-assert r.substream2.number == uint16(103)
+assert r.substream2.number == 103

@@ -7,4 +7,4 @@ import auxiliary/test_utils
 let r = IoLocalVar.fromFile("src/full256.bin")
 
 assert r.skip == @[0'u8, 1'u8, 2'u8, 3'u8, 4'u8, 5'u8, 6'u8, 7'u8, 8'u8, 9'u8, 10'u8, 11'u8, 12'u8, 13'u8, 14'u8, 15'u8, 16'u8, 17'u8, 18'u8, 19'u8]
-assert r.followup == uint8(20)
+assert r.followup == 20

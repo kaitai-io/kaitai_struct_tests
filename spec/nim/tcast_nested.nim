@@ -6,7 +6,7 @@ import auxiliary/test_utils
 
 let r = CastNested.fromFile("src/switch_opcodes.bin")
 
-assert r.opcodes0Str.value == string("foobar")
-assert r.opcodes0StrValue == string("foobar")
-assert r.opcodes1Int.value == uint8(66)
-assert r.opcodes1IntValue == uint8(66)
+assert r.opcodes0Str.value == "foobar"
+assert r.opcodes0StrValue == "foobar"
+assert r.opcodes1Int.value == 66
+assert r.opcodes1IntValue == 66

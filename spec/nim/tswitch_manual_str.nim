@@ -6,12 +6,12 @@ import auxiliary/test_utils
 
 let r = SwitchManualStr.fromFile("src/switch_opcodes.bin")
 
-assert len(r.opcodes) == int(4)
-assert r.opcodes[0].code == string("S")
-assert (SwitchManualStr_Opcode_Strval(r.opcodes[0].body)).value == string("foobar")
-assert r.opcodes[1].code == string("I")
-assert (SwitchManualStr_Opcode_Intval(r.opcodes[1].body)).value == uint8(66)
-assert r.opcodes[2].code == string("I")
-assert (SwitchManualStr_Opcode_Intval(r.opcodes[2].body)).value == uint8(55)
-assert r.opcodes[3].code == string("S")
-assert (SwitchManualStr_Opcode_Strval(r.opcodes[3].body)).value == string("")
+assert len(r.opcodes) == 4
+assert r.opcodes[0].code == "S"
+assert (SwitchManualStr_Opcode_Strval(r.opcodes[0].body)).value == "foobar"
+assert r.opcodes[1].code == "I"
+assert (SwitchManualStr_Opcode_Intval(r.opcodes[1].body)).value == 66
+assert r.opcodes[2].code == "I"
+assert (SwitchManualStr_Opcode_Intval(r.opcodes[2].body)).value == 55
+assert r.opcodes[3].code == "S"
+assert (SwitchManualStr_Opcode_Strval(r.opcodes[3].body)).value == ""

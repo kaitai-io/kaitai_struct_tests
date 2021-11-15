@@ -6,8 +6,8 @@ import auxiliary/test_utils
 
 let r = NavParentFalse.fromFile("src/nav_parent_codes.bin")
 
-assert r.childSize == uint8(3)
-assert r.elementA.foo.code == uint8(73)
+assert r.childSize == 3
+assert r.elementA.foo.code == 73
 assert r.elementA.foo.more == @[49'u8, 50'u8, 51'u8]
-assert r.elementA.bar.foo.code == uint8(66)
-assert r.elementB.foo.code == uint8(98)
+assert r.elementA.bar.foo.code == 66
+assert r.elementB.foo.code == 98

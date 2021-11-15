@@ -6,7 +6,7 @@ import auxiliary/test_utils
 
 let r = ProcessRepeatUsertype.fromFile("src/process_xor_4.bin")
 
-assert r.blocks[0].a == int32(-1975704206)
-assert r.blocks[0].b == int8(20)
-assert r.blocks[1].a == int32(279597642)
-assert r.blocks[1].b == int8(68)
+assert r.blocks[0].a == -1975704206
+assert r.blocks[0].b == 20
+assert r.blocks[1].a == 279597642
+assert r.blocks[1].b == 68

@@ -7,14 +7,14 @@ import auxiliary/test_utils
 let r = DefaultEndianExprIsLe.fromFile("src/endian_expr.bin")
 
 assert r.docs[0].indicator == @[73'u8, 73'u8]
-assert r.docs[0].main.someInt == uint32(66)
-assert r.docs[0].main.someIntBe == uint16(66)
-assert r.docs[0].main.someIntLe == uint16(66)
+assert r.docs[0].main.someInt == 66
+assert r.docs[0].main.someIntBe == 66
+assert r.docs[0].main.someIntLe == 66
 assert r.docs[1].indicator == @[77'u8, 77'u8]
-assert r.docs[1].main.someInt == uint32(66)
-assert r.docs[1].main.someIntBe == uint16(66)
-assert r.docs[1].main.someIntLe == uint16(66)
+assert r.docs[1].main.someInt == 66
+assert r.docs[1].main.someIntBe == 66
+assert r.docs[1].main.someIntLe == 66
 assert r.docs[2].indicator == @[88'u8, 88'u8]
-assert r.docs[2].main.someInt == uint32(66)
-assert r.docs[2].main.someIntBe == uint16(66)
-assert r.docs[2].main.someIntLe == uint16(66)
+assert r.docs[2].main.someInt == 66
+assert r.docs[2].main.someIntBe == 66
+assert r.docs[2].main.someIntLe == 66

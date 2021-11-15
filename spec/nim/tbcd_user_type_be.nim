@@ -6,9 +6,9 @@ import auxiliary/test_utils
 
 let r = BcdUserTypeBe.fromFile("src/bcd_user_type_be.bin")
 
-assert r.ltr.asInt == int(12345678)
-assert r.ltr.asStr == string("12345678")
-assert r.rtl.asInt == int(87654321)
-assert r.rtl.asStr == string("87654321")
-assert r.leadingZeroLtr.asInt == int(123456)
-assert r.leadingZeroLtr.asStr == string("00123456")
+assert r.ltr.asInt == 12345678
+assert r.ltr.asStr == "12345678"
+assert r.rtl.asInt == 87654321
+assert r.rtl.asStr == "87654321"
+assert r.leadingZeroLtr.asInt == 123456
+assert r.leadingZeroLtr.asStr == "00123456"

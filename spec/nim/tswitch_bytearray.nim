@@ -6,12 +6,12 @@ import auxiliary/test_utils
 
 let r = SwitchBytearray.fromFile("src/switch_opcodes.bin")
 
-assert len(r.opcodes) == int(4)
+assert len(r.opcodes) == 4
 assert r.opcodes[0].code == @[83'u8]
-assert (SwitchBytearray_Opcode_Strval(r.opcodes[0].body)).value == string("foobar")
+assert (SwitchBytearray_Opcode_Strval(r.opcodes[0].body)).value == "foobar"
 assert r.opcodes[1].code == @[73'u8]
-assert (SwitchBytearray_Opcode_Intval(r.opcodes[1].body)).value == uint8(66)
+assert (SwitchBytearray_Opcode_Intval(r.opcodes[1].body)).value == 66
 assert r.opcodes[2].code == @[73'u8]
-assert (SwitchBytearray_Opcode_Intval(r.opcodes[2].body)).value == uint8(55)
+assert (SwitchBytearray_Opcode_Intval(r.opcodes[2].body)).value == 55
 assert r.opcodes[3].code == @[83'u8]
-assert (SwitchBytearray_Opcode_Strval(r.opcodes[3].body)).value == string("")
+assert (SwitchBytearray_Opcode_Strval(r.opcodes[3].body)).value == ""

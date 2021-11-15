@@ -6,5 +6,5 @@ import auxiliary/test_utils
 
 let r = Expr0.fromFile("src/str_encodings.bin")
 
-assert r.mustBeF7 == int(247)
-assert r.mustBeAbc123 == string("abc123")
+assert r.mustBeF7 == 247
+assert r.mustBeAbc123 == "abc123"

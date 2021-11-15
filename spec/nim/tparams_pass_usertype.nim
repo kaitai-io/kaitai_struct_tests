@@ -6,5 +6,5 @@ import auxiliary/test_utils
 
 let r = ParamsPassUsertype.fromFile("src/position_in_seq.bin")
 
-assert r.first.foo == uint8(1)
+assert r.first.foo == 1
 assert r.one.buf == @[2'u8]

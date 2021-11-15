@@ -6,4 +6,4 @@ import auxiliary/test_utils
 
 let r = ParamsCallExtraParens.fromFile("src/term_strz.bin")
 
-assert r.buf1.body == string("foo|b")
+assert r.buf1.body == "foo|b"

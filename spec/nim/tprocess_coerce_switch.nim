@@ -6,6 +6,6 @@ import auxiliary/test_utils
 
 let r = ProcessCoerceSwitch.fromFile("src/process_coerce_switch.bin")
 
-assert r.bufType == uint8(0)
-assert r.flag == uint8(0)
+assert r.bufType == 0
+assert r.flag == 0
 assert (ProcessCoerceSwitch_Foo(r.buf)).bar == @[65'u8, 65'u8, 65'u8, 65'u8]

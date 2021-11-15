@@ -6,4 +6,4 @@ import auxiliary/test_utils
 
 let r = ZlibSurrounded.fromFile("src/zlib_surrounded.bin")
 
-assert r.zlib.num == int32(-1)
+assert r.zlib.num == -1

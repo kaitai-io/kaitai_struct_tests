@@ -6,10 +6,10 @@ import auxiliary/test_utils
 
 let r = IndexSizes.fromFile("src/index_sizes.bin")
 
-assert r.qty == uint32(3)
-assert r.sizes[0] == uint32(1)
-assert r.sizes[1] == uint32(8)
-assert r.sizes[2] == uint32(4)
-assert r.bufs[0] == string("A")
-assert r.bufs[1] == string("BBBBBBBB")
-assert r.bufs[2] == string("CCCC")
+assert r.qty == 3
+assert r.sizes[0] == 1
+assert r.sizes[1] == 8
+assert r.sizes[2] == 4
+assert r.bufs[0] == "A"
+assert r.bufs[1] == "BBBBBBBB"
+assert r.bufs[2] == "CCCC"

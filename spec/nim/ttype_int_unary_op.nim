@@ -6,7 +6,7 @@ import auxiliary/test_utils
 
 let r = TypeIntUnaryOp.fromFile("src/fixed_struct.bin")
 
-assert r.valueS2 == int16(16720)
-assert r.valueS8 == int64(4706543082108963651'i64)
-assert r.unaryS2 == int(-16720)
-assert r.unaryS8 == int64(-4706543082108963651'i64)
+assert r.valueS2 == 16720
+assert r.valueS8 == 4706543082108963651'i64
+assert r.unaryS2 == -16720
+assert r.unaryS8 == -4706543082108963651'i64

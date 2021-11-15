@@ -6,8 +6,8 @@ import auxiliary/test_utils
 
 let r = RepeatNStruct.fromFile("src/repeat_n_struct.bin")
 
-assert len(r.chunks) == int(2)
-assert r.chunks[0].offset == uint32(16)
-assert r.chunks[0].len == uint32(8312)
-assert r.chunks[1].offset == uint32(8328)
-assert r.chunks[1].len == uint32(15)
+assert len(r.chunks) == 2
+assert r.chunks[0].offset == 16
+assert r.chunks[0].len == 8312
+assert r.chunks[1].offset == 8328
+assert r.chunks[1].len == 15

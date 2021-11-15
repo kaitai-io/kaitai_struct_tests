@@ -6,8 +6,8 @@ import auxiliary/test_utils
 
 let r = NestedTypes3.fromFile("src/fixed_struct.bin")
 
-assert r.aCc.valueCc == int8(80)
-assert r.aCD.valueD == int8(65)
-assert r.b.valueB == int8(67)
-assert r.b.aCc.valueCc == int8(75)
-assert r.b.aCD.valueD == int8(45)
+assert r.aCc.valueCc == 80
+assert r.aCD.valueD == 65
+assert r.b.valueB == 67
+assert r.b.aCc.valueCc == 75
+assert r.b.aCD.valueD == 45

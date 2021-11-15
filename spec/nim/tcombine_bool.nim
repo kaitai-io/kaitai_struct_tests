@@ -6,5 +6,5 @@ import auxiliary/test_utils
 
 let r = CombineBool.fromFile("src/enum_negative.bin")
 
-assert r.boolBit == bool(true)
-assert r.boolCalcBit == bool(false)
+assert r.boolBit == true
+assert r.boolCalcBit == false

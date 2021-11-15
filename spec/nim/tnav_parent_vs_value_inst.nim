@@ -6,4 +6,4 @@ import auxiliary/test_utils
 
 let r = NavParentVsValueInst.fromFile("src/term_strz.bin")
 
-assert r.s1 == string("foo")
+assert r.s1 == "foo"

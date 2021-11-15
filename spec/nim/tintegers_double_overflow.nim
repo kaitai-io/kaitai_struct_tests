@@ -7,11 +7,11 @@ import strutils
 
 let r = IntegersDoubleOverflow.fromFile("src/integers_double_overflow.bin")
 
-assert r.signedSafeMinBe == int64(-9007199254740991'i64)
-assert r.signedSafeMinLe == int64(-9007199254740991'i64)
-assert r.signedSafeMaxBe == int64(9007199254740991'i64)
-assert r.signedSafeMaxLe == int64(9007199254740991'i64)
-assert intToStr(int(r.signedUnsafeNegBe)) == string("-9007199254740993")
-assert intToStr(int(r.signedUnsafeNegLe)) == string("-9007199254740993")
-assert intToStr(int(r.signedUnsafePosBe)) == string("9007199254740993")
-assert intToStr(int(r.signedUnsafePosBe)) == string("9007199254740993")
+assert r.signedSafeMinBe == -9007199254740991'i64
+assert r.signedSafeMinLe == -9007199254740991'i64
+assert r.signedSafeMaxBe == 9007199254740991'i64
+assert r.signedSafeMaxLe == 9007199254740991'i64
+assert intToStr(int(r.signedUnsafeNegBe)) == "-9007199254740993"
+assert intToStr(int(r.signedUnsafeNegLe)) == "-9007199254740993"
+assert intToStr(int(r.signedUnsafePosBe)) == "9007199254740993"
+assert intToStr(int(r.signedUnsafePosBe)) == "9007199254740993"
