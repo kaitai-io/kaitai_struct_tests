@@ -1,7 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env ruby
 
-# Only runs one test (the argument) and prints result on console
-
-. ./config
-
-nim c -r -w:off --hints:off --outdir:"spec/nim/tests/bin" "spec/nim/t$1"
+require_relative 'builder/nim_builder'
+NimBuilder.new.command_line(ARGV)

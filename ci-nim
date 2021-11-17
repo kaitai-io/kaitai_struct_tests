@@ -2,10 +2,7 @@
 
 . ./config
 
-rm -rf "$TEST_OUT_DIR/nim"
-mkdir -p "$TEST_OUT_DIR/nim"
+./run-nim
 
-testify $TEST_OUT_DIR/nim/report.xml spec/nim
-rm -rf spec/nim/bin
 ./kst-adoption-report nim
 aggregate/convert_to_json nim "$TEST_OUT_DIR/nim" "$TEST_OUT_DIR/nim/ci.json"
