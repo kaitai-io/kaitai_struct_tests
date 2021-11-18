@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/nested_same_name
 import auxiliary/test_utils
 
-let r = NestedSameName.fromFile("src/repeat_n_struct.bin")
+let r = NestedSameName.fromFile("../../src/repeat_n_struct.bin")
 
 assert r.mainData.mainSize == 2
 assert r.mainData.foo.data == @[16'u8, 0'u8, 0'u8, 0'u8]

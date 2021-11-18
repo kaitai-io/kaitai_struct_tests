@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/float_to_i
 import auxiliary/test_utils
 
-let r = FloatToI.fromFile("src/floating_points.bin")
+let r = FloatToI.fromFile("../../src/floating_points.bin")
 
 assert r.singleValue == 0.5
 assert r.doubleValue == 0.25

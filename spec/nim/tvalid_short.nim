@@ -4,5 +4,5 @@ import os, streams, options, sequtils
 import ../../compiled/nim/valid_short
 import auxiliary/test_utils
 
-let r = ValidShort.fromFile("src/fixed_struct.bin")
+let r = ValidShort.fromFile("../../src/fixed_struct.bin")
 

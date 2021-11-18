@@ -4,5 +4,5 @@ import os, streams, options, sequtils
 import ../../compiled/nim/fixed_contents
 import auxiliary/test_utils
 
-let r = FixedContents.fromFile("src/fixed_struct.bin")
+let r = FixedContents.fromFile("../../src/fixed_struct.bin")
 

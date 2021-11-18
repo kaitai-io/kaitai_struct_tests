@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/yaml_ints
 import auxiliary/test_utils
 
-let r = YamlInts.fromFile("src/fixed_struct.bin")
+let r = YamlInts.fromFile("../../src/fixed_struct.bin")
 
 assert r.testU4Dec == 4294967295'i64
 assert r.testU4Hex == 4294967295'i64

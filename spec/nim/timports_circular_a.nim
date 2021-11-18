@@ -5,7 +5,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/imports_circular_a
 import auxiliary/test_utils
 
-let r = ImportsCircularA.fromFile("src/fixed_struct.bin")
+let r = ImportsCircularA.fromFile("../../src/fixed_struct.bin")
 
 assert r.code == 80
 assert r.two.initial == 65

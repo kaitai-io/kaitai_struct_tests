@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/type_int_unary_op
 import auxiliary/test_utils
 
-let r = TypeIntUnaryOp.fromFile("src/fixed_struct.bin")
+let r = TypeIntUnaryOp.fromFile("../../src/fixed_struct.bin")
 
 assert r.valueS2 == 16720
 assert r.valueS8 == 4706543082108963651'i64

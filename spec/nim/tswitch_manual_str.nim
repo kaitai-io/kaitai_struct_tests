@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/switch_manual_str
 import auxiliary/test_utils
 
-let r = SwitchManualStr.fromFile("src/switch_opcodes.bin")
+let r = SwitchManualStr.fromFile("../../src/switch_opcodes.bin")
 
 assert len(r.opcodes) == 4
 assert r.opcodes[0].code == "S"

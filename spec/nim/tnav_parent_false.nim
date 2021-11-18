@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/nav_parent_false
 import auxiliary/test_utils
 
-let r = NavParentFalse.fromFile("src/nav_parent_codes.bin")
+let r = NavParentFalse.fromFile("../../src/nav_parent_codes.bin")
 
 assert r.childSize == 3
 assert r.elementA.foo.code == 73

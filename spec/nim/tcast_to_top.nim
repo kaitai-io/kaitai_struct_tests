@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/cast_to_top
 import auxiliary/test_utils
 
-let r = CastToTop.fromFile("src/fixed_struct.bin")
+let r = CastToTop.fromFile("../../src/fixed_struct.bin")
 
 assert r.code == 80
 assert r.header.code == 65

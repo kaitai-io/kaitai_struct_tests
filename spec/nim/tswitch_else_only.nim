@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/switch_else_only
 import auxiliary/test_utils
 
-let r = SwitchElseOnly.fromFile("src/switch_opcodes.bin")
+let r = SwitchElseOnly.fromFile("../../src/switch_opcodes.bin")
 
 assert r.opcode == 83
 assert r.primByte == 102

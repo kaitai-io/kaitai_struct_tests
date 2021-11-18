@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/switch_manual_int_size_else
 import auxiliary/test_utils
 
-let r = SwitchManualIntSizeElse.fromFile("src/switch_tlv.bin")
+let r = SwitchManualIntSizeElse.fromFile("../../src/switch_tlv.bin")
 
 assert len(r.chunks) == 4
 assert r.chunks[0].code == 17

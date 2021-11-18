@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/expr_io_eof
 import auxiliary/test_utils
 
-let r = ExprIoEof.fromFile("src/fixed_struct.bin")
+let r = ExprIoEof.fromFile("../../src/fixed_struct.bin")
 
 assert r.substream1.one == 1262698832
 assert r.substream1.two == 0'u32

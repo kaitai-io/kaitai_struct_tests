@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/enum_to_i
 import auxiliary/test_utils
 
-let r = EnumToI.fromFile("src/enum_0.bin")
+let r = EnumToI.fromFile("../../src/enum_0.bin")
 
 assert r.pet1 == enum_to_i.cat
 assert r.pet2 == enum_to_i.chicken

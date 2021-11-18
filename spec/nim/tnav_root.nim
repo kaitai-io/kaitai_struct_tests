@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/nav_root
 import auxiliary/test_utils
 
-let r = NavRoot.fromFile("src/nav.bin")
+let r = NavRoot.fromFile("../../src/nav.bin")
 
 assert r.header.qtyEntries == 2
 assert r.header.filenameLen == 8

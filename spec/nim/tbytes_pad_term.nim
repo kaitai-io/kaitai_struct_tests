@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/bytes_pad_term
 import auxiliary/test_utils
 
-let r = BytesPadTerm.fromFile("src/str_pad_term.bin")
+let r = BytesPadTerm.fromFile("../../src/str_pad_term.bin")
 
 assert r.strPad == @[115'u8, 116'u8, 114'u8, 49'u8]
 assert r.strTerm == @[115'u8, 116'u8, 114'u8, 50'u8, 102'u8, 111'u8, 111'u8]

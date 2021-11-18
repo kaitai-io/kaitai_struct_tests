@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/enum_long_range_u
 import auxiliary/test_utils
 
-let r = EnumLongRangeU.fromFile("src/enum_long_range_u.bin")
+let r = EnumLongRangeU.fromFile("../../src/enum_long_range_u.bin")
 
 assert r.f1 == enum_long_range_u.zero
 assert r.f2 == enum_long_range_u.int_max

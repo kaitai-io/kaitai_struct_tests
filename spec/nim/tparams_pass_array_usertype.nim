@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/params_pass_array_usertype
 import auxiliary/test_utils
 
-let r = ParamsPassArrayUsertype.fromFile("src/position_to_end.bin")
+let r = ParamsPassArrayUsertype.fromFile("../../src/position_to_end.bin")
 
 assert len(r.passBlocks.bar) == 2
 assert r.passBlocks.bar[0].foo == 1

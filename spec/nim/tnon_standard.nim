@@ -4,6 +4,6 @@ import os, streams, options, sequtils
 import ../../compiled/nim/non_standard
 import auxiliary/test_utils
 
-let r = NonStandard.fromFile("src/fixed_struct.bin")
+let r = NonStandard.fromFile("../../src/fixed_struct.bin")
 
 assert r.foo == 80

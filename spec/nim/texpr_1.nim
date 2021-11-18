@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/expr_1
 import auxiliary/test_utils
 
-let r = Expr1.fromFile("src/str_encodings.bin")
+let r = Expr1.fromFile("../../src/str_encodings.bin")
 
 assert r.lenOf1 == 10
 assert r.lenOf1Mod == 8

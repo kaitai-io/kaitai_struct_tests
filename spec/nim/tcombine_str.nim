@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/combine_str
 import auxiliary/test_utils
 
-let r = CombineStr.fromFile("src/term_strz.bin")
+let r = CombineStr.fromFile("../../src/term_strz.bin")
 
 assert r.strTerm == "foo"
 assert r.strLimit == "bar|"

@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/switch_bytearray
 import auxiliary/test_utils
 
-let r = SwitchBytearray.fromFile("src/switch_opcodes.bin")
+let r = SwitchBytearray.fromFile("../../src/switch_opcodes.bin")
 
 assert len(r.opcodes) == 4
 assert r.opcodes[0].code == @[83'u8]

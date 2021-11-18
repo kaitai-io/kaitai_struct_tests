@@ -5,7 +5,7 @@ import ../../compiled/nim/expr_bytes_ops
 import auxiliary/test_utils
 import strutils
 
-let r = ExprBytesOps.fromFile("src/nav_parent_switch.bin")
+let r = ExprBytesOps.fromFile("../../src/nav_parent_switch.bin")
 
 assert r.oneSize == 3
 assert r.oneFirst == 1

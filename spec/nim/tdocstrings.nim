@@ -4,5 +4,5 @@ import os, streams, options, sequtils
 import ../../compiled/nim/docstrings
 import auxiliary/test_utils
 
-let r = Docstrings.fromFile("src/fixed_struct.bin")
+let r = Docstrings.fromFile("../../src/fixed_struct.bin")
 

@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/if_values
 import auxiliary/test_utils
 
-let r = IfValues.fromFile("src/fixed_struct.bin")
+let r = IfValues.fromFile("../../src/fixed_struct.bin")
 
 assert r.codes[0].opcode == 80
 assert r.codes[0].halfOpcode == 40

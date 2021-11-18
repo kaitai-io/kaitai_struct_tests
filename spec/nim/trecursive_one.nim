@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/recursive_one
 import auxiliary/test_utils
 
-let r = RecursiveOne.fromFile("src/fixed_struct.bin")
+let r = RecursiveOne.fromFile("../../src/fixed_struct.bin")
 
 assert r.one == 80
 assert (RecursiveOne(r.next)).one == 65

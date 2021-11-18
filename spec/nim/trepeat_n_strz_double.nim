@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/repeat_n_strz_double
 import auxiliary/test_utils
 
-let r = RepeatNStrzDouble.fromFile("src/repeat_n_strz.bin")
+let r = RepeatNStrzDouble.fromFile("../../src/repeat_n_strz.bin")
 
 assert r.qty == 2
 assert r.lines1 == @[string("foo"), ]

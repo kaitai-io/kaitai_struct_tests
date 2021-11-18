@@ -4,5 +4,5 @@ import os, streams, options, sequtils
 import ../../compiled/nim/valid_long
 import auxiliary/test_utils
 
-let r = ValidLong.fromFile("src/fixed_struct.bin")
+let r = ValidLong.fromFile("../../src/fixed_struct.bin")
 

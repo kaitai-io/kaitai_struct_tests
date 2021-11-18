@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/expr_bits
 import auxiliary/test_utils
 
-let r = ExprBits.fromFile("src/switch_opcodes.bin")
+let r = ExprBits.fromFile("../../src/switch_opcodes.bin")
 
 assert r.a == 2
 assert r.enumSeq == expr_bits.foo

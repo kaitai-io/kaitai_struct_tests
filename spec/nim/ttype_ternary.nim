@@ -4,6 +4,6 @@ import os, streams, options, sequtils
 import ../../compiled/nim/type_ternary
 import auxiliary/test_utils
 
-let r = TypeTernary.fromFile("src/term_strz.bin")
+let r = TypeTernary.fromFile("../../src/term_strz.bin")
 
 assert r.dif.value == 101

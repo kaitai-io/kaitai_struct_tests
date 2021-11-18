@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/position_abs
 import auxiliary/test_utils
 
-let r = PositionAbs.fromFile("src/position_abs.bin")
+let r = PositionAbs.fromFile("../../src/position_abs.bin")
 
 assert r.indexOffset == 32
 assert r.index.entry == "foo"

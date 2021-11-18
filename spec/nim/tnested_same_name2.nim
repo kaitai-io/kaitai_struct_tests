@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/nested_same_name2
 import auxiliary/test_utils
 
-let r = NestedSameName2.fromFile("src/nested_same_name2.bin")
+let r = NestedSameName2.fromFile("../../src/nested_same_name2.bin")
 
 assert r.version == 66
 assert r.mainData.mainSize == 2

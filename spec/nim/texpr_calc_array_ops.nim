@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/expr_calc_array_ops
 import auxiliary/test_utils
 
-let r = ExprCalcArrayOps.fromFile("src/fixed_struct.bin")
+let r = ExprCalcArrayOps.fromFile("../../src/fixed_struct.bin")
 
 assert r.intArraySize == 7
 assert r.intArrayFirst == 10

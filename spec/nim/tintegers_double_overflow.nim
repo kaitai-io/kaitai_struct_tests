@@ -5,7 +5,7 @@ import ../../compiled/nim/integers_double_overflow
 import auxiliary/test_utils
 import strutils
 
-let r = IntegersDoubleOverflow.fromFile("src/integers_double_overflow.bin")
+let r = IntegersDoubleOverflow.fromFile("../../src/integers_double_overflow.bin")
 
 assert r.signedSafeMinBe == -9007199254740991'i64
 assert r.signedSafeMinLe == -9007199254740991'i64

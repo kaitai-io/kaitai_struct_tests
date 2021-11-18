@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/params_pass_bool
 import auxiliary/test_utils
 
-let r = ParamsPassBool.fromFile("src/term_strz.bin")
+let r = ParamsPassBool.fromFile("../../src/term_strz.bin")
 
 assert r.sFalse == false
 assert r.sTrue == true

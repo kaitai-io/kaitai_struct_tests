@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/nav_parent3
 import auxiliary/test_utils
 
-let r = NavParent3.fromFile("src/nav_parent2.bin")
+let r = NavParent3.fromFile("../../src/nav_parent2.bin")
 
 assert r.ofsTags == 8
 assert r.numTags == 2

@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/index_to_param_until
 import auxiliary/test_utils
 
-let r = IndexToParamUntil.fromFile("src/index_sizes.bin")
+let r = IndexToParamUntil.fromFile("../../src/index_sizes.bin")
 
 assert r.qty == 3
 assert r.sizes[0] == 1

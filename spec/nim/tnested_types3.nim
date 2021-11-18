@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/nested_types3
 import auxiliary/test_utils
 
-let r = NestedTypes3.fromFile("src/fixed_struct.bin")
+let r = NestedTypes3.fromFile("../../src/fixed_struct.bin")
 
 assert r.aCc.valueCc == 80
 assert r.aCD.valueD == 65

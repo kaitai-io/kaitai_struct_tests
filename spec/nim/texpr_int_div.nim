@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/expr_int_div
 import auxiliary/test_utils
 
-let r = ExprIntDiv.fromFile("src/fixed_struct.bin")
+let r = ExprIntDiv.fromFile("../../src/fixed_struct.bin")
 
 assert r.intU == 1262698832
 assert r.intS == -52947

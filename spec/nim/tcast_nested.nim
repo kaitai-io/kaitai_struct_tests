@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/cast_nested
 import auxiliary/test_utils
 
-let r = CastNested.fromFile("src/switch_opcodes.bin")
+let r = CastNested.fromFile("../../src/switch_opcodes.bin")
 
 assert r.opcodes0Str.value == "foobar"
 assert r.opcodes0StrValue == "foobar"

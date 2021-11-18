@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/enum_if
 import auxiliary/test_utils
 
-let r = EnumIf.fromFile("src/if_struct.bin")
+let r = EnumIf.fromFile("../../src/if_struct.bin")
 
 assert r.op1.opcode == enum_if.a_string
 assert r.op1.argStr.str == "foo"

@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/default_endian_mod
 import auxiliary/test_utils
 
-let r = DefaultEndianMod.fromFile("src/fixed_struct.bin")
+let r = DefaultEndianMod.fromFile("../../src/fixed_struct.bin")
 
 assert r.main.one == 1262698832
 assert r.main.nest.two == -52947

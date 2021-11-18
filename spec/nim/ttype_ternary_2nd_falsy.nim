@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/type_ternary_2nd_falsy
 import auxiliary/test_utils
 
-let r = TypeTernary2ndFalsy.fromFile("src/switch_integers.bin")
+let r = TypeTernary2ndFalsy.fromFile("../../src/switch_integers.bin")
 
 assert r.vFalse == false
 assert r.vIntZero == 0

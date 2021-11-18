@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/term_strz
 import auxiliary/test_utils
 
-let r = TermStrz.fromFile("src/term_strz.bin")
+let r = TermStrz.fromFile("../../src/term_strz.bin")
 
 assert r.s1 == "foo"
 assert r.s2 == "bar"

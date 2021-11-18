@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/nested_types
 import auxiliary/test_utils
 
-let r = NestedTypes.fromFile("src/fixed_struct.bin")
+let r = NestedTypes.fromFile("../../src/fixed_struct.bin")
 
 assert r.one.typedAtRoot.valueB == 80
 assert r.one.typedHere.valueC == 65

@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/default_bit_endian_mod
 import auxiliary/test_utils
 
-let r = DefaultBitEndianMod.fromFile("src/fixed_struct.bin")
+let r = DefaultBitEndianMod.fromFile("../../src/fixed_struct.bin")
 
 assert r.main.one == 336
 assert r.main.two == 8608

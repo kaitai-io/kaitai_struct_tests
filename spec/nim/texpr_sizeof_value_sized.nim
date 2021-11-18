@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/expr_sizeof_value_sized
 import auxiliary/test_utils
 
-let r = ExprSizeofValueSized.fromFile("src/fixed_struct.bin")
+let r = ExprSizeofValueSized.fromFile("../../src/fixed_struct.bin")
 
 assert r.selfSizeof == (12 + 2)
 assert r.sizeofBlock == 12

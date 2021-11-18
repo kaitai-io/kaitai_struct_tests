@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/bits_simple_le
 import auxiliary/test_utils
 
-let r = BitsSimpleLe.fromFile("src/fixed_struct.bin")
+let r = BitsSimpleLe.fromFile("../../src/fixed_struct.bin")
 
 assert r.byte1 == 80
 assert r.byte2 == 65

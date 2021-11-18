@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/integers_min_max
 import auxiliary/test_utils
 
-let r = IntegersMinMax.fromFile("src/integers_min_max.bin")
+let r = IntegersMinMax.fromFile("../../src/integers_min_max.bin")
 
 assert r.unsignedMin.u1 == 0
 assert r.unsignedMin.u2le == 0

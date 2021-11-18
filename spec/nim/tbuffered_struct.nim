@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/buffered_struct
 import auxiliary/test_utils
 
-let r = BufferedStruct.fromFile("src/buffered_struct.bin")
+let r = BufferedStruct.fromFile("../../src/buffered_struct.bin")
 
 assert r.len1 == 16
 assert r.block1.number1 == 66

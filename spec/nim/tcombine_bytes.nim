@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/combine_bytes
 import auxiliary/test_utils
 
-let r = CombineBytes.fromFile("src/term_strz.bin")
+let r = CombineBytes.fromFile("../../src/term_strz.bin")
 
 assert r.bytesTerm == @[102'u8, 111'u8, 111'u8]
 assert r.bytesLimit == @[98'u8, 97'u8, 114'u8, 124'u8]

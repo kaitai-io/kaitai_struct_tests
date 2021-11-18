@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/combine_enum
 import auxiliary/test_utils
 
-let r = CombineEnum.fromFile("src/enum_0.bin")
+let r = CombineEnum.fromFile("../../src/enum_0.bin")
 
 assert r.enumU4 == combine_enum.pig
 assert r.enumU2 == combine_enum.horse

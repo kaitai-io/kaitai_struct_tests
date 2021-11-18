@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/expr_3
 import auxiliary/test_utils
 
-let r = Expr3.fromFile("src/fixed_struct.bin")
+let r = Expr3.fromFile("../../src/fixed_struct.bin")
 
 assert r.one == 80
 assert r.two == "ACK"

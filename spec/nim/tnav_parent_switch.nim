@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/nav_parent_switch
 import auxiliary/test_utils
 
-let r = NavParentSwitch.fromFile("src/nav_parent_switch.bin")
+let r = NavParentSwitch.fromFile("../../src/nav_parent_switch.bin")
 
 assert r.category == 1
 assert (NavParentSwitch_Element1(r.content)).foo == 66

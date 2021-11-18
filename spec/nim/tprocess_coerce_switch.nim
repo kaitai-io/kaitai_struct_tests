@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/process_coerce_switch
 import auxiliary/test_utils
 
-let r = ProcessCoerceSwitch.fromFile("src/process_coerce_switch.bin")
+let r = ProcessCoerceSwitch.fromFile("../../src/process_coerce_switch.bin")
 
 assert r.bufType == 0
 assert r.flag == 0

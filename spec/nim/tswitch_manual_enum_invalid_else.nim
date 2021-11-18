@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/switch_manual_enum_invalid_else
 import auxiliary/test_utils
 
-let r = SwitchManualEnumInvalidElse.fromFile("src/enum_negative.bin")
+let r = SwitchManualEnumInvalidElse.fromFile("../../src/enum_negative.bin")
 
 assert len(r.opcodes) == 2
 assert r.opcodes[0].code == 255

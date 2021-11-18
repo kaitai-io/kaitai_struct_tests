@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/params_pass_array_struct
 import auxiliary/test_utils
 
-let r = ParamsPassArrayStruct.fromFile("src/position_to_end.bin")
+let r = ParamsPassArrayStruct.fromFile("../../src/position_to_end.bin")
 
 assert len(r.passStructs.structs) == 2
 assert (ParamsPassArrayStruct_Foo(r.passStructs.structs[0])).f == 1

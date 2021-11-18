@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/switch_integers2
 import auxiliary/test_utils
 
-let r = SwitchIntegers2.fromFile("src/switch_integers.bin")
+let r = SwitchIntegers2.fromFile("../../src/switch_integers.bin")
 
 assert r.code == 1
 assert r.len == 7

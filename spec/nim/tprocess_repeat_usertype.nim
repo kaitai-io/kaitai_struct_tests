@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/process_repeat_usertype
 import auxiliary/test_utils
 
-let r = ProcessRepeatUsertype.fromFile("src/process_xor_4.bin")
+let r = ProcessRepeatUsertype.fromFile("../../src/process_xor_4.bin")
 
 assert r.blocks[0].a == -1975704206
 assert r.blocks[0].b == 20

@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/fixed_struct
 import auxiliary/test_utils
 
-let r = FixedStruct.fromFile("src/fixed_struct.bin")
+let r = FixedStruct.fromFile("../../src/fixed_struct.bin")
 
 assert r.hdr.uint8 == 255
 assert r.hdr.uint16 == 65535

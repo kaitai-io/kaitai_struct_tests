@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/integers
 import auxiliary/test_utils
 
-let r = Integers.fromFile("src/fixed_struct.bin")
+let r = Integers.fromFile("../../src/fixed_struct.bin")
 
 assert r.uint8 == 255
 assert r.uint16 == 65535

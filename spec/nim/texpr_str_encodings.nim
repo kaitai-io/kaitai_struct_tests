@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/expr_str_encodings
 import auxiliary/test_utils
 
-let r = ExprStrEncodings.fromFile("src/str_encodings.bin")
+let r = ExprStrEncodings.fromFile("../../src/str_encodings.bin")
 
 assert r.str1Eq == true
 assert r.str2Eq == true

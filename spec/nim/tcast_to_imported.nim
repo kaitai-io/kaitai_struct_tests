@@ -5,7 +5,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/cast_to_imported
 import auxiliary/test_utils
 
-let r = CastToImported.fromFile("src/fixed_struct.bin")
+let r = CastToImported.fromFile("../../src/fixed_struct.bin")
 
 assert r.one.one == 80
 assert r.oneCasted.one == 80

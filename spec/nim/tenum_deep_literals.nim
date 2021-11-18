@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/enum_deep_literals
 import auxiliary/test_utils
 
-let r = EnumDeepLiterals.fromFile("src/enum_0.bin")
+let r = EnumDeepLiterals.fromFile("../../src/enum_0.bin")
 
 assert r.isPet1Ok == true
 assert r.isPet2Ok == true

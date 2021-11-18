@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/params_pass_struct
 import auxiliary/test_utils
 
-let r = ParamsPassStruct.fromFile("src/enum_negative.bin")
+let r = ParamsPassStruct.fromFile("../../src/enum_negative.bin")
 
 assert r.first.foo == 255
 assert r.one.bar.qux == 1

@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/expr_io_pos
 import auxiliary/test_utils
 
-let r = ExprIoPos.fromFile("src/expr_io_pos.bin")
+let r = ExprIoPos.fromFile("../../src/expr_io_pos.bin")
 
 assert r.substream1.myStr == "CURIOSITY"
 assert r.substream1.body == @[17'u8, 34'u8, 51'u8, 68'u8]

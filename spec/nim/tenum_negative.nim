@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/enum_negative
 import auxiliary/test_utils
 
-let r = EnumNegative.fromFile("src/enum_negative.bin")
+let r = EnumNegative.fromFile("../../src/enum_negative.bin")
 
 assert r.f1 == enum_negative.negative_one
 assert r.f2 == enum_negative.positive_one

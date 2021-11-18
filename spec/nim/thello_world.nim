@@ -4,6 +4,6 @@ import os, streams, options, sequtils
 import ../../compiled/nim/hello_world
 import auxiliary/test_utils
 
-let r = HelloWorld.fromFile("src/fixed_struct.bin")
+let r = HelloWorld.fromFile("../../src/fixed_struct.bin")
 
 assert r.one == 80

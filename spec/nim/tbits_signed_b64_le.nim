@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/bits_signed_b64_le
 import auxiliary/test_utils
 
-let r = BitsSignedB64Le.fromFile("src/bits_signed_b64_le.bin")
+let r = BitsSignedB64Le.fromFile("../../src/bits_signed_b64_le.bin")
 
 assert r.aNum == 0
 assert r.aBit == true

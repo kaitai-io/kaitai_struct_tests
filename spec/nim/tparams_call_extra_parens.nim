@@ -4,6 +4,6 @@ import os, streams, options, sequtils
 import ../../compiled/nim/params_call_extra_parens
 import auxiliary/test_utils
 
-let r = ParamsCallExtraParens.fromFile("src/term_strz.bin")
+let r = ParamsCallExtraParens.fromFile("../../src/term_strz.bin")
 
 assert r.buf1.body == "foo|b"

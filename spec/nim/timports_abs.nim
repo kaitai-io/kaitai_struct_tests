@@ -5,7 +5,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/imports_abs
 import auxiliary/test_utils
 
-let r = ImportsAbs.fromFile("src/fixed_struct.bin")
+let r = ImportsAbs.fromFile("../../src/fixed_struct.bin")
 
 assert r.len.value == 80
 assert len(r.body) == 80

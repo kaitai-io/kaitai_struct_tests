@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/enum_of_value_inst
 import auxiliary/test_utils
 
-let r = EnumOfValueInst.fromFile("src/enum_0.bin")
+let r = EnumOfValueInst.fromFile("../../src/enum_0.bin")
 
 assert r.pet1 == enum_of_value_inst.cat
 assert r.pet2 == enum_of_value_inst.chicken

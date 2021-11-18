@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/expr_if_int_ops
 import auxiliary/test_utils
 
-let r = ExprIfIntOps.fromFile("src/process_coerce_switch.bin")
+let r = ExprIfIntOps.fromFile("../../src/process_coerce_switch.bin")
 
 assert r.isEqPrim == true
 assert r.isEqBoxed == true

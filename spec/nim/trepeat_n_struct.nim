@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/repeat_n_struct
 import auxiliary/test_utils
 
-let r = RepeatNStruct.fromFile("src/repeat_n_struct.bin")
+let r = RepeatNStruct.fromFile("../../src/repeat_n_struct.bin")
 
 assert len(r.chunks) == 2
 assert r.chunks[0].offset == 16

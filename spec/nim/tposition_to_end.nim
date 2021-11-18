@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/position_to_end
 import auxiliary/test_utils
 
-let r = PositionToEnd.fromFile("src/position_to_end.bin")
+let r = PositionToEnd.fromFile("../../src/position_to_end.bin")
 
 assert r.index.foo == 66
 assert r.index.bar == 4660

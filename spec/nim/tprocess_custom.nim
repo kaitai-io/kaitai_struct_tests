@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/process_custom
 import auxiliary/test_utils
 
-let r = ProcessCustom.fromFile("src/process_rotate.bin")
+let r = ProcessCustom.fromFile("../../src/process_rotate.bin")
 
 assert r.buf1 == @[16'u8, 179'u8, 148'u8, 148'u8, 244'u8]
 assert r.buf2 == @[95'u8, 186'u8, 123'u8, 147'u8, 99'u8, 35'u8, 95'u8]

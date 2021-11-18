@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/params_call_short
 import auxiliary/test_utils
 
-let r = ParamsCallShort.fromFile("src/term_strz.bin")
+let r = ParamsCallShort.fromFile("../../src/term_strz.bin")
 
 assert r.buf1.body == "foo|b"
 assert r.buf2.body == "ar|ba"

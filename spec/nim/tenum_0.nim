@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/enum_0
 import auxiliary/test_utils
 
-let r = Enum0.fromFile("src/enum_0.bin")
+let r = Enum0.fromFile("../../src/enum_0.bin")
 
 assert r.pet1 == enum_0.cat
 assert r.pet2 == enum_0.chicken

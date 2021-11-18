@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/bits_enum
 import auxiliary/test_utils
 
-let r = BitsEnum.fromFile("src/fixed_struct.bin")
+let r = BitsEnum.fromFile("../../src/fixed_struct.bin")
 
 assert r.one == bits_enum.platypus
 assert r.two == bits_enum.horse

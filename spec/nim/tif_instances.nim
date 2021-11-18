@@ -4,6 +4,6 @@ import os, streams, options, sequtils
 import ../../compiled/nim/if_instances
 import auxiliary/test_utils
 
-let r = IfInstances.fromFile("src/fixed_struct.bin")
+let r = IfInstances.fromFile("../../src/fixed_struct.bin")
 
 assert r.neverHappens == 0'u8

@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/repeat_until_calc_array_type
 import auxiliary/test_utils
 
-let r = RepeatUntilCalcArrayType.fromFile("src/repeat_until_process.bin")
+let r = RepeatUntilCalcArrayType.fromFile("../../src/repeat_until_process.bin")
 
 assert len(r.records) == 3
 assert r.records[0].marker == 232

@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/expr_array
 import auxiliary/test_utils
 
-let r = ExprArray.fromFile("src/expr_array.bin")
+let r = ExprArray.fromFile("../../src/expr_array.bin")
 
 assert r.aintSize == 4
 assert r.aintFirst == 7657765

@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/expr_str_ops
 import auxiliary/test_utils
 
-let r = ExprStrOps.fromFile("src/term_strz.bin")
+let r = ExprStrOps.fromFile("../../src/term_strz.bin")
 
 assert r.one == "foo|b"
 assert r.oneLen == 5

@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/process_coerce_usertype2
 import auxiliary/test_utils
 
-let r = ProcessCoerceUsertype2.fromFile("src/process_coerce_bytes.bin")
+let r = ProcessCoerceUsertype2.fromFile("../../src/process_coerce_bytes.bin")
 
 assert r.records[0].flag == 0
 assert r.records[0].buf.value == 1094795585

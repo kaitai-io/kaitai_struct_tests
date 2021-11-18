@@ -4,5 +4,5 @@ import os, streams, options, sequtils
 import ../../compiled/nim/meta_xref
 import auxiliary/test_utils
 
-let r = MetaXref.fromFile("src/fixed_struct.bin")
+let r = MetaXref.fromFile("../../src/fixed_struct.bin")
 

@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/expr_bytes_cmp
 import auxiliary/test_utils
 
-let r = ExprBytesCmp.fromFile("src/fixed_struct.bin")
+let r = ExprBytesCmp.fromFile("../../src/fixed_struct.bin")
 
 assert r.one == @[80'u8]
 assert r.two == @[65'u8, 67'u8, 75'u8]

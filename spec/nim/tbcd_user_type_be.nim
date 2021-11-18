@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/bcd_user_type_be
 import auxiliary/test_utils
 
-let r = BcdUserTypeBe.fromFile("src/bcd_user_type_be.bin")
+let r = BcdUserTypeBe.fromFile("../../src/bcd_user_type_be.bin")
 
 assert r.ltr.asInt == 12345678
 assert r.ltr.asStr == "12345678"

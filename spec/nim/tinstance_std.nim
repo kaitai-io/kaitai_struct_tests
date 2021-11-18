@@ -4,6 +4,6 @@ import os, streams, options, sequtils
 import ../../compiled/nim/instance_std
 import auxiliary/test_utils
 
-let r = InstanceStd.fromFile("src/str_encodings.bin")
+let r = InstanceStd.fromFile("../../src/str_encodings.bin")
 
 assert r.header == "Some "

@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/instance_std_array
 import auxiliary/test_utils
 
-let r = InstanceStdArray.fromFile("src/instance_std_array.bin")
+let r = InstanceStdArray.fromFile("../../src/instance_std_array.bin")
 
 assert r.ofs == 16
 assert r.qtyEntries == 3

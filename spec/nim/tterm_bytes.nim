@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/term_bytes
 import auxiliary/test_utils
 
-let r = TermBytes.fromFile("src/term_strz.bin")
+let r = TermBytes.fromFile("../../src/term_strz.bin")
 
 assert r.s1 == @[102'u8, 111'u8, 111'u8]
 assert r.s2 == @[98'u8, 97'u8, 114'u8]

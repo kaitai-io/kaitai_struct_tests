@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/default_endian_expr_is_be
 import auxiliary/test_utils
 
-let r = DefaultEndianExprIsBe.fromFile("src/endian_expr.bin")
+let r = DefaultEndianExprIsBe.fromFile("../../src/endian_expr.bin")
 
 assert r.docs[0].indicator == @[73'u8, 73'u8]
 assert r.docs[0].main.someInt == 66

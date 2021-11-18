@@ -5,7 +5,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/imports0
 import auxiliary/test_utils
 
-let r = Imports0.fromFile("src/fixed_struct.bin")
+let r = Imports0.fromFile("../../src/fixed_struct.bin")
 
 assert r.two == 80
 assert r.hw.one == 65

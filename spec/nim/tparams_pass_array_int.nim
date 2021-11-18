@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/params_pass_array_int
 import auxiliary/test_utils
 
-let r = ParamsPassArrayInt.fromFile("src/position_to_end.bin")
+let r = ParamsPassArrayInt.fromFile("../../src/position_to_end.bin")
 
 assert len(r.passInts.nums) == 3
 assert r.passInts.nums[0] == 513

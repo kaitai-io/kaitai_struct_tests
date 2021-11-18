@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/str_literals2
 import auxiliary/test_utils
 
-let r = StrLiterals2.fromFile("src/fixed_struct.bin")
+let r = StrLiterals2.fromFile("../../src/fixed_struct.bin")
 
 assert r.dollar1 == "$foo"
 assert r.dollar2 == "${foo}"

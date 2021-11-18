@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/floating_points
 import auxiliary/test_utils
 
-let r = FloatingPoints.fromFile("src/floating_points.bin")
+let r = FloatingPoints.fromFile("../../src/floating_points.bin")
 
 assert r.singleValue == (float32(0.5))
 assert r.singleValueBe == (float32(0.5))

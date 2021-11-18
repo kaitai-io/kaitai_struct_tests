@@ -4,6 +4,6 @@ import os, streams, options, sequtils
 import ../../compiled/nim/nav_parent_false2
 import auxiliary/test_utils
 
-let r = NavParentFalse2.fromFile("src/fixed_struct.bin")
+let r = NavParentFalse2.fromFile("../../src/fixed_struct.bin")
 
 assert r.parentless.foo == 80

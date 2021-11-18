@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/str_encodings
 import auxiliary/test_utils
 
-let r = StrEncodings.fromFile("src/str_encodings.bin")
+let r = StrEncodings.fromFile("../../src/str_encodings.bin")
 
 assert r.str1 == "Some ASCII"
 assert r.str2 == "\u3053\u3093\u306b\u3061\u306f"

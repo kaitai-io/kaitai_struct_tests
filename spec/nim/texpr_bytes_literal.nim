@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/expr_bytes_literal
 import auxiliary/test_utils
 
-let r = ExprBytesLiteral.fromFile("src/enum_negative.bin")
+let r = ExprBytesLiteral.fromFile("../../src/enum_negative.bin")
 
 assert len(r.literal) == 2
 assert r.literal[0] == -1

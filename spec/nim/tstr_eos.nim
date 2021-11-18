@@ -4,6 +4,6 @@ import os, streams, options, sequtils
 import ../../compiled/nim/str_eos
 import auxiliary/test_utils
 
-let r = StrEos.fromFile("src/term_strz.bin")
+let r = StrEos.fromFile("../../src/term_strz.bin")
 
 assert r.str == "foo|bar|baz@"

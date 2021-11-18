@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/str_pad_term
 import auxiliary/test_utils
 
-let r = StrPadTerm.fromFile("src/str_pad_term.bin")
+let r = StrPadTerm.fromFile("../../src/str_pad_term.bin")
 
 assert r.strPad == "str1"
 assert r.strTerm == "str2foo"

@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/instance_io_user
 import auxiliary/test_utils
 
-let r = InstanceIoUser.fromFile("src/instance_io.bin")
+let r = InstanceIoUser.fromFile("../../src/instance_io.bin")
 
 assert r.qtyEntries == 3
 assert r.entries[0].name == "the"

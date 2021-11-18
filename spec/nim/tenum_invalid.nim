@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/enum_invalid
 import auxiliary/test_utils
 
-let r = EnumInvalid.fromFile("src/term_strz.bin")
+let r = EnumInvalid.fromFile("../../src/term_strz.bin")
 
 assert r.pet1 == enum_invalid.dog
 assert r.pet2 == 111

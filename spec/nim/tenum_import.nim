@@ -6,7 +6,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/enum_import
 import auxiliary/test_utils
 
-let r = EnumImport.fromFile("src/enum_0.bin")
+let r = EnumImport.fromFile("../../src/enum_0.bin")
 
 assert r.pet1 == enum_0.cat
 assert r.pet2 == enum_deep.hare

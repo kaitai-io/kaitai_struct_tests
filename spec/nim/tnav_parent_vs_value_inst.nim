@@ -4,6 +4,6 @@ import os, streams, options, sequtils
 import ../../compiled/nim/nav_parent_vs_value_inst
 import auxiliary/test_utils
 
-let r = NavParentVsValueInst.fromFile("src/term_strz.bin")
+let r = NavParentVsValueInst.fromFile("../../src/term_strz.bin")
 
 assert r.s1 == "foo"

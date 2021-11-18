@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/combine_bool
 import auxiliary/test_utils
 
-let r = CombineBool.fromFile("src/enum_negative.bin")
+let r = CombineBool.fromFile("../../src/enum_negative.bin")
 
 assert r.boolBit == true
 assert r.boolCalcBit == false

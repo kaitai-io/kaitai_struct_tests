@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/bits_seq_endian_combo
 import auxiliary/test_utils
 
-let r = BitsSeqEndianCombo.fromFile("src/process_xor_4.bin")
+let r = BitsSeqEndianCombo.fromFile("../../src/process_xor_4.bin")
 
 assert r.be1 == 59
 assert r.be2 == 187

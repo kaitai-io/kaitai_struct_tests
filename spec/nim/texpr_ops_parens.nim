@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/expr_ops_parens
 import auxiliary/test_utils
 
-let r = ExprOpsParens.fromFile("src/enum_negative.bin")
+let r = ExprOpsParens.fromFile("../../src/enum_negative.bin")
 
 assert r.iSumToStr == "29"
 assert r.fSumToInt == 9

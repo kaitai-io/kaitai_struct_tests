@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/nested_type_param
 import auxiliary/test_utils
 
-let r = NestedTypeParam.fromFile("src/term_strz.bin")
+let r = NestedTypeParam.fromFile("../../src/term_strz.bin")
 
 assert r.mainSeq.myLen == 5
 assert r.mainSeq.body == "foo|b"

@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/ts_packet_header
 import auxiliary/test_utils
 
-let r = TsPacketHeader.fromFile("src/ts_packet.bin")
+let r = TsPacketHeader.fromFile("../../src/ts_packet.bin")
 
 assert r.syncByte == 71
 assert r.transportErrorIndicator == false

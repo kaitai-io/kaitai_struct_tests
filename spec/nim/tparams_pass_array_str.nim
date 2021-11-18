@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/params_pass_array_str
 import auxiliary/test_utils
 
-let r = ParamsPassArrayStr.fromFile("src/term_strz.bin")
+let r = ParamsPassArrayStr.fromFile("../../src/term_strz.bin")
 
 assert len(r.passStrArray.strs) == 3
 assert r.passStrArray.strs[0] == "fo"

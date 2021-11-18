@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/expr_enum
 import auxiliary/test_utils
 
-let r = ExprEnum.fromFile("src/term_strz.bin")
+let r = ExprEnum.fromFile("../../src/term_strz.bin")
 
 assert r.constDog == expr_enum.dog
 assert r.derivedBoom == expr_enum.boom

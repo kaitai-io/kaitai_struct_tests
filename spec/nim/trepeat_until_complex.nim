@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/repeat_until_complex
 import auxiliary/test_utils
 
-let r = RepeatUntilComplex.fromFile("src/repeat_until_complex.bin")
+let r = RepeatUntilComplex.fromFile("../../src/repeat_until_complex.bin")
 
 assert len(r.first) == 3
 assert r.first[0].count == 4
