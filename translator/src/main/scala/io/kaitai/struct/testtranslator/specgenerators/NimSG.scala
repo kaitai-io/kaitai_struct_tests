@@ -18,7 +18,7 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
   )
 
   // Members declared in io.kaitai.struct.testtranslator.specgenerators.BaseGenerator
-  override def fileName(name: String): String = s"tests/t${spec.id}.nim"
+  override def fileName(name: String): String = s"t${spec.id}.nim"
   override def header(): Unit = {
     out.puts(s"let r = ${className}.fromFile" + "(\"../../src/" + spec.data + "\")")
   }
