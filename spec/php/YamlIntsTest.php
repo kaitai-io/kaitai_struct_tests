@@ -9,7 +9,7 @@ class YamlIntsTest extends TestCase {
 
         $this->assertSame(4294967295, $r->testU4Dec());
         $this->assertSame(4294967295, $r->testU4Hex());
-        $this->assertSame(18446744073709551615, $r->testU8Dec());
-        $this->assertSame(18446744073709551615, $r->testU8Hex());
+        $this->assertSame(-1, $r->testU8Dec());
+        $this->assertSame(-1, $r->testU8Hex());
     }
 }

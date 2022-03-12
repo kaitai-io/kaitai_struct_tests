@@ -9,7 +9,7 @@ class TypeTernary2ndFalsyTest extends TestCase {
 
         $this->assertSame(false, $r->vFalse());
         $this->assertSame(0, $r->vIntZero());
-        $this->assertSame(-0, $r->vIntNegZero());
+        $this->assertSame(0, $r->vIntNegZero());
         $this->assertEquals($r->vFloatZero(), 0.0, '', 1e-6);
         $this->assertEquals($r->vFloatNegZero(), -0.0, '', 1e-6);
         $this->assertSame("0", $r->vStrWZero());
