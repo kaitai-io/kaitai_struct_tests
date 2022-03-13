@@ -11,7 +11,7 @@ function TestTypeTernary2ndFalsy:test_type_ternary_2nd_falsy()
 
     luaunit.assertEquals(r.v_false, false)
     luaunit.assertEquals(r.v_int_zero, 0)
-    luaunit.assertEquals(r.v_int_neg_zero, -0)
+    luaunit.assertEquals(r.v_int_neg_zero, 0)
     luaunit.assertAlmostEquals(r.v_float_zero, 0.0, 0.000001)
     luaunit.assertAlmostEquals(r.v_float_neg_zero, -0.0, 0.000001)
     luaunit.assertEquals(r.v_str_w_zero, "0")

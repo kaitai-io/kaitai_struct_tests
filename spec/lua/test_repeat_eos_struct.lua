@@ -10,8 +10,8 @@ function TestRepeatEosStruct:test_repeat_eos_struct()
     local r = RepeatEosStruct:from_file("src/repeat_eos_struct.bin")
 
     luaunit.assertEquals(#r.chunks, 2)
-    luaunit.assertEquals(r.chunks[1].offset, 0)
-    luaunit.assertEquals(r.chunks[1].len, 66)
-    luaunit.assertEquals(r.chunks[2].offset, 66)
-    luaunit.assertEquals(r.chunks[2].len, 2069)
+    luaunit.assertEquals(r.chunks[0 + 1].offset, 0)
+    luaunit.assertEquals(r.chunks[0 + 1].len, 66)
+    luaunit.assertEquals(r.chunks[1 + 1].offset, 66)
+    luaunit.assertEquals(r.chunks[1 + 1].len, 2069)
 end

@@ -10,6 +10,6 @@ function TestExprBytesLiteral:test_expr_bytes_literal()
     local r = ExprBytesLiteral:from_file("src/enum_negative.bin")
 
     luaunit.assertEquals(#r.literal, 2)
-    luaunit.assertEquals(r.literal[1], -1)
-    luaunit.assertEquals(r.literal[2], 1)
+    luaunit.assertEquals(string.byte(r.literal, 0 + 1), -1)
+    luaunit.assertEquals(string.byte(r.literal, 1 + 1), 1)
 end

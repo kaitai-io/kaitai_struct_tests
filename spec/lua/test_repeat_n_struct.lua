@@ -10,8 +10,8 @@ function TestRepeatNStruct:test_repeat_n_struct()
     local r = RepeatNStruct:from_file("src/repeat_n_struct.bin")
 
     luaunit.assertEquals(#r.chunks, 2)
-    luaunit.assertEquals(r.chunks[1].offset, 16)
-    luaunit.assertEquals(r.chunks[1].len, 8312)
-    luaunit.assertEquals(r.chunks[2].offset, 8328)
-    luaunit.assertEquals(r.chunks[2].len, 15)
+    luaunit.assertEquals(r.chunks[0 + 1].offset, 16)
+    luaunit.assertEquals(r.chunks[0 + 1].len, 8312)
+    luaunit.assertEquals(r.chunks[1 + 1].offset, 8328)
+    luaunit.assertEquals(r.chunks[1 + 1].len, 15)
 end

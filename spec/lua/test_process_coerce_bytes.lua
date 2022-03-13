@@ -9,8 +9,8 @@ TestProcessCoerceBytes = {}
 function TestProcessCoerceBytes:test_process_coerce_bytes()
     local r = ProcessCoerceBytes:from_file("src/process_coerce_bytes.bin")
 
-    luaunit.assertEquals(r.records[1].flag, 0)
-    luaunit.assertEquals(r.records[1].buf, "\065\065\065\065")
-    luaunit.assertEquals(r.records[2].flag, 1)
-    luaunit.assertEquals(r.records[2].buf, "\066\066\066\066")
+    luaunit.assertEquals(r.records[0 + 1].flag, 0)
+    luaunit.assertEquals(r.records[0 + 1].buf, "\065\065\065\065")
+    luaunit.assertEquals(r.records[1 + 1].flag, 1)
+    luaunit.assertEquals(r.records[1 + 1].buf, "\066\066\066\066")
 end

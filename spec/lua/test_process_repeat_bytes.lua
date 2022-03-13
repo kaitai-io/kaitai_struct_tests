@@ -9,6 +9,6 @@ TestProcessRepeatBytes = {}
 function TestProcessRepeatBytes:test_process_repeat_bytes()
     local r = ProcessRepeatBytes:from_file("src/process_xor_4.bin")
 
-    luaunit.assertEquals(r.bufs[1], "\114\037\061\138\020")
-    luaunit.assertEquals(r.bufs[2], "\074\082\170\016\068")
+    luaunit.assertEquals(r.bufs[0 + 1], "\114\037\061\138\020")
+    luaunit.assertEquals(r.bufs[1 + 1], "\074\082\170\016\068")
 end

@@ -11,6 +11,6 @@ function TestYamlInts:test_yaml_ints()
 
     luaunit.assertEquals(r.test_u4_dec, 4294967295)
     luaunit.assertEquals(r.test_u4_hex, 4294967295)
-    luaunit.assertEquals(r.test_u8_dec, 18446744073709551615)
-    luaunit.assertEquals(r.test_u8_hex, 18446744073709551615)
+    luaunit.assertEquals(r.test_u8_dec, 0xffffffffffffffff)
+    luaunit.assertEquals(r.test_u8_hex, 0xffffffffffffffff)
 end
