@@ -2,7 +2,12 @@ package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.ClassTypeProvider
 import _root_.io.kaitai.struct.datatype.DataType
-import _root_.io.kaitai.struct.datatype.KSError
+import _root_.io.kaitai.struct.datatype.{
+  KSError,
+  ValidationNotEqualError,
+  UndecidedEndiannessError,
+  EndOfStreamError
+}
 import _root_.io.kaitai.struct.datatype.DataType._
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.LuaCompiler
@@ -34,10 +39,11 @@ class LuaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
   }
 
   override def runParseExpectError(exception: KSError): Unit = {
-    val errName = LuaCompiler.ksErrorName(exception)
-    val msg = errName match {
-      case "ValidationNotEqualError" => "not equal, expected .*, but got .*"
-      case _ => errName
+    val msg = exception match {
+      case _: ValidationNotEqualError => "not equal, expected .*, but got .*"
+      case UndecidedEndiannessError => "unable to decide endianness"
+      case EndOfStreamError => "requested %d+ bytes, but got only %d+ bytes"
+      case _ => LuaCompiler.ksErrorName(exception)
     }
     out.puts(s"""luaunit.assertErrorMsgMatches(".+: $msg", $className.from_file, $className, "src/${spec.data}")""")
   }

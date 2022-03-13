@@ -5,5 +5,5 @@ require("eof_exception_bytes")
 TestEofExceptionBytes = {}
 
 function TestEofExceptionBytes:test_eof_exception_bytes()
-    luaunit.assertError(EofExceptionBytes.from_file, "src/term_strz.bin")
+    luaunit.assertErrorMsgMatches(".+: requested %d+ bytes, but got only %d+ bytes", EofExceptionBytes.from_file, EofExceptionBytes, "src/term_strz.bin")
 end
