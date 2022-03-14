@@ -2,10 +2,10 @@
 
 import unittest
 
-from enum_for_unknown_id import EnumForUnknownId
+from enum_for_unknown_id import _schema
 
 class TestEnumForUnknownId(unittest.TestCase):
     def test_enum_for_unknown_id(self):
-        with EnumForUnknownId.from_file('src/fixed_struct.bin') as r:
+        r = _schema.parse_file('src/fixed_struct.bin')
 
-            self.assertEqual(r.one, 80)
+        self.assertEqual(r.one, 80)
