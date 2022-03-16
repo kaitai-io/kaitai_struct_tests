@@ -11,7 +11,6 @@ use ProcessCustomNoArgs;
 sub test_process_custom_no_args: Test(1) {
     my $r = ProcessCustomNoArgs->from_file('src/process_rotate.bin');
 
-
     is($r->buf(), pack('C*', (95, 9, 172, 141, 141, 237, 95)), 'Equals');
 }
 

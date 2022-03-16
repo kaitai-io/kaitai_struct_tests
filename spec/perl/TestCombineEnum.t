@@ -11,7 +11,6 @@ use CombineEnum;
 sub test_combine_enum: Test(3) {
     my $r = CombineEnum->from_file('src/enum_0.bin');
 
-
     is($r->enum_u4(), $CombineEnum::ANIMAL_PIG, 'Equals');
     is($r->enum_u2(), $CombineEnum::ANIMAL_HORSE, 'Equals');
     is($r->enum_u4_u2(), $CombineEnum::ANIMAL_HORSE, 'Equals');

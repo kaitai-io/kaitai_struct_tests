@@ -11,7 +11,6 @@ use ValidEqStrEncodings;
 sub test_valid_eq_str_encodings: Test(0) {
     my $r = ValidEqStrEncodings->from_file('src/str_encodings.bin');
 
-
 }
 
 Test::Class->runtests;

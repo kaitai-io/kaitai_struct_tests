@@ -11,7 +11,6 @@ use DebugSwitchUser;
 sub test_debug_switch_user: Test(2) {
     my $r = DebugSwitchUser->from_file('src/nav_parent_switch.bin');
 
-
     is($r->code(), 1, 'Equals');
     is($r->data()->val(), -190, 'Equals');
 }

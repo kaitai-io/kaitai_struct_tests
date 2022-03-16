@@ -11,21 +11,20 @@ use ParamsPassBool;
 sub test_params_pass_bool: Test(14) {
     my $r = ParamsPassBool->from_file('src/term_strz.bin');
 
-
-    is($r->s_false(), 0, 'Equals');
-    is($r->s_true(), 1, 'Equals');
-    is($r->seq_b1()->arg(), 1, 'Equals');
-    is(scalar(@{$r->seq_b1()->foo()}), 1, 'Equals');
-    is($r->seq_bool()->arg(), 0, 'Equals');
-    is(scalar(@{$r->seq_bool()->foo()}), 2, 'Equals');
-    is($r->literal_b1()->arg(), 0, 'Equals');
-    is(scalar(@{$r->literal_b1()->foo()}), 2, 'Equals');
-    is($r->literal_bool()->arg(), 1, 'Equals');
-    is(scalar(@{$r->literal_bool()->foo()}), 1, 'Equals');
-    is($r->inst_b1()->arg(), 1, 'Equals');
-    is(scalar(@{$r->inst_b1()->foo()}), 1, 'Equals');
-    is($r->inst_bool()->arg(), 0, 'Equals');
-    is(scalar(@{$r->inst_bool()->foo()}), 2, 'Equals');
+    cmp_ok($r->s_false(), '==', 0, 'Equals');
+    cmp_ok($r->s_true(), '==', 1, 'Equals');
+    cmp_ok($r->seq_b1()->arg(), '==', 1, 'Equals');
+    is(length($r->seq_b1()->foo()), 1, 'Equals');
+    cmp_ok($r->seq_bool()->arg(), '==', 0, 'Equals');
+    is(length($r->seq_bool()->foo()), 2, 'Equals');
+    cmp_ok($r->literal_b1()->arg(), '==', 0, 'Equals');
+    is(length($r->literal_b1()->foo()), 2, 'Equals');
+    cmp_ok($r->literal_bool()->arg(), '==', 1, 'Equals');
+    is(length($r->literal_bool()->foo()), 1, 'Equals');
+    cmp_ok($r->inst_b1()->arg(), '==', 1, 'Equals');
+    is(length($r->inst_b1()->foo()), 1, 'Equals');
+    cmp_ok($r->inst_bool()->arg(), '==', 0, 'Equals');
+    is(length($r->inst_bool()->foo()), 2, 'Equals');
 }
 
 Test::Class->runtests;

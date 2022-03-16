@@ -11,7 +11,6 @@ use BitsShiftByB64Le;
 sub test_bits_shift_by_b64_le: Test(2) {
     my $r = BitsShiftByB64Le->from_file('src/bits_shift_by_b64_le.bin');
 
-
     is($r->a(), 18446744073709551615, 'Equals');
     is($r->b(), 0, 'Equals');
 }

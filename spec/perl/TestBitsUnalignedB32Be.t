@@ -11,8 +11,7 @@ use BitsUnalignedB32Be;
 sub test_bits_unaligned_b32_be: Test(3) {
     my $r = BitsUnalignedB32Be->from_file('src/process_xor_4.bin');
 
-
-    is($r->a(), 1, 'Equals');
+    cmp_ok($r->a(), '==', 1, 'Equals');
     is($r->b(), 3648472617, 'Equals');
     is($r->c(), 10, 'Equals');
 }

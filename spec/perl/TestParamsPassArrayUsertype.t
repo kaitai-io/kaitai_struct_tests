@@ -11,7 +11,6 @@ use ParamsPassArrayUsertype;
 sub test_params_pass_array_usertype: Test(5) {
     my $r = ParamsPassArrayUsertype->from_file('src/position_to_end.bin');
 
-
     is(scalar(@{$r->pass_blocks()->bar()}), 2, 'Equals');
     is(@{$r->pass_blocks()->bar()}[0]->foo(), 1, 'Equals');
     is(@{$r->pass_blocks()->bar()}[1]->foo(), 2, 'Equals');

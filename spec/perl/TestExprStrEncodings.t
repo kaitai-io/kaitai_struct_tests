@@ -11,14 +11,13 @@ use ExprStrEncodings;
 sub test_expr_str_encodings: Test(7) {
     my $r = ExprStrEncodings->from_file('src/str_encodings.bin');
 
-
-    is($r->str1_eq(), 1, 'Equals');
-    is($r->str2_eq(), 1, 'Equals');
-    is($r->str3_eq(), 1, 'Equals');
-    is($r->str3_eq_str2(), 1, 'Equals');
-    is($r->str4_eq(), 1, 'Equals');
-    is($r->str4_gt_str_calc(), 1, 'Equals');
-    is($r->str4_gt_str_from_bytes(), 1, 'Equals');
+    cmp_ok($r->str1_eq(), '==', 1, 'Equals');
+    cmp_ok($r->str2_eq(), '==', 1, 'Equals');
+    cmp_ok($r->str3_eq(), '==', 1, 'Equals');
+    cmp_ok($r->str3_eq_str2(), '==', 1, 'Equals');
+    cmp_ok($r->str4_eq(), '==', 1, 'Equals');
+    cmp_ok($r->str4_gt_str_calc(), '==', 1, 'Equals');
+    cmp_ok($r->str4_gt_str_from_bytes(), '==', 1, 'Equals');
 }
 
 Test::Class->runtests;

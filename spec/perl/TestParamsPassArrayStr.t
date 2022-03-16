@@ -11,7 +11,6 @@ use ParamsPassArrayStr;
 sub test_params_pass_array_str: Test(7) {
     my $r = ParamsPassArrayStr->from_file('src/term_strz.bin');
 
-
     is(scalar(@{$r->pass_str_array()->strs()}), 3, 'Equals');
     is(@{$r->pass_str_array()->strs()}[0], "fo", 'Equals');
     is(@{$r->pass_str_array()->strs()}[1], "o|", 'Equals');

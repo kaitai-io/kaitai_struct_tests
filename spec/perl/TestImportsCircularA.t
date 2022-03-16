@@ -11,7 +11,6 @@ use ImportsCircularA;
 sub test_imports_circular_a: Test(5) {
     my $r = ImportsCircularA->from_file('src/fixed_struct.bin');
 
-
     is($r->code(), 80, 'Equals');
     is($r->two()->initial(), 65, 'Equals');
     is($r->two()->back_ref()->code(), 67, 'Equals');

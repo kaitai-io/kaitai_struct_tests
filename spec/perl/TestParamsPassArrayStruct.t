@@ -11,7 +11,6 @@ use ParamsPassArrayStruct;
 sub test_params_pass_array_struct: Test(3) {
     my $r = ParamsPassArrayStruct->from_file('src/position_to_end.bin');
 
-
     is(scalar(@{$r->pass_structs()->structs()}), 2, 'Equals');
     is(@{$r->pass_structs()->structs()}[0]->f(), 1, 'Equals');
     is(@{$r->pass_structs()->structs()}[1]->b(), 2, 'Equals');

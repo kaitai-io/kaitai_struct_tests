@@ -11,7 +11,6 @@ use IntegersDoubleOverflow;
 sub test_integers_double_overflow: Test(8) {
     my $r = IntegersDoubleOverflow->from_file('src/integers_double_overflow.bin');
 
-
     is($r->signed_safe_min_be(), -9007199254740991, 'Equals');
     is($r->signed_safe_min_le(), -9007199254740991, 'Equals');
     is($r->signed_safe_max_be(), 9007199254740991, 'Equals');

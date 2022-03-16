@@ -11,7 +11,6 @@ use IntegersMinMax;
 sub test_integers_min_max: Test(28) {
     my $r = IntegersMinMax->from_file('src/integers_min_max.bin');
 
-
     is($r->unsigned_min()->u1(), 0, 'Equals');
     is($r->unsigned_min()->u2le(), 0, 'Equals');
     is($r->unsigned_min()->u4le(), 0, 'Equals');

@@ -11,7 +11,6 @@ use BitsSignedShiftB32Le;
 sub test_bits_signed_shift_b32_le: Test(2) {
     my $r = BitsSignedShiftB32Le->from_file('src/bits_signed_shift_b32_le.bin');
 
-
     is($r->a(), 0, 'Equals');
     is($r->b(), 255, 'Equals');
 }

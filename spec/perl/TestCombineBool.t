@@ -11,9 +11,8 @@ use CombineBool;
 sub test_combine_bool: Test(2) {
     my $r = CombineBool->from_file('src/enum_negative.bin');
 
-
-    is($r->bool_bit(), 1, 'Equals');
-    is($r->bool_calc_bit(), 0, 'Equals');
+    cmp_ok($r->bool_bit(), '==', 1, 'Equals');
+    cmp_ok($r->bool_calc_bit(), '==', 0, 'Equals');
 }
 
 Test::Class->runtests;

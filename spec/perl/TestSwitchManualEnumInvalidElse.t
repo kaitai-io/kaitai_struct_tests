@@ -11,7 +11,6 @@ use SwitchManualEnumInvalidElse;
 sub test_switch_manual_enum_invalid_else: Test(5) {
     my $r = SwitchManualEnumInvalidElse->from_file('src/enum_negative.bin');
 
-
     is(scalar(@{$r->opcodes()}), 2, 'Equals');
     is(@{$r->opcodes()}[0]->code(), 255, 'Equals');
     is(@{$r->opcodes()}[0]->body()->value(), 123, 'Equals');

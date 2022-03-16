@@ -11,7 +11,6 @@ use RepeatUntilCalcArrayType;
 sub test_repeat_until_calc_array_type: Test(7) {
     my $r = RepeatUntilCalcArrayType->from_file('src/repeat_until_process.bin');
 
-
     is(scalar(@{$r->records()}), 3, 'Equals');
     is(@{$r->records()}[0]->marker(), 232, 'Equals');
     is(@{$r->records()}[0]->body(), 2863311546, 'Equals');

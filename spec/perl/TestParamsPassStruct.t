@@ -11,7 +11,6 @@ use ParamsPassStruct;
 sub test_params_pass_struct: Test(4) {
     my $r = ParamsPassStruct->from_file('src/enum_negative.bin');
 
-
     is($r->first()->foo(), 255, 'Equals');
     is($r->one()->bar()->qux(), 1, 'Equals');
     is($r->one()->foo()->foo(), 255, 'Equals');

@@ -11,7 +11,6 @@ use ZlibSurrounded;
 sub test_zlib_surrounded: Test(1) {
     my $r = ZlibSurrounded->from_file('src/zlib_surrounded.bin');
 
-
     is($r->zlib()->num(), -1, 'Equals');
 }
 

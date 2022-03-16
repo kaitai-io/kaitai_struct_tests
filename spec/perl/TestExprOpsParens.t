@@ -11,7 +11,6 @@ use ExprOpsParens;
 sub test_expr_ops_parens: Test(9) {
     my $r = ExprOpsParens->from_file('src/enum_negative.bin');
 
-
     is($r->i_sum_to_str(), "29", 'Equals');
     is($r->f_sum_to_int(), 9, 'Equals');
     is($r->str_concat_len(), 10, 'Equals');

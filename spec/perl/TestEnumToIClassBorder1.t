@@ -11,10 +11,9 @@ use EnumToIClassBorder1;
 sub test_enum_to_i_class_border_1: Test(3) {
     my $r = EnumToIClassBorder1->from_file('src/enum_0.bin');
 
-
     is($r->pet_1(), $EnumToIClassBorder1::ANIMAL_CAT, 'Equals');
     is($r->pet_2(), $EnumToIClassBorder1::ANIMAL_CHICKEN, 'Equals');
-    is($r->checker()->is_dog(), 1, 'Equals');
+    cmp_ok($r->checker()->is_dog(), '==', 1, 'Equals');
 }
 
 Test::Class->runtests;

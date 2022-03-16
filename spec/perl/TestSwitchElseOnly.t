@@ -11,7 +11,6 @@ use SwitchElseOnly;
 sub test_switch_else_only: Test(3) {
     my $r = SwitchElseOnly->from_file('src/switch_opcodes.bin');
 
-
     is($r->opcode(), 83, 'Equals');
     is($r->prim_byte(), 102, 'Equals');
     is($r->ut()->value(), pack('C*', (114, 0, 73, 66)), 'Equals');

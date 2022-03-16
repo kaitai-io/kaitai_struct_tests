@@ -11,7 +11,6 @@ use EnumImport;
 sub test_enum_import: Test(2) {
     my $r = EnumImport->from_file('src/enum_0.bin');
 
-
     is($r->pet_1(), $Enum0::ANIMAL_CAT, 'Equals');
     is($r->pet_2(), $EnumDeep::Container1::Container2::ANIMAL_HARE, 'Equals');
 }

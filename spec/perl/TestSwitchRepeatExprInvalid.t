@@ -11,7 +11,6 @@ use SwitchRepeatExprInvalid;
 sub test_switch_repeat_expr_invalid: Test(3) {
     my $r = SwitchRepeatExprInvalid->from_file('src/switch_tlv.bin');
 
-
     is($r->code(), 17, 'Equals');
     is($r->size(), 9, 'Equals');
     is(@{$r->body()}[0], pack('C*', (83, 116, 117, 102, 102, 0, 77, 101, 0)), 'Equals');

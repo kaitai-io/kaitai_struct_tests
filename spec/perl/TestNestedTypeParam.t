@@ -11,7 +11,6 @@ use NestedTypeParam;
 sub test_nested_type_param: Test(2) {
     my $r = NestedTypeParam->from_file('src/term_strz.bin');
 
-
     is($r->main_seq()->my_len(), 5, 'Equals');
     is($r->main_seq()->body(), "foo|b", 'Equals');
 }

@@ -11,7 +11,6 @@ use DefaultBitEndianMod;
 sub test_default_bit_endian_mod: Test(4) {
     my $r = DefaultBitEndianMod->from_file('src/fixed_struct.bin');
 
-
     is($r->main()->one(), 336, 'Equals');
     is($r->main()->two(), 8608, 'Equals');
     is($r->main()->nest()->two(), 11595, 'Equals');

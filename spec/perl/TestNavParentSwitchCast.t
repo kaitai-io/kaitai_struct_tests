@@ -11,7 +11,6 @@ use NavParentSwitchCast;
 sub test_nav_parent_switch_cast: Test(3) {
     my $r = NavParentSwitchCast->from_file('src/switch_integers.bin');
 
-
     is($r->main()->buf_type(), 1, 'Equals');
     is($r->main()->flag(), 7, 'Equals');
     is($r->main()->buf()->branch()->flag(), 7, 'Equals');

@@ -11,7 +11,6 @@ use YamlInts;
 sub test_yaml_ints: Test(4) {
     my $r = YamlInts->from_file('src/fixed_struct.bin');
 
-
     is($r->test_u4_dec(), 4294967295, 'Equals');
     is($r->test_u4_hex(), 4294967295, 'Equals');
     is($r->test_u8_dec(), 18446744073709551615, 'Equals');

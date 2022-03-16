@@ -11,10 +11,9 @@ use TypeTernary2ndFalsy;
 sub test_type_ternary_2nd_falsy: Test(13) {
     my $r = TypeTernary2ndFalsy->from_file('src/switch_integers.bin');
 
-
-    is($r->v_false(), 0, 'Equals');
+    cmp_ok($r->v_false(), '==', 0, 'Equals');
     is($r->v_int_zero(), 0, 'Equals');
-    is($r->v_int_neg_zero(), -0, 'Equals');
+    is($r->v_int_neg_zero(), 0, 'Equals');
     ok(abs($r->v_float_zero() - 0.0) < 1e-6, 'Approx equals');
     ok(abs($r->v_float_neg_zero() - -0.0) < 1e-6, 'Approx equals');
     is($r->v_str_w_zero(), "0", 'Equals');

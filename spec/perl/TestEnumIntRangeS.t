@@ -11,7 +11,6 @@ use EnumIntRangeS;
 sub test_enum_int_range_s: Test(3) {
     my $r = EnumIntRangeS->from_file('src/enum_int_range_s.bin');
 
-
     is($r->f1(), $EnumIntRangeS::CONSTANTS_INT_MIN, 'Equals');
     is($r->f2(), $EnumIntRangeS::CONSTANTS_ZERO, 'Equals');
     is($r->f3(), $EnumIntRangeS::CONSTANTS_INT_MAX, 'Equals');

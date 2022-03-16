@@ -11,8 +11,7 @@ use ExprBytesLiteral;
 sub test_expr_bytes_literal: Test(3) {
     my $r = ExprBytesLiteral->from_file('src/enum_negative.bin');
 
-
-    is(scalar(@{$r->literal()}), 2, 'Equals');
+    is(length($r->literal()), 2, 'Equals');
     is(@{$r->literal()}[0], -1, 'Equals');
     is(@{$r->literal()}[1], 1, 'Equals');
 }

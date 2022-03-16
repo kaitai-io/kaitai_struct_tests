@@ -11,7 +11,6 @@ use ExprIntDiv;
 sub test_expr_int_div: Test(6) {
     my $r = ExprIntDiv->from_file('src/fixed_struct.bin');
 
-
     is($r->int_u(), 1262698832, 'Equals');
     is($r->int_s(), -52947, 'Equals');
     is($r->div_pos_const(), 756, 'Equals');

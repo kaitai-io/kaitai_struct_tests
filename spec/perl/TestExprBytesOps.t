@@ -11,7 +11,6 @@ use ExprBytesOps;
 sub test_expr_bytes_ops: Test(16) {
     my $r = ExprBytesOps->from_file('src/nav_parent_switch.bin');
 
-
     is($r->one_size(), 3, 'Equals');
     is($r->one_first(), 1, 'Equals');
     is($r->one_mid(), 66, 'Equals');

@@ -11,7 +11,6 @@ use ExprStrOps;
 sub test_expr_str_ops: Test(17) {
     my $r = ExprStrOps->from_file('src/term_strz.bin');
 
-
     is($r->one(), "foo|b", 'Equals');
     is($r->one_len(), 5, 'Equals');
     is($r->one_rev(), "b|oof", 'Equals');

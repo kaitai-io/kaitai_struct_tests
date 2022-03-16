@@ -11,7 +11,6 @@ use EnumInvalid;
 sub test_enum_invalid: Test(2) {
     my $r = EnumInvalid->from_file('src/term_strz.bin');
 
-
     is($r->pet_1(), $EnumInvalid::ANIMAL_DOG, 'Equals');
     is($r->pet_2(), 111, 'Equals');
 }

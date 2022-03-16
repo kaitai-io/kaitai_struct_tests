@@ -11,7 +11,6 @@ use BitsSeqEndianCombo;
 sub test_bits_seq_endian_combo: Test(8) {
     my $r = BitsSeqEndianCombo->from_file('src/process_xor_4.bin');
 
-
     is($r->be1(), 59, 'Equals');
     is($r->be2(), 187, 'Equals');
     is($r->le3(), 163, 'Equals');
@@ -19,7 +18,7 @@ sub test_bits_seq_endian_combo: Test(8) {
     is($r->le5(), 10, 'Equals');
     is($r->le6(), 36, 'Equals');
     is($r->le7(), 26, 'Equals');
-    is($r->be8(), 1, 'Equals');
+    cmp_ok($r->be8(), '==', 1, 'Equals');
 }
 
 Test::Class->runtests;

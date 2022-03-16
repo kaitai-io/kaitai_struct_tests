@@ -11,7 +11,6 @@ use CombineStr;
 sub test_combine_str: Test(15) {
     my $r = CombineStr->from_file('src/term_strz.bin');
 
-
     is($r->str_term(), "foo", 'Equals');
     is($r->str_limit(), "bar|", 'Equals');
     is($r->str_eos(), "baz\@", 'Equals');

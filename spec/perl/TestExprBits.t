@@ -11,7 +11,6 @@ use ExprBits;
 sub test_expr_bits: Test(10) {
     my $r = ExprBits->from_file('src/switch_opcodes.bin');
 
-
     is($r->a(), 2, 'Equals');
     is($r->enum_seq(), $ExprBits::ITEMS_FOO, 'Equals');
     is($r->byte_size(), pack('C*', (102, 111)), 'Equals');

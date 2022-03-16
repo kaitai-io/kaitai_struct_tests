@@ -12,7 +12,7 @@ sub test_params_enum: Test(2) {
     my $r = ParamsEnum->from_file('src/enum_0.bin');
 
     is($r->one(), $ParamsEnum::ANIMAL_CAT, 'Equals');
-    is($r->invoke_with_param()->is_cat(), 1, 'Equals');
+    cmp_ok($r->invoke_with_param()->is_cat(), '==', 1, 'Equals');
 }
 
 Test::Class->runtests;

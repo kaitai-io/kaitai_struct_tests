@@ -11,7 +11,6 @@ use ParamsCallExtraParens;
 sub test_params_call_extra_parens: Test(1) {
     my $r = ParamsCallExtraParens->from_file('src/term_strz.bin');
 
-
     is($r->buf1()->body(), "foo|b", 'Equals');
 }
 

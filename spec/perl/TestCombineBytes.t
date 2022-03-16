@@ -11,7 +11,6 @@ use CombineBytes;
 sub test_combine_bytes: Test(10) {
     my $r = CombineBytes->from_file('src/term_strz.bin');
 
-
     is($r->bytes_term(), pack('C*', (102, 111, 111)), 'Equals');
     is($r->bytes_limit(), pack('C*', (98, 97, 114, 124)), 'Equals');
     is($r->bytes_eos(), pack('C*', (98, 97, 122, 64)), 'Equals');

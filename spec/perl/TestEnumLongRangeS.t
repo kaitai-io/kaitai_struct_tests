@@ -11,7 +11,6 @@ use EnumLongRangeS;
 sub test_enum_long_range_s: Test(7) {
     my $r = EnumLongRangeS->from_file('src/enum_long_range_s.bin');
 
-
     is($r->f1(), $EnumLongRangeS::CONSTANTS_LONG_MIN, 'Equals');
     is($r->f2(), $EnumLongRangeS::CONSTANTS_INT_BELOW_MIN, 'Equals');
     is($r->f3(), $EnumLongRangeS::CONSTANTS_INT_MIN, 'Equals');

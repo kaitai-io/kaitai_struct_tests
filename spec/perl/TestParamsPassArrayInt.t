@@ -11,7 +11,6 @@ use ParamsPassArrayInt;
 sub test_params_pass_array_int: Test(7) {
     my $r = ParamsPassArrayInt->from_file('src/position_to_end.bin');
 
-
     is(scalar(@{$r->pass_ints()->nums()}), 3, 'Equals');
     is(@{$r->pass_ints()->nums()}[0], 513, 'Equals');
     is(@{$r->pass_ints()->nums()}[1], 1027, 'Equals');

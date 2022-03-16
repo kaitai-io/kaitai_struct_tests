@@ -11,7 +11,6 @@ use ExprCalcArrayOps;
 sub test_expr_calc_array_ops: Test(18) {
     my $r = ExprCalcArrayOps->from_file('src/fixed_struct.bin');
 
-
     is($r->int_array_size(), 7, 'Equals');
     is($r->int_array_first(), 10, 'Equals');
     is($r->int_array_mid(), 25, 'Equals');

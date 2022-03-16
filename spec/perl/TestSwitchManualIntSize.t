@@ -11,13 +11,12 @@ use SwitchManualIntSize;
 sub test_switch_manual_int_size: Test(10) {
     my $r = SwitchManualIntSize->from_file('src/switch_tlv.bin');
 
-
     is(scalar(@{$r->chunks()}), 4, 'Equals');
     is(@{$r->chunks()}[0]->code(), 17, 'Equals');
     is(@{$r->chunks()}[0]->body()->title(), "Stuff", 'Equals');
     is(@{$r->chunks()}[0]->body()->author(), "Me", 'Equals');
     is(@{$r->chunks()}[1]->code(), 34, 'Equals');
-    is_deeply(@{$r->chunks()}[1]->body()->entries(), ("AAAA", "BBBB", "CCCC"), 'Equals');
+    is_deeply(@{$r->chunks()}[1]->body()->entries(), ["AAAA", "BBBB", "CCCC"], 'Equals');
     is(@{$r->chunks()}[2]->code(), 51, 'Equals');
     is(@{$r->chunks()}[2]->body(), pack('C*', (16, 32, 48, 64, 80, 96, 112, 128)), 'Equals');
     is(@{$r->chunks()}[3]->code(), 255, 'Equals');

@@ -11,8 +11,8 @@ use FloatToI;
 sub test_float_to_i: Test(8) {
     my $r = FloatToI->from_file('src/floating_points.bin');
 
-    is($r->single_value(), 0.5, 'Equals');
-    is($r->double_value(), 0.25, 'Equals');
+    ok(abs($r->single_value() - 0.5) < 1e-6, 'Approx equals');
+    ok(abs($r->double_value() - 0.25) < 1e-6, 'Approx equals');
     is($r->single_i(), 0, 'Equals');
     is($r->double_i(), 0, 'Equals');
     is($r->float1_i(), 1, 'Equals');
