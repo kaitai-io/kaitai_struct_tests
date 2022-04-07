@@ -7,7 +7,7 @@ testHelper('TypeTernary2ndFalsy', 'src/switch_integers.bin', function(r, TypeTer
 
   assert.strictEqual(r.vFalse, false);
   assert.strictEqual(r.vIntZero, 0);
-  assert.strictEqual(r.vIntNegZero, -0);
+  assert.strictEqual(r.vIntNegZero, 0);
   assert(Math.abs(r.vFloatZero - 0.0) < 1e-6);
   assert(Math.abs(r.vFloatNegZero - -0.0) < 1e-6);
   assert.strictEqual(r.vStrWZero, "0");
