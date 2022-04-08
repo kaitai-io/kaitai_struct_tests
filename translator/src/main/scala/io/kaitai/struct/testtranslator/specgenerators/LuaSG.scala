@@ -42,7 +42,7 @@ class LuaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     val msg = exception match {
       case _: ValidationNotEqualError => "not equal, expected .*, but got .*"
       case UndecidedEndiannessError => "unable to decide endianness"
-      case EndOfStreamError => "requested %d+ bytes, but got only %d+ bytes"
+      case EndOfStreamError => "requested %d+ bytes, but only %d+ bytes available"
       case _ => LuaCompiler.ksErrorName(exception)
     }
     out.puts(s"""luaunit.assertErrorMsgMatches(".+: $msg", $className.from_file, $className, "src/${spec.data}")""")
