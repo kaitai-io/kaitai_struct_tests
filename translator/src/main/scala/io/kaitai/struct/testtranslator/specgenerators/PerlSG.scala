@@ -1,6 +1,12 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.datatype.{
+  KSError,
+  ValidationNotEqualError,
+  UndecidedEndiannessError,
+  EndOfStreamError
+}
 import _root_.io.kaitai.struct.datatype.DataType._
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.PerlCompiler
@@ -17,13 +23,27 @@ class PerlSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   importList.add("base qw(Test::Class)")
   importList.add("Test::More")
   importList.add(className)
+  if (spec.exception.isDefined) {
+    importList.add("Test::Exception")
+  }
 
   override def fileName(name: String): String = s"Test$className.t"
 
   override def header(): Unit = {
-    out.puts(s"sub test_${spec.id}: Test(${spec.asserts.length}) {")
+    out.puts(s"sub test_${spec.id}: Test(${if (spec.exception.isDefined) 1 else spec.asserts.length}) {")
     out.inc
+  }
+
+  override def runParse(): Unit = {
     out.puts(s"my $$r = $className->from_file('src/${spec.data}');")
+  }
+
+  override def runParseExpectError(exception: KSError): Unit = {
+    val msg = exception match {
+      case UndecidedEndiannessError => "Unable to decide on endianness"
+      case EndOfStreamError => "Requested \\d+ bytes, but only \\d+ bytes available"
+    }
+    out.puts(s"""throws_ok { $className->from_file('src/${spec.data}') } '/^$msg/';""")
   }
 
   override def footer(): Unit = {
