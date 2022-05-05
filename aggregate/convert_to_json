@@ -165,7 +165,7 @@ if ENV['GITHUB_ACTIONS']
 end
 
 result['$meta'] = meta
-json = JSON.pretty_generate(result)
+json = JSON.pretty_generate(result.sort.to_h)
 
 File.write(outfile, json)
 
