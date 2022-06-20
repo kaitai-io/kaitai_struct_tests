@@ -9,7 +9,7 @@ TestBitsUnalignedB64Be = {}
 function TestBitsUnalignedB64Be:test_bits_unaligned_b64_be()
     local r = BitsUnalignedB64Be:from_file("src/process_xor_4.bin")
 
-    luaunit.assertEquals(r.a, 1)
+    luaunit.assertEquals(r.a, true)
     luaunit.assertEquals(r.b, 0xd977462915a99869)
     luaunit.assertEquals(r.c, 14)
 end

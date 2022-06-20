@@ -16,5 +16,5 @@ function TestBitsSeqEndianCombo:test_bits_seq_endian_combo()
     luaunit.assertEquals(r.le5, 10)
     luaunit.assertEquals(r.le6, 36)
     luaunit.assertEquals(r.le7, 26)
-    luaunit.assertEquals(r.be8, 1)
+    luaunit.assertEquals(r.be8, true)
 end

@@ -9,6 +9,6 @@ TestCombineBool = {}
 function TestCombineBool:test_combine_bool()
     local r = CombineBool:from_file("src/enum_negative.bin")
 
-    luaunit.assertEquals(r.bool_bit, 1)
+    luaunit.assertEquals(r.bool_bit, true)
     luaunit.assertEquals(r.bool_calc_bit, false)
 end

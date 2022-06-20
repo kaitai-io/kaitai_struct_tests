@@ -11,7 +11,7 @@ function TestBitsSimpleLe:test_bits_simple_le()
 
     luaunit.assertEquals(r.byte_1, 80)
     luaunit.assertEquals(r.byte_2, 65)
-    luaunit.assertEquals(r.bits_a, 1)
+    luaunit.assertEquals(r.bits_a, true)
     luaunit.assertEquals(r.bits_b, 1)
     luaunit.assertEquals(r.bits_c, 4)
     luaunit.assertEquals(r.large_bits_1, 331)
