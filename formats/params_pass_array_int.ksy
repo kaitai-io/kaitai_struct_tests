@@ -17,4 +17,4 @@ types:
         type: u2[]
 instances:
   ints_calc:
-    value: '[27643, 7]'
+    value: '[27643, 7].as<u2[]>'
