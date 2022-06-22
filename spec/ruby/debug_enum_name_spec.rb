@@ -1,7 +1,6 @@
-require 'debug_enum_name'
-
-RSpec.describe DebugEnumName do
+RSpec.describe 'DebugEnumName' do
   it 'parses test properly' do
+    require 'debug_enum_name'
     r = DebugEnumName.from_file('src/fixed_struct.bin')
     r._read
 

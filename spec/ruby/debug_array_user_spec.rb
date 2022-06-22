@@ -1,7 +1,6 @@
-require 'debug_array_user'
-
-RSpec.describe DebugArrayUser do
+RSpec.describe 'DebugArrayUser' do
   it 'parses test properly' do
+    require 'debug_array_user'
     r = DebugArrayUser.from_file('src/fixed_struct.bin')
     r._read
 

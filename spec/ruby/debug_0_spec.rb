@@ -1,7 +1,6 @@
-require 'debug_0'
-
-RSpec.describe Debug0 do
+RSpec.describe 'Debug0' do
   it 'parses test properly' do
+    require 'debug_0'
     r = Debug0.from_file('src/fixed_struct.bin')
     r._read
 

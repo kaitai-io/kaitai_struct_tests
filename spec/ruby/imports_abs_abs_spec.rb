@@ -1,9 +1,8 @@
-require 'imports_abs_abs'
-require 'imported_and_abs'
-require 'imported_root'
-
-RSpec.describe ImportsAbsAbs do
+RSpec.describe 'ImportsAbsAbs' do
   it 'parses test properly' do
+    require 'imports_abs_abs'
+    require 'imported_and_abs'
+    require 'imported_root'
     r = ImportsAbsAbs.from_file('src/fixed_struct.bin')
 
     expect(r.one).to eq 80

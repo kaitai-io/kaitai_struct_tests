@@ -1,7 +1,6 @@
-require 'valid_fail_contents'
-
-RSpec.describe ValidFailContents do
+RSpec.describe 'ValidFailContents' do
   it 'parses test properly' do
+    require 'valid_fail_contents'
     expect {
       r = ValidFailContents.from_file('src/fixed_struct.bin')
     }.to raise_error(

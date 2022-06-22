@@ -1,7 +1,6 @@
-require 'valid_fail_eq_bytes'
-
-RSpec.describe ValidFailEqBytes do
+RSpec.describe 'ValidFailEqBytes' do
   it 'parses test properly' do
+    require 'valid_fail_eq_bytes'
     expect {
       r = ValidFailEqBytes.from_file('src/fixed_struct.bin')
     }.to raise_error(

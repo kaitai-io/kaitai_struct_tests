@@ -1,8 +1,8 @@
 # coding: utf-8
-require 'str_encodings'
 
-RSpec.describe StrEncodings do
+RSpec.describe 'StrEncodings' do
   it 'parses test properly' do
+    require 'str_encodings'
     r = StrEncodings.from_file('src/str_encodings.bin')
 
     expect(r.str1).to eq 'Some ASCII'

@@ -1,9 +1,8 @@
 # runs in debug mode, so the _read() needs to be called manually
 
-require 'debug_switch_user'
-
-RSpec.describe DebugSwitchUser do
+RSpec.describe 'DebugSwitchUser' do
   it 'parses test properly' do
+    require 'debug_switch_user'
     r = DebugSwitchUser.from_file('src/nav_parent_switch.bin')
     r._read
 

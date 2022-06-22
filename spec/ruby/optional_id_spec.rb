@@ -1,7 +1,6 @@
-require 'optional_id'
-
-RSpec.describe OptionalId do
+RSpec.describe 'OptionalId' do
   it 'parses test properly' do
+    require 'optional_id'
     r = OptionalId.from_file('src/fixed_struct.bin')
 
     expect(r._unnamed0).to eq 80

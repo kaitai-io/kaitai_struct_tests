@@ -1,5 +1,3 @@
-require 'process_custom'
-
 class MyCustomFx
   def initialize(key, flag, some_bytes)
     @key = flag ? key : -key
@@ -24,8 +22,9 @@ module Nested
   end
 end
 
-RSpec.describe ProcessCustom do
+RSpec.describe 'ProcessCustom' do
   it 'parses test properly' do
+    require 'process_custom'
     r = ProcessCustom.from_file('src/process_rotate.bin')
 
     expect(r.buf1).to eq [0x10, 0xb3, 0x94, 0x94, 0xf4].pack('C*')

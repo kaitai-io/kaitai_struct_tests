@@ -1,7 +1,6 @@
-require 'type_ternary_opaque'
-
-RSpec.describe TypeTernaryOpaque do
+RSpec.describe 'TypeTernaryOpaque' do
   it 'parses test properly' do
+    require 'type_ternary_opaque'
     r = TypeTernaryOpaque.from_file('src/term_strz.bin')
 
     expect(r.dif.s1).to eq('foo')

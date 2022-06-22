@@ -1,7 +1,6 @@
-require 'switch_cast'
-
-RSpec.describe SwitchCast do
+RSpec.describe 'SwitchCast' do
   it 'parses test properly' do
+    require 'switch_cast'
     r = SwitchCast.from_file('src/switch_opcodes.bin')
 
     expect(r.first_obj.value).to eq 'foobar'
