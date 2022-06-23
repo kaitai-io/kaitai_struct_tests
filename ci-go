@@ -27,9 +27,9 @@ cd spec/go
 
 keep_compiling=1
 while [ "$keep_compiling" = 1 ]; do
-	if go test -v . >"$ABS_REPORT_LOG" 2>&1; then
+	if { GO111MODULE=off go test -v . >"$ABS_REPORT_LOG" 2>&1; ex=$?; [ $ex -eq 1 ] || [ $ex -eq 0 ]; }; then
 		keep_compiling=0
-		cat "$ABS_TEST_OUT_DIR/go/report.log"
+		cat "$ABS_REPORT_LOG"
 	else
 		echo "Got error:"
 		cat "$ABS_REPORT_LOG"
@@ -44,9 +44,6 @@ while [ "$keep_compiling" = 1 ]; do
 			echo "Trying to recover, deleting..."
 			cat "$ABS_TEST_OUT_DIR/go/to_delete.now"
 			keep_compiling=1
-		elif grep -q '^=== RUN' "$ABS_REPORT_LOG"; then
-			echo "Tests completed partially..."
-			keep_compiling=0
 		else
 			echo "Unable to recover, bailing out :("
 			keep_compiling=0
@@ -56,7 +53,7 @@ while [ "$keep_compiling" = 1 ]; do
 done
 
 cd ../..
-go-junit-report <"$ABS_TEST_OUT_DIR/go/report.log" >"$ABS_TEST_OUT_DIR/go/report.xml"
+go-junit-report -in "$ABS_TEST_OUT_DIR/go/report.log" -out "$ABS_TEST_OUT_DIR/go/report.xml"
 
 COUNT_TOTAL=$(grep '^=== RUN' "$ABS_REPORT_LOG" | wc -l)
 COUNT_FAIL=$(grep '^--- FAIL' "$ABS_REPORT_LOG" | wc -l)
