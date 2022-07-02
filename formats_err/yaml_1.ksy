@@ -1,4 +1,4 @@
-# yaml_1.ksy:4:8:
+# yaml_1.ksy:6:8:
 # 	error: mapping values are not allowed here
 #
 meta:

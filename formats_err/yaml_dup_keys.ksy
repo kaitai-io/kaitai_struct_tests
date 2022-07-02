@@ -1,4 +1,4 @@
-# yaml_dup_keys.ksy:7:1:
+# yaml_dup_keys.ksy:9:1:
 # 	error: found duplicate key seq
 #
 meta:
