@@ -1,4 +1,6 @@
-# params_call_short_malformed.ksy: /seq/0: error: parsing expression '2 + 3, ' failed on 1:6, expected CharsWhile(Set( , n)) | "\\\n" | End
+# params_call_short_malformed.ksy: /seq/0:
+# 	error: parsing expression '2 + 3, ' failed on 1:6, expected CharsWhile(Set( , n)) | "\\\n" | End
+#
 meta:
   id: params_call_short_malformed
 seq:

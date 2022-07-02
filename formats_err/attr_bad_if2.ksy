@@ -1,4 +1,6 @@
-# attr_bad_if2.ksy: /types/foo_type/instances/foo/if: error: invalid type: expected boolean, got CalcIntType
+# attr_bad_if2.ksy: /types/foo_type/instances/foo/if:
+# 	error: invalid type: expected boolean, got CalcIntType
+#
 meta:
   id: attr_bad_if2
 seq:

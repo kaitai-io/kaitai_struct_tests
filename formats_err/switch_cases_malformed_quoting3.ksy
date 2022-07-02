@@ -1,4 +1,6 @@
-# switch_cases_malformed_quoting3.ksy: /seq/1/type/cases/Name(identifier(ahem)): error: unable to access 'ahem' in switch_cases_malformed_quoting3 context
+# switch_cases_malformed_quoting3.ksy: /seq/1/type/cases/Name(identifier(ahem)):
+# 	error: unable to access 'ahem' in switch_cases_malformed_quoting3 context
+#
 meta:
   id: switch_cases_malformed_quoting3
 seq:
