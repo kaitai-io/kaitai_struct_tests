@@ -15,19 +15,27 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   override def fileName(name: String): String = s"test_$name.rs"
 
   override def header(): Unit = {
-    out.puts("extern crate kaitai_struct;")
-    out.puts(s"extern crate rust;")
-    out.puts
-    
-    out.puts("use kaitai_struct::KaitaiStruct;")
-    out.puts(s"use rust::$className;")
-    out.puts
+    val code =
+      s"""
+        |#[cfg(test)]
+        |mod tests {
+        |    extern crate kaitai_struct;
+        |    use std::fs;
+        |
+        |    use kaitai_struct::*;
+        |    use crate::rust::${spec.id}::*;
+        |
+        |    #[test]
+        |    fn test_${spec.id}() {
+        |        let bytes = fs::read("src/${spec.data}").unwrap();
+        |        let mut reader = BytesReader::new(&bytes);
+        |        let mut r = $className::default();
+        |
+        |        r.read(&mut reader, None, None).unwrap();
+        |""".stripMargin
 
-    out.puts("#[test]")
-    out.puts(s"fn test_${spec.id}() {")
+    out.puts(code)
     out.inc
-
-    out.puts("if let Ok(r) = " + className + "::from_file(\"src/" + spec.data + "\") {")
     out.inc
   }
 
@@ -40,7 +48,10 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
   override def simpleAssert(check: TestAssert): Unit = {
     val actStr = translateAct(check.actual)
-    val expStr = translator.translate(check.expected)
+    var expStr = translator.translate(check.expected)
+    if (expStr.toLowerCase.startsWith("enum")) {
+      expStr = s"Some($expStr)"
+    }
     out.puts(s"assert_eq!($actStr, $expStr);")
   }
 
