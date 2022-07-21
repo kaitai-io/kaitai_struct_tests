@@ -1,7 +1,7 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
-import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.datatype.DataType._
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.RustCompiler
@@ -11,6 +11,7 @@ import _root_.io.kaitai.struct.translators.RustTranslator
 class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   val className = RustCompiler.type2class(spec.id)
   val translator = new RustTranslator(provider, RuntimeConfig())
+  var do_panic = true;
 
   override def fileName(name: String): String = s"test_$name.rs"
 
@@ -19,10 +20,9 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
       s"""
         |#[cfg(test)]
         |mod tests {
-        |    extern crate kaitai_struct;
         |    use std::fs;
         |
-        |    use kaitai_struct::*;
+        |    use kaitai::*;
         |    use crate::rust::${spec.id}::*;
         |
         |    #[test]
@@ -31,14 +31,46 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
         |        let mut reader = BytesReader::new(&bytes);
         |        let mut r = $className::default();
         |
-        |        r.read(&mut reader, None, None).unwrap();
-        |""".stripMargin
+        |        if let Err(err) = r.read(&mut reader, None, None) {""".stripMargin
 
     out.puts(code)
     out.inc
     out.inc
   }
 
+  override def runParseExpectError(exception: KSError): Unit = {
+    val code =
+      s"""    println!("err: {:?}, exception: ${exception}", err);
+        |        } else {
+        |            panic!("no expected exception: ${exception}");
+        |        }
+        |
+        |""".stripMargin
+
+    out.puts(code)
+    do_panic = false
+    //    out.puts("err = r.Read(s, &r, &r)")
+//    out.puts("switch v := err.(type) {")
+//    out.puts(s"case ${errorName}:")
+//    out.inc
+//    out.puts("break")
+//    out.dec
+//    out.puts("default:")
+//    out.inc
+//    out.puts("t.Fatalf(\"expected " + errorName + ", got %T\", v)")
+//    out.dec
+//    out.puts("}")
+  }
+
+  def finish_panic(): Unit = {
+    if (do_panic) {
+      out.inc
+      out.puts("panic!(\"{:?}\", err);")
+      out.dec
+      out.puts("}")
+      do_panic = false
+    }
+  }
   override def footer(): Unit = {
     out.dec
     out.puts("}")
@@ -52,11 +84,13 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     if (expStr.toLowerCase.startsWith("enum")) {
       expStr = s"Some($expStr)"
     }
+    finish_panic()
     out.puts(s"assert_eq!($actStr, $expStr);")
   }
 
   override def nullAssert(actual: Ast.expr): Unit = {
     val actStr = translateAct(actual)
+    finish_panic()
     out.puts(s"assertNull($actStr);")
     // TODO: Figure out what's meant to happen here
   }
