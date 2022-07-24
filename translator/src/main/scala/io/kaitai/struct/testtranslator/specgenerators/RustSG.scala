@@ -23,7 +23,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
         |    use std::fs;
         |
         |    use kaitai::*;
-        |    use crate::rust::${spec.id}::*;
+        |    use crate::formats::${spec.id}::*;
         |
         |    #[test]
         |    fn test_${spec.id}() {
