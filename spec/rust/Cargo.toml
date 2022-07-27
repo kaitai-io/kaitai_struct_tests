@@ -7,5 +7,4 @@ edition = "2021"
 build = false
 
 [dependencies]
-#kaitai_struct = { git = "https://github.com/CWood1/kaitai_struct_rust_runtime" }
-kaitai = { path = "../../../kaitai_rust" }
+kaitai = { path = "../../../runtime/rust" }

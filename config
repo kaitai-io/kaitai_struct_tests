@@ -1,5 +1,5 @@
 COMPILER_DIR=../compiler
-FORMATS_KSY_DIR=formats
+FORMATS_KSY_DIR=formats_rust
 FORMATS_COMPILED_DIR=compiled
 FORMATS_REPO_DIR=../formats
 

@@ -17,36 +17,30 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
   override def header(): Unit = {
     val code =
-      s"""
-        |#[cfg(test)]
-        |mod tests {
-        |    use std::fs;
-        |
-        |    use kaitai::*;
-        |    use crate::formats::${spec.id}::*;
-        |
-        |    #[test]
-        |    fn test_${spec.id}() {
-        |        let bytes = fs::read("src/${spec.data}").unwrap();
-        |        let mut reader = BytesReader::new(&bytes);
-        |        let mut r = $className::default();
-        |
-        |        if let Err(err) = r.read(&mut reader, None, KStructUnit::parent_stack()) {""".stripMargin
-
+      s"""|#![allow(dead_code)]
+          |use std::fs;
+          |
+          |extern crate kaitai;
+          |use self::kaitai::*;
+          |use crate::formats::${spec.id}::*;
+          |
+          |#[test]
+          |fn test_${spec.id}() {
+          |    let bytes = fs::read("../../src/${spec.data}").unwrap();
+          |    let reader = BytesReader::new(&bytes);
+          |    let mut r = $className::default();
+          |
+          |    if let Err(err) = r.read(&reader, None, KStructUnit::parent_stack()) {""".stripMargin
     out.puts(code)
-    out.inc
     out.inc
   }
 
   override def runParseExpectError(exception: KSError): Unit = {
     val code =
-      s"""    println!("err: {:?}, exception: ${exception}", err);
-        |        } else {
-        |            panic!("no expected exception: ${exception}");
-        |        }
-        |
-        |""".stripMargin
-
+      s"""    println!("expected err: {:?}, exception: ${exception}", err);
+      |        } else {
+      |            panic!("no expected exception: ${exception}");
+      |        }""".stripMargin
     out.puts(code)
     do_panic = false
     //    out.puts("err = r.Read(s, &r, &r)")
@@ -74,8 +68,6 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   override def footer(): Unit = {
     out.dec
     out.puts("}")
-    out.dec
-    out.puts("}")
   }
 
   override def simpleAssert(check: TestAssert): Unit = {
@@ -88,11 +80,12 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   override def nullAssert(actual: Ast.expr): Unit = {
     val actStr = translateAct(actual)
     finish_panic()
-    out.puts(s"assertNull($actStr);")
+    out.puts(s"assert_eq!($actStr, 0);")
     // TODO: Figure out what's meant to happen here
   }
 
   override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit = {
+    out.puts("trueArrayAssert $check, $elType, $elts")
     simpleAssert(check) // FIXME
   }
 
