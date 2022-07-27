@@ -28,6 +28,8 @@ fn main() {
     copy_new(source_path, destination_path).unwrap_or_else(|e| {
         println!("Unable to copy new files under test: {}", e.to_string());
     });
+
+    println!("cargo:rerun-if-changed={}", source_path.display().to_string());
 }
 
 fn remove_existing(destination_path: &Path) -> io::Result<()> {
