@@ -12,4 +12,6 @@ _*
 spec/nim/bin
 
 # Rust compiled code, cargo and rls data
+spec/rust/Cargo.lock
 spec/rust/target/
+spec/rust/tests/formats/
