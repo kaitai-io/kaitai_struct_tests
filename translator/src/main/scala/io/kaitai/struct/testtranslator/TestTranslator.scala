@@ -8,19 +8,36 @@ import io.kaitai.struct.formats.JavaKSYParser
 import io.kaitai.struct.problems.ProblemSeverity
 import io.kaitai.struct.testtranslator.Main.{CLIOptions, defaultOutDir}
 import io.kaitai.struct.testtranslator.specgenerators._
-import io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig}
+import io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig, RuntimeConfig}
+
+import java.nio.file.Path
 
 class TestTranslator(options: CLIOptions) {
   import Main._
 
   def run(): Unit = {
+    if(options.srcFiles.length == 1) {
+      val path = Path.of(options.srcFiles(0));
+
+      if (path.isAbsolute()) {
+        val specKs = specKsDir.split('/').drop(1).mkString("/")
+        val parent = path.getParent().toString().replace('\\', '/')
+        assert(parent.endsWith(specKs))
+        baseDir = parent.replace(specKs, "")
+      }
+    }
+
+    val exactOutDir = (options.outDir != defaultOutDir)
     options.srcFiles.foreach(testName =>
-      doTestSpec(testName, options.targets, options.outDir, options.outDir != defaultOutDir)
+      doTestSpec(testName, options.targets, options.outDir, exactOutDir)
     )
   }
 
-  def doTestSpec(testName: String, langs: Seq[String], outDir: String, exactOutDir: Boolean): Unit = {
-    Console.println(s"Translating: $testName")
+  def doTestSpec(ts: String, langs: Seq[String], outDir: String, exactOutDir: Boolean): Unit = {
+    Console.println(s"Translating: $ts")
+
+    val path = Path.of(ts)
+    val testName = if(path.isAbsolute()) { path.getFileName().toString() } else { ts }
 
     val testSpec = loadTestSpec(testName)
     val classSpecs = loadClassSpecs(testName)
@@ -31,7 +48,7 @@ class TestTranslator(options: CLIOptions) {
       val sg = getSG(langName, testSpec, provider)
       try {
         sg.run()
-        val outFile = if (exactOutDir) { s"$outDir/${sg.fileName(testName)}" } else { s"$outDir/$langName/${sg.fileName(testName)}" }
+        val outFile = if(exactOutDir) { s"$outDir/${sg.fileName(testName)}" } else { s"$outDir/$langName/${sg.fileName(testName)}" }
         Console.println(s"... generating $outFile")
         writeFile(outFile, sg.results)
       } catch {
@@ -52,8 +69,9 @@ class TestTranslator(options: CLIOptions) {
     fw.close()
   }
 
-  def loadTestSpec(testName: String): TestSpec =
+  def loadTestSpec(testName: String): TestSpec = {
     TestSpec.fromFile(s"$specKsDir/$testName.kst")
+  }
 
   def loadClassSpecs(testName: String): ClassSpecs = {
     val cliConfig = CLIConfig(importPaths = Seq(importsDir))
