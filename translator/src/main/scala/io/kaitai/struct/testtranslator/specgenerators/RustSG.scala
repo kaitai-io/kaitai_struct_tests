@@ -17,8 +17,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
   override def header(): Unit = {
     val code =
-      s"""|#![allow(dead_code)]
-          |use std::fs;
+      s"""|use std::fs;
           |
           |extern crate kaitai;
           |use self::kaitai::*;
