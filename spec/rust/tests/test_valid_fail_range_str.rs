@@ -5,17 +5,17 @@ use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
 mod formats;
-use formats::valid_fail_inst::*;
+use formats::valid_fail_range_str::*;
 
 #[test]
-fn test_valid_fail_inst() {
+fn test_valid_fail_range_str() {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
     let reader = BytesReader::new(&bytes);
-    let mut r = ValidFailInst::default();
+    let mut r = ValidFailRangeStr::default();
 
     if let Err(err) = r.read(&reader, None, KStructUnit::parent_stack()) {
-        println!("expected err: {:?}, exception: ValidationNotEqualError(Int1Type(false))", err);
+        println!("expected err: {:?}, exception: ValidationGreaterThanError(CalcStrType)", err);
     } else {
-        panic!("no expected exception: ValidationNotEqualError(Int1Type(false))");
+        panic!("no expected exception: ValidationGreaterThanError(CalcStrType)");
     }
 }
