@@ -38,9 +38,9 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   override def runParseExpectError(exception: KSError): Unit = {
     val code =
       s"""    println!("expected err: {:?}, exception: ${exception}", err);
-      |        } else {
-      |            panic!("no expected exception: ${exception}");
-      |        }""".stripMargin
+      |    } else {
+      |        panic!("no expected exception: ${exception}");
+      |    }""".stripMargin
     out.puts(code)
     do_panic = false
     //    out.puts("err = r.Read(s, &r, &r)")
