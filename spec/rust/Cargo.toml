@@ -3,8 +3,7 @@ name = "rust"
 version = "0.1.0"
 authors = ["Connor Wood <connorwood71@gmail.com>"]
 edition = "2021"
-#build = "build.rs"
-build = false
+build = "build.rs"
 
 [dependencies]
 kaitai = { path = "../../../runtime/rust" }
