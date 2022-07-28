@@ -47,6 +47,9 @@ fn remove_existing(destination_path: &Path) -> io::Result<()> {
 fn copy_new(source_path: &Path, destination_path: &Path) -> io::Result<()> {
     let mut librs = fs::File::create(destination_path.join("mod.rs"))?;
 
+    write!(librs, "#![allow(unused_parens)]\n")?;
+    write!(librs, "#![allow(dead_code)]\n")?;
+
     for entry in fs::read_dir(source_path)? {
         let entry = entry?;
         let path = entry.path();
