@@ -21,8 +21,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
           |
           |extern crate kaitai;
           |use self::kaitai::*;
-          |mod formats;
-          |use formats::${spec.id}::*;
+          |use crate::formats::${spec.id}::*;
           |
           |#[test]
           |fn test_${spec.id}() {
@@ -73,9 +72,6 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   override def simpleAssert(check: TestAssert): Unit = {
     val actStr = translateAct(check.actual)
     var expStr = translator.translate(check.expected)
-    if (expStr.toLowerCase.startsWith("enum")) {
-      expStr = s"Some($expStr)"
-    }
     finish_panic()
     out.puts(s"assert_eq!($actStr, $expStr);")
   }
@@ -100,5 +96,5 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   }
 
   def translateAct(x: Ast.expr) =
-    translator.translate(x).replace("self." + Main.INIT_OBJ_NAME + "()", "r")
+    translator.translate(x).replace(s"self.${Main.INIT_OBJ_NAME}()", "r")
 }

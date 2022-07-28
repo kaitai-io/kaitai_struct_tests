@@ -1,15 +1,16 @@
 package io.kaitai.struct.testtranslator
 
 import java.io.File
-
 import _root_.io.kaitai.struct.format._
 import io.kaitai.struct.Version
 
 object Main extends App {
-  val baseDir = ".."
+  var baseDir = ".."
   val specDir = s"$baseDir/spec"
-  val specKsDir = s"$baseDir/spec/ks"
-  val formatsDir = s"$baseDir/formats"
+  def specKsDir = s"$baseDir/spec/ks"
+  def specKsDir_=(v:String) { specKsDir = v }
+  def formatsDir = s"$baseDir/formats"
+  def formatsDir_=(v:String) { formatsDir = v }
   val defaultOutDir = s"$specKsDir/out"
   val importsDir = s"$baseDir/../formats"
 
