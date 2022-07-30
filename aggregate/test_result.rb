@@ -30,7 +30,14 @@ class TestResult
   def initialize(name, status, elapsed, failure = nil)
     @name = name
     @status = status
-    @elapsed = elapsed
+
+    # intentionally rounding elapsed time to 0.1s granularity here: it
+    # helps to reduce diffs drastically, otherwise we're bound to have
+    # test results constantly jumping from 0 to 0.001 all the time,
+    # while in reality there were absolutely no changes in test
+    # execution
+    @elapsed = elapsed.round(1)
+
     @failure = failure
   end
 
