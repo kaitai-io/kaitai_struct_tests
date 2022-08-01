@@ -52,10 +52,7 @@ else
     echo generating tests for $LANG:
 	echo $FORMATS_FILES
 
-	./spec_kst_to_all -t $LANG $FORMATS_FILES
-
-	mv "$KS_DIR/out/$LANG"/* "$EXIST_TESTS_DIR"
-	rm -rf spec/ks/out
+	./spec_kst_to_all -f ../$EXIST_TESTS_DIR -t $LANG $FORMATS_FILES
 fi
 
 # check for manual tests
