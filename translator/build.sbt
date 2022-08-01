@@ -8,7 +8,7 @@ resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repos
 resolvers += Resolver.sonatypeRepo("public")
 
 libraryDependencies ++= Seq(
-  "io.kaitai" % "kaitai-struct-compiler_2.12" % "0.10-SNAPSHOT",
+  "io.kaitai" % "kaitai-struct-compiler_2.12" % "0.11-SNAPSHOT",
   "com.github.scopt" % "scopt_2.12" % "3.7.1",
   "org.yaml" % "snakeyaml" % "1.16"
 )
