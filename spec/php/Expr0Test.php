@@ -7,7 +7,7 @@ class Expr0Test extends TestCase {
     public function testExpr0() {
         $r = Expr0::fromFile(self::SRC_DIR_PATH . '/str_encodings.bin');
 
-        $this->assertEquals(247, $r->mustBeF7());
-        $this->assertEquals("abc123", $r->mustBeAbc123());
+        $this->assertSame(247, $r->mustBeF7());
+        $this->assertSame("abc123", $r->mustBeAbc123());
     }
 }

@@ -1,18 +1,24 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import _root_.io.kaitai.struct.ClassTypeProvider
-import _root_.io.kaitai.struct.datatype.{DataType, KSError}
-import _root_.io.kaitai.struct.datatype.DataType._
-import _root_.io.kaitai.struct.exprlang.Ast
-import _root_.io.kaitai.struct.languages.JavaCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
-import _root_.io.kaitai.struct.translators.JavaTranslator
+import io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
+import io.kaitai.struct.datatype.DataType._
+import io.kaitai.struct.datatype.{DataType, KSError}
+import io.kaitai.struct.exprlang.Ast
+import io.kaitai.struct.languages.JavaCompiler
+import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import io.kaitai.struct.translators.JavaTranslator
 
 class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
+  val config = RuntimeConfig()
   val className = JavaCompiler.type2class(spec.id)
   val translator = new JavaTranslator(provider, importList)
+  val compiler = new JavaCompiler(provider, config)
 
   importList.add(s"io.kaitai.struct.testformats.$className")
+  spec.extraImports.foreach(entry =>
+    importList.add(s"io.kaitai.struct.testformats.${JavaCompiler.type2class(entry)}")
+  )
+
   importList.add("org.testng.annotations.Test")
   importList.add("static org.testng.Assert.*")
 
@@ -31,7 +37,7 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
   override def runParseExpectError(exception: KSError): Unit = {
     importList.add("io.kaitai.struct.KaitaiStream")
-    out.puts(s"@Test(expectedExceptions = ${JavaCompiler.ksErrorName(exception)}.class)")
+    out.puts(s"@Test(expectedExceptions = ${compiler.ksErrorName(exception)}.class)")
     runParseCommon()
   }
 

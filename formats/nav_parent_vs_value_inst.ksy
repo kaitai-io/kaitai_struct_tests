@@ -5,7 +5,7 @@ meta:
 
 seq:
   - id: s1
-    type: strz
+    type: str
     encoding: UTF-8
     terminator: 0x7C
   - id: child

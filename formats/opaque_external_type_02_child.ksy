@@ -4,11 +4,11 @@ meta:
   endian: le
 seq:
   - id: s1
-    type: strz
+    type: str
     encoding: UTF-8
     terminator: 0x7C
   - id: s2
-    type: strz
+    type: str
     encoding: UTF-8
     terminator: 0x7C
     consume: false
@@ -18,7 +18,7 @@ types:
   opaque_external_type_02_child_child:
     seq:
       - id: s3
-        type: strz
+        type: str
         encoding: UTF-8
         terminator: 0x40
         include: true

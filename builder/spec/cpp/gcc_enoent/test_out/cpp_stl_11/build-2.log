@@ -1,0 +1,12 @@
+Scanning dependencies of target ks_tests
+[  0%] Building CXX object CMakeFiles/ks_tests.dir/test_expr_calc_array_ops.cpp.o
+/home/travis/build/kaitai-io/ci_targets/tests/spec/cpp_stl_11/test_expr_calc_array_ops.cpp:4:33: fatal error: expr_calc_array_ops.h: No such file or directory
+ #include <expr_calc_array_ops.h>
+                                 ^
+compilation terminated.
+make[2]: *** [CMakeFiles/ks_tests.dir/test_expr_calc_array_ops.cpp.o] Error 1
+make[2]: Target `CMakeFiles/ks_tests.dir/build' not remade because of errors.
+make[1]: *** [CMakeFiles/ks_tests.dir/all] Error 2
+make[1]: Target `all' not remade because of errors.
+make: *** [all] Error 2
+make: Target `default_target' not remade because of errors.

@@ -7,9 +7,12 @@ class EnumToITest extends TestCase {
     public function testEnumToI() {
         $r = EnumToI::fromFile(self::SRC_DIR_PATH . '/enum_0.bin');
 
-        $this->assertEquals(\Kaitai\Struct\Tests\EnumToI\Animal::CAT, $r->pet1());
-        $this->assertEquals(\Kaitai\Struct\Tests\EnumToI\Animal::CHICKEN, $r->pet2());
-        $this->assertEquals(7, $r->pet1I());
-        $this->assertEquals(true, $r->oneLtTwo());
+        $this->assertSame(\Kaitai\Struct\Tests\EnumToI\Animal::CAT, $r->pet1());
+        $this->assertSame(\Kaitai\Struct\Tests\EnumToI\Animal::CHICKEN, $r->pet2());
+        $this->assertSame(7, $r->pet1I());
+        $this->assertSame(32775, $r->pet1Mod());
+        $this->assertSame(true, $r->oneLtTwo());
+        $this->assertSame(true, $r->pet1EqInt());
+        $this->assertSame(false, $r->pet2EqInt());
     }
 }

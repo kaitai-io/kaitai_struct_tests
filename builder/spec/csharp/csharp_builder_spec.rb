@@ -44,4 +44,72 @@ RSpec.describe CSharpBuilder do
       end
     end
   end
+
+  context '2' do
+    before :context do
+      Dir.chdir("#{@spec_dir}/2")
+      @builder = CSharpBuilder.new
+    end
+
+    describe '#parse_failed_build' do
+      it 'parses failed build information' do
+        expect(@builder.parse_failed_build('test_out/csharp/build-3.log').to_a.sort).to eq([
+          [:bare, "SpecExprBytesOps.cs"],
+        ])
+      end
+    end
+
+    describe '#adjust_files_for_failed_build' do
+      it 'adjusts build-3 log properly' do
+        mand_files = Set.new(@builder.list_mandatory_files)
+        disp_files = Set.new(@builder.list_disposable_files)
+        bad_files = @builder.adjust_files_for_failed_build('test_out/csharp/build-3.log', mand_files, disp_files)
+        expect(bad_files.to_a.sort).to eq([
+          [:bare, "SpecExprBytesOps.cs"],
+        ])
+      end
+    end
+
+    describe '#file_to_test' do
+      it 'parses bare file name' do
+        expect(@builder.file_to_test([:bare, "SpecExprBytesOps.cs"])).to eq([:spec, "ExprBytesOps"])
+      end
+    end
+
+    describe '#convert_slashes' do
+      it 'parses bare file name' do
+        expect(@builder.convert_slashes([
+          "a/b/c/FooBar.cs",
+          [:bare, "SpecExprBytesOps.cs"],
+        ])).to eq([
+          [:bare, "SpecExprBytesOps.cs"],
+          "a\\b\\c\\FooBar.cs",
+        ])
+      end
+    end
+  end
+
+  context '3' do
+    before :context do
+      Dir.chdir("#{@spec_dir}/3")
+      @builder = CSharpBuilder.new
+    end
+
+    describe '#parse_failed_build' do
+      it 'parses failed build information' do
+        r = @builder.parse_failed_build('test_out/csharp/build-2.log')
+        r = @builder.sort_list_with_bare(r.to_a)
+        expect(r).to eq([
+          "C:\\projects\\ci-targets\\tests\\compiled\\csharp\\EnumToIClassBorder2.cs",
+          "C:\\projects\\ci-targets\\tests\\compiled\\csharp\\ExprBytesOps.cs",
+          "C:\\projects\\ci-targets\\tests\\compiled\\csharp\\YamlInts.cs",
+          [:bare, "SpecEofExceptionBytes.cs"],
+          [:bare, "SpecEofExceptionU4.cs"],
+          [:bare, "SpecEosExceptionBytes.cs"],
+          [:bare, "SpecEosExceptionU4.cs"],
+          [:bare, "SpecExprCalcArrayOps.cs"],
+        ])
+      end
+    end
+  end
 end

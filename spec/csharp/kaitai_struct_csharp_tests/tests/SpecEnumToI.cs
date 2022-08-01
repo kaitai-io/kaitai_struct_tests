@@ -15,7 +15,10 @@ namespace Kaitai
             Assert.AreEqual(r.Pet1, EnumToI.Animal.Cat);
             Assert.AreEqual(r.Pet2, EnumToI.Animal.Chicken);
             Assert.AreEqual(r.Pet1I, 7);
+            Assert.AreEqual(r.Pet1Mod, 32775);
             Assert.AreEqual(r.OneLtTwo, true);
+            Assert.AreEqual(r.Pet1EqInt, true);
+            Assert.AreEqual(r.Pet2EqInt, false);
         }
     }
 }

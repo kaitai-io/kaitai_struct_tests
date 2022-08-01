@@ -3,6 +3,7 @@
 package spec
 
 import (
+	"runtime/debug"
 	"os"
 	"testing"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
@@ -11,6 +12,12 @@ import (
 )
 
 func TestDefaultEndianExprIsLe(t *testing.T) {
+	defer func() {
+		if r := recover(); r != nil {
+			debug.PrintStack()
+			t.Fatal("unexpected panic:", r)
+		}
+	}()
 	f, err := os.Open("../../src/endian_expr.bin")
 	if err != nil {
 		t.Fatal(err)
@@ -21,7 +28,6 @@ func TestDefaultEndianExprIsLe(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-
 
 	assert.EqualValues(t, []uint8{73, 73}, r.Docs[0].Indicator)
 	assert.EqualValues(t, 66, r.Docs[0].Main.SomeInt)

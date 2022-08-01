@@ -13,7 +13,7 @@ sub test_bits_simple: Test(14) {
 
     is($r->byte_1(), 80, 'Equals');
     is($r->byte_2(), 65, 'Equals');
-    is($r->bits_a(), 0, 'Equals');
+    cmp_ok($r->bits_a(), '==', 0, 'Equals');
     is($r->bits_b(), 4, 'Equals');
     is($r->bits_c(), 3, 'Equals');
     is($r->large_bits_1(), 300, 'Equals');

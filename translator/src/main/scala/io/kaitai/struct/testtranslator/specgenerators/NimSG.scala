@@ -3,53 +3,81 @@ package io.kaitai.struct.testtranslator.specgenerators
 import _root_.io.kaitai.struct.{ClassTypeProvider, Utils}
 import _root_.io.kaitai.struct.exprlang.Ast.expr
 import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.datatype.DataType._
 import _root_.io.kaitai.struct.translators.{NimTranslator, TypeDetector}
 import _root_.io.kaitai.struct.Utils
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.languages.NimCompiler.{ksToNim, namespaced}
 
 class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   val className = Utils.upperCamelCase(spec.id)
   val translator = new NimTranslator(provider, importList)
 
+  spec.extraImports.foreach(entry =>
+    importList.add(s"../../compiled/nim/$entry")
+  )
+
   // Members declared in io.kaitai.struct.testtranslator.specgenerators.BaseGenerator
-  override def fileName(name: String): String = s"src/io/kaitai/struct/spec/t${spec.id}.nim"
+  override def fileName(name: String): String = s"t${spec.id}.nim"
   override def header(): Unit = {
-    out.puts("var")
-    out.inc
-    out.puts("stream = newFileStream(\"" + s"test_out/nim/junitreports/${spec.id}.xml" + "\", fmWrite)")
-    out.puts("outputFormatter = newJUnitOutputFormatter(stream)")
-    out.dec
-    out.puts("addOutputFormatter(outputFormatter)")
-    out.puts
-    out.puts("suite \"Kaitai Struct Compiler Test Suite\":")
-    out.inc
-    out.puts("test \"" + "Nim: " + Utils.upperCamelCase(spec.id) + "\":")
-    out.inc
-    out.puts(s"let r = ${className}.fromFile" + "(\"src/" + spec.data + "\")")
+    out.puts(s"let r = ${className}.fromFile" + "(\"../../src/" + spec.data + "\")")
   }
-  override def footer(): Unit = {
-    out.puts
-    out.dec
-    out.dec
-    out.puts("close(outputFormatter)")
-  }
+  override def footer(): Unit = { }
   override def nullAssert(actual: expr): Unit = {
     val actStr = translateAct(actual)
-    out.puts(s"check($actStr == none(typeof($actStr)))")
+    val td = new TypeDetector(provider)
+    val expStr = td.detectType(actual) match {
+      case Int1Type(false) => "0'u8"
+      case IntMultiType(false, Width2, _) => "0'u16"
+      case IntMultiType(false, Width4, _) => "0'u32"
+      case IntMultiType(false, Width8, _) => "0'u64"
+
+      case Int1Type(true) => "0'i8"
+
+      case IntMultiType(true, Width2, _) => "0'i16"
+      case IntMultiType(true, Width4, _) => "0'i32"
+      case IntMultiType(true, Width8, _) => "0'i64"
+
+      case FloatMultiType(Width4, _) => "0'f32"
+      case FloatMultiType(Width8, _) => "0'f64"
+
+      case BitsType(_, _) => "0'u64"
+
+      case _: BooleanType => "false"
+      case CalcIntType => "0"
+      case CalcFloatType => "0'f64"
+
+      case _: StrType => "\"\""
+      case _: BytesType => "\"\""
+
+      case KaitaiStructType | CalcKaitaiStructType => "nil"
+      case KaitaiStreamType => "nil"
+
+      case t: UserType => "nil"
+    }
+
+    out.puts(s"assert $actStr == $expStr")
   }
   override def simpleAssert(check: TestAssert): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
-    val td = new TypeDetector(provider)
-    val t = _root_.io.kaitai.struct.NimClassCompiler.ksToNim(td.detectType(check.actual))
-    out.puts(s"check($actStr == $t($expStr))")
+    out.puts(s"assert $actStr == $expStr")
   }
   override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[expr]): Unit = {
-    simpleAssert(check)
+    val arr = elts.map(v => translator.translate(v))
+    val first = s"${ksToNim(elType)}(${arr.head})"
+    val rvalue = {
+      if (arr.size == 0)
+        s"@[]"
+      else
+        s"@[${first + ", " + arr.tail.mkString(", ")}]"
+    }
+    out.puts(s"assert ${translateAct(check.actual)} == $rvalue")
   }
   override def runParse(): Unit = {
-    importList.add("unittest, os, streams, options, sequtils, ../testhelpers")
-    importList.add("../../../compiled/nim/" + spec.id)
+    importList.add("os, streams, options, sequtils")
+    importList.add("../../compiled/nim/" + spec.id)
+    importList.add("auxiliary/test_utils")
   }
 
   // Members declared in io.kaitai.struct.testtranslator.specgenerators.SpecGenerator
@@ -60,7 +88,7 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
       importList.toList.map((x) => s"import $x").mkString("", "\n", "\n") + "\n" + out.result
   }
 
-  // Memebers declared here
+  // Members declared here
   def translateAct(x: expr) =
-    translator.translate(x).replace(Utils.lowerCamelCase(Main.INIT_OBJ_NAME), "r")
+    translator.translate(x).replace(Utils.lowerCamelCase(Main.INIT_OBJ_NAME), "r").replace("this.", "");
 }

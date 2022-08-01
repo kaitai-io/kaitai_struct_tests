@@ -7,8 +7,8 @@ class TermStrzTest extends TestCase {
     public function testTermStrz() {
         $r = TermStrz::fromFile(self::SRC_DIR_PATH . '/term_strz.bin');
 
-        $this->assertEquals("foo", $r->s1());
-        $this->assertEquals("bar", $r->s2());
-        $this->assertEquals("|baz@", $r->s3());
+        $this->assertSame("foo", $r->s1());
+        $this->assertSame("bar", $r->s2());
+        $this->assertSame("|baz@", $r->s3());
     }
 }

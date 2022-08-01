@@ -1,4 +1,6 @@
-# expr_compare_enum: /seq/1/if: can't use comparison operator Gt on enums
+# expr_compare_enum.ksy: /seq/1/if:
+# 	error: can't use comparison operator Gt on enums
+#
 meta:
   id: expr_compare_enum
 seq:

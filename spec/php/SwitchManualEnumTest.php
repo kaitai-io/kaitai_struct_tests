@@ -7,14 +7,14 @@ class SwitchManualEnumTest extends TestCase {
     public function testSwitchManualEnum() {
         $r = SwitchManualEnum::fromFile(self::SRC_DIR_PATH . '/switch_opcodes.bin');
 
-        $this->assertEquals(4, count($r->opcodes()));
-        $this->assertEquals(\Kaitai\Struct\Tests\SwitchManualEnum\Opcode\CodeEnum::STRVAL, $r->opcodes()[0]->code());
-        $this->assertEquals("foobar", $r->opcodes()[0]->body()->value());
-        $this->assertEquals(\Kaitai\Struct\Tests\SwitchManualEnum\Opcode\CodeEnum::INTVAL, $r->opcodes()[1]->code());
-        $this->assertEquals(66, $r->opcodes()[1]->body()->value());
-        $this->assertEquals(\Kaitai\Struct\Tests\SwitchManualEnum\Opcode\CodeEnum::INTVAL, $r->opcodes()[2]->code());
-        $this->assertEquals(55, $r->opcodes()[2]->body()->value());
-        $this->assertEquals(\Kaitai\Struct\Tests\SwitchManualEnum\Opcode\CodeEnum::STRVAL, $r->opcodes()[3]->code());
-        $this->assertEquals("", $r->opcodes()[3]->body()->value());
+        $this->assertSame(4, count($r->opcodes()));
+        $this->assertSame(\Kaitai\Struct\Tests\SwitchManualEnum\Opcode\CodeEnum::STRVAL, $r->opcodes()[0]->code());
+        $this->assertSame("foobar", $r->opcodes()[0]->body()->value());
+        $this->assertSame(\Kaitai\Struct\Tests\SwitchManualEnum\Opcode\CodeEnum::INTVAL, $r->opcodes()[1]->code());
+        $this->assertSame(66, $r->opcodes()[1]->body()->value());
+        $this->assertSame(\Kaitai\Struct\Tests\SwitchManualEnum\Opcode\CodeEnum::INTVAL, $r->opcodes()[2]->code());
+        $this->assertSame(55, $r->opcodes()[2]->body()->value());
+        $this->assertSame(\Kaitai\Struct\Tests\SwitchManualEnum\Opcode\CodeEnum::STRVAL, $r->opcodes()[3]->code());
+        $this->assertSame("", $r->opcodes()[3]->body()->value());
     }
 }

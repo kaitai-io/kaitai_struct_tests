@@ -17,4 +17,4 @@ if [ ! -e "$JAVASCRIPT_MODULES_DIR/kaitai-struct" ]; then
 fi
 
 NODE_PATH="compiled/javascript${DIVIDER}helpers/javascript${DIVIDER}$JAVASCRIPT_MODULES_DIR" \
-	$JAVASCRIPT_MODULES_DIR/mocha/bin/mocha spec/javascript
+	$JAVASCRIPT_MODULES_DIR/.bin/mocha spec/javascript

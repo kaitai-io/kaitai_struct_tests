@@ -1,7 +1,17 @@
 # Force the bash scripts to checkout with Unix line endings, even on Windows
-
 build-* eol=lf
 config eol=lf
 run-* eol=lf
 spec_* eol=lf
 translator-tests eol=lf
+
+# Explicitly mark binary files for Git
+*.bin binary
+
+# Highlight ksy and kst files as YAML on GitHub
+*.kst linguist-language=yaml
+*.ksy linguist-language=yaml
+
+# Mark generated files for GitHub
+spec/** linguist-generated=true
+spec/ks/*.kst linguist-generated=false

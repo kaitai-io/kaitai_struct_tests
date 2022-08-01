@@ -12,3 +12,7 @@ asserts:
     expected: 0x8007
   - actual: one_lt_two
     expected: true
+  - actual: pet_1_eq_int
+    expected: true
+  - actual: pet_2_eq_int
+    expected: false

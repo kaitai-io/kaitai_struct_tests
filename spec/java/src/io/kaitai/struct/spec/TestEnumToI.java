@@ -6,6 +6,7 @@ import io.kaitai.struct.testformats.EnumToI;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestEnumToI extends CommonSpec {
+
     @Test
     public void testEnumToI() throws Exception {
         EnumToI r = EnumToI.fromFile(SRC_DIR + "enum_0.bin");
@@ -13,6 +14,9 @@ public class TestEnumToI extends CommonSpec {
         assertEquals(r.pet1(), EnumToI.Animal.CAT);
         assertEquals(r.pet2(), EnumToI.Animal.CHICKEN);
         assertIntEquals(r.pet1I(), 7);
+        assertIntEquals(r.pet1Mod(), 32775);
         assertIntEquals(r.oneLtTwo(), true);
+        assertIntEquals(r.pet1EqInt(), true);
+        assertIntEquals(r.pet2EqInt(), false);
     }
 }

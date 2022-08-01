@@ -11,6 +11,5 @@ public class TestDefaultEndianExprException extends CommonSpec {
     @Test(expectedExceptions = KaitaiStream.UndecidedEndiannessError.class)
     public void testDefaultEndianExprException() throws Exception {
         DefaultEndianExprException r = DefaultEndianExprException.fromFile(SRC_DIR + "endian_expr.bin");
-
     }
 }

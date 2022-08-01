@@ -128,7 +128,7 @@ class PartialBuilder
 
     orig_disp_size = disp_files.size
 
-    bad_files = Set.new(parse_failed_build(build_log))
+    bad_files = Set.new(parse_failed_build(build_log, disp_files))
     if bad_files.empty?
       log "build fails, but unable to detect any bad files"
       return false
@@ -146,14 +146,14 @@ class PartialBuilder
     # Treat "bare" files specially
     leftover_processed = Set.new
     leftover.each { |x|
-      if x.respond_to?(:[]) and x[0] == :bare
+      if is_bare?(x)
         # This is indeed a "bare" file - i.e. a file without path
         bare_file = x[1]
         log "removing bare file #{bare_file.inspect}"
 
         to_delete = Set.new
         disp_files.each { |df|
-          to_delete << df if File.basename(df) == bare_file
+          to_delete << df if File.basename(df.gsub(/\\/, '/')) == bare_file
         }
 
         if to_delete.empty?
@@ -235,7 +235,7 @@ class PartialBuilder
   # @param log_file [String] path to build's log file
   # @return [Array<String>] list of files that have compilation
   #   errors, as reported in the build log file
-  def parse_failed_build(log_file)
+  def parse_failed_build(log_file, disp_files)
     raise NotImplementedError
   end
 
@@ -293,5 +293,17 @@ class PartialBuilder
     }
     log "process_status: #{process_status.inspect}"
     return process_status
+  end
+
+  def is_bare?(x)
+    x.respond_to?(:[]) and x[0] == :bare
+  end
+
+  def sort_list_with_bare(list)
+    list.sort { |a, b|
+      aa = is_bare?(a) ? a[1] : a
+      bb = is_bare?(b) ? b[1] : b
+      aa <=> bb
+    }
   end
 end

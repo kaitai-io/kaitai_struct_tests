@@ -36,9 +36,24 @@ func TestEnumToI(t *testing.T) {
 		t.Fatal(err)
 	}
 	assert.EqualValues(t, 7, tmp1)
-	tmp2, err := r.OneLtTwo()
+	tmp2, err := r.Pet1Mod()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, true, tmp2)
+	assert.EqualValues(t, 32775, tmp2)
+	tmp3, err := r.OneLtTwo()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, true, tmp3)
+	tmp4, err := r.Pet1EqInt()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, true, tmp4)
+	tmp5, err := r.Pet2EqInt()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, false, tmp5)
 }

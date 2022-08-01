@@ -1,16 +1,23 @@
 function testHelper(className, fileName, testFunc) {
   var fs = require("fs");
-//  var DataStream = require("DataStream");
   var KaitaiStream = global.KaitaiStream = require("kaitai-struct/KaitaiStream");
-  var parser = require(className);
 
   describe(className, function() {
     it('parses test properly', function(done) {
+      var parser = require(className);
       fs.readFile(fileName, function(err, buf) {
-//        var st = new DataStream(buf);
+        if (err) {
+          done(err);
+          return;
+        }
         var st = new KaitaiStream(buf);
         var r = new parser(st);
-        testFunc(r, parser);
+        try {
+          testFunc(r, parser);
+        } catch (e) {
+          done(e);
+          return;
+        }
         done();
       });
     });

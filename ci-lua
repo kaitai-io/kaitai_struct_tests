@@ -2,23 +2,17 @@
 
 . ./config
 
-rm -rf "$TEST_OUT_DIR/lua"
-mkdir -p "$TEST_OUT_DIR/lua"
+LUA_OUT_DIR="${TEST_OUT_DIR}/lua"
+
+rm -rf "${LUA_OUT_DIR}"
+mkdir -p "${LUA_OUT_DIR}"
+
 export LUA_PATH="$LUA_PATH;$LUA_RUNTIME_DIR/?.lua;spec/lua/?.lua;spec/lua/extra/?.lua;compiled/lua/?.lua;;"
 
 # Add `lua_install` dir to PATH, as this is where hererocks installs Lua at CI
 export PATH=$PATH:$PWD/../lua_install/bin
 
-# Detect lua executable
-if lua5.3 -v; then
-	LUA_BIN=lua5.3
-elif lua -v; then
-	LUA_BIN=lua
-else
-	echo "Unable to detect lua executable, bailing out :("
-	exit 1
-fi
+lua spec/lua/run_test_suite.lua --output junit --name "${LUA_OUT_DIR}/report"
 
-"$LUA_BIN" spec/lua/run_test_suite.lua -v -o junit -n "$TEST_OUT_DIR/lua/report"
-
-aggregate/convert_to_json lua "$TEST_OUT_DIR/lua/report.xml" "$TEST_OUT_DIR/lua/ci.json"
+./kst-adoption-report lua
+aggregate/convert_to_json lua "${LUA_OUT_DIR}" "${LUA_OUT_DIR}/ci.json"

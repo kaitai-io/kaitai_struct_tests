@@ -7,6 +7,6 @@ class TypeTernaryTest extends TestCase {
     public function testTypeTernary() {
         $r = TypeTernary::fromFile(self::SRC_DIR_PATH . '/term_strz.bin');
 
-        $this->assertEquals(101, $r->dif()->value());
+        $this->assertSame(101, $r->dif()->value());
     }
 }

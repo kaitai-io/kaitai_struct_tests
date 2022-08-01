@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Script for building all the tests for a specific target language
+# Usage: build-tests <lang>
+
+if [ "$#" -ne 1 ]; then
+    echo "Usage: build-tests <lang>"
+    exit 1
+fi
+
+. ./config
+
+cd ../compiler
+sbt publishLocal
+cd ../tests
+./spec_kst_to_all -t "$1" --all-specs
+cd spec
+mv "ks/out/$1/tests"/* "$1/"
+rm -rf ks/out

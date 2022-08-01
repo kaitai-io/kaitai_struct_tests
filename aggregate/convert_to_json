@@ -79,12 +79,12 @@ when 'java'
     ),
     infile
   )
-when 'nim'
+when 'lua', 'nim'
   add_kst_adoption(
-    JUnitXMLParser.new("#{infile}/junitreports").to_h,
+    JUnitXMLParser.new("#{infile}/report.xml").to_h,
     infile
   )
-when 'lua', 'rust'
+when 'rust'
   JUnitXMLParser.new(infile).to_h
 when 'go', 'perl'
   add_kst_adoption(
@@ -96,7 +96,7 @@ when 'javascript'
     JUnitXMLParser.new("#{infile}/test-output-javascript.xml").to_h,
     infile
   )
-when 'php', 'python'
+when 'php', 'python', 'construct'
   add_kst_adoption(
     JUnitXMLParser.new(infile).to_h,
     infile
@@ -154,8 +154,18 @@ if ENV['APPVEYOR']
   }
 end
 
+if ENV['GITHUB_ACTIONS']
+  meta['ci'] = {
+    'ci' => 'github',
+    'run_id' => ENV['GITHUB_RUN_ID'],
+    'run_number' => ENV['GITHUB_RUN_NUMBER'],
+    'job_id' => ENV['GH_JOB_ID'],
+    'url' => ENV['GH_HTML_URL'],
+  }
+end
+
 result['$meta'] = meta
-json = JSON.pretty_generate(result)
+json = JSON.pretty_generate(result.sort.to_h)
 
 File.write(outfile, json)
 

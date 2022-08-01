@@ -1,11 +1,11 @@
 package io.kaitai.struct.testtranslator
 
 import java.io.{File, FileWriter}
-
 import io.kaitai.struct.JavaMain.CLIConfig
 import io.kaitai.struct.datatype.DataType.UserTypeInstream
 import io.kaitai.struct.format._
 import io.kaitai.struct.formats.JavaKSYParser
+import io.kaitai.struct.problems.ProblemSeverity
 import io.kaitai.struct.testtranslator.Main.CLIOptions
 import io.kaitai.struct.testtranslator.specgenerators._
 import io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig}
@@ -57,12 +57,20 @@ class TestTranslator(options: CLIOptions) {
 
   def loadClassSpecs(testName: String): ClassSpecs = {
     val cliConfig = CLIConfig(importPaths = Seq(importsDir))
-    val origSpecs = JavaKSYParser.localFileToSpecs(s"$formatsDir/$testName.ksy", cliConfig)
+    val (origSpecsOpt, errors) = JavaKSYParser.localFileToSpecs(s"$formatsDir/$testName.ksy", cliConfig)
+
+    errors.foreach(problem => Console.err.println(problem.message))
+    if (errors.exists(problem => problem.severity != ProblemSeverity.Warning) || origSpecsOpt.isEmpty) {
+      throw new RuntimeException("Error during localFileToSpecs")
+    }
+
+    val origSpecs = origSpecsOpt.get
 
     val userType = UserTypeInstream(origSpecs.firstSpec.name, None)
     userType.classSpec = Some(origSpecs.firstSpec)
 
     val initObj = ClassSpec(
+      fileName = None,
       path = List(),
       isTopLevel = true,
       meta = MetaSpec(
@@ -70,12 +78,14 @@ class TestTranslator(options: CLIOptions) {
         isOpaque = false,
         id = Some(INIT_OBJ_TYPE),
         endian = None,
+        bitEndian = None,
         encoding = None,
         forceDebug = false,
         opaqueTypes = None,
         imports = List()
       ),
       DocSpec.EMPTY,
+      toStringExpr = None,
       params = List(),
       seq = List(
         AttrSpec(
@@ -104,6 +114,7 @@ class TestTranslator(options: CLIOptions) {
     case "go" => new GoSG(testSpec, provider)
     case "java" => new JavaSG(testSpec, provider)
     case "javascript" => new JavaScriptSG(testSpec, provider)
+    case "lua" => new LuaSG(testSpec, provider)
     case "nim" => new NimSG(testSpec, provider)
     case "perl" => new PerlSG(testSpec, provider)
     case "php" => new PHPSG(testSpec, provider)

@@ -7,6 +7,6 @@ class HelloWorldTest extends TestCase {
     public function testHelloWorld() {
         $r = HelloWorld::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-        $this->assertEquals(80, $r->one());
+        $this->assertSame(80, $r->one());
     }
 }

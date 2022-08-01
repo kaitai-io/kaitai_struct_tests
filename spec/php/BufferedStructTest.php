@@ -7,12 +7,12 @@ class BufferedStructTest extends TestCase {
     public function testBufferedStruct() {
         $r = BufferedStruct::fromFile(self::SRC_DIR_PATH . '/buffered_struct.bin');
 
-        $this->assertEquals(16, $r->len1());
-        $this->assertEquals(66, $r->block1()->number1());
-        $this->assertEquals(67, $r->block1()->number2());
-        $this->assertEquals(8, $r->len2());
-        $this->assertEquals(68, $r->block2()->number1());
-        $this->assertEquals(69, $r->block2()->number2());
-        $this->assertEquals(238, $r->finisher());
+        $this->assertSame(16, $r->len1());
+        $this->assertSame(66, $r->block1()->number1());
+        $this->assertSame(67, $r->block1()->number2());
+        $this->assertSame(8, $r->len2());
+        $this->assertSame(68, $r->block2()->number1());
+        $this->assertSame(69, $r->block2()->number2());
+        $this->assertSame(238, $r->finisher());
     }
 }

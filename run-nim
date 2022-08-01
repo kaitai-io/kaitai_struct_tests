@@ -4,6 +4,4 @@
 
 . ./config
 
-nim c -r --outdir:"$TEST_OUT_DIR/nim/bin" "spec/nim/test_stdout" "$1"
-nim c -r "spec/nim/tests/test"
-rm "spec/nim/tests/test" "spec/nim/tests/test.nim"
+nim c -r -w:off --hints:off --outdir:"spec/nim/bin" "spec/nim/t$1"

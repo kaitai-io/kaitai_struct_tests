@@ -7,6 +7,6 @@ class NonStandardTest extends TestCase {
     public function testNonStandard() {
         $r = NonStandard::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-        $this->assertEquals(80, $r->foo());
+        $this->assertSame(80, $r->foo());
     }
 }

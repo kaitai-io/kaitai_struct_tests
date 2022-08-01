@@ -1,6 +1,5 @@
 <?php
-require __DIR__ . '/../../../runtime/php/lib/Kaitai/Struct/Struct.php';
-require __DIR__ . '/../../../runtime/php/lib/Kaitai/Struct/Stream.php';
+require getcwd() . '/' . getenv('PHP_RUNTIME_DIR') . '/vendor/autoload.php';
 
 require __DIR__ . '/extra/CustomFx.php';
 

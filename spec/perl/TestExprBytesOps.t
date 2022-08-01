@@ -8,22 +8,25 @@ use base qw(Test::Class);
 use Test::More;
 use ExprBytesOps;
 
-sub test_expr_bytes_ops: Test(12) {
-    my $r = ExprBytesOps->from_file('src/fixed_struct.bin');
-
+sub test_expr_bytes_ops: Test(16) {
+    my $r = ExprBytesOps->from_file('src/nav_parent_switch.bin');
 
     is($r->one_size(), 3, 'Equals');
-    is($r->one_first(), 80, 'Equals');
-    is($r->one_mid(), 65, 'Equals');
-    is($r->one_last(), 67, 'Equals');
-    is($r->one_min(), 65, 'Equals');
-    is($r->one_max(), 80, 'Equals');
+    is($r->one_first(), 1, 'Equals');
+    is($r->one_mid(), 66, 'Equals');
+    is($r->one_last(), 255, 'Equals');
+    is(sprintf('%d', $r->one_last()), "255", 'Equals');
+    is($r->one_min(), 1, 'Equals');
+    is($r->one_max(), 255, 'Equals');
+    is(sprintf('%d', $r->one_max()), "255", 'Equals');
     is($r->two_size(), 3, 'Equals');
     is($r->two_first(), 65, 'Equals');
-    is($r->two_mid(), 67, 'Equals');
+    is($r->two_mid(), 255, 'Equals');
+    is(sprintf('%d', $r->two_mid()), "255", 'Equals');
     is($r->two_last(), 75, 'Equals');
     is($r->two_min(), 65, 'Equals');
-    is($r->two_max(), 75, 'Equals');
+    is($r->two_max(), 255, 'Equals');
+    is(sprintf('%d', $r->two_max()), "255", 'Equals');
 }
 
 Test::Class->runtests;

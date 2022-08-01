@@ -11,6 +11,10 @@ find_package(Iconv REQUIRED)
 # Enforce UTF-8 source files encoding for MSVC
 add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 
+set(CMAKE_CXX_STANDARD 98)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 set(RUNTIME_SRC_PATH ../../../runtime/cpp_stl)
 set(PREREQ_PATH prereq)
 
@@ -19,6 +23,7 @@ include(${INC_PATH})
 set(PREREQ_SOURCES
 	${PREREQ_PATH}/my_custom_fx.cpp
 	${PREREQ_PATH}/custom_fx.cpp
+	${PREREQ_PATH}/custom_fx_no_args.cpp
 )
 
 set(RUNTIME_SOURCES

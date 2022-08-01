@@ -7,6 +7,5 @@ class MetaTagsTest extends TestCase {
     public function testMetaTags() {
         $r = MetaTags::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-        $this->markTestAsNotRisky();
     }
 }

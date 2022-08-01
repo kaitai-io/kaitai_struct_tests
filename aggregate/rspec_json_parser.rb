@@ -23,7 +23,7 @@ class RSpecJSONParser < TestParser
           t['file_path'],
           t['line_number'],
           t['exception']['message'],
-          t['exception']['backtrace']
+          t['exception']['backtrace'].join("\n")
         )
       end
 

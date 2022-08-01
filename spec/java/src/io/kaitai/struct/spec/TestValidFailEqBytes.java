@@ -11,6 +11,5 @@ public class TestValidFailEqBytes extends CommonSpec {
     @Test(expectedExceptions = KaitaiStream.ValidationNotEqualError.class)
     public void testValidFailEqBytes() throws Exception {
         ValidFailEqBytes r = ValidFailEqBytes.fromFile(SRC_DIR + "fixed_struct.bin");
-
     }
 }

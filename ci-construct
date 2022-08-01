@@ -1,0 +1,9 @@
+#!/bin/sh
+
+. ./config
+
+rm -rf "$TEST_OUT_DIR/construct"
+PYTHONPATH="compiled/construct" python run-python-xml.py spec/construct "$TEST_OUT_DIR/construct"
+
+./kst-adoption-report construct
+aggregate/convert_to_json construct "$TEST_OUT_DIR/construct" "$TEST_OUT_DIR/construct/ci.json"

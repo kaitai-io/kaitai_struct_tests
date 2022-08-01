@@ -7,14 +7,14 @@ class BitsByteAlignedTest extends TestCase {
     public function testBitsByteAligned() {
         $r = BitsByteAligned::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-        $this->assertEquals(20, $r->one());
-        $this->assertEquals(65, $r->byte1());
-        $this->assertEquals(2, $r->two());
-        $this->assertEquals(false, $r->three());
-        $this->assertEquals(75, $r->byte2());
-        $this->assertEquals(2892, $r->four());
-        $this->assertEquals("\xFF", $r->byte3());
-        $this->assertEquals(255, $r->fullByte());
-        $this->assertEquals(80, $r->byte4());
+        $this->assertSame(20, $r->one());
+        $this->assertSame(65, $r->byte1());
+        $this->assertSame(2, $r->two());
+        $this->assertSame(false, $r->three());
+        $this->assertSame(75, $r->byte2());
+        $this->assertSame(2892, $r->four());
+        $this->assertSame("\xFF", $r->byte3());
+        $this->assertSame(255, $r->fullByte());
+        $this->assertSame(80, $r->byte4());
     }
 }

@@ -7,7 +7,7 @@ class CastToImportedTest extends TestCase {
     public function testCastToImported() {
         $r = CastToImported::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-        $this->assertEquals(80, $r->one()->one());
-        $this->assertEquals(80, $r->oneCasted()->one());
+        $this->assertSame(80, $r->one()->one());
+        $this->assertSame(80, $r->oneCasted()->one());
     }
 }

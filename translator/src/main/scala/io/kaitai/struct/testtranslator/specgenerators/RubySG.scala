@@ -16,13 +16,13 @@ class RubySG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   override def indentStr: String = "  "
 
   override def header(): Unit = {
-    out.puts(s"require '${spec.id}'")
-    spec.extraImports.foreach(fn => out.puts(s"require '$fn'"))
-    out.puts
-    out.puts(s"RSpec.describe $className do")
+    out.puts(s"RSpec.describe '$className' do")
     out.inc
+
     out.puts(s"it 'parses test properly' do")
     out.inc
+    out.puts(s"require '${spec.id}'")
+    spec.extraImports.foreach(fn => out.puts(s"require '$fn'"))
   }
 
   override def runParse(): Unit = {

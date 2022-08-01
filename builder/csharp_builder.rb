@@ -20,17 +20,21 @@ class CSharpBuilder < PartialBuilder
   end
 
   def detect_tools
+    @msbuild_args = []
+
     # msbuild
     if system("msbuild /version")
       @msbuild = 'msbuild'
     elsif system("xbuild /version")
       @msbuild = 'xbuild'
+    elsif system("dotnet build /version")
+      @msbuild = 'dotnet'
+      @msbuild_args = ['build', '--framework', 'netstandard1.3']
     else
       raise 'Unable to find msbuild/xbuild, bailing out'
     end
 
     # If we're running in AppVeyor, add extra logger args
-    @msbuild_args = []
     if ENV['APPVEYOR']
       @msbuild_args << '/logger:C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll'
     end
@@ -65,7 +69,7 @@ class CSharpBuilder < PartialBuilder
     run_and_tee({}, cli, log_file).exitstatus
   end
 
-  def parse_failed_build(log_file)
+  def parse_failed_build(log_file, disp_files)
     list = Set.new
 
     File.open(log_file, 'r') { |f|
@@ -77,7 +81,14 @@ class CSharpBuilder < PartialBuilder
           #col = $3
           #code = $4
           #msg = $5
-          list << filename
+
+          if filename =~ /^tests[\\\/]([^\/].*)$/
+            # Not an absolute path, this happens when we hit problems
+            # originating in spec files - treat these as bare files
+            list << [:bare, $1]
+          else
+            list << filename
+          end
         end
       }
     }
@@ -86,8 +97,13 @@ class CSharpBuilder < PartialBuilder
   end
 
   def file_to_test(filename)
-    # File.basename only forwards with forward slashes, so we normalize for that first
-    fn = File.basename(filename.gsub(/\\/, '/'))
+    fn = if is_bare?(filename)
+      # If bare name, then it's exactly what we're looking for
+      filename[1]
+    else
+      # File.basename only forwards with forward slashes, so we normalize for that first
+      File.basename(filename.gsub(/\\/, '/'))
+    end
     if fn =~ /^Spec(.*)\.cs$/
       return [:spec, $1]
     else
@@ -117,8 +133,15 @@ class CSharpBuilder < PartialBuilder
     File.exists?(xml_log)
   end
 
-  private
+#  private
   def convert_slashes(list)
-    list.sort.map { |f| f.gsub(/\//, '\\') }
+    sort_list_with_bare(list).map { |f|
+      if is_bare?(f)
+        # bare file, return as is, no slashes expected anyway
+        f
+      else
+        f.gsub(/\//, '\\')
+      end
+    }
   end
 end

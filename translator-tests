@@ -4,4 +4,4 @@
 TEST_DIR=$(pwd)
 
 cd "$COMPILER_DIR"
-"$TEST_DIR/travis-fold" translator-tests sbt test
+"$TEST_DIR/travis-fold" 'translator-tests' sbt test

@@ -36,7 +36,7 @@ class NUnitXMLParser < TestParser
                    filename,
                    nil,
                    failure_msg,
-                   failure_trace.split(/\n/)
+                   failure_trace
                  )
                  :failed
                else

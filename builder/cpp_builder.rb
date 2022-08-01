@@ -116,7 +116,7 @@ class CppBuilder < PartialBuilder
     r
   end
 
-  def parse_failed_build(log_file)
+  def parse_failed_build(log_file, disp_files)
     list = Set.new
 
     orig_cpp_filename = nil
@@ -130,7 +130,7 @@ class CppBuilder < PartialBuilder
           case l
           when /^In file included from (.+?):(\d+)(:\d+)?:$/
             orig_cpp_filename = $1
-          when /^(.+?):(\d+):(\d+): error: (.*)$/
+          when /^(.+?):(\d+):(\d+): (?:fatal )?error: (.*)$/
             filename = $1
             #row = $2
             #col = $3
@@ -173,8 +173,11 @@ class CppBuilder < PartialBuilder
         f.each_line { |l|
           l.chomp!
           # c:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.h(18): error C2061: syntax error: identifier 'enum_to_i_class_border_1_t' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
+          # C:\projects\ci-targets\tests\spec\cpp_stl_98\test_expr_calc_array_ops.cpp(4): fatal error C1083: Cannot open include file: 'expr_calc_array_ops.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
           case l
-          when /^\s*(.*?)\((\d+)\): error (.*?): (.*)$/
+          when /^\s+([a-z0-9_]+\.cpp)$/
+            orig_cpp_filename = disp_files.find { |path| path.end_with?($1) }
+          when /^\s*(.*?)\((\d+)\): (:?fatal )?error (.*?): (.*)$/
             filename = $1
             #row = $2
             #code = $3
@@ -190,11 +193,13 @@ class CppBuilder < PartialBuilder
 
             # .h files are not members of disposable_files per se,
             # they are always included from some other .cpp
-            # files. However, msbuild logs do not offer any way to get
-            # to know the original culprit, so we'll just ignore all
-            # .h file problems for now.
-            next if filename =~ /\.h$/
-
+            # files. MSBuild logs print the original .cpp filename
+            # indented with 2 spaces just before any error
+            # occurs, so we just use it.
+            if filename =~ /(.*)\.h$/
+              raise "Found error in #{filename.inspect} file, but no original .cpp file reference found before" if orig_cpp_filename.nil?
+              filename = orig_cpp_filename
+            end
             list << filename
           when /^\s*(.*?)\.obj : error LNK2019:/
             filename = "#{$1}.cpp"

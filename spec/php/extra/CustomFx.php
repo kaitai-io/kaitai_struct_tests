@@ -15,9 +15,21 @@ class MyCustomFx {
     }
 }
 
+class CustomFxNoArgs {
+    public function __construct() {
+    }
+
+    public function decode($src) {
+        return "_" . $src . "_";
+    }
+}
+
 namespace Nested\Deeply;
 
 class CustomFx {
+    public function __construct(int $x) {
+    }
+
     public function decode($src) {
         return "_" . $src . "_";
     }

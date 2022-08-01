@@ -1,6 +1,13 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.datatype.{
+  KSError,
+  ValidationNotEqualError,
+  UndecidedEndiannessError,
+  EndOfStreamError
+}
+import _root_.io.kaitai.struct.datatype.DataType._
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.PerlCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
@@ -16,14 +23,27 @@ class PerlSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   importList.add("base qw(Test::Class)")
   importList.add("Test::More")
   importList.add(className)
+  if (spec.exception.isDefined) {
+    importList.add("Test::Exception")
+  }
 
   override def fileName(name: String): String = s"Test$className.t"
 
   override def header(): Unit = {
-    out.puts(s"sub test_${spec.id}: Test(${spec.asserts.length}) {")
+    out.puts(s"sub test_${spec.id}: Test(${if (spec.exception.isDefined) 1 else spec.asserts.length}) {")
     out.inc
+  }
+
+  override def runParse(): Unit = {
     out.puts(s"my $$r = $className->from_file('src/${spec.data}');")
-    out.puts
+  }
+
+  override def runParseExpectError(exception: KSError): Unit = {
+    val msg = exception match {
+      case UndecidedEndiannessError => "Unable to decide on endianness"
+      case EndOfStreamError => "Requested \\d+ bytes, but only \\d+ bytes available"
+    }
+    out.puts(s"""throws_ok { $className->from_file('src/${spec.data}') } '/^$msg/';""")
   }
 
   override def footer(): Unit = {
@@ -36,7 +56,13 @@ class PerlSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   override def simpleAssert(check: TestAssert): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
-    out.puts(s"is($actStr, $expStr, 'Equals');")
+    val loc = translator.detectType(check.expected) match {
+      // we need to use numerical comparison for booleans, because string comparison does not work
+      // for all falsy values
+      case _: BooleanType => s"cmp_ok($actStr, '==', $expStr, 'Equals')"
+      case _ => s"is($actStr, $expStr, 'Equals')"
+    }
+    out.puts(s"$loc;")
   }
 
   override def floatAssert(check: TestAssert): Unit = {

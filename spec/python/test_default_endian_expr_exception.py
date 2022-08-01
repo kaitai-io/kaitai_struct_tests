@@ -9,5 +9,4 @@ class TestDefaultEndianExprException(unittest.TestCase):
     def test_default_endian_expr_exception(self):
         with self.assertRaises(kaitaistruct.UndecidedEndiannessError):
             with DefaultEndianExprException.from_file('src/endian_expr.bin') as r:
-
                 pass

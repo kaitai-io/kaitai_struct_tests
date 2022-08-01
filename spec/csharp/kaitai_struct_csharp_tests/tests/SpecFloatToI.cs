@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = FloatToI.FromFile(SourceFile("floating_points.bin"));
 
-            Assert.AreEqual(r.SingleValue, 0.5);
-            Assert.AreEqual(r.DoubleValue, 0.25);
+            Assert.AreEqual(r.SingleValue, 0.5, 1e-6);
+            Assert.AreEqual(r.DoubleValue, 0.25, 1e-6);
             Assert.AreEqual(r.SingleI, 0);
             Assert.AreEqual(r.DoubleI, 0);
             Assert.AreEqual(r.Float1I, 1);
