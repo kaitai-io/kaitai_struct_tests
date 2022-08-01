@@ -7,7 +7,8 @@ FORMATS_COMPILED_DIR=$FORMATS_COMPILED_DIR/rust
 rm -rf "$FORMATS_COMPILED_DIR"
 mkdir -p "$FORMATS_COMPILED_DIR"
 "$COMPILER_DIR/jvm/target/universal/stage/bin/kaitai-struct-compiler" -- \
-	--verbose all -t rust -d "$FORMATS_COMPILED_DIR" \
+	-t rust -d "$FORMATS_COMPILED_DIR" \
+  --ksc-exceptions \
 	--import-path "$FORMATS_REPO_DIR" \
 	--import-path "$FORMATS_KSY_DIR/ks_path" \
 	--java-package io.kaitai.struct.testformats \
