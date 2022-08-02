@@ -12,7 +12,7 @@ fn basic_parse() {
     let reader = BytesReader::new(&bytes);
     let mut r = StrRepeat::default();
     {
-        let res = r.read(&reader, None, KStructUnit::parent_stack());
+        let res = r.read(&reader, None, Some(KStructUnit::parent_stack()));
         println!("{:?}", res);
         assert!(res.is_ok());
     }

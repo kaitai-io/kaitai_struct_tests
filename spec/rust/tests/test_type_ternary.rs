@@ -12,7 +12,7 @@ fn test_type_ternary() {
     let reader = BytesReader::new(&bytes);
     let mut r = TypeTernary::default();
 
-    if let Err(err) = r.read(&reader, None, KStructUnit::parent_stack()) {
+    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
 
         panic!("{:?}", err);
     }

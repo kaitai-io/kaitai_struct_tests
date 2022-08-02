@@ -13,7 +13,7 @@ fn test_valid_fail_contents() {
     let reader = BytesReader::new(&bytes);
     let mut r = ValidFailContents::default();
 
-    if let Err(err) = r.read(&reader, None, KStructUnit::parent_stack()) {
+    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
         println!("expected err: {:?}, exception: ValidationNotEqualError(CalcBytesType)", err);
     } else {
         panic!("no expected exception: ValidationNotEqualError(CalcBytesType)");

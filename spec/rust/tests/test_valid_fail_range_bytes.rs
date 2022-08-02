@@ -13,7 +13,7 @@ fn test_valid_fail_range_bytes() {
     let reader = BytesReader::new(&bytes);
     let mut r = ValidFailRangeBytes::default();
 
-    if let Err(err) = r.read(&reader, None, KStructUnit::parent_stack()) {
+    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
         println!("expected err: {:?}, exception: ValidationGreaterThanError(CalcBytesType)", err);
     } else {
         panic!("no expected exception: ValidationGreaterThanError(CalcBytesType)");

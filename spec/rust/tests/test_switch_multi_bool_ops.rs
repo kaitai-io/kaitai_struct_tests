@@ -13,7 +13,7 @@ fn test_switch_multi_bool_ops() {
     let reader = BytesReader::new(&bytes);
     let mut r = SwitchMultiBoolOps::default();
 
-    if let Err(err) = r.read(&reader, None, KStructUnit::parent_stack()) {
+    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
 
         panic!("{:?}", err);
     }

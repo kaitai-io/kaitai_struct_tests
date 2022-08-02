@@ -12,7 +12,7 @@ fn test_str_encodings_default() {
     let reader = BytesReader::new(&bytes);
     let mut r = StrEncodingsDefault::default();
 
-    if let Err(err) = r.read(&reader, None, KStructUnit::parent_stack()) {
+    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
 
         panic!("{:?}", err);
     }

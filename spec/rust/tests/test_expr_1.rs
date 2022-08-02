@@ -12,17 +12,17 @@ fn test_expr_1() {
     let reader = BytesReader::new(&bytes);
     let mut r = Expr1::default();
 
-    if let Err(err) = r.read(&reader, None, KStructUnit::parent_stack()) {
+    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
 
         panic!("{:?}", err);
     }
     assert_eq!(10, r.len_of_1);
 
     let res = r.len_of_1_mod(&reader);
-    assert_eq!(8, *res.unwrap());
+    assert_eq!(8, res.unwrap());
 
     assert_eq!("Some ASC", *r.str1());
 
     let res = r.str1_len(&reader);
-    assert_eq!(8, *res.unwrap());
+    assert_eq!(8, res.unwrap());
 }

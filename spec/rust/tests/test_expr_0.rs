@@ -12,10 +12,10 @@ fn test_expr_0() {
     let reader = BytesReader::new(&bytes);
     let mut r = Expr0::default();
 
-    if let Err(err) = r.read(&reader, None, KStructUnit::parent_stack()) {
+    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
 
         panic!("{:?}", err);
     }
-    assert_eq!(*r.must_be_f7(&reader).unwrap(), 247);
+    assert_eq!(r.must_be_f7(&reader).unwrap(), 247);
     assert_eq!(r.must_be_abc123(&reader).unwrap(), "abc123");
 }

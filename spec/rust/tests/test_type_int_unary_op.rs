@@ -12,12 +12,12 @@ fn test_type_int_unary_op() {
     let reader = BytesReader::new(&bytes);
     let mut r = TypeIntUnaryOp::default();
 
-    if let Err(err) = r.read(&reader, None, KStructUnit::parent_stack()) {
+    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
 
         panic!("{:?}", err);
     }
     assert_eq!(r.value_s2(), 16720);
     assert_eq!(r.value_s8(), 4706543082108963651);
-    assert_eq!(*r.unary_s2(&reader).unwrap(), -16720);
-    assert_eq!(*r.unary_s8(&reader).unwrap(), -4706543082108963651);
+    assert_eq!(r.unary_s2(&reader).unwrap(), -16720);
+    assert_eq!(r.unary_s8(&reader).unwrap(), -4706543082108963651);
 }

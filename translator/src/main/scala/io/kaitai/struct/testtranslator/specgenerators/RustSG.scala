@@ -30,7 +30,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
           |    let reader = BytesReader::new(&bytes);
           |    let mut r = $className::default();
           |
-          |    if let Err(err) = r.read(&reader, None, KStructUnit::parent_stack()) {""".stripMargin
+          |    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {""".stripMargin
     out.puts(code)
     out.inc
   }

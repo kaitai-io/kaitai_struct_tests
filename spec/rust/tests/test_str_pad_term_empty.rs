@@ -14,7 +14,7 @@ fn test_str_pad_term_empty() {
     let reader = BytesReader::new(&bytes);
     let mut r = StrPadTermEmpty::default();
 
-    if let Err(err) = r.read(&reader, None, KStructUnit::parent_stack()) {
+    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
 
         panic!("{:?}", err);
     }

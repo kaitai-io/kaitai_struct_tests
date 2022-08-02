@@ -13,7 +13,7 @@ fn basic_parse() {
 
     let mut r = StrLiterals::default();
     {
-        let res = r.read(&reader, None, KStructUnit::parent_stack());
+        let res = r.read(&reader, None, Some(KStructUnit::parent_stack()));
         println!("{:?}", res);
         assert!(res.is_ok());
     }

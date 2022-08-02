@@ -13,7 +13,7 @@ fn test_valid_fail_min_int() {
     let reader = BytesReader::new(&bytes);
     let mut r = ValidFailMinInt::default();
 
-    if let Err(err) = r.read(&reader, None, KStructUnit::parent_stack()) {
+    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
         println!("expected err: {:?}, exception: ValidationLessThanError(Int1Type(false))", err);
     } else {
         panic!("no expected exception: ValidationLessThanError(Int1Type(false))");
