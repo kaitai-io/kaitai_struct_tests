@@ -25,7 +25,7 @@ popd
 FORMATS=
 FORMATS_ONLY_RUST=
 KEEPING_TESTS=
-for fn in $FORMATS_DIR/*; do
+for fn in $FORMATS_DIR/*.ksy; do
 	f=$(basename -- ${fn%%.*})
 
 	# regenerate tests only if there no such test exist
