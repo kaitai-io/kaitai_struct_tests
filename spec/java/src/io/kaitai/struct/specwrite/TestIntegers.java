@@ -1,12 +1,12 @@
 package io.kaitai.struct.specwrite;
 
-import io.kaitai.struct.testwrite.FixedStruct;
+import io.kaitai.struct.testwrite.Integers;
 import org.testng.annotations.Test;
 
-public class TestFixedStruct extends CommonSpec {
+public class TestIntegers extends CommonSpec {
     @Test
-    public void testFixedStruct() throws Exception {
-        FixedStruct.Header r = new FixedStruct.Header();
+    public void testIntegers() throws Exception {
+        Integers r = new Integers();
 
         r.setUint8(255);
         r.setUint16(65535);
