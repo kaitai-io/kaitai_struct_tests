@@ -18,8 +18,8 @@ fn test_str_pad_term_empty() {
 
         panic!("{:?}", err);
     }
-    assert_eq!(r.str_pad, "");
-    assert_eq!(r.str_term, "");
-    assert_eq!(r.str_term_and_pad, "");
-    assert_eq!(r.str_term_include, "@");
+    assert_eq!(r.str_pad(), "");
+    assert_eq!(r.str_term(), "");
+    assert_eq!(r.str_term_and_pad(), "");
+    assert_eq!(r.str_term_include(), "@");
 }

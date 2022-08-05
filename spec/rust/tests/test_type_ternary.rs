@@ -16,5 +16,5 @@ fn test_type_ternary() {
 
         panic!("{:?}", err);
     }
-    assert_eq!(r.dif(&reader).unwrap().value(), 101);
+    assert_eq!(*r.dif(&reader).unwrap().value(), 101);
 }

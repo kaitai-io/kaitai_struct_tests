@@ -17,21 +17,21 @@ fn test_expr_2() {
 
         panic!("{:?}", err);
     }
-    assert_eq!(r.str1().len_orig(), 10);
-    assert_eq!(r.str1().len_mod(&reader).unwrap(), 7);
-    assert_eq!(r.str1().str, "Some AS");
-    assert_eq!(r.str1_len(&reader).unwrap(), 7);
-    assert_eq!(r.str1_len_mod(&reader).unwrap(), 7);
-    assert_eq!(r.str1_byte1(&reader).unwrap(), 73);
-    assert_eq!(r.str1_avg(&reader).unwrap(), 73);
-    assert_eq!(r.str1_char5(&reader).unwrap(), "e");
-    assert_eq!(r.str1_tuple5(&reader).unwrap().byte0, 101);
-    assert_eq!(r.str1_tuple5(&reader).unwrap().byte0, 101);
-    assert_eq!(r.str1_tuple5(&reader).unwrap().byte1, 32);
-    assert_eq!(r.str1_tuple5(&reader).unwrap().byte2, 65);
-    assert_eq!(r.str1_tuple5(&reader).unwrap().avg(&reader).unwrap(), 48);
-    assert_eq!(r.str2_tuple5(&reader).unwrap().byte0, 101);
-    assert_eq!(r.str2_tuple5(&reader).unwrap().byte1, 32);
-    assert_eq!(r.str2_tuple5(&reader).unwrap().byte2, 65);
-    assert_eq!(r.str2_tuple5(&reader).unwrap().avg(&reader).unwrap(), 48);
+    assert_eq!(*r.str1().len_orig(), 10);
+    assert_eq!(*r.str1().len_mod(&reader).unwrap(), 7);
+    assert_eq!(*r.str1().str(), "Some AS");
+    assert_eq!(*r.str1_len(&reader).unwrap(), 7);
+    assert_eq!(*r.str1_len_mod(&reader).unwrap(), 7);
+    assert_eq!(*r.str1_byte1(&reader).unwrap(), 73);
+    assert_eq!(*r.str1_avg(&reader).unwrap(), 73);
+    assert_eq!(*r.str1_char5(&reader).unwrap(), "e");
+    assert_eq!(*r.str1_tuple5(&reader).unwrap().byte0(), 101);
+    assert_eq!(*r.str1_tuple5(&reader).unwrap().byte0(), 101);
+    assert_eq!(*r.str1_tuple5(&reader).unwrap().byte1(), 32);
+    assert_eq!(*r.str1_tuple5(&reader).unwrap().byte2(), 65);
+    assert_eq!(*r.str1_tuple5(&reader).unwrap().avg(&reader).unwrap(), 48);
+    assert_eq!(*r.str2_tuple5(&reader).unwrap().byte0(), 101);
+    assert_eq!(*r.str2_tuple5(&reader).unwrap().byte1(), 32);
+    assert_eq!(*r.str2_tuple5(&reader).unwrap().byte2(), 65);
+    assert_eq!(*r.str2_tuple5(&reader).unwrap().avg(&reader).unwrap(), 48);
 }

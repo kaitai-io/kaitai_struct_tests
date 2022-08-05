@@ -16,13 +16,13 @@ fn test_expr_1() {
 
         panic!("{:?}", err);
     }
-    assert_eq!(10, r.len_of_1);
+    assert_eq!(10, *r.len_of_1());
 
     let res = r.len_of_1_mod(&reader);
-    assert_eq!(8, res.unwrap());
+    assert_eq!(8, *res.unwrap());
 
     assert_eq!("Some ASC", *r.str1());
 
     let res = r.str1_len(&reader);
-    assert_eq!(8, res.unwrap());
+    assert_eq!(8, *res.unwrap());
 }

@@ -16,9 +16,9 @@ fn test_switch_integers2() {
 
         panic!("{:?}", err);
     }
-    assert_eq!(r.code(), 1);
+    assert_eq!(*r.code(), 1);
     assert_eq!(r.len(), 7);
     assert_eq!(r.ham(), &[0x2u8, 0x40u8, 0x40u8, 0x4u8, 0x37u8, 0x13u8, 0x0u8].to_vec());
-    assert_eq!(r.padding(), 0);
-    assert_eq!(r.len_mod_str(&reader).unwrap(), "13");
+    assert_eq!(*r.padding(), 0);
+    assert_eq!(*r.len_mod_str(&reader).unwrap(), "13");
 }

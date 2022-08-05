@@ -16,8 +16,8 @@ fn test_type_int_unary_op() {
 
         panic!("{:?}", err);
     }
-    assert_eq!(r.value_s2(), 16720);
-    assert_eq!(r.value_s8(), 4706543082108963651);
-    assert_eq!(r.unary_s2(&reader).unwrap(), -16720);
-    assert_eq!(r.unary_s8(&reader).unwrap(), -4706543082108963651);
+    assert_eq!(*r.value_s2(), 16720);
+    assert_eq!(*r.value_s8(), 4706543082108963651);
+    assert_eq!(*r.unary_s2(&reader).unwrap(), -16720);
+    assert_eq!(*r.unary_s8(&reader).unwrap(), -4706543082108963651);
 }

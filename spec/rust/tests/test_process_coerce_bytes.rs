@@ -16,15 +16,11 @@ fn test_process_coerce_bytes() {
 
         panic!("{:?}", err);
     }
-    assert_eq!(0, r.records[0].flag());
-
-    let mut i = r.records.iter_mut();
-
+    assert_eq!(0, *r.records()[0].flag());
     let buf : Vec<u8> = vec![0x41, 0x41, 0x41, 0x41];
-    let x = i.next().unwrap();
-    assert_eq!(&buf, x.buf(&reader).unwrap());
+    assert_eq!(buf, *r.records()[0].buf(&reader).unwrap());
 
+    assert_eq!(1, *r.records()[1].flag());
     let buf : Vec<u8> = vec![0x42, 0x42, 0x42, 0x42];
-    let x = i.next().unwrap();
-    assert_eq!(&buf, x.buf(&reader).unwrap());
+    assert_eq!(buf, *r.records()[1].buf(&reader).unwrap());
 }
