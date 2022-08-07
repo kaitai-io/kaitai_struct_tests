@@ -1,14 +1,15 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import _root_.io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
+import _root_.io.kaitai.struct.{ClassTypeProvider, JSON, RuntimeConfig}
 import _root_.io.kaitai.struct.datatype.{DataType, KSError}
-import _root_.io.kaitai.struct.datatype.DataType._
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.RustCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 import _root_.io.kaitai.struct.translators.RustTranslator
+import io.kaitai.struct.exprlang.Ast.expr.Attribute
+import io.kaitai.struct.format.{ClassSpecs, InstanceIdentifier}
 
-class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
+class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs) extends BaseGenerator(spec) {
   val className = RustCompiler.type2class(spec.id)
   val translator = new RustTranslator(provider, RuntimeConfig())
   var do_panic = true;
@@ -72,7 +73,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
   override def simpleAssert(check: TestAssert): Unit = {
     val actStr = translateAct(check.actual)
-    var expStr = translator.translate(check.expected)
+    var expStr = translate(check.expected)
     finish_panic()
     out.puts(s"assert_eq!($actStr, $expStr);")
   }
@@ -96,6 +97,34 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
       out.result
   }
 
+  import pprint._
+
+  object Implicits {
+    implicit class CaseClassToString(c: AnyRef) {
+      def toStringWithFields: String = {
+        val fields = (Map[String, Any]() /: c.getClass.getDeclaredFields) { (a, f) =>
+          f.setAccessible(true)
+          a + (f.getName -> f.get(c))
+        }
+
+        s"${c.getClass.getName}(${fields.mkString("\n")})"
+      }
+    }
+  }
+
+  def translate(x: Ast.expr): String = {
+    val txt = translator.translate(x)
+    x match {
+      case Attribute(value, attr) =>
+        if (classSpecs.firstSpec.instances.contains(InstanceIdentifier(attr.name))) {
+          s"$txt?"
+        } else {
+          txt
+        }
+      case _ => txt
+    }
+  }
+
   def translateAct(x: Ast.expr) =
-    translator.translate(x).replace(s"self.${Main.INIT_OBJ_NAME}()", "r")
+    translate(x).replace(s"self.${Main.INIT_OBJ_NAME}()", "r")
 }
