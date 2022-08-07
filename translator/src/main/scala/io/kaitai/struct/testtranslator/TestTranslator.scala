@@ -45,7 +45,7 @@ class TestTranslator(options: CLIOptions) {
     val provider = new ClassTypeProvider(classSpecs, initObj)
 
     langs.foreach(langName => {
-      val sg = getSG(langName, testSpec, provider)
+      val sg = getSG(langName, testSpec, provider, classSpecs)
       try {
         sg.run()
         val outFile = if(exactOutDir) { s"$outDir/${sg.fileName(testName)}" } else { s"$outDir/$langName/${sg.fileName(testName)}" }
@@ -124,7 +124,7 @@ class TestTranslator(options: CLIOptions) {
     origSpecs
   }
 
-  def getSG(lang: String, testSpec: TestSpec, provider: ClassTypeProvider): BaseGenerator = lang match {
+  def getSG(lang: String, testSpec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs): BaseGenerator = lang match {
     case "construct" => new ConstructSG(testSpec, provider)
     case "cpp_stl_98" => new CppStlSG(testSpec, provider, CppRuntimeConfig().copyAsCpp98())
     case "cpp_stl_11" => new CppStlSG(testSpec, provider, CppRuntimeConfig().copyAsCpp11())
@@ -138,6 +138,6 @@ class TestTranslator(options: CLIOptions) {
     case "php" => new PHPSG(testSpec, provider)
     case "python" => new PythonSG(testSpec, provider)
     case "ruby" => new RubySG(testSpec, provider)
-    case "rust" => new RustSG(testSpec, provider)
+    case "rust" => new RustSG(testSpec, provider, classSpecs)
   }
 }
