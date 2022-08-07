@@ -1,4 +1,4 @@
-# attr_invalid_switch_inner.ksy: /seq/1/type/cases/IntNum(42)/size:
+# attr_invalid_switch_inner.ksy: /seq/1/size:
 # 	error: invalid type: expected integer, got CalcBooleanType
 #
 meta:
