@@ -16,10 +16,10 @@ fn test_str_encodings_utf16() {
 
         panic!("{:?}", err);
     }
-    assert_eq!(r.len_be(), 12);
-    assert_eq!(r.be_bom_removed().bom(), 65279);
+    assert_eq!(*r.len_be(), 12);
+    assert_eq!(*r.be_bom_removed().bom(), 65279);
     assert_eq!(r.be_bom_removed().str(), "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}");
-    assert_eq!(r.len_le(), 12);
-    assert_eq!(r.le_bom_removed().bom(), 65279);
+    assert_eq!(*r.len_le(), 12);
+    assert_eq!(*r.le_bom_removed().bom(), 65279);
     assert_eq!(r.le_bom_removed().str(), "\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}");
 }

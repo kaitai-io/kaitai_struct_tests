@@ -18,7 +18,7 @@ fn basic_parse() {
         assert!(res.is_ok());
     }
 
-    assert_eq!(1, r.len());
+    assert_eq!(1, *r.len());
     assert_eq!(vec![7], *r.val());
     assert_eq!(vec![0x2, 0x40], *r.padding());
 }

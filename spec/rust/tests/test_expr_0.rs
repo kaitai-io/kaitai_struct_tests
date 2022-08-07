@@ -16,6 +16,6 @@ fn test_expr_0() {
 
         panic!("{:?}", err);
     }
-    assert_eq!(r.must_be_f7(&reader).unwrap(), 247);
-    assert_eq!(r.must_be_abc123(&reader).unwrap(), "abc123");
+    assert_eq!(*r.must_be_f7(&reader).unwrap(), 247);
+    assert_eq!(*r.must_be_abc123(&reader).unwrap(), "abc123");
 }
