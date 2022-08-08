@@ -97,8 +97,6 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
       out.result
   }
 
-  import pprint._
-
   object Implicits {
     implicit class CaseClassToString(c: AnyRef) {
       def toStringWithFields: String = {
@@ -117,7 +115,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     x match {
       case Attribute(value, attr) =>
         if (classSpecs.firstSpec.instances.contains(InstanceIdentifier(attr.name))) {
-          s"$txt?"
+          s"${txt.dropRight(2)}(&reader).unwrap()"
         } else {
           txt
         }
