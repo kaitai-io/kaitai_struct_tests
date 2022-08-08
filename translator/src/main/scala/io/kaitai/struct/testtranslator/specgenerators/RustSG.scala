@@ -6,6 +6,7 @@ import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.RustCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 import _root_.io.kaitai.struct.translators.RustTranslator
+import io.kaitai.struct.datatype.DataType.{CalcBooleanType, EnumType}
 import io.kaitai.struct.exprlang.Ast.expr.Attribute
 import io.kaitai.struct.format.{ClassSpecs, InstanceIdentifier}
 
@@ -22,8 +23,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
           |
           |extern crate kaitai;
           |use self::kaitai::*;
-          |mod formats;
-          |use formats::${spec.id}::*;
+          |use crate::formats::${spec.id}::*;
           |
           |#[test]
           |fn test_${spec.id}() {
@@ -72,8 +72,27 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
   }
 
   override def simpleAssert(check: TestAssert): Unit = {
-    val actStr = translateAct(check.actual)
-    var expStr = translate(check.expected)
+    val actType = translator.detectType(check.actual)
+    val expType = translator.detectType(check.expected)
+    val act = translateAct(check.actual)
+    val actStr =
+      actType match {
+        case EnumType(_, _) => //TODO: remove override def anyField(...) from RustTranslator
+          remove_deref(act)
+        case CalcBooleanType =>
+          remove_deref(act)
+        case _ => translateAct(check.actual)
+      }
+
+    val exp = translator.translate(check.expected)
+    val expStr = expType match {
+      case EnumType(_, _) => //TODO: remove override def anyField(...) from RustTranslator
+        remove_deref(exp)
+      case CalcBooleanType =>
+        remove_deref(exp)
+      case _ => translator.translate(check.expected)
+    }
+
     finish_panic()
     out.puts(s"assert_eq!($actStr, $expStr);")
   }
@@ -97,34 +116,15 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
       out.result
   }
 
-  import pprint._
-
-  object Implicits {
-    implicit class CaseClassToString(c: AnyRef) {
-      def toStringWithFields: String = {
-        val fields = (Map[String, Any]() /: c.getClass.getDeclaredFields) { (a, f) =>
-          f.setAccessible(true)
-          a + (f.getName -> f.get(c))
-        }
-
-        s"${c.getClass.getName}(${fields.mkString("\n")})"
-      }
-    }
-  }
-
-  def translate(x: Ast.expr): String = {
-    val txt = translator.translate(x)
-    x match {
-      case Attribute(value, attr) =>
-        if (classSpecs.firstSpec.instances.contains(InstanceIdentifier(attr.name))) {
-          s"$txt?"
-        } else {
-          txt
-        }
-      case _ => txt
-    }
-  }
-
   def translateAct(x: Ast.expr) =
-    translate(x).replace(s"self.${Main.INIT_OBJ_NAME}()", "r")
+    translator.translate(x).replace(s"self.${Main.INIT_OBJ_NAME}()", "r")
+
+  def remove_deref(s: String): String = {
+    if (s.charAt(0) == '*') {
+      s.substring(1, s.length())
+    } else {
+      s
+    }
+  }
+
 }
