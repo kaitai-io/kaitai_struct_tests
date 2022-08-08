@@ -2,6 +2,7 @@ package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.{ClassTypeProvider, JSON, RuntimeConfig}
 import _root_.io.kaitai.struct.datatype.{DataType, KSError}
+import io.kaitai.struct.datatype.DataType._
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.RustCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
@@ -117,7 +118,22 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
         if (classSpecs.firstSpec.instances.contains(InstanceIdentifier(attr.name))) {
           s"${txt.dropRight(2)}(&reader).unwrap()"
         } else {
-          txt
+          var deref = true;
+          val found = translator.get_attr(classSpecs.firstSpec, attr.name)
+          if (found.isDefined) {
+            deref = found.get.dataTypeComposite match {
+              case _: SwitchType => false
+              case _: UserType => false
+              case _: BytesType => false
+              case _: ArrayType => false
+              case _ => true
+            }
+          }
+          if (deref) {
+            txt
+          } else {
+            s"${translator.remove_deref(txt)}"
+          }
         }
       case _ => txt
     }
