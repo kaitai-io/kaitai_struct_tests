@@ -6,7 +6,7 @@ import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.RustCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 import _root_.io.kaitai.struct.translators.RustTranslator
-import io.kaitai.struct.datatype.DataType.{CalcBooleanType, EnumType}
+import _root_.io.kaitai.struct.datatype.DataType.{BooleanType, EnumType, SwitchType, UserType, BytesType, ArrayType, IntType}
 import io.kaitai.struct.exprlang.Ast.expr.Attribute
 import io.kaitai.struct.format.{ClassSpecs, InstanceIdentifier}
 
@@ -23,7 +23,8 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
           |
           |extern crate kaitai;
           |use self::kaitai::*;
-          |use crate::formats::${spec.id}::*;
+          |mod formats;
+          |use formats::${spec.id}::*;
           |
           |#[test]
           |fn test_${spec.id}() {
@@ -73,24 +74,20 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
 
   override def simpleAssert(check: TestAssert): Unit = {
     val actType = translator.detectType(check.actual)
+    var actStr = translateAct(check.actual)
     val expType = translator.detectType(check.expected)
-    val act = translateAct(check.actual)
-    val actStr =
-      actType match {
-        case EnumType(_, _) => //TODO: remove override def anyField(...) from RustTranslator
-          remove_deref(act)
-        case CalcBooleanType =>
-          remove_deref(act)
-        case _ => translateAct(check.actual)
-      }
+    var expStr = translate(check.expected)
 
-    val exp = translator.translate(check.expected)
-    val expStr = expType match {
-      case EnumType(_, _) => //TODO: remove override def anyField(...) from RustTranslator
-        remove_deref(exp)
-      case CalcBooleanType =>
-        remove_deref(exp)
-      case _ => translator.translate(check.expected)
+    (actType, expType) match {
+      case (at: EnumType, et: EnumType) =>
+        expStr = remove_ref(expStr)
+      case (at: EnumType, et: BooleanType) =>
+        expStr = remove_ref(expStr)
+      case (at: EnumType, et: IntType) =>
+        actStr = actStr + " as u64"
+      //      case  =>
+      //        remove_deref(txt)
+      case _ =>
     }
 
     finish_panic()
@@ -116,15 +113,42 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
       out.result
   }
 
-  def translateAct(x: Ast.expr) =
-    translator.translate(x).replace(s"self.${Main.INIT_OBJ_NAME}()", "r")
+  def translate(x: Ast.expr): String = {
+    val txt = translator.translate(x)
+    x match {
+      case Attribute(value, attr) =>
+        if (classSpecs.firstSpec.instances.contains(InstanceIdentifier(attr.name))) {
+          s"${txt.dropRight(2)}(&reader).unwrap()"
+        } else {
+          var deref = true;
+          val found = translator.get_attr(classSpecs.firstSpec, attr.name)
+          if (found.isDefined) {
+            deref = found.get.dataTypeComposite match {
+              case _: SwitchType => false
+              case _: UserType => false
+              case _: BytesType => false
+              case _: ArrayType => false
+              case _ => true
+            }
+          }
+          if (deref) {
+            txt
+          } else {
+            s"${translator.remove_deref(txt)}"
+          }
+        }
+      case _ => txt
+    }
+  }
 
-  def remove_deref(s: String): String = {
-    if (s.charAt(0) == '*') {
+  def remove_ref(s: String): String = {
+    if (s.charAt(0) == '&') {
       s.substring(1, s.length())
     } else {
       s
     }
   }
 
+  def translateAct(x: Ast.expr) =
+    translate(x).replace(s"self.${Main.INIT_OBJ_NAME}()", "r")
 }
