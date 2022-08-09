@@ -21,4 +21,6 @@ fn basic_parse() {
     assert_eq!(7, *r.child().child_byte());
     assert_eq!(1, r.child().child2().len());
     assert_eq!(vec![2, 64, 64, 4, 55, 19, 0], *r.child().child2()[0].child2_byte());
+    assert_eq!(1, r.child().child2()[0].child3_struct().len());
+    assert_eq!(vec![0], *r.child().child2()[0].child3_struct()[0].child3_byte());
 }
