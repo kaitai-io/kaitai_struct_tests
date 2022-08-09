@@ -21,4 +21,16 @@ types:
             type: u1
             repeat: expr
             repeat-expr: _parent.child_byte
+          - id: child3_struct
+            type: child3_struct
+            repeat: expr
+            repeat-expr: _parent._parent.root_byte
+        types:
+          child3_struct:
+            seq:
+              - id: child3_byte
+                type: u1
+                repeat: expr
+                repeat-expr: _parent._parent._parent.root_byte
+
 
