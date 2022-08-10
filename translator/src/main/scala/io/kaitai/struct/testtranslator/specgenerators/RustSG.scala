@@ -37,6 +37,10 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     out.inc
   }
 
+  override def runParse(): Unit = {
+    finish_panic()
+  }
+
   override def runParseExpectError(exception: KSError): Unit = {
     val code =
       s"""    println!("expected err: {:?}, exception: ${exception}", err);
@@ -45,17 +49,6 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
       |    }""".stripMargin
     out.puts(code)
     do_panic = false
-    //    out.puts("err = r.Read(s, &r, &r)")
-//    out.puts("switch v := err.(type) {")
-//    out.puts(s"case ${errorName}:")
-//    out.inc
-//    out.puts("break")
-//    out.dec
-//    out.puts("default:")
-//    out.inc
-//    out.puts("t.Fatalf(\"expected " + errorName + ", got %T\", v)")
-//    out.dec
-//    out.puts("}")
   }
 
   def finish_panic(): Unit = {
@@ -77,19 +70,19 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     var actStr = translateAct(check.actual)
     val expType = translator.detectType(check.expected)
     var expStr = translate(check.expected)
-
     (actType, expType) match {
-      case (at: EnumType, et: EnumType) =>
-        expStr = remove_ref(expStr)
       case (at: EnumType, et: BooleanType) =>
         expStr = remove_ref(expStr)
       case (at: EnumType, et: IntType) =>
         actStr = actStr + " as u64"
-      //      case  =>
-      //        remove_deref(txt)
       case _ =>
     }
-
+    // fix expStr as vector
+    if (actStr.charAt(0) == '*' && expStr.length() > 2 &&
+      expStr.charAt(0) == '&' && expStr.charAt(1) == '[')
+    {
+      expStr = remove_ref(expStr)
+    }
     finish_panic()
     out.puts(s"assert_eq!($actStr, $expStr);")
   }
@@ -102,7 +95,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
   }
 
   override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit = {
-    out.puts("trueArrayAssert $check, $elType, $elts")
+    out.puts(s"// trueArrayAssert $check, $elType, $elts")
     simpleAssert(check) // FIXME
   }
 
@@ -114,36 +107,60 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
   }
 
   def translate(x: Ast.expr): String = {
-    val txt = translator.translate(x)
-    x match {
-      case Attribute(value, attr) =>
-        if (classSpecs.firstSpec.instances.contains(InstanceIdentifier(attr.name))) {
-          s"${txt.dropRight(2)}(&reader).unwrap()"
-        } else {
-          var deref = true;
-          val found = translator.get_attr(classSpecs.firstSpec, attr.name)
+    val ttx = translator.translate(x)
+    // append (&reader).unwrap() to instance call
+    val dots = ttx.split("\\.")
+    var ttx2 = dots(0)
+    var last = ""
+    var last_full = ""
+    dots.drop(1).foreach {
+      case attr_full =>
+        last_full = attr_full
+        val ind = attr_full indexOf "()"
+        if (ind > 0) {
+          val attr = attr_full.substring(0, ind)
+          last = attr
+          val found = translator.get_instance(translator.get_top_class(classSpecs.firstSpec), attr)
           if (found.isDefined) {
-            deref = found.get.dataTypeComposite match {
-              case _: SwitchType => false
-              case _: UserType => false
-              case _: BytesType => false
-              case _: ArrayType => false
-              case _ => true
-            }
-          }
-          if (deref) {
-            txt
+            ttx2 = s"${ttx2}.$attr(&reader).unwrap()${attr_full.substring(ind+2, attr_full.length())}"
           } else {
-            s"${translator.remove_deref(txt)}"
+            ttx2 = s"${ttx2}.${attr_full}"
+          }
+        } else {
+            ttx2 = s"${ttx2}.${attr_full}"
+        }
+    }
+    // do we need to deref?
+    if (!last.isEmpty) {
+      var deref = true;
+      if (last == "len" || last_full.contains("[")) {
+        deref = false
+      } else {
+        val found = translator.get_attr(translator.get_top_class(classSpecs.firstSpec), last)
+        if (found.isDefined) {
+          deref = found.get.dataTypeComposite match {
+            case _: SwitchType => false
+            case _: EnumType => false
+            case _: UserType => false
+            case _: BytesType => false
+            case _: ArrayType => false
+            case _ => true
           }
         }
-      case _ => txt
+      }
+      if (deref) {
+        ttx2
+      } else {
+        s"${translator.remove_deref(ttx2)}"
+      }
+    } else {
+      ttx
     }
   }
 
   def remove_ref(s: String): String = {
     if (s.charAt(0) == '&') {
-      s.substring(1, s.length())
+      s.substring(1)
     } else {
       s
     }
