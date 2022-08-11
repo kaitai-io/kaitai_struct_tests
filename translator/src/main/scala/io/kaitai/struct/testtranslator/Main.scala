@@ -8,9 +8,9 @@ object Main extends App {
   var baseDir = ".."
   val specDir = s"$baseDir/spec"
   def specKsDir = s"$baseDir/spec/ks"
-  def specKsDir_=(v:String) { specKsDir = v }
+  def specKsDir_=(v:String): Unit = { specKsDir = v }
   def formatsDir = s"$baseDir/formats"
-  def formatsDir_=(v:String) { formatsDir = v }
+  def formatsDir_=(v:String): Unit = { formatsDir = v }
   val defaultOutDir = s"$specKsDir/out"
   val importsDir = s"$baseDir/../formats"
 
@@ -39,7 +39,8 @@ object Main extends App {
   case class CLIOptions(
     srcFiles: Seq[String] = Seq(),
     targets: Seq[String] = Seq(),
-    outDir: String = defaultOutDir
+    outDir: String = defaultOutDir,
+    unitTest: Boolean = false,
   )
 
   // Stupid ksc build-time issue: no simple way to get that generated constant
@@ -58,15 +59,15 @@ object Main extends App {
         x
       }
       c.copy(srcFiles = c.srcFiles :+ testName)
-    } text("source test names (.kst)")
+    } text "source test names (.kst)"
 
-    opt[String]('t', "target") unbounded() valueName("<language>") action { (x, c) =>
+    opt[String]('t', "target") unbounded() valueName "<language>" action { (x, c) =>
       if (x == "all") {
         c.copy(targets = ALL_GOOD_LANGS)
       } else {
         c.copy(targets = c.targets :+ x)
       }
-    } text(s"target languages (${ALL_LANGS.mkString(", ")}, default: all)") validate { x =>
+    } text s"target languages (${ALL_LANGS.mkString(", ")}, default: all)" validate { x =>
       if (ALL_LANGS.contains(x) || x == "all") {
         success
       } else {
@@ -80,11 +81,15 @@ object Main extends App {
         filter(_.endsWith(".kst")).
         map(fn => fn.substring(0, fn.length - 4))
       c.copy(srcFiles = list.toSeq)
-    } text("process all KST files available")
+    } text "process all KST files available"
 
     opt[String]('f', "force") action { (x, c) =>
       c.copy(outDir = x)
-    } text(s"force overwrite specs in production spec dirs (default: generate in $defaultOutDir)")
+    } text s"force overwrite specs in production spec dirs (default: generate in $defaultOutDir)"
+
+    opt[Boolean]('u', "unit-test")
+      .action((d, c) => c.copy(unitTest = d))
+      .text("rust only: generate unit tests (not integration tests)")
   }
 
   parser.parse(args, CLIOptions()) match {
