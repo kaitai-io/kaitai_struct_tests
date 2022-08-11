@@ -4,27 +4,34 @@ import _root_.io.kaitai.struct.{ClassTypeProvider, JSON, RuntimeConfig}
 import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.RustCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 import _root_.io.kaitai.struct.translators.RustTranslator
-import _root_.io.kaitai.struct.datatype.DataType.{BooleanType, EnumType, SwitchType, UserType, BytesType, ArrayType, IntType}
-import io.kaitai.struct.exprlang.Ast.expr.Attribute
-import io.kaitai.struct.format.{ClassSpecs, InstanceIdentifier}
+import _root_.io.kaitai.struct.datatype.DataType.{ArrayType, BooleanType, BytesType, EnumType, IntType, SwitchType, UserType}
+import _root_.io.kaitai.struct.format.ClassSpecs
+import io.kaitai.struct.testtranslator.Main.CLIOptions
+import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 
-class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs) extends BaseGenerator(spec) {
-  val className = RustCompiler.type2class(spec.id)
+class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs, options: CLIOptions) extends BaseGenerator(spec) {
+  val className: String = RustCompiler.type2class(spec.id)
   val translator = new RustTranslator(provider, RuntimeConfig())
-  var do_panic = true;
+  var do_panic = true
 
   override def fileName(name: String): String = s"test_$name.rs"
 
   override def header(): Unit = {
+    val use_mod = if (options.unitTest)
+                    s"use crate::"
+                  else
+                    s"mod formats;\nuse "
+    var imports = ""
+    spec.extraImports.foreach{ name => imports = s"$imports\n${use_mod}formats::$name::*;"  }
+
     val code =
       s"""|use std::fs;
           |
           |extern crate kaitai;
           |use self::kaitai::*;
-          |mod formats;
-          |use formats::${spec.id}::*;
+          |${use_mod}formats::${spec.id}::*;
+          |$imports
           |
           |#[test]
           |fn test_${spec.id}() {
@@ -43,9 +50,9 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
 
   override def runParseExpectError(exception: KSError): Unit = {
     val code =
-      s"""    println!("expected err: {:?}, exception: ${exception}", err);
+      s"""    println!("expected err: {:?}, exception: $exception", err);
       |    } else {
-      |        panic!("no expected exception: ${exception}");
+      |        panic!("no expected exception: $exception");
       |    }""".stripMargin
     out.puts(code)
     do_panic = false
@@ -71,10 +78,12 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     val expType = translator.detectType(check.expected)
     var expStr = translate(check.expected)
     (actType, expType) match {
+      case (at: EnumType, et: EnumType) =>
+        expStr = "&" + expStr
       case (at: EnumType, et: BooleanType) =>
         expStr = remove_ref(expStr)
       case (at: EnumType, et: IntType) =>
-        actStr = actStr + " as u64"
+        actStr = actStr + ".clone().to_owned() as u64"
       case _ =>
     }
     // fix expStr as vector
@@ -114,7 +123,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     var last = ""
     var last_full = ""
     dots.drop(1).foreach {
-      case attr_full =>
+      attr_full =>
         last_full = attr_full
         val ind = attr_full indexOf "()"
         if (ind > 0) {
@@ -122,17 +131,17 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
           last = attr
           val found = translator.get_instance(translator.get_top_class(classSpecs.firstSpec), attr)
           if (found.isDefined) {
-            ttx2 = s"${ttx2}.$attr(&reader).unwrap()${attr_full.substring(ind+2, attr_full.length())}"
+            ttx2 = s"$ttx2.$attr(&reader).unwrap()${attr_full.substring(ind + 2, attr_full.length())}"
           } else {
-            ttx2 = s"${ttx2}.${attr_full}"
+            ttx2 = s"$ttx2.$attr_full"
           }
         } else {
-            ttx2 = s"${ttx2}.${attr_full}"
+          ttx2 = s"$ttx2.$attr_full"
         }
     }
     // do we need to deref?
-    if (!last.isEmpty) {
-      var deref = true;
+    if (last.nonEmpty) {
+      var deref = true
       if (last == "len" || last_full.contains("[")) {
         deref = false
       } else {
@@ -166,6 +175,6 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     }
   }
 
-  def translateAct(x: Ast.expr) =
+  def translateAct(x: Ast.expr): String =
     translate(x).replace(s"self.${Main.INIT_OBJ_NAME}()", "r")
 }
