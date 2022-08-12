@@ -10,7 +10,7 @@ import _root_.io.kaitai.struct.format.ClassSpecs
 import io.kaitai.struct.testtranslator.Main.CLIOptions
 import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 
-class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs, options: CLIOptions) extends BaseGenerator(spec) {
+class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs/*, options: CLIOptions*/) extends BaseGenerator(spec) {
   val className: String = RustCompiler.type2class(spec.id)
   val translator = new RustTranslator(provider, RuntimeConfig())
   var do_panic = true
@@ -18,7 +18,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
   override def fileName(name: String): String = s"test_$name.rs"
 
   override def header(): Unit = {
-    val use_mod = if (options.unitTest)
+    val use_mod = if (/*options.unitTest*/false)
                     s"use crate::"
                   else
                     s"mod formats;\nuse "
@@ -78,8 +78,6 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     val expType = translator.detectType(check.expected)
     var expStr = translate(check.expected)
     (actType, expType) match {
-      case (at: EnumType, et: EnumType) =>
-        expStr = "&" + expStr
       case (at: EnumType, et: BooleanType) =>
         expStr = remove_ref(expStr)
       case (at: EnumType, et: IntType) =>
