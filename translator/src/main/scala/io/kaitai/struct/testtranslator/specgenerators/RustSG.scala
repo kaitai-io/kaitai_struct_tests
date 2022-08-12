@@ -155,10 +155,18 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
             case _: ArrayType => false
             case _ => true
           }
+        } else if (translator.get_instance(translator.get_top_class(classSpecs.firstSpec), last).isDefined)  {
+          deref = true
+        } else {
+          deref = false
         }
       }
       if (deref) {
-        ttx2
+        if (ttx2.charAt(0) == '*') {
+          ttx2
+        } else {
+          s"*$ttx2"
+        }
       } else {
         s"${translator.remove_deref(ttx2)}"
       }
