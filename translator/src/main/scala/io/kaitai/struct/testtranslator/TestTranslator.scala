@@ -17,27 +17,28 @@ class TestTranslator(options: CLIOptions) {
 
   def run(): Unit = {
     if(options.srcFiles.length == 1) {
-      val path = Path.of(options.srcFiles(0));
+      val path = Path.of(options.srcFiles.head)
 
-      if (path.isAbsolute()) {
+      if (path.isAbsolute) {
         val specKs = specKsDir.split('/').drop(1).mkString("/")
-        val parent = path.getParent().toString().replace('\\', '/')
+        val parent = path.getParent.toString.replace('\\', '/')
         assert(parent.endsWith(specKs))
         baseDir = parent.replace(specKs, "")
       }
     }
 
-    val exactOutDir = (options.outDir != defaultOutDir)
     options.srcFiles.foreach(testName =>
-      doTestSpec(testName, options.targets, options.outDir, exactOutDir)
+      doTestSpec(testName, options.targets, options)
     )
   }
 
-  def doTestSpec(ts: String, langs: Seq[String], outDir: String, exactOutDir: Boolean): Unit = {
+  def doTestSpec(ts: String, langs: Seq[String], options: CLIOptions): Unit = {
     Console.println(s"Translating: $ts")
+    val outDir = options.outDir
+    val exactOutDir = options.outDir != defaultOutDir
 
     val path = Path.of(ts)
-    val testName = if(path.isAbsolute()) { path.getFileName().toString() } else { ts }
+    val testName = if(path.isAbsolute) { path.getFileName.toString } else { ts }
 
     val testSpec = loadTestSpec(testName)
     val classSpecs = loadClassSpecs(testName)
@@ -45,7 +46,7 @@ class TestTranslator(options: CLIOptions) {
     val provider = new ClassTypeProvider(classSpecs, initObj)
 
     langs.foreach(langName => {
-      val sg = getSG(langName, testSpec, provider, classSpecs)
+      val sg = getSG(langName, testSpec, provider, classSpecs, options)
       try {
         sg.run()
         val outFile = if(exactOutDir) { s"$outDir/${sg.fileName(testName)}" } else { s"$outDir/$langName/${sg.fileName(testName)}" }
@@ -124,7 +125,7 @@ class TestTranslator(options: CLIOptions) {
     origSpecs
   }
 
-  def getSG(lang: String, testSpec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs): BaseGenerator = lang match {
+  def getSG(lang: String, testSpec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs, options: CLIOptions): BaseGenerator = lang match {
     case "construct" => new ConstructSG(testSpec, provider)
     case "cpp_stl_98" => new CppStlSG(testSpec, provider, CppRuntimeConfig().copyAsCpp98())
     case "cpp_stl_11" => new CppStlSG(testSpec, provider, CppRuntimeConfig().copyAsCpp11())
@@ -138,6 +139,6 @@ class TestTranslator(options: CLIOptions) {
     case "php" => new PHPSG(testSpec, provider)
     case "python" => new PythonSG(testSpec, provider)
     case "ruby" => new RubySG(testSpec, provider)
-    case "rust" => new RustSG(testSpec, provider, classSpecs)
+    case "rust" => new RustSG(testSpec, provider, classSpecs, options)
   }
 }
