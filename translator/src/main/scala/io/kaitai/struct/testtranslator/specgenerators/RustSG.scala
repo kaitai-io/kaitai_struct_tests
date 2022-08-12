@@ -10,7 +10,7 @@ import _root_.io.kaitai.struct.format.ClassSpecs
 import io.kaitai.struct.testtranslator.Main.CLIOptions
 import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 
-class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs/*, options: CLIOptions*/) extends BaseGenerator(spec) {
+class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs, options: CLIOptions) extends BaseGenerator(spec) {
   val className: String = RustCompiler.type2class(spec.id)
   val translator = new RustTranslator(provider, RuntimeConfig())
   var do_panic = true
@@ -18,7 +18,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
   override def fileName(name: String): String = s"test_$name.rs"
 
   override def header(): Unit = {
-    val use_mod = if (/*options.unitTest*/false)
+    val use_mod = if (options.unitTest)
                     s"use crate::"
                   else
                     s"mod formats;\nuse "
