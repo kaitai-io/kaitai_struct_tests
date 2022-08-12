@@ -1,12 +1,17 @@
 package io.kaitai.struct.specwrite;
 
 import io.kaitai.struct.ConsistencyError;
+import io.kaitai.struct.KaitaiStruct.ReadWrite;
 import io.kaitai.struct.testwrite.BytesPadTerm;
 import org.testng.annotations.Test;
 
 public class TestBytesPadTerm extends CommonSpec {
     @Test
     public void testBytesPadTerm() throws Exception {
+        // NOTE: here it makes sense to prefer a manual test over the automatic roundtrip, because
+        // the roundtrip can't recognize whether the `pad-right` is correct (since it isn't relevant
+        // for parsing and therefore has no effect on consistency)
+
         BytesPadTerm r = new BytesPadTerm();
 
         r.setStrPad("str1".getBytes());
@@ -59,5 +64,15 @@ public class TestBytesPadTerm extends CommonSpec {
         r.setStrTermAndPad("12345678901234567890".getBytes());
         r.setStrTermInclude("123".getBytes());
         r._check();
+    }
+
+    @Override
+    protected Class<? extends ReadWrite> getStructClass() {
+        return BytesPadTerm.class;
+    }
+
+    @Override
+    protected String getSrcFilename() {
+        return "str_pad_term.bin";
     }
 }

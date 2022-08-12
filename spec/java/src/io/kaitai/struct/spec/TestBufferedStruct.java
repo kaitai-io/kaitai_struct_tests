@@ -21,10 +21,6 @@ public class TestBufferedStruct extends CommonSpec {
                 0x45, 0, 0, 0,
         });
 
-        assertGood(r);
-    }
-
-    public static void assertGood(BufferedStruct r) {
         assertEquals(r.len1(), 0x10);
 
         assertEquals(r.block1().number1(), 0x42);
