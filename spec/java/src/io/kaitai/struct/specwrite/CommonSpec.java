@@ -39,6 +39,7 @@ public abstract class CommonSpec {
 
         ByteBufferKaitaiStream newIo = new ByteBufferKaitaiStream(origKs._io().size());
         origKs._write(newIo);
+        newIo.alignToByte();
         newIo.seek(0);
 
         KaitaiStruct.ReadWrite newKs = structClass
@@ -166,7 +167,7 @@ public abstract class CommonSpec {
             for (byte b : (byte[]) value) {
                 sb.append(String.format("%02x ", b));
             }
-            value = "[" + sb.substring(0, sb.length() - (sb.charAt(sb.length() - 1) == ' ' ? 1 : 0)) + "]";
+            value = "[" + sb.substring(0, sb.length() - (sb.length() != 0 && sb.charAt(sb.length() - 1) == ' ' ? 1 : 0)) + "]";
         } else if (value instanceof List<?>) {
             List<?> list = (List<?>) value;
             List<Object> out = new ArrayList<>();
