@@ -78,6 +78,8 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     val expType = translator.detectType(check.expected)
     var expStr = translate(check.expected)
     (actType, expType) match {
+//      case (at: EnumType, et: EnumType) =>
+//        expStr = "&" + expStr
       case (at: EnumType, et: BooleanType) =>
         expStr = remove_ref(expStr)
       case (at: EnumType, et: IntType) =>
@@ -147,7 +149,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
         if (found.isDefined) {
           deref = found.get.dataTypeComposite match {
             case _: SwitchType => false
-            case _: EnumType => false
+            //case _: EnumType => false
             case _: UserType => false
             case _: BytesType => false
             case _: ArrayType => false
