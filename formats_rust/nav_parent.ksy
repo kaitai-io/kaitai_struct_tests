@@ -29,5 +29,4 @@ types:
             size: _parent._parent.header.filename_len
             encoding: UTF-8
 
-# here is kaitai bug
-# this is fixed test with correct alignmnet
+# this is fixed test with correct alignmnet (parent as subtypes)
