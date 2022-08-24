@@ -154,6 +154,8 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
           }
         } else if (translator.get_instance(translator.get_top_class(classSpecs.firstSpec), last).isDefined)  {
           deref = true
+        } else if (translator.get_param(translator.get_top_class(classSpecs.firstSpec), last).isDefined)  {
+          deref = true
         } else {
           deref = false
         }
