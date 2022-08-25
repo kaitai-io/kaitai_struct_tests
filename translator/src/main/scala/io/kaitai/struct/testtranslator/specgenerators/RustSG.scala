@@ -102,7 +102,6 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
   }
 
   override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit = {
-    out.puts(s"// trueArrayAssert $check, $elType, $elts")
     simpleAssert(check) // FIXME
   }
 
@@ -149,7 +148,6 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
             case _: SwitchType => false
             case _: UserType => false
             case _: BytesType => false
-            case _: ArrayType => false
             case _ => true
           }
         } else if (translator.get_instance(translator.get_top_class(classSpecs.firstSpec), last).isDefined)  {
