@@ -83,7 +83,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
       case (at: EnumType, et: BooleanType) =>
         expStr = remove_ref(expStr)
       case (at: EnumType, et: IntType) =>
-        actStr = actStr + ".clone().to_owned() as u64"
+        actStr = s"${translator.remove_deref(actStr)}.clone().to_owned() as u64"
       case _ =>
     }
     // fix expStr as vector
