@@ -11,7 +11,7 @@ import io.kaitai.struct.translators.JavaTranslator
 class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   val config = RuntimeConfig()
   val className = JavaCompiler.type2class(spec.id)
-  val translator = new JavaTranslator(provider, importList)
+  val translator = new JavaTranslator(provider, importList, config)
   val compiler = new JavaCompiler(provider, config)
 
   importList.add(s"io.kaitai.struct.testformats.$className")
