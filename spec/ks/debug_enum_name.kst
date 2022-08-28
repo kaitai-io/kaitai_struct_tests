@@ -1,0 +1,6 @@
+id: debug_enum_name
+data: fixed_struct.bin
+# NOTE: debug mode is enabled, so don't forget to add the `r._read()` call
+
+# No asserts, this test is meaningful only for languages that have --debug and
+# do not save enum type info
