@@ -91,6 +91,9 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
       expStr = remove_ref(expStr)
     }
     finish_panic()
+    //TODO: correct code generation
+    actStr = actStr.replace("_io", "reader")
+    actStr = actStr.replace("(reader)?", "(&reader).expect(\"error reading\")")
     out.puts(s"assert_eq!($actStr, $expStr);")
   }
 
