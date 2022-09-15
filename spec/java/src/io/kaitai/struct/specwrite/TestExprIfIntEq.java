@@ -3,18 +3,18 @@
 package io.kaitai.struct.specwrite;
 
 import io.kaitai.struct.KaitaiStruct.ReadWrite;
-import io.kaitai.struct.testwrite.ExprIfIntOps;
+import io.kaitai.struct.testwrite.ExprIfIntEq;
 import org.testng.annotations.Test;
 
-public class TestExprIfIntOps extends CommonSpec {
+public class TestExprIfIntEq extends CommonSpec {
     @Override
     protected Class<? extends ReadWrite> getStructClass() {
-        return ExprIfIntOps.class;
+        return ExprIfIntEq.class;
     }
 
     @Override
     protected String getSrcFilename() {
-        return "instance_io.bin";
+        return "process_coerce_switch.bin";
     }
 
 }

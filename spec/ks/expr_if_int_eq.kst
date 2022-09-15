@@ -1,0 +1,26 @@
+id: expr_if_int_eq
+data: process_coerce_switch.bin
+asserts:
+  - actual: seq_eq_lit
+    expected: true
+  - actual: seq_eq_calc
+    expected: true
+  - actual: seq_eq_calc_if
+    expected: true
+  - actual: seq_eq_seq_if
+    expected: true
+
+  - actual: calc_eq_lit
+    expected: true
+  - actual: calc_eq_calc_if
+    expected: true
+  - actual: calc_eq_seq_if
+    expected: true
+
+  - actual: calc_if_eq_lit
+    expected: true
+  - actual: calc_if_eq_seq_if
+    expected: true
+
+  - actual: seq_if_eq_lit
+    expected: true
