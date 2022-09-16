@@ -19,9 +19,7 @@ import io.kaitai.struct.ByteBufferKaitaiStream;
 import io.kaitai.struct.KaitaiStream;
 import io.kaitai.struct.KaitaiStruct;
 
-public abstract class CommonSpec {
-    private final static String SRC_DIR = io.kaitai.struct.spec.CommonSpec.SRC_DIR;
-
+public abstract class CommonSpec extends io.kaitai.struct.spec.CommonSpec {
     protected abstract Class<? extends KaitaiStruct.ReadWrite> getStructClass();
 
     protected abstract String getSrcFilename();
