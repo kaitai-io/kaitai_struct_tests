@@ -140,10 +140,9 @@ public abstract class CommonSpec {
                     if (
                         methodName.startsWith("_read") ||
                         methodName.startsWith("_check") ||
-                        methodName.startsWith("_write")
-                        // we should maybe ignore `_raw_*()` getters too, because they reflect
-                        // leftover substream bytes that are not written (this is why the
-                        // BufferedStruct test fails)
+                        methodName.startsWith("_write") ||
+                        methodName.startsWith("_invalidate") ||
+                        methodName.startsWith("_raw_")
                     ) {
                         continue;
                     }
