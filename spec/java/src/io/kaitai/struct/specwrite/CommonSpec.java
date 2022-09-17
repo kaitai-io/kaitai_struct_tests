@@ -118,7 +118,6 @@ public abstract class CommonSpec extends io.kaitai.struct.spec.CommonSpec {
 
         if (value instanceof KaitaiStruct.ReadWrite) {
             KaitaiStruct.ReadWrite struct = (KaitaiStruct.ReadWrite) value;
-            struct._check();
 
             Map<String, Object> dump = new HashMap<>();
             {
@@ -135,6 +134,11 @@ public abstract class CommonSpec extends io.kaitai.struct.spec.CommonSpec {
 
                 final String methodName = m.getName();
                 if (methodName.startsWith("_")) {
+                    // call all _check*() methods
+                    if (methodName.startsWith("_check")) {
+                        m.invoke(struct);
+                        continue;
+                    }
                     if (
                         methodName.startsWith("_read") ||
                         methodName.startsWith("_check") ||
