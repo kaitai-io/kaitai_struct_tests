@@ -18,18 +18,18 @@ fn basic_parse() {
         assert!(res.is_ok());
     }
 
-    let backslashes = r.backslashes(&reader).unwrap();
+    let backslashes = r.backslashes(&reader, Some(&r)).unwrap();
     assert_eq!("\u{005c}\u{005c}\u{005c}", *backslashes);
     
-    let octal_eatup = r.octal_eatup(&reader).unwrap();
+    let octal_eatup = r.octal_eatup(&reader, Some(&r)).unwrap();
     assert_eq!("\u{0}\u{0032}\u{0032}", *octal_eatup);
 
-    let octal_eatup2 = r.octal_eatup2(&reader).unwrap();
+    let octal_eatup2 = r.octal_eatup2(&reader, Some(&r)).unwrap();
     assert_eq!("\u{2}\u{32}", *octal_eatup2);
 
-    let double_quotes = r.double_quotes(&reader).unwrap();
+    let double_quotes = r.double_quotes(&reader, Some(&r)).unwrap();
     assert_eq!("\u{22}\u{22}\u{22}", *double_quotes);
 
-    let complex_str = r.complex_str(&reader).unwrap();
+    let complex_str = r.complex_str(&reader, Some(&r)).unwrap();
     assert_eq!("\u{0}\u{1}\u{2}\u{7}\u{8}\u{0a}\u{0d}\u{09}\u{0b}\u{c}\u{1b}\u{3d}\u{7}\u{a}\u{24}\u{263b}", *complex_str);
 }

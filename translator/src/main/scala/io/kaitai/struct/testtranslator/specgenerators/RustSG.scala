@@ -131,7 +131,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
           last = attr
           val found = translator.get_instance(translator.get_top_class(classSpecs.firstSpec), attr)
           if (found.isDefined) {
-            ttx2 = s"$ttx2.$attr(&reader).unwrap()${attr_full.substring(ind + 2, attr_full.length())}"
+            ttx2 = s"$ttx2.$attr(&reader, Some(&r)).unwrap()${attr_full.substring(ind + 2, attr_full.length())}"
           } else {
             ttx2 = s"$ttx2.$attr_full"
           }
