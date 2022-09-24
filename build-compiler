@@ -4,4 +4,4 @@
 
 cd "$COMPILER_DIR"
 sbt compilerJVM/stage
-sbt compile fastOptJS
+#sbt compile fastOptJS

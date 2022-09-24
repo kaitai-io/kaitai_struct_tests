@@ -17,6 +17,6 @@ fn test_params_def() {
     }
 
     assert_eq!(*r.one(), 80);
-    assert_eq!(*r.two().one(), 65);
-    assert_eq!(*r.two().two().one(), 67);
+    assert_eq!(*r.two().as_ref().unwrap().one(), 65);
+    assert_eq!(*r.two().as_ref().unwrap().two().as_ref().unwrap().one(), 67);
 }
