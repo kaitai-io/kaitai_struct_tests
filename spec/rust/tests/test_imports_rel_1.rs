@@ -3,14 +3,16 @@ use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
 mod formats;
-use formats::imports_abs_abs::*;
+use formats::imports_rel_1::*;
 
+use formats::imported_1::*;
+use formats::imported_2::*;
 
 #[test]
-fn test_params_def() {
+fn test_imports_rel_1() {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
     let reader = BytesReader::new(&bytes);
-    let mut r = ImportsAbsAbs::default();
+    let mut r = ImportsRel1::default();
 
     if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
         panic!("{:?}", err);
