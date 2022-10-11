@@ -21,7 +21,13 @@ fn main() {
         });
     }
 
-    remove_existing(destination_path).unwrap_or_else(|e| {
+    let except_files = vec![
+        "custom_fx_no_args.rs",
+        "my_custom_fx.rs",
+        "custom_fx.rs",
+    ];
+
+    remove_existing(destination_path, except_files).unwrap_or_else(|e| {
         println!("Unable to remove existing files under test: {}", e.to_string());
     });
 
@@ -32,13 +38,18 @@ fn main() {
     println!("cargo:rerun-if-changed={}", source_path.display().to_string());
 }
 
-fn remove_existing(destination_path: &Path) -> io::Result<()> {
+fn remove_existing(destination_path: &Path, except_files: Vec<&str>) -> io::Result<()> {
     for entry in fs::read_dir(destination_path)? {
         let entry = entry?;
         let path = entry.path();
-        
-        println!("cleaning {}", path.display().to_string());
-        fs::remove_file(path)?;
+        let file_name = path.file_name().unwrap().to_os_string();
+
+        if except_files.iter().find(|&&x| *x == file_name).is_none() {
+            println!("cleaning {}", path.display().to_string());
+            fs::remove_file(path)?;
+        } else {
+            println!("leaving {}", path.display().to_string());
+        }
     }
     
     Ok(())
