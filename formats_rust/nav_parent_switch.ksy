@@ -15,9 +15,8 @@ types:
         type: u1
       - id: subelement
         type: subelement_1
-    types:
-      subelement_1:
-        seq:
-        - id: bar
-          type: u1
-          if: _parent.foo == 0x42
+  subelement_1:
+    seq:
+      - id: bar
+        type: u1
+        if: _parent.foo == 0x42
