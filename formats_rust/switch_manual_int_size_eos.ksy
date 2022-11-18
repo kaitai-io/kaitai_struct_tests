@@ -15,29 +15,28 @@ types:
       - id: body
         size: size
         type: chunk_body
+  chunk_body:
+    seq:
+      - id: body
+        size-eos: true
+        type:
+          switch-on: _parent.code
+          cases:
+            0x11: chunk_meta
+            0x22: chunk_dir
     types:
-      chunk_body:
+      chunk_meta:
         seq:
-          - id: body
-            size-eos: true
-            type:
-              switch-on: _parent.code
-              cases:
-                0x11: chunk_meta
-                0x22: chunk_dir
-        types:
-          chunk_meta:
-            seq:
-              - id: title
-                type: strz
-                encoding: UTF-8
-              - id: author
-                type: strz
-                encoding: UTF-8
-          chunk_dir:
-            seq:
-              - id: entries
-                type: str
-                size: 4
-                repeat: eos
-                encoding: UTF-8
+          - id: title
+            type: strz
+            encoding: UTF-8
+          - id: author
+            type: strz
+            encoding: UTF-8
+      chunk_dir:
+        seq:
+          - id: entries
+            type: str
+            size: 4
+            repeat: eos
+            encoding: UTF-8
