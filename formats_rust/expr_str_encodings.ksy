@@ -25,7 +25,7 @@ seq:
   - id: str4
     type: str
     size: len_of_4
-    encoding: CP866
+    encoding: CP437
 instances:
   str1_eq:
     value: str1 == "Some ASCII"
@@ -41,4 +41,4 @@ instances:
     value: str4 > "┤" # in UTF-8 "░" (U+2591) > "┤" (U+2524),
                       # in CP437 "░" (0xB0)   < "┤" (0xB4)
   str4_gt_str_from_bytes:
-    value: 'str4 > [0xb4].to_s("CP866")'
+    value: 'str4 > [0xb4].to_s("CP437")'

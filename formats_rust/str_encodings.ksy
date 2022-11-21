@@ -25,4 +25,4 @@ seq:
   - id: str4
     type: str
     size: len_of_4
-    encoding: CP866 # CP437
+    encoding: CP437
