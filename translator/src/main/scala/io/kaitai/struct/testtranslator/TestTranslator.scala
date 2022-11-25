@@ -101,6 +101,7 @@ class TestTranslator(options: CLIOptions) {
         encoding = None,
         forceDebug = false,
         opaqueTypes = None,
+        zeroCopySubstream = None,
         imports = List()
       ),
       DocSpec.EMPTY,
