@@ -144,6 +144,7 @@ public abstract class CommonSpec extends io.kaitai.struct.spec.CommonSpec {
                         methodName.startsWith("_check") ||
                         methodName.startsWith("_write") ||
                         methodName.startsWith("_invalidate") ||
+                        methodName.startsWith("_fetchInstances") ||
                         methodName.startsWith("_raw_")
                     ) {
                         continue;
