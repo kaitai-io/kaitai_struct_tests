@@ -1,9 +1,9 @@
-package nested.deeply;
+package io.kaitai.struct.testwrite;
 
 import io.kaitai.struct.CustomProcessor;
 
-public class CustomFx implements CustomProcessor {
-    public CustomFx(int x) {
+public class CustomFxNoArgs implements CustomProcessor {
+    public CustomFxNoArgs() {
     }
 
     @Override
@@ -24,7 +24,7 @@ public class CustomFx implements CustomProcessor {
         } else {
             // usually it's decode(byte[]) that puts restrictions on the input data, but
             // hey - this class is just for testing purposes anyway :-P
-            throw new UnsupportedOperationException("CustomFx can only encode data like '_(.*)_'");
+            throw new UnsupportedOperationException("CustomFxNoArgs can only encode data like '_(.*)_'");
         }
     }
 }
