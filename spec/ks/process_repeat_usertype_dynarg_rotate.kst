@@ -1,0 +1,29 @@
+id: process_repeat_usertype_dynarg_rotate
+data: process_rotate.bin
+asserts:
+  - actual: blocks_rol[0].a  # key: 3 - (4 * 0) = 3
+    expected: 0x6548
+  - actual: blocks_rol[1].a  # key: 6 - (4 * 1) = 2
+    expected: 0xb736
+
+  - actual: blocks_ror[0].a  # key: 3 - (4 * 0) = 3
+    expected: 0x726f
+  - actual: blocks_ror[1].a  # key: 6 - (4 * 1) = 2
+    expected: 0x40c8
+  - actual: blocks_ror[2].a  # key: 9 - (4 * 2) = 1
+    expected: 0x591a
+
+  - actual: blocks_b.dummy
+    expected: 0xb2
+
+  - actual: blocks_b.blocks_rol_0_b
+    expected: 0x6c
+  - actual: blocks_b.blocks_rol_1_b
+    expected: 0xea
+
+  - actual: blocks_b.blocks_ror_0_b
+    expected: 0x6c
+  - actual: blocks_b.blocks_ror_1_b
+    expected: 0x8a
+  - actual: blocks_b.blocks_ror_2_b
+    expected: 0x9c
