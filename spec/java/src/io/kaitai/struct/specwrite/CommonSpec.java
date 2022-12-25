@@ -39,7 +39,6 @@ public abstract class CommonSpec extends io.kaitai.struct.spec.CommonSpec {
 
         ByteBufferKaitaiStream newIo = new ByteBufferKaitaiStream(origKs._io().size());
         origKs._write(newIo);
-        newIo.alignToByte();
         newIo.seek(0);
 
         KaitaiStruct.ReadWrite newKs = structClass

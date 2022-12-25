@@ -54,7 +54,6 @@ public class TestExpr2 extends CommonSpec {
             3 // str2.rest
         );
         r._write(newIo);
-        newIo.alignToByte();
         newIo.seek(0);
 
         Expr2 newR = new Expr2(newIo);
