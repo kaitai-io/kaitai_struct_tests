@@ -1,4 +1,4 @@
-use std::fs;
+use std::{fs, rc::Rc};
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -9,12 +9,15 @@ use formats::cast_to_imported::*;
 fn test_cast_to_imported() {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
     let reader = BytesReader::new(&bytes);
-    let mut r = CastToImported::default();
+    let res = CastToImported::read_into(&reader, None, None);
+    let r : Rc<CastToImported>;
 
-    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
+    if let Err(err) = res {
         panic!("{:?}", err);
+    } else {
+        r = res.unwrap();
     }
 
     assert_eq!(*(*(*r.one()).as_ref().unwrap()).one(), 80);
-    assert_eq!(*(*(*r.one_casted(&reader, Some(&r)).unwrap()).as_ref().unwrap()).one(), 80);
+    assert_eq!(*(*(*r.one_casted(&reader).unwrap()).as_ref().unwrap()).one(), 80);
 }

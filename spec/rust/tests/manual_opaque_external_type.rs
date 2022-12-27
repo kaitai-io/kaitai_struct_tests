@@ -1,4 +1,4 @@
-use std::fs;
+use std::{fs, rc::Rc};
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -9,10 +9,13 @@ use formats::opaque_external_type::*;
 fn test_term_strz() {
     let bytes = fs::read("../../src/term_strz.bin").unwrap();
     let reader = BytesReader::new(&bytes);
-    let mut r = OpaqueExternalType::default();
+    let res = OpaqueExternalType::read_into(&reader, None, None);
+    let r : Rc<OpaqueExternalType>;
 
-    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
+    if let Err(err) = res {
         panic!("{:?}", err);
+    } else {
+        r = res.unwrap();
     }
 
     assert_eq!(*r.one().as_ref().unwrap().s1(), "foo");
