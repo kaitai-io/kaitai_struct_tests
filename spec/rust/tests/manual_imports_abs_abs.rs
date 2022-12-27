@@ -1,4 +1,4 @@
-use std::fs;
+use std::{fs, rc::Rc};
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -10,10 +10,13 @@ use formats::imports_abs_abs::*;
 fn test_params_def() {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
     let reader = BytesReader::new(&bytes);
-    let mut r = ImportsAbsAbs::default();
+    let res = ImportsAbsAbs::read_into(&reader, None, None);
+    let r : Rc<ImportsAbsAbs>;
 
-    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
+    if let Err(err) = res {
         panic!("{:?}", err);
+    } else {
+        r = res.unwrap();
     }
 
     assert_eq!(*r.one(), 80);

@@ -1,5 +1,5 @@
 #![allow(dead_code)]
-use std::fs;
+use std::{fs, rc::Rc};
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -10,11 +10,13 @@ use formats::switch_manual_int_else::*;
 fn test_switch_manual_int_else() {
     let bytes = fs::read("../../src/switch_opcodes2.bin").unwrap();
     let reader = BytesReader::new(&bytes);
-    let mut r = SwitchManualIntElse::default();
+    let res = SwitchManualIntElse::read_into(&reader, None, None);
+    let r : Rc<SwitchManualIntElse>;
 
-    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
-
+    if let Err(err) = res {
         panic!("{:?}", err);
+    } else {
+        r = res.unwrap();
     }
     assert_eq!(4, r.opcodes().len());
 

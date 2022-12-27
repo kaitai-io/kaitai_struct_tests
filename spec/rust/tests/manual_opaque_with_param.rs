@@ -1,4 +1,4 @@
-use std::fs;
+use std::{fs, rc::Rc};
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -10,10 +10,13 @@ use formats::opaque_with_param::*;
 fn test_params_def() {
     let bytes = fs::read("../../src/term_strz.bin").unwrap();
     let reader = BytesReader::new(&bytes);
-    let mut r = OpaqueWithParam::default();
+    let res = OpaqueWithParam::read_into(&reader, None, None);
+    let r : Rc<OpaqueWithParam>;
 
-    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
+    if let Err(err) = res {
         panic!("{:?}", err);
+    } else {
+        r = res.unwrap();
     }
 
     let one = r.one();

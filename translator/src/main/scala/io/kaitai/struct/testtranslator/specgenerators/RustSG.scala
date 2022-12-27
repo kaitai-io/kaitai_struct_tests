@@ -14,6 +14,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
   val className: String = RustCompiler.type2class(spec.id)
   val translator = new RustTranslator(provider, RuntimeConfig())
   var do_panic = true
+  var do_not_deref = false
 
   override def fileName(name: String): String = s"test_$name.rs"
 
@@ -26,7 +27,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     spec.extraImports.foreach{ name => imports = s"$imports\n${use_mod}formats::$name::*;"  }
 
     val code =
-      s"""|use std::fs;
+      s"""|use std::{fs, rc::Rc};
           |
           |extern crate kaitai;
           |use self::kaitai::*;
@@ -38,9 +39,10 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
           |fn test_${spec.id}() {
           |    let bytes = fs::read("../../src/${spec.data}").unwrap();
           |    let reader = BytesReader::new(&bytes);
-          |    let mut r = $className::default();
+          |    let res = $className::read_into(&reader, None, None);
+          |    let r : Rc<$className>;
           |
-          |    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {""".stripMargin
+          |    if let Err(err) = res {""".stripMargin
     out.puts(code)
     out.inc
   }
@@ -53,6 +55,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     val code =
       s"""    println!("expected err: {:?}, exception: $exception", err);
       |    } else {
+      |        r = res.unwrap(); // need here to help Rust with type decision
       |        panic!("no expected exception: $exception");
       |    }""".stripMargin
     out.puts(code)
@@ -64,6 +67,10 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
       out.inc
       out.puts("panic!(\"{:?}\", err);")
       out.dec
+      out.puts("} else {")
+      out.inc
+      out.puts("r = res.unwrap();")
+      out.dec
       out.puts("}")
       do_panic = false
     }
@@ -71,6 +78,18 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
   override def footer(): Unit = {
     out.dec
     out.puts("}")
+  }
+
+  def correctIO(code: String): String = {
+    var s = if (!do_not_deref) {
+      if (code.contains("_io,") && (code.charAt(0) != '*'))  s"*$code" else code
+    } else {
+      code
+    }
+
+    s = s.replace("_io", "&reader")
+    s = s.replace(")?", ").expect(\"error reading\")")
+    s
   }
 
   override def simpleAssert(check: TestAssert): Unit = {
@@ -94,13 +113,13 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     }
     finish_panic()
     //TODO: correct code generation
-    actStr = actStr.replace("_io", "reader")
-    actStr = actStr.replace("(reader)?", "(&reader).expect(\"error reading\")")
+    actStr = correctIO(actStr)
+
     out.puts(s"assert_eq!($actStr, $expStr);")
   }
 
   override def nullAssert(actual: Ast.expr): Unit = {
-    val actStr = translateAct(actual)
+    val actStr = correctIO(translateAct(actual))
     finish_panic()
     out.puts(s"assert_eq!($actStr, 0);")
     // TODO: Figure out what's meant to happen here
@@ -127,16 +146,16 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     dots.drop(1).foreach {
       attr_full =>
         last_full = attr_full
-        val ind = attr_full indexOf "()"
+        val ind = attr_full indexOf "("
         if (ind > 0) {
           val attr = attr_full.substring(0, ind)
           last = attr
-          val found = translator.get_instance(translator.get_top_class(classSpecs.firstSpec), attr)
-          if (found.isDefined) {
-            ttx2 = s"$ttx2.$attr(&reader, Some(&r)).unwrap()${attr_full.substring(ind + 2, attr_full.length())}"
-          } else {
+         val found = translator.get_instance(translator.get_top_class(classSpecs.firstSpec), attr)
+         if (found.isDefined) {
+           ttx2 = s"$ttx2.$attr(&reader).unwrap()${attr_full.substring(ind + 2, attr_full.length())}"
+         } else {
             ttx2 = s"$ttx2.$attr_full"
-          }
+         }
         } else {
           ttx2 = s"$ttx2.$attr_full"
         }
@@ -146,19 +165,33 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
       var deref = true
       if (last == "len" || last_full.contains("[")) {
         deref = false
+        do_not_deref = true
       } else {
         val found = translator.get_attr(translator.get_top_class(classSpecs.firstSpec), last)
         if (found.isDefined) {
           deref = found.get.dataTypeComposite match {
             case _: SwitchType => false
-            case _: UserType => false
-            case _: BytesType => false
+            case _: EnumType => false
+            // case _: UserType => false
+            // case _: BytesType => false
             case _ => true
           }
         } else if (translator.get_instance(translator.get_top_class(classSpecs.firstSpec), last).isDefined)  {
-          deref = true
+          deref = found.get.dataTypeComposite match {
+            case _: SwitchType => false
+            case _: EnumType => false
+            // case _: UserType => false
+            // case _: BytesType => false
+            case _ => true
+          }
         } else if (translator.get_param(translator.get_top_class(classSpecs.firstSpec), last).isDefined)  {
-          deref = true
+          deref = found.get.dataTypeComposite match {
+            case _: SwitchType => false
+            case _: EnumType => false
+            // case _: UserType => false
+            // case _: BytesType => false
+            case _ => true
+          }
         } else {
           deref = false
         }

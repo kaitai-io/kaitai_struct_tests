@@ -1,5 +1,5 @@
 #![allow(dead_code)]
-use std::fs;
+use std::{fs, rc::Rc};
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -10,10 +10,13 @@ use formats::debug_switch_user::*;
 fn basic_parse() {
     let bytes = fs::read("../../src/nav_parent_switch.bin").unwrap();
     let reader = BytesReader::new(&bytes);
-    let mut r = DebugSwitchUser::default();
-    {
-        let res = r.read(&reader, None, Some(KStructUnit::parent_stack()));
-        assert!(res.is_ok());
+    let res = DebugSwitchUser::read_into(&reader, None, None);
+    let r : Rc<DebugSwitchUser>;
+
+    if let Err(err) = res {
+        panic!("{:?}", err);
+    } else {
+        r = res.unwrap();
     }
 
     assert_eq!(*r.code(), 1);

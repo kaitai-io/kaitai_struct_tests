@@ -1,4 +1,4 @@
-use std::fs;
+use std::{fs, rc::Rc};
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -10,23 +10,26 @@ use formats::type_ternary_2nd_falsy::*;
 fn test_type_ternary_2nd_falsy() {
     let bytes = fs::read("../../src/switch_integers.bin").unwrap();
     let reader = BytesReader::new(&bytes);
-    let mut r = TypeTernary2ndFalsy::default();
+    let res = TypeTernary2ndFalsy::read_into(&reader, None, None);
+    let r : Rc<TypeTernary2ndFalsy>;
 
-    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
+    if let Err(err) = res {
         panic!("{:?}", err);
+    } else {
+        r = res.unwrap();
     }
 
-    assert_eq!(*r.v_false(&reader, Some(&r)).unwrap(), false);
-    assert_eq!(*r.v_int_zero(&reader, Some(&r)).unwrap(), 0);
-    assert_eq!(*r.v_int_neg_zero(&reader, Some(&r)).unwrap(), 0);
-    assert_eq!(*r.v_float_zero(&reader, Some(&r)).unwrap(), 0.0);
-    assert_eq!(*r.v_float_neg_zero(&reader, Some(&r)).unwrap(), -0.0);
-    assert_eq!(*r.v_str_w_zero(&reader, Some(&r)).unwrap(), "0");
-    assert_eq!(r.v_str_w_zero(&reader, Some(&r)).unwrap().len(), 1);
+    assert_eq!(*r.v_false(&reader).unwrap(), false);
+    assert_eq!(*r.v_int_zero(&reader).unwrap(), 0);
+    assert_eq!(*r.v_int_neg_zero(&reader).unwrap(), 0);
+    assert_eq!(*r.v_float_zero(&reader).unwrap(), 0.0);
+    assert_eq!(*r.v_float_neg_zero(&reader).unwrap(), -0.0);
+    assert_eq!(*r.v_str_w_zero(&reader).unwrap(), "0");
+    assert_eq!(r.v_str_w_zero(&reader).unwrap().len(), 1);
     assert_eq!(*r.ut().m(), 7);
-    assert_eq!(*r.v_null_ut(&reader, Some(&r)).unwrap().m(), 0);
-    assert_eq!(*r.v_str_empty(&reader, Some(&r)).unwrap(), "");
-    assert_eq!(r.v_str_empty(&reader, Some(&r)).unwrap().len(), 0);
+    assert_eq!(*r.v_null_ut(&reader).unwrap().m(), 0);
+    assert_eq!(*r.v_str_empty(&reader).unwrap(), "");
+    assert_eq!(r.v_str_empty(&reader).unwrap().len(), 0);
     assert_eq!(r.int_array().len(), 2);
-    assert_eq!(r.v_int_array_empty(&reader, Some(&r)).unwrap().len(), 0);
+    assert_eq!(r.v_int_array_empty(&reader).unwrap().len(), 0);
 }

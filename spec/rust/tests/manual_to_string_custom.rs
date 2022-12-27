@@ -1,5 +1,5 @@
 #![allow(dead_code)]
-use std::fs;
+use std::{fs, rc::Rc};
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -10,11 +10,13 @@ use formats::to_string_custom::*;
 fn basic_parse() {
     let bytes = fs::read("../../src/term_strz.bin").unwrap();
     let reader = BytesReader::new(&bytes);
+    let res = ToStringCustom::read_into(&reader, None, None);
+    let r : Rc<ToStringCustom>;
 
-    let mut r = ToStringCustom::default();
-    {
-        let res = r.read(&reader, None, Some(KStructUnit::parent_stack()));
-        assert!(res.is_ok());
+    if let Err(err) = res {
+        panic!("{:?}", err);
+    } else {
+        r = res.unwrap();
     }
 
     assert_eq!(r.to_string(), "s1 = foo, s2 = bar");

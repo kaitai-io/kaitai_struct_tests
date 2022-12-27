@@ -1,5 +1,5 @@
 #![allow(dead_code)]
-use std::fs;
+use std::{fs, rc::Rc};
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -11,11 +11,13 @@ fn basic_parse() {
     let bytes = fs::read("../../src/switch_opcodes.bin").unwrap();
     let reader = BytesReader::new(&bytes);
 
-    let mut r = SwitchCast::default();
-    {
-        let res = r.read(&reader, None, Some(KStructUnit::parent_stack()));
-        println!("{:?}", res);
-        assert!(res.is_ok());
+    let res = SwitchCast::read_into(&reader, None, None);
+    let r : Rc<SwitchCast>;
+
+    if let Err(err) = res {
+        panic!("{:?}", err);
+    } else {
+        r = res.unwrap();
     }
 
     assert_eq!(4, r.opcodes().len());

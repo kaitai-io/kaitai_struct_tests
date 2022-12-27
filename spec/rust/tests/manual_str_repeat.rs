@@ -1,5 +1,5 @@
 #![allow(dead_code)]
-use std::fs;
+use std::{fs, rc::Rc};
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -10,11 +10,13 @@ use formats::str_repeat::*;
 fn basic_parse() {
     let bytes = fs::read("../../src/term_strz.bin").unwrap();
     let reader = BytesReader::new(&bytes);
-    let mut r = StrRepeat::default();
-    {
-        let res = r.read(&reader, None, Some(KStructUnit::parent_stack()));
-        println!("{:?}", res);
-        assert!(res.is_ok());
+    let res = StrRepeat::read_into(&reader, None, None);
+    let r : Rc<StrRepeat>;
+
+    if let Err(err) = res {
+        panic!("{:?}", err);
+    } else {
+        r = res.unwrap();
     }
 
     assert_eq!("foo|", r.entries()[0]);

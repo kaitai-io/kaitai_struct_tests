@@ -1,4 +1,4 @@
-use std::fs;
+use std::{fs, rc::Rc};
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -10,10 +10,13 @@ use formats::process_repeat_bytes::*;
 fn test_process_repeat_bytes() {
     let bytes = fs::read("../../src/process_xor_4.bin").unwrap();
     let reader = BytesReader::new(&bytes);
-    let mut r = ProcessRepeatBytes::default();
+    let res = ProcessRepeatBytes::read_into(&reader, None, None);
+    let r : Rc<ProcessRepeatBytes>;
 
-    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
+    if let Err(err) = res {
         panic!("{:?}", err);
+    } else {
+        r = res.unwrap();
     }
 
     assert_eq!(r.bufs()[0 as usize], vec![0x72u8, 0x25u8, 0x3du8, 0x8au8, 0x14u8]);

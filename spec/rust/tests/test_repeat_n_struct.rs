@@ -1,4 +1,4 @@
-use std::fs;
+use std::{fs, rc::Rc};
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -10,10 +10,13 @@ use formats::repeat_n_struct::*;
 fn test_repeat_n_struct() {
     let bytes = fs::read("../../src/repeat_n_struct.bin").unwrap();
     let reader = BytesReader::new(&bytes);
-    let mut r = RepeatNStruct::default();
+    let res = RepeatNStruct::read_into(&reader, None, None);
+    let r : Rc<RepeatNStruct>;
 
-    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
+    if let Err(err) = res {
         panic!("{:?}", err);
+    } else {
+        r = res.unwrap();
     }
 
     assert_eq!(r.chunks().len(), 2);

@@ -1,4 +1,4 @@
-use std::fs;
+use std::{fs, rc::Rc};
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -10,10 +10,13 @@ use formats::switch_manual_enum_invalid::*;
 fn test_switch_manual_enum_invalid() {
     let bytes = fs::read("../../src/enum_negative.bin").unwrap();
     let reader = BytesReader::new(&bytes);
-    let mut r = SwitchManualEnumInvalid::default();
+    let res = SwitchManualEnumInvalid::read_into(&reader, None, None);
+    let r : Rc<SwitchManualEnumInvalid>;
 
-    if let Err(err) = r.read(&reader, None, Some(KStructUnit::parent_stack())) {
+    if let Err(err) = res {
         panic!("{:?}", err);
+    } else {
+        r = res.unwrap();
     }
 
     assert_eq!(r.opcodes().len(), 2);

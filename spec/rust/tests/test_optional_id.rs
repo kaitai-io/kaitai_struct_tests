@@ -1,5 +1,5 @@
 #![allow(dead_code)]
-use std::fs;
+use std::{fs, rc::Rc};
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -10,12 +10,13 @@ use formats::optional_id::*;
 fn basic_parse() {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
     let reader = BytesReader::new(&bytes);
+    let res = OptionalId::read_into(&reader, None, None);
+    let r : Rc<OptionalId>;
 
-    let mut r = OptionalId::default();
-    {
-        let res = r.read(&reader, None, Some(KStructUnit::parent_stack()));
-        println!("{:?}", res);
-        assert!(res.is_ok());
+    if let Err(err) = res {
+        panic!("{:?}", err);
+    } else {
+        r = res.unwrap();
     }
 
     assert_eq!(*r.unnamed0(), 80);
