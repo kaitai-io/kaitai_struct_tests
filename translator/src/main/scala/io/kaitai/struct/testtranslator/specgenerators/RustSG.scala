@@ -167,7 +167,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
         deref = false
         do_not_deref = true
       } else {
-        val found = translator.get_attr(translator.get_top_class(classSpecs.firstSpec), last)
+        var found = translator.get_attr(translator.get_top_class(classSpecs.firstSpec), last)
         if (found.isDefined) {
           deref = found.get.dataTypeComposite match {
             case _: SwitchType => false
@@ -176,24 +176,30 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
             // case _: BytesType => false
             case _ => true
           }
-        } else if (translator.get_instance(translator.get_top_class(classSpecs.firstSpec), last).isDefined)  {
-          deref = found.get.dataTypeComposite match {
-            case _: SwitchType => false
-            case _: EnumType => false
-            // case _: UserType => false
-            // case _: BytesType => false
-            case _ => true
-          }
-        } else if (translator.get_param(translator.get_top_class(classSpecs.firstSpec), last).isDefined)  {
-          deref = found.get.dataTypeComposite match {
-            case _: SwitchType => false
-            case _: EnumType => false
-            // case _: UserType => false
-            // case _: BytesType => false
-            case _ => true
-          }
         } else {
-          deref = false
+          found = translator.get_instance(translator.get_top_class(classSpecs.firstSpec), last)
+          if (found.isDefined) {
+            deref = found.get.dataTypeComposite match {
+              case _: SwitchType => false
+              case _: EnumType => false
+              // case _: UserType => false
+              // case _: BytesType => false
+              case _ => true
+            }
+          } else {
+            found = translator.get_param(translator.get_top_class(classSpecs.firstSpec), last)
+            if (found.isDefined) {
+              deref = found.get.dataTypeComposite match {
+                case _: SwitchType => false
+                case _: EnumType => false
+                // case _: UserType => false
+                // case _: BytesType => false
+                case _ => true
+              }
+            } else {
+              deref = false
+            }
+          }
         }
       }
       if (deref) {

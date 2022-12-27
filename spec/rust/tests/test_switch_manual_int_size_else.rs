@@ -22,8 +22,8 @@ fn test_switch_manual_int_size_else() {
 
     assert_eq!(17, *r.chunks()[0].code());
     if let SwitchManualIntSizeElse_Chunk_Body::SwitchManualIntSizeElse_Chunk_ChunkMeta(s) =  r.chunks()[0].body() {
-        assert_eq!("Stuff", s.title());
-        assert_eq!("Me", s.author());
+        assert_eq!("Stuff", *s.title());
+        assert_eq!("Me", *s.author());
     } else {
         panic!("expected enum SwitchManualIntSizeElse_Chunk_ChunkMeta");
     }
