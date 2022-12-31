@@ -103,7 +103,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
       case (at: EnumType, et: BooleanType) =>
         expStr = remove_ref(expStr)
       case (at: EnumType, et: IntType) =>
-        out.puts(s"let n : i64 = ${translator.remove_deref(actStr)}.into();")
+        out.puts(s"let n : i64 = (&$actStr).into();")
         actStr = s"n"
       case _ =>
     }
@@ -170,8 +170,8 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
         var found = translator.get_attr(translator.get_top_class(classSpecs.firstSpec), last)
         if (found.isDefined) {
           deref = found.get.dataTypeComposite match {
-            case _: SwitchType => false
-            case _: EnumType => false
+            // case _: SwitchType => false
+            // case _: EnumType => false
             // case _: UserType => false
             // case _: BytesType => false
             case _ => true
@@ -180,8 +180,8 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
           found = translator.get_instance(translator.get_top_class(classSpecs.firstSpec), last)
           if (found.isDefined) {
             deref = found.get.dataTypeComposite match {
-              case _: SwitchType => false
-              case _: EnumType => false
+              // case _: SwitchType => false
+              // case _: EnumType => false
               // case _: UserType => false
               // case _: BytesType => false
               case _ => true
@@ -190,8 +190,8 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
             found = translator.get_param(translator.get_top_class(classSpecs.firstSpec), last)
             if (found.isDefined) {
               deref = found.get.dataTypeComposite match {
-                case _: SwitchType => false
-                case _: EnumType => false
+                // case _: SwitchType => false
+                // case _: EnumType => false
                 // case _: UserType => false
                 // case _: BytesType => false
                 case _ => true
