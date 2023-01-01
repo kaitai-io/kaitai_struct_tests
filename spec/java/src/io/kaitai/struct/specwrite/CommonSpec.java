@@ -165,12 +165,6 @@ public abstract class CommonSpec extends io.kaitai.struct.spec.CommonSpec {
             }
             parentStructs.remove(struct);
             value = dump;
-        } else if (value instanceof byte[]) {
-            StringBuilder sb = new StringBuilder();
-            for (byte b : (byte[]) value) {
-                sb.append(String.format("%02x ", b));
-            }
-            value = "[" + sb.substring(0, sb.length() - (sb.length() != 0 && sb.charAt(sb.length() - 1) == ' ' ? 1 : 0)) + "]";
         } else if (value instanceof List<?>) {
             List<?> list = (List<?>) value;
             List<Object> out = new ArrayList<>();
@@ -181,6 +175,17 @@ public abstract class CommonSpec extends io.kaitai.struct.spec.CommonSpec {
                 ));
             }
             value = out;
+        } else {
+            if (value instanceof KaitaiStream) {
+                value = ((KaitaiStream) value).toByteArray();
+            }
+            if (value instanceof byte[]) {
+                StringBuilder sb = new StringBuilder();
+                for (byte b : (byte[]) value) {
+                    sb.append(String.format("%02x ", b));
+                }
+                value = "[" + sb.substring(0, sb.length() - (sb.length() != 0 && sb.charAt(sb.length() - 1) == ' ' ? 1 : 0)) + "]";
+            }
         }
 
         return value;
