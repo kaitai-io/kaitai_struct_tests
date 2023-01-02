@@ -10,10 +10,10 @@ public class TestProcessToUser extends CommonSpec {
         // NOTE: unlike the automatic roundtrip test, the `_raw_*` fields are set to `null` in this
         // manual test, so "cheating" by just writing them is impossible
 
-        ProcessToUser.JustStr buf1 = new ProcessToUser.JustStr();
-        buf1.setStr("Hello");
-
         ProcessToUser r = new ProcessToUser();
+
+        ProcessToUser.JustStr buf1 = new ProcessToUser.JustStr(null, r, r._root());
+        buf1.setStr("Hello");
         r.setBuf1(buf1);
 
         assertEqualToFile(r, "process_rotate.bin");
