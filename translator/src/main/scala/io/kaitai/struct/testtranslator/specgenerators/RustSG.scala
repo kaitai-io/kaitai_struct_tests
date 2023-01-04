@@ -138,7 +138,6 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
 
   def translate(x: Ast.expr): String = {
     val ttx = translator.translate(x)
-    // append (&reader).unwrap() to instance call
     val dots = ttx.split("\\.")
     var ttx2 = dots(0)
     var last = ""
@@ -150,15 +149,8 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
         if (ind > 0) {
           val attr = attr_full.substring(0, ind)
           last = attr
-         val found = translator.get_instance(translator.get_top_class(classSpecs.firstSpec), attr)
-         if (found.isDefined) {
-           ttx2 = s"$ttx2.$attr(&reader).unwrap()${attr_full.substring(ind + 2, attr_full.length())}"
-         } else {
-            ttx2 = s"$ttx2.$attr_full"
-         }
-        } else {
-          ttx2 = s"$ttx2.$attr_full"
         }
+        ttx2 = s"$ttx2.$attr_full"
     }
     // do we need to deref?
     if (last.nonEmpty) {
@@ -167,40 +159,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
         deref = false
         do_not_deref = true
       } else {
-        var found = translator.get_attr(translator.get_top_class(classSpecs.firstSpec), last)
-        if (found.isDefined) {
-          deref = found.get.dataTypeComposite match {
-            // case _: SwitchType => false
-            // case _: EnumType => false
-            // case _: UserType => false
-            // case _: BytesType => false
-            case _ => true
-          }
-        } else {
-          found = translator.get_instance(translator.get_top_class(classSpecs.firstSpec), last)
-          if (found.isDefined) {
-            deref = found.get.dataTypeComposite match {
-              // case _: SwitchType => false
-              // case _: EnumType => false
-              // case _: UserType => false
-              // case _: BytesType => false
-              case _ => true
-            }
-          } else {
-            found = translator.get_param(translator.get_top_class(classSpecs.firstSpec), last)
-            if (found.isDefined) {
-              deref = found.get.dataTypeComposite match {
-                // case _: SwitchType => false
-                // case _: EnumType => false
-                // case _: UserType => false
-                // case _: BytesType => false
-                case _ => true
-              }
-            } else {
-              deref = false
-            }
-          }
-        }
+        deref = translator.need_deref(last, classSpecs.firstSpec)
       }
       if (deref) {
         if (ttx2.charAt(0) == '*') {
