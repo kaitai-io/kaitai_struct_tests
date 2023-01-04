@@ -24,30 +24,30 @@ fn test_switch_manual_enum() {
     assert_eq!(r.opcodes().len(), 4);
     
     assert_eq!(*r.opcodes()[0 as usize].code(), SwitchManualEnum_Opcode_CodeEnum::Strval);
-    if let SwitchManualEnum_Opcode_Body::SwitchManualEnum_Opcode_Strval(s) =  r.opcodes()[0].body() {
+    if let Some(SwitchManualEnum_Opcode_Body::SwitchManualEnum_Opcode_Strval(s)) = r.opcodes()[0].body().as_ref() {
         assert_eq!(*s.value(), "foobar");
     } else {
         panic!("expected enum SwitchManualEnum_Opcode_Strval");
     }
 
     assert_eq!(*r.opcodes()[1 as usize].code(), SwitchManualEnum_Opcode_CodeEnum::Intval);
-    if let SwitchManualEnum_Opcode_Body::SwitchManualEnum_Opcode_Intval(s) =  r.opcodes()[1].body() {
+    if let Some(SwitchManualEnum_Opcode_Body::SwitchManualEnum_Opcode_Intval(s)) = r.opcodes()[1].body().as_ref() {
         assert_eq!(*s.value(), 66);
     } else {
         panic!("expected enum SwitchManualEnum_Opcode_Intval");
     }
 
     assert_eq!(*r.opcodes()[2 as usize].code(), SwitchManualEnum_Opcode_CodeEnum::Intval);
-    if let SwitchManualEnum_Opcode_Body::SwitchManualEnum_Opcode_Intval(s) =  r.opcodes()[2].body() {
+    if let Some(SwitchManualEnum_Opcode_Body::SwitchManualEnum_Opcode_Intval(s)) = r.opcodes()[2].body().as_ref() {
         assert_eq!(*s.value(), 55);
     } else {
         panic!("expected enum SwitchManualEnum_Opcode_Intval");
     }
 
     assert_eq!(*r.opcodes()[3 as usize].code(), SwitchManualEnum_Opcode_CodeEnum::Strval);
-    if let SwitchManualEnum_Opcode_Body::SwitchManualEnum_Opcode_Strval(s) =  r.opcodes()[3].body() {
+    if let Some(SwitchManualEnum_Opcode_Body::SwitchManualEnum_Opcode_Strval(s)) = r.opcodes()[3].body().as_ref() {
         assert_eq!(*s.value(), "");
     } else {
         panic!("expected enum SwitchManualEnum_Opcode_Strval");
-    }
+    };
 }

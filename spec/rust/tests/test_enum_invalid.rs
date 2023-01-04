@@ -22,6 +22,6 @@ fn test_enum_invalid() {
     }
 
     assert_eq!(*r.pet_1(), EnumInvalid_Animal::Dog);
-    let i : i64 = r.pet_2().into();
+    let i : i64 = (&*r.pet_2()).into();
     assert_eq!(i, 111);
 }

@@ -19,9 +19,12 @@ fn test_switch_else_only() {
         r = res.unwrap();
     }
     assert_eq!(83, *r.opcode());
-    let SwitchElseOnly_PrimByte::S1(v) = r.prim_byte_enum();
+    let SwitchElseOnly_PrimByte::S1(v) = *r.prim_byte_enum().as_ref().unwrap();
     assert_eq!(102, v);
 
-    let SwitchElseOnly_Ut::SwitchElseOnly_Data(d) = r.ut();
-    assert_eq!(vec![0x72, 0x00, 0x49, 0x42], *d.value());
+    if let Some(SwitchElseOnly_Ut::SwitchElseOnly_Data(d)) = (*r.ut()).clone() {
+        assert_eq!(vec![0x72, 0x00, 0x49, 0x42], *d.value());
+    } else {
+        panic!("expected enum SwitchElseOnly_Ut::SwitchElseOnly_Data");
+    };
 }

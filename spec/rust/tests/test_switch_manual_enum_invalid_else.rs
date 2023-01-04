@@ -20,18 +20,18 @@ fn test_switch_manual_enum_invalid_else() {
     }
 
     assert_eq!(r.opcodes().len(), 2);
-    let n : i64 = r.opcodes()[0 as usize].code().into();
+    let n : i64 = (&*r.opcodes()[0 as usize].code()).into();
     assert_eq!(n, 255);
-    if let SwitchManualEnumInvalidElse_Opcode_Body::SwitchManualEnumInvalidElse_Opcode_Defval(s) =  r.opcodes()[0].body() {
+    if let Some(SwitchManualEnumInvalidElse_Opcode_Body::SwitchManualEnumInvalidElse_Opcode_Defval(s)) = r.opcodes()[0].body().as_ref() {
         assert_eq!(*s.value(&reader).unwrap(), 123);
     } else {
         panic!("expected enum SwitchManualEnumInvalidElse_Opcode_Defval");
-    }
-    let n : i64 = r.opcodes()[1 as usize].code().into();
+    };
+    let n : i64 = (&*r.opcodes()[1 as usize].code()).into();
     assert_eq!(n, 1);
-    if let SwitchManualEnumInvalidElse_Opcode_Body::SwitchManualEnumInvalidElse_Opcode_Defval(s) =  r.opcodes()[1].body() {
+    if let Some(SwitchManualEnumInvalidElse_Opcode_Body::SwitchManualEnumInvalidElse_Opcode_Defval(s)) = r.opcodes()[1].body().as_ref() {
         assert_eq!(*s.value(&reader).unwrap(), 123);
     } else {
         panic!("expected enum SwitchManualEnumInvalidElse_Opcode_Defval");
-    }
+    };
 }

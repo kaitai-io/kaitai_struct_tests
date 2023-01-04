@@ -21,15 +21,15 @@ fn test_switch_manual_int_size_eos() {
     assert_eq!(4, r.chunks().len());
 
     assert_eq!(17, *r.chunks()[0].code());
-    if let SwitchManualIntSizeEos_ChunkBody_Body::SwitchManualIntSizeEos_ChunkBody_ChunkMeta(s) =  r.chunks()[0].body().body() {
-        assert_eq!("Stuff", s.title());
-        assert_eq!("Me", s.author());
+    if let Some(SwitchManualIntSizeEos_ChunkBody_Body::SwitchManualIntSizeEos_ChunkBody_ChunkMeta(s)) = r.chunks()[0].body().clone().body().as_ref() {
+        assert_eq!("Stuff", *s.title());
+        assert_eq!("Me", *s.author());
     } else {
         panic!("expected enum SwitchManualIntSizeEos_ChunkBody_ChunkMeta");
-    }
+    };
 
     assert_eq!(34, *r.chunks()[1].code());
-    if let SwitchManualIntSizeEos_ChunkBody_Body::SwitchManualIntSizeEos_ChunkBody_ChunkDir(s) =  r.chunks()[1].body().body() {
+    if let Some(SwitchManualIntSizeEos_ChunkBody_Body::SwitchManualIntSizeEos_ChunkBody_ChunkDir(s)) = r.chunks()[1].body().clone().body().as_ref() {
         let strings : Vec<String> = vec!["AAAA", "BBBB", "CCCC"].iter().map(|&s| s.to_string() ).collect();
         assert_eq!(strings, *s.entries());
     } else {
@@ -37,7 +37,7 @@ fn test_switch_manual_int_size_eos() {
     }
  
     assert_eq!(51, *r.chunks()[2].code());
-    if let SwitchManualIntSizeEos_ChunkBody_Body::Bytes(s) = r.chunks()[2].body().body() {
+    if let Some(SwitchManualIntSizeEos_ChunkBody_Body::Bytes(s)) = r.chunks()[2].body().clone().body().as_ref() {
         let raw : Vec<u8> = vec![0x10, 0x20, 0x30, 0x40, 0x50, 0x60, 0x70, 0x80];
         assert_eq!(raw, *s);
     } else {
@@ -45,7 +45,7 @@ fn test_switch_manual_int_size_eos() {
     }
  
     assert_eq!(255, *r.chunks()[3].code());
-    if let SwitchManualIntSizeEos_ChunkBody_Body::Bytes(s) =  r.chunks()[3].body().body() {
+    if let Some(SwitchManualIntSizeEos_ChunkBody_Body::Bytes(s)) = r.chunks()[3].body().clone().body().as_ref() {
         let raw : Vec<u8> = vec![];
         assert_eq!(raw, *s);
     } else {

@@ -20,9 +20,9 @@ fn basic_parse() {
     }
 
     assert_eq!(*r.code(), 1);
-    if let DebugSwitchUser_Data::DebugSwitchUser_One(s) =  r.data() {
+    if let DebugSwitchUser_Data::DebugSwitchUser_One(s) = r.data().as_ref().unwrap() {
         assert_eq!(*s.val(), -190);
     } else {
         panic!("expected enum DebugSwitchUser_Data");
-    }
+    };
 }

@@ -20,11 +20,11 @@ fn test_switch_manual_enum_invalid() {
     }
 
     assert_eq!(r.opcodes().len(), 2);
-    let n : i64 = r.opcodes()[0 as usize].code().into();
+    let n : i64 = (&*r.opcodes()[0 as usize].code()).into();
     assert_eq!(n, 255);
     // body is None
     //assert_eq!(r.opcodes()[0 as usize].body(), 0);
-    let n : i64 = r.opcodes()[1 as usize].code().into();
+    let n : i64 = (&*r.opcodes()[1 as usize].code()).into();
     assert_eq!(n, 1);
     // body is None
     //assert_eq!(r.opcodes()[1 as usize].body(), 0);

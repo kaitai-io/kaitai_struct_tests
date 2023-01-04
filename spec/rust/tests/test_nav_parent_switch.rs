@@ -22,7 +22,11 @@ fn test_nav_parent_switch() {
     }
 
     assert_eq!(*r.category(), 1);
-    let NavParentSwitch_Content::NavParentSwitch_Element1(s) = r.content();
-    assert_eq!(*s.foo(), 66);
-    assert_eq!(*s.subelement().bar(), 255);
+    let c = r.content();
+    if let Some(NavParentSwitch_Content::NavParentSwitch_Element1(s)) = c.as_ref() {
+        assert_eq!(*s.foo(), 66);
+        assert_eq!(*s.subelement().bar(), 255);
+    } else {
+        panic!("expected value, got {:?}", *c);
+    }
 }
