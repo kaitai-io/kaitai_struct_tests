@@ -5,8 +5,6 @@ use self::kaitai::*;
 mod formats;
 use formats::imports_circular_a::*;
 
-use formats::imports_circular_b::*;
-
 #[test]
 fn test_imports_circular_a() {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();

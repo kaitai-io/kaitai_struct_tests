@@ -5,9 +5,6 @@ use self::kaitai::*;
 mod formats;
 use formats::imports_rel_1::*;
 
-use formats::imported_1::*;
-use formats::imported_2::*;
-
 #[test]
 fn test_imports_rel_1() {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();

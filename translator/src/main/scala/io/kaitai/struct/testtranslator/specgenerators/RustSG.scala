@@ -27,7 +27,9 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     spec.extraImports.foreach{ name => imports = s"$imports\n${use_mod}formats::$name::*;"  }
 
     val code =
-      s"""|use std::{fs, rc::Rc};
+      s"""|#![allow(unused_variables)]
+          |#![allow(unused_assignments)]
+          |use std::{fs, rc::Rc};
           |
           |extern crate kaitai;
           |use self::kaitai::*;
