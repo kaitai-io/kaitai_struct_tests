@@ -9,8 +9,8 @@ use formats::switch_manual_enum_invalid::*;
 #[test]
 fn test_switch_manual_enum_invalid() {
     let bytes = fs::read("../../src/enum_negative.bin").unwrap();
-    let reader = BytesReader::new(&bytes);
-    let res = SwitchManualEnumInvalid::read_into(&reader, None, None);
+    let _io = BytesReader::new(&bytes);
+    let res = SwitchManualEnumInvalid::read_into(&_io, None, None);
     let r : Rc<SwitchManualEnumInvalid>;
 
     if let Err(err) = res {

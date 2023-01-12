@@ -8,8 +8,8 @@ use formats::imports_rel_1::*;
 #[test]
 fn test_imports_rel_1() {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
-    let reader = BytesReader::new(&bytes);
-    let res = ImportsRel1::read_into(&reader, None, None);
+    let _io = BytesReader::new(&bytes);
+    let res = ImportsRel1::read_into(&_io, None, None);
     let r : Rc<ImportsRel1>;
 
     if let Err(err) = res {

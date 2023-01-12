@@ -9,8 +9,8 @@ use formats::repeat_n_struct::*;
 #[test]
 fn test_repeat_n_struct() {
     let bytes = fs::read("../../src/repeat_n_struct.bin").unwrap();
-    let reader = BytesReader::new(&bytes);
-    let res = RepeatNStruct::read_into(&reader, None, None);
+    let _io = BytesReader::new(&bytes);
+    let res = RepeatNStruct::read_into(&_io, None, None);
     let r : Rc<RepeatNStruct>;
 
     if let Err(err) = res {

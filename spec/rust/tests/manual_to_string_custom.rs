@@ -9,8 +9,8 @@ use formats::to_string_custom::*;
 #[test]
 fn basic_parse() {
     let bytes = fs::read("../../src/term_strz.bin").unwrap();
-    let reader = BytesReader::new(&bytes);
-    let res = ToStringCustom::read_into(&reader, None, None);
+    let _io = BytesReader::new(&bytes);
+    let res = ToStringCustom::read_into(&_io, None, None);
     let r : Rc<ToStringCustom>;
 
     if let Err(err) = res {

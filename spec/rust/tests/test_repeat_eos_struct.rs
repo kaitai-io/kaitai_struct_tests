@@ -9,8 +9,8 @@ use formats::repeat_eos_struct::*;
 #[test]
 fn test_repeat_eos_struct() {
     let bytes = fs::read("../../src/repeat_eos_struct.bin").unwrap();
-    let reader = BytesReader::new(&bytes);
-    let res = RepeatEosStruct::read_into(&reader, None, None);
+    let _io = BytesReader::new(&bytes);
+    let res = RepeatEosStruct::read_into(&_io, None, None);
     let r : Rc<RepeatEosStruct>;
 
     if let Err(err) = res {

@@ -9,8 +9,8 @@ use formats::switch_manual_int_else::*;
 #[test]
 fn test_switch_manual_int_else() {
     let bytes = fs::read("../../src/switch_opcodes2.bin").unwrap();
-    let reader = BytesReader::new(&bytes);
-    let res = SwitchManualIntElse::read_into(&reader, None, None);
+    let _io = BytesReader::new(&bytes);
+    let res = SwitchManualIntElse::read_into(&_io, None, None);
     let r : Rc<SwitchManualIntElse>;
 
     if let Err(err) = res {

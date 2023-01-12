@@ -9,8 +9,8 @@ use formats::optional_id::*;
 #[test]
 fn basic_parse() {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
-    let reader = BytesReader::new(&bytes);
-    let res = OptionalId::read_into(&reader, None, None);
+    let _io = BytesReader::new(&bytes);
+    let res = OptionalId::read_into(&_io, None, None);
     let r : Rc<OptionalId>;
 
     if let Err(err) = res {

@@ -9,8 +9,8 @@ use formats::switch_manual_int_size_eos::*;
 #[test]
 fn test_switch_manual_int_size_eos() {
     let bytes = fs::read("../../src/switch_tlv.bin").unwrap();
-    let reader = BytesReader::new(&bytes);
-    let res = SwitchManualIntSizeEos::read_into(&reader, None, None);
+    let _io = BytesReader::new(&bytes);
+    let res = SwitchManualIntSizeEos::read_into(&_io, None, None);
     let r : Rc<SwitchManualIntSizeEos>;
 
     if let Err(err) = res {

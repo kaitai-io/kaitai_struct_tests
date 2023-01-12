@@ -9,8 +9,8 @@ use formats::switch_manual_str::*;
 #[test]
 fn test_switch_manual_str() {
     let bytes = fs::read("../../src/switch_opcodes.bin").unwrap();
-    let reader = BytesReader::new(&bytes);
-    let res = SwitchManualStr::read_into(&reader, None, None);
+    let _io = BytesReader::new(&bytes);
+    let res = SwitchManualStr::read_into(&_io, None, None);
     let r : Rc<SwitchManualStr>;
 
     if let Err(err) = res {

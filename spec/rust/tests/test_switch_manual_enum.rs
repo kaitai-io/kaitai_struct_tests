@@ -11,8 +11,8 @@ use formats::switch_manual_enum::*;
 #[test]
 fn test_switch_manual_enum() {
     let bytes = fs::read("../../src/switch_opcodes.bin").unwrap();
-    let reader = BytesReader::new(&bytes);
-    let res = SwitchManualEnum::read_into(&reader, None, None);
+    let _io = BytesReader::new(&bytes);
+    let res = SwitchManualEnum::read_into(&_io, None, None);
     let r : Rc<SwitchManualEnum>;
 
     if let Err(err) = res {

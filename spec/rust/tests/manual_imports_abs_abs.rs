@@ -9,8 +9,8 @@ use formats::imports_abs_abs::*;
 #[test]
 fn test_params_def() {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
-    let reader = BytesReader::new(&bytes);
-    let res = ImportsAbsAbs::read_into(&reader, None, None);
+    let _io = BytesReader::new(&bytes);
+    let res = ImportsAbsAbs::read_into(&_io, None, None);
     let r : Rc<ImportsAbsAbs>;
 
     if let Err(err) = res {

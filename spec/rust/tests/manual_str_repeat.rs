@@ -9,8 +9,8 @@ use formats::str_repeat::*;
 #[test]
 fn basic_parse() {
     let bytes = fs::read("../../src/term_strz.bin").unwrap();
-    let reader = BytesReader::new(&bytes);
-    let res = StrRepeat::read_into(&reader, None, None);
+    let _io = BytesReader::new(&bytes);
+    let res = StrRepeat::read_into(&_io, None, None);
     let r : Rc<StrRepeat>;
 
     if let Err(err) = res {

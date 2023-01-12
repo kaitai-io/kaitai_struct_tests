@@ -9,8 +9,8 @@ use formats::switch_manual_int_size::*;
 #[test]
 fn test_switch_manual_int_size() {
     let bytes = fs::read("../../src/switch_tlv.bin").unwrap();
-    let reader = BytesReader::new(&bytes);
-    let res = SwitchManualIntSize::read_into(&reader, None, None);
+    let _io = BytesReader::new(&bytes);
+    let res = SwitchManualIntSize::read_into(&_io, None, None);
     let r : Rc<SwitchManualIntSize>;
 
     if let Err(err) = res {
