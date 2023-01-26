@@ -29,6 +29,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     val code =
       s"""|#![allow(unused_variables)]
           |#![allow(unused_assignments)]
+          |#![allow(overflowing_literals)]
           |use std::{fs, rc::Rc};
           |
           |extern crate kaitai;
