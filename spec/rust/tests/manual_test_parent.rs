@@ -9,7 +9,7 @@ use formats::test_parent::*;
 #[test]
 fn basic_parse() {
     let bytes = fs::read("../../src/switch_integers.bin").unwrap();
-    let _io = BytesReader::new(&bytes);
+    let _io = BytesReader::from(bytes);
     let res = TestParent::read_into(&_io, None, None);
     let r : Rc<TestParent>;
 

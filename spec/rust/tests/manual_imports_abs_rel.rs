@@ -9,7 +9,7 @@ use formats::imports_abs_rel::*;
 #[test]
 fn test_params_def() {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
-    let _io = BytesReader::new(&bytes);
+    let _io = BytesReader::from(bytes);
     let res = ImportsAbsRel::read_into(&_io, None, None);
     let r : Rc<ImportsAbsRel>;
 

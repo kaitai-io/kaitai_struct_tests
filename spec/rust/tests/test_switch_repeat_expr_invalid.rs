@@ -9,7 +9,7 @@ use formats::switch_repeat_expr_invalid::*;
 #[test]
 fn test_switch_repeat_expr_invalid() {
     let bytes = fs::read("../../src/switch_tlv.bin").unwrap();
-    let _io = BytesReader::new(&bytes);
+    let _io = BytesReader::from(bytes);
     let res = SwitchRepeatExprInvalid::read_into(&_io, None, None);
     let r : Rc<SwitchRepeatExprInvalid>;
 

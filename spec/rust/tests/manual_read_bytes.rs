@@ -9,7 +9,7 @@ use formats::read_bytes::*;
 #[test]
 fn basic_parse() {
     let bytes = fs::read("../../src/switch_integers.bin").unwrap();
-    let _io = BytesReader::new(&bytes);
+    let _io = BytesReader::from(bytes);
     let res = ReadBytes::read_into(&_io, None, None);
     let r : Rc<ReadBytes>;
 

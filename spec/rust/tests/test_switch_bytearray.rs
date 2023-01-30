@@ -9,7 +9,7 @@ use formats::switch_bytearray::*;
 #[test]
 fn test_switch_bytearray() {
     let bytes = fs::read("../../src/switch_opcodes.bin").unwrap();
-    let _io = BytesReader::new(&bytes);
+    let _io = BytesReader::from(bytes);
     let res = SwitchBytearray::read_into(&_io, None, None);
     let r : Rc<SwitchBytearray>;
 

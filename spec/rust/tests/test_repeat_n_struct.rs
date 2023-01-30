@@ -9,7 +9,7 @@ use formats::repeat_n_struct::*;
 #[test]
 fn test_repeat_n_struct() {
     let bytes = fs::read("../../src/repeat_n_struct.bin").unwrap();
-    let _io = BytesReader::new(&bytes);
+    let _io = BytesReader::from(bytes);
     let res = RepeatNStruct::read_into(&_io, None, None);
     let r : Rc<RepeatNStruct>;
 

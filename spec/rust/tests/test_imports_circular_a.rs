@@ -8,7 +8,7 @@ use formats::imports_circular_a::*;
 #[test]
 fn test_imports_circular_a() {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
-    let _io = BytesReader::new(&bytes);
+    let _io = BytesReader::from(bytes);
     let res = ImportsCircularA::read_into(&_io, None, None);
     let r : Rc<ImportsCircularA>;
 

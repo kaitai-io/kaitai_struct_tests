@@ -9,7 +9,7 @@ use formats::switch_cast_parent::*;
 #[test]
 fn basic_parse() {
     let bytes = fs::read("../../src/switch_opcodes.bin").unwrap();
-    let _io = BytesReader::new(&bytes);
+    let _io = BytesReader::from(bytes);
     let res = SwitchCastParent::read_into(&_io, None, None);
     let r : Rc<SwitchCastParent>;
 

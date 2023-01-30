@@ -8,7 +8,7 @@ use formats::opaque_external_type::*;
 #[test]
 fn test_term_strz() {
     let bytes = fs::read("../../src/term_strz.bin").unwrap();
-    let _io = BytesReader::new(&bytes);
+    let _io = BytesReader::from(bytes);
     let res = OpaqueExternalType::read_into(&_io, None, None);
     let r : Rc<OpaqueExternalType>;
 
