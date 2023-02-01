@@ -20,6 +20,9 @@ fn basic_parse() {
         r = res.unwrap();
     }
 
+    assert_eq!("foobar", *r.first_obj().unwrap().value());
+    assert_eq!(0x42, *r.second_val().unwrap());
+
     assert_eq!(4, r.opcodes().len());
 
     assert_eq!(0x53, *r.opcodes()[0].code());

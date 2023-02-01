@@ -4,13 +4,13 @@ seq:
   - id: opcodes
     type: opcode
     repeat: eos
-#instances:
-#  first_obj:
-#    value: opcodes[0].body.as<strval>
-#  second_val:
-#    value: opcodes[1].body.as<intval>.value
-#  err_cast:
-#    value: opcodes[2].body.as<strval>
+instances:
+  first_obj:
+    value: opcodes[0].body.as<strval>
+  second_val:
+    value: opcodes[1].body.as<intval>.value
+  err_cast:
+    value: opcodes[2].body.as<strval>
 types:
   opcode:
     seq:
