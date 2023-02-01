@@ -6,9 +6,9 @@ seq:
   - id: skip
     size: 20
   # Invoke `mess_up` that can potentially mess up _root._io pointer
-#  - id: always_null
-#    type: u1
-#    if: mess_up.as<dummy>._io.pos < 0
+  - id: always_null
+    type: u1
+    if: mess_up.as<dummy>._io.pos < 0
   # Check where we are at, should consume [20]
   - id: followup
     type: u1
