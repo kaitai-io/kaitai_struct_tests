@@ -1,3 +1,6 @@
+#![allow(unused_variables)]
+#![allow(unused_assignments)]
+#![allow(overflowing_literals)]
 use std::{fs, rc::Rc};
 
 extern crate kaitai;
@@ -10,7 +13,7 @@ use formats::repeat_n_struct::*;
 fn test_repeat_n_struct() {
     let bytes = fs::read("../../src/repeat_n_struct.bin").unwrap();
     let _io = BytesReader::from(bytes);
-    let res = RepeatNStruct::read_into(&_io, None, None);
+    let res: KResult<Rc<RepeatNStruct>> = RepeatNStruct::read_into(&_io, None, None);
     let r : Rc<RepeatNStruct>;
 
     if let Err(err) = res {
