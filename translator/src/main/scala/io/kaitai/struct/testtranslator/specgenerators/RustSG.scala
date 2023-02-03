@@ -23,22 +23,20 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
                     s"use crate::"
                   else
                     s"use "
-    var imports = ""
-    spec.extraImports.foreach{ name => imports = s"$imports\n${use_mod}formats::$name::*;"  }
+
+    importList.add("#![allow(unused_variables)]")
+    importList.add("#![allow(unused_assignments)]")
+    importList.add("#![allow(overflowing_literals)]")
+    importList.add("use std::{fs, rc::Rc};")
+    importList.add("extern crate kaitai;")
+    importList.add("use self::kaitai::*;")
+    importList.add("mod formats;")
+    importList.add(s"${use_mod}formats::${spec.id}::*;")
+
+    spec.extraImports.foreach{ name => importList.add(s"${use_mod}formats::$name::*;") }
 
     val code =
-      s"""|#![allow(unused_variables)]
-          |#![allow(unused_assignments)]
-          |#![allow(overflowing_literals)]
-          |use std::{fs, rc::Rc};
-          |
-          |extern crate kaitai;
-          |use self::kaitai::*;
-          |mod formats;
-          |${use_mod}formats::${spec.id}::*;
-          |$imports
-          |
-          |#[test]
+      s"""|#[test]
           |fn test_${spec.id}() {
           |    let bytes = fs::read("../../src/${spec.data}").unwrap();
           |    let _io = BytesReader::from(bytes);
@@ -135,6 +133,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
 
   override def results: String = {
     "// " + AUTOGEN_COMMENT + "\n\n" +
+      importList.toList.mkString("", "\n", "\n") + "\n" +
       out.result
   }
 
