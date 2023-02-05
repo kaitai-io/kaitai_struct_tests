@@ -14,7 +14,7 @@ seq:
     type: f4
 instances:
   single_value_plus_int:
-    value: single_value + 1.0 # float + int doesn't work on rust
+    value: single_value + 1
   single_value_plus_float:
     value: single_value + 0.5
   double_value_plus_float:
