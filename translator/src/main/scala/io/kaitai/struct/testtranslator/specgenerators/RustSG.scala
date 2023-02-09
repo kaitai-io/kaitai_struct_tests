@@ -27,7 +27,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     importList.add("#![allow(unused_variables)]")
     importList.add("#![allow(unused_assignments)]")
     importList.add("#![allow(overflowing_literals)]")
-    importList.add("use std::{fs, rc::Rc};")
+    importList.add("use std::fs;")
     importList.add("extern crate kaitai;")
     importList.add("use self::kaitai::*;")
     importList.add("mod formats;")
@@ -40,8 +40,8 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
           |fn test_${spec.id}() {
           |    let bytes = fs::read("../../src/${spec.data}").unwrap();
           |    let _io = BytesReader::from(bytes);
-          |    let res: KResult<Rc<$className>> = $className::read_into(&_io, None, None);
-          |    let r : Rc<$className>;
+          |    let res: KResult<OptRc<$className>> = $className::read_into(&_io, None, None);
+          |    let r : OptRc<$className>;
           |
           |    if let Err(err) = res {""".stripMargin
     out.puts(code)
@@ -185,5 +185,5 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
   }
 
   def translateAct(x: Ast.expr): String =
-    translate(x).replace(s"self.${Main.INIT_OBJ_NAME}().as_ref().unwrap()", "r")
+    translate(x).replace(s"self.${Main.INIT_OBJ_NAME}()", "r")
 }

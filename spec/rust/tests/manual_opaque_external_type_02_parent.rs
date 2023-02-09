@@ -1,4 +1,4 @@
-use std::{fs, rc::Rc};
+use std::fs;
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -10,7 +10,7 @@ fn test_term_strz() {
     let bytes = fs::read("../../src/term_strz.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let res = OpaqueExternalType02Parent::read_into(&_io, None, None);
-    let r : Rc<OpaqueExternalType02Parent>;
+    let r : OptRc<OpaqueExternalType02Parent>;
 
     if let Err(err) = res {
         panic!("{:?}", err);
@@ -18,7 +18,7 @@ fn test_term_strz() {
         r = res.unwrap();
     }
 
-    assert_eq!(*r.parent().child().as_ref().unwrap().s1(), "foo");
-    assert_eq!(*r.parent().child().as_ref().unwrap().s2(), "bar");
-    assert_eq!(*r.parent().child().as_ref().unwrap().s3().s3(), "|baz@");
+    assert_eq!(*r.parent().child().s1(), "foo");
+    assert_eq!(*r.parent().child().s2(), "bar");
+    assert_eq!(*r.parent().child().s3().s3(), "|baz@");
 }

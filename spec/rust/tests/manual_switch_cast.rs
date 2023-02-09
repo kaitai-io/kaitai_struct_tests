@@ -1,5 +1,5 @@
 #![allow(dead_code)]
-use std::{fs, rc::Rc};
+use std::fs;
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -12,7 +12,7 @@ fn basic_parse() {
     let _io = BytesReader::from(bytes);
 
     let res = SwitchCast::read_into(&_io, None, None);
-    let r : Rc<SwitchCast>;
+    let r : OptRc<SwitchCast>;
 
     if let Err(err) = res {
         panic!("{:?}", err);

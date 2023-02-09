@@ -1,5 +1,5 @@
 #![allow(dead_code)]
-use std::{fs, rc::Rc};
+use std::fs;
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -11,7 +11,7 @@ fn basic_parse() {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let res = StrLiterals::read_into(&_io, None, None);
-    let r : Rc<StrLiterals>;
+    let r : OptRc<StrLiterals>;
 
     if let Err(err) = res {
         panic!("{:?}", err);

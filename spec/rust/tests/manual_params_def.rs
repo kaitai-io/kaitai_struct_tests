@@ -1,4 +1,4 @@
-use std::{fs, rc::Rc};
+use std::fs;
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -12,7 +12,7 @@ fn test_params_def() {
     let _io = BytesReader::from(bytes);
     let f = |t: &mut ParamsDef| Ok(t.set_params(5, true));
     let res = ParamsDef::read_into_with_init(&_io, None, None, &f);
-    let r : Rc<ParamsDef>;
+    let r : OptRc<ParamsDef>;
 
     if let Err(err) = res {
         panic!("{:?}", err);

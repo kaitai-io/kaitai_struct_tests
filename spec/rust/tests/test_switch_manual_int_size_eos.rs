@@ -1,5 +1,5 @@
 #![allow(dead_code)]
-use std::{fs, rc::Rc};
+use std::fs;
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -11,7 +11,7 @@ fn test_switch_manual_int_size_eos() {
     let bytes = fs::read("../../src/switch_tlv.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let res = SwitchManualIntSizeEos::read_into(&_io, None, None);
-    let r : Rc<SwitchManualIntSizeEos>;
+    let r : OptRc<SwitchManualIntSizeEos>;
 
     if let Err(err) = res {
         panic!("{:?}", err);

@@ -1,4 +1,4 @@
-use std::{fs, rc::Rc};
+use std::fs;
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -11,7 +11,7 @@ fn test_switch_manual_enum_invalid() {
     let bytes = fs::read("../../src/enum_negative.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let res = SwitchManualEnumInvalid::read_into(&_io, None, None);
-    let r : Rc<SwitchManualEnumInvalid>;
+    let r : OptRc<SwitchManualEnumInvalid>;
 
     if let Err(err) = res {
         panic!("{:?}", err);

@@ -1,4 +1,4 @@
-use std::{fs, rc::Rc};
+use std::fs;
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -10,7 +10,7 @@ fn test_cast_to_imported() {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let res = CastToImported::read_into(&_io, None, None);
-    let r : Rc<CastToImported>;
+    let r : OptRc<CastToImported>;
 
     if let Err(err) = res {
         panic!("{:?}", err);
@@ -18,6 +18,6 @@ fn test_cast_to_imported() {
         r = res.unwrap();
     }
 
-    assert_eq!(*(*(*r.one()).as_ref().unwrap()).one(), 80);
-    assert_eq!(*(*(*r.one_casted().unwrap()).as_ref().unwrap()).one(), 80);
+    assert_eq!(*(*(*r.one())).one(), 80);
+    assert_eq!(*(*(*r.one_casted().unwrap())).one(), 80);
 }

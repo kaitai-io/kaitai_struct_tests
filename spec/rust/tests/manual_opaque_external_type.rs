@@ -1,4 +1,4 @@
-use std::{fs, rc::Rc};
+use std::fs;
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -6,11 +6,11 @@ mod formats;
 use formats::opaque_external_type::*;
 
 #[test]
-fn test_term_strz() {
+fn test_opaque_external_type() {
     let bytes = fs::read("../../src/term_strz.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let res = OpaqueExternalType::read_into(&_io, None, None);
-    let r : Rc<OpaqueExternalType>;
+    let r : OptRc<OpaqueExternalType>;
 
     if let Err(err) = res {
         panic!("{:?}", err);
@@ -18,7 +18,7 @@ fn test_term_strz() {
         r = res.unwrap();
     }
 
-    assert_eq!(*r.one().as_ref().unwrap().s1(), "foo");
-    assert_eq!(*r.one().as_ref().unwrap().s2(), "bar");
-    assert_eq!(*r.one().as_ref().unwrap().s3(), "|baz@");
+    assert_eq!(*r.one().s1(), "foo");
+    assert_eq!(*r.one().s2(), "bar");
+    assert_eq!(*r.one().s3(), "|baz@");
 }

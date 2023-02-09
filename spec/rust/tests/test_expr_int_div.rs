@@ -1,7 +1,7 @@
 #![allow(unused_variables)]
 #![allow(unused_assignments)]
 #![allow(overflowing_literals)]
-use std::{fs, rc::Rc};
+use std::fs;
 
 extern crate kaitai;
 use self::kaitai::*;
@@ -13,8 +13,8 @@ use formats::expr_int_div::*;
 fn test_expr_int_div() {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
     let _io = BytesReader::from(bytes);
-    let res: KResult<Rc<ExprIntDiv>> = ExprIntDiv::read_into(&_io, None, None);
-    let r : Rc<ExprIntDiv>;
+    let res: KResult<OptRc<ExprIntDiv>> = ExprIntDiv::read_into(&_io, None, None);
+    let r : OptRc<ExprIntDiv>;
 
     if let Err(err) = res {
         panic!("{:?}", err);
