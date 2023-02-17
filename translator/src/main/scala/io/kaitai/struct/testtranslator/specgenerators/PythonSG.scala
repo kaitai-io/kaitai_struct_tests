@@ -13,13 +13,13 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
   val translator = new PythonTranslator(provider, importList)
   val className = PythonCompiler.type2class(spec.id)
 
-  override def fileName(name: String): String = s"test_$name.py"
+  override def fileName(name: String): String = s"spec/test_$name.py"
 
   override def indentStr: String = "    "
 
   override def header(): Unit = {
     out.puts
-    out.puts(s"from ${spec.id} import $className")
+    out.puts(s"from testformats.${spec.id} import $className")
     out.puts
     out.puts(s"class Test$className(unittest.TestCase):")
     out.inc

@@ -9,6 +9,7 @@ __pycache__/
 
 # Nim
 _*
+!_*.py
 spec/nim/bin
 
 # Rust compiled code, cargo and rls data
