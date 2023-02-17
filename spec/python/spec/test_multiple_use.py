@@ -2,7 +2,7 @@
 
 import unittest
 
-from multiple_use import MultipleUse
+from testformats.multiple_use import MultipleUse
 
 class TestMultipleUse(unittest.TestCase):
     def test_multiple_use(self):

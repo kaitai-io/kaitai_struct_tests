@@ -2,7 +2,7 @@
 
 import unittest
 
-from default_endian_expr_inherited import DefaultEndianExprInherited
+from testformats.default_endian_expr_inherited import DefaultEndianExprInherited
 
 class TestDefaultEndianExprInherited(unittest.TestCase):
     def test_default_endian_expr_inherited(self):

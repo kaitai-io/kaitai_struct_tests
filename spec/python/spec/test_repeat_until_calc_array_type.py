@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_until_calc_array_type import RepeatUntilCalcArrayType
+from testformats.repeat_until_calc_array_type import RepeatUntilCalcArrayType
 
 class TestRepeatUntilCalcArrayType(unittest.TestCase):
     def test_repeat_until_calc_array_type(self):

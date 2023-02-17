@@ -2,7 +2,7 @@
 
 import unittest
 
-from enum_for_unknown_id import EnumForUnknownId
+from testformats.enum_for_unknown_id import EnumForUnknownId
 
 class TestEnumForUnknownId(unittest.TestCase):
     def test_enum_for_unknown_id(self):

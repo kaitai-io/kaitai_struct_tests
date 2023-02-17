@@ -2,7 +2,7 @@
 
 import unittest
 
-from instance_in_repeat_expr import InstanceInRepeatExpr
+from testformats.instance_in_repeat_expr import InstanceInRepeatExpr
 
 class TestInstanceInRepeatExpr(unittest.TestCase):
     def test_instance_in_repeat_expr(self):

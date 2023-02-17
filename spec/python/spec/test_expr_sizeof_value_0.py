@@ -2,7 +2,7 @@
 
 import unittest
 
-from expr_sizeof_value_0 import ExprSizeofValue0
+from testformats.expr_sizeof_value_0 import ExprSizeofValue0
 
 class TestExprSizeofValue0(unittest.TestCase):
     def test_expr_sizeof_value_0(self):

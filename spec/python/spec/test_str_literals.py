@@ -1,6 +1,6 @@
 import unittest
 
-from str_literals import StrLiterals
+from testformats.str_literals import StrLiterals
 
 class TestStrLiterals(unittest.TestCase):
     def test_str_literals(self):

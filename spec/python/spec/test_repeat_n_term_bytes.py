@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_n_term_bytes import RepeatNTermBytes
+from testformats.repeat_n_term_bytes import RepeatNTermBytes
 
 class TestRepeatNTermBytes(unittest.TestCase):
     def test_repeat_n_term_bytes(self):

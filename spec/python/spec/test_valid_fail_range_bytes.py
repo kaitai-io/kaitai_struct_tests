@@ -3,7 +3,7 @@
 import unittest
 import kaitaistruct
 
-from valid_fail_range_bytes import ValidFailRangeBytes
+from testformats.valid_fail_range_bytes import ValidFailRangeBytes
 
 class TestValidFailRangeBytes(unittest.TestCase):
     def test_valid_fail_range_bytes(self):

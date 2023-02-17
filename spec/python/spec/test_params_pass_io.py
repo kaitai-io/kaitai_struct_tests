@@ -2,7 +2,7 @@
 
 import unittest
 
-from params_pass_io import ParamsPassIo
+from testformats.params_pass_io import ParamsPassIo
 
 class TestParamsPassIo(unittest.TestCase):
     def test_params_pass_io(self):

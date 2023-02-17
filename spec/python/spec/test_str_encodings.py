@@ -2,7 +2,7 @@
 
 import unittest
 
-from str_encodings import StrEncodings
+from testformats.str_encodings import StrEncodings
 
 class TestStrEncodings(unittest.TestCase):
     def test_str_encodings(self):

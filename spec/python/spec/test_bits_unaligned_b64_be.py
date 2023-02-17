@@ -2,7 +2,7 @@
 
 import unittest
 
-from bits_unaligned_b64_be import BitsUnalignedB64Be
+from testformats.bits_unaligned_b64_be import BitsUnalignedB64Be
 
 class TestBitsUnalignedB64Be(unittest.TestCase):
     def test_bits_unaligned_b64_be(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from str_pad_term_equal import StrPadTermEqual
+from testformats.str_pad_term_equal import StrPadTermEqual
 
 class TestStrPadTermEqual(unittest.TestCase):
     def test_str_pad_term_equal(self):

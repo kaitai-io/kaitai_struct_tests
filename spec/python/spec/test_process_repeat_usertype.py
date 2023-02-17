@@ -2,7 +2,7 @@
 
 import unittest
 
-from process_repeat_usertype import ProcessRepeatUsertype
+from testformats.process_repeat_usertype import ProcessRepeatUsertype
 
 class TestProcessRepeatUsertype(unittest.TestCase):
     def test_process_repeat_usertype(self):

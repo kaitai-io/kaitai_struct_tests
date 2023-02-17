@@ -2,7 +2,7 @@
 
 import unittest
 
-from meta_xref import MetaXref
+from testformats.meta_xref import MetaXref
 
 class TestMetaXref(unittest.TestCase):
     def test_meta_xref(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from expr_io_pos import ExprIoPos
+from testformats.expr_io_pos import ExprIoPos
 
 class TestExprIoPos(unittest.TestCase):
     def test_expr_io_pos(self):

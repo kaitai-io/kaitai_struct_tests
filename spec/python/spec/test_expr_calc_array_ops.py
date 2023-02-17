@@ -2,7 +2,7 @@
 
 import unittest
 
-from expr_calc_array_ops import ExprCalcArrayOps
+from testformats.expr_calc_array_ops import ExprCalcArrayOps
 
 class TestExprCalcArrayOps(unittest.TestCase):
     def test_expr_calc_array_ops(self):

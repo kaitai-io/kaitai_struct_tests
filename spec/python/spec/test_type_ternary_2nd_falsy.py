@@ -2,7 +2,7 @@
 
 import unittest
 
-from type_ternary_2nd_falsy import TypeTernary2ndFalsy
+from testformats.type_ternary_2nd_falsy import TypeTernary2ndFalsy
 
 class TestTypeTernary2ndFalsy(unittest.TestCase):
     def test_type_ternary_2nd_falsy(self):

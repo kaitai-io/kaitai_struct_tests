@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_eos_term_struct import RepeatEosTermStruct
+from testformats.repeat_eos_term_struct import RepeatEosTermStruct
 
 class TestRepeatEosTermStruct(unittest.TestCase):
     def test_repeat_eos_term_struct(self):

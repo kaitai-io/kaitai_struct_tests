@@ -2,7 +2,7 @@
 
 import unittest
 
-from cast_nested import CastNested
+from testformats.cast_nested import CastNested
 
 class TestCastNested(unittest.TestCase):
     def test_cast_nested(self):

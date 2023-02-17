@@ -2,7 +2,7 @@
 
 import unittest
 
-from expr_str_ops import ExprStrOps
+from testformats.expr_str_ops import ExprStrOps
 
 class TestExprStrOps(unittest.TestCase):
     def test_expr_str_ops(self):

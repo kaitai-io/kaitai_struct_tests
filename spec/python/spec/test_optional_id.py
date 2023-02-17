@@ -1,6 +1,6 @@
 import unittest
 
-from optional_id import OptionalId
+from testformats.optional_id import OptionalId
 
 class TestOptionalId(unittest.TestCase):
     def test_optional_id(self):

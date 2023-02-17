@@ -2,7 +2,7 @@
 
 import unittest
 
-from yaml_ints import YamlInts
+from testformats.yaml_ints import YamlInts
 
 class TestYamlInts(unittest.TestCase):
     def test_yaml_ints(self):

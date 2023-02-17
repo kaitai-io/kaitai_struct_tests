@@ -2,7 +2,7 @@
 
 import unittest
 
-from index_sizes import IndexSizes
+from testformats.index_sizes import IndexSizes
 
 class TestIndexSizes(unittest.TestCase):
     def test_index_sizes(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from str_encodings_utf16 import StrEncodingsUtf16
+from testformats.str_encodings_utf16 import StrEncodingsUtf16
 
 class TestStrEncodingsUtf16(unittest.TestCase):
     def test_str_encodings_utf16(self):

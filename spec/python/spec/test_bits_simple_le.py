@@ -2,7 +2,7 @@
 
 import unittest
 
-from bits_simple_le import BitsSimpleLe
+from testformats.bits_simple_le import BitsSimpleLe
 
 class TestBitsSimpleLe(unittest.TestCase):
     def test_bits_simple_le(self):

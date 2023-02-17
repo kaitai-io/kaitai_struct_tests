@@ -2,7 +2,7 @@
 
 import unittest
 
-from instance_user_array import InstanceUserArray
+from testformats.instance_user_array import InstanceUserArray
 
 class TestInstanceUserArray(unittest.TestCase):
     def test_instance_user_array(self):

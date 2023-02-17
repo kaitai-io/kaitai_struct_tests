@@ -2,7 +2,7 @@
 
 import unittest
 
-from switch_repeat_expr_invalid import SwitchRepeatExprInvalid
+from testformats.switch_repeat_expr_invalid import SwitchRepeatExprInvalid
 
 class TestSwitchRepeatExprInvalid(unittest.TestCase):
     def test_switch_repeat_expr_invalid(self):

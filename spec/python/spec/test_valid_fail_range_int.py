@@ -3,7 +3,7 @@
 import unittest
 import kaitaistruct
 
-from valid_fail_range_int import ValidFailRangeInt
+from testformats.valid_fail_range_int import ValidFailRangeInt
 
 class TestValidFailRangeInt(unittest.TestCase):
     def test_valid_fail_range_int(self):

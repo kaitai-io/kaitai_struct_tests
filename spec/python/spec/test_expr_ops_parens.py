@@ -2,7 +2,7 @@
 
 import unittest
 
-from expr_ops_parens import ExprOpsParens
+from testformats.expr_ops_parens import ExprOpsParens
 
 class TestExprOpsParens(unittest.TestCase):
     def test_expr_ops_parens(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_n_bytes_pad_term import RepeatNBytesPadTerm
+from testformats.repeat_n_bytes_pad_term import RepeatNBytesPadTerm
 
 class TestRepeatNBytesPadTerm(unittest.TestCase):
     def test_repeat_n_bytes_pad_term(self):

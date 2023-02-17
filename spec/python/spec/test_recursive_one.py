@@ -2,7 +2,7 @@
 
 import unittest
 
-from recursive_one import RecursiveOne
+from testformats.recursive_one import RecursiveOne
 
 class TestRecursiveOne(unittest.TestCase):
     def test_recursive_one(self):

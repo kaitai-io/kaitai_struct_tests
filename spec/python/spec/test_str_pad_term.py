@@ -2,7 +2,7 @@
 
 import unittest
 
-from str_pad_term import StrPadTerm
+from testformats.str_pad_term import StrPadTerm
 
 class TestStrPadTerm(unittest.TestCase):
     def test_str_pad_term(self):

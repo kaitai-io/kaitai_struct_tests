@@ -2,7 +2,7 @@
 
 import unittest
 
-from integers import Integers
+from testformats.integers import Integers
 
 class TestIntegers(unittest.TestCase):
     def test_integers(self):

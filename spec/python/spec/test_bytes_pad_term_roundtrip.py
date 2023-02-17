@@ -2,7 +2,7 @@
 
 import unittest
 
-from bytes_pad_term_roundtrip import BytesPadTermRoundtrip
+from testformats.bytes_pad_term_roundtrip import BytesPadTermRoundtrip
 
 class TestBytesPadTermRoundtrip(unittest.TestCase):
     def test_bytes_pad_term_roundtrip(self):

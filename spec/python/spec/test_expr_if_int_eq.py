@@ -2,7 +2,7 @@
 
 import unittest
 
-from expr_if_int_eq import ExprIfIntEq
+from testformats.expr_if_int_eq import ExprIfIntEq
 
 class TestExprIfIntEq(unittest.TestCase):
     def test_expr_if_int_eq(self):

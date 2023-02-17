@@ -1,6 +1,6 @@
 import unittest
 
-from imports_abs_rel import ImportsAbsRel
+from testformats.imports_abs_rel import ImportsAbsRel
 
 class TestImportsAbsRel(unittest.TestCase):
     def test_imports_abs_rel(self):

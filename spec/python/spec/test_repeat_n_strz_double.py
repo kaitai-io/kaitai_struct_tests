@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_n_strz_double import RepeatNStrzDouble
+from testformats.repeat_n_strz_double import RepeatNStrzDouble
 
 class TestRepeatNStrzDouble(unittest.TestCase):
     def test_repeat_n_strz_double(self):

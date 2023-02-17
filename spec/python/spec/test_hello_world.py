@@ -2,7 +2,7 @@
 
 import unittest
 
-from hello_world import HelloWorld
+from testformats.hello_world import HelloWorld
 
 class TestHelloWorld(unittest.TestCase):
     def test_hello_world(self):

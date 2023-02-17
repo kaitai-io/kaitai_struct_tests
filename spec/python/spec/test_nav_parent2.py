@@ -2,7 +2,7 @@
 
 import unittest
 
-from nav_parent2 import NavParent2
+from testformats.nav_parent2 import NavParent2
 
 class TestNavParent2(unittest.TestCase):
     def test_nav_parent2(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from io_local_var import IoLocalVar
+from testformats.io_local_var import IoLocalVar
 
 class TestIoLocalVar(unittest.TestCase):
     def test_io_local_var(self):

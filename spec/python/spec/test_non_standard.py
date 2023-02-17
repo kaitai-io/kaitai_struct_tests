@@ -2,7 +2,7 @@
 
 import unittest
 
-from non_standard import NonStandard
+from testformats.non_standard import NonStandard
 
 class TestNonStandard(unittest.TestCase):
     def test_non_standard(self):

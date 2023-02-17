@@ -2,7 +2,7 @@
 
 import unittest
 
-from integers_double_overflow import IntegersDoubleOverflow
+from testformats.integers_double_overflow import IntegersDoubleOverflow
 
 class TestIntegersDoubleOverflow(unittest.TestCase):
     def test_integers_double_overflow(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from type_ternary import TypeTernary
+from testformats.type_ternary import TypeTernary
 
 class TestTypeTernary(unittest.TestCase):
     def test_type_ternary(self):

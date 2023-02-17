@@ -1,6 +1,6 @@
 import unittest
 
-from opaque_with_param import OpaqueWithParam
+from testformats.opaque_with_param import OpaqueWithParam
 
 class TestOpaqueWithParam(unittest.TestCase):
     def test_opaque_with_param(self):

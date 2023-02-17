@@ -2,7 +2,7 @@
 
 import unittest
 
-from switch_manual_enum import SwitchManualEnum
+from testformats.switch_manual_enum import SwitchManualEnum
 
 class TestSwitchManualEnum(unittest.TestCase):
     def test_switch_manual_enum(self):

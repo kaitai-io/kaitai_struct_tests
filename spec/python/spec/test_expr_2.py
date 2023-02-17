@@ -2,7 +2,7 @@
 
 import unittest
 
-from expr_2 import Expr2
+from testformats.expr_2 import Expr2
 
 class TestExpr2(unittest.TestCase):
     def test_expr_2(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from ts_packet_header import TsPacketHeader
+from testformats.ts_packet_header import TsPacketHeader
 
 class TestTsPacketHeader(unittest.TestCase):
     def test_ts_packet_header(self):

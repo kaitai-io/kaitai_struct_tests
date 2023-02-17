@@ -2,7 +2,7 @@
 
 import unittest
 
-from opaque_external_type import OpaqueExternalType
+from testformats.opaque_external_type import OpaqueExternalType
 
 class TestOpaqueExternalType(unittest.TestCase):
     def test_opaque_external_type(self):

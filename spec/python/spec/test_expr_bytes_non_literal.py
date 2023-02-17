@@ -2,7 +2,7 @@
 
 import unittest
 
-from expr_bytes_non_literal import ExprBytesNonLiteral
+from testformats.expr_bytes_non_literal import ExprBytesNonLiteral
 
 class TestExprBytesNonLiteral(unittest.TestCase):
     def test_expr_bytes_non_literal(self):

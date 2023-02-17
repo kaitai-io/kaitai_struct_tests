@@ -2,7 +2,7 @@
 
 import unittest
 
-from cast_to_imported import CastToImported
+from testformats.cast_to_imported import CastToImported
 
 class TestCastToImported(unittest.TestCase):
     def test_cast_to_imported(self):

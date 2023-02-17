@@ -2,7 +2,7 @@
 
 import unittest
 
-from str_eos_pad_term_empty import StrEosPadTermEmpty
+from testformats.str_eos_pad_term_empty import StrEosPadTermEmpty
 
 class TestStrEosPadTermEmpty(unittest.TestCase):
     def test_str_eos_pad_term_empty(self):

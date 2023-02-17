@@ -2,7 +2,7 @@
 
 import unittest
 
-from switch_manual_str_else import SwitchManualStrElse
+from testformats.switch_manual_str_else import SwitchManualStrElse
 
 class TestSwitchManualStrElse(unittest.TestCase):
     def test_switch_manual_str_else(self):

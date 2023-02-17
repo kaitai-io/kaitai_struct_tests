@@ -1,6 +1,6 @@
 import unittest
 
-from switch_manual_enum_invalid import SwitchManualEnumInvalid
+from testformats.switch_manual_enum_invalid import SwitchManualEnumInvalid
 
 class TestSwitchManualEnumInvalid(unittest.TestCase):
     def test_switch_manual_enum_invalid(self):

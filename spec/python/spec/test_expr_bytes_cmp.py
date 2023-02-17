@@ -2,7 +2,7 @@
 
 import unittest
 
-from expr_bytes_cmp import ExprBytesCmp
+from testformats.expr_bytes_cmp import ExprBytesCmp
 
 class TestExprBytesCmp(unittest.TestCase):
     def test_expr_bytes_cmp(self):

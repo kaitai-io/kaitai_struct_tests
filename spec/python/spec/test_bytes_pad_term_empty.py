@@ -2,7 +2,7 @@
 
 import unittest
 
-from bytes_pad_term_empty import BytesPadTermEmpty
+from testformats.bytes_pad_term_empty import BytesPadTermEmpty
 
 class TestBytesPadTermEmpty(unittest.TestCase):
     def test_bytes_pad_term_empty(self):

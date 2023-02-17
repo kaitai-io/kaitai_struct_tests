@@ -2,7 +2,7 @@
 
 import unittest
 
-from type_int_unary_op import TypeIntUnaryOp
+from testformats.type_int_unary_op import TypeIntUnaryOp
 
 class TestTypeIntUnaryOp(unittest.TestCase):
     def test_type_int_unary_op(self):

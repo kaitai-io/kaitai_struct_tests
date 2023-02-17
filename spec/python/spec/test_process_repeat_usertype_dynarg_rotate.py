@@ -2,7 +2,7 @@
 
 import unittest
 
-from process_repeat_usertype_dynarg_rotate import ProcessRepeatUsertypeDynargRotate
+from testformats.process_repeat_usertype_dynarg_rotate import ProcessRepeatUsertypeDynargRotate
 
 class TestProcessRepeatUsertypeDynargRotate(unittest.TestCase):
     def test_process_repeat_usertype_dynarg_rotate(self):

@@ -3,7 +3,7 @@
 import unittest
 import kaitaistruct
 
-from valid_fail_expr import ValidFailExpr
+from testformats.valid_fail_expr import ValidFailExpr
 
 class TestValidFailExpr(unittest.TestCase):
     def test_valid_fail_expr(self):

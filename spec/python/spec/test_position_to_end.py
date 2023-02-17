@@ -2,7 +2,7 @@
 
 import unittest
 
-from position_to_end import PositionToEnd
+from testformats.position_to_end import PositionToEnd
 
 class TestPositionToEnd(unittest.TestCase):
     def test_position_to_end(self):

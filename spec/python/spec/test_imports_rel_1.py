@@ -2,7 +2,7 @@
 
 import unittest
 
-from imports_rel_1 import ImportsRel1
+from testformats.imports_rel_1 import ImportsRel1
 
 class TestImportsRel1(unittest.TestCase):
     def test_imports_rel_1(self):

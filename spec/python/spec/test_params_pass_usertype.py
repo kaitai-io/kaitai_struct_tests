@@ -2,7 +2,7 @@
 
 import unittest
 
-from params_pass_usertype import ParamsPassUsertype
+from testformats.params_pass_usertype import ParamsPassUsertype
 
 class TestParamsPassUsertype(unittest.TestCase):
     def test_params_pass_usertype(self):

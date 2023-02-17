@@ -2,7 +2,7 @@
 
 import unittest
 
-from str_pad_term_roundtrip import StrPadTermRoundtrip
+from testformats.str_pad_term_roundtrip import StrPadTermRoundtrip
 
 class TestStrPadTermRoundtrip(unittest.TestCase):
     def test_str_pad_term_roundtrip(self):

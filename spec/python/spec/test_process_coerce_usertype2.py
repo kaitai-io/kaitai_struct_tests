@@ -2,7 +2,7 @@
 
 import unittest
 
-from process_coerce_usertype2 import ProcessCoerceUsertype2
+from testformats.process_coerce_usertype2 import ProcessCoerceUsertype2
 
 class TestProcessCoerceUsertype2(unittest.TestCase):
     def test_process_coerce_usertype2(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from process_custom_no_args import ProcessCustomNoArgs
+from testformats.process_custom_no_args import ProcessCustomNoArgs
 
 class TestProcessCustomNoArgs(unittest.TestCase):
     def test_process_custom_no_args(self):

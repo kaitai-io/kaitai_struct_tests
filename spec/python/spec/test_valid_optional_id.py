@@ -2,7 +2,7 @@
 
 import unittest
 
-from valid_optional_id import ValidOptionalId
+from testformats.valid_optional_id import ValidOptionalId
 
 class TestValidOptionalId(unittest.TestCase):
     def test_valid_optional_id(self):

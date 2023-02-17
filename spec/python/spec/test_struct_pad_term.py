@@ -2,7 +2,7 @@
 
 import unittest
 
-from struct_pad_term import StructPadTerm
+from testformats.struct_pad_term import StructPadTerm
 
 class TestStructPadTerm(unittest.TestCase):
     def test_struct_pad_term(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from bits_seq_endian_combo import BitsSeqEndianCombo
+from testformats.bits_seq_endian_combo import BitsSeqEndianCombo
 
 class TestBitsSeqEndianCombo(unittest.TestCase):
     def test_bits_seq_endian_combo(self):

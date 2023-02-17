@@ -2,7 +2,7 @@
 
 import unittest
 
-from integers_min_max import IntegersMinMax
+from testformats.integers_min_max import IntegersMinMax
 
 class TestIntegersMinMax(unittest.TestCase):
     def test_integers_min_max(self):

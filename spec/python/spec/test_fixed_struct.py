@@ -2,7 +2,7 @@
 
 import unittest
 
-from fixed_struct import FixedStruct
+from testformats.fixed_struct import FixedStruct
 
 class TestFixedStruct(unittest.TestCase):
     def test_fixed_struct(self):

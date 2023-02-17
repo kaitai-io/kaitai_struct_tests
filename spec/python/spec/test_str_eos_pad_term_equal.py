@@ -2,7 +2,7 @@
 
 import unittest
 
-from str_eos_pad_term_equal import StrEosPadTermEqual
+from testformats.str_eos_pad_term_equal import StrEosPadTermEqual
 
 class TestStrEosPadTermEqual(unittest.TestCase):
     def test_str_eos_pad_term_equal(self):

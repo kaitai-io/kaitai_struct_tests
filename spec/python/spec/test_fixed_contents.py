@@ -2,7 +2,7 @@
 
 import unittest
 
-from fixed_contents import FixedContents
+from testformats.fixed_contents import FixedContents
 
 class TestFixedContents(unittest.TestCase):
     def test_fixed_contents(self):

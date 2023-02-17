@@ -2,7 +2,7 @@
 
 import unittest
 
-from docstrings_docref import DocstringsDocref
+from testformats.docstrings_docref import DocstringsDocref
 
 class TestDocstringsDocref(unittest.TestCase):
     def test_docstrings_docref(self):

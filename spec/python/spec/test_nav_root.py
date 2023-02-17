@@ -2,7 +2,7 @@
 
 import unittest
 
-from nav_root import NavRoot
+from testformats.nav_root import NavRoot
 
 class TestNavRoot(unittest.TestCase):
     def test_nav_root(self):

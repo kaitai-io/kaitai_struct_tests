@@ -2,7 +2,7 @@
 
 import unittest
 
-from bits_unaligned_b32_le import BitsUnalignedB32Le
+from testformats.bits_unaligned_b32_le import BitsUnalignedB32Le
 
 class TestBitsUnalignedB32Le(unittest.TestCase):
     def test_bits_unaligned_b32_le(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from valid_long import ValidLong
+from testformats.valid_long import ValidLong
 
 class TestValidLong(unittest.TestCase):
     def test_valid_long(self):

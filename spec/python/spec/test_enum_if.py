@@ -2,7 +2,7 @@
 
 import unittest
 
-from enum_if import EnumIf
+from testformats.enum_if import EnumIf
 
 class TestEnumIf(unittest.TestCase):
     def test_enum_if(self):

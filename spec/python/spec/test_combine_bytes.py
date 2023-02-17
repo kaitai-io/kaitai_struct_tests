@@ -2,7 +2,7 @@
 
 import unittest
 
-from combine_bytes import CombineBytes
+from testformats.combine_bytes import CombineBytes
 
 class TestCombineBytes(unittest.TestCase):
     def test_combine_bytes(self):

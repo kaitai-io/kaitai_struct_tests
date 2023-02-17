@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_eos_bytes import RepeatEosBytes
+from testformats.repeat_eos_bytes import RepeatEosBytes
 
 class TestRepeatEosBytes(unittest.TestCase):
     def test_repeat_eos_bytes(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from process_repeat_bytes import ProcessRepeatBytes
+from testformats.process_repeat_bytes import ProcessRepeatBytes
 
 class TestProcessRepeatBytes(unittest.TestCase):
     def test_process_repeat_bytes(self):

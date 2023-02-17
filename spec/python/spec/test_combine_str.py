@@ -2,7 +2,7 @@
 
 import unittest
 
-from combine_str import CombineStr
+from testformats.combine_str import CombineStr
 
 class TestCombineStr(unittest.TestCase):
     def test_combine_str(self):

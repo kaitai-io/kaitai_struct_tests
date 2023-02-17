@@ -2,7 +2,7 @@
 
 import unittest
 
-from bytes_pad_term_zero_size import BytesPadTermZeroSize
+from testformats.bytes_pad_term_zero_size import BytesPadTermZeroSize
 
 class TestBytesPadTermZeroSize(unittest.TestCase):
     def test_bytes_pad_term_zero_size(self):

@@ -3,7 +3,7 @@
 import unittest
 import kaitaistruct
 
-from valid_fail_min_int import ValidFailMinInt
+from testformats.valid_fail_min_int import ValidFailMinInt
 
 class TestValidFailMinInt(unittest.TestCase):
     def test_valid_fail_min_int(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from bits_shift_by_b32_le import BitsShiftByB32Le
+from testformats.bits_shift_by_b32_le import BitsShiftByB32Le
 
 class TestBitsShiftByB32Le(unittest.TestCase):
     def test_bits_shift_by_b32_le(self):

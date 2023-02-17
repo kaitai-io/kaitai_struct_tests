@@ -2,7 +2,7 @@
 
 import unittest
 
-from js_signed_right_shift import JsSignedRightShift
+from testformats.js_signed_right_shift import JsSignedRightShift
 
 class TestJsSignedRightShift(unittest.TestCase):
     def test_js_signed_right_shift(self):

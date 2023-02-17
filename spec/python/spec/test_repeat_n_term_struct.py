@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_n_term_struct import RepeatNTermStruct
+from testformats.repeat_n_term_struct import RepeatNTermStruct
 
 class TestRepeatNTermStruct(unittest.TestCase):
     def test_repeat_n_term_struct(self):

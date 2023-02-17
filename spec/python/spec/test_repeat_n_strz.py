@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_n_strz import RepeatNStrz
+from testformats.repeat_n_strz import RepeatNStrz
 
 class TestRepeatNStrz(unittest.TestCase):
     def test_repeat_n_strz(self):

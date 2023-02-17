@@ -2,7 +2,7 @@
 
 import unittest
 
-from process_coerce_bytes import ProcessCoerceBytes
+from testformats.process_coerce_bytes import ProcessCoerceBytes
 
 class TestProcessCoerceBytes(unittest.TestCase):
     def test_process_coerce_bytes(self):

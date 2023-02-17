@@ -2,7 +2,7 @@
 
 import unittest
 
-from switch_manual_enum_invalid_else import SwitchManualEnumInvalidElse
+from testformats.switch_manual_enum_invalid_else import SwitchManualEnumInvalidElse
 
 class TestSwitchManualEnumInvalidElse(unittest.TestCase):
     def test_switch_manual_enum_invalid_else(self):

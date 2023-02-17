@@ -2,7 +2,7 @@
 
 import unittest
 
-from enum_deep_literals import EnumDeepLiterals
+from testformats.enum_deep_literals import EnumDeepLiterals
 
 class TestEnumDeepLiterals(unittest.TestCase):
     def test_enum_deep_literals(self):

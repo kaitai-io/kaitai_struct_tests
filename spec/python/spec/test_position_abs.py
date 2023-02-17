@@ -2,7 +2,7 @@
 
 import unittest
 
-from position_abs import PositionAbs
+from testformats.position_abs import PositionAbs
 
 class TestPositionAbs(unittest.TestCase):
     def test_position_abs(self):

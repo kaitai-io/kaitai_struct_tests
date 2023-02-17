@@ -2,7 +2,7 @@
 
 import unittest
 
-from term_strz4 import TermStrz4
+from testformats.term_strz4 import TermStrz4
 
 class TestTermStrz4(unittest.TestCase):
     def test_term_strz4(self):

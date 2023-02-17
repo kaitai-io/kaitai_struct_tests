@@ -2,7 +2,7 @@
 
 import unittest
 
-from expr_bits import ExprBits
+from testformats.expr_bits import ExprBits
 
 class TestExprBits(unittest.TestCase):
     def test_expr_bits(self):

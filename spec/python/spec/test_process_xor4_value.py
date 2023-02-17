@@ -2,7 +2,7 @@
 
 import unittest
 
-from process_xor4_value import ProcessXor4Value
+from testformats.process_xor4_value import ProcessXor4Value
 
 class TestProcessXor4Value(unittest.TestCase):
     def test_process_xor4_value(self):

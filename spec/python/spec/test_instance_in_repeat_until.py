@@ -2,7 +2,7 @@
 
 import unittest
 
-from instance_in_repeat_until import InstanceInRepeatUntil
+from testformats.instance_in_repeat_until import InstanceInRepeatUntil
 
 class TestInstanceInRepeatUntil(unittest.TestCase):
     def test_instance_in_repeat_until(self):

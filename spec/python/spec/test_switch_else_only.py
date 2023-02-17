@@ -2,7 +2,7 @@
 
 import unittest
 
-from switch_else_only import SwitchElseOnly
+from testformats.switch_else_only import SwitchElseOnly
 
 class TestSwitchElseOnly(unittest.TestCase):
     def test_switch_else_only(self):

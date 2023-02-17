@@ -2,7 +2,7 @@
 
 import unittest
 
-from docstrings_docref_multi import DocstringsDocrefMulti
+from testformats.docstrings_docref_multi import DocstringsDocrefMulti
 
 class TestDocstringsDocrefMulti(unittest.TestCase):
     def test_docstrings_docref_multi(self):

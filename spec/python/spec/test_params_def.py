@@ -1,6 +1,6 @@
 import unittest
 
-from params_def import ParamsDef
+from testformats.params_def import ParamsDef
 from kaitaistruct import KaitaiStream
 
 class TestParamsDef(unittest.TestCase):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from params_call_extra_parens import ParamsCallExtraParens
+from testformats.params_call_extra_parens import ParamsCallExtraParens
 
 class TestParamsCallExtraParens(unittest.TestCase):
     def test_params_call_extra_parens(self):

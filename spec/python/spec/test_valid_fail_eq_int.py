@@ -3,7 +3,7 @@
 import unittest
 import kaitaistruct
 
-from valid_fail_eq_int import ValidFailEqInt
+from testformats.valid_fail_eq_int import ValidFailEqInt
 
 class TestValidFailEqInt(unittest.TestCase):
     def test_valid_fail_eq_int(self):

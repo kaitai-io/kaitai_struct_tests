@@ -1,8 +1,8 @@
 import unittest
 
-from enum_import import EnumImport
-from enum_0 import Enum0
-from enum_deep import EnumDeep
+from testformats.enum_import import EnumImport
+from testformats.enum_0 import Enum0
+from testformats.enum_deep import EnumDeep
 
 class TestEnumImport(unittest.TestCase):
     def test_enum_import(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from term_bytes4 import TermBytes4
+from testformats.term_bytes4 import TermBytes4
 
 class TestTermBytes4(unittest.TestCase):
     def test_term_bytes4(self):

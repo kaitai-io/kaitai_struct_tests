@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_until_sized import RepeatUntilSized
+from testformats.repeat_until_sized import RepeatUntilSized
 
 class TestRepeatUntilSized(unittest.TestCase):
     def test_repeat_until_sized(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from buffered_struct import BufferedStruct
+from testformats.buffered_struct import BufferedStruct
 
 class TestBufferedStruct(unittest.TestCase):
     def test_buffered_struct(self):

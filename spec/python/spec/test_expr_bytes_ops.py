@@ -2,7 +2,7 @@
 
 import unittest
 
-from expr_bytes_ops import ExprBytesOps
+from testformats.expr_bytes_ops import ExprBytesOps
 
 class TestExprBytesOps(unittest.TestCase):
     def test_expr_bytes_ops(self):

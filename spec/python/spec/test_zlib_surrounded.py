@@ -2,7 +2,7 @@
 
 import unittest
 
-from zlib_surrounded import ZlibSurrounded
+from testformats.zlib_surrounded import ZlibSurrounded
 
 class TestZlibSurrounded(unittest.TestCase):
     def test_zlib_surrounded(self):

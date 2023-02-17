@@ -2,7 +2,7 @@
 
 import unittest
 
-from term_struct2 import TermStruct2
+from testformats.term_struct2 import TermStruct2
 
 class TestTermStruct2(unittest.TestCase):
     def test_term_struct2(self):

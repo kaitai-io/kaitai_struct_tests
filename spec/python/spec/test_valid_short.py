@@ -2,7 +2,7 @@
 
 import unittest
 
-from valid_short import ValidShort
+from testformats.valid_short import ValidShort
 
 class TestValidShort(unittest.TestCase):
     def test_valid_short(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from valid_switch import ValidSwitch
+from testformats.valid_switch import ValidSwitch
 
 class TestValidSwitch(unittest.TestCase):
     def test_valid_switch(self):

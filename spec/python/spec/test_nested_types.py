@@ -2,7 +2,7 @@
 
 import unittest
 
-from nested_types import NestedTypes
+from testformats.nested_types import NestedTypes
 
 class TestNestedTypes(unittest.TestCase):
     def test_nested_types(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from process_rotate import ProcessRotate
+from testformats.process_rotate import ProcessRotate
 
 class TestProcessRotate(unittest.TestCase):
     def test_process_rotate(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from default_endian_expr_is_be import DefaultEndianExprIsBe
+from testformats.default_endian_expr_is_be import DefaultEndianExprIsBe
 
 class TestDefaultEndianExprIsBe(unittest.TestCase):
     def test_default_endian_expr_is_be(self):

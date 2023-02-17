@@ -2,7 +2,7 @@
 
 import unittest
 
-from if_struct import IfStruct
+from testformats.if_struct import IfStruct
 
 class TestIfStruct(unittest.TestCase):
     def test_if_struct(self):

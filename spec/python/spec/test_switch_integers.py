@@ -2,7 +2,7 @@
 
 import unittest
 
-from switch_integers import SwitchIntegers
+from testformats.switch_integers import SwitchIntegers
 
 class TestSwitchIntegers(unittest.TestCase):
     def test_switch_integers(self):

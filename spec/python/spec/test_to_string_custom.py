@@ -1,6 +1,6 @@
 import unittest
 
-from to_string_custom import ToStringCustom
+from testformats.to_string_custom import ToStringCustom
 
 class TestToStringCustom(unittest.TestCase):
     def test_to_string_custom(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from combine_enum import CombineEnum
+from testformats.combine_enum import CombineEnum
 
 class TestCombineEnum(unittest.TestCase):
     def test_combine_enum(self):

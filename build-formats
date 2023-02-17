@@ -1,25 +1,45 @@
-#!/bin/sh
+#!/bin/sh -e
 
 . ./config
 
 rm -rf "$FORMATS_COMPILED_DIR"
 mkdir -p "$FORMATS_COMPILED_DIR"
+
 "$COMPILER_DIR/jvm/target/universal/stage/bin/kaitai-struct-compiler" -- \
 	--verbose all -t all -d "$FORMATS_COMPILED_DIR" \
 	--import-path "$FORMATS_REPO_DIR" \
 	--import-path "$FORMATS_KSY_DIR/ks_path" \
 	--java-package io.kaitai.struct.testformats \
 	--php-namespace 'Kaitai\Struct\Tests' \
+	--python-package testformats \
 	--go-package test_formats \
 	--nim-module "kaitai_struct_nim_runtime" \
 	--nim-opaque "../../tests/spec/nim/opaque/" \
 	"$FORMATS_KSY_DIR"/*.ksy || :
 
+mv -n compiled/python compiled/python-tmp
+mkdir compiled/python
+mv -n compiled/python-tmp compiled/python/testformats
+# __init__.py is needed in Python 2
+touch compiled/python/testformats/__init__.py
+
 "$COMPILER_DIR/jvm/target/universal/stage/bin/kaitai-struct-compiler" -- \
-	--verbose all -t java -d "$FORMATS_COMPILED_DIR/java/src" \
+	--verbose file -t java -d "$FORMATS_COMPILED_DIR/java/src" \
 	--no-auto-read \
 	--read-write \
 	--import-path "$FORMATS_REPO_DIR" \
 	--import-path "$FORMATS_KSY_DIR/ks_path" \
 	--java-package io.kaitai.struct.testwrite \
 	"$FORMATS_KSY_DIR"/*.ksy || :
+
+"$COMPILER_DIR/jvm/target/universal/stage/bin/kaitai-struct-compiler" -- \
+	--verbose file -t python -d "$FORMATS_COMPILED_DIR/python/testwrite" \
+	--no-auto-read \
+	--read-write \
+	--import-path "$FORMATS_REPO_DIR" \
+	--import-path "$FORMATS_KSY_DIR/ks_path" \
+	--python-package testwrite \
+	"$FORMATS_KSY_DIR"/*.ksy || :
+
+# __init__.py is needed in Python 2
+touch compiled/python/testwrite/__init__.py

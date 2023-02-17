@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_n_struct import RepeatNStruct
+from testformats.repeat_n_struct import RepeatNStruct
 
 class TestRepeatNStruct(unittest.TestCase):
     def test_repeat_n_struct(self):

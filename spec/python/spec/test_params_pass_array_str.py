@@ -2,7 +2,7 @@
 
 import unittest
 
-from params_pass_array_str import ParamsPassArrayStr
+from testformats.params_pass_array_str import ParamsPassArrayStr
 
 class TestParamsPassArrayStr(unittest.TestCase):
     def test_params_pass_array_str(self):

@@ -1,6 +1,6 @@
 import unittest
 
-from expr_io_eof import ExprIoEof
+from testformats.expr_io_eof import ExprIoEof
 
 class TestExprIoEof(unittest.TestCase):
     def test_expr_io_eof(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from enum_of_value_inst import EnumOfValueInst
+from testformats.enum_of_value_inst import EnumOfValueInst
 
 class TestEnumOfValueInst(unittest.TestCase):
     def test_enum_of_value_inst(self):

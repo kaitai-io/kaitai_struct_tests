@@ -2,7 +2,7 @@
 
 import unittest
 
-from imports0 import Imports0
+from testformats.imports0 import Imports0
 
 class TestImports0(unittest.TestCase):
     def test_imports0(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from instance_std import InstanceStd
+from testformats.instance_std import InstanceStd
 
 class TestInstanceStd(unittest.TestCase):
     def test_instance_std(self):

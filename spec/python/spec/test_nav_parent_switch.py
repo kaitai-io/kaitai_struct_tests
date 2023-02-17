@@ -2,7 +2,7 @@
 
 import unittest
 
-from nav_parent_switch import NavParentSwitch
+from testformats.nav_parent_switch import NavParentSwitch
 
 class TestNavParentSwitch(unittest.TestCase):
     def test_nav_parent_switch(self):

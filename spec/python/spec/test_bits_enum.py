@@ -2,7 +2,7 @@
 
 import unittest
 
-from bits_enum import BitsEnum
+from testformats.bits_enum import BitsEnum
 
 class TestBitsEnum(unittest.TestCase):
     def test_bits_enum(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from debug_switch_user import DebugSwitchUser
+from testformats.debug_switch_user import DebugSwitchUser
 
 class TestDebugSwitchUser(unittest.TestCase):
     def test_debug_switch_user(self):

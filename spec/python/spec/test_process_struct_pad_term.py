@@ -2,7 +2,7 @@
 
 import unittest
 
-from process_struct_pad_term import ProcessStructPadTerm
+from testformats.process_struct_pad_term import ProcessStructPadTerm
 
 class TestProcessStructPadTerm(unittest.TestCase):
     def test_process_struct_pad_term(self):

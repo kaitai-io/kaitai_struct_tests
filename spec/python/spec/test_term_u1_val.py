@@ -2,7 +2,7 @@
 
 import unittest
 
-from term_u1_val import TermU1Val
+from testformats.term_u1_val import TermU1Val
 
 class TestTermU1Val(unittest.TestCase):
     def test_term_u1_val(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from type_ternary_opaque import TypeTernaryOpaque
+from testformats.type_ternary_opaque import TypeTernaryOpaque
 
 class TestTypeTernaryOpaque(unittest.TestCase):
     def test_type_ternary_opaque(self):

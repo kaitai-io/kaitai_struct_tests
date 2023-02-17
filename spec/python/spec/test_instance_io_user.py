@@ -2,7 +2,7 @@
 
 import unittest
 
-from instance_io_user import InstanceIoUser
+from testformats.instance_io_user import InstanceIoUser
 
 class TestInstanceIoUser(unittest.TestCase):
     def test_instance_io_user(self):

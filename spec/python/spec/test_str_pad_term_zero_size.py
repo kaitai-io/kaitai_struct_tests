@@ -2,7 +2,7 @@
 
 import unittest
 
-from str_pad_term_zero_size import StrPadTermZeroSize
+from testformats.str_pad_term_zero_size import StrPadTermZeroSize
 
 class TestStrPadTermZeroSize(unittest.TestCase):
     def test_str_pad_term_zero_size(self):

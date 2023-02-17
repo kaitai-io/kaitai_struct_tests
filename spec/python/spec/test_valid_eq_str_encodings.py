@@ -2,7 +2,7 @@
 
 import unittest
 
-from valid_eq_str_encodings import ValidEqStrEncodings
+from testformats.valid_eq_str_encodings import ValidEqStrEncodings
 
 class TestValidEqStrEncodings(unittest.TestCase):
     def test_valid_eq_str_encodings(self):

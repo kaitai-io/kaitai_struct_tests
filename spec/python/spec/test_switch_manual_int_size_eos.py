@@ -2,7 +2,7 @@
 
 import unittest
 
-from switch_manual_int_size_eos import SwitchManualIntSizeEos
+from testformats.switch_manual_int_size_eos import SwitchManualIntSizeEos
 
 class TestSwitchManualIntSizeEos(unittest.TestCase):
     def test_switch_manual_int_size_eos(self):

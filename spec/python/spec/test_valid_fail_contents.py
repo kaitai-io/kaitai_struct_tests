@@ -3,7 +3,7 @@
 import unittest
 import kaitaistruct
 
-from valid_fail_contents import ValidFailContents
+from testformats.valid_fail_contents import ValidFailContents
 
 class TestValidFailContents(unittest.TestCase):
     def test_valid_fail_contents(self):

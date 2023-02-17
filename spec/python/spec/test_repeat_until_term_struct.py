@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_until_term_struct import RepeatUntilTermStruct
+from testformats.repeat_until_term_struct import RepeatUntilTermStruct
 
 class TestRepeatUntilTermStruct(unittest.TestCase):
     def test_repeat_until_term_struct(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from default_big_endian import DefaultBigEndian
+from testformats.default_big_endian import DefaultBigEndian
 
 class TestDefaultBigEndian(unittest.TestCase):
     def test_default_big_endian(self):

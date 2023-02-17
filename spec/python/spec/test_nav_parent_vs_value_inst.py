@@ -2,7 +2,7 @@
 
 import unittest
 
-from nav_parent_vs_value_inst import NavParentVsValueInst
+from testformats.nav_parent_vs_value_inst import NavParentVsValueInst
 
 class TestNavParentVsValueInst(unittest.TestCase):
     def test_nav_parent_vs_value_inst(self):

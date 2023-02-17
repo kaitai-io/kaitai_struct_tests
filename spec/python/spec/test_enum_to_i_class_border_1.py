@@ -2,7 +2,7 @@
 
 import unittest
 
-from enum_to_i_class_border_1 import EnumToIClassBorder1
+from testformats.enum_to_i_class_border_1 import EnumToIClassBorder1
 
 class TestEnumToIClassBorder1(unittest.TestCase):
     def test_enum_to_i_class_border_1(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from bytes_eos_pad_term import BytesEosPadTerm
+from testformats.bytes_eos_pad_term import BytesEosPadTerm
 
 class TestBytesEosPadTerm(unittest.TestCase):
     def test_bytes_eos_pad_term(self):

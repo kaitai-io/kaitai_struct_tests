@@ -2,7 +2,7 @@
 
 import unittest
 
-from params_call_short import ParamsCallShort
+from testformats.params_call_short import ParamsCallShort
 
 class TestParamsCallShort(unittest.TestCase):
     def test_params_call_short(self):

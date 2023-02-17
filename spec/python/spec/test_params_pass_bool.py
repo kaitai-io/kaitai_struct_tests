@@ -2,7 +2,7 @@
 
 import unittest
 
-from params_pass_bool import ParamsPassBool
+from testformats.params_pass_bool import ParamsPassBool
 
 class TestParamsPassBool(unittest.TestCase):
     def test_params_pass_bool(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from instance_io_user_earlier import InstanceIoUserEarlier
+from testformats.instance_io_user_earlier import InstanceIoUserEarlier
 
 class TestInstanceIoUserEarlier(unittest.TestCase):
     def test_instance_io_user_earlier(self):

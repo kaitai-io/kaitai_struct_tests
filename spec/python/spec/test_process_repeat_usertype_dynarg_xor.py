@@ -2,7 +2,7 @@
 
 import unittest
 
-from process_repeat_usertype_dynarg_xor import ProcessRepeatUsertypeDynargXor
+from testformats.process_repeat_usertype_dynarg_xor import ProcessRepeatUsertypeDynargXor
 
 class TestProcessRepeatUsertypeDynargXor(unittest.TestCase):
     def test_process_repeat_usertype_dynarg_xor(self):

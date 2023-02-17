@@ -2,7 +2,7 @@
 
 import unittest
 
-from instance_std_array import InstanceStdArray
+from testformats.instance_std_array import InstanceStdArray
 
 class TestInstanceStdArray(unittest.TestCase):
     def test_instance_std_array(self):

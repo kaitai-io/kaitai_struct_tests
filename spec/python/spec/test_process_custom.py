@@ -2,7 +2,7 @@
 
 import unittest
 
-from process_custom import ProcessCustom
+from testformats.process_custom import ProcessCustom
 
 class TestProcessCustom(unittest.TestCase):
     def test_process_custom(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from enum_deep import EnumDeep
+from testformats.enum_deep import EnumDeep
 
 class TestEnumDeep(unittest.TestCase):
     def test_enum_deep(self):

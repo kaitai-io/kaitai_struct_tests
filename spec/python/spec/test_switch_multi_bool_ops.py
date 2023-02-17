@@ -2,7 +2,7 @@
 
 import unittest
 
-from switch_multi_bool_ops import SwitchMultiBoolOps
+from testformats.switch_multi_bool_ops import SwitchMultiBoolOps
 
 class TestSwitchMultiBoolOps(unittest.TestCase):
     def test_switch_multi_bool_ops(self):

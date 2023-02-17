@@ -2,7 +2,7 @@
 
 import unittest
 
-from instance_in_sized import InstanceInSized
+from testformats.instance_in_sized import InstanceInSized
 
 class TestInstanceInSized(unittest.TestCase):
     def test_instance_in_sized(self):

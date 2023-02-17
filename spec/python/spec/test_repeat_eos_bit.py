@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_eos_bit import RepeatEosBit
+from testformats.repeat_eos_bit import RepeatEosBit
 
 class TestRepeatEosBit(unittest.TestCase):
     def test_repeat_eos_bit(self):

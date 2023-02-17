@@ -2,7 +2,7 @@
 
 import unittest
 
-from meta_tags import MetaTags
+from testformats.meta_tags import MetaTags
 
 class TestMetaTags(unittest.TestCase):
     def test_meta_tags(self):

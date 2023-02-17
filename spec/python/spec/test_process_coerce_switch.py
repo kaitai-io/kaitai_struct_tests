@@ -2,7 +2,7 @@
 
 import unittest
 
-from process_coerce_switch import ProcessCoerceSwitch
+from testformats.process_coerce_switch import ProcessCoerceSwitch
 
 class TestProcessCoerceSwitch(unittest.TestCase):
     def test_process_coerce_switch(self):

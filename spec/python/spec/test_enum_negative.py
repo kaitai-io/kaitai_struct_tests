@@ -2,7 +2,7 @@
 
 import unittest
 
-from enum_negative import EnumNegative
+from testformats.enum_negative import EnumNegative
 
 class TestEnumNegative(unittest.TestCase):
     def test_enum_negative(self):

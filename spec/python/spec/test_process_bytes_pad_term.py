@@ -2,7 +2,7 @@
 
 import unittest
 
-from process_bytes_pad_term import ProcessBytesPadTerm
+from testformats.process_bytes_pad_term import ProcessBytesPadTerm
 
 class TestProcessBytesPadTerm(unittest.TestCase):
     def test_process_bytes_pad_term(self):

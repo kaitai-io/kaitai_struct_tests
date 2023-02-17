@@ -1,6 +1,6 @@
 import unittest
 
-from opaque_external_type_02_parent import OpaqueExternalType02Parent
+from testformats.opaque_external_type_02_parent import OpaqueExternalType02Parent
 
 class TestOpaqueExternalType02Parent(unittest.TestCase):
     def test_opaque_external_type_02_parent(self):

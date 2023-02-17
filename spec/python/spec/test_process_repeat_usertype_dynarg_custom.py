@@ -2,7 +2,7 @@
 
 import unittest
 
-from process_repeat_usertype_dynarg_custom import ProcessRepeatUsertypeDynargCustom
+from testformats.process_repeat_usertype_dynarg_custom import ProcessRepeatUsertypeDynargCustom
 
 class TestProcessRepeatUsertypeDynargCustom(unittest.TestCase):
     def test_process_repeat_usertype_dynarg_custom(self):

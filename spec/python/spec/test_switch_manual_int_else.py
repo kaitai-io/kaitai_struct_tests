@@ -2,7 +2,7 @@
 
 import unittest
 
-from switch_manual_int_else import SwitchManualIntElse
+from testformats.switch_manual_int_else import SwitchManualIntElse
 
 class TestSwitchManualIntElse(unittest.TestCase):
     def test_switch_manual_int_else(self):

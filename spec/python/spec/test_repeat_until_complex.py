@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_until_complex import RepeatUntilComplex
+from testformats.repeat_until_complex import RepeatUntilComplex
 
 class TestRepeatUntilComplex(unittest.TestCase):
     def test_repeat_until_complex(self):

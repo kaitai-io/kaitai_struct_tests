@@ -3,7 +3,7 @@
 import unittest
 import kaitaistruct
 
-from valid_fail_max_int import ValidFailMaxInt
+from testformats.valid_fail_max_int import ValidFailMaxInt
 
 class TestValidFailMaxInt(unittest.TestCase):
     def test_valid_fail_max_int(self):

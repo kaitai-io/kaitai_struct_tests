@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_eos_bytes_pad import RepeatEosBytesPad
+from testformats.repeat_eos_bytes_pad import RepeatEosBytesPad
 
 class TestRepeatEosBytesPad(unittest.TestCase):
     def test_repeat_eos_bytes_pad(self):

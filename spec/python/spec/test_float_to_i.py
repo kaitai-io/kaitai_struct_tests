@@ -2,7 +2,7 @@
 
 import unittest
 
-from float_to_i import FloatToI
+from testformats.float_to_i import FloatToI
 
 class TestFloatToI(unittest.TestCase):
     def test_float_to_i(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from expr_str_encodings import ExprStrEncodings
+from testformats.expr_str_encodings import ExprStrEncodings
 
 class TestExprStrEncodings(unittest.TestCase):
     def test_expr_str_encodings(self):

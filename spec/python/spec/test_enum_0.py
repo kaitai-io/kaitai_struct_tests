@@ -2,7 +2,7 @@
 
 import unittest
 
-from enum_0 import Enum0
+from testformats.enum_0 import Enum0
 
 class TestEnum0(unittest.TestCase):
     def test_enum_0(self):

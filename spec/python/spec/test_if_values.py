@@ -2,7 +2,7 @@
 
 import unittest
 
-from if_values import IfValues
+from testformats.if_values import IfValues
 
 class TestIfValues(unittest.TestCase):
     def test_if_values(self):

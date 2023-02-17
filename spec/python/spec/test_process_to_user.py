@@ -2,7 +2,7 @@
 
 import unittest
 
-from process_to_user import ProcessToUser
+from testformats.process_to_user import ProcessToUser
 
 class TestProcessToUser(unittest.TestCase):
     def test_process_to_user(self):

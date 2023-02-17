@@ -2,7 +2,7 @@
 
 import unittest
 
-from process_xor_const import ProcessXorConst
+from testformats.process_xor_const import ProcessXorConst
 
 class TestProcessXorConst(unittest.TestCase):
     def test_process_xor_const(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from enum_long_range_u import EnumLongRangeU
+from testformats.enum_long_range_u import EnumLongRangeU
 
 class TestEnumLongRangeU(unittest.TestCase):
     def test_enum_long_range_u(self):

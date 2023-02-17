@@ -2,7 +2,7 @@
 
 import unittest
 
-from enum_invalid import EnumInvalid
+from testformats.enum_invalid import EnumInvalid
 
 class TestEnumInvalid(unittest.TestCase):
     def test_enum_invalid(self):

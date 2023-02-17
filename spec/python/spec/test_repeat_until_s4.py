@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_until_s4 import RepeatUntilS4
+from testformats.repeat_until_s4 import RepeatUntilS4
 
 class TestRepeatUntilS4(unittest.TestCase):
     def test_repeat_until_s4(self):

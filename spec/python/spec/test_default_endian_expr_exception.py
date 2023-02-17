@@ -3,7 +3,7 @@
 import unittest
 import kaitaistruct
 
-from default_endian_expr_exception import DefaultEndianExprException
+from testformats.default_endian_expr_exception import DefaultEndianExprException
 
 class TestDefaultEndianExprException(unittest.TestCase):
     def test_default_endian_expr_exception(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from index_to_param_eos import IndexToParamEos
+from testformats.index_to_param_eos import IndexToParamEos
 
 class TestIndexToParamEos(unittest.TestCase):
     def test_index_to_param_eos(self):

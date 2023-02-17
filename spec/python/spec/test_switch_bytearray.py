@@ -2,7 +2,7 @@
 
 import unittest
 
-from switch_bytearray import SwitchBytearray
+from testformats.switch_bytearray import SwitchBytearray
 
 class TestSwitchBytearray(unittest.TestCase):
     def test_switch_bytearray(self):

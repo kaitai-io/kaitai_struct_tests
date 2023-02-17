@@ -2,7 +2,7 @@
 
 import unittest
 
-from str_literals2 import StrLiterals2
+from testformats.str_literals2 import StrLiterals2
 
 class TestStrLiterals2(unittest.TestCase):
     def test_str_literals2(self):

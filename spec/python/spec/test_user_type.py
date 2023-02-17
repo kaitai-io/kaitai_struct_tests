@@ -2,7 +2,7 @@
 
 import unittest
 
-from user_type import UserType
+from testformats.user_type import UserType
 
 class TestUserType(unittest.TestCase):
     def test_user_type(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from enum_int_range_u import EnumIntRangeU
+from testformats.enum_int_range_u import EnumIntRangeU
 
 class TestEnumIntRangeU(unittest.TestCase):
     def test_enum_int_range_u(self):

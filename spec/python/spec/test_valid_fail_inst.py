@@ -3,7 +3,7 @@
 import unittest
 import kaitaistruct
 
-from valid_fail_inst import ValidFailInst
+from testformats.valid_fail_inst import ValidFailInst
 
 class TestValidFailInst(unittest.TestCase):
     def test_valid_fail_inst(self):

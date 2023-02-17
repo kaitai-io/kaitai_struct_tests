@@ -2,7 +2,7 @@
 
 import unittest
 
-from default_endian_expr_is_le import DefaultEndianExprIsLe
+from testformats.default_endian_expr_is_le import DefaultEndianExprIsLe
 
 class TestDefaultEndianExprIsLe(unittest.TestCase):
     def test_default_endian_expr_is_le(self):

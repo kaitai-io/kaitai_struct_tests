@@ -2,7 +2,7 @@
 
 import unittest
 
-from bits_signed_res_b32_le import BitsSignedResB32Le
+from testformats.bits_signed_res_b32_le import BitsSignedResB32Le
 
 class TestBitsSignedResB32Le(unittest.TestCase):
     def test_bits_signed_res_b32_le(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_eos_u4 import RepeatEosU4
+from testformats.repeat_eos_u4 import RepeatEosU4
 
 class TestRepeatEosU4(unittest.TestCase):
     def test_repeat_eos_u4(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from bits_byte_aligned import BitsByteAligned
+from testformats.bits_byte_aligned import BitsByteAligned
 
 class TestBitsByteAligned(unittest.TestCase):
     def test_bits_byte_aligned(self):

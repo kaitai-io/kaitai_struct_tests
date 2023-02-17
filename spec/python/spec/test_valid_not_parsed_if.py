@@ -2,7 +2,7 @@
 
 import unittest
 
-from valid_not_parsed_if import ValidNotParsedIf
+from testformats.valid_not_parsed_if import ValidNotParsedIf
 
 class TestValidNotParsedIf(unittest.TestCase):
     def test_valid_not_parsed_if(self):

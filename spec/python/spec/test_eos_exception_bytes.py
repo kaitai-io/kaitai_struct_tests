@@ -3,7 +3,7 @@
 import unittest
 import kaitaistruct
 
-from eos_exception_bytes import EosExceptionBytes
+from testformats.eos_exception_bytes import EosExceptionBytes
 
 class TestEosExceptionBytes(unittest.TestCase):
     def test_eos_exception_bytes(self):

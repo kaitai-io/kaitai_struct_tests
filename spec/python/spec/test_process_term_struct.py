@@ -2,7 +2,7 @@
 
 import unittest
 
-from process_term_struct import ProcessTermStruct
+from testformats.process_term_struct import ProcessTermStruct
 
 class TestProcessTermStruct(unittest.TestCase):
     def test_process_term_struct(self):

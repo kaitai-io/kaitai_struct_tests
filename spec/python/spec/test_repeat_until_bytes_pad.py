@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_until_bytes_pad import RepeatUntilBytesPad
+from testformats.repeat_until_bytes_pad import RepeatUntilBytesPad
 
 class TestRepeatUntilBytesPad(unittest.TestCase):
     def test_repeat_until_bytes_pad(self):

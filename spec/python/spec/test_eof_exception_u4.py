@@ -3,7 +3,7 @@
 import unittest
 import kaitaistruct
 
-from eof_exception_u4 import EofExceptionU4
+from testformats.eof_exception_u4 import EofExceptionU4
 
 class TestEofExceptionU4(unittest.TestCase):
     def test_eof_exception_u4(self):

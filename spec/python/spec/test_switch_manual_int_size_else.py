@@ -2,7 +2,7 @@
 
 import unittest
 
-from switch_manual_int_size_else import SwitchManualIntSizeElse
+from testformats.switch_manual_int_size_else import SwitchManualIntSizeElse
 
 class TestSwitchManualIntSizeElse(unittest.TestCase):
     def test_switch_manual_int_size_else(self):

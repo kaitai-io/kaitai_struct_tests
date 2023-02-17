@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_n_bytes import RepeatNBytes
+from testformats.repeat_n_bytes import RepeatNBytes
 
 class TestRepeatNBytes(unittest.TestCase):
     def test_repeat_n_bytes(self):

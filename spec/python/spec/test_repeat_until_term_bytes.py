@@ -2,7 +2,7 @@
 
 import unittest
 
-from repeat_until_term_bytes import RepeatUntilTermBytes
+from testformats.repeat_until_term_bytes import RepeatUntilTermBytes
 
 class TestRepeatUntilTermBytes(unittest.TestCase):
     def test_repeat_until_term_bytes(self):

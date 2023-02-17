@@ -2,7 +2,7 @@
 
 import unittest
 
-from default_bit_endian_mod import DefaultBitEndianMod
+from testformats.default_bit_endian_mod import DefaultBitEndianMod
 
 class TestDefaultBitEndianMod(unittest.TestCase):
     def test_default_bit_endian_mod(self):

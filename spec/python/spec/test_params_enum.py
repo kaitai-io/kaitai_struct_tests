@@ -2,7 +2,7 @@
 
 import unittest
 
-from params_enum import ParamsEnum
+from testformats.params_enum import ParamsEnum
 
 class TestParamsEnum(unittest.TestCase):
     def test_params_enum(self):

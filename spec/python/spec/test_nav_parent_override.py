@@ -2,7 +2,7 @@
 
 import unittest
 
-from nav_parent_override import NavParentOverride
+from testformats.nav_parent_override import NavParentOverride
 
 class TestNavParentOverride(unittest.TestCase):
     def test_nav_parent_override(self):

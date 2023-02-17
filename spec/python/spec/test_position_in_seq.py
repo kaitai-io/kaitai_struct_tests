@@ -2,7 +2,7 @@
 
 import unittest
 
-from position_in_seq import PositionInSeq
+from testformats.position_in_seq import PositionInSeq
 
 class TestPositionInSeq(unittest.TestCase):
     def test_position_in_seq(self):

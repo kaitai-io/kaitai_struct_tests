@@ -2,7 +2,7 @@
 
 import unittest
 
-from bytes_pad_term_equal import BytesPadTermEqual
+from testformats.bytes_pad_term_equal import BytesPadTermEqual
 
 class TestBytesPadTermEqual(unittest.TestCase):
     def test_bytes_pad_term_equal(self):

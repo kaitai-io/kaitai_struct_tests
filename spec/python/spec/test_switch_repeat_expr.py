@@ -2,7 +2,7 @@
 
 import unittest
 
-from switch_repeat_expr import SwitchRepeatExpr
+from testformats.switch_repeat_expr import SwitchRepeatExpr
 
 class TestSwitchRepeatExpr(unittest.TestCase):
     def test_switch_repeat_expr(self):

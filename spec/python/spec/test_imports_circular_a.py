@@ -2,7 +2,7 @@
 
 import unittest
 
-from imports_circular_a import ImportsCircularA
+from testformats.imports_circular_a import ImportsCircularA
 
 class TestImportsCircularA(unittest.TestCase):
     def test_imports_circular_a(self):

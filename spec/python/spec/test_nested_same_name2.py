@@ -2,7 +2,7 @@
 
 import unittest
 
-from nested_same_name2 import NestedSameName2
+from testformats.nested_same_name2 import NestedSameName2
 
 class TestNestedSameName2(unittest.TestCase):
     def test_nested_same_name2(self):

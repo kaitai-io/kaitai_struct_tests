@@ -2,7 +2,7 @@
 
 import unittest
 
-from str_eos import StrEos
+from testformats.str_eos import StrEos
 
 class TestStrEos(unittest.TestCase):
     def test_str_eos(self):

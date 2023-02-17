@@ -2,7 +2,7 @@
 
 import unittest
 
-from zlib_with_header_78 import ZlibWithHeader78
+from testformats.zlib_with_header_78 import ZlibWithHeader78
 
 class TestZlibWithHeader78(unittest.TestCase):
     def test_zlib_with_header_78(self):

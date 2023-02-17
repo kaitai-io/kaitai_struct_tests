@@ -1,6 +1,6 @@
 import unittest
 
-from switch_cast import SwitchCast
+from testformats.switch_cast import SwitchCast
 
 class TestSwitchCast(unittest.TestCase):
     def test_switch_cast(self):

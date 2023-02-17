@@ -2,7 +2,7 @@
 
 import unittest
 
-from expr_enum import ExprEnum
+from testformats.expr_enum import ExprEnum
 
 class TestExprEnum(unittest.TestCase):
     def test_expr_enum(self):

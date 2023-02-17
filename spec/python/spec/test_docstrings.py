@@ -2,7 +2,7 @@
 
 import unittest
 
-from docstrings import Docstrings
+from testformats.docstrings import Docstrings
 
 class TestDocstrings(unittest.TestCase):
     def test_docstrings(self):

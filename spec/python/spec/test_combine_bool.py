@@ -2,7 +2,7 @@
 
 import unittest
 
-from combine_bool import CombineBool
+from testformats.combine_bool import CombineBool
 
 class TestCombineBool(unittest.TestCase):
     def test_combine_bool(self):

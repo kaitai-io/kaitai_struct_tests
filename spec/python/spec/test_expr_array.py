@@ -1,6 +1,6 @@
 import unittest
 
-from expr_array import ExprArray
+from testformats.expr_array import ExprArray
 
 class TestExprArray(unittest.TestCase):
     def test_expr_array(self):

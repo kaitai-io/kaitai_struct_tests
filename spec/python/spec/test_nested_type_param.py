@@ -2,7 +2,7 @@
 
 import unittest
 
-from nested_type_param import NestedTypeParam
+from testformats.nested_type_param import NestedTypeParam
 
 class TestNestedTypeParam(unittest.TestCase):
     def test_nested_type_param(self):

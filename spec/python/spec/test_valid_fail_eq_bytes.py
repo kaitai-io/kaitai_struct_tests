@@ -3,7 +3,7 @@
 import unittest
 import kaitaistruct
 
-from valid_fail_eq_bytes import ValidFailEqBytes
+from testformats.valid_fail_eq_bytes import ValidFailEqBytes
 
 class TestValidFailEqBytes(unittest.TestCase):
     def test_valid_fail_eq_bytes(self):

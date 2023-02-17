@@ -2,7 +2,7 @@
 
 import unittest
 
-from params_pass_array_struct import ParamsPassArrayStruct
+from testformats.params_pass_array_struct import ParamsPassArrayStruct
 
 class TestParamsPassArrayStruct(unittest.TestCase):
     def test_params_pass_array_struct(self):

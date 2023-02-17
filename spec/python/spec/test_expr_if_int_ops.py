@@ -2,7 +2,7 @@
 
 import unittest
 
-from expr_if_int_ops import ExprIfIntOps
+from testformats.expr_if_int_ops import ExprIfIntOps
 
 class TestExprIfIntOps(unittest.TestCase):
     def test_expr_if_int_ops(self):

@@ -3,7 +3,7 @@
 import unittest
 import kaitaistruct
 
-from valid_fail_anyof_int import ValidFailAnyofInt
+from testformats.valid_fail_anyof_int import ValidFailAnyofInt
 
 class TestValidFailAnyofInt(unittest.TestCase):
     def test_valid_fail_anyof_int(self):

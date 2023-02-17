@@ -2,7 +2,7 @@
 
 import unittest
 
-from bcd_user_type_le import BcdUserTypeLe
+from testformats.bcd_user_type_le import BcdUserTypeLe
 
 class TestBcdUserTypeLe(unittest.TestCase):
     def test_bcd_user_type_le(self):

@@ -2,7 +2,7 @@
 
 import unittest
 
-from floating_points import FloatingPoints
+from testformats.floating_points import FloatingPoints
 
 class TestFloatingPoints(unittest.TestCase):
     def test_floating_points(self):

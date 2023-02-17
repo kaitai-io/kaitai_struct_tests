@@ -2,7 +2,7 @@
 
 import unittest
 
-from expr_int_div import ExprIntDiv
+from testformats.expr_int_div import ExprIntDiv
 
 class TestExprIntDiv(unittest.TestCase):
     def test_expr_int_div(self):

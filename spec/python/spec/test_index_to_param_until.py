@@ -2,7 +2,7 @@
 
 import unittest
 
-from index_to_param_until import IndexToParamUntil
+from testformats.index_to_param_until import IndexToParamUntil
 
 class TestIndexToParamUntil(unittest.TestCase):
     def test_index_to_param_until(self):

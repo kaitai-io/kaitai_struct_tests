@@ -2,7 +2,7 @@
 
 import unittest
 
-from cast_to_top import CastToTop
+from testformats.cast_to_top import CastToTop
 
 class TestCastToTop(unittest.TestCase):
     def test_cast_to_top(self):

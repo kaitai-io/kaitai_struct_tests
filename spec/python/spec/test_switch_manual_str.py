@@ -2,7 +2,7 @@
 
 import unittest
 
-from switch_manual_str import SwitchManualStr
+from testformats.switch_manual_str import SwitchManualStr
 
 class TestSwitchManualStr(unittest.TestCase):
     def test_switch_manual_str(self):

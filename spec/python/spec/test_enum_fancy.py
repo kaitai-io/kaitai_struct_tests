@@ -2,7 +2,7 @@
 
 import unittest
 
-from enum_fancy import EnumFancy
+from testformats.enum_fancy import EnumFancy
 
 class TestEnumFancy(unittest.TestCase):
     def test_enum_fancy(self):

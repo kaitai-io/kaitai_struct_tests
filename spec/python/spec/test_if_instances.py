@@ -2,7 +2,7 @@
 
 import unittest
 
-from if_instances import IfInstances
+from testformats.if_instances import IfInstances
 
 class TestIfInstances(unittest.TestCase):
     def test_if_instances(self):
