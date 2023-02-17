@@ -7,6 +7,7 @@ from if_struct import IfStruct
 class TestIfStruct(unittest.TestCase):
     def test_if_struct(self):
         with IfStruct.from_file('src/if_struct.bin') as r:
+
             self.assertEqual(r.op1.opcode, 83)
             self.assertEqual(r.op1.arg_str.str, u"foo")
             self.assertEqual(r.op2.opcode, 84)

@@ -7,6 +7,7 @@ from switch_integers import SwitchIntegers
 class TestSwitchIntegers(unittest.TestCase):
     def test_switch_integers(self):
         with SwitchIntegers.from_file('src/switch_integers.bin') as r:
+
             self.assertEqual(len(r.opcodes), 4)
             self.assertEqual(r.opcodes[0].code, 1)
             self.assertEqual(r.opcodes[0].body, 7)

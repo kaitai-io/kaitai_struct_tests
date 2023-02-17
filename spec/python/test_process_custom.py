@@ -7,6 +7,7 @@ from process_custom import ProcessCustom
 class TestProcessCustom(unittest.TestCase):
     def test_process_custom(self):
         with ProcessCustom.from_file('src/process_rotate.bin') as r:
+
             self.assertEqual(r.buf1, b"\x10\xB3\x94\x94\xF4")
             self.assertEqual(r.buf2, b"\x5F\xBA\x7B\x93\x63\x23\x5F")
             self.assertEqual(r.buf3, b"\x29\x33\xB1\x38\xB1")

@@ -7,6 +7,7 @@ from recursive_one import RecursiveOne
 class TestRecursiveOne(unittest.TestCase):
     def test_recursive_one(self):
         with RecursiveOne.from_file('src/fixed_struct.bin') as r:
+
             self.assertEqual(r.one, 80)
             self.assertEqual(r.next.one, 65)
             self.assertEqual(r.next.next.one, 67)

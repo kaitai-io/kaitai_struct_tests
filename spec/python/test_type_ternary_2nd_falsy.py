@@ -10,7 +10,7 @@ class TestTypeTernary2ndFalsy(unittest.TestCase):
 
             self.assertEqual(r.v_false, False)
             self.assertEqual(r.v_int_zero, 0)
-            self.assertEqual(r.v_int_neg_zero, -0)
+            self.assertEqual(r.v_int_neg_zero, 0)
             self.assertAlmostEqual(r.v_float_zero, 0.0, 6)
             self.assertAlmostEqual(r.v_float_neg_zero, -0.0, 6)
             self.assertEqual(r.v_str_w_zero, u"0")

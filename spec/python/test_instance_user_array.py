@@ -7,6 +7,7 @@ from instance_user_array import InstanceUserArray
 class TestInstanceUserArray(unittest.TestCase):
     def test_instance_user_array(self):
         with InstanceUserArray.from_file('src/instance_std_array.bin') as r:
+
             self.assertEqual(r.ofs, 16)
             self.assertEqual(r.qty_entries, 3)
             self.assertEqual(r.entry_size, 4)

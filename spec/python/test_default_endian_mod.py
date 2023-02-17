@@ -7,6 +7,7 @@ from default_endian_mod import DefaultEndianMod
 class TestDefaultEndianMod(unittest.TestCase):
     def test_default_endian_mod(self):
         with DefaultEndianMod.from_file('src/fixed_struct.bin') as r:
+
             self.assertEqual(r.main.one, 1262698832)
             self.assertEqual(r.main.nest.two, -52947)
             self.assertEqual(r.main.nest_be.two, 1346454347)

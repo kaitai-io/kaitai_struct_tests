@@ -7,6 +7,7 @@ from imports0 import Imports0
 class TestImports0(unittest.TestCase):
     def test_imports0(self):
         with Imports0.from_file('src/fixed_struct.bin') as r:
+
             self.assertEqual(r.two, 80)
             self.assertEqual(r.hw.one, 65)
             self.assertEqual(r.hw_one, 65)

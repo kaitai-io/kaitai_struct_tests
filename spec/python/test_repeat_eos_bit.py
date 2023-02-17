@@ -7,4 +7,5 @@ from repeat_eos_bit import RepeatEosBit
 class TestRepeatEosBit(unittest.TestCase):
     def test_repeat_eos_bit(self):
         with RepeatEosBit.from_file('src/enum_0.bin') as r:
+
             self.assertEqual(len(r.nibbles), 16)

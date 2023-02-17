@@ -7,5 +7,6 @@ from enum_deep import EnumDeep
 class TestEnumDeep(unittest.TestCase):
     def test_enum_deep(self):
         with EnumDeep.from_file('src/enum_0.bin') as r:
+
             self.assertEqual(r.pet_1, EnumDeep.Container1.Animal.cat)
             self.assertEqual(r.pet_2, EnumDeep.Container1.Container2.Animal.hare)

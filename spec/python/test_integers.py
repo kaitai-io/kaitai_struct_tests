@@ -7,6 +7,7 @@ from integers import Integers
 class TestIntegers(unittest.TestCase):
     def test_integers(self):
         with Integers.from_file('src/fixed_struct.bin') as r:
+
             self.assertEqual(r.uint8, 255)
             self.assertEqual(r.uint16, 65535)
             self.assertEqual(r.uint32, 4294967295)

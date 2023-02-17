@@ -7,6 +7,7 @@ from nav_parent3 import NavParent3
 class TestNavParent3(unittest.TestCase):
     def test_nav_parent3(self):
         with NavParent3.from_file('src/nav_parent2.bin') as r:
+
             self.assertEqual(r.ofs_tags, 8)
             self.assertEqual(r.num_tags, 2)
             self.assertEqual(r.tags[0].name, u"RAHC")

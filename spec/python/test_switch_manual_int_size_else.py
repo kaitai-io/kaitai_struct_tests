@@ -7,6 +7,7 @@ from switch_manual_int_size_else import SwitchManualIntSizeElse
 class TestSwitchManualIntSizeElse(unittest.TestCase):
     def test_switch_manual_int_size_else(self):
         with SwitchManualIntSizeElse.from_file('src/switch_tlv.bin') as r:
+
             self.assertEqual(len(r.chunks), 4)
             self.assertEqual(r.chunks[0].code, 17)
             self.assertEqual(r.chunks[0].body.title, u"Stuff")

@@ -7,6 +7,7 @@ from expr_3 import Expr3
 class TestExpr3(unittest.TestCase):
     def test_expr_3(self):
         with Expr3.from_file('src/fixed_struct.bin') as r:
+
             self.assertEqual(r.one, 80)
             self.assertEqual(r.two, u"ACK")
             self.assertEqual(r.three, u"@ACK")

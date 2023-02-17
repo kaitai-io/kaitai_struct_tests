@@ -7,6 +7,7 @@ from index_sizes import IndexSizes
 class TestIndexSizes(unittest.TestCase):
     def test_index_sizes(self):
         with IndexSizes.from_file('src/index_sizes.bin') as r:
+
             self.assertEqual(r.qty, 3)
             self.assertEqual(r.sizes[0], 1)
             self.assertEqual(r.sizes[1], 8)

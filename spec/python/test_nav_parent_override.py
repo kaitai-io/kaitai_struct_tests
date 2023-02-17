@@ -7,6 +7,7 @@ from nav_parent_override import NavParentOverride
 class TestNavParentOverride(unittest.TestCase):
     def test_nav_parent_override(self):
         with NavParentOverride.from_file('src/nav_parent_codes.bin') as r:
+
             self.assertEqual(r.child_size, 3)
             self.assertEqual(r.child_1.data, b"\x49\x31\x32")
             self.assertEqual(r.mediator_2.child_2.data, b"\x33\x42\x62")

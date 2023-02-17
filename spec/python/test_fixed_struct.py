@@ -7,6 +7,7 @@ from fixed_struct import FixedStruct
 class TestFixedStruct(unittest.TestCase):
     def test_fixed_struct(self):
         with FixedStruct.from_file('src/fixed_struct.bin') as r:
+
             self.assertEqual(r.hdr.uint8, 255)
             self.assertEqual(r.hdr.uint16, 65535)
             self.assertEqual(r.hdr.uint32, 4294967295)

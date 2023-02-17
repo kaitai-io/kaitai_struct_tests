@@ -7,4 +7,5 @@ from docstrings import Docstrings
 class TestDocstrings(unittest.TestCase):
     def test_docstrings(self):
         with Docstrings.from_file('src/fixed_struct.bin') as r:
+
             pass

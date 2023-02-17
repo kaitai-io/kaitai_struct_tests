@@ -7,5 +7,6 @@ from js_signed_right_shift import JsSignedRightShift
 class TestJsSignedRightShift(unittest.TestCase):
     def test_js_signed_right_shift(self):
         with JsSignedRightShift.from_file('src/fixed_struct.bin') as r:
+
             self.assertEqual(r.should_be_40000000, 1073741824)
             self.assertEqual(r.should_be_a00000, 10485760)

@@ -6,7 +6,9 @@ from expr_if_int_ops import ExprIfIntOps
 
 class TestExprIfIntOps(unittest.TestCase):
     def test_expr_if_int_ops(self):
-        with ExprIfIntOps.from_file('src/process_coerce_switch.bin') as r:
+        with ExprIfIntOps.from_file('src/instance_io.bin') as r:
 
-            self.assertEqual(r.is_eq_prim, True)
-            self.assertEqual(r.is_eq_boxed, True)
+            self.assertEqual(r.key, 3)
+            self.assertEqual(r.bytes, b"\xFC\xFC\xFC\xFD\x09\x03\x03\x03")
+            self.assertEqual(r.bytes_sub_key, 253)
+            self.assertEqual(r.items_sub_key, -3)

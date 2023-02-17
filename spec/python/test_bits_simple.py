@@ -7,6 +7,7 @@ from bits_simple import BitsSimple
 class TestBitsSimple(unittest.TestCase):
     def test_bits_simple(self):
         with BitsSimple.from_file('src/fixed_struct.bin') as r:
+
             self.assertEqual(r.byte_1, 80)
             self.assertEqual(r.byte_2, 65)
             self.assertEqual(r.bits_a, False)

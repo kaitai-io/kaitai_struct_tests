@@ -7,6 +7,7 @@ from expr_2 import Expr2
 class TestExpr2(unittest.TestCase):
     def test_expr_2(self):
         with Expr2.from_file('src/str_encodings.bin') as r:
+
             self.assertEqual(r.str1.len_orig, 10)
             self.assertEqual(r.str1.len_mod, 7)
             self.assertEqual(r.str1.str, u"Some AS")

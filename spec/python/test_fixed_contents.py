@@ -7,4 +7,5 @@ from fixed_contents import FixedContents
 class TestFixedContents(unittest.TestCase):
     def test_fixed_contents(self):
         with FixedContents.from_file('src/fixed_struct.bin') as r:
+
             pass

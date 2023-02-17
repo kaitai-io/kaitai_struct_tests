@@ -7,6 +7,7 @@ from switch_integers2 import SwitchIntegers2
 class TestSwitchIntegers2(unittest.TestCase):
     def test_switch_integers2(self):
         with SwitchIntegers2.from_file('src/switch_integers.bin') as r:
+
             self.assertEqual(r.code, 1)
             self.assertEqual(r.len, 7)
             self.assertEqual(r.ham, b"\x02\x40\x40\x04\x37\x13\x00")

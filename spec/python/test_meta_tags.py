@@ -7,4 +7,5 @@ from meta_tags import MetaTags
 class TestMetaTags(unittest.TestCase):
     def test_meta_tags(self):
         with MetaTags.from_file('src/fixed_struct.bin') as r:
+
             pass

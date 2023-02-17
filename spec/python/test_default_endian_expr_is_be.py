@@ -7,6 +7,7 @@ from default_endian_expr_is_be import DefaultEndianExprIsBe
 class TestDefaultEndianExprIsBe(unittest.TestCase):
     def test_default_endian_expr_is_be(self):
         with DefaultEndianExprIsBe.from_file('src/endian_expr.bin') as r:
+
             self.assertEqual(r.docs[0].indicator, b"\x49\x49")
             self.assertEqual(r.docs[0].main.some_int, 66)
             self.assertEqual(r.docs[0].main.some_int_be, 66)

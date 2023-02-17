@@ -7,6 +7,7 @@ from enum_of_value_inst import EnumOfValueInst
 class TestEnumOfValueInst(unittest.TestCase):
     def test_enum_of_value_inst(self):
         with EnumOfValueInst.from_file('src/enum_0.bin') as r:
+
             self.assertEqual(r.pet_1, EnumOfValueInst.Animal.cat)
             self.assertEqual(r.pet_2, EnumOfValueInst.Animal.chicken)
             self.assertEqual(r.pet_3, EnumOfValueInst.Animal.dog)

@@ -7,4 +7,5 @@ from nav_parent_false2 import NavParentFalse2
 class TestNavParentFalse2(unittest.TestCase):
     def test_nav_parent_false2(self):
         with NavParentFalse2.from_file('src/fixed_struct.bin') as r:
+
             self.assertEqual(r.parentless.foo, 80)
