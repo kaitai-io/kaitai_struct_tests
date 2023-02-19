@@ -1,7 +1,7 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.ClassTypeProvider
-import _root_.io.kaitai.struct.datatype.{DataType, KSError}
+import _root_.io.kaitai.struct.datatype.{DataType, KSError, EndOfStreamError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.PythonCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
@@ -34,7 +34,16 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
 
   override def runParseExpectError(exception: KSError): Unit = {
     importList.add("import kaitaistruct")
-    out.puts(s"with self.assertRaises(${PythonCompiler.ksErrorName(exception)}):")
+    val msgRegex = exception match {
+      case EndOfStreamError => Some("^requested \\d+ bytes, but only \\d+ bytes available$")
+      case _ => None
+    }
+    msgRegex match {
+      case Some(msg) =>
+        out.puts(s"with self.assertRaisesRegexp(${PythonCompiler.ksErrorName(exception)}, ${translator.translate(Ast.expr.Str(msg))}):")
+      case None =>
+        out.puts(s"with self.assertRaises(${PythonCompiler.ksErrorName(exception)}):")
+    }
     out.inc
     runParse()
     out.puts("pass")
