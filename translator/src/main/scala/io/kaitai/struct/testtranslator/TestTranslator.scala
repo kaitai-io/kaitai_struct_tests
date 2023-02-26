@@ -122,7 +122,11 @@ class TestTranslator(options: CLIOptions) {
     case "nim" => new NimSG(testSpec, provider)
     case "perl" => new PerlSG(testSpec, provider)
     case "php" => new PHPSG(testSpec, provider)
-    case "python" => new PythonSG(testSpec, provider)
+    case "python" => if (options.readWrite) {
+      new PythonWriteSG(testSpec, provider)
+    } else {
+      new PythonSG(testSpec, provider)
+    }
     case "ruby" => new RubySG(testSpec, provider)
     case "rust" => new RustSG(testSpec, provider)
   }
