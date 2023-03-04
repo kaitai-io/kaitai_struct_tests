@@ -1,8 +1,6 @@
 import unittest
 import io
-from kaitaistruct import KaitaiStream, KaitaiStruct
-
-import binascii
+from kaitaistruct import KaitaiStream, KaitaiStruct, PY2
 
 # A little hack from https://stackoverflow.com/a/25695512 to trick 'unittest'
 # into thinking that CommonSpec.Base is not a test by itself.
@@ -22,7 +20,7 @@ class CommonSpec:
             finally:
                 orig_f.close()
 
-            with KaitaiStream(io.BytesIO(bytes(orig_io_size))) as new_io:
+            with KaitaiStream(io.BytesIO(bytearray(orig_io_size))) as new_io:
                 orig_ks._write(new_io)
                 new_io.seek(0)
 
@@ -103,7 +101,11 @@ class CommonSpec:
             if isinstance(value, KaitaiStream):
                 value = value.to_byte_array()
 
+            if PY2 and isinstance(value, bytes):
+                value = bytearray(value)
+
             if isinstance(value, (bytes, bytearray)):
-                value = binascii.hexlify(value, ' ').decode('ascii')
+                # https://stackoverflow.com/a/19210468
+                value = ' '.join('%02x' % b for b in value)
 
             return value
