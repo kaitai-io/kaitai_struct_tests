@@ -7,6 +7,10 @@ from kaitaistruct import KaitaiStream, KaitaiStruct, PY2
 class CommonSpec:
 
     class Base(unittest.TestCase):
+        def __init__(self, *args, **kwargs):
+            super(CommonSpec.Base, self).__init__(*args, **kwargs)
+            self.maxDiff = None
+
         def test_read_write_roundtrip(self):
             orig_f = io.open(self.src_filename, 'rb')
 
