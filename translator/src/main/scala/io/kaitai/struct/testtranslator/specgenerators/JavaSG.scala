@@ -2,7 +2,7 @@ package io.kaitai.struct.testtranslator.specgenerators
 
 import io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
 import io.kaitai.struct.datatype.DataType._
-import io.kaitai.struct.datatype.{DataType, KSError}
+import io.kaitai.struct.datatype.{DataType, KSError, EndOfStreamError}
 import io.kaitai.struct.exprlang.Ast
 import io.kaitai.struct.languages.JavaCompiler
 import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
@@ -36,9 +36,28 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   }
 
   override def runParseExpectError(exception: KSError): Unit = {
-    importList.add("io.kaitai.struct.KaitaiStream")
-    out.puts(s"@Test(expectedExceptions = ${compiler.ksErrorName(exception)}.class)")
-    runParseCommon()
+    if (exception == EndOfStreamError) {
+      out.puts("@Test")
+      out.puts(s"public void test$className() throws Exception {")
+      out.inc
+
+      out.puts("assertThrowsEofError(new ThrowingRunnable() {")
+      out.inc
+
+      out.puts("@Override")
+      out.puts("public void run() throws Throwable {")
+      out.inc
+      out.puts(s"$className r = $className.fromFile(SRC_DIR + " + "\"" + spec.data + "\");")
+      out.dec
+      out.puts("}")
+
+      out.dec
+      out.puts("});")
+    } else {
+      importList.add("io.kaitai.struct.KaitaiStream")
+      out.puts(s"@Test(expectedExceptions = ${compiler.ksErrorName(exception)}.class)")
+      runParseCommon()
+    }
   }
 
   def runParseCommon(): Unit = {

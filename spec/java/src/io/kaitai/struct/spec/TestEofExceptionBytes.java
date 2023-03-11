@@ -5,11 +5,15 @@ package io.kaitai.struct.spec;
 import io.kaitai.struct.testformats.EofExceptionBytes;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
-import io.kaitai.struct.KaitaiStream;
 public class TestEofExceptionBytes extends CommonSpec {
 
-    @Test(expectedExceptions = java.nio.BufferUnderflowException.class)
+    @Test
     public void testEofExceptionBytes() throws Exception {
-        EofExceptionBytes r = EofExceptionBytes.fromFile(SRC_DIR + "term_strz.bin");
+        assertThrowsEofError(new ThrowingRunnable() {
+            @Override
+            public void run() throws Throwable {
+                EofExceptionBytes r = EofExceptionBytes.fromFile(SRC_DIR + "term_strz.bin");
+            }
+        });
     }
 }

@@ -10,7 +10,7 @@ public class TestExprIoEofBits extends CommonSpec {
     public void testExprIoEofBits() throws Exception {
         ExprIoEofBits r = ExprIoEofBits.fromFile(SRC_DIR + "nav_parent_switch.bin");
 
-        assertThrows(java.nio.BufferUnderflowException.class, new ThrowingRunnable() {
+        assertThrowsEofError(new ThrowingRunnable() {
             @Override
             public void run() throws Throwable {
                 r._read();
