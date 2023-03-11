@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.InstanceIoUserEarlier;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestInstanceIoUserEarlier extends CommonSpec {
-
     @Test
     public void testInstanceIoUserEarlier() throws Exception {
         InstanceIoUserEarlier r = InstanceIoUserEarlier.fromFile(SRC_DIR + "switch_opcodes2.bin");

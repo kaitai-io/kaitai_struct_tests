@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.RepeatNTermStruct;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestRepeatNTermStruct extends CommonSpec {
-
     @Test
     public void testRepeatNTermStruct() throws Exception {
         RepeatNTermStruct r = RepeatNTermStruct.fromFile(SRC_DIR + "repeat_until_process.bin");

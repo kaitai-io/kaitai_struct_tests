@@ -3,6 +3,7 @@
 package io.kaitai.struct.spec;
 
 import io.kaitai.struct.testformats.ImportsAbs;
+import io.kaitai.struct.testformats.VlqBase128Le;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestImportsAbs extends CommonSpec {

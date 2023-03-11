@@ -8,7 +8,6 @@ import io.kaitai.struct.testformats.Imported2;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestImportsRel1 extends CommonSpec {
-
     @Test
     public void testImportsRel1() throws Exception {
         ImportsRel1 r = ImportsRel1.fromFile(SRC_DIR + "fixed_struct.bin");

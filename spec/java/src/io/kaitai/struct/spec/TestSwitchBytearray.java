@@ -11,13 +11,13 @@ public class TestSwitchBytearray extends CommonSpec {
         SwitchBytearray r = SwitchBytearray.fromFile(SRC_DIR + "switch_opcodes.bin");
 
         assertIntEquals(r.opcodes().size(), 4);
-        assertEquals(r.opcodes().get((int) 0).code(), new byte[] { 83 });
-        assertEquals(((SwitchBytearray.Opcode.Strval) (r.opcodes().get((int) 0).body())).value(), "foobar");
-        assertEquals(r.opcodes().get((int) 1).code(), new byte[] { 73 });
-        assertIntEquals(((SwitchBytearray.Opcode.Intval) (r.opcodes().get((int) 1).body())).value(), 66);
-        assertEquals(r.opcodes().get((int) 2).code(), new byte[] { 73 });
-        assertIntEquals(((SwitchBytearray.Opcode.Intval) (r.opcodes().get((int) 2).body())).value(), 55);
-        assertEquals(r.opcodes().get((int) 3).code(), new byte[] { 83 });
-        assertEquals(((SwitchBytearray.Opcode.Strval) (r.opcodes().get((int) 3).body())).value(), "");
+        assertEquals(r.opcodes().get(((int) 0)).code(), new byte[] { 83 });
+        assertEquals(((SwitchBytearray.Opcode.Strval) (r.opcodes().get(((int) 0)).body())).value(), "foobar");
+        assertEquals(r.opcodes().get(((int) 1)).code(), new byte[] { 73 });
+        assertIntEquals(((SwitchBytearray.Opcode.Intval) (r.opcodes().get(((int) 1)).body())).value(), 66);
+        assertEquals(r.opcodes().get(((int) 2)).code(), new byte[] { 73 });
+        assertIntEquals(((SwitchBytearray.Opcode.Intval) (r.opcodes().get(((int) 2)).body())).value(), 55);
+        assertEquals(r.opcodes().get(((int) 3)).code(), new byte[] { 83 });
+        assertEquals(((SwitchBytearray.Opcode.Strval) (r.opcodes().get(((int) 3)).body())).value(), "");
     }
 }

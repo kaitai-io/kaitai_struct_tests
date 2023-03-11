@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ProcessRepeatUsertypeDynargRotate;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestProcessRepeatUsertypeDynargRotate extends CommonSpec {
-
     @Test
     public void testProcessRepeatUsertypeDynargRotate() throws Exception {
         ProcessRepeatUsertypeDynargRotate r = ProcessRepeatUsertypeDynargRotate.fromFile(SRC_DIR + "process_rotate.bin");

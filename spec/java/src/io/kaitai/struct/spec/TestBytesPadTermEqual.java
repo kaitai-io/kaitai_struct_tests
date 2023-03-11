@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.BytesPadTermEqual;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestBytesPadTermEqual extends CommonSpec {
-
     @Test
     public void testBytesPadTermEqual() throws Exception {
         BytesPadTermEqual r = BytesPadTermEqual.fromFile(SRC_DIR + "str_pad_term.bin");

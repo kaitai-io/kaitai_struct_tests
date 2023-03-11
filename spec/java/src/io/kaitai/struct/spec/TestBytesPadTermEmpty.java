@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.BytesPadTermEmpty;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestBytesPadTermEmpty extends CommonSpec {
-
     @Test
     public void testBytesPadTermEmpty() throws Exception {
         BytesPadTermEmpty r = BytesPadTermEmpty.fromFile(SRC_DIR + "str_pad_term_empty.bin");

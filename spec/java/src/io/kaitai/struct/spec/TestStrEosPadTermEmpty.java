@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.StrEosPadTermEmpty;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestStrEosPadTermEmpty extends CommonSpec {
-
     @Test
     public void testStrEosPadTermEmpty() throws Exception {
         StrEosPadTermEmpty r = StrEosPadTermEmpty.fromFile(SRC_DIR + "str_pad_term_empty.bin");

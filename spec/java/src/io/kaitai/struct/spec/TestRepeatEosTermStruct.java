@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.RepeatEosTermStruct;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestRepeatEosTermStruct extends CommonSpec {
-
     @Test
     public void testRepeatEosTermStruct() throws Exception {
         RepeatEosTermStruct r = RepeatEosTermStruct.fromFile(SRC_DIR + "process_rotate.bin");

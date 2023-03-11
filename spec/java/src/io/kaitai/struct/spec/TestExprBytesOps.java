@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ExprBytesOps;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestExprBytesOps extends CommonSpec {
-
     @Test
     public void testExprBytesOps() throws Exception {
         ExprBytesOps r = ExprBytesOps.fromFile(SRC_DIR + "nav_parent_switch.bin");

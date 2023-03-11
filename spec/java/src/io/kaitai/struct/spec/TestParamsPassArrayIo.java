@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ParamsPassArrayIo;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestParamsPassArrayIo extends CommonSpec {
-
     @Test
     public void testParamsPassArrayIo() throws Exception {
         ParamsPassArrayIo r = ParamsPassArrayIo.fromFile(SRC_DIR + "enum_negative.bin");

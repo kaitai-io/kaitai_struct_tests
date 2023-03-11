@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.StrPadTermZeroSize;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestStrPadTermZeroSize extends CommonSpec {
-
     @Test
     public void testStrPadTermZeroSize() throws Exception {
         StrPadTermZeroSize r = StrPadTermZeroSize.fromFile(SRC_DIR + "enum_negative.bin");

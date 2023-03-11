@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.BytesEosPadTerm;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestBytesEosPadTerm extends CommonSpec {
-
     @Test
     public void testBytesEosPadTerm() throws Exception {
         BytesEosPadTerm r = BytesEosPadTerm.fromFile(SRC_DIR + "str_pad_term.bin");

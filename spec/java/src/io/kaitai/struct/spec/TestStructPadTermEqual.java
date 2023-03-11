@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.StructPadTermEqual;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestStructPadTermEqual extends CommonSpec {
-
     @Test
     public void testStructPadTermEqual() throws Exception {
         StructPadTermEqual r = StructPadTermEqual.fromFile(SRC_DIR + "str_pad_term.bin");

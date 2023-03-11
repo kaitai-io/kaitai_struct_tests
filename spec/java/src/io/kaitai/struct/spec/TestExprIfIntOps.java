@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ExprIfIntOps;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestExprIfIntOps extends CommonSpec {
-
     @Test
     public void testExprIfIntOps() throws Exception {
         ExprIfIntOps r = ExprIfIntOps.fromFile(SRC_DIR + "instance_io.bin");

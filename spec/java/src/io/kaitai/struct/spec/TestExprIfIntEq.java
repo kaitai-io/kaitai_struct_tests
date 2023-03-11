@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ExprIfIntEq;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestExprIfIntEq extends CommonSpec {
-
     @Test
     public void testExprIfIntEq() throws Exception {
         ExprIfIntEq r = ExprIfIntEq.fromFile(SRC_DIR + "process_coerce_switch.bin");

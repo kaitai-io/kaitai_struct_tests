@@ -13,14 +13,14 @@ public class TestSwitchManualIntSizeElse extends CommonSpec {
         SwitchManualIntSizeElse r = SwitchManualIntSizeElse.fromFile(SRC_DIR + "switch_tlv.bin");
 
         assertIntEquals(r.chunks().size(), 4);
-        assertIntEquals(r.chunks().get((int) 0).code(), 17);
-        assertEquals(((SwitchManualIntSizeElse.Chunk.ChunkMeta) (r.chunks().get((int) 0).body())).title(), "Stuff");
-        assertEquals(((SwitchManualIntSizeElse.Chunk.ChunkMeta) (r.chunks().get((int) 0).body())).author(), "Me");
-        assertIntEquals(r.chunks().get((int) 1).code(), 34);
-        assertEquals(((SwitchManualIntSizeElse.Chunk.ChunkDir) (r.chunks().get((int) 1).body())).entries(), new ArrayList<String>(Arrays.asList("AAAA", "BBBB", "CCCC")));
-        assertIntEquals(r.chunks().get((int) 2).code(), 51);
-        assertEquals(((SwitchManualIntSizeElse.Chunk.Dummy) (r.chunks().get((int) 2).body())).rest(), new byte[] { 16, 32, 48, 64, 80, 96, 112, -128 });
-        assertIntEquals(r.chunks().get((int) 3).code(), 255);
-        assertEquals(((SwitchManualIntSizeElse.Chunk.Dummy) (r.chunks().get((int) 3).body())).rest(), new byte[] {  });
+        assertIntEquals(r.chunks().get(((int) 0)).code(), 17);
+        assertEquals(((SwitchManualIntSizeElse.Chunk.ChunkMeta) (r.chunks().get(((int) 0)).body())).title(), "Stuff");
+        assertEquals(((SwitchManualIntSizeElse.Chunk.ChunkMeta) (r.chunks().get(((int) 0)).body())).author(), "Me");
+        assertIntEquals(r.chunks().get(((int) 1)).code(), 34);
+        assertEquals(((SwitchManualIntSizeElse.Chunk.ChunkDir) (r.chunks().get(((int) 1)).body())).entries(), new ArrayList<String>(Arrays.asList("AAAA", "BBBB", "CCCC")));
+        assertIntEquals(r.chunks().get(((int) 2)).code(), 51);
+        assertEquals(((SwitchManualIntSizeElse.Chunk.Dummy) (r.chunks().get(((int) 2)).body())).rest(), new byte[] { 16, 32, 48, 64, 80, 96, 112, -128 });
+        assertIntEquals(r.chunks().get(((int) 3)).code(), 255);
+        assertEquals(((SwitchManualIntSizeElse.Chunk.Dummy) (r.chunks().get(((int) 3)).body())).rest(), new byte[] {  });
     }
 }

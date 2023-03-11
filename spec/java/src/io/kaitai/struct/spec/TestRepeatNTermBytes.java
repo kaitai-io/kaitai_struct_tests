@@ -6,19 +6,18 @@ import io.kaitai.struct.testformats.RepeatNTermBytes;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestRepeatNTermBytes extends CommonSpec {
-
     @Test
     public void testRepeatNTermBytes() throws Exception {
         RepeatNTermBytes r = RepeatNTermBytes.fromFile(SRC_DIR + "repeat_until_process.bin");
 
         assertIntEquals(r.records1().size(), 2);
-        assertEquals(r.records1().get((int) 0), new byte[] { -24, -70 });
-        assertEquals(r.records1().get((int) 1), new byte[] {  });
+        assertEquals(r.records1().get(((int) 0)), new byte[] { -24, -70 });
+        assertEquals(r.records1().get(((int) 1)), new byte[] {  });
         assertIntEquals(r.records2().size(), 2);
-        assertEquals(r.records2().get((int) 0), new byte[] { -86 });
-        assertEquals(r.records2().get((int) 1), new byte[] { -6, -98, -72, -86 });
+        assertEquals(r.records2().get(((int) 0)), new byte[] { -86 });
+        assertEquals(r.records2().get(((int) 1)), new byte[] { -6, -98, -72, -86 });
         assertIntEquals(r.records3().size(), 2);
-        assertEquals(r.records3().get((int) 0), new byte[] { -86, -86 });
-        assertEquals(r.records3().get((int) 1), new byte[] {  });
+        assertEquals(r.records3().get(((int) 0)), new byte[] { -86, -86 });
+        assertEquals(r.records3().get(((int) 1)), new byte[] {  });
     }
 }

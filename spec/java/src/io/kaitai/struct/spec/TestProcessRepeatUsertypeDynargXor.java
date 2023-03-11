@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ProcessRepeatUsertypeDynargXor;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestProcessRepeatUsertypeDynargXor extends CommonSpec {
-
     @Test
     public void testProcessRepeatUsertypeDynargXor() throws Exception {
         ProcessRepeatUsertypeDynargXor r = ProcessRepeatUsertypeDynargXor.fromFile(SRC_DIR + "process_xor_4.bin");

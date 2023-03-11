@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.InstanceInSized;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestInstanceInSized extends CommonSpec {
-
     @Test
     public void testInstanceInSized() throws Exception {
         InstanceInSized r = InstanceInSized.fromFile(SRC_DIR + "process_rotate.bin");

@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ProcessBytesPadTerm;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestProcessBytesPadTerm extends CommonSpec {
-
     @Test
     public void testProcessBytesPadTerm() throws Exception {
         ProcessBytesPadTerm r = ProcessBytesPadTerm.fromFile(SRC_DIR + "str_pad_term.bin");

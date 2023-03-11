@@ -11,11 +11,11 @@ public class TestIndexSizes extends CommonSpec {
         IndexSizes r = IndexSizes.fromFile(SRC_DIR + "index_sizes.bin");
 
         assertIntEquals(r.qty(), 3);
-        assertIntEquals(r.sizes().get((int) 0), 1);
-        assertIntEquals(r.sizes().get((int) 1), 8);
-        assertIntEquals(r.sizes().get((int) 2), 4);
-        assertEquals(r.bufs().get((int) 0), "A");
-        assertEquals(r.bufs().get((int) 1), "BBBBBBBB");
-        assertEquals(r.bufs().get((int) 2), "CCCC");
+        assertIntEquals(r.sizes().get(((int) 0)), 1);
+        assertIntEquals(r.sizes().get(((int) 1)), 8);
+        assertIntEquals(r.sizes().get(((int) 2)), 4);
+        assertEquals(r.bufs().get(((int) 0)), "A");
+        assertEquals(r.bufs().get(((int) 1)), "BBBBBBBB");
+        assertEquals(r.bufs().get(((int) 2)), "CCCC");
     }
 }

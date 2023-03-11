@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.TermStrz3;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestTermStrz3 extends CommonSpec {
-
     @Test
     public void testTermStrz3() throws Exception {
         TermStrz3 r = TermStrz3.fromFile(SRC_DIR + "term_strz.bin");

@@ -6,13 +6,12 @@ import io.kaitai.struct.testformats.SwitchRepeatExpr;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestSwitchRepeatExpr extends CommonSpec {
-
     @Test
     public void testSwitchRepeatExpr() throws Exception {
         SwitchRepeatExpr r = SwitchRepeatExpr.fromFile(SRC_DIR + "switch_tlv.bin");
 
         assertIntEquals(r.code(), 17);
         assertIntEquals(r.size(), 9);
-        assertEquals(((SwitchRepeatExpr.One) (r.body().get((int) 0))).first(), new byte[] { 83, 116, 117, 102, 102, 0, 77, 101, 0 });
+        assertEquals(((SwitchRepeatExpr.One) (r.body().get(((int) 0)))).first(), new byte[] { 83, 116, 117, 102, 102, 0, 77, 101, 0 });
     }
 }

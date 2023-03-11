@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ProcessTermStruct;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestProcessTermStruct extends CommonSpec {
-
     @Test
     public void testProcessTermStruct() throws Exception {
         ProcessTermStruct r = ProcessTermStruct.fromFile(SRC_DIR + "term_strz.bin");

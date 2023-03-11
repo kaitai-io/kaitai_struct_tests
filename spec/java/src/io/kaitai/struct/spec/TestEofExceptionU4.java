@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.EofExceptionU4;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestEofExceptionU4 extends CommonSpec {
-
     @Test
     public void testEofExceptionU4() throws Exception {
         assertThrowsEofError(new ThrowingRunnable() {

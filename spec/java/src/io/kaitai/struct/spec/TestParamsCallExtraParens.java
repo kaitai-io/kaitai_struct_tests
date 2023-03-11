@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ParamsCallExtraParens;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestParamsCallExtraParens extends CommonSpec {
-
     @Test
     public void testParamsCallExtraParens() throws Exception {
         ParamsCallExtraParens r = ParamsCallExtraParens.fromFile(SRC_DIR + "term_strz.bin");

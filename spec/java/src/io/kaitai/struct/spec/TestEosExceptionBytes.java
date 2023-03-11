@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.EosExceptionBytes;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestEosExceptionBytes extends CommonSpec {
-
     @Test
     public void testEosExceptionBytes() throws Exception {
         assertThrowsEofError(new ThrowingRunnable() {

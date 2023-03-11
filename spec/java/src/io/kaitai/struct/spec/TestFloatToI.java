@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.FloatToI;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestFloatToI extends CommonSpec {
-
     @Test
     public void testFloatToI() throws Exception {
         FloatToI r = FloatToI.fromFile(SRC_DIR + "floating_points.bin");

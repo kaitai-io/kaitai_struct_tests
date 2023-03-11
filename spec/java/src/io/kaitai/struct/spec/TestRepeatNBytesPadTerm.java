@@ -6,14 +6,13 @@ import io.kaitai.struct.testformats.RepeatNBytesPadTerm;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestRepeatNBytesPadTerm extends CommonSpec {
-
     @Test
     public void testRepeatNBytesPadTerm() throws Exception {
         RepeatNBytesPadTerm r = RepeatNBytesPadTerm.fromFile(SRC_DIR + "repeat_until_process.bin");
 
         assertIntEquals(r.records().size(), 3);
-        assertEquals(r.records().get((int) 0), new byte[] { -24, -70 });
-        assertEquals(r.records().get((int) 1), new byte[] { -6, -98, -72 });
-        assertEquals(r.records().get((int) 2), new byte[] { -86, 85 });
+        assertEquals(r.records().get(((int) 0)), new byte[] { -24, -70 });
+        assertEquals(r.records().get(((int) 1)), new byte[] { -6, -98, -72 });
+        assertEquals(r.records().get(((int) 2)), new byte[] { -86, 85 });
     }
 }

@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.BitsSeqEndianCombo;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestBitsSeqEndianCombo extends CommonSpec {
-
     @Test
     public void testBitsSeqEndianCombo() throws Exception {
         BitsSeqEndianCombo r = BitsSeqEndianCombo.fromFile(SRC_DIR + "process_xor_4.bin");

@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ValidEqStrEncodings;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestValidEqStrEncodings extends CommonSpec {
-
     @Test
     public void testValidEqStrEncodings() throws Exception {
         ValidEqStrEncodings r = ValidEqStrEncodings.fromFile(SRC_DIR + "str_encodings.bin");

@@ -27,7 +27,6 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   override def header(): Unit = {
     out.puts(s"public class Test$className extends CommonSpec {")
     out.inc
-    out.puts
   }
 
   override def runParse(): Unit = {

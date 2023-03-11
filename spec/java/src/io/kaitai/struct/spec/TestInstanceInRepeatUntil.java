@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.InstanceInRepeatUntil;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestInstanceInRepeatUntil extends CommonSpec {
-
     @Test
     public void testInstanceInRepeatUntil() throws Exception {
         InstanceInRepeatUntil r = InstanceInRepeatUntil.fromFile(SRC_DIR + "repeat_until_s4.bin");

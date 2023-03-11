@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ExprIoPosBits;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestExprIoPosBits extends CommonSpec {
-
     @Test
     public void testExprIoPosBits() throws Exception {
         ExprIoPosBits r = ExprIoPosBits.fromFile(SRC_DIR + "process_xor_4.bin");

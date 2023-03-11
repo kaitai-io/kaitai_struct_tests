@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.BytesPadTermRoundtrip;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestBytesPadTermRoundtrip extends CommonSpec {
-
     @Test
     public void testBytesPadTermRoundtrip() throws Exception {
         BytesPadTermRoundtrip r = BytesPadTermRoundtrip.fromFile(SRC_DIR + "str_pad_term.bin");

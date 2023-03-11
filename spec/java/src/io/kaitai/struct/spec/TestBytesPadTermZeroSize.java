@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.BytesPadTermZeroSize;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestBytesPadTermZeroSize extends CommonSpec {
-
     @Test
     public void testBytesPadTermZeroSize() throws Exception {
         BytesPadTermZeroSize r = BytesPadTermZeroSize.fromFile(SRC_DIR + "enum_negative.bin");

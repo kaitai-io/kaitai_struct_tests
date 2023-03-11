@@ -10,11 +10,11 @@ public class TestIfValues extends CommonSpec {
     public void testIfValues() throws Exception {
         IfValues r = IfValues.fromFile(SRC_DIR + "fixed_struct.bin");
 
-        assertIntEquals(r.codes().get((int) 0).opcode(), 80);
-        assertIntEquals(r.codes().get((int) 0).halfOpcode(), 40);
-        assertIntEquals(r.codes().get((int) 1).opcode(), 65);
-        assertNull(r.codes().get((int) 1).halfOpcode());
-        assertIntEquals(r.codes().get((int) 2).opcode(), 67);
-        assertNull(r.codes().get((int) 2).halfOpcode());
+        assertIntEquals(r.codes().get(((int) 0)).opcode(), 80);
+        assertIntEquals(r.codes().get(((int) 0)).halfOpcode(), 40);
+        assertIntEquals(r.codes().get(((int) 1)).opcode(), 65);
+        assertNull(r.codes().get(((int) 1)).halfOpcode());
+        assertIntEquals(r.codes().get(((int) 2)).opcode(), 67);
+        assertNull(r.codes().get(((int) 2)).halfOpcode());
     }
 }

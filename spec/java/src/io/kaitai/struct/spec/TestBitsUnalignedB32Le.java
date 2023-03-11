@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.BitsUnalignedB32Le;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestBitsUnalignedB32Le extends CommonSpec {
-
     @Test
     public void testBitsUnalignedB32Le() throws Exception {
         BitsUnalignedB32Le r = BitsUnalignedB32Le.fromFile(SRC_DIR + "process_xor_4.bin");

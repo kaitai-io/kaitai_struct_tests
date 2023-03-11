@@ -3,10 +3,10 @@
 package io.kaitai.struct.spec;
 
 import io.kaitai.struct.testformats.EnumToIClassBorder1;
+import io.kaitai.struct.testformats.EnumToIClassBorder2;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestEnumToIClassBorder1 extends CommonSpec {
-
     @Test
     public void testEnumToIClassBorder1() throws Exception {
         EnumToIClassBorder1 r = EnumToIClassBorder1.fromFile(SRC_DIR + "enum_0.bin");

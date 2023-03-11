@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.IntegersMinMax;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestIntegersMinMax extends CommonSpec {
-
     @Test
     public void testIntegersMinMax() throws Exception {
         IntegersMinMax r = IntegersMinMax.fromFile(SRC_DIR + "integers_min_max.bin");
@@ -27,11 +26,11 @@ public class TestIntegersMinMax extends CommonSpec {
         assertIntEquals(r.unsignedMax().u8be(), 0xffffffffffffffffL);
         assertIntEquals(r.signedMin().s1(), -128);
         assertIntEquals(r.signedMin().s2le(), -32768);
-        assertIntEquals(r.signedMin().s4le(), -2147483648L);
-        assertIntEquals(r.signedMin().s8le(), -0x8000000000000000L);
+        assertIntEquals(r.signedMin().s4le(), -2147483648);
+        assertIntEquals(r.signedMin().s8le(), -9223372036854775808L);
         assertIntEquals(r.signedMin().s2be(), -32768);
-        assertIntEquals(r.signedMin().s4be(), -2147483648L);
-        assertIntEquals(r.signedMin().s8be(), -0x8000000000000000L);
+        assertIntEquals(r.signedMin().s4be(), -2147483648);
+        assertIntEquals(r.signedMin().s8be(), -9223372036854775808L);
         assertIntEquals(r.signedMax().s1(), 127);
         assertIntEquals(r.signedMax().s2le(), 32767);
         assertIntEquals(r.signedMax().s4le(), 2147483647);

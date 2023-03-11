@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import io.kaitai.struct.KaitaiStream;
 public class TestValidFailRangeBytes extends CommonSpec {
-
     @Test(expectedExceptions = KaitaiStream.ValidationGreaterThanError.class)
     public void testValidFailRangeBytes() throws Exception {
         ValidFailRangeBytes r = ValidFailRangeBytes.fromFile(SRC_DIR + "fixed_struct.bin");

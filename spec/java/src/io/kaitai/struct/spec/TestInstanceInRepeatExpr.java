@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.InstanceInRepeatExpr;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestInstanceInRepeatExpr extends CommonSpec {
-
     @Test
     public void testInstanceInRepeatExpr() throws Exception {
         InstanceInRepeatExpr r = InstanceInRepeatExpr.fromFile(SRC_DIR + "instance_in_repeat_expr.bin");

@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.NestedTypeParam;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestNestedTypeParam extends CommonSpec {
-
     @Test
     public void testNestedTypeParam() throws Exception {
         NestedTypeParam r = NestedTypeParam.fromFile(SRC_DIR + "term_strz.bin");

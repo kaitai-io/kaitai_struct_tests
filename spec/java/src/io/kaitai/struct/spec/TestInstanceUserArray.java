@@ -14,11 +14,11 @@ public class TestInstanceUserArray extends CommonSpec {
         assertIntEquals(r.qtyEntries(), 3);
         assertIntEquals(r.entrySize(), 4);
         assertIntEquals(r.userEntries().size(), 3);
-        assertIntEquals(r.userEntries().get((int) 0).word1(), 4369);
-        assertIntEquals(r.userEntries().get((int) 0).word2(), 4369);
-        assertIntEquals(r.userEntries().get((int) 1).word1(), 8738);
-        assertIntEquals(r.userEntries().get((int) 1).word2(), 8738);
-        assertIntEquals(r.userEntries().get((int) 2).word1(), 13107);
-        assertIntEquals(r.userEntries().get((int) 2).word2(), 13107);
+        assertIntEquals(r.userEntries().get(((int) 0)).word1(), 4369);
+        assertIntEquals(r.userEntries().get(((int) 0)).word2(), 4369);
+        assertIntEquals(r.userEntries().get(((int) 1)).word1(), 8738);
+        assertIntEquals(r.userEntries().get(((int) 1)).word2(), 8738);
+        assertIntEquals(r.userEntries().get(((int) 2)).word1(), 13107);
+        assertIntEquals(r.userEntries().get(((int) 2)).word2(), 13107);
     }
 }

@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import io.kaitai.struct.KaitaiStream;
 public class TestValidFailMinInt extends CommonSpec {
-
     @Test(expectedExceptions = KaitaiStream.ValidationLessThanError.class)
     public void testValidFailMinInt() throws Exception {
         ValidFailMinInt r = ValidFailMinInt.fromFile(SRC_DIR + "fixed_struct.bin");
