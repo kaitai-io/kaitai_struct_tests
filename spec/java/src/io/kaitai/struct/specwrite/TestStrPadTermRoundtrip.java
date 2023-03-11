@@ -20,7 +20,7 @@ public class TestStrPadTermRoundtrip extends CommonSpec {
         r.setStrTermAndPad("str+++3bar+++");
         r.setStrTermInclude("str4baz@");
 
-        assertEqualToFile(r, "str_pad_term.bin");
+        assertEqualToFullFile(r, "str_pad_term.bin");
     }
 
     @Override

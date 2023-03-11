@@ -18,7 +18,7 @@ public class TestBytesPadTermRoundtrip extends CommonSpec {
         r.setStrTermAndPad("str+++3bar+++".getBytes());
         r.setStrTermInclude("str4baz@".getBytes());
 
-        assertEqualToFile(r, "str_pad_term.bin");
+        assertEqualToFullFile(r, "str_pad_term.bin");
     }
 
     @Override

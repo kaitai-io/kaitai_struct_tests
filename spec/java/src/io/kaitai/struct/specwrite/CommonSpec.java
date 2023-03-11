@@ -1,6 +1,5 @@
 package io.kaitai.struct.specwrite;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -11,8 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
 import org.testng.annotations.Test;
 
 import io.kaitai.struct.ByteBufferKaitaiStream;
@@ -60,39 +57,21 @@ public abstract class CommonSpec extends io.kaitai.struct.spec.CommonSpec {
     }
 
     protected void assertEqualToFullFile(KaitaiStruct.ReadWrite struct, String fn) throws IOException {
-        byte[] actual = structToByteArray(struct);
-
-        KaitaiStream expFile = new ByteBufferKaitaiStream(SRC_DIR + fn);
-        byte[] expected = expFile.readBytesFull();
-        expFile.close();
-
-        assertEquals(byteArrayToHex(actual), byteArrayToHex(expected));
-    }
-
-    protected void assertEqualToFile(KaitaiStruct.ReadWrite struct, String fn) throws IOException {
-        byte[] actual = structToByteArray(struct);
-
-        assertTrue(actual.length > 0, "no data was written");
-
-        FileInputStream fis = new FileInputStream(SRC_DIR + fn);
-        byte[] expected = new byte[actual.length];
-        fis.read(expected);
-        fis.close();
-
-        assertEquals(byteArrayToHex(actual), byteArrayToHex(expected));
-    }
-
-    protected byte[] structToByteArray(KaitaiStruct.ReadWrite struct) {
+        byte[] expected;
+        try (KaitaiStream expFile = new ByteBufferKaitaiStream(SRC_DIR + fn)) {
+            expected = expFile.toByteArray();
+        }
         struct._check();
-        KaitaiStream io = new ByteBufferKaitaiStream(1024 * 1024);
-        struct._write(io);
-        long size = io.pos();
-        io.seek(0);
-        return io.readBytes(size);
+        byte[] actual = new byte[expected.length];
+        try (KaitaiStream actIo = new ByteBufferKaitaiStream(actual)) {
+            struct._write(actIo);
+        }
+
+        assertByteArrayEquals(actual, expected);
     }
 
-    protected KaitaiStream structToReadStream(KaitaiStruct.ReadWrite struct) {
-        return new ByteBufferKaitaiStream(structToByteArray(struct));
+    protected void assertByteArrayEquals(byte[] actual, byte[] expected) {
+        assertEquals(byteArrayToHex(actual), byteArrayToHex(expected));
     }
 
     protected static Object dumpStruct(KaitaiStruct.ReadWrite struct) throws Exception {

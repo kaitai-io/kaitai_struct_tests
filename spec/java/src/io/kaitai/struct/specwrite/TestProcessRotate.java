@@ -19,7 +19,7 @@ public class TestProcessRotate extends CommonSpec {
         r.setKey(1);
         r.setBuf3("There".getBytes());
 
-        assertEqualToFile(r, "process_rotate.bin");
+        assertEqualToFullFile(r, "process_rotate.bin");
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: buf2,.*")
