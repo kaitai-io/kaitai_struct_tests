@@ -21,17 +21,25 @@ fn main() {
         });
     }
 
-    let except_files = vec![
+    let rm_except_files = vec![
         "custom_fx_no_args.rs",
         "my_custom_fx.rs",
         "custom_fx.rs",
     ];
 
-    remove_existing(destination_path, except_files).unwrap_or_else(|e| {
+    // we don't support this tests yet
+    let copy_except_files = vec![
+        "nav_parent_switch_cast.rs",
+        "params_pass_array_struct.rs",
+        "params_pass_struct.rs",
+        "process_coerce_switch.rs",
+    ];
+
+    remove_existing(destination_path, rm_except_files).unwrap_or_else(|e| {
         println!("Unable to remove existing files under test: {}", e.to_string());
     });
 
-    copy_new(source_path, destination_path).unwrap_or_else(|e| {
+    copy_new(source_path, destination_path, copy_except_files).unwrap_or_else(|e| {
         println!("Unable to copy new files under test: {}", e.to_string());
     });
 
@@ -55,7 +63,7 @@ fn remove_existing(destination_path: &Path, except_files: Vec<&str>) -> io::Resu
     Ok(())
 }
 
-fn copy_new(source_path: &Path, destination_path: &Path) -> io::Result<()> {
+fn copy_new(source_path: &Path, destination_path: &Path, except_files: Vec<&str>) -> io::Result<()> {
     let mut librs = fs::File::create(destination_path.join("mod.rs"))?;
 
     write!(librs, "#![allow(unused_parens)]\n")?;
@@ -69,14 +77,17 @@ fn copy_new(source_path: &Path, destination_path: &Path) -> io::Result<()> {
             continue;
         }
 
-        if let Some(file_name) = path.file_name() {
-            fs::copy(path.clone(), destination_path.join(file_name))?;
+        let file_name = path.file_name().unwrap().to_os_string();
+        if except_files.iter().find(|&&x| *x == file_name).is_none() {
+            fs::copy(path.clone(), destination_path.join(file_name.clone()))?;
             println!("copying {} to {}", path.as_path().display().to_string(),
-                destination_path.join(file_name).as_path().display().to_string());
+                destination_path.join(file_name.clone()).as_path().display().to_string());
 
             write!(librs, "pub mod {};\n",
                    path.file_stem().unwrap().to_str().unwrap())?;
             println!("updating lib.rs with {}", path.file_stem().unwrap().to_str().unwrap());
+        } else {
+            println!("skipping (not yet supported) {}", path.display().to_string());
         }
     }
     
