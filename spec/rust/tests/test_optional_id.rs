@@ -3,7 +3,7 @@ use std::fs;
 
 extern crate kaitai;
 use self::kaitai::*;
-mod formats;
+#[path = "../formats/mod.rs"] mod formats;
 use formats::optional_id::*;
 
 #[test]

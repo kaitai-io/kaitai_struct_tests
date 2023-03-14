@@ -4,7 +4,7 @@ use std::{
         prelude::*
     },
     fs,
-    path::Path
+    path::Path, ffi::OsStr
 };
 
 pub fn path_exists(path: &Path) -> bool {
@@ -12,8 +12,8 @@ pub fn path_exists(path: &Path) -> bool {
 }
 
 fn main() {
-    let source_path = Path::new("../../compiled/rust");
-    let destination_path = Path::new("./tests/formats");
+    let source_path = Path::new("../../compiled");
+    let destination_path = Path::new("./formats");
 
     if !path_exists(destination_path) {
         fs::create_dir(destination_path).unwrap_or_else(|e| {
@@ -64,6 +64,10 @@ fn copy_new(source_path: &Path, destination_path: &Path) -> io::Result<()> {
     for entry in fs::read_dir(source_path)? {
         let entry = entry?;
         let path = entry.path();
+
+        if path.extension().unwrap_or(&OsStr::new("")) != "rs" {
+            continue;
+        }
 
         if let Some(file_name) = path.file_name() {
             fs::copy(path.clone(), destination_path.join(file_name))?;

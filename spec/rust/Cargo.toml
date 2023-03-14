@@ -1,8 +1,8 @@
 [package]
 name = "rust"
 version = "0.1.0"
-authors = ["Connor Wood <connorwood71@gmail.com>"]
-edition = "2021"
+authors = ["Aon"]
+edition = "2018"
 build = "build.rs"
 
 [dependencies]

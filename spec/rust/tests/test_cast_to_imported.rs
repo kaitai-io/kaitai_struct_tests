@@ -2,7 +2,7 @@ use std::fs;
 
 extern crate kaitai;
 use self::kaitai::*;
-mod formats;
+#[path = "../formats/mod.rs"] mod formats;
 use formats::cast_to_imported::*;
 
 #[test]
