@@ -12,7 +12,7 @@ pub fn path_exists(path: &Path) -> bool {
 }
 
 fn main() {
-    let source_path = Path::new("../../compiled");
+    let source_path = Path::new("../../compiled/rust");
     let destination_path = Path::new("./formats");
 
     if !path_exists(destination_path) {
