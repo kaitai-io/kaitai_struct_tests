@@ -3,6 +3,8 @@ package io.kaitai.struct.specwrite;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
@@ -57,10 +59,7 @@ public abstract class CommonSpec extends io.kaitai.struct.spec.CommonSpec {
     }
 
     protected void assertEqualToFullFile(KaitaiStruct.ReadWrite struct, String fn) throws IOException {
-        byte[] expected;
-        try (KaitaiStream expFile = new ByteBufferKaitaiStream(SRC_DIR + fn)) {
-            expected = expFile.toByteArray();
-        }
+        byte[] expected = Files.readAllBytes(Paths.get(SRC_DIR + fn));
         struct._check();
         byte[] actual = new byte[expected.length];
         try (KaitaiStream actIo = new ByteBufferKaitaiStream(actual)) {
