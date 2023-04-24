@@ -1,39 +1,98 @@
-import unittest
 import io
+import itertools
+import unittest
 from kaitaistruct import KaitaiStream, KaitaiStruct, PY2
+
+from helpers import InMemoryStream, TemporaryFile, FileOpenMode, FileOpenConfig
+
 
 # A little hack from https://stackoverflow.com/a/25695512 to trick 'unittest'
 # into thinking that CommonSpec.Base is not a test by itself.
-class CommonSpec:
-
+class CommonSpec(object):
     class Base(unittest.TestCase):
         def __init__(self, *args, **kwargs):
             super(CommonSpec.Base, self).__init__(*args, **kwargs)
             self.maxDiff = None
+            self.skip_roundtrip_msg_reason = None
 
-        def test_read_write_roundtrip(self):
-            orig_f = io.open(self.src_filename, 'rb')
+        @classmethod
+        def generate_test_read_write_roundtrip_variants(cls):
+            use_builtin_open_options = (False,)
+            # in Python 3, built-in open() is an alias of io.open(); in Python 2, open() is
+            # a different function than io.open()
+            builtin_open_is_not_io_open = open is not io.open
+            if builtin_open_is_not_io_open != PY2:
+                raise ValueError(
+                    "expected the built-in open() to be different from io.open() only in Python 2, "
+                    "but builtin_open_is_not_io_open={} and PY2={}"
+                    .format(builtin_open_is_not_io_open, PY2)
+                )
 
-            try:
-                orig_ks = self.struct_class.from_io(orig_f)
-                orig_ks._read()
+            if builtin_open_is_not_io_open:
+                use_builtin_open_options += (True,)
+            # See https://stackoverflow.com/a/67558256/12940655 for a table of possible modes
+            open_modes = (
+                FileOpenMode.WRITE_ONLY,
+                FileOpenMode.READ_WRITE,
+            )
+            buffering_options = (-1, 0)
 
-                orig_dump = CommonSpec.Base.dump_struct(orig_ks)
+            # NOTE: We're not using unittest.TestCase.subTest
+            # (https://docs.python.org/3/library/unittest.html#unittest.TestCase.subTest) for two
+            # reasons:
+            #   1. it's only available in Python 3, not Python 2
+            #   2. the "unittest-xml-reporting" Python package that we use to generate XML test
+            #      reports has a limited support for subtests, see
+            #      https://github.com/xmlrunner/unittest-xml-reporting/tree/3.2.0#limited-support-for-unittesttestcasesubtest
+            for use_builtin_open, open_mode, buffering in itertools.product(
+                    use_builtin_open_options, open_modes, buffering_options
+            ):
+                open_conf = FileOpenConfig(buffering, use_builtin_open)
 
-                orig_io_size = orig_ks._io.size()
-            finally:
-                orig_f.close()
+                def stream_builder(orig_io_size, open_mode=open_mode, open_conf=open_conf):
+                    return TemporaryFile(open_mode, open_conf, orig_io_size)
 
-            with KaitaiStream(io.BytesIO(bytearray(orig_io_size))) as new_io:
-                orig_ks._write(new_io)
-                new_io.seek(0)
+                test_method = cls.create_test_read_write_roundtrip(stream_builder)
+                test_method.__name__ = \
+                    'test_read_write_roundtrip__TemporaryFile_{}open_{}{}'.format(
+                        'builtin_' if use_builtin_open else 'io_',
+                        open_mode.ident,
+                        '_nobuf' if buffering == 0 else '',
+                    )
+                setattr(cls, test_method.__name__, test_method)
 
-                new_ks = self.struct_class(new_io)
-                new_ks._read()
+            def stream_builder(orig_io_size):
+                return InMemoryStream.from_size(orig_io_size)
 
-                new_dump = CommonSpec.Base.dump_struct(new_ks)
+            test_method = cls.create_test_read_write_roundtrip(stream_builder)
+            test_method.__name__ = 'test_read_write_roundtrip__InMemoryStream'
+            setattr(cls, test_method.__name__, test_method)
 
-            self.assertEqual(orig_dump, new_dump)
+        @classmethod
+        def create_test_read_write_roundtrip(cls, stream_builder):
+            def test_body(self):
+                if self.skip_roundtrip_msg_reason is not None:
+                    self.skipTest(self.skip_roundtrip_msg_reason)
+
+                with self.struct_class.from_file(self.src_filename) as orig_ks:
+                    orig_ks._read()
+                    orig_dump = CommonSpec.Base.dump_struct(orig_ks)
+                    orig_io_size = orig_ks._io.size()
+
+                with stream_builder(orig_io_size) as obj:
+                    with obj.open() as ks_io:
+                        self.assertEqual(ks_io.size(), orig_io_size)
+                        orig_ks._write(ks_io)
+
+                    with obj.open_as_read_only() as ks_io:
+                        new_ks = self.struct_class(ks_io)
+                        new_ks._read()
+
+                        new_dump = CommonSpec.Base.dump_struct(new_ks)
+
+                self.assertEqual(orig_dump, new_dump)
+
+            return test_body
 
         @staticmethod
         def dump_struct(obj):
@@ -113,3 +172,6 @@ class CommonSpec:
                 value = ' '.join('%02x' % b for b in value)
 
             return value
+
+
+CommonSpec.Base.generate_test_read_write_roundtrip_variants()
