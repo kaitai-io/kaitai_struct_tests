@@ -1,0 +1,79 @@
+#!/bin/sh -ef
+
+. ./config
+
+TESTS_DIR="$(pwd)"
+
+print_usage()
+{
+	echo "$0 [--shell] --target {TARGET} --implementation {IMPLEMENTATION} [--os {OS}] [--arch {ARCH}]"
+	echo
+	echo "Available images:"
+	docker images --filter='label=kaitai.ci=true'
+}
+
+# Define default values for parameters
+TARGET=""
+IMPLEMENTATION=""
+OS=linux
+ARCH=x86_64
+SHELL_FLAG=0
+
+# Parse command-line options
+while [ $# -gt 0 ]; do
+	key="$1"
+
+	case "$key" in
+	--shell|-s)
+		SHELL_FLAG=1
+		shift
+		;;
+	--target|-t)
+		TARGET="$2"
+		shift 2
+		;;
+	--implementation|-i)
+		IMPLEMENTATION="$2"
+		shift 2
+		;;
+	--os)
+		OS="$2"
+		shift 2
+		;;
+	--arch)
+		ARCH="$2"
+		shift 2
+		;;
+	--help|-h)
+		print_usage
+		exit 0
+		;;
+	*)
+		echo "Unknown option: $1"
+		print_usage
+		exit 1
+		;;
+	esac
+done
+
+if [ -z "$TARGET" ] || [ -z "$IMPLEMENTATION" ] || [ -z "$OS" ] || [ -z "$ARCH" ]; then
+    echo "Missing required parameters."
+    exit 1
+fi
+
+IMG_NAME="kaitai-$TARGET-$IMPLEMENTATION-$OS-$ARCH"
+if [ "$SHELL_FLAG" = 1 ]; then
+	COMMAND=/bin/bash
+else
+	COMMAND="./ci-$TARGET"
+fi
+
+docker run \
+	-it \
+	--rm \
+	-v "$TESTS_DIR":/tests \
+	-v "$TESTS_DIR/../runtime":/runtime \
+	-w /tests \
+	--network none \
+	"$IMG_NAME" \
+	"$COMMAND"
