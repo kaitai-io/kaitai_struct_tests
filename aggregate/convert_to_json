@@ -165,7 +165,11 @@ if ENV['GITHUB_ACTIONS']
 end
 
 result['$meta'] = meta
-json = JSON.pretty_generate(result.sort.to_h)
+
+# Try to ensure order of output in generated JSON, but this only works for Ruby 2+
+result = result.sort.to_h if [].respond_to?(:to_h)
+
+json = JSON.pretty_generate(result)
 
 File.write(outfile, json)
 
