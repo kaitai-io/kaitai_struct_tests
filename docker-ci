@@ -105,6 +105,11 @@ fi
 
 docker run $EXTRA_OPTS \
 	--rm \
+	-e GITHUB_ACTIONS \
+	-e GITHUB_RUN_ID \
+	-e GITHUB_RUN_NUMBER \
+	-e GH_JOB_ID \
+	-e GH_HTML_URL \
 	-v "$TESTS_DIR":/tests \
 	-v "$TESTS_DIR/../runtime":/runtime \
 	-w /tests \
