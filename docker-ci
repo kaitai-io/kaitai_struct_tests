@@ -6,10 +6,20 @@ TESTS_DIR="$(pwd)"
 
 print_usage()
 {
-	echo "$0 [--shell] --target {TARGET} --implementation {IMPLEMENTATION} [--os {OS}] [--arch {ARCH}]"
-	echo
-	echo "Available images:"
-	docker images --filter='label=kaitai.ci=true'
+	cat <<EOF
+$0 [--shell] [--download] --target {TARGET} --implementation {IMPLEMENTATION} [--os {OS}] [--arch {ARCH}]"
+
+Runs Kaitai Struct CI for a specific target and implementation in a
+Docker container using image that guarantees to have all necessary
+prerequisites installed.
+
+Options:
+  -s|--shell      launches interactive bash shell instead of CI script
+  -d|--download   attempt to download it from ghcr.io if image is missing
+
+Available images:
+EOF
+	docker images --filter='label=io.kaitai.ci=true'
 }
 
 # Define default values for parameters
@@ -18,6 +28,7 @@ IMPLEMENTATION=""
 OS=linux
 ARCH=x86_64
 SHELL_FLAG=0
+DOWNLOAD_FLAG=0
 
 # Parse command-line options
 while [ $# -gt 0 ]; do
@@ -26,6 +37,10 @@ while [ $# -gt 0 ]; do
 	case "$key" in
 	--shell|-s)
 		SHELL_FLAG=1
+		shift
+		;;
+	--download|-d)
+		DOWNLOAD_FLAG=1
 		shift
 		;;
 	--target|-t)
@@ -62,6 +77,24 @@ if [ -z "$TARGET" ] || [ -z "$IMPLEMENTATION" ] || [ -z "$OS" ] || [ -z "$ARCH" 
 fi
 
 IMG_NAME="kaitai-$TARGET-$IMPLEMENTATION-$OS-$ARCH"
+
+# Check image availability
+if docker images -q "$IMG_NAME" | grep -q '[0-9a-f]'; then
+	# If locally-built image exists, prioritize that
+	IMG_COORD="$IMG_NAME"
+elif docker images -q "ghcr.io/kaitai-io/$IMG_NAME" | grep -q '[0-9a-f]'; then
+	# If ghcr.io image exists, use it
+	IMG_COORD="ghcr.io/kaitai-io/$IMG_NAME"
+elif [ "$DOWNLOAD_FLAG" = 1 ]; then
+	# No image, but we'll try to download
+	IMG_COORD="ghcr.io/kaitai-io/$IMG_NAME"
+	docker pull "$IMG_COORD"
+else
+	echo 'Neither locally-built nor remotely-built image is present. Try using `--download` to try downloading prebuilt image from ghcr.io.'
+	exit 2
+fi
+
+# If --shell used, invoke /bin/bash
 if [ "$SHELL_FLAG" = 1 ]; then
 	COMMAND=/bin/bash
 else
@@ -75,5 +108,5 @@ docker run \
 	-v "$TESTS_DIR/../runtime":/runtime \
 	-w /tests \
 	--network none \
-	"$IMG_NAME" \
+	"$IMG_COORD" \
 	"$COMMAND"
