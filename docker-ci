@@ -103,6 +103,14 @@ else
 	COMMAND="./ci-$TARGET"
 fi
 
+if [ -n "$GITHUB_ACTIONS" ]; then
+	echo "GITHUB_ACTIONS=$GITHUB_ACTIONS"
+	echo "GITHUB_RUN_ID=$GITHUB_RUN_ID"
+	echo "GITHUB_RUN_NUMBER=$GITHUB_RUN_NUMBER"
+	echo "GH_JOB_ID=$GH_JOB_ID"
+	echo "GH_HTML_URL=$GH_HTML_URL"
+fi
+
 docker run $EXTRA_OPTS \
 	--rm \
 	-e GITHUB_ACTIONS \
