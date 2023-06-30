@@ -14,7 +14,7 @@ Docker container using image that guarantees to have all necessary
 prerequisites installed.
 
 Options:
-  -s|--shell      launches interactive bash shell instead of CI script
+  -s|--shell      launches interactive shell instead of CI script
   -d|--download   attempt to download it from ghcr.io if image is missing
 
 Available images:
@@ -76,6 +76,7 @@ if [ -z "$TARGET" ] || [ -z "$IMPLEMENTATION" ] || [ -z "$OS" ] || [ -z "$ARCH" 
     exit 1
 fi
 
+EXTRA_OPTS=
 IMG_NAME="kaitai-$TARGET-$IMPLEMENTATION-$OS-$ARCH"
 
 # Check image availability
@@ -94,15 +95,15 @@ else
 	exit 2
 fi
 
-# If --shell used, invoke /bin/bash
+# If --shell used, invoke /bin/sh
 if [ "$SHELL_FLAG" = 1 ]; then
-	COMMAND=/bin/bash
+	COMMAND=/bin/sh
+	EXTRA_OPTS=-it
 else
 	COMMAND="./ci-$TARGET"
 fi
 
-docker run \
-	-it \
+docker run $EXTRA_OPTS \
 	--rm \
 	-v "$TESTS_DIR":/tests \
 	-v "$TESTS_DIR/../runtime":/runtime \
