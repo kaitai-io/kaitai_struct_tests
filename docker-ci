@@ -7,15 +7,20 @@ TESTS_DIR="$(pwd)"
 print_usage()
 {
 	cat <<EOF
-$0 [--shell] [--download] --target {TARGET} --implementation {IMPLEMENTATION} [--os {OS}] [--arch {ARCH}]"
+$0 [--shell] [--download] --target {TARGET}  --implementation {IMPLEMENTATION} [--os {OS}] [--arch {ARCH}]"
 
 Runs Kaitai Struct CI for a specific target and implementation in a
 Docker container using image that guarantees to have all necessary
 prerequisites installed.
 
 Options:
-  -s|--shell      launches interactive shell instead of CI script
-  -d|--download   attempt to download it from ghcr.io if image is missing
+  -t|--target NAME          select target programming language
+  -u|--subtarget NAME       select variant of target programming language
+  -i|--implementation NAME  select implementation of programming language
+  --os NAME                 select operating system
+  --arch NAME               select architecture
+  -s|--shell                launches interactive shell instead of CI script
+  -d|--download             attempt to download image from ghcr.io if missing
 
 Available images:
 EOF
@@ -24,6 +29,7 @@ EOF
 
 # Define default values for parameters
 TARGET=""
+SUBTARGET=""
 IMPLEMENTATION=""
 OS=linux
 ARCH=x86_64
@@ -45,6 +51,10 @@ while [ $# -gt 0 ]; do
 		;;
 	--target|-t)
 		TARGET="$2"
+		shift 2
+		;;
+	--subtarget|-u)
+		SUBTARGET="$2"
 		shift 2
 		;;
 	--implementation|-i)
@@ -100,7 +110,7 @@ if [ "$SHELL_FLAG" = 1 ]; then
 	COMMAND=/bin/sh
 	EXTRA_OPTS=-it
 else
-	COMMAND="./ci-$TARGET"
+	COMMAND="./ci-$TARGET$SUBTARGET"
 fi
 
 if [ -n "$GITHUB_ACTIONS" ]; then
