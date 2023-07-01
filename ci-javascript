@@ -9,9 +9,15 @@ if [ ! -e "$JAVASCRIPT_MODULES_DIR/kaitai-struct" ]; then
 	ln -s "$ABS_JS_RUNTIME" "$JAVASCRIPT_MODULES_DIR/kaitai-struct"
 fi
 
+if [ -x /app/node_modules/.bin/mocha ]; then
+	MOCHA=/app/node_modules/.bin/mocha
+else
+	MOCHA=$JAVASCRIPT_MODULES_DIR/.bin/mocha
+fi
+
 mkdir -p "$TEST_OUT_DIR/javascript"
-NODE_PATH=compiled/javascript:helpers/javascript:$JAVASCRIPT_MODULES_DIR:$JAVASCRIPT_RUNTIME_DIR \
-	$JAVASCRIPT_MODULES_DIR/.bin/mocha \
+NODE_PATH=compiled/javascript:helpers/javascript:/app/node_modules:$JAVASCRIPT_MODULES_DIR:$JAVASCRIPT_RUNTIME_DIR \
+	$MOCHA \
 	-R xunit spec/javascript >"$TEST_OUT_DIR/javascript/test-output-javascript.xml"
 
 ./kst-adoption-report javascript
