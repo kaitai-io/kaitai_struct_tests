@@ -27,7 +27,7 @@ cd spec/go
 
 keep_compiling=1
 while [ "$keep_compiling" = 1 ]; do
-	if { GO111MODULE=off go test -v . >"$ABS_REPORT_LOG" 2>&1; ex=$?; [ $ex -eq 1 ] || [ $ex -eq 0 ]; }; then
+	if { GO111MODULE=off CGO_ENABLED=0 go test -v . >"$ABS_REPORT_LOG" 2>&1; ex=$?; [ $ex -eq 1 ] || [ $ex -eq 0 ]; }; then
 		keep_compiling=0
 		cat "$ABS_REPORT_LOG"
 	else
