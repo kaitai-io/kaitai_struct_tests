@@ -1,5 +1,5 @@
 # expr_bytes_to_s_dynamic_encoding.ksy: /instances/bad/value:
-# 	error: to_s: argument #0: expected constant string, got IfExp(Compare(Name(identifier(alpha)),Eq,IntNum(0)),Str(SJIS),Str(UTF-16LE))
+# 	error: to_s: argument #0: expected string literal, got IfExp(Compare(Name(identifier(alpha)),Eq,IntNum(0)),Str(SJIS),Str(UTF-16LE))
 #
 meta:
   id: expr_bytes_to_s_dynamic_encoding

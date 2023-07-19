@@ -1,5 +1,5 @@
 # expr_bytes_to_s_type.ksy: /instances/bad/value:
-# 	error: to_s: argument #0: expected constant string, got IntNum(123)
+# 	error: to_s: argument #0: expected string literal, got IntNum(123)
 #
 meta:
   id: expr_bytes_to_s_type
