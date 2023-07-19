@@ -27,6 +27,16 @@ EOF
 	docker images --filter='label=io.kaitai.ci=true'
 }
 
+# Downloads previous CI results from ci_artifacts repo
+download_prev()
+{
+	PREV_CI_FILE="ci_results/$TARGET$SUBTARGET/$IMPLEMENTATION-$OS-$ARCH/ci.json"
+	if [ ! -r "$PREV_CI_FILE" ]; then
+		mkdir -p $(dirname "$PREV_CI_FILE")
+		curl -sSL "https://raw.githubusercontent.com/kaitai-io/ci_artifacts/$TARGET$SUBTARGET/$IMPLEMENTATION-$OS-$ARCH/test_out/$TARGET$SUBTARGET/ci.json" -o "$PREV_CI_FILE"
+	fi
+}
+
 # Define default values for parameters
 TARGET=""
 SUBTARGET=""
@@ -121,6 +131,10 @@ if [ -n "$GITHUB_ACTIONS" ]; then
 	echo "GH_HTML_URL=$GH_HTML_URL"
 fi
 
+if [ "$SHELL_FLAG" = 0 ]; then
+	download_prev
+fi
+
 docker run $EXTRA_OPTS \
 	--rm \
 	-e GITHUB_ACTIONS \
@@ -134,3 +148,9 @@ docker run $EXTRA_OPTS \
 	--network none \
 	"$IMG_COORD" \
 	"$COMMAND"
+
+if [ "$SHELL_FLAG" = 0 ]; then
+	aggregate/compare_with_prev \
+		"ci_results/$TARGET$SUBTARGET/$IMPLEMENTATION-$OS-$ARCH/ci.json" \
+		"test_out/$TARGET$SUBTARGET/ci.json"
+fi
