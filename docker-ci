@@ -21,6 +21,7 @@ Options:
   --arch NAME               select architecture
   -s|--shell                launches interactive shell instead of CI script
   -d|--download             attempt to download image from ghcr.io if missing
+  -r|--rebuild              clean up everything and rebuild
 
 Available images:
 EOF
@@ -37,6 +38,17 @@ download_prev()
 	fi
 }
 
+# Cleans up leftover binary artifacts from previous builds to make sure we're starting from scratch
+cleanup_bin()
+{
+	echo "Cleaning up binary artifacts..."
+	case "$TARGET" in
+	cpp_stl|java)
+		sudo rm -rf "compiled/$TARGET$SUBTARGET/bin"
+		;;
+	esac
+}
+
 # Define default values for parameters
 TARGET=""
 SUBTARGET=""
@@ -45,6 +57,7 @@ OS=linux
 ARCH=x86_64
 SHELL_FLAG=0
 DOWNLOAD_FLAG=0
+REBUILD_FLAG=0
 
 # Parse command-line options
 while [ $# -gt 0 ]; do
@@ -57,6 +70,10 @@ while [ $# -gt 0 ]; do
 		;;
 	--download|-d)
 		DOWNLOAD_FLAG=1
+		shift
+		;;
+	--rebuild|-r)
+		REBUILD_FLAG=1
 		shift
 		;;
 	--target|-t)
@@ -133,6 +150,10 @@ fi
 
 if [ "$SHELL_FLAG" = 0 ]; then
 	download_prev
+fi
+
+if [ "$REBUILD_FLAG" = 1 ]; then
+	cleanup_bin
 fi
 
 docker run $EXTRA_OPTS \
