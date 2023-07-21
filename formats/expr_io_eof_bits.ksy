@@ -9,23 +9,12 @@ seq:
   - id: bar
     type: b4
     if: not _io.eof
-  # `_io.eof` is expected to be true, so we "assert" it like this - if `_io.eof`
-  # is false, it will attempt to consume 8 bytes, which would trigger a EOF
-  # exception.
-  - id: assert_io_eof_before_baz
-    size: '_io.eof ? 0 : 8'
-
-    # 0 bits available at this point. When parsing, this is basically guaranteed
-    # to fail with EOF exception immediately  (because it would translate to
-    # requesting more bytes, which are not available). But when writing, it
-    # would succeed until an attempt to align the stream to a byte position is
-    # done - which should happen at the latest when the stream is closed.
+  # EOF reached here
   - id: baz
-    type: b3
-
-  # `_io.eof` is expected to be true, so we "assert" it like this - if `_io.eof`
-  # is false, it will attempt to consume 8 bytes, which would trigger a EOF
-  # exception.
-  - id: assert_io_eof_after_baz
-    size: 8
+    type: b16
+    if: not _io.eof
+  - id: align
+    size: 0
+  - id: qux
+    type: b16
     if: not _io.eof
