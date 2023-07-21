@@ -1,0 +1,3 @@
+id: eof_exception_bits_be
+data: nav_parent_switch.bin
+exception: EndOfStreamError
