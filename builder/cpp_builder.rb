@@ -38,13 +38,21 @@ class CppBuilder < PartialBuilder
 
     if @mode == :make_posix
       puts "Detecting gmake..."
-      make_version_out = `gmake --version`
+      @make_cmd = nil
+      begin
+        make_version_out = `gmake --version`
+        @make_cmd = 'gmake'
+      rescue Errno::ENOENT
+        make_version_out = `make --version`
+        @make_cmd = 'make'
+      end
+
       if make_version_out =~ /GNU Make (\d+)\.(\d+)/
         @make_version = [$1.to_i, $2.to_i]
-        puts "GNU Make #{@make_version.inspect}"
+        puts "GNU Make #{@make_version.inspect} as #{@make_cmd}"
       else
         puts make_version_out
-        raise "Unknown gmake version"
+        raise "Unknown make version"
       end
     end
   end
