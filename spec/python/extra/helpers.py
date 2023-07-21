@@ -1,12 +1,20 @@
+import abc
 import io
 import os
 import shutil
+import sys
 import tempfile
-from abc import abstractmethod, ABC
 from contextlib import contextmanager
 from enum import Enum
 
 from kaitaistruct import KaitaiStream
+
+# See https://stackoverflow.com/a/41622155
+if sys.version_info >= (3, 4):
+    ABC = abc.ABC
+else:
+    # See https://stackoverflow.com/a/38668373
+    ABC = abc.ABCMeta('ABC', (object,), {'__slots__': ()})
 
 
 class FileOpenMode(Enum):
@@ -16,29 +24,33 @@ class FileOpenMode(Enum):
 
     @property
     def readable(self):
-        return self == FileOpenMode.READ_ONLY or self == FileOpenMode.READ_WRITE
+        return self in {FileOpenMode.READ_ONLY, FileOpenMode.READ_WRITE}
 
     @property
     def writable(self):
-        return self == FileOpenMode.WRITE_ONLY or self == FileOpenMode.READ_WRITE
+        return self in {FileOpenMode.WRITE_ONLY, FileOpenMode.READ_WRITE}
 
     @property
     def mode(self):
         if self == FileOpenMode.READ_ONLY:
             return 'rb'
-        elif self == FileOpenMode.WRITE_ONLY:
+        if self == FileOpenMode.WRITE_ONLY:
             return 'wb'
-        elif self == FileOpenMode.READ_WRITE:
+        if self == FileOpenMode.READ_WRITE:
             return 'wb+'
+
+        return None
 
     @property
     def ident(self):
         if self == FileOpenMode.READ_ONLY:
             return 'rdonly'
-        elif self == FileOpenMode.WRITE_ONLY:
+        if self == FileOpenMode.WRITE_ONLY:
             return 'wronly'
-        elif self == FileOpenMode.READ_WRITE:
+        if self == FileOpenMode.READ_WRITE:
             return 'rdwr'
+
+        return None
 
 
 class FileOpenConfig(object):
@@ -85,22 +97,22 @@ class RegularFileOpener(object):
 
 
 class AbstractStream(ABC):
-    @abstractmethod
+    @abc.abstractmethod
     def open(self):
         pass
 
-    @abstractmethod
+    @abc.abstractmethod
     def open_as_read_only(self):
         pass
 
 
 class TemporaryFile(AbstractStream):
     def __init__(self, open_mode, open_conf, size):
-        self.tmp_fd, self.tmp_path = tempfile.mkstemp()
-
         self.open_mode = open_mode
         self.open_conf = open_conf
         self.size = size
+
+        self.tmp_path = None
 
     def __enter__(self):
         return self
@@ -109,21 +121,30 @@ class TemporaryFile(AbstractStream):
         self.destroy()
 
     def open(self):
-        return RegularFileOpener.open_fd(self.tmp_fd, self.open_mode, self.open_conf, self.size)
+        tmp_fd, self.tmp_path = tempfile.mkstemp()
+        return RegularFileOpener.open_fd(tmp_fd, self.open_mode, self.open_conf, self.size)
 
     def open_as_read_only(self):
+        if self.tmp_path is None:
+            raise ValueError(
+                "{}() must be called first"
+                .format(self.open.__name__)
+            )
+
         return RegularFileOpener.open_path(self.tmp_path, FileOpenMode.READ_ONLY, self.open_conf)
 
     def destroy(self):
-        os.remove(self.tmp_path)
-        self.tmp_path = None
+        if self.tmp_path is not None:
+            tmp_path = self.tmp_path
+            self.tmp_path = None
+            os.remove(tmp_path)
 
 
 class Pipe(AbstractStream):
     def __init__(self, open_conf):
-        self.r_fd = None
-
         self.open_conf = open_conf
+
+        self.r_fd = None
 
     def __enter__(self):
         return self
@@ -149,7 +170,7 @@ class Pipe(AbstractStream):
         if self.r_fd is None:
             raise ValueError(
                 "{}() or {}() must be called first"
-                .format(self.open.__name__, self.init_from_path.__name__)
+                .format(self.init_from_path.__name__, self.open.__name__)
             )
 
         r_fd = self.r_fd
@@ -158,8 +179,9 @@ class Pipe(AbstractStream):
 
     def destroy(self):
         if self.r_fd is not None:
-            os.close(self.r_fd)
+            r_fd = self.r_fd
             self.r_fd = None
+            os.close(r_fd)
 
 
 class InMemoryStream(AbstractStream):
@@ -205,5 +227,6 @@ class InMemoryStream(AbstractStream):
         return self.open()
 
     def destroy(self):
-        self.ks_io.close()
-        self.ks_io = None
+        if self.ks_io is not None:
+            self.ks_io.close()
+            self.ks_io = None
