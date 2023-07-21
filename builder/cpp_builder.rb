@@ -37,14 +37,14 @@ class CppBuilder < PartialBuilder
     end
 
     if @mode == :make_posix
-      puts "Detecting make..."
-      make_version_out = `make --version`
+      puts "Detecting gmake..."
+      make_version_out = `gmake --version`
       if make_version_out =~ /GNU Make (\d+)\.(\d+)/
         @make_version = [$1.to_i, $2.to_i]
         puts "GNU Make #{@make_version.inspect}"
       else
         puts make_version_out
-        raise "Unknown make version"
+        raise "Unknown gmake version"
       end
     end
   end
@@ -123,7 +123,7 @@ class CppBuilder < PartialBuilder
 
     case @mode
     when :make_posix
-      cmd = ["cmake", "--build", ".", "--parallel", "8", "--", "-k"]
+      cmd = ["cmake", "--build", ".", "--parallel", "8", "--verbose", "--", "-k"]
       cmd << "--output-sync=target" if @make_version[0] >= 4
 
       r = run_and_tee(
