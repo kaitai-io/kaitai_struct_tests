@@ -1,10 +1,9 @@
-import unittest
-import io
-from kaitaistruct import KaitaiStream
+from decorators import stream_param_tests, write_stream_param
 from specwrite.common_spec import CommonSpec
 
 from testwrite.eos_exception_u4 import EosExceptionU4
 
+@stream_param_tests
 class TestEosExceptionU4(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
         super(TestEosExceptionU4, self).__init__(*args, **kwargs)
@@ -12,7 +11,8 @@ class TestEosExceptionU4(CommonSpec.Base):
         self.src_filename = 'src/term_strz.bin'
         self.skip_roundtrip_msg_reason = "cannot use roundtrip because parsing is expected to fail"
 
-    def test_eos_exception_u4(self):
+    @write_stream_param
+    def test_eos_exception_u4(self, stream_builder):
         r = EosExceptionU4()
 
         data = EosExceptionU4.Data(None, r, r._root)
@@ -23,6 +23,7 @@ class TestEosExceptionU4(CommonSpec.Base):
         r.envelope = data
         r._check()
 
-        with KaitaiStream(io.BytesIO(bytearray(12))) as out_io:
-            with self.assertRaisesRegexp(EOFError, u"^requested to write 4 bytes, but only 3 bytes left in the stream$"):
-                r._write(out_io)
+        with stream_builder(12) as obj:
+            with obj.open() as ks_io:
+                with self.assertRaisesRegexp(EOFError, u"^requested to write 4 bytes, but only 3 bytes left in the stream$"):
+                    r._write(ks_io)
