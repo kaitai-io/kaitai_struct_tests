@@ -10,9 +10,7 @@ class TestEofExceptionBitsBe2(CommonSpec.Base):
         super(TestEofExceptionBitsBe2, self).__init__(*args, **kwargs)
         self.struct_class = EofExceptionBitsBe2
         self.src_filename = 'src/nav_parent_switch.bin'
-
-    def test_read_write_roundtrip(self):
-        self.skipTest("cannot use roundtrip because parsing is expected to fail")
+        self.skip_roundtrip_msg_reason = "cannot use roundtrip because parsing is expected to fail"
 
     def test_eof_exception_bits_be2(self):
         r = EofExceptionBitsBe2()

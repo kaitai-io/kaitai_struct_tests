@@ -10,9 +10,7 @@ class TestEofExceptionU4(CommonSpec.Base):
         super(TestEofExceptionU4, self).__init__(*args, **kwargs)
         self.struct_class = EofExceptionU4
         self.src_filename = 'src/term_strz.bin'
-
-    def test_read_write_roundtrip(self):
-        self.skipTest("cannot use roundtrip because parsing is expected to fail")
+        self.skip_roundtrip_msg_reason = "cannot use roundtrip because parsing is expected to fail"
 
     def test_eof_exception_u4(self):
         r = EofExceptionU4()
