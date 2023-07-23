@@ -1,16 +1,11 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.datatype.DataType
-import _root_.io.kaitai.struct.datatype.{
-  KSError,
-  ValidationNotEqualError,
-  UndecidedEndiannessError,
-  EndOfStreamError
-}
+import _root_.io.kaitai.struct.datatype.{EndOfStreamError, KSError, UndecidedEndiannessError, ValidationNotEqualError}
 import _root_.io.kaitai.struct.datatype.DataType._
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.PerlCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
 import _root_.io.kaitai.struct.translators.PerlTranslator
 import _root_.io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
 
@@ -53,7 +48,7 @@ class PerlSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     out.puts("Test::Class->runtests;")
   }
 
-  override def simpleAssert(check: TestAssert): Unit = {
+  override def simpleEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     val loc = translator.detectType(check.expected) match {
@@ -65,7 +60,7 @@ class PerlSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     out.puts(s"$loc;")
   }
 
-  override def floatAssert(check: TestAssert): Unit = {
+  override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"ok(abs($actStr - $expStr) < $FLOAT_DELTA, 'Approx equals');")
@@ -76,7 +71,7 @@ class PerlSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     out.puts(s"ok(!defined($actStr), 'nil');")
   }
 
-  override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit = {
+  override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"is_deeply($actStr, $expStr, 'Equals');")

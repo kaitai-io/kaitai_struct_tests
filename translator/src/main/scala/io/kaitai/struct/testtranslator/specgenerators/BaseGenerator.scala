@@ -3,7 +3,7 @@ package io.kaitai.struct.testtranslator.specgenerators
 import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.datatype.DataType.{ArrayType, BytesType, FloatType}
 import _root_.io.kaitai.struct.exprlang.Ast
-import _root_.io.kaitai.struct.testtranslator.{TestAssert, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{TestAssert, TestEquals, TestException, TestSpec}
 import _root_.io.kaitai.struct.translators.{AbstractTranslator, TypeDetector}
 
 abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
@@ -19,13 +19,15 @@ abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
 
   def footer(): Unit
 
-  def simpleAssert(check: TestAssert): Unit
+  def simpleEquality(check: TestEquals): Unit
 
-  def floatAssert(check: TestAssert): Unit = simpleAssert(check)
+  def floatEquality(check: TestEquals): Unit = simpleEquality(check)
 
   def nullAssert(actual: Ast.expr): Unit
 
-  def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit
+  def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit
+
+  def testException(actual: Ast.expr, exception: KSError): Unit = ???
 
   def noAsserts(): Unit = {}
 
@@ -45,29 +47,34 @@ abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
   }
 
   def runAsserts(): Unit = {
-    spec.asserts.foreach { check =>
-      check.expected match {
-        case Ast.expr.Name(Ast.identifier("null")) =>
-          nullAssert(check.actual)
-        case Ast.expr.List(elts) =>
-          // array assert
-          val actType = translator.detectType(check.actual)
-          actType match {
-            case bt: BytesType =>
-              // byte array => simple assert
-              simpleAssert(check)
-            case at: ArrayType =>
-              // true array assert
-              trueArrayAssert(check, at.elType, elts)
-          }
-        case _ =>
-          val actType = translator.detectType(check.actual)
-          actType match {
-            case _: FloatType =>
-              floatAssert(check)
+    spec.asserts.foreach { assert =>
+      assert match {
+        case check: TestEquals =>
+          check.expected match {
+            case Ast.expr.Name(Ast.identifier("null")) =>
+              nullAssert(check.actual)
+            case Ast.expr.List(elts) =>
+              // array assert
+              val actType = translator.detectType(check.actual)
+              actType match {
+                case bt: BytesType =>
+                  // byte array => simple assert
+                  simpleEquality(check)
+                case at: ArrayType =>
+                  // true array assert
+                  trueArrayEquality(check, at.elType, elts)
+              }
             case _ =>
-              simpleAssert(check)
+              val actType = translator.detectType(check.actual)
+              actType match {
+                case _: FloatType =>
+                  floatEquality(check)
+                case _ =>
+                  simpleEquality(check)
+              }
           }
+        case TestException(actual, exception) =>
+          testException(actual, exception)
       }
     }
 

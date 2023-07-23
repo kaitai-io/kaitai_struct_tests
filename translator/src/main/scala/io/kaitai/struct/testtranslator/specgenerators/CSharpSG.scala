@@ -1,10 +1,10 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.{ClassTypeProvider, Utils}
-import _root_.io.kaitai.struct.datatype.{DataType, KSError, EndOfStreamError}
+import _root_.io.kaitai.struct.datatype.{DataType, EndOfStreamError, KSError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.CSharpCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
 import _root_.io.kaitai.struct.translators.CSharpTranslator
 
 class CSharpSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
@@ -57,7 +57,7 @@ class CSharpSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
     out.puts("}")
   }
 
-  override def simpleAssert(check: TestAssert): Unit = {
+  override def simpleEquality(check: TestEquals): Unit = {
     val actType = translator.detectType(check.actual)
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
@@ -68,7 +68,7 @@ class CSharpSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
     }
   }
 
-  override def floatAssert(check: TestAssert): Unit = {
+  override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     // TODO: fix order - actually it is (expected, actual)
@@ -80,8 +80,8 @@ class CSharpSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
     out.puts(s"Assert.IsNull($actStr);")
   }
 
-  override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit = {
-    simpleAssert(check) // FIXME
+  override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit = {
+    simpleEquality(check) // FIXME
   }
 
   override def indentStr: String = "    "

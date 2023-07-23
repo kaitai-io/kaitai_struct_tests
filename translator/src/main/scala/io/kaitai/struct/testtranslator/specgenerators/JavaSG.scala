@@ -5,7 +5,7 @@ import io.kaitai.struct.datatype.DataType._
 import io.kaitai.struct.datatype.{DataType, KSError}
 import io.kaitai.struct.exprlang.Ast
 import io.kaitai.struct.languages.JavaCompiler
-import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
 import io.kaitai.struct.translators.JavaTranslator
 
 class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
@@ -54,7 +54,7 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     out.puts("}")
   }
 
-  override def simpleAssert(check: TestAssert): Unit = {
+  override def simpleEquality(check: TestEquals): Unit = {
     val actType = translator.detectType(check.actual)
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
@@ -66,7 +66,7 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     }
   }
 
-  override def floatAssert(check: TestAssert): Unit = {
+  override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"assertEquals($actStr, $expStr, $FLOAT_DELTA);")
@@ -77,8 +77,13 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     out.puts(s"assertNull($actStr);")
   }
 
-  override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit = {
-    simpleAssert(check) // FIXME
+  override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit = {
+    simpleEquality(check) // FIXME
+  }
+
+  override def testException(actual: Ast.expr, exception: KSError): Unit = {
+    importList.add("io.kaitai.struct.KaitaiStream")
+    out.puts(s"assertThrows(${compiler.ksErrorName(exception)}.class, () -> ${translateAct(actual)});")
   }
 
   override def indentStr: String = "    "

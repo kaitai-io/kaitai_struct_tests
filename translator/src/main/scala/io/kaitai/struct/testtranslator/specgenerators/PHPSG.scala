@@ -5,7 +5,7 @@ import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.datatype.DataType.BytesType
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.PHPCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
 import _root_.io.kaitai.struct.translators.PHPTranslator
 
 class PHPSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
@@ -44,13 +44,13 @@ class PHPSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     out.puts("}")
   }
 
-  override def simpleAssert(check: TestAssert): Unit = {
+  override def simpleEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"$$this->assertSame($expStr, $actStr);")
   }
 
-  override def floatAssert(check: TestAssert): Unit = {
+  override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"$$this->assertEquals($actStr, $expStr, '', $FLOAT_DELTA);")
@@ -61,8 +61,8 @@ class PHPSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     out.puts(s"$$this->assertNull($actStr);")
   }
 
-  override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit =
-    simpleAssert(check)
+  override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit =
+    simpleEquality(check)
 
   override def indentStr: String = "    "
 

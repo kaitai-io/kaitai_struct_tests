@@ -3,7 +3,7 @@ package io.kaitai.struct.testtranslator.specgenerators
 import io.kaitai.struct.datatype.{DataType, KSError}
 import io.kaitai.struct.exprlang.Ast
 import io.kaitai.struct.languages.CppCompiler
-import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
 import io.kaitai.struct.translators.CppTranslator
 import io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig, RuntimeConfig}
 import io.kaitai.struct.languages.components.CppImportList
@@ -60,13 +60,13 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
     out.puts("}")
   }
 
-  def simpleAssert(check: TestAssert): Unit = {
+  def simpleEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"BOOST_CHECK_EQUAL($actStr, $expStr);")
   }
 
-  override def floatAssert(check: TestAssert): Unit = {
+  override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"BOOST_CHECK_CLOSE($actStr, $expStr, 1e-4);")
@@ -80,7 +80,7 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
     out.puts(s"BOOST_CHECK($nullCheckStr);")
   }
 
-  def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit = {
+  def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit = {
     cppImportList.addLocal("helpers.h")
     val elTypeName = compiler.kaitaiType2NativeType(elType)
     val eltsStr = elts.map((x) => translator.translate(x)).mkString(", ")

@@ -2,16 +2,11 @@ package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.ClassTypeProvider
 import _root_.io.kaitai.struct.datatype.DataType
-import _root_.io.kaitai.struct.datatype.{
-  KSError,
-  ValidationNotEqualError,
-  UndecidedEndiannessError,
-  EndOfStreamError
-}
+import _root_.io.kaitai.struct.datatype.{EndOfStreamError, KSError, UndecidedEndiannessError, ValidationNotEqualError}
 import _root_.io.kaitai.struct.datatype.DataType._
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.LuaCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
 import _root_.io.kaitai.struct.translators.LuaTranslator
 
 class LuaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
@@ -53,13 +48,13 @@ class LuaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     out.puts("end")
   }
 
-  override def simpleAssert(check: TestAssert): Unit = {
+  override def simpleEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translateExp(check.expected)
     out.puts(s"luaunit.assertEquals($actStr, $expStr)")
   }
 
-  override def floatAssert(check: TestAssert): Unit = {
+  override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"luaunit.assertAlmostEquals($actStr, $expStr, 0.000001)")
@@ -70,8 +65,8 @@ class LuaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     out.puts(s"luaunit.assertNil($actStr)")
   }
 
-  override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit =
-    simpleAssert(check)
+  override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit =
+    simpleEquality(check)
 
   def translateAct(x: Ast.expr) =
     translator.translate(x).replace("self." + Main.INIT_OBJ_NAME, "r")

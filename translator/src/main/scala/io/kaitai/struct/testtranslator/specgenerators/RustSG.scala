@@ -5,7 +5,7 @@ import _root_.io.kaitai.struct.datatype.DataType
 import _root_.io.kaitai.struct.datatype.DataType._
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.RustCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
 import _root_.io.kaitai.struct.translators.RustTranslator
 
 class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
@@ -38,7 +38,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     out.puts("}")
   }
 
-  override def simpleAssert(check: TestAssert): Unit = {
+  override def simpleEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"assert_eq!($actStr, $expStr);")
@@ -50,8 +50,8 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     // TODO: Figure out what's meant to happen here
   }
 
-  override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit = {
-    simpleAssert(check) // FIXME
+  override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit = {
+    simpleEquality(check) // FIXME
   }
 
   override def indentStr: String = "    "
