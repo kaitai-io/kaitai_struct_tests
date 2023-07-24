@@ -60,7 +60,7 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
     out.puts("}")
   }
 
-  def simpleEquality(check: TestEquals): Unit = {
+  override def simpleEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"BOOST_CHECK_EQUAL($actStr, $expStr);")
@@ -72,7 +72,7 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
     out.puts(s"BOOST_CHECK_CLOSE($actStr, $expStr, 1e-4);")
   }
 
-  def nullAssert(actual: Ast.expr): Unit = {
+  override def nullAssert(actual: Ast.expr): Unit = {
     val nullCheckStr = actual match {
       case Ast.expr.Attribute(x, Ast.identifier(attrName)) =>
         translateAct(x) + s"->_is_null_$attrName()"
@@ -80,12 +80,23 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
     out.puts(s"BOOST_CHECK($nullCheckStr);")
   }
 
-  def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit = {
+  override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit = {
     cppImportList.addLocal("helpers.h")
     val elTypeName = compiler.kaitaiType2NativeType(elType)
     val eltsStr = elts.map((x) => translator.translate(x)).mkString(", ")
     val actStr = translateAct(check.actual)
     out.puts(s"COMPARE_ARRAY($elTypeName, $actStr, $eltsStr);")
+  }
+
+  override def testException(actual: Ast.expr, exception: KSError): Unit = {
+    cppImportList.addKaitai("kaitai/exceptions.h")
+
+    out.puts("BOOST_CHECK_THROW(")
+    out.inc
+    out.puts(translateAct(actual) + ",")
+    out.puts(compiler.ksErrorName(exception))
+    out.dec
+    out.puts(");")
   }
 
   override def indentStr: String = "    "
