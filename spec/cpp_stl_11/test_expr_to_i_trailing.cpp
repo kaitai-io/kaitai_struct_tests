@@ -13,12 +13,12 @@ BOOST_AUTO_TEST_CASE(test_expr_to_i_trailing) {
     expr_to_i_trailing_t* r = new expr_to_i_trailing_t(&ks);
 
     BOOST_CHECK_THROW(
-        r->to_i_r10()
+        r->to_i_r10(),
         std::invalid_argument
     );
     BOOST_CHECK_EQUAL(r->to_i_r13(), 44020937);
     BOOST_CHECK_THROW(
-        r->to_i_garbage()
+        r->to_i_garbage(),
         std::invalid_argument
     );
 
