@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -ef
 
 . ./config
 
@@ -19,45 +19,78 @@ rm -rf compiled/go/src/github.com/kaitai-io/kaitai_struct_go_runtime
 ln -s ../../../../../../runtime/go compiled/go/src/github.com/kaitai-io/kaitai_struct_go_runtime
 
 ABS_TEST_OUT_DIR="$(pwd)/$TEST_OUT_DIR"
-ABS_REPORT_LOG="$ABS_TEST_OUT_DIR/go/report.log"
+ABS_TEST_RUN_LOG="$ABS_TEST_OUT_DIR/go/test_run.stdout"
+rm -rf "$TEST_OUT_DIR/go"
 mkdir -p "$TEST_OUT_DIR/go"
-rm -f "$TEST_OUT_DIR/go/build.fails"
 
-cd spec/go
+ABS_SPEC_DIR="$(pwd)/spec/go"
+ABS_COMPILED_DIR="$(pwd)/compiled/go"
 
-keep_compiling=1
-while [ "$keep_compiling" = 1 ]; do
-	if { GO111MODULE=off CGO_ENABLED=0 go test -v . >"$ABS_REPORT_LOG" 2>&1; ex=$?; [ $ex -eq 1 ] || [ $ex -eq 0 ]; }; then
-		keep_compiling=0
-		cat "$ABS_REPORT_LOG"
-	else
-		echo "Got error:"
-		cat "$ABS_REPORT_LOG"
+cd spec/go || exit 1
+
+BUILD_FAILED_FILES_DIR=$(mktemp -d)
+mkdir -p "$BUILD_FAILED_FILES_DIR"/compiled "$BUILD_FAILED_FILES_DIR"/spec
+# NOTE: in Bash, `trap ... EXIT` would be enough (and recommended), but unfortunately we
+# cannot change the shebang to `/bin/bash` here because our Docker images run on Alpine
+# and don't have Bash.
+trap 'find "$ABS_SPEC_DIR" "$ABS_COMPILED_DIR" -iname '\''*.disabled'\'' -exec sh -c '\''mv -n "$1" "${1%.disabled}"'\'' sh {} \;' INT TERM HUP EXIT
+
+attempt=1
+
+while true; do
+	echo "build attempt $attempt"
+	if [ "$attempt" -gt 10 ]; then
+		echo 'Too many attempts, giving up :('
+		exit 1
+	fi
+	build_log="$ABS_TEST_OUT_DIR/go/build-$attempt.log"
+
+	# NOTE: after the change <https://github.com/golang/go/issues/60710> introduced in Go
+	# 1.19.11, we can no longer use the exit code of `go test` to know whether there were
+	# build errors. In Go 1.19.10 and older, `go test` always exited with code 2 when
+	# there were build errors and with code 1 when everything built successfully but some
+	# tests failed, but not anymore - Go 1.19.11 exits with code 1 for build errors too.
+	#
+	# So we ignore the exit code of `go test` and always inspect the `stderr` output.
+	go_exit_code=0
+	GO111MODULE=off CGO_ENABLED=0 go test -v . >"$ABS_TEST_RUN_LOG" 2>"$build_log" || go_exit_code=$?
+	echo '`go test` exited with code '"$go_exit_code"
+	echo 'STDERR:'
+	cat "$build_log"
+	echo 'STDOUT:'
+	cat "$ABS_TEST_RUN_LOG"
+
+	build_failed_formats_ex=0
+	grep -E '^\.\.[\/]\.\.[\/]compiled[\/]go[\/].+:[0-9]+:' "$build_log" >"$ABS_TEST_OUT_DIR/go/err.now" || build_failed_formats_ex=$?
+	build_failed_specs_ex=0
+	grep -E '^\.[\/][^\/]+:[0-9]+:' "$build_log" >>"$ABS_TEST_OUT_DIR/go/err.now" || build_failed_specs_ex=$?
+
+	if [ "$build_failed_formats_ex" -eq 0 ] || [ "$build_failed_specs_ex" -eq 0 ]; then
 		if [ -n "$NO_RECOVER" ]; then
-			echo "No recovery requested, bailing out"
+			echo "Got errors but no recovery requested, bailing out"
 			exit 1
 		fi
-		if egrep "^\.\.[\\/]\.\.[\\/]compiled[\\/]go[\\/].*:[0-9][0-9]*:" "$ABS_REPORT_LOG" >"$ABS_TEST_OUT_DIR/go/err.now"; then
-			cat "$ABS_TEST_OUT_DIR/go/err.now" >>"$ABS_TEST_OUT_DIR/go/build.fails"
-			sed -e 's/:.*//' -e 's/\\/\//g' <"$ABS_TEST_OUT_DIR/go/err.now" | sort -u >"$ABS_TEST_OUT_DIR/go/to_delete.now"
-			xargs rm <"$ABS_TEST_OUT_DIR/go/to_delete.now"
-			echo "Trying to recover, deleting..."
-			cat "$ABS_TEST_OUT_DIR/go/to_delete.now"
-			keep_compiling=1
-		else
-			echo "Unable to recover, bailing out :("
-			keep_compiling=0
-			exit 1
-		fi
+
+		sed -e 's|:.*||' -e 's|\\|/|g' <"$ABS_TEST_OUT_DIR/go/err.now" | sort -u >"$ABS_TEST_OUT_DIR/go/to_delete.now"
+		echo "Trying to recover, eliminating files with build errors..."
+		cat "$ABS_TEST_OUT_DIR/go/to_delete.now"
+		xargs -n 1 sh -c 'mv -n "$1" "$1".disabled' sh <"$ABS_TEST_OUT_DIR/go/to_delete.now"
+
+		cat "$ABS_TEST_OUT_DIR/go/to_delete.now" >>"$ABS_TEST_OUT_DIR/go/build_failed_files.txt"
+		attempt=$((attempt+1))
+		echo
+	else
+		echo
+		break
 	fi
 done
 
 cd ../..
-go-junit-report -in "$ABS_TEST_OUT_DIR/go/report.log" -out "$ABS_TEST_OUT_DIR/go/report.xml"
+go-junit-report -in "$ABS_TEST_RUN_LOG" -out "$ABS_TEST_OUT_DIR/go/report.xml"
 
-COUNT_TOTAL=$(grep '^=== RUN' "$ABS_REPORT_LOG" | wc -l)
-COUNT_FAIL=$(grep '^--- FAIL' "$ABS_REPORT_LOG" | wc -l)
-COUNT_PASS=$(grep '^--- PASS' "$ABS_REPORT_LOG" | wc -l)
+COUNT_TOTAL=$(grep -c '^=== RUN' "$ABS_TEST_RUN_LOG")
+COUNT_FAIL=$(grep -c '^--- FAIL' "$ABS_TEST_RUN_LOG")
+COUNT_PASS=$(grep -c '^--- PASS' "$ABS_TEST_RUN_LOG")
 
 echo "Totals: $COUNT_TOTAL ran, $COUNT_PASS passed, $COUNT_FAIL failed"
 
