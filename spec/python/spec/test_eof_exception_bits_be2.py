@@ -12,6 +12,7 @@ class TestEofExceptionBitsBe2(unittest.TestCase):
             self.assertEqual(r._io.pos(), 1)
 
             self.assertEqual(r.pre_bits, 0x01)
+            self.assertIn('start', r._debug['fail_bits'])
             self.assertEqual(r._debug['fail_bits']['start'], 1)
             self.assertFalse(hasattr(r, 'fail_bits'))
-            self.assertFalse(hasattr(r._debug['fail_bits'], 'end'))
+            self.assertNotIn('end', r._debug['fail_bits'])
