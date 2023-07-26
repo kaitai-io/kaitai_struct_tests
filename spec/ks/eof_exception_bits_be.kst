@@ -1,3 +1,8 @@
 id: eof_exception_bits_be
 data: nav_parent_switch.bin
 exception: EndOfStreamError
+# asserts:
+#   - actual: _io.pos
+#     expected: 1
+#   - actual: pre_bits
+#     expected: 0b0000_000
