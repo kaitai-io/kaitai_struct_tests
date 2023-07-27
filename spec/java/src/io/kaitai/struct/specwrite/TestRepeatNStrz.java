@@ -19,9 +19,10 @@ public class TestRepeatNStrz extends CommonSpec {
         r._check();
     }
 
-    @Test(expectedExceptions = NullPointerException.class)
+    @Test(expectedExceptions = NullPointerException.class, expectedExceptionsMessageRegExp = ".*\\blines\\b.*")
     public void checkNull() throws Exception {
         RepeatNStrz r = new RepeatNStrz();
+        r.setQty(0);
 
         r._check();
     }

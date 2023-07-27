@@ -62,7 +62,6 @@ public class TestInstanceStd extends CommonSpec {
         KaitaiStream io = new ByteBufferKaitaiStream(2 + 5);
         r._write(io);
         io.seek(0);
-        r._writeHeader();
 
         InstanceStd newR = new InstanceStd(io);
         newR._read();
