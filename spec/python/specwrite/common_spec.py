@@ -35,6 +35,20 @@ class CommonSpec:
 
             self.assertEqual(orig_dump, new_dump)
 
+        def assert_equal_to_full_file(self, struct_obj, file_name):
+            with io.open(file_name, 'rb') as f:
+                expected_bytes = f.read()
+            struct_obj._check()
+            with KaitaiStream(io.BytesIO(bytearray(len(expected_bytes)))) as out_io:
+                struct_obj._write(out_io)
+                self.assert_byte_array_equal(out_io.to_byte_array(), expected_bytes)
+
+        def assert_byte_array_equal(self, actual, expected):
+            self.assertEqual(
+                CommonSpec.Base.byte_array_to_hex(actual),
+                CommonSpec.Base.byte_array_to_hex(expected),
+            )
+
         @staticmethod
         def dump_struct(obj):
             return CommonSpec.Base.dump_struct_value(obj, [], 50, '/')
@@ -71,7 +85,10 @@ class CommonSpec:
 
                     if (
                         prop_name == '_io' or \
-                        prop_name.startswith('_raw_')
+                        prop_name == '_debug' or \
+                        prop_name == 'SEQ_FIELDS' or \
+                        prop_name.startswith('_raw_') or \
+                        prop_name.startswith('_m_')
                     ):
                         continue
 
@@ -110,6 +127,10 @@ class CommonSpec:
 
             if isinstance(value, (bytes, bytearray)):
                 # https://stackoverflow.com/a/19210468
-                value = ' '.join('%02x' % b for b in value)
+                value = CommonSpec.Base.byte_array_to_hex(value)
 
             return value
+
+        @staticmethod
+        def byte_array_to_hex(arr):
+            return ' '.join('%02x' % b for b in arr)
