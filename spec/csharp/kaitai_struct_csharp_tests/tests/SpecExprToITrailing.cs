@@ -15,14 +15,14 @@ namespace Kaitai
             Assert.Throws<System.FormatException>(
                 delegate
                 {
-                    return r.ToIR10;
+                    _ = r.ToIR10;
                 }
             );
             Assert.AreEqual(r.ToIR13, 44020937);
             Assert.Throws<System.FormatException>(
                 delegate
                 {
-                    return r.ToIGarbage;
+                    _ = r.ToIGarbage;
                 }
             );
         }
