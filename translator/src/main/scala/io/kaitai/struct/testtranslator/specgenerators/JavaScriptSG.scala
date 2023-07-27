@@ -67,6 +67,19 @@ class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGene
     out.puts(s"assert.deepStrictEqual($actStr, $expStr);")
   }
 
+  override def testException(actual: Ast.expr, exception: KSError): Unit = {
+    out.puts("assert.throws(")
+    out.inc
+    out.puts("function() {")
+    out.inc
+    out.puts(translateAct(actual) + ";")
+    out.dec
+    out.puts("},")
+    out.puts(s"{name: '${JavaScriptCompiler.ksErrorName(exception)}'}")
+    out.dec
+    out.puts(")")
+  }
+
   override def indentStr: String = "  "
 
   override def results: String = {
