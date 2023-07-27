@@ -34,14 +34,13 @@ class CSharpSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
   }
 
   override def runParseExpectError(exception: KSError): Unit = {
-    if (exception == EndOfStreamError)
-      importList.add("System.IO")
+    exceptionToImports(exception)
     out.puts(s"Assert.Throws<${CSharpCompiler.ksErrorName(exception)}>(")
     out.inc
     out.puts("delegate")
     out.puts("{")
     out.inc
-    out.puts(s"$className.FromFile(SourceFile(" + "\"" + spec.data + "\"));")
+    out.puts(s"""$className.FromFile(SourceFile("${spec.data}"));""")
     out.dec
     out.puts("}")
     out.dec
@@ -84,6 +83,20 @@ class CSharpSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
     simpleEquality(check) // FIXME
   }
 
+  override def testException(actual: Ast.expr, exception: KSError): Unit = {
+    exceptionToImports(exception)
+    out.puts(s"Assert.Throws<${CSharpCompiler.ksErrorName(exception)}>(")
+    out.inc
+    out.puts("delegate")
+    out.puts("{")
+    out.inc
+    out.puts(s"_ = ${translateAct(actual)};")
+    out.dec
+    out.puts("}")
+    out.dec
+    out.puts(");")
+  }
+
   override def indentStr: String = "    "
 
   override def results: String = {
@@ -94,4 +107,9 @@ class CSharpSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
 
   def translateAct(x: Ast.expr) =
     translator.translate(x).replace(Utils.capitalize(Main.INIT_OBJ_NAME), "r")
+
+  def exceptionToImports(exception: KSError): Unit = {
+    if (exception == EndOfStreamError)
+      importList.add("System.IO")
+  }
 }
