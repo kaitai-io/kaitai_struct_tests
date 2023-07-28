@@ -8,7 +8,7 @@ import io.kaitai.struct.languages.JavaCompiler
 import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 import io.kaitai.struct.translators.JavaTranslator
 
-class JavaWriteSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
+class JavaWriteSG(spec: TestSpec, provider: ClassTypeProvider) extends SpecGenerator {
   val config = RuntimeConfig()
   val className = JavaCompiler.type2class(spec.id)
   val translator = new JavaTranslator(provider, importList, config)
@@ -21,12 +21,10 @@ class JavaWriteSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGener
 
   override def fileName(name: String): String = s"src/io/kaitai/struct/specwrite/Test$className.java"
 
-  override def header(): Unit = {
+  override def run(): Unit = {
     out.puts(s"public class Test$className extends CommonSpec {")
     out.inc
-  }
 
-  override def runParse(): Unit = {
     out.puts("@Override")
     out.puts("protected Class<? extends ReadWrite> getStructClass() {")
     out.inc
@@ -40,36 +38,25 @@ class JavaWriteSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGener
     out.puts("return \"" + spec.data + "\";")
     out.dec
     out.puts("}")
-  }
 
-  override def runParseExpectError(exception: KSError): Unit = {
-    out.puts("@Override")
-    out.puts("protected Class<? extends ReadWrite> getStructClass() {")
-    out.inc
-    out.puts("throw new UnsupportedOperationException();")
-    out.dec
-    out.puts("}")
-    out.puts
-    out.puts("@Override")
-    out.puts("protected String getSrcFilename() {")
-    out.inc
-    out.puts("throw new UnsupportedOperationException();")
-    out.dec
-    out.puts("}")
-  }
+    spec.exception match {
+      case None =>
+      case Some(_) =>
+        importList.add("org.testng.SkipException")
 
-  override def footer(): Unit = {
+        out.puts
+        out.puts("@Override")
+        out.puts("@Test")
+        out.puts("protected void testReadWriteRoundtrip() throws Exception {")
+        out.inc
+        out.puts("""throw new SkipException("cannot use roundtrip because parsing is expected to fail");""")
+        out.dec
+        out.puts("}")
+    }
+
     out.dec
     out.puts("}")
   }
-
-  override def runAsserts(): Unit = {}
-
-  def simpleAssert(check: TestAssert): Unit = ???
-
-  def nullAssert(actual: Ast.expr): Unit = ???
-
-  def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit = ???
 
   override def indentStr: String = "    "
 
