@@ -16,5 +16,4 @@ public class TestExprEnum extends CommonSpec {
     protected String getSrcFilename() {
         return "term_strz.bin";
     }
-
 }

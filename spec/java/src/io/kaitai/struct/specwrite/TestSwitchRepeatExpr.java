@@ -16,5 +16,4 @@ public class TestSwitchRepeatExpr extends CommonSpec {
     protected String getSrcFilename() {
         return "switch_tlv.bin";
     }
-
 }

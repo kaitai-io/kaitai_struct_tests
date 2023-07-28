@@ -16,5 +16,4 @@ public class TestSwitchManualEnumInvalidElse extends CommonSpec {
     protected String getSrcFilename() {
         return "enum_negative.bin";
     }
-
 }

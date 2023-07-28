@@ -16,5 +16,4 @@ public class TestExprIoPosBits extends CommonSpec {
     protected String getSrcFilename() {
         return "process_xor_4.bin";
     }
-
 }

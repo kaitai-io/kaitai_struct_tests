@@ -16,5 +16,4 @@ public class TestZlibSurrounded extends CommonSpec {
     protected String getSrcFilename() {
         return "zlib_surrounded.bin";
     }
-
 }

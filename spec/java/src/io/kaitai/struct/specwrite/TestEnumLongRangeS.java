@@ -16,5 +16,4 @@ public class TestEnumLongRangeS extends CommonSpec {
     protected String getSrcFilename() {
         return "enum_long_range_s.bin";
     }
-
 }

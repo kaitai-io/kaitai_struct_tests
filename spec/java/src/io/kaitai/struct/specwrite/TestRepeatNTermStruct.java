@@ -16,5 +16,4 @@ public class TestRepeatNTermStruct extends CommonSpec {
     protected String getSrcFilename() {
         return "repeat_until_process.bin";
     }
-
 }

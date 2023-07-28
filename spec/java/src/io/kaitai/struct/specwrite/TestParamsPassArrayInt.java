@@ -16,5 +16,4 @@ public class TestParamsPassArrayInt extends CommonSpec {
     protected String getSrcFilename() {
         return "position_to_end.bin";
     }
-
 }

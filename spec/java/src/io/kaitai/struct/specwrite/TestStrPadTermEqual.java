@@ -16,5 +16,4 @@ public class TestStrPadTermEqual extends CommonSpec {
     protected String getSrcFilename() {
         return "str_pad_term.bin";
     }
-
 }

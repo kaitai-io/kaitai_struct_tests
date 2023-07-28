@@ -16,5 +16,4 @@ public class TestRepeatNStrzDouble extends CommonSpec {
     protected String getSrcFilename() {
         return "repeat_n_strz.bin";
     }
-
 }

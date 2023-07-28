@@ -16,5 +16,4 @@ public class TestParamsCallExtraParens extends CommonSpec {
     protected String getSrcFilename() {
         return "term_strz.bin";
     }
-
 }

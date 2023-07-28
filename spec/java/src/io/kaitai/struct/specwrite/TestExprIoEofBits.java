@@ -16,5 +16,4 @@ public class TestExprIoEofBits extends CommonSpec {
     protected String getSrcFilename() {
         return "nav_parent_switch.bin";
     }
-
 }

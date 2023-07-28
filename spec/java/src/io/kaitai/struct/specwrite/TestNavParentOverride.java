@@ -16,5 +16,4 @@ public class TestNavParentOverride extends CommonSpec {
     protected String getSrcFilename() {
         return "nav_parent_codes.bin";
     }
-
 }

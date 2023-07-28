@@ -16,5 +16,4 @@ public class TestDebug0 extends CommonSpec {
     protected String getSrcFilename() {
         return "fixed_struct.bin";
     }
-
 }

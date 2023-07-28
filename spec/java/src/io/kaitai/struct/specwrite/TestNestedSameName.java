@@ -16,5 +16,4 @@ public class TestNestedSameName extends CommonSpec {
     protected String getSrcFilename() {
         return "repeat_n_struct.bin";
     }
-
 }

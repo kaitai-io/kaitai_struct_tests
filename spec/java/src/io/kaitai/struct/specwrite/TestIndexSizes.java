@@ -16,5 +16,4 @@ public class TestIndexSizes extends CommonSpec {
     protected String getSrcFilename() {
         return "index_sizes.bin";
     }
-
 }

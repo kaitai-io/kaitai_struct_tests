@@ -16,5 +16,4 @@ public class TestStrEncodingsDefault extends CommonSpec {
     protected String getSrcFilename() {
         return "str_encodings.bin";
     }
-
 }

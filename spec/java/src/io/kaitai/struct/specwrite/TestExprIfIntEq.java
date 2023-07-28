@@ -16,5 +16,4 @@ public class TestExprIfIntEq extends CommonSpec {
     protected String getSrcFilename() {
         return "process_coerce_switch.bin";
     }
-
 }

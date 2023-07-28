@@ -16,5 +16,4 @@ public class TestBufferedStruct extends CommonSpec {
     protected String getSrcFilename() {
         return "buffered_struct.bin";
     }
-
 }

@@ -16,5 +16,4 @@ public class TestRepeatEosStruct extends CommonSpec {
     protected String getSrcFilename() {
         return "repeat_eos_struct.bin";
     }
-
 }

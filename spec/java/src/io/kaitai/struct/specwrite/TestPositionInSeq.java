@@ -16,5 +16,4 @@ public class TestPositionInSeq extends CommonSpec {
     protected String getSrcFilename() {
         return "position_in_seq.bin";
     }
-
 }

@@ -16,5 +16,4 @@ public class TestSwitchElseOnly extends CommonSpec {
     protected String getSrcFilename() {
         return "switch_opcodes.bin";
     }
-
 }

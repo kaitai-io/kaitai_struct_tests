@@ -16,5 +16,4 @@ public class TestMultipleUse extends CommonSpec {
     protected String getSrcFilename() {
         return "position_abs.bin";
     }
-
 }

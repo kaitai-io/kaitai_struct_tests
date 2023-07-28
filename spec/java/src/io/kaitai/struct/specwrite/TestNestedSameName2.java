@@ -16,5 +16,4 @@ public class TestNestedSameName2 extends CommonSpec {
     protected String getSrcFilename() {
         return "nested_same_name2.bin";
     }
-
 }

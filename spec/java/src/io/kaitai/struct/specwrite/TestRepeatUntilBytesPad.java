@@ -16,5 +16,4 @@ public class TestRepeatUntilBytesPad extends CommonSpec {
     protected String getSrcFilename() {
         return "repeat_until_process.bin";
     }
-
 }

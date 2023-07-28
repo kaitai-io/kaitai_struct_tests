@@ -16,5 +16,4 @@ public class TestInstanceInRepeatExpr extends CommonSpec {
     protected String getSrcFilename() {
         return "instance_in_repeat_expr.bin";
     }
-
 }

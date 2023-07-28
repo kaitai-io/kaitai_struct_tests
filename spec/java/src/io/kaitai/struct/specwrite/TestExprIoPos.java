@@ -16,5 +16,4 @@ public class TestExprIoPos extends CommonSpec {
     protected String getSrcFilename() {
         return "expr_io_pos.bin";
     }
-
 }

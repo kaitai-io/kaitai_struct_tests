@@ -16,5 +16,4 @@ public class TestNavParent extends CommonSpec {
     protected String getSrcFilename() {
         return "nav.bin";
     }
-
 }

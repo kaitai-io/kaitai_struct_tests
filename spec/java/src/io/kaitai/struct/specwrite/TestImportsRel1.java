@@ -16,5 +16,4 @@ public class TestImportsRel1 extends CommonSpec {
     protected String getSrcFilename() {
         return "fixed_struct.bin";
     }
-
 }

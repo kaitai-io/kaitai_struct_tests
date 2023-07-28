@@ -16,5 +16,4 @@ public class TestValidEqStrEncodings extends CommonSpec {
     protected String getSrcFilename() {
         return "str_encodings.bin";
     }
-
 }

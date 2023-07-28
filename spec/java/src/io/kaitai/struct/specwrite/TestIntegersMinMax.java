@@ -16,5 +16,4 @@ public class TestIntegersMinMax extends CommonSpec {
     protected String getSrcFilename() {
         return "integers_min_max.bin";
     }
-
 }

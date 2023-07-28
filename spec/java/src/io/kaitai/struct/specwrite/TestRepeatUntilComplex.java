@@ -16,5 +16,4 @@ public class TestRepeatUntilComplex extends CommonSpec {
     protected String getSrcFilename() {
         return "repeat_until_complex.bin";
     }
-
 }

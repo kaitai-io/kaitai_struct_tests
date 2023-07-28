@@ -16,5 +16,4 @@ public class TestNestedTypes extends CommonSpec {
     protected String getSrcFilename() {
         return "fixed_struct.bin";
     }
-
 }

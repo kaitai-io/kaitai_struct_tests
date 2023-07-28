@@ -16,5 +16,4 @@ public class TestRepeatEosTermBytes extends CommonSpec {
     protected String getSrcFilename() {
         return "process_rotate.bin";
     }
-
 }

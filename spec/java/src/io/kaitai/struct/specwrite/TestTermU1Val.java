@@ -16,5 +16,4 @@ public class TestTermU1Val extends CommonSpec {
     protected String getSrcFilename() {
         return "str_encodings.bin";
     }
-
 }

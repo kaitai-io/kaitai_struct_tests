@@ -16,5 +16,4 @@ public class TestCombineEnum extends CommonSpec {
     protected String getSrcFilename() {
         return "enum_0.bin";
     }
-
 }

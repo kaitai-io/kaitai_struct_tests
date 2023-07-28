@@ -16,5 +16,4 @@ public class TestBcdUserTypeBe extends CommonSpec {
     protected String getSrcFilename() {
         return "bcd_user_type_be.bin";
     }
-
 }

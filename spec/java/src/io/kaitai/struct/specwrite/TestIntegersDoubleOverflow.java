@@ -16,5 +16,4 @@ public class TestIntegersDoubleOverflow extends CommonSpec {
     protected String getSrcFilename() {
         return "integers_double_overflow.bin";
     }
-
 }

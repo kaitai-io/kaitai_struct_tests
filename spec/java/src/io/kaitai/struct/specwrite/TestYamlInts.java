@@ -16,5 +16,4 @@ public class TestYamlInts extends CommonSpec {
     protected String getSrcFilename() {
         return "fixed_struct.bin";
     }
-
 }

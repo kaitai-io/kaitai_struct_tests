@@ -16,5 +16,4 @@ public class TestExpr0 extends CommonSpec {
     protected String getSrcFilename() {
         return "str_encodings.bin";
     }
-
 }

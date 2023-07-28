@@ -16,5 +16,4 @@ public class TestExprArray extends CommonSpec {
     protected String getSrcFilename() {
         return "expr_array.bin";
     }
-
 }

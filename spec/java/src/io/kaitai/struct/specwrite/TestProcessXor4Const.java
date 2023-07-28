@@ -16,5 +16,4 @@ public class TestProcessXor4Const extends CommonSpec {
     protected String getSrcFilename() {
         return "process_xor_4.bin";
     }
-
 }

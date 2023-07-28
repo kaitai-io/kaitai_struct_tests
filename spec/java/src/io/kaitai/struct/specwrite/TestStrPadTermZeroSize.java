@@ -16,5 +16,4 @@ public class TestStrPadTermZeroSize extends CommonSpec {
     protected String getSrcFilename() {
         return "enum_negative.bin";
     }
-
 }

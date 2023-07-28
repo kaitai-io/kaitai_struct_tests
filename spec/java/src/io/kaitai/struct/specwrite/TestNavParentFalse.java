@@ -16,5 +16,4 @@ public class TestNavParentFalse extends CommonSpec {
     protected String getSrcFilename() {
         return "nav_parent_codes.bin";
     }
-
 }

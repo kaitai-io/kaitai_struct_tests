@@ -16,5 +16,4 @@ public class TestIndexToParamUntil extends CommonSpec {
     protected String getSrcFilename() {
         return "index_sizes.bin";
     }
-
 }

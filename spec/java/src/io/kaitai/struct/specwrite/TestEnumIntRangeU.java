@@ -16,5 +16,4 @@ public class TestEnumIntRangeU extends CommonSpec {
     protected String getSrcFilename() {
         return "enum_int_range_u.bin";
     }
-
 }

@@ -16,5 +16,4 @@ public class TestExprIfIntOps extends CommonSpec {
     protected String getSrcFilename() {
         return "instance_io.bin";
     }
-
 }

@@ -16,5 +16,4 @@ public class TestNestedTypeParam extends CommonSpec {
     protected String getSrcFilename() {
         return "term_strz.bin";
     }
-
 }

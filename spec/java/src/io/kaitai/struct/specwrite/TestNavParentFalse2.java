@@ -16,5 +16,4 @@ public class TestNavParentFalse2 extends CommonSpec {
     protected String getSrcFilename() {
         return "fixed_struct.bin";
     }
-
 }

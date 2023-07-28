@@ -16,5 +16,4 @@ public class TestProcessCoerceBytes extends CommonSpec {
     protected String getSrcFilename() {
         return "process_coerce_bytes.bin";
     }
-
 }

@@ -16,5 +16,4 @@ public class TestInstanceUserArray extends CommonSpec {
     protected String getSrcFilename() {
         return "instance_std_array.bin";
     }
-
 }

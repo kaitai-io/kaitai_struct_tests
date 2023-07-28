@@ -16,5 +16,4 @@ public class TestIoLocalVar extends CommonSpec {
     protected String getSrcFilename() {
         return "full256.bin";
     }
-
 }

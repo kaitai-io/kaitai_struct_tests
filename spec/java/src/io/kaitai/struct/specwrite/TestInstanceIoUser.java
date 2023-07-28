@@ -16,5 +16,4 @@ public class TestInstanceIoUser extends CommonSpec {
     protected String getSrcFilename() {
         return "instance_io.bin";
     }
-
 }

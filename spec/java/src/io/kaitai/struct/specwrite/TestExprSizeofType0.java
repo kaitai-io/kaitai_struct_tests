@@ -16,5 +16,4 @@ public class TestExprSizeofType0 extends CommonSpec {
     protected String getSrcFilename() {
         return "fixed_struct.bin";
     }
-
 }

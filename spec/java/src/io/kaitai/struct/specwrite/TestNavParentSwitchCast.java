@@ -16,5 +16,4 @@ public class TestNavParentSwitchCast extends CommonSpec {
     protected String getSrcFilename() {
         return "switch_integers.bin";
     }
-
 }

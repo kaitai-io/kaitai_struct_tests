@@ -16,5 +16,4 @@ public class TestBitsUnalignedB64Le extends CommonSpec {
     protected String getSrcFilename() {
         return "process_xor_4.bin";
     }
-
 }

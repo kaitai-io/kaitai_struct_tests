@@ -16,5 +16,4 @@ public class TestBitsSignedResB32Be extends CommonSpec {
     protected String getSrcFilename() {
         return "bits_shift_by_b32_le.bin";
     }
-
 }

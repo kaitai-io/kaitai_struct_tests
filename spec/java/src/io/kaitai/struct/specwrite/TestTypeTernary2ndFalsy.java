@@ -16,5 +16,4 @@ public class TestTypeTernary2ndFalsy extends CommonSpec {
     protected String getSrcFilename() {
         return "switch_integers.bin";
     }
-
 }

@@ -16,5 +16,4 @@ public class TestEnumNegative extends CommonSpec {
     protected String getSrcFilename() {
         return "enum_negative.bin";
     }
-
 }

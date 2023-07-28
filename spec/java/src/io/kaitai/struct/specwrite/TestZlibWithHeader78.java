@@ -16,5 +16,4 @@ public class TestZlibWithHeader78 extends CommonSpec {
     protected String getSrcFilename() {
         return "zlib_with_header_78.bin";
     }
-
 }

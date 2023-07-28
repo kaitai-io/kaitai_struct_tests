@@ -16,5 +16,4 @@ public class TestSwitchMultiBoolOps extends CommonSpec {
     protected String getSrcFilename() {
         return "switch_integers.bin";
     }
-
 }

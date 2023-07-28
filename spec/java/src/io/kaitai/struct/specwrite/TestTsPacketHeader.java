@@ -16,5 +16,4 @@ public class TestTsPacketHeader extends CommonSpec {
     protected String getSrcFilename() {
         return "ts_packet.bin";
     }
-
 }

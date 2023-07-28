@@ -16,5 +16,4 @@ public class TestSwitchManualIntSizeEos extends CommonSpec {
     protected String getSrcFilename() {
         return "switch_tlv.bin";
     }
-
 }

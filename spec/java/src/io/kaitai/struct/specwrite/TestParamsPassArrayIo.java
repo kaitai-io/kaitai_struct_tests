@@ -16,5 +16,4 @@ public class TestParamsPassArrayIo extends CommonSpec {
     protected String getSrcFilename() {
         return "enum_negative.bin";
     }
-
 }

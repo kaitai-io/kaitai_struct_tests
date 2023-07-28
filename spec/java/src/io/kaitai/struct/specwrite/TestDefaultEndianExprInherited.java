@@ -16,5 +16,4 @@ public class TestDefaultEndianExprInherited extends CommonSpec {
     protected String getSrcFilename() {
         return "endian_expr.bin";
     }
-
 }

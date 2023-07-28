@@ -16,5 +16,4 @@ public class TestFloatingPoints extends CommonSpec {
     protected String getSrcFilename() {
         return "floating_points.bin";
     }
-
 }

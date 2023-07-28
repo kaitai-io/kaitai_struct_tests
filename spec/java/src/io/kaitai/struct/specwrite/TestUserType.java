@@ -16,5 +16,4 @@ public class TestUserType extends CommonSpec {
     protected String getSrcFilename() {
         return "repeat_until_s4.bin";
     }
-
 }

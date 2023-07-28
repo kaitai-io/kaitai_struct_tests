@@ -16,5 +16,4 @@ public class TestStrEncodingsUtf16 extends CommonSpec {
     protected String getSrcFilename() {
         return "str_encodings_utf16.bin";
     }
-
 }

@@ -16,5 +16,4 @@ public class TestIfStruct extends CommonSpec {
     protected String getSrcFilename() {
         return "if_struct.bin";
     }
-
 }

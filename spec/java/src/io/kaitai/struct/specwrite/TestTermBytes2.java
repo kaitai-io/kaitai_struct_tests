@@ -16,5 +16,4 @@ public class TestTermBytes2 extends CommonSpec {
     protected String getSrcFilename() {
         return "term_strz.bin";
     }
-
 }

@@ -16,5 +16,4 @@ public class TestStrPadTermEmpty extends CommonSpec {
     protected String getSrcFilename() {
         return "str_pad_term_empty.bin";
     }
-
 }
