@@ -18,9 +18,11 @@ class CSharpBuilder < PartialBuilder
     when :netframework
       @project_file = "spec/csharp/kaitai_struct_csharp_tests_netframework/kaitai_struct_csharp_tests_netframework.csproj"
       @out_dll = "spec/csharp/kaitai_struct_csharp_tests_netframework/bin/Debug/kaitai_struct_csharp_tests.dll"
+      check_msbuild
     when :netstd
       @project_file = "spec/csharp/kaitai_struct_csharp_tests_netstd/kaitai_struct_csharp_tests_netstd.csproj"
       @out_dll = "spec/csharp/kaitai_struct_csharp_tests_netstd/bin/Debug/net6.0/kaitai_struct_csharp_tests_netstd.dll"
+      check_dotnet
     else
       raise "Unknown target .NET: #{@target_net}"
     end
@@ -28,11 +30,18 @@ class CSharpBuilder < PartialBuilder
     @project_template = @project_file + ".in"
 
     @test_out_dir = "#{@config['TEST_OUT_DIR']}/csharp"
-
-    detect_tools
   end
 
-  def detect_tools
+  def check_dotnet
+    if system("dotnet build --version")
+      @msbuild = 'dotnet'
+      @msbuild_args = ['build']
+    else
+      raise 'Unable to find `dotnet build`, bailing out'
+    end
+  end
+
+  def check_msbuild
     @msbuild_args = []
 
     # msbuild
@@ -40,9 +49,6 @@ class CSharpBuilder < PartialBuilder
       @msbuild = 'msbuild'
     elsif system("xbuild /version")
       @msbuild = 'xbuild'
-    elsif system("dotnet build /version")
-      @msbuild = 'dotnet'
-      @msbuild_args = ['build'] #, '--framework', 'netstandard1.3']
     else
       raise 'Unable to find msbuild/xbuild, bailing out'
     end
