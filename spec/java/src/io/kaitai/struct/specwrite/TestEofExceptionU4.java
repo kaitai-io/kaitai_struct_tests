@@ -11,17 +11,24 @@ import java.io.RandomAccessFile;
 
 import org.testng.Assert.ThrowingRunnable;
 import org.testng.annotations.Test;
+import org.testng.SkipException;
 import static org.testng.Assert.assertEquals;
 
 public class TestEofExceptionU4 extends CommonSpec {
     @Override
     protected Class<? extends ReadWrite> getStructClass() {
-        throw new UnsupportedOperationException();
+        return EofExceptionU4.class;
     }
 
     @Override
     protected String getSrcFilename() {
-        throw new UnsupportedOperationException();
+        return "term_strz.bin";
+    }
+
+    @Override
+    @Test
+    protected void testReadWriteRoundtrip() throws Exception {
+        throw new SkipException("cannot use roundtrip because parsing is expected to fail");
     }
 
     @Test

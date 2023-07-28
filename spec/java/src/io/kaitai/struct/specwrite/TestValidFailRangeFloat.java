@@ -5,15 +5,22 @@ package io.kaitai.struct.specwrite;
 import io.kaitai.struct.KaitaiStruct.ReadWrite;
 import io.kaitai.struct.testwrite.ValidFailRangeFloat;
 import org.testng.annotations.Test;
+import org.testng.SkipException;
 
 public class TestValidFailRangeFloat extends CommonSpec {
     @Override
     protected Class<? extends ReadWrite> getStructClass() {
-        throw new UnsupportedOperationException();
+        return ValidFailRangeFloat.class;
     }
 
     @Override
     protected String getSrcFilename() {
-        throw new UnsupportedOperationException();
+        return "floating_points.bin";
+    }
+
+    @Override
+    @Test
+    protected void testReadWriteRoundtrip() throws Exception {
+        throw new SkipException("cannot use roundtrip because parsing is expected to fail");
     }
 }

@@ -5,15 +5,22 @@ package io.kaitai.struct.specwrite;
 import io.kaitai.struct.KaitaiStruct.ReadWrite;
 import io.kaitai.struct.testwrite.ValidFailAnyofInt;
 import org.testng.annotations.Test;
+import org.testng.SkipException;
 
 public class TestValidFailAnyofInt extends CommonSpec {
     @Override
     protected Class<? extends ReadWrite> getStructClass() {
-        throw new UnsupportedOperationException();
+        return ValidFailAnyofInt.class;
     }
 
     @Override
     protected String getSrcFilename() {
-        throw new UnsupportedOperationException();
+        return "fixed_struct.bin";
+    }
+
+    @Override
+    @Test
+    protected void testReadWriteRoundtrip() throws Exception {
+        throw new SkipException("cannot use roundtrip because parsing is expected to fail");
     }
 }

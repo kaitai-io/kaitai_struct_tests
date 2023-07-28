@@ -5,16 +5,23 @@ import io.kaitai.struct.KaitaiStream;
 import io.kaitai.struct.KaitaiStruct.ReadWrite;
 import io.kaitai.struct.testwrite.EosExceptionBytes;
 import org.testng.annotations.Test;
+import org.testng.SkipException;
 
 public class TestEosExceptionBytes extends CommonSpec {
     @Override
     protected Class<? extends ReadWrite> getStructClass() {
-        throw new UnsupportedOperationException();
+        return EosExceptionBytes.class;
     }
 
     @Override
     protected String getSrcFilename() {
-        throw new UnsupportedOperationException();
+        return "term_strz.bin";
+    }
+
+    @Override
+    @Test
+    protected void testReadWriteRoundtrip() throws Exception {
+        throw new SkipException("cannot use roundtrip because parsing is expected to fail");
     }
 
     @Test(expectedExceptions = java.nio.BufferOverflowException.class)
