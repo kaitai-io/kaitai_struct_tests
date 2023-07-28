@@ -11,7 +11,6 @@ class CSharpBuilder < PartialBuilder
     @target_net = :netframework
     @target_net = :netstd if ENV["KAITAI_NET"] == "netstd"
 
-    @packages_dir = 'spec/csharp/packages'
     @compiled_dir = 'compiled/csharp'
     @spec_dir = 'spec/csharp/kaitai_struct_csharp_tests'
 
@@ -127,18 +126,46 @@ class CSharpBuilder < PartialBuilder
     end
   end
 
-  def run_tests
-    xml_log = "#{@test_out_dir}/TestResult.xml"
-    FileUtils.mkdir_p(@test_out_dir)
-    FileUtils.rm_f(xml_log)
-
-    cli = [
-      "#{@packages_dir}/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe",
-      "--result=#{xml_log}",
-      @out_dll
+  # Detect where the runner is and blow up if it's not found
+  def detect_runner
+    candidates = [
+      ENV['HOME'] + "/.nuget/packages/nunit.consolerunner/3.4.1/tools/nunit3-console.exe",
+      "spec/csharp/packages/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe",
     ]
 
-    cli.unshift("mono") if @is_mono
+    candidates.each { |c|
+      return c if File.exist?(c)
+    }
+
+    raise "Unable to find NUnit.ConsoleRunner.3.4.1 exe file anywhere, tried: #{candidates.inspect}"
+  end
+
+  def run_tests
+    FileUtils.mkdir_p(@test_out_dir)
+    xml_log = nil
+
+    if @msbuild == 'dotnet'
+      xml_log = "#{@test_out_dir}/TestResultTrx.xml"
+      FileUtils.rm_f(xml_log)
+
+      cli = [
+        "dotnet",
+        "test",
+        @project_file,
+        "--logger:trx;LogFileName=TestResultTrx.xml",
+        "--results-directory", @test_out_dir,
+      ]
+    else
+      xml_log = "#{@test_out_dir}/TestResult.xml"
+      FileUtils.rm_f(xml_log)
+
+      cli = [
+        detect_runner,
+        "--result=#{xml_log}",
+        @out_dll
+      ]
+      cli.unshift("mono") if @is_mono
+    end
 
     run_and_tee(
       {"CSHARP_TEST_SRC_PATH" => "src"},
