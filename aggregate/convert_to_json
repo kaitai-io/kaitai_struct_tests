@@ -37,11 +37,27 @@ def add_fails(first, *seconds)
 end
 
 def add_kst_adoption(tests, log_dir)
-  kst_tests = File.readlines("#{log_dir}/kst_adoption.log")
+  kst_tests = File.readlines("#{log_dir}/kst_adoption.log").map { |name| name.chomp }
+  kst_test_used = {}
+  kst_tests.each { |name| kst_test_used[name] = false }
+  tests.each_pair { |name, test_result|
+    kst_name = nil
+    if kst_test_used.has_key?(name)
+      kst_name = name
+    elsif name =~ /^(.+?)\./ && kst_test_used.has_key?($1)
+      kst_name = $1
+    end
+
+    if kst_name
+      test_result['is_kst'] = true
+      kst_test_used[kst_name] = true
+    end
+  }
   kst_tests.each { |name|
-    name.chomp!
-    tests[name] ||= {}
-    tests[name]['is_kst'] = true
+    if !kst_test_used.fetch(name)
+      tests[name] ||= {}
+      tests[name]['is_kst'] = true
+    end
   }
   tests
 end
@@ -99,6 +115,11 @@ when 'javascript'
 when 'php', 'python', 'construct'
   add_kst_adoption(
     JUnitXMLParser.new(infile).to_h,
+    infile
+  )
+when 'python-write'
+  add_kst_adoption(
+    JUnitXMLParser.new(infile, true).to_h,
     infile
   )
 when 'ruby'

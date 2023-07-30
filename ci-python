@@ -2,8 +2,11 @@
 
 . ./config
 
-rm -rf "$TEST_OUT_DIR/python"
-PYTHONPATH="$PYTHON_RUNTIME_DIR:compiled/python:spec/python/extra" python ./run-python-xml.py spec/python "$TEST_OUT_DIR/python"
+rm -rf "$TEST_OUT_DIR/python" "$TEST_OUT_DIR/python-write"
+PYTHONPATH="$PYTHON_RUNTIME_DIR:compiled/python:spec/python/extra" python ./run-python-xml.py spec/python/spec "$TEST_OUT_DIR/python"
+PYTHONPATH="$PYTHON_RUNTIME_DIR:compiled/python:spec/python:spec/python/extra" python ./run-python-xml.py spec/python/specwrite "$TEST_OUT_DIR/python-write"
 
 ./kst-adoption-report python
+./kst-adoption-report python-write
 aggregate/convert_to_json python "$TEST_OUT_DIR/python" "$TEST_OUT_DIR/python/ci.json"
+aggregate/convert_to_json python-write "$TEST_OUT_DIR/python-write" "$TEST_OUT_DIR/python-write/ci.json"

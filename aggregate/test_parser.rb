@@ -5,6 +5,11 @@ def underscore_to_ucamelcase(s)
   s.split(/_/).map { |x| x.capitalize }.join
 end
 
+def underscore_to_lcamelcase(s)
+  first_word, *rest_words = s.split(/_/)
+  ([first_word] + rest_words.map { |x| x.capitalize }).join
+end
+
 class TestParser
   def each_test
     raise 'Abstract method'

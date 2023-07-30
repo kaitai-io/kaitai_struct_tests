@@ -3,7 +3,8 @@ require_relative 'test_parser'
 require 'rexml/document'
 
 class JUnitXMLParser < TestParser
-  def initialize(fn)
+  def initialize(fn, include_classname = false)
+    @include_classname = include_classname
     @docs = if not File.exists?(fn)
       []
     elsif File.directory?(fn)
@@ -35,10 +36,19 @@ class JUnitXMLParser < TestParser
           name = underscore_to_ucamelcase($1)
         else
           raise "Unable to parse name: \"#{name}\"" unless name =~ /^[Tt]est(.*?)$/
-          if $1[0] == '_'
-            name = underscore_to_ucamelcase($1)
+          name = $1
+          if @include_classname
+            classname = tc.attribute('classname').value
+            raise "Unable to parse classname: \"#{classname}\"" unless classname =~ /\.Test([^.]*)$/
+            classname = $1
+            if name[0] == '_'
+              name = underscore_to_lcamelcase(name[1..-1])
+            end
+            name = "#{classname}.#{name}"
           else
-            name = $1
+            if name[0] == '_'
+              name = underscore_to_ucamelcase(name[1..-1])
+            end
           end
         end
 
