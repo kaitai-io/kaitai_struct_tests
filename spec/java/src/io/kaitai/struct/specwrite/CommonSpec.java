@@ -28,8 +28,6 @@ public abstract class CommonSpec extends io.kaitai.struct.spec.CommonSpec {
         Class<? extends KaitaiStruct.ReadWrite> structClass = getStructClass();
         String fn = getSrcFilename();
 
-        System.out.println(structClass.getSimpleName());
-
         Method fromFileMethod = structClass.getMethod("fromFile", String.class);
         KaitaiStruct.ReadWrite origKs = (KaitaiStruct.ReadWrite) fromFileMethod.invoke(null, SRC_DIR + fn);
         origKs._read();
