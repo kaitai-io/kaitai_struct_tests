@@ -1,8 +1,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Kaitai Struct Java specs">
-  <test name="all">
+  <test name="spec">
     <packages>
       <package name="io.kaitai.struct.spec" />
+    </packages>
+  </test>
+  <test name="specwrite">
+    <packages>
       <package name="io.kaitai.struct.specwrite" />
     </packages>
   </test>

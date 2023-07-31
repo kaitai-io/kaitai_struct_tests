@@ -17,7 +17,9 @@ def glob_spec_files(lang)
   when 'go'
     Dir.glob('spec/go/*_test.go')
   when 'java'
-    Dir.glob('spec/java/src/**/Test*.java')
+    Dir.glob('spec/java/src/**/spec/Test*.java')
+  when 'java-write'
+    Dir.glob('spec/java/src/**/specwrite/Test*.java')
   when 'javascript'
     Dir.glob('spec/javascript/test_*.js')
   when 'lua'
@@ -52,7 +54,7 @@ def spec_file_to_test_name(lang, fn)
   when 'go'
     raise "Unable to extract test name from #{fn.inspect}" unless fn =~ /^(.*?)_test\.go$/
     underscore_to_ucamelcase($1)
-  when 'java'
+  when 'java', 'java-write'
     raise "Unable to extract test name from #{fn.inspect}" unless fn =~ /^Test(.*?)\.java$/
     $1
   when 'javascript'

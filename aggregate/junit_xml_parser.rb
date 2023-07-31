@@ -37,18 +37,16 @@ class JUnitXMLParser < TestParser
         else
           raise "Unable to parse name: \"#{name}\"" unless name =~ /^[Tt]est(.*?)$/
           name = $1
+          if name[0] == '_'
+            name = underscore_to_ucamelcase(name[1..-1])
+          end
+
           if @include_classname
             classname = tc.attribute('classname').value
             raise "Unable to parse classname: \"#{classname}\"" unless classname =~ /\.Test([^.]*)$/
             classname = $1
-            if name[0] == '_'
-              name = underscore_to_lcamelcase(name[1..-1])
-            end
             name = "#{classname}.#{name}"
           else
-            if name[0] == '_'
-              name = underscore_to_ucamelcase(name[1..-1])
-            end
           end
         end
 

@@ -87,10 +87,10 @@ when 'cpp_stl'
     ),
     infile
   )
-when 'java'
+when 'java', 'java-write'
   add_kst_adoption(
     add_fails(
-      JUnitXMLParser.new("#{infile}/junitreports").to_h,
+      JUnitXMLParser.new("#{infile}/junitreports", lang == 'java-write').to_h,
       BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h
     ),
     infile
@@ -112,14 +112,9 @@ when 'javascript'
     JUnitXMLParser.new("#{infile}/test-output-javascript.xml").to_h,
     infile
   )
-when 'php', 'python', 'construct'
+when 'php', 'python', 'python-write', 'construct'
   add_kst_adoption(
-    JUnitXMLParser.new(infile).to_h,
-    infile
-  )
-when 'python-write'
-  add_kst_adoption(
-    JUnitXMLParser.new(infile, true).to_h,
+    JUnitXMLParser.new(infile, lang == 'python-write').to_h,
     infile
   )
 when 'ruby'
