@@ -3,7 +3,7 @@ package io.kaitai.struct.testtranslator.specgenerators
 import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.GoCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
 import _root_.io.kaitai.struct.translators.GoTranslator
 import _root_.io.kaitai.struct.{ClassTypeProvider, RuntimeConfig, StringLanguageOutputWriter, Utils}
 
@@ -86,14 +86,14 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
     out.puts("}")
   }
 
-  def simpleAssert(check: TestAssert): Unit = {
+  def simpleEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     importList.add("\"github.com/stretchr/testify/assert\"")
     out.puts(s"assert.EqualValues(t, $expStr, $actStr)")
   }
 
-  override def floatAssert(check: TestAssert): Unit = {
+  override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     importList.add("\"github.com/stretchr/testify/assert\"")
@@ -106,8 +106,8 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
     out.puts(s"assert.Nil(t, $actStr)")
   }
 
-  def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit =
-    simpleAssert(check)
+  def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit =
+    simpleEquality(check)
 
   override def indentStr: String = "\t"
 

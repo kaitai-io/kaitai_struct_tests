@@ -5,7 +5,7 @@ import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.datatype.DataType.BytesType
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.JavaScriptCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
 import _root_.io.kaitai.struct.translators.JavaScriptTranslator
 
 class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
@@ -37,7 +37,7 @@ class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGene
     out.puts("});")
   }
 
-  override def simpleAssert(check: TestAssert): Unit = {
+  override def simpleEquality(check: TestEquals): Unit = {
     val actType = translator.detectType(check.actual)
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
@@ -50,7 +50,7 @@ class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGene
     }
   }
 
-  override def floatAssert(check: TestAssert): Unit = {
+  override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"assert(Math.abs($actStr - $expStr) < $FLOAT_DELTA);")
@@ -61,10 +61,23 @@ class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGene
     out.puts(s"assert.strictEqual($actStr, undefined);")
   }
 
-  override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit = {
+  override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"assert.deepStrictEqual($actStr, $expStr);")
+  }
+
+  override def testException(actual: Ast.expr, exception: KSError): Unit = {
+    out.puts("assert.throws(")
+    out.inc
+    out.puts("function() {")
+    out.inc
+    out.puts(translateAct(actual) + ";")
+    out.dec
+    out.puts("},")
+    out.puts(s"{name: '${JavaScriptCompiler.ksErrorName(exception)}'}")
+    out.dec
+    out.puts(")")
   }
 
   override def indentStr: String = "  "

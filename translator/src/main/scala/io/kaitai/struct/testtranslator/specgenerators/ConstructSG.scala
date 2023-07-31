@@ -3,7 +3,7 @@ package io.kaitai.struct.testtranslator.specgenerators
 import _root_.io.kaitai.struct.{ClassTypeProvider, Utils}
 import _root_.io.kaitai.struct.datatype.DataType
 import _root_.io.kaitai.struct.exprlang.Ast
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
 import _root_.io.kaitai.struct.translators.ConstructTranslator
 
 class ConstructSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
@@ -30,13 +30,13 @@ class ConstructSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGener
 
   override def footer(): Unit = {}
 
-  override def simpleAssert(check: TestAssert): Unit = {
+  override def simpleEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"self.assertEqual($actStr, $expStr)")
   }
 
-  override def floatAssert(check: TestAssert): Unit = {
+  override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"self.assertAlmostEqual($actStr, $expStr, 6)")
@@ -47,8 +47,8 @@ class ConstructSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGener
     out.puts(s"self.assertIsNone($actStr)")
   }
 
-  override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit =
-    simpleAssert(check)
+  override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit =
+    simpleEquality(check)
 
   def translateAct(x: Ast.expr) =
     translator.translate(x).replace("this." + Main.INIT_OBJ_NAME, "r")

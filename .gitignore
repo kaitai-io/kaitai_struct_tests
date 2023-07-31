@@ -2,6 +2,7 @@
 /test_out/
 /node_modules/
 /spec/ks/out/
+/ci_results/
 
 # Byte-compiled Python code
 __pycache__/

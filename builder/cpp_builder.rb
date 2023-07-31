@@ -21,6 +21,40 @@ class CppBuilder < PartialBuilder
 
     @mode = :make_posix
     @mode = :msbuild_windows if ENV['APPVEYOR']
+
+    detect_tools
+  end
+
+  def detect_tools
+    puts "Detecting cmake..."
+    cmake_version_out = `cmake --version`
+    if cmake_version_out =~ /cmake version (\d+)\.(\d+)\.(\d+)/
+      @cmake_version = [$1.to_i, $2.to_i, $3.to_i]
+      puts "cmake #{@cmake_version.inspect}"
+    else
+      puts cmake_version_out
+      raise "Unknown cmake version"
+    end
+
+    if @mode == :make_posix
+      puts "Detecting gmake..."
+      @make_cmd = nil
+      begin
+        make_version_out = `gmake --version`
+        @make_cmd = 'gmake'
+      rescue Errno::ENOENT
+        make_version_out = `make --version`
+        @make_cmd = 'make'
+      end
+
+      if make_version_out =~ /GNU Make (\d+)\.(\d+)/
+        @make_version = [$1.to_i, $2.to_i]
+        puts "GNU Make #{@make_version.inspect} as #{@make_cmd}"
+      else
+        puts make_version_out
+        raise "Unknown make version"
+      end
+    end
   end
 
   def list_mandatory_files
@@ -97,9 +131,12 @@ class CppBuilder < PartialBuilder
 
     case @mode
     when :make_posix
+      cmd = ["cmake", "--build", ".", "--parallel", "8", "--verbose", "--", "-k"]
+      cmd << "--output-sync=target" if @make_version[0] >= 4
+
       r = run_and_tee(
         {"LC_ALL" => "en_US.UTF-8"},
-        ["make", "-j8", "-k"],
+        cmd,
         abs_log_file
       )
     when :msbuild_windows
