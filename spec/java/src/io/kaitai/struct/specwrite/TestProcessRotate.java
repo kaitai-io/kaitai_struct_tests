@@ -23,7 +23,7 @@ public class TestProcessRotate extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: buf2,.*")
-    public void checkSizeMismatchCheck() throws Exception {
+    public void testCheckSizeMismatchCheck() throws Exception {
         ProcessRotate r = new ProcessRotate();
 
         r.setBuf1("Hello".getBytes());
@@ -33,7 +33,7 @@ public class TestProcessRotate extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: buf2,.*")
-    public void checkSizeMismatchCheckOrWrite() throws Exception {
+    public void testCheckSizeMismatchCheckOrWrite() throws Exception {
         ProcessRotate r = new ProcessRotate();
 
         r.setBuf1("Hello".getBytes());

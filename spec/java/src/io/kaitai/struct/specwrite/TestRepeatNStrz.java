@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 public class TestRepeatNStrz extends CommonSpec {
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: lines,.*")
-    public void checkMismatch() throws Exception {
+    public void testCheckMismatch() throws Exception {
         RepeatNStrz r = new RepeatNStrz();
 
         r.setQty(7);
@@ -20,7 +20,7 @@ public class TestRepeatNStrz extends CommonSpec {
     }
 
     @Test(expectedExceptions = NullPointerException.class, expectedExceptionsMessageRegExp = ".*\\blines\\b.*")
-    public void checkNull() throws Exception {
+    public void testCheckNull() throws Exception {
         RepeatNStrz r = new RepeatNStrz();
         r.setQty(0);
 

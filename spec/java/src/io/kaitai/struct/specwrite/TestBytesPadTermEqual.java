@@ -17,7 +17,7 @@ public class TestBytesPadTermEqual extends CommonSpec {
     }
 
     @Test
-    public void checkGoodMaxLengths() throws Exception {
+    public void testCheckGoodMaxLengths() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("12345678901234567890".getBytes());
         r.setS2("12345678901234567890".getBytes());
@@ -27,7 +27,7 @@ public class TestBytesPadTermEqual extends CommonSpec {
     }
 
     @Test
-    public void checkGoodMinLengths() throws Exception {
+    public void testCheckGoodMinLengths() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("".getBytes());
         r.setS2("".getBytes());
@@ -37,28 +37,28 @@ public class TestBytesPadTermEqual extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: s1,.*")
-    public void checkLongerS1() throws Exception {
+    public void testCheckLongerS1() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("123456789012345678901".getBytes());
         r._check();
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: s1,.*")
-    public void checkBadHasTerminator1S1() throws Exception {
+    public void testCheckBadHasTerminator1S1() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("123456789012@4567890".getBytes());
         r._check();
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: s1,.*")
-    public void checkBadHasTerminator2S1() throws Exception {
+    public void testCheckBadHasTerminator2S1() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("1234567890123456789@".getBytes());
         r._check();
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: s2,.*")
-    public void checkLongerS2() throws Exception {
+    public void testCheckLongerS2() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("12345678901234567890".getBytes());
         r.setS2("123456789012345678901".getBytes());
@@ -66,7 +66,7 @@ public class TestBytesPadTermEqual extends CommonSpec {
     }
 
     @Test
-    public void checkGoodTerminator1S2() throws Exception {
+    public void testCheckGoodTerminator1S2() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("12345678901234567890".getBytes());
         r.setS2("123456789012345678@".getBytes());
@@ -76,7 +76,7 @@ public class TestBytesPadTermEqual extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: s2,.*")
-    public void checkEarlyTerminator1S2() throws Exception {
+    public void testCheckEarlyTerminator1S2() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("12345678901234567890".getBytes());
         r.setS2("1234567890123456@8@".getBytes());
@@ -84,7 +84,7 @@ public class TestBytesPadTermEqual extends CommonSpec {
     }
 
     @Test
-    public void checkGoodLastByteS2() throws Exception {
+    public void testCheckGoodLastByteS2() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("12345678901234567890".getBytes());
         r.setS2(("+++++"+"+++++"+"+++++"+"+++9").getBytes());
@@ -94,7 +94,7 @@ public class TestBytesPadTermEqual extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: s2,.*")
-    public void checkBadLastByteS2() throws Exception {
+    public void testCheckBadLastByteS2() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("12345678901234567890".getBytes());
         r.setS2("123456789012345678+".getBytes());
@@ -102,7 +102,7 @@ public class TestBytesPadTermEqual extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: s3,.*")
-    public void checkLongerS3() throws Exception {
+    public void testCheckLongerS3() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("12345678901234567890".getBytes());
         r.setS2("12345678901234567890".getBytes());
@@ -111,7 +111,7 @@ public class TestBytesPadTermEqual extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: s3,.*")
-    public void checkBadHasTerminator1S3() throws Exception {
+    public void testCheckBadHasTerminator1S3() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("12345678901234567890".getBytes());
         r.setS2("12345678901234567890".getBytes());
@@ -120,7 +120,7 @@ public class TestBytesPadTermEqual extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: s3,.*")
-    public void checkBadHasTerminator2S3() throws Exception {
+    public void testCheckBadHasTerminator2S3() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("12345678901234567890".getBytes());
         r.setS2("12345678901234567890".getBytes());
@@ -129,7 +129,7 @@ public class TestBytesPadTermEqual extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: s4,.*")
-    public void checkLongerS4() throws Exception {
+    public void testCheckLongerS4() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("12345678901234567890".getBytes());
         r.setS2("12345678901234567890".getBytes());
@@ -139,7 +139,7 @@ public class TestBytesPadTermEqual extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: s4,.*")
-    public void checkEmptyS4() throws Exception {
+    public void testCheckEmptyS4() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("12345678901234567890".getBytes());
         r.setS2("12345678901234567890".getBytes());
@@ -149,7 +149,7 @@ public class TestBytesPadTermEqual extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: s4,.*")
-    public void checkBadNoTerminatorS4() throws Exception {
+    public void testCheckBadNoTerminatorS4() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("12345678901234567890".getBytes());
         r.setS2("12345678901234567890".getBytes());
@@ -159,7 +159,7 @@ public class TestBytesPadTermEqual extends CommonSpec {
     }
 
     @Test
-    public void checkGoodTerminator1S4() throws Exception {
+    public void testCheckGoodTerminator1S4() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("12345678901234567890".getBytes());
         r.setS2("12345678901234567890".getBytes());
@@ -169,7 +169,7 @@ public class TestBytesPadTermEqual extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: s4,.*")
-    public void checkEarlyTerminator1S4() throws Exception {
+    public void testCheckEarlyTerminator1S4() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("12345678901234567890".getBytes());
         r.setS2("12345678901234567890".getBytes());
@@ -179,7 +179,7 @@ public class TestBytesPadTermEqual extends CommonSpec {
     }
 
     @Test
-    public void checkGoodTerminator2S4() throws Exception {
+    public void testCheckGoodTerminator2S4() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("12345678901234567890".getBytes());
         r.setS2("12345678901234567890".getBytes());
@@ -189,7 +189,7 @@ public class TestBytesPadTermEqual extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: s4,.*")
-    public void checkEarlyTerminator2S4() throws Exception {
+    public void testCheckEarlyTerminator2S4() throws Exception {
         BytesPadTermEqual r = new BytesPadTermEqual();
         r.setS1("12345678901234567890".getBytes());
         r.setS2("12345678901234567890".getBytes());

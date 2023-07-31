@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 public class TestRepeatEosBytes extends CommonSpec {
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: records, expected: 0, actual: 3")
-    public void checkLongerIo() throws Exception {
+    public void testCheckLongerIo() throws Exception {
         RepeatEosBytes r = new RepeatEosBytes();
 
         r.setRecords(new ArrayList<>(

@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class TestBytesPadTerm extends CommonSpec {
     @Test
-    public void checkGoodMaxLengths() throws Exception {
+    public void testCheckGoodMaxLengths() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("12345678901234567890".getBytes());
         r.setStrTerm("12345678901234567890".getBytes());
@@ -17,7 +17,7 @@ public class TestBytesPadTerm extends CommonSpec {
     }
 
     @Test
-    public void checkGoodMinLengths() throws Exception {
+    public void testCheckGoodMinLengths() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("".getBytes());
         r.setStrTerm("".getBytes());
@@ -27,14 +27,14 @@ public class TestBytesPadTerm extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: str_pad,.*")
-    public void checkLongerStrPad() throws Exception {
+    public void testCheckLongerStrPad() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("123456789012345678901".getBytes());
         r._check();
     }
 
     @Test
-    public void checkGoodLastByteStrPad() throws Exception {
+    public void testCheckGoodLastByteStrPad() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad(("@@@@@"+"@@@@@"+"@@@@@"+"@@@@?").getBytes());
         r.setStrTerm("12345678901234567890".getBytes());
@@ -44,14 +44,14 @@ public class TestBytesPadTerm extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: str_pad,.*")
-    public void checkBadLastByteStrPad() throws Exception {
+    public void testCheckBadLastByteStrPad() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("123456789012345678@".getBytes());
         r._check();
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: str_term,.*")
-    public void checkLongerStrTerm() throws Exception {
+    public void testCheckLongerStrTerm() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("12345678901234567890".getBytes());
         r.setStrTerm("123456789012345678901".getBytes());
@@ -59,7 +59,7 @@ public class TestBytesPadTerm extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: str_term,.*")
-    public void checkBadHasTerminator1StrTerm() throws Exception {
+    public void testCheckBadHasTerminator1StrTerm() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("12345678901234567890".getBytes());
         r.setStrTerm("123456789012@4567890".getBytes());
@@ -67,7 +67,7 @@ public class TestBytesPadTerm extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: str_term,.*")
-    public void checkBadHasTerminator2StrTerm() throws Exception {
+    public void testCheckBadHasTerminator2StrTerm() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("12345678901234567890".getBytes());
         r.setStrTerm("1234567890123456789@".getBytes());
@@ -75,7 +75,7 @@ public class TestBytesPadTerm extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: str_term_and_pad,.*")
-    public void checkLongerStrTermAndPad() throws Exception {
+    public void testCheckLongerStrTermAndPad() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("12345678901234567890".getBytes());
         r.setStrTerm("12345678901234567890".getBytes());
@@ -84,7 +84,7 @@ public class TestBytesPadTerm extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: str_term_and_pad,.*")
-    public void checkBadHasTerminatorStrTermAndPad() throws Exception {
+    public void testCheckBadHasTerminatorStrTermAndPad() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("12345678901234567890".getBytes());
         r.setStrTerm("12345678901234567890".getBytes());
@@ -93,7 +93,7 @@ public class TestBytesPadTerm extends CommonSpec {
     }
 
     @Test
-    public void checkGoodLastByte1StrTermAndPad() throws Exception {
+    public void testCheckGoodLastByte1StrTermAndPad() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("12345678901234567890".getBytes());
         r.setStrTerm("12345678901234567890".getBytes());
@@ -103,7 +103,7 @@ public class TestBytesPadTerm extends CommonSpec {
     }
 
     @Test
-    public void checkGoodLastByte2StrTermAndPad() throws Exception {
+    public void testCheckGoodLastByte2StrTermAndPad() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("12345678901234567890".getBytes());
         r.setStrTerm("12345678901234567890".getBytes());
@@ -113,7 +113,7 @@ public class TestBytesPadTerm extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: str_term_and_pad,.*")
-    public void checkBadLastByteStrTermAndPad() throws Exception {
+    public void testCheckBadLastByteStrTermAndPad() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("12345678901234567890".getBytes());
         r.setStrTerm("12345678901234567890".getBytes());
@@ -122,7 +122,7 @@ public class TestBytesPadTerm extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: str_term_include,.*")
-    public void checkLongerStrTermInclude() throws Exception {
+    public void testCheckLongerStrTermInclude() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("12345678901234567890".getBytes());
         r.setStrTerm("12345678901234567890".getBytes());
@@ -132,7 +132,7 @@ public class TestBytesPadTerm extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: str_term_include,.*")
-    public void checkEmptyStrTermInclude() throws Exception {
+    public void testCheckEmptyStrTermInclude() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("12345678901234567890".getBytes());
         r.setStrTerm("12345678901234567890".getBytes());
@@ -142,7 +142,7 @@ public class TestBytesPadTerm extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: str_term_include,.*")
-    public void checkBadNoTerminatorStrTermInclude() throws Exception {
+    public void testCheckBadNoTerminatorStrTermInclude() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("12345678901234567890".getBytes());
         r.setStrTerm("12345678901234567890".getBytes());
@@ -152,7 +152,7 @@ public class TestBytesPadTerm extends CommonSpec {
     }
 
     @Test
-    public void checkGoodTerminator1StrTermInclude() throws Exception {
+    public void testCheckGoodTerminator1StrTermInclude() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("12345678901234567890".getBytes());
         r.setStrTerm("12345678901234567890".getBytes());
@@ -162,7 +162,7 @@ public class TestBytesPadTerm extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: str_term_include,.*")
-    public void checkEarlyTerminator1StrTermInclude() throws Exception {
+    public void testCheckEarlyTerminator1StrTermInclude() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("12345678901234567890".getBytes());
         r.setStrTerm("12345678901234567890".getBytes());
@@ -172,7 +172,7 @@ public class TestBytesPadTerm extends CommonSpec {
     }
 
     @Test
-    public void checkGoodTerminator2StrTermInclude() throws Exception {
+    public void testCheckGoodTerminator2StrTermInclude() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("12345678901234567890".getBytes());
         r.setStrTerm("12345678901234567890".getBytes());
@@ -182,7 +182,7 @@ public class TestBytesPadTerm extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: str_term_include,.*")
-    public void checkEarlyTerminator2StrTermInclude() throws Exception {
+    public void testCheckEarlyTerminator2StrTermInclude() throws Exception {
         BytesPadTerm r = new BytesPadTerm();
         r.setStrPad("12345678901234567890".getBytes());
         r.setStrTerm("12345678901234567890".getBytes());

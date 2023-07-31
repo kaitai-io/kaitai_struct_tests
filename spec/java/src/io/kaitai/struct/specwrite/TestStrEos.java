@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class TestStrEos extends CommonSpec {
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: str, expected: 0, actual: 2")
-    public void checkLongerIo() throws Exception {
+    public void testCheckLongerIo() throws Exception {
         StrEos r = new StrEos();
 
         r.setStr("Hello");

@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class TestStrEncodings extends CommonSpec {
     @Test(expectedExceptions = NullPointerException.class, expectedExceptionsMessageRegExp = ".*\\bstr2\\b.*")
-    public void checkNull() throws Exception {
+    public void testCheckNull() throws Exception {
         StrEncodings r = new StrEncodings();
 
         r.setStr1("woo");
@@ -19,7 +19,7 @@ public class TestStrEncodings extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: str2,.*")
-    public void checkMismatch() throws Exception {
+    public void testCheckMismatch() throws Exception {
         StrEncodings r = new StrEncodings();
 
         r.setStr1("Some ASCII");

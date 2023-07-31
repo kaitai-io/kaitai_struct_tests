@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class TestSwitchManualIntSize extends CommonSpec {
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: body, expected: 3, actual: 2")
-    public void checkSwitchBytesSizeMismatch() {
+    public void testCheckSwitchBytesSizeMismatch() {
         SwitchManualIntSize.Chunk chunk = new SwitchManualIntSize.Chunk();
         chunk.setCode(0x33);
         chunk.setSize(3);

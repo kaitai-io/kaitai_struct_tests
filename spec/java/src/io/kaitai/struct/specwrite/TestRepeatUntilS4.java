@@ -21,14 +21,14 @@ public class TestRepeatUntilS4 extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: entries,.*")
-    public void checkBadNoEntries() {
+    public void testCheckBadNoEntries() {
         RepeatUntilS4 r = new RepeatUntilS4();
         r.setEntries(new ArrayList<>(0));
         r._check();
     }
 
     @Test
-    public void checkGoodOneEntry() {
+    public void testCheckGoodOneEntry() {
         RepeatUntilS4 r = new RepeatUntilS4();
         r.setEntries(new ArrayList<>(Arrays.asList(-1)));
         r.setAfterall("");
@@ -36,21 +36,21 @@ public class TestRepeatUntilS4 extends CommonSpec {
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: entries,.*")
-    public void checkBadEarlyUntilEntry() {
+    public void testCheckBadEarlyUntilEntry() {
         RepeatUntilS4 r = new RepeatUntilS4();
         r.setEntries(new ArrayList<>(Arrays.asList(-3, 275000, -1, 0, -1)));
         r._check();
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: entries,.*")
-    public void checkBadNoUntilEntry() {
+    public void testCheckBadNoUntilEntry() {
         RepeatUntilS4 r = new RepeatUntilS4();
         r.setEntries(new ArrayList<>(Arrays.asList(-3, 275000, -2, 0)));
         r._check();
     }
 
     @Test
-    public void checkGoodUntilEntry() {
+    public void testCheckGoodUntilEntry() {
         RepeatUntilS4 r = new RepeatUntilS4();
         r.setEntries(new ArrayList<>(Arrays.asList(-3, 275000, -2, 0, -1)));
         r.setAfterall("");

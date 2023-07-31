@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class TestTermBytes4 extends CommonSpec {
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: value, expected: 0, actual: 1")
-    public void checkIsEofAfterIncludeTermMissing() {
+    public void testCheckIsEofAfterIncludeTermMissing() {
         TermBytes4 r = new TermBytes4();
 
         TermBytes4.S1Type s1 = new TermBytes4.S1Type(null, r, r._root());
