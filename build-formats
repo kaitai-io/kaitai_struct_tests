@@ -19,11 +19,11 @@ mkdir -p "$FORMATS_COMPILED_DIR"
 	--nim-opaque "../../tests/spec/nim/opaque/" \
 	"$FORMATS_KSY_DIR"/*.ksy || :
 
-mv -n compiled/python compiled/python-tmp
-mkdir compiled/python
-mv -n compiled/python-tmp compiled/python/testformats
+mv -n "$FORMATS_COMPILED_DIR/python" "$FORMATS_COMPILED_DIR/python-tmp"
+mkdir "$FORMATS_COMPILED_DIR/python"
+mv -n "$FORMATS_COMPILED_DIR/python-tmp" "$FORMATS_COMPILED_DIR/python/testformats"
 # __init__.py is needed in Python 2
-touch compiled/python/testformats/__init__.py
+touch "$FORMATS_COMPILED_DIR/python/testformats/__init__.py"
 
 "$COMPILER_DIR/jvm/target/universal/stage/bin/kaitai-struct-compiler" -- \
 	--verbose file -t java -d "$FORMATS_COMPILED_DIR/java/src" \
@@ -44,4 +44,4 @@ touch compiled/python/testformats/__init__.py
 	"$FORMATS_KSY_DIR"/*.ksy || :
 
 # __init__.py is needed in Python 2
-touch compiled/python/testwrite/__init__.py
+touch "$FORMATS_COMPILED_DIR/python/testwrite/__init__.py"
