@@ -128,7 +128,7 @@ class PartialBuilder
 
     orig_disp_size = disp_files.size
 
-    bad_files = Set.new(parse_failed_build(build_log, disp_files))
+    bad_files = Set.new(parse_failed_build(build_log))
     if bad_files.empty?
       log "build fails, but unable to detect any bad files"
       return false
@@ -235,7 +235,7 @@ class PartialBuilder
   # @param log_file [String] path to build's log file
   # @return [Array<String>] list of files that have compilation
   #   errors, as reported in the build log file
-  def parse_failed_build(log_file, disp_files)
+  def parse_failed_build(log_file)
     raise NotImplementedError
   end
 

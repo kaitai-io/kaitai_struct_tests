@@ -153,7 +153,7 @@ class CppBuilder < PartialBuilder
     r
   end
 
-  def parse_failed_build(log_file, disp_files)
+  def parse_failed_build(log_file)
     list = Set.new
 
     orig_cpp_filename = nil
@@ -213,7 +213,7 @@ class CppBuilder < PartialBuilder
           # C:\projects\ci-targets\tests\spec\cpp_stl_98\test_expr_calc_array_ops.cpp(4): fatal error C1083: Cannot open include file: 'expr_calc_array_ops.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
           case l
           when /^\s+([a-z0-9_]+\.cpp)$/
-            orig_cpp_filename = disp_files.find { |path| path.end_with?($1) }
+            orig_cpp_filename = $1
           when /^\s*(.*?)\((\d+)\): (:?fatal )?error (.*?): (.*)$/
             filename = $1
             #row = $2
@@ -222,7 +222,7 @@ class CppBuilder < PartialBuilder
 
             # MSBuild is really weird and sometimes uses paths for
             # same files with different upper/lower cases
-            filename = filename.downcase
+            filename.downcase!
 
             # Also, our original globbing used forward slashes, so
             # convert backslashes to forward slashes
@@ -233,9 +233,9 @@ class CppBuilder < PartialBuilder
             # files. MSBuild logs print the original .cpp filename
             # indented with 2 spaces just before any error
             # occurs, so we just use it.
-            if filename =~ /(.*)\.h$/
+            if filename =~ /\.h$/
               raise "Found error in #{filename.inspect} file, but no original .cpp file reference found before" if orig_cpp_filename.nil?
-              filename = orig_cpp_filename
+              filename = [:bare, orig_cpp_filename]
             end
             list << filename
           when /^\s*(.*?)\.obj : error LNK2019:/
