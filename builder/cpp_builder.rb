@@ -154,7 +154,7 @@ class CppBuilder < PartialBuilder
   end
 
   def parse_failed_build(log_file)
-    list = Set.new
+    list = []
 
     orig_cpp_filename = nil
     parse_mode = :normal
