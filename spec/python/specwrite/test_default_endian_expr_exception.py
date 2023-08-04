@@ -10,6 +10,4 @@ class TestDefaultEndianExprException(CommonSpec.Base):
         super(TestDefaultEndianExprException, self).__init__(*args, **kwargs)
         self.struct_class = DefaultEndianExprException
         self.src_filename = 'src/endian_expr.bin'
-
-    def test_read_write_roundtrip(self):
-        self.skipTest("cannot use roundtrip because parsing is expected to fail")
+        self.skip_roundtrip_msg_reason = "cannot use roundtrip because parsing is expected to fail"

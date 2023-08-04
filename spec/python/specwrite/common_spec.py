@@ -1,37 +1,40 @@
 import unittest
-import io
+
 from kaitaistruct import KaitaiStream, KaitaiStruct, PY2
+
+from decorators import stream_param_tests, write_stream_param
+
 
 # A little hack from https://stackoverflow.com/a/25695512 to trick 'unittest'
 # into thinking that CommonSpec.Base is not a test by itself.
-class CommonSpec:
-
+class CommonSpec(object):
+    @stream_param_tests
     class Base(unittest.TestCase):
         def __init__(self, *args, **kwargs):
             super(CommonSpec.Base, self).__init__(*args, **kwargs)
             self.maxDiff = None
+            self.skip_roundtrip_msg_reason = None
 
-        def test_read_write_roundtrip(self):
-            orig_f = io.open(self.src_filename, 'rb')
+        @write_stream_param
+        def test_read_write_roundtrip(self, stream_builder):
+            if self.skip_roundtrip_msg_reason is not None:
+                self.skipTest(self.skip_roundtrip_msg_reason)
 
-            try:
-                orig_ks = self.struct_class.from_io(orig_f)
+            with self.struct_class.from_file(self.src_filename) as orig_ks:
                 orig_ks._read()
-
                 orig_dump = CommonSpec.Base.dump_struct(orig_ks)
-
                 orig_io_size = orig_ks._io.size()
-            finally:
-                orig_f.close()
 
-            with KaitaiStream(io.BytesIO(bytearray(orig_io_size))) as new_io:
-                orig_ks._write(new_io)
-                new_io.seek(0)
+            with stream_builder(orig_io_size) as obj:
+                with obj.open() as ks_io:
+                    self.assertEqual(ks_io.size(), orig_io_size)
+                    orig_ks._write(ks_io)
 
-                new_ks = self.struct_class(new_io)
-                new_ks._read()
+                with obj.open_as_read_only() as ks_io:
+                    new_ks = self.struct_class(ks_io)
+                    new_ks._read()
 
-                new_dump = CommonSpec.Base.dump_struct(new_ks)
+                    new_dump = CommonSpec.Base.dump_struct(new_ks)
 
             self.assertEqual(orig_dump, new_dump)
 

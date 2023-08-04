@@ -10,6 +10,4 @@ class TestValidFailRangeInt(CommonSpec.Base):
         super(TestValidFailRangeInt, self).__init__(*args, **kwargs)
         self.struct_class = ValidFailRangeInt
         self.src_filename = 'src/fixed_struct.bin'
-
-    def test_read_write_roundtrip(self):
-        self.skipTest("cannot use roundtrip because parsing is expected to fail")
+        self.skip_roundtrip_msg_reason = "cannot use roundtrip because parsing is expected to fail"
