@@ -3,7 +3,7 @@
 import unittest
 import kaitaistruct
 
-from expr_to_i_trailing import ExprToITrailing
+from testformats.expr_to_i_trailing import ExprToITrailing
 
 class TestExprToITrailing(unittest.TestCase):
     def test_expr_to_i_trailing(self):
