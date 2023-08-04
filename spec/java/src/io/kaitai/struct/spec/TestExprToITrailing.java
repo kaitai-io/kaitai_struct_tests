@@ -13,7 +13,7 @@ public class TestExprToITrailing extends CommonSpec {
         ExprToITrailing r = ExprToITrailing.fromFile(SRC_DIR + "term_strz.bin");
 
         assertThrows(NumberFormatException.class, () -> r.toIR10());
-        assertIntEquals(r.toIR13(), 44020937);
+        assertIntEquals(r.toIR16(), 152517308);
         assertThrows(NumberFormatException.class, () -> r.toIGarbage());
     }
 }

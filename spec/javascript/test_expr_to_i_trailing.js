@@ -11,7 +11,7 @@ testHelper('ExprToITrailing', 'src/term_strz.bin', function(r, ExprToITrailing) 
     },
     {name: 'KaitaiStream.ConversionError'}
   )
-  assert.strictEqual(r.toIR13, 44020937);
+  assert.strictEqual(r.toIR16, 152517308);
   assert.throws(
     function() {
       r.toIGarbage;
