@@ -183,6 +183,152 @@ RSpec.describe CppBuilder do
     end
   end
 
+  # The log comes from https://ci.appveyor.com/project/kaitai-io/ci-targets/builds/31957431/job/e5q10o8urou743d9
+  context 'msbuild_h' do
+    before :context do
+      Dir.chdir("#{@spec_dir}/msbuild_h")
+      @builder = CppBuilder.new('compiled/cpp_stl_11', 'spec/cpp_stl_11', 'test_out/cpp_stl_11')
+      # Comment out the following line to enable logging for this test
+      def @builder.log(msg); end
+      @builder.mode = :msbuild_windows
+    end
+
+    describe '#parse_failed_build' do
+      it 'parses failed build info' do
+        expect(@builder.parse_failed_build('test_out/cpp_stl_11/build-2.log')).to eq [
+          [:bare, 'test_imports_abs.cpp'],
+          [:bare, 'test_imports_abs_abs.cpp'],
+          [:bare, 'test_imports_abs_rel.cpp'],
+          [:bare, 'test_imports_rel_1.cpp'],
+          [:bare, 'imported_and_abs.cpp'],
+          [:bare, 'imports_abs.cpp'],
+          [:bare, 'imports_abs_abs.cpp'],
+          [:bare, 'imports_abs_rel.cpp'],
+          [:bare, 'imports_rel_1.cpp'],
+          [:bare, 'switch_else_only.cpp'],
+          [:bare, 'switch_else_only.cpp'],
+          [:bare, 'switch_else_only.cpp'],
+        ]
+      end
+    end
+
+    describe '#adjust_files_for_failed_build' do
+      it 'properly disposes files' do
+        mand_files = Set.new([
+          'c:/projects/ci-targets/runtime/cpp_stl/kaitai/kaitaistream.cpp',
+        ])
+        disp_files = Set.new([
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_str.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_debug_array_user.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_enum_int_range_s.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_expr_bytes_ops.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_if_values.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_imports_abs.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_imports_abs_abs.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_imports_abs_rel.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_imports_circular_a.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_imports_rel_1.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_index_sizes.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_meta_xref.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_opaque_with_param.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_process_coerce_usertype1.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_process_repeat_bytes.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_str_eos.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_switch_integers.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_switch_multi_bool_ops.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_valid_short.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/debug_enum_name.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/default_big_endian.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/enum_int_range_u.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/eof_exception_bytes.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/expr_bytes_ops.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/expr_enum.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/expr_sizeof_type_0.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/imported_1.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/imported_and_abs.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/imported_and_rel.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/imports_abs.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/imports_abs_abs.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/imports_abs_rel.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/imports_circular_a.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/imports_rel_1.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/index_sizes.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/integers.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/nav_parent_vs_value_inst.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/nested_types2.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/params_pass_struct.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/position_to_end.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/process_repeat_usertype.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/repeat_n_strz_double.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/repeat_until_complex.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/switch_else_only.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/switch_integers.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/switch_manual_int.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/switch_manual_int_size.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/switch_manual_int_size_eos.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/switch_multi_bool_ops.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/ts_packet_header.cpp',
+        ])
+
+        r = @builder.adjust_files_for_failed_build('test_out/cpp_stl_11/build-2.log', mand_files, disp_files)
+
+        expect(r).to be_truthy
+        expect(disp_files).to match_array [
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_str.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_debug_array_user.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_enum_int_range_s.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_expr_bytes_ops.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_if_values.cpp',
+          # "c:/projects/ci-targets/tests/spec/cpp_stl_11/test_imports_abs.cpp",
+          # "c:/projects/ci-targets/tests/spec/cpp_stl_11/test_imports_abs_abs.cpp",
+          # "c:/projects/ci-targets/tests/spec/cpp_stl_11/test_imports_abs_rel.cpp",
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_imports_circular_a.cpp',
+          # "c:/projects/ci-targets/tests/spec/cpp_stl_11/test_imports_rel_1.cpp",
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_index_sizes.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_meta_xref.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_opaque_with_param.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_process_coerce_usertype1.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_process_repeat_bytes.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_str_eos.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_switch_integers.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_switch_multi_bool_ops.cpp',
+          'c:/projects/ci-targets/tests/spec/cpp_stl_11/test_valid_short.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/debug_enum_name.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/default_big_endian.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/enum_int_range_u.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/eof_exception_bytes.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/expr_bytes_ops.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/expr_enum.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/expr_sizeof_type_0.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/imported_1.cpp',
+          # "c:/projects/ci-targets/tests/compiled/cpp_stl_11/imported_and_abs.cpp",
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/imported_and_rel.cpp',
+          # "c:/projects/ci-targets/tests/compiled/cpp_stl_11/imports_abs.cpp",
+          # "c:/projects/ci-targets/tests/compiled/cpp_stl_11/imports_abs_abs.cpp",
+          # "c:/projects/ci-targets/tests/compiled/cpp_stl_11/imports_abs_rel.cpp",
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/imports_circular_a.cpp',
+          # "c:/projects/ci-targets/tests/compiled/cpp_stl_11/imports_rel_1.cpp",
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/index_sizes.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/integers.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/nav_parent_vs_value_inst.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/nested_types2.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/params_pass_struct.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/position_to_end.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/process_repeat_usertype.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/repeat_n_strz_double.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/repeat_until_complex.cpp',
+          # "c:/projects/ci-targets/tests/compiled/cpp_stl_11/switch_else_only.cpp",
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/switch_integers.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/switch_manual_int.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/switch_manual_int_size.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/switch_manual_int_size_eos.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/switch_multi_bool_ops.cpp',
+          'c:/projects/ci-targets/tests/compiled/cpp_stl_11/ts_packet_header.cpp',
+        ]
+      end
+    end
+  end
+
   context 'clang_linux' do
     before :context do
       Dir.chdir("#{@spec_dir}/clang_linux")
