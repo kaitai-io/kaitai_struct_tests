@@ -103,9 +103,9 @@ when 'lua', 'nim'
   )
 when 'rust'
   JUnitXMLParser.new(infile).to_h
-when 'go', 'perl'
+when 'go', 'perl', 'python', 'python-write', 'construct'
   add_kst_adoption(
-    JUnitXMLParser.new("#{infile}/report.xml").to_h,
+    JUnitXMLParser.new("#{infile}/report.xml", lang == 'python-write').to_h,
     infile
   )
 when 'javascript'
@@ -113,9 +113,9 @@ when 'javascript'
     JUnitXMLParser.new("#{infile}/test-output-javascript.xml").to_h,
     infile
   )
-when 'php', 'python', 'python-write', 'construct'
+when 'php'
   add_kst_adoption(
-    JUnitXMLParser.new(infile, lang == 'python-write').to_h,
+    JUnitXMLParser.new(infile).to_h,
     infile
   )
 when 'ruby'

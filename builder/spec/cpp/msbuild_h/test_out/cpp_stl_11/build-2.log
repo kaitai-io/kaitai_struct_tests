@@ -1,0 +1,145 @@
+Microsoft (R) Build Engine version 15.9.21+g9802d43bc3 for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Building the projects in this solution one at a time. To enable parallel build, please add the "/m" switch.
+Build started 4/4/2020 11:38:32 PM.
+Project "C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\KS_TEST_CPP_STL.sln" on node 1 (default targets).
+ValidateSolutionConfiguration:
+  Building solution configuration "Debug|x64".
+ValidateProjects:
+  The project "ALL_BUILD" is not selected for building in solution configuration "Debug|x64".
+  The project "RUN_TESTS" is not selected for building in solution configuration "Debug|x64".
+Project "C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\KS_TEST_CPP_STL.sln" (1) is building "C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ZERO_CHECK.vcxproj" (2) on node 1 (default targets).
+InitializeBuildStatus:
+  Creating "x64\Debug\ZERO_CHECK\ZERO_CHECK.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+CustomBuild:
+  All outputs are up-to-date.
+FinalizeBuildStatus:
+  Deleting file "x64\Debug\ZERO_CHECK\ZERO_CHECK.tlog\unsuccessfulbuild".
+  Touching "x64\Debug\ZERO_CHECK\ZERO_CHECK.tlog\ZERO_CHECK.lastbuildstate".
+Done Building Project "C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ZERO_CHECK.vcxproj" (default targets).
+Project "C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\KS_TEST_CPP_STL.sln" (1) is building "C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj.metaproj" (3) on node 1 (default targets).
+Project "C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj.metaproj" (3) is building "C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj" (4) on node 1 (default targets).
+InitializeBuildStatus:
+  Touching "ks_tests.dir\Debug\ks_tests.tlog\unsuccessfulbuild".
+CustomBuild:
+  All outputs are up-to-date.
+VcpkgTripletSelection:
+  Not using Vcpkg because VcpkgEnabled is "false"
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe /c /I"C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin" /I"C:\projects\ci-targets\tests\compiled\cpp_stl_11" /I"C:\projects\ci-targets\tests\spec\cpp_stl_11\..\..\..\runtime\cpp_stl" /I"C:\projects\ci-targets\tests\spec\cpp_stl_11\prereq" /I"C:\Tools\vcpkg\installed\x64-windows\include" /Zi /nologo /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D KS_ZLIB /D KS_STR_ENCODING_ICONV /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++14 /Fo"ks_tests.dir\Debug\\" /Fd"ks_tests.dir\Debug\vc141.pdb" /Gd /TP /errorReport:queue  /utf-8 "C:\projects\ci-targets\runtime\cpp_stl\kaitai\kaitaistream.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_combine_str.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_debug_array_user.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_enum_int_range_s.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_expr_bytes_ops.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_if_values.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_imports_abs.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_imports_abs_abs.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_imports_abs_rel.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_imports_circular_a.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_imports_rel_1.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_index_sizes.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_meta_xref.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_opaque_with_param.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_process_coerce_usertype1.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_process_repeat_bytes.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_str_eos.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_switch_integers.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_switch_multi_bool_ops.cpp" "C:\projects\ci-targets\tests\spec\cpp_stl_11\test_valid_short.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\debug_enum_name.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\default_big_endian.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\enum_int_range_u.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\eof_exception_bytes.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\expr_bytes_ops.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\expr_enum.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\expr_sizeof_type_0.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\imported_1.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\imported_and_abs.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\imported_and_rel.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_abs.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_abs_abs.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_abs_rel.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_circular_a.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_rel_1.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\index_sizes.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\integers.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\nav_parent_vs_value_inst.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\nested_types2.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\params_pass_struct.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\position_to_end.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\process_repeat_usertype.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\repeat_n_strz_double.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\repeat_until_complex.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\switch_else_only.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\switch_integers.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\switch_manual_int.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\switch_manual_int_size.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\switch_manual_int_size_eos.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\switch_multi_bool_ops.cpp" "C:\projects\ci-targets\tests\compiled\cpp_stl_11\ts_packet_header.cpp" 
+  kaitaistream.cpp
+C:\projects\ci-targets\runtime\cpp_stl\kaitai\kaitaistream.cpp(492): warning C4267: '=': conversion from 'size_t' to 'uInt', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  test_combine_str.cpp
+  test_debug_array_user.cpp
+  test_enum_int_range_s.cpp
+C:\projects\ci-targets\tests\compiled\cpp_stl_11\enum_int_range_s.h(18): warning C4146: unary minus operator applied to unsigned type, result still unsigned [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  test_expr_bytes_ops.cpp
+  test_if_values.cpp
+  test_imports_abs.cpp
+C:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_abs.h(8): fatal error C1083: Cannot open include file: '/common/vlq_base128_le.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  test_imports_abs_abs.cpp
+C:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_abs_abs.h(8): fatal error C1083: Cannot open include file: '/for_abs_imports/imported_and_abs.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  test_imports_abs_rel.cpp
+C:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_abs_rel.h(8): fatal error C1083: Cannot open include file: '/for_abs_imports/imported_and_rel.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  test_imports_circular_a.cpp
+  test_imports_rel_1.cpp
+C:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_rel_1.h(8): fatal error C1083: Cannot open include file: 'for_rel_imports/imported_1.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  test_index_sizes.cpp
+  test_meta_xref.cpp
+  test_opaque_with_param.cpp
+  test_process_coerce_usertype1.cpp
+  test_process_repeat_bytes.cpp
+  test_str_eos.cpp
+  test_switch_integers.cpp
+  test_switch_multi_bool_ops.cpp
+  test_valid_short.cpp
+  Generating Code...
+  Compiling...
+  debug_enum_name.cpp
+  default_big_endian.cpp
+  enum_int_range_u.cpp
+  eof_exception_bytes.cpp
+  expr_bytes_ops.cpp
+C:\projects\ci-targets\tests\compiled\cpp_stl_11\expr_bytes_ops.cpp(99): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_11\expr_bytes_ops.cpp(115): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  expr_enum.cpp
+  expr_sizeof_type_0.cpp
+  imported_1.cpp
+  imported_and_abs.cpp
+c:\projects\ci-targets\tests\compiled\cpp_stl_11\imported_and_abs.h(8): fatal error C1083: Cannot open include file: '/imported_root.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  imported_and_rel.cpp
+  imports_abs.cpp
+c:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_abs.h(8): fatal error C1083: Cannot open include file: '/common/vlq_base128_le.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  imports_abs_abs.cpp
+c:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_abs_abs.h(8): fatal error C1083: Cannot open include file: '/for_abs_imports/imported_and_abs.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  imports_abs_rel.cpp
+c:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_abs_rel.h(8): fatal error C1083: Cannot open include file: '/for_abs_imports/imported_and_rel.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  imports_circular_a.cpp
+  imports_rel_1.cpp
+c:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_rel_1.h(8): fatal error C1083: Cannot open include file: 'for_rel_imports/imported_1.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  index_sizes.cpp
+  integers.cpp
+  nav_parent_vs_value_inst.cpp
+  nested_types2.cpp
+  params_pass_struct.cpp
+  Generating Code...
+  Compiling...
+  position_to_end.cpp
+  process_repeat_usertype.cpp
+  repeat_n_strz_double.cpp
+  repeat_until_complex.cpp
+  switch_else_only.cpp
+c:\projects\ci-targets\tests\compiled\cpp_stl_11\switch_else_only.h(62): error C2332: 'struct': missing tag name [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+c:\projects\ci-targets\tests\compiled\cpp_stl_11\switch_else_only.h(62): error C2059: syntax error: 'type' [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+c:\projects\ci-targets\tests\compiled\cpp_stl_11\switch_else_only.h(62): error C2334: unexpected token(s) preceding '{'; skipping apparent function body [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_11\switch_else_only.cpp(20): warning C4065: switch statement contains 'default' but no 'case' labels [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_11\switch_else_only.cpp(26): warning C4065: switch statement contains 'default' but no 'case' labels [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+C:\projects\ci-targets\tests\compiled\cpp_stl_11\switch_else_only.cpp(34): warning C4065: switch statement contains 'default' but no 'case' labels [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  switch_integers.cpp
+  switch_manual_int.cpp
+  switch_manual_int_size.cpp
+  switch_manual_int_size_eos.cpp
+  switch_multi_bool_ops.cpp
+  ts_packet_header.cpp
+  Generating Code...
+Done Building Project "C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj" (default targets) -- FAILED.
+Done Building Project "C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj.metaproj" (default targets) -- FAILED.
+Done Building Project "C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\KS_TEST_CPP_STL.sln" (default targets) -- FAILED.
+
+Build FAILED.
+
+"C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\KS_TEST_CPP_STL.sln" (default target) (1) ->
+"C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj.metaproj" (default target) (3) ->
+"C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj" (default target) (4) ->
+(ClCompile target) ->
+  C:\projects\ci-targets\runtime\cpp_stl\kaitai\kaitaistream.cpp(492): warning C4267: '=': conversion from 'size_t' to 'uInt', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_11\enum_int_range_s.h(18): warning C4146: unary minus operator applied to unsigned type, result still unsigned [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_11\expr_bytes_ops.cpp(99): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_11\expr_bytes_ops.cpp(115): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_11\switch_else_only.cpp(20): warning C4065: switch statement contains 'default' but no 'case' labels [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_11\switch_else_only.cpp(26): warning C4065: switch statement contains 'default' but no 'case' labels [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_11\switch_else_only.cpp(34): warning C4065: switch statement contains 'default' but no 'case' labels [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+
+
+"C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\KS_TEST_CPP_STL.sln" (default target) (1) ->
+"C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj.metaproj" (default target) (3) ->
+"C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj" (default target) (4) ->
+(ClCompile target) ->
+  C:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_abs.h(8): fatal error C1083: Cannot open include file: '/common/vlq_base128_le.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_abs_abs.h(8): fatal error C1083: Cannot open include file: '/for_abs_imports/imported_and_abs.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_abs_rel.h(8): fatal error C1083: Cannot open include file: '/for_abs_imports/imported_and_rel.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  C:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_rel_1.h(8): fatal error C1083: Cannot open include file: 'for_rel_imports/imported_1.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  c:\projects\ci-targets\tests\compiled\cpp_stl_11\imported_and_abs.h(8): fatal error C1083: Cannot open include file: '/imported_root.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  c:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_abs.h(8): fatal error C1083: Cannot open include file: '/common/vlq_base128_le.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  c:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_abs_abs.h(8): fatal error C1083: Cannot open include file: '/for_abs_imports/imported_and_abs.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  c:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_abs_rel.h(8): fatal error C1083: Cannot open include file: '/for_abs_imports/imported_and_rel.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  c:\projects\ci-targets\tests\compiled\cpp_stl_11\imports_rel_1.h(8): fatal error C1083: Cannot open include file: 'for_rel_imports/imported_1.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  c:\projects\ci-targets\tests\compiled\cpp_stl_11\switch_else_only.h(62): error C2332: 'struct': missing tag name [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  c:\projects\ci-targets\tests\compiled\cpp_stl_11\switch_else_only.h(62): error C2059: syntax error: 'type' [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+  c:\projects\ci-targets\tests\compiled\cpp_stl_11\switch_else_only.h(62): error C2334: unexpected token(s) preceding '{'; skipping apparent function body [C:\projects\ci-targets\tests\compiled\cpp_stl_11\bin\ks_tests.vcxproj]
+
+    7 Warning(s)
+    12 Error(s)
+
+Time Elapsed 00:00:43.08

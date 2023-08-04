@@ -153,10 +153,11 @@ class CppBuilder < PartialBuilder
     r
   end
 
-  def parse_failed_build(log_file, disp_files)
-    list = Set.new
+  def parse_failed_build(log_file)
+    list = []
 
     orig_cpp_filename = nil
+    orig_cpp_filename_line_no = nil
     parse_mode = :normal
 
     case @mode
@@ -207,14 +208,20 @@ class CppBuilder < PartialBuilder
       }
     when :msbuild_windows
       File.open(log_file, 'r') { |f|
-        f.each_line { |l|
+        f.each_line.with_index(1) { |l, line_no|
           l.chomp!
+          clear_orig_cpp_filename = true
           # c:\projects\ci-targets\tests\compiled\cpp_stl_98\enum_to_i_class_border_2.h(18): error C2061: syntax error: identifier 'enum_to_i_class_border_1_t' [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
           # C:\projects\ci-targets\tests\spec\cpp_stl_98\test_expr_calc_array_ops.cpp(4): fatal error C1083: Cannot open include file: 'expr_calc_array_ops.h': No such file or directory [C:\projects\ci-targets\tests\compiled\cpp_stl_98\bin\ks_tests.vcxproj]
           case l
           when /^\s+([a-z0-9_]+\.cpp)$/
-            orig_cpp_filename = disp_files.find { |path| path.end_with?($1) }
-          when /^\s*(.*?)\((\d+)\): (:?fatal )?error (.*?): (.*)$/
+            clear_orig_cpp_filename = false
+            orig_cpp_filename = $1
+            orig_cpp_filename_line_no = line_no
+          when /^(\S+?)\((\d+)\): warning (.*?): (.*)$/
+            clear_orig_cpp_filename = false
+          when /^(\S+?)\((\d+)\): (:?fatal )?error (.*?): (.*)$/
+            clear_orig_cpp_filename = false
             filename = $1
             #row = $2
             #code = $3
@@ -222,7 +229,7 @@ class CppBuilder < PartialBuilder
 
             # MSBuild is really weird and sometimes uses paths for
             # same files with different upper/lower cases
-            filename = filename.downcase
+            filename.downcase!
 
             # Also, our original globbing used forward slashes, so
             # convert backslashes to forward slashes
@@ -233,14 +240,23 @@ class CppBuilder < PartialBuilder
             # files. MSBuild logs print the original .cpp filename
             # indented with 2 spaces just before any error
             # occurs, so we just use it.
-            if filename =~ /(.*)\.h$/
+            if filename =~ /\.h$/
+              log "line #{line_no}: error in #{filename.inspect}, "\
+                "orig_cpp_filename is #{orig_cpp_filename.inspect} from line #{orig_cpp_filename_line_no.inspect}"
               raise "Found error in #{filename.inspect} file, but no original .cpp file reference found before" if orig_cpp_filename.nil?
-              filename = orig_cpp_filename
+              filename = [:bare, orig_cpp_filename]
             end
             list << filename
-          when /^\s*(.*?)\.obj : error LNK2019:/
+          when /^(\S+?)\.obj : error LNK2019:/
             filename = "#{$1}.cpp"
             list << [:bare, filename]
+          end
+
+          unless orig_cpp_filename.nil? || !clear_orig_cpp_filename
+            log "line #{line_no}: clearing orig_cpp_filename #{orig_cpp_filename.inspect}"\
+              " from line #{orig_cpp_filename_line_no.inspect}"
+            orig_cpp_filename = nil
+            orig_cpp_filename_line_no = nil
           end
         }
       }

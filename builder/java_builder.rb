@@ -55,7 +55,7 @@ class JavaBuilder < PartialBuilder
     run_and_tee({}, cli, log_file).exitstatus
   end
 
-  def parse_failed_build(log_file, disp_files)
+  def parse_failed_build(log_file)
     list = Set.new
 
     File.open(log_file, 'r') { |f|
