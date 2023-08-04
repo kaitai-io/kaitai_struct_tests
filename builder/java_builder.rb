@@ -44,6 +44,7 @@ class JavaBuilder < PartialBuilder
   end
 
   def build_project(log_file)
+    FileUtils.rm_rf(@java_classes_dir)
     FileUtils.mkdir_p(@java_classes_dir)
     cli = [
       'javac',
