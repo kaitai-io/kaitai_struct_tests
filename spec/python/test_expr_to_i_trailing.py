@@ -11,6 +11,6 @@ class TestExprToITrailing(unittest.TestCase):
 
             with self.assertRaises(ValueError):
                 r.to_i_r10
-            self.assertEqual(r.to_i_r13, 44020937)
+            self.assertEqual(r.to_i_r16, 152517308)
             with self.assertRaises(ValueError):
                 r.to_i_garbage
