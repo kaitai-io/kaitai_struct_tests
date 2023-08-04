@@ -10,4 +10,3 @@ class TestParamsCallExtraParens(CommonSpec.Base):
         super(TestParamsCallExtraParens, self).__init__(*args, **kwargs)
         self.struct_class = ParamsCallExtraParens
         self.src_filename = 'src/term_strz.bin'
-

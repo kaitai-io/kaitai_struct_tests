@@ -10,4 +10,3 @@ class TestCastToTop(CommonSpec.Base):
         super(TestCastToTop, self).__init__(*args, **kwargs)
         self.struct_class = CastToTop
         self.src_filename = 'src/fixed_struct.bin'
-

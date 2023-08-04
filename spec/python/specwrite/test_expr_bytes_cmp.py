@@ -10,4 +10,3 @@ class TestExprBytesCmp(CommonSpec.Base):
         super(TestExprBytesCmp, self).__init__(*args, **kwargs)
         self.struct_class = ExprBytesCmp
         self.src_filename = 'src/fixed_struct.bin'
-

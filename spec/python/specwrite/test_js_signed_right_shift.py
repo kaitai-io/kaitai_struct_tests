@@ -10,4 +10,3 @@ class TestJsSignedRightShift(CommonSpec.Base):
         super(TestJsSignedRightShift, self).__init__(*args, **kwargs)
         self.struct_class = JsSignedRightShift
         self.src_filename = 'src/fixed_struct.bin'
-

@@ -10,4 +10,3 @@ class TestSwitchBytearray(CommonSpec.Base):
         super(TestSwitchBytearray, self).__init__(*args, **kwargs)
         self.struct_class = SwitchBytearray
         self.src_filename = 'src/switch_opcodes.bin'
-

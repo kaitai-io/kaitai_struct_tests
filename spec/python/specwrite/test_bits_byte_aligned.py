@@ -10,4 +10,3 @@ class TestBitsByteAligned(CommonSpec.Base):
         super(TestBitsByteAligned, self).__init__(*args, **kwargs)
         self.struct_class = BitsByteAligned
         self.src_filename = 'src/fixed_struct.bin'
-

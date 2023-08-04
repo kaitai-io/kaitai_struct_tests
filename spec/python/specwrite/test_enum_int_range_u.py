@@ -10,4 +10,3 @@ class TestEnumIntRangeU(CommonSpec.Base):
         super(TestEnumIntRangeU, self).__init__(*args, **kwargs)
         self.struct_class = EnumIntRangeU
         self.src_filename = 'src/enum_int_range_u.bin'
-

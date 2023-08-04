@@ -10,4 +10,3 @@ class TestProcessRepeatUsertype(CommonSpec.Base):
         super(TestProcessRepeatUsertype, self).__init__(*args, **kwargs)
         self.struct_class = ProcessRepeatUsertype
         self.src_filename = 'src/process_xor_4.bin'
-

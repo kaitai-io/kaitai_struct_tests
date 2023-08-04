@@ -10,4 +10,3 @@ class TestDocstringsDocrefMulti(CommonSpec.Base):
         super(TestDocstringsDocrefMulti, self).__init__(*args, **kwargs)
         self.struct_class = DocstringsDocrefMulti
         self.src_filename = 'src/fixed_struct.bin'
-

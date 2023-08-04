@@ -10,4 +10,3 @@ class TestExprArray(CommonSpec.Base):
         super(TestExprArray, self).__init__(*args, **kwargs)
         self.struct_class = ExprArray
         self.src_filename = 'src/expr_array.bin'
-

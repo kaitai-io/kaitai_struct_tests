@@ -10,4 +10,3 @@ class TestDefaultBigEndian(CommonSpec.Base):
         super(TestDefaultBigEndian, self).__init__(*args, **kwargs)
         self.struct_class = DefaultBigEndian
         self.src_filename = 'src/enum_0.bin'
-

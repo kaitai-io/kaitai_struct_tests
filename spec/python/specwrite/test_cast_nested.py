@@ -10,4 +10,3 @@ class TestCastNested(CommonSpec.Base):
         super(TestCastNested, self).__init__(*args, **kwargs)
         self.struct_class = CastNested
         self.src_filename = 'src/switch_opcodes.bin'
-

@@ -10,4 +10,3 @@ class TestExprIfIntOps(CommonSpec.Base):
         super(TestExprIfIntOps, self).__init__(*args, **kwargs)
         self.struct_class = ExprIfIntOps
         self.src_filename = 'src/instance_io.bin'
-

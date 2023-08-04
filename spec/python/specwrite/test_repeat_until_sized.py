@@ -10,4 +10,3 @@ class TestRepeatUntilSized(CommonSpec.Base):
         super(TestRepeatUntilSized, self).__init__(*args, **kwargs)
         self.struct_class = RepeatUntilSized
         self.src_filename = 'src/repeat_until_process.bin'
-

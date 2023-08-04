@@ -10,4 +10,3 @@ class TestPositionAbs(CommonSpec.Base):
         super(TestPositionAbs, self).__init__(*args, **kwargs)
         self.struct_class = PositionAbs
         self.src_filename = 'src/position_abs.bin'
-

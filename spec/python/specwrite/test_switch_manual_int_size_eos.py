@@ -10,4 +10,3 @@ class TestSwitchManualIntSizeEos(CommonSpec.Base):
         super(TestSwitchManualIntSizeEos, self).__init__(*args, **kwargs)
         self.struct_class = SwitchManualIntSizeEos
         self.src_filename = 'src/switch_tlv.bin'
-

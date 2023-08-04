@@ -10,4 +10,3 @@ class TestRepeatNStrzDouble(CommonSpec.Base):
         super(TestRepeatNStrzDouble, self).__init__(*args, **kwargs)
         self.struct_class = RepeatNStrzDouble
         self.src_filename = 'src/repeat_n_strz.bin'
-

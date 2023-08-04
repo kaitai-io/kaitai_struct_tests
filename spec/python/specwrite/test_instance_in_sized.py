@@ -10,4 +10,3 @@ class TestInstanceInSized(CommonSpec.Base):
         super(TestInstanceInSized, self).__init__(*args, **kwargs)
         self.struct_class = InstanceInSized
         self.src_filename = 'src/process_rotate.bin'
-

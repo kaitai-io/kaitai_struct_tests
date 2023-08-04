@@ -10,4 +10,3 @@ class TestExprBytesOps(CommonSpec.Base):
         super(TestExprBytesOps, self).__init__(*args, **kwargs)
         self.struct_class = ExprBytesOps
         self.src_filename = 'src/nav_parent_switch.bin'
-

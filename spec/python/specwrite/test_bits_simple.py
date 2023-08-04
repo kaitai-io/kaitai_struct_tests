@@ -10,4 +10,3 @@ class TestBitsSimple(CommonSpec.Base):
         super(TestBitsSimple, self).__init__(*args, **kwargs)
         self.struct_class = BitsSimple
         self.src_filename = 'src/fixed_struct.bin'
-

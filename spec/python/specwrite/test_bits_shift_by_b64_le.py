@@ -10,4 +10,3 @@ class TestBitsShiftByB64Le(CommonSpec.Base):
         super(TestBitsShiftByB64Le, self).__init__(*args, **kwargs)
         self.struct_class = BitsShiftByB64Le
         self.src_filename = 'src/bits_shift_by_b64_le.bin'
-

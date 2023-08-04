@@ -10,4 +10,3 @@ class TestBitsSignedResB32Be(CommonSpec.Base):
         super(TestBitsSignedResB32Be, self).__init__(*args, **kwargs)
         self.struct_class = BitsSignedResB32Be
         self.src_filename = 'src/bits_shift_by_b32_le.bin'
-

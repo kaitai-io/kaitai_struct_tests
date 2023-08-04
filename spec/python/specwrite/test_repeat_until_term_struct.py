@@ -10,4 +10,3 @@ class TestRepeatUntilTermStruct(CommonSpec.Base):
         super(TestRepeatUntilTermStruct, self).__init__(*args, **kwargs)
         self.struct_class = RepeatUntilTermStruct
         self.src_filename = 'src/repeat_until_process.bin'
-

@@ -10,4 +10,3 @@ class TestExprStrEncodings(CommonSpec.Base):
         super(TestExprStrEncodings, self).__init__(*args, **kwargs)
         self.struct_class = ExprStrEncodings
         self.src_filename = 'src/str_encodings.bin'
-

@@ -10,4 +10,3 @@ class TestExprIoEofBits(CommonSpec.Base):
         super(TestExprIoEofBits, self).__init__(*args, **kwargs)
         self.struct_class = ExprIoEofBits
         self.src_filename = 'src/nav_parent_switch.bin'
-

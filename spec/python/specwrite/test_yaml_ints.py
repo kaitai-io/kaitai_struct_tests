@@ -10,4 +10,3 @@ class TestYamlInts(CommonSpec.Base):
         super(TestYamlInts, self).__init__(*args, **kwargs)
         self.struct_class = YamlInts
         self.src_filename = 'src/fixed_struct.bin'
-

@@ -10,4 +10,3 @@ class TestZlibWithHeader78(CommonSpec.Base):
         super(TestZlibWithHeader78, self).__init__(*args, **kwargs)
         self.struct_class = ZlibWithHeader78
         self.src_filename = 'src/zlib_with_header_78.bin'
-

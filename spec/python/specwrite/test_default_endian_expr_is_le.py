@@ -10,4 +10,3 @@ class TestDefaultEndianExprIsLe(CommonSpec.Base):
         super(TestDefaultEndianExprIsLe, self).__init__(*args, **kwargs)
         self.struct_class = DefaultEndianExprIsLe
         self.src_filename = 'src/endian_expr.bin'
-

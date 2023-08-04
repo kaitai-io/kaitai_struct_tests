@@ -10,4 +10,3 @@ class TestProcessBytesPadTerm(CommonSpec.Base):
         super(TestProcessBytesPadTerm, self).__init__(*args, **kwargs)
         self.struct_class = ProcessBytesPadTerm
         self.src_filename = 'src/str_pad_term.bin'
-

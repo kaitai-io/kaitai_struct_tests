@@ -10,4 +10,3 @@ class TestDebugEnumName(CommonSpec.Base):
         super(TestDebugEnumName, self).__init__(*args, **kwargs)
         self.struct_class = DebugEnumName
         self.src_filename = 'src/fixed_struct.bin'
-

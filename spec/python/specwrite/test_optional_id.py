@@ -10,4 +10,3 @@ class TestOptionalId(CommonSpec.Base):
         super(TestOptionalId, self).__init__(*args, **kwargs)
         self.struct_class = OptionalId
         self.src_filename = 'src/fixed_struct.bin'
-

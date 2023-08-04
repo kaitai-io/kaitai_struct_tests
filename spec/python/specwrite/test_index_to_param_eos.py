@@ -10,4 +10,3 @@ class TestIndexToParamEos(CommonSpec.Base):
         super(TestIndexToParamEos, self).__init__(*args, **kwargs)
         self.struct_class = IndexToParamEos
         self.src_filename = 'src/index_sizes.bin'
-

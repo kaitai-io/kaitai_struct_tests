@@ -10,4 +10,3 @@ class TestProcessRepeatBytes(CommonSpec.Base):
         super(TestProcessRepeatBytes, self).__init__(*args, **kwargs)
         self.struct_class = ProcessRepeatBytes
         self.src_filename = 'src/process_xor_4.bin'
-

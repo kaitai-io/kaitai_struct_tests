@@ -10,4 +10,3 @@ class TestProcessXor4Const(CommonSpec.Base):
         super(TestProcessXor4Const, self).__init__(*args, **kwargs)
         self.struct_class = ProcessXor4Const
         self.src_filename = 'src/process_xor_4.bin'
-

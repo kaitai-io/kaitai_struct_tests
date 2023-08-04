@@ -10,4 +10,3 @@ class TestInstanceInRepeatUntil(CommonSpec.Base):
         super(TestInstanceInRepeatUntil, self).__init__(*args, **kwargs)
         self.struct_class = InstanceInRepeatUntil
         self.src_filename = 'src/repeat_until_s4.bin'
-

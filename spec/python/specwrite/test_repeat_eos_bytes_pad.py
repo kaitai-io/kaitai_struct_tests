@@ -10,4 +10,3 @@ class TestRepeatEosBytesPad(CommonSpec.Base):
         super(TestRepeatEosBytesPad, self).__init__(*args, **kwargs)
         self.struct_class = RepeatEosBytesPad
         self.src_filename = 'src/repeat_until_process.bin'
-

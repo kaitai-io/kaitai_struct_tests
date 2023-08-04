@@ -10,4 +10,3 @@ class TestExprBytesNonLiteral(CommonSpec.Base):
         super(TestExprBytesNonLiteral, self).__init__(*args, **kwargs)
         self.struct_class = ExprBytesNonLiteral
         self.src_filename = 'src/enum_negative.bin'
-

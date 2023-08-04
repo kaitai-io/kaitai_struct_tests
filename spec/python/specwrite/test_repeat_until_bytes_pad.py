@@ -10,4 +10,3 @@ class TestRepeatUntilBytesPad(CommonSpec.Base):
         super(TestRepeatUntilBytesPad, self).__init__(*args, **kwargs)
         self.struct_class = RepeatUntilBytesPad
         self.src_filename = 'src/repeat_until_process.bin'
-

@@ -10,4 +10,3 @@ class TestBitsSeqEndianCombo(CommonSpec.Base):
         super(TestBitsSeqEndianCombo, self).__init__(*args, **kwargs)
         self.struct_class = BitsSeqEndianCombo
         self.src_filename = 'src/process_xor_4.bin'
-

@@ -10,4 +10,3 @@ class TestCombineBool(CommonSpec.Base):
         super(TestCombineBool, self).__init__(*args, **kwargs)
         self.struct_class = CombineBool
         self.src_filename = 'src/enum_negative.bin'
-

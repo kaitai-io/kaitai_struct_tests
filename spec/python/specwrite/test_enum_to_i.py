@@ -10,4 +10,3 @@ class TestEnumToI(CommonSpec.Base):
         super(TestEnumToI, self).__init__(*args, **kwargs)
         self.struct_class = EnumToI
         self.src_filename = 'src/enum_0.bin'
-

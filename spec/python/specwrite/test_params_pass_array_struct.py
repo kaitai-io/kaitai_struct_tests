@@ -10,4 +10,3 @@ class TestParamsPassArrayStruct(CommonSpec.Base):
         super(TestParamsPassArrayStruct, self).__init__(*args, **kwargs)
         self.struct_class = ParamsPassArrayStruct
         self.src_filename = 'src/position_to_end.bin'
-

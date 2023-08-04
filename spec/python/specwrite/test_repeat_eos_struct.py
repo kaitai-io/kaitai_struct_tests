@@ -10,4 +10,3 @@ class TestRepeatEosStruct(CommonSpec.Base):
         super(TestRepeatEosStruct, self).__init__(*args, **kwargs)
         self.struct_class = RepeatEosStruct
         self.src_filename = 'src/repeat_eos_struct.bin'
-

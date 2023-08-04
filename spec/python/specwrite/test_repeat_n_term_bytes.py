@@ -10,4 +10,3 @@ class TestRepeatNTermBytes(CommonSpec.Base):
         super(TestRepeatNTermBytes, self).__init__(*args, **kwargs)
         self.struct_class = RepeatNTermBytes
         self.src_filename = 'src/repeat_until_process.bin'
-

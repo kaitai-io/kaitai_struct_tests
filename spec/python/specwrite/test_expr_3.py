@@ -10,4 +10,3 @@ class TestExpr3(CommonSpec.Base):
         super(TestExpr3, self).__init__(*args, **kwargs)
         self.struct_class = Expr3
         self.src_filename = 'src/fixed_struct.bin'
-

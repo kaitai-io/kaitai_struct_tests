@@ -10,4 +10,3 @@ class TestSwitchManualEnumInvalidElse(CommonSpec.Base):
         super(TestSwitchManualEnumInvalidElse, self).__init__(*args, **kwargs)
         self.struct_class = SwitchManualEnumInvalidElse
         self.src_filename = 'src/enum_negative.bin'
-

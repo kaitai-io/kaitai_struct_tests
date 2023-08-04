@@ -10,4 +10,3 @@ class TestSwitchManualIntElse(CommonSpec.Base):
         super(TestSwitchManualIntElse, self).__init__(*args, **kwargs)
         self.struct_class = SwitchManualIntElse
         self.src_filename = 'src/switch_opcodes2.bin'
-

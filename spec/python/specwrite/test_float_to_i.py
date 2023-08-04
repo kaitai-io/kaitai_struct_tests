@@ -10,4 +10,3 @@ class TestFloatToI(CommonSpec.Base):
         super(TestFloatToI, self).__init__(*args, **kwargs)
         self.struct_class = FloatToI
         self.src_filename = 'src/floating_points.bin'
-

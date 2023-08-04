@@ -10,4 +10,3 @@ class TestExprEnum(CommonSpec.Base):
         super(TestExprEnum, self).__init__(*args, **kwargs)
         self.struct_class = ExprEnum
         self.src_filename = 'src/term_strz.bin'
-

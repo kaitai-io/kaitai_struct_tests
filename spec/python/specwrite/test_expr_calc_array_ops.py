@@ -10,4 +10,3 @@ class TestExprCalcArrayOps(CommonSpec.Base):
         super(TestExprCalcArrayOps, self).__init__(*args, **kwargs)
         self.struct_class = ExprCalcArrayOps
         self.src_filename = 'src/fixed_struct.bin'
-

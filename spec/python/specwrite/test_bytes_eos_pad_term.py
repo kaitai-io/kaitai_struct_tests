@@ -10,4 +10,3 @@ class TestBytesEosPadTerm(CommonSpec.Base):
         super(TestBytesEosPadTerm, self).__init__(*args, **kwargs)
         self.struct_class = BytesEosPadTerm
         self.src_filename = 'src/str_pad_term.bin'
-

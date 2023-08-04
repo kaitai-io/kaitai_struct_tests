@@ -10,4 +10,3 @@ class TestMetaTags(CommonSpec.Base):
         super(TestMetaTags, self).__init__(*args, **kwargs)
         self.struct_class = MetaTags
         self.src_filename = 'src/fixed_struct.bin'
-

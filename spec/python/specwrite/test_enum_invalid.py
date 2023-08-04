@@ -10,4 +10,3 @@ class TestEnumInvalid(CommonSpec.Base):
         super(TestEnumInvalid, self).__init__(*args, **kwargs)
         self.struct_class = EnumInvalid
         self.src_filename = 'src/term_strz.bin'
-

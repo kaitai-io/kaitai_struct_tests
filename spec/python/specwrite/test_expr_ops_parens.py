@@ -10,4 +10,3 @@ class TestExprOpsParens(CommonSpec.Base):
         super(TestExprOpsParens, self).__init__(*args, **kwargs)
         self.struct_class = ExprOpsParens
         self.src_filename = 'src/enum_negative.bin'
-

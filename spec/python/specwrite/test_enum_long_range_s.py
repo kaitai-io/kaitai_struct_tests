@@ -10,4 +10,3 @@ class TestEnumLongRangeS(CommonSpec.Base):
         super(TestEnumLongRangeS, self).__init__(*args, **kwargs)
         self.struct_class = EnumLongRangeS
         self.src_filename = 'src/enum_long_range_s.bin'
-

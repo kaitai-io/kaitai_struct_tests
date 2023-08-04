@@ -10,4 +10,3 @@ class TestBitsEnum(CommonSpec.Base):
         super(TestBitsEnum, self).__init__(*args, **kwargs)
         self.struct_class = BitsEnum
         self.src_filename = 'src/fixed_struct.bin'
-

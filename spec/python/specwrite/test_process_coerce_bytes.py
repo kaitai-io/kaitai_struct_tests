@@ -10,4 +10,3 @@ class TestProcessCoerceBytes(CommonSpec.Base):
         super(TestProcessCoerceBytes, self).__init__(*args, **kwargs)
         self.struct_class = ProcessCoerceBytes
         self.src_filename = 'src/process_coerce_bytes.bin'
-

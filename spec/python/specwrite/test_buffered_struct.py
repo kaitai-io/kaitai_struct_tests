@@ -10,4 +10,3 @@ class TestBufferedStruct(CommonSpec.Base):
         super(TestBufferedStruct, self).__init__(*args, **kwargs)
         self.struct_class = BufferedStruct
         self.src_filename = 'src/buffered_struct.bin'
-

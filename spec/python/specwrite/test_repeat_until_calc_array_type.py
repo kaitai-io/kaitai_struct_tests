@@ -10,4 +10,3 @@ class TestRepeatUntilCalcArrayType(CommonSpec.Base):
         super(TestRepeatUntilCalcArrayType, self).__init__(*args, **kwargs)
         self.struct_class = RepeatUntilCalcArrayType
         self.src_filename = 'src/repeat_until_process.bin'
-

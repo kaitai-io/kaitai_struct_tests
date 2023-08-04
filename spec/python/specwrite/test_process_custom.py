@@ -10,4 +10,3 @@ class TestProcessCustom(CommonSpec.Base):
         super(TestProcessCustom, self).__init__(*args, **kwargs)
         self.struct_class = ProcessCustom
         self.src_filename = 'src/process_rotate.bin'
-

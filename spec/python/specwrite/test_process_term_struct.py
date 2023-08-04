@@ -10,4 +10,3 @@ class TestProcessTermStruct(CommonSpec.Base):
         super(TestProcessTermStruct, self).__init__(*args, **kwargs)
         self.struct_class = ProcessTermStruct
         self.src_filename = 'src/term_strz.bin'
-

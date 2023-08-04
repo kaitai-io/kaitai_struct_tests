@@ -10,4 +10,3 @@ class TestValidNotParsedIf(CommonSpec.Base):
         super(TestValidNotParsedIf, self).__init__(*args, **kwargs)
         self.struct_class = ValidNotParsedIf
         self.src_filename = 'src/fixed_struct.bin'
-

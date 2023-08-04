@@ -10,4 +10,3 @@ class TestIntegersMinMax(CommonSpec.Base):
         super(TestIntegersMinMax, self).__init__(*args, **kwargs)
         self.struct_class = IntegersMinMax
         self.src_filename = 'src/integers_min_max.bin'
-

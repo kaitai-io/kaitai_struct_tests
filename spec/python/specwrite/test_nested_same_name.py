@@ -10,4 +10,3 @@ class TestNestedSameName(CommonSpec.Base):
         super(TestNestedSameName, self).__init__(*args, **kwargs)
         self.struct_class = NestedSameName
         self.src_filename = 'src/repeat_n_struct.bin'
-

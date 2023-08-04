@@ -10,4 +10,3 @@ class TestExprBits(CommonSpec.Base):
         super(TestExprBits, self).__init__(*args, **kwargs)
         self.struct_class = ExprBits
         self.src_filename = 'src/switch_opcodes.bin'
-

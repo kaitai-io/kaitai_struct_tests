@@ -10,4 +10,3 @@ class TestCombineEnum(CommonSpec.Base):
         super(TestCombineEnum, self).__init__(*args, **kwargs)
         self.struct_class = CombineEnum
         self.src_filename = 'src/enum_0.bin'
-

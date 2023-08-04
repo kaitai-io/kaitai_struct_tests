@@ -10,4 +10,3 @@ class TestNavParentSwitch(CommonSpec.Base):
         super(TestNavParentSwitch, self).__init__(*args, **kwargs)
         self.struct_class = NavParentSwitch
         self.src_filename = 'src/nav_parent_switch.bin'
-

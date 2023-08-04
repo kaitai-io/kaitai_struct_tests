@@ -10,4 +10,3 @@ class TestProcessCoerceSwitch(CommonSpec.Base):
         super(TestProcessCoerceSwitch, self).__init__(*args, **kwargs)
         self.struct_class = ProcessCoerceSwitch
         self.src_filename = 'src/process_coerce_switch.bin'
-

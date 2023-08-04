@@ -10,4 +10,3 @@ class TestExprIntDiv(CommonSpec.Base):
         super(TestExprIntDiv, self).__init__(*args, **kwargs)
         self.struct_class = ExprIntDiv
         self.src_filename = 'src/fixed_struct.bin'
-

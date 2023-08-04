@@ -10,4 +10,3 @@ class TestValidEqStrEncodings(CommonSpec.Base):
         super(TestValidEqStrEncodings, self).__init__(*args, **kwargs)
         self.struct_class = ValidEqStrEncodings
         self.src_filename = 'src/str_encodings.bin'
-

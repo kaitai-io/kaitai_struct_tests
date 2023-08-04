@@ -10,4 +10,3 @@ class TestRecursiveOne(CommonSpec.Base):
         super(TestRecursiveOne, self).__init__(*args, **kwargs)
         self.struct_class = RecursiveOne
         self.src_filename = 'src/fixed_struct.bin'
-

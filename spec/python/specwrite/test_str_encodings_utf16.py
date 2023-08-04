@@ -10,4 +10,3 @@ class TestStrEncodingsUtf16(CommonSpec.Base):
         super(TestStrEncodingsUtf16, self).__init__(*args, **kwargs)
         self.struct_class = StrEncodingsUtf16
         self.src_filename = 'src/str_encodings_utf16.bin'
-

@@ -10,4 +10,3 @@ class TestTypeTernary(CommonSpec.Base):
         super(TestTypeTernary, self).__init__(*args, **kwargs)
         self.struct_class = TypeTernary
         self.src_filename = 'src/term_strz.bin'
-

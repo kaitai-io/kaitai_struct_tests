@@ -10,4 +10,3 @@ class TestEnumForUnknownId(CommonSpec.Base):
         super(TestEnumForUnknownId, self).__init__(*args, **kwargs)
         self.struct_class = EnumForUnknownId
         self.src_filename = 'src/fixed_struct.bin'
-

@@ -10,4 +10,3 @@ class TestValidLong(CommonSpec.Base):
         super(TestValidLong, self).__init__(*args, **kwargs)
         self.struct_class = ValidLong
         self.src_filename = 'src/fixed_struct.bin'
-

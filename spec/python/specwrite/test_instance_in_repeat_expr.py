@@ -10,4 +10,3 @@ class TestInstanceInRepeatExpr(CommonSpec.Base):
         super(TestInstanceInRepeatExpr, self).__init__(*args, **kwargs)
         self.struct_class = InstanceInRepeatExpr
         self.src_filename = 'src/instance_in_repeat_expr.bin'
-

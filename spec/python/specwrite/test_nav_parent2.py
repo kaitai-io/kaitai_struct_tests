@@ -10,4 +10,3 @@ class TestNavParent2(CommonSpec.Base):
         super(TestNavParent2, self).__init__(*args, **kwargs)
         self.struct_class = NavParent2
         self.src_filename = 'src/nav_parent2.bin'
-

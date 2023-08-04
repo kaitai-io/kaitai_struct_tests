@@ -10,4 +10,3 @@ class TestExprIoPos(CommonSpec.Base):
         super(TestExprIoPos, self).__init__(*args, **kwargs)
         self.struct_class = ExprIoPos
         self.src_filename = 'src/expr_io_pos.bin'
-

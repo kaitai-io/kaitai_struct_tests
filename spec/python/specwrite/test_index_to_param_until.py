@@ -10,4 +10,3 @@ class TestIndexToParamUntil(CommonSpec.Base):
         super(TestIndexToParamUntil, self).__init__(*args, **kwargs)
         self.struct_class = IndexToParamUntil
         self.src_filename = 'src/index_sizes.bin'
-

@@ -10,4 +10,3 @@ class TestSwitchRepeatExpr(CommonSpec.Base):
         super(TestSwitchRepeatExpr, self).__init__(*args, **kwargs)
         self.struct_class = SwitchRepeatExpr
         self.src_filename = 'src/switch_tlv.bin'
-

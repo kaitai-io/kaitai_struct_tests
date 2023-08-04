@@ -10,4 +10,3 @@ class TestExprSizeofValue0(CommonSpec.Base):
         super(TestExprSizeofValue0, self).__init__(*args, **kwargs)
         self.struct_class = ExprSizeofValue0
         self.src_filename = 'src/fixed_struct.bin'
-

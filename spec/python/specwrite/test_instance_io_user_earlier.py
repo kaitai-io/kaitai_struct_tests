@@ -10,4 +10,3 @@ class TestInstanceIoUserEarlier(CommonSpec.Base):
         super(TestInstanceIoUserEarlier, self).__init__(*args, **kwargs)
         self.struct_class = InstanceIoUserEarlier
         self.src_filename = 'src/switch_opcodes2.bin'
-

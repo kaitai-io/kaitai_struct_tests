@@ -10,4 +10,3 @@ class TestBcdUserTypeBe(CommonSpec.Base):
         super(TestBcdUserTypeBe, self).__init__(*args, **kwargs)
         self.struct_class = BcdUserTypeBe
         self.src_filename = 'src/bcd_user_type_be.bin'
-

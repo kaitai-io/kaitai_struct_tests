@@ -10,4 +10,3 @@ class TestParamsPassBool(CommonSpec.Base):
         super(TestParamsPassBool, self).__init__(*args, **kwargs)
         self.struct_class = ParamsPassBool
         self.src_filename = 'src/term_strz.bin'
-

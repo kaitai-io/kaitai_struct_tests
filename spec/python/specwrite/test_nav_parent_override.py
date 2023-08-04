@@ -10,4 +10,3 @@ class TestNavParentOverride(CommonSpec.Base):
         super(TestNavParentOverride, self).__init__(*args, **kwargs)
         self.struct_class = NavParentOverride
         self.src_filename = 'src/nav_parent_codes.bin'
-

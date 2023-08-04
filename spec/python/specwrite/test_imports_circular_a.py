@@ -10,4 +10,3 @@ class TestImportsCircularA(CommonSpec.Base):
         super(TestImportsCircularA, self).__init__(*args, **kwargs)
         self.struct_class = ImportsCircularA
         self.src_filename = 'src/fixed_struct.bin'
-

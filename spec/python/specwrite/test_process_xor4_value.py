@@ -10,4 +10,3 @@ class TestProcessXor4Value(CommonSpec.Base):
         super(TestProcessXor4Value, self).__init__(*args, **kwargs)
         self.struct_class = ProcessXor4Value
         self.src_filename = 'src/process_xor_4.bin'
-

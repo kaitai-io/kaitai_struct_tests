@@ -10,4 +10,3 @@ class TestTermU1Val(CommonSpec.Base):
         super(TestTermU1Val, self).__init__(*args, **kwargs)
         self.struct_class = TermU1Val
         self.src_filename = 'src/str_encodings.bin'
-

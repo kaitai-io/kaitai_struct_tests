@@ -10,4 +10,3 @@ class TestInstanceIoUser(CommonSpec.Base):
         super(TestInstanceIoUser, self).__init__(*args, **kwargs)
         self.struct_class = InstanceIoUser
         self.src_filename = 'src/instance_io.bin'
-

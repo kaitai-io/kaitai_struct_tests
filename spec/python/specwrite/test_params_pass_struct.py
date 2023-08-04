@@ -10,4 +10,3 @@ class TestParamsPassStruct(CommonSpec.Base):
         super(TestParamsPassStruct, self).__init__(*args, **kwargs)
         self.struct_class = ParamsPassStruct
         self.src_filename = 'src/enum_negative.bin'
-

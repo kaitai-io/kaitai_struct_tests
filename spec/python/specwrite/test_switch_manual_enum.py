@@ -10,4 +10,3 @@ class TestSwitchManualEnum(CommonSpec.Base):
         super(TestSwitchManualEnum, self).__init__(*args, **kwargs)
         self.struct_class = SwitchManualEnum
         self.src_filename = 'src/switch_opcodes.bin'
-

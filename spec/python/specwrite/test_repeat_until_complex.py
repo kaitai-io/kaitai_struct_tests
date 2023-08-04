@@ -10,4 +10,3 @@ class TestRepeatUntilComplex(CommonSpec.Base):
         super(TestRepeatUntilComplex, self).__init__(*args, **kwargs)
         self.struct_class = RepeatUntilComplex
         self.src_filename = 'src/repeat_until_complex.bin'
-

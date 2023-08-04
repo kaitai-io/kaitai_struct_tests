@@ -10,4 +10,3 @@ class TestEnumDeepLiterals(CommonSpec.Base):
         super(TestEnumDeepLiterals, self).__init__(*args, **kwargs)
         self.struct_class = EnumDeepLiterals
         self.src_filename = 'src/enum_0.bin'
-

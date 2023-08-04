@@ -10,4 +10,3 @@ class TestTypeTernaryOpaque(CommonSpec.Base):
         super(TestTypeTernaryOpaque, self).__init__(*args, **kwargs)
         self.struct_class = TypeTernaryOpaque
         self.src_filename = 'src/term_strz.bin'
-

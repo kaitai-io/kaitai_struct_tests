@@ -10,4 +10,3 @@ class TestDefaultEndianMod(CommonSpec.Base):
         super(TestDefaultEndianMod, self).__init__(*args, **kwargs)
         self.struct_class = DefaultEndianMod
         self.src_filename = 'src/fixed_struct.bin'
-

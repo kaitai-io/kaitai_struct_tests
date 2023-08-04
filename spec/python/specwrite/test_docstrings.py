@@ -10,4 +10,3 @@ class TestDocstrings(CommonSpec.Base):
         super(TestDocstrings, self).__init__(*args, **kwargs)
         self.struct_class = Docstrings
         self.src_filename = 'src/fixed_struct.bin'
-

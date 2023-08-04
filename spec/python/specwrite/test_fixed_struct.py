@@ -10,4 +10,3 @@ class TestFixedStruct(CommonSpec.Base):
         super(TestFixedStruct, self).__init__(*args, **kwargs)
         self.struct_class = FixedStruct
         self.src_filename = 'src/fixed_struct.bin'
-

@@ -10,4 +10,3 @@ class TestEnumIf(CommonSpec.Base):
         super(TestEnumIf, self).__init__(*args, **kwargs)
         self.struct_class = EnumIf
         self.src_filename = 'src/if_struct.bin'
-

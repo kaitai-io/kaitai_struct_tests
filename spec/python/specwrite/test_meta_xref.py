@@ -10,4 +10,3 @@ class TestMetaXref(CommonSpec.Base):
         super(TestMetaXref, self).__init__(*args, **kwargs)
         self.struct_class = MetaXref
         self.src_filename = 'src/fixed_struct.bin'
-

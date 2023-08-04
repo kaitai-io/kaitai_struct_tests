@@ -10,4 +10,3 @@ class TestRepeatNStruct(CommonSpec.Base):
         super(TestRepeatNStruct, self).__init__(*args, **kwargs)
         self.struct_class = RepeatNStruct
         self.src_filename = 'src/repeat_n_struct.bin'
-

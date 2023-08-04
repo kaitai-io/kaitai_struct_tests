@@ -10,4 +10,3 @@ class TestDebugSwitchUser(CommonSpec.Base):
         super(TestDebugSwitchUser, self).__init__(*args, **kwargs)
         self.struct_class = DebugSwitchUser
         self.src_filename = 'src/nav_parent_switch.bin'
-

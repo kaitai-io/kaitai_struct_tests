@@ -10,4 +10,3 @@ class TestBytesPadTermEmpty(CommonSpec.Base):
         super(TestBytesPadTermEmpty, self).__init__(*args, **kwargs)
         self.struct_class = BytesPadTermEmpty
         self.src_filename = 'src/str_pad_term_empty.bin'
-

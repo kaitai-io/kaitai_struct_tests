@@ -10,4 +10,3 @@ class TestUserType(CommonSpec.Base):
         super(TestUserType, self).__init__(*args, **kwargs)
         self.struct_class = UserType
         self.src_filename = 'src/repeat_until_s4.bin'
-

@@ -10,4 +10,3 @@ class TestExprIfIntEq(CommonSpec.Base):
         super(TestExprIfIntEq, self).__init__(*args, **kwargs)
         self.struct_class = ExprIfIntEq
         self.src_filename = 'src/process_coerce_switch.bin'
-

@@ -10,4 +10,3 @@ class TestTermStruct4(CommonSpec.Base):
         super(TestTermStruct4, self).__init__(*args, **kwargs)
         self.struct_class = TermStruct4
         self.src_filename = 'src/term_strz.bin'
-

@@ -10,4 +10,3 @@ class TestMultipleUse(CommonSpec.Base):
         super(TestMultipleUse, self).__init__(*args, **kwargs)
         self.struct_class = MultipleUse
         self.src_filename = 'src/position_abs.bin'
-

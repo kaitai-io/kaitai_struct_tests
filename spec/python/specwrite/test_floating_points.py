@@ -10,4 +10,3 @@ class TestFloatingPoints(CommonSpec.Base):
         super(TestFloatingPoints, self).__init__(*args, **kwargs)
         self.struct_class = FloatingPoints
         self.src_filename = 'src/floating_points.bin'
-

@@ -10,4 +10,3 @@ class TestCastToImported(CommonSpec.Base):
         super(TestCastToImported, self).__init__(*args, **kwargs)
         self.struct_class = CastToImported
         self.src_filename = 'src/fixed_struct.bin'
-

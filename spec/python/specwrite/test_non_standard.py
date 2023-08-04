@@ -10,4 +10,3 @@ class TestNonStandard(CommonSpec.Base):
         super(TestNonStandard, self).__init__(*args, **kwargs)
         self.struct_class = NonStandard
         self.src_filename = 'src/fixed_struct.bin'
-

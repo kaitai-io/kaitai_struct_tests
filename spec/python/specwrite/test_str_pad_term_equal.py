@@ -10,4 +10,3 @@ class TestStrPadTermEqual(CommonSpec.Base):
         super(TestStrPadTermEqual, self).__init__(*args, **kwargs)
         self.struct_class = StrPadTermEqual
         self.src_filename = 'src/str_pad_term.bin'
-

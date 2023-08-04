@@ -10,4 +10,3 @@ class TestSwitchElseOnly(CommonSpec.Base):
         super(TestSwitchElseOnly, self).__init__(*args, **kwargs)
         self.struct_class = SwitchElseOnly
         self.src_filename = 'src/switch_opcodes.bin'
-

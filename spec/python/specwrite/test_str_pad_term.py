@@ -10,4 +10,3 @@ class TestStrPadTerm(CommonSpec.Base):
         super(TestStrPadTerm, self).__init__(*args, **kwargs)
         self.struct_class = StrPadTerm
         self.src_filename = 'src/str_pad_term.bin'
-

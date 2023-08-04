@@ -10,4 +10,3 @@ class TestInstanceUserArray(CommonSpec.Base):
         super(TestInstanceUserArray, self).__init__(*args, **kwargs)
         self.struct_class = InstanceUserArray
         self.src_filename = 'src/instance_std_array.bin'
-

@@ -10,4 +10,3 @@ class TestCombineBytes(CommonSpec.Base):
         super(TestCombineBytes, self).__init__(*args, **kwargs)
         self.struct_class = CombineBytes
         self.src_filename = 'src/term_strz.bin'
-

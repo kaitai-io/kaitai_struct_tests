@@ -10,4 +10,3 @@ class TestExprIoEof(CommonSpec.Base):
         super(TestExprIoEof, self).__init__(*args, **kwargs)
         self.struct_class = ExprIoEof
         self.src_filename = 'src/fixed_struct.bin'
-

@@ -10,4 +10,3 @@ class TestProcessRepeatUsertypeDynargRotate(CommonSpec.Base):
         super(TestProcessRepeatUsertypeDynargRotate, self).__init__(*args, **kwargs)
         self.struct_class = ProcessRepeatUsertypeDynargRotate
         self.src_filename = 'src/process_rotate.bin'
-

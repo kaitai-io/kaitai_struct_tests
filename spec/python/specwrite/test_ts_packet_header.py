@@ -10,4 +10,3 @@ class TestTsPacketHeader(CommonSpec.Base):
         super(TestTsPacketHeader, self).__init__(*args, **kwargs)
         self.struct_class = TsPacketHeader
         self.src_filename = 'src/ts_packet.bin'
-

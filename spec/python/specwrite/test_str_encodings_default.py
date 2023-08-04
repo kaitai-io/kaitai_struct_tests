@@ -10,4 +10,3 @@ class TestStrEncodingsDefault(CommonSpec.Base):
         super(TestStrEncodingsDefault, self).__init__(*args, **kwargs)
         self.struct_class = StrEncodingsDefault
         self.src_filename = 'src/str_encodings.bin'
-

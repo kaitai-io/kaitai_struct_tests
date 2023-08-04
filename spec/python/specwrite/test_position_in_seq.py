@@ -10,4 +10,3 @@ class TestPositionInSeq(CommonSpec.Base):
         super(TestPositionInSeq, self).__init__(*args, **kwargs)
         self.struct_class = PositionInSeq
         self.src_filename = 'src/position_in_seq.bin'
-

@@ -10,4 +10,3 @@ class TestNavParentVsValueInst(CommonSpec.Base):
         super(TestNavParentVsValueInst, self).__init__(*args, **kwargs)
         self.struct_class = NavParentVsValueInst
         self.src_filename = 'src/term_strz.bin'
-

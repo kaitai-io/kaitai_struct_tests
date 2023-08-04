@@ -10,4 +10,3 @@ class TestEnumNegative(CommonSpec.Base):
         super(TestEnumNegative, self).__init__(*args, **kwargs)
         self.struct_class = EnumNegative
         self.src_filename = 'src/enum_negative.bin'
-

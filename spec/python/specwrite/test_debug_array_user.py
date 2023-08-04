@@ -10,4 +10,3 @@ class TestDebugArrayUser(CommonSpec.Base):
         super(TestDebugArrayUser, self).__init__(*args, **kwargs)
         self.struct_class = DebugArrayUser
         self.src_filename = 'src/fixed_struct.bin'
-

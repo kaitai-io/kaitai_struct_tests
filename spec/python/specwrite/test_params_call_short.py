@@ -10,4 +10,3 @@ class TestParamsCallShort(CommonSpec.Base):
         super(TestParamsCallShort, self).__init__(*args, **kwargs)
         self.struct_class = ParamsCallShort
         self.src_filename = 'src/term_strz.bin'
-

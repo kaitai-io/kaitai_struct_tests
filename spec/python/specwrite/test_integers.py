@@ -10,4 +10,3 @@ class TestIntegers(CommonSpec.Base):
         super(TestIntegers, self).__init__(*args, **kwargs)
         self.struct_class = Integers
         self.src_filename = 'src/fixed_struct.bin'
-

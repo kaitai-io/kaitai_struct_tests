@@ -10,4 +10,3 @@ class TestNestedTypes(CommonSpec.Base):
         super(TestNestedTypes, self).__init__(*args, **kwargs)
         self.struct_class = NestedTypes
         self.src_filename = 'src/fixed_struct.bin'
-

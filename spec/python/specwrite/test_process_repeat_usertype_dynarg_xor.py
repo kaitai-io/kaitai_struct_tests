@@ -10,4 +10,3 @@ class TestProcessRepeatUsertypeDynargXor(CommonSpec.Base):
         super(TestProcessRepeatUsertypeDynargXor, self).__init__(*args, **kwargs)
         self.struct_class = ProcessRepeatUsertypeDynargXor
         self.src_filename = 'src/process_xor_4.bin'
-

@@ -10,4 +10,3 @@ class TestIntegersDoubleOverflow(CommonSpec.Base):
         super(TestIntegersDoubleOverflow, self).__init__(*args, **kwargs)
         self.struct_class = IntegersDoubleOverflow
         self.src_filename = 'src/integers_double_overflow.bin'
-

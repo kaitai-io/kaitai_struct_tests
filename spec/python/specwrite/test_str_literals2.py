@@ -10,4 +10,3 @@ class TestStrLiterals2(CommonSpec.Base):
         super(TestStrLiterals2, self).__init__(*args, **kwargs)
         self.struct_class = StrLiterals2
         self.src_filename = 'src/fixed_struct.bin'
-

@@ -10,4 +10,3 @@ class TestBitsUnalignedB64Le(CommonSpec.Base):
         super(TestBitsUnalignedB64Le, self).__init__(*args, **kwargs)
         self.struct_class = BitsUnalignedB64Le
         self.src_filename = 'src/process_xor_4.bin'
-

@@ -10,4 +10,3 @@ class TestRepeatEosTermBytes(CommonSpec.Base):
         super(TestRepeatEosTermBytes, self).__init__(*args, **kwargs)
         self.struct_class = RepeatEosTermBytes
         self.src_filename = 'src/process_rotate.bin'
-

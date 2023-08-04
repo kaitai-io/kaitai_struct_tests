@@ -10,4 +10,3 @@ class TestDefaultBitEndianMod(CommonSpec.Base):
         super(TestDefaultBitEndianMod, self).__init__(*args, **kwargs)
         self.struct_class = DefaultBitEndianMod
         self.src_filename = 'src/fixed_struct.bin'
-

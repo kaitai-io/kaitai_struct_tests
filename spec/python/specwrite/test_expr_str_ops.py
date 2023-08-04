@@ -10,4 +10,3 @@ class TestExprStrOps(CommonSpec.Base):
         super(TestExprStrOps, self).__init__(*args, **kwargs)
         self.struct_class = ExprStrOps
         self.src_filename = 'src/term_strz.bin'
-

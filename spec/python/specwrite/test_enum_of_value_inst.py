@@ -10,4 +10,3 @@ class TestEnumOfValueInst(CommonSpec.Base):
         super(TestEnumOfValueInst, self).__init__(*args, **kwargs)
         self.struct_class = EnumOfValueInst
         self.src_filename = 'src/enum_0.bin'
-

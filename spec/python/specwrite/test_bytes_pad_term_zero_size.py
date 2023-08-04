@@ -10,4 +10,3 @@ class TestBytesPadTermZeroSize(CommonSpec.Base):
         super(TestBytesPadTermZeroSize, self).__init__(*args, **kwargs)
         self.struct_class = BytesPadTermZeroSize
         self.src_filename = 'src/enum_negative.bin'
-

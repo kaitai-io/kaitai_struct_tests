@@ -10,4 +10,3 @@ class TestSwitchMultiBoolOps(CommonSpec.Base):
         super(TestSwitchMultiBoolOps, self).__init__(*args, **kwargs)
         self.struct_class = SwitchMultiBoolOps
         self.src_filename = 'src/switch_integers.bin'
-

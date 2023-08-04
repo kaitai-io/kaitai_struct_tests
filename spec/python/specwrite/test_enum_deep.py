@@ -10,4 +10,3 @@ class TestEnumDeep(CommonSpec.Base):
         super(TestEnumDeep, self).__init__(*args, **kwargs)
         self.struct_class = EnumDeep
         self.src_filename = 'src/enum_0.bin'
-

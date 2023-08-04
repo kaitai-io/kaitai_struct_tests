@@ -10,4 +10,3 @@ class TestSwitchIntegers2(CommonSpec.Base):
         super(TestSwitchIntegers2, self).__init__(*args, **kwargs)
         self.struct_class = SwitchIntegers2
         self.src_filename = 'src/switch_integers.bin'
-

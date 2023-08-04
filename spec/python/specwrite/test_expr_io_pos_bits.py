@@ -10,4 +10,3 @@ class TestExprIoPosBits(CommonSpec.Base):
         super(TestExprIoPosBits, self).__init__(*args, **kwargs)
         self.struct_class = ExprIoPosBits
         self.src_filename = 'src/process_xor_4.bin'
-

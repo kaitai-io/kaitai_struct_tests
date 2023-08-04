@@ -10,4 +10,3 @@ class TestTypeTernary2ndFalsy(CommonSpec.Base):
         super(TestTypeTernary2ndFalsy, self).__init__(*args, **kwargs)
         self.struct_class = TypeTernary2ndFalsy
         self.src_filename = 'src/switch_integers.bin'
-

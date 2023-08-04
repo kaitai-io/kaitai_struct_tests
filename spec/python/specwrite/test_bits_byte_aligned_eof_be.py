@@ -10,4 +10,3 @@ class TestBitsByteAlignedEofBe(CommonSpec.Base):
         super(TestBitsByteAlignedEofBe, self).__init__(*args, **kwargs)
         self.struct_class = BitsByteAlignedEofBe
         self.src_filename = 'src/bcd_user_type_be.bin'
-

@@ -10,4 +10,3 @@ class TestImportsRel1(CommonSpec.Base):
         super(TestImportsRel1, self).__init__(*args, **kwargs)
         self.struct_class = ImportsRel1
         self.src_filename = 'src/fixed_struct.bin'
-

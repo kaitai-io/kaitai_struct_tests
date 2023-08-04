@@ -10,4 +10,3 @@ class TestZlibSurrounded(CommonSpec.Base):
         super(TestZlibSurrounded, self).__init__(*args, **kwargs)
         self.struct_class = ZlibSurrounded
         self.src_filename = 'src/zlib_surrounded.bin'
-

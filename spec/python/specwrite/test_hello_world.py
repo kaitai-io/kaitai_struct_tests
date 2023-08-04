@@ -10,4 +10,3 @@ class TestHelloWorld(CommonSpec.Base):
         super(TestHelloWorld, self).__init__(*args, **kwargs)
         self.struct_class = HelloWorld
         self.src_filename = 'src/fixed_struct.bin'
-

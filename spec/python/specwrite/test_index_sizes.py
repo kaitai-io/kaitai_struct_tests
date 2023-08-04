@@ -10,4 +10,3 @@ class TestIndexSizes(CommonSpec.Base):
         super(TestIndexSizes, self).__init__(*args, **kwargs)
         self.struct_class = IndexSizes
         self.src_filename = 'src/index_sizes.bin'
-

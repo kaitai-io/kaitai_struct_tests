@@ -10,4 +10,3 @@ class TestIfStruct(CommonSpec.Base):
         super(TestIfStruct, self).__init__(*args, **kwargs)
         self.struct_class = IfStruct
         self.src_filename = 'src/if_struct.bin'
-
