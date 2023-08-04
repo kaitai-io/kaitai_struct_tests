@@ -5,7 +5,7 @@ import io.kaitai.struct.datatype.DataType._
 import io.kaitai.struct.datatype.{DataType, KSError}
 import io.kaitai.struct.exprlang.Ast
 import io.kaitai.struct.languages.JavaCompiler
-import io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
+import io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestException, TestSpec}
 import io.kaitai.struct.translators.JavaTranslator
 
 class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
@@ -44,7 +44,16 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   def runParseCommon(): Unit = {
     out.puts(s"public void test$className() throws Exception {")
     out.inc
-    out.puts(s"$className r = $className.fromFile(SRC_DIR + " + "\"" + spec.data + "\");")
+    /** If [[testException]] will be called, we have to add the `final` keyword
+     * when declaring `r` for Java 7 compatibility, otherwise "error: local
+     * variable r is accessed from within inner class; needs to be declared
+     * final" will occur. This is not needed since Java 8 - I suppose this is
+     * because Java 8 introduces the concept of "effectively final", so it's no
+     * longer required to specify `final` explicitly, as it is inferred
+     * automatically. */
+    val needsFinal = spec.asserts.exists(assert => assert.isInstanceOf[TestException])
+    val finalKeyword = if (needsFinal) "final " else ""
+    out.puts(s"${finalKeyword}$className r = $className.fromFile(SRC_DIR + " + "\"" + spec.data + "\");")
   }
 
   override def footer(): Unit = {
