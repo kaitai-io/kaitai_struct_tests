@@ -5,7 +5,7 @@ require_relative 'partial_builder'
 require_relative 'shellconfig'
 
 class JavaBuilder < PartialBuilder
-  def initialize(suite_names, test_out_dir)
+  def initialize(suite_names = nil, test_out_dir = nil)
     super()
 
     @suite_names = suite_names || 'spec,specwrite'
