@@ -7,7 +7,7 @@ import _root_.io.kaitai.struct.languages.PythonCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 import _root_.io.kaitai.struct.translators.PythonTranslator
 
-class PythonWriteSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
+class PythonWriteSG(spec: TestSpec, provider: ClassTypeProvider) extends SpecGenerator {
   importList.add("import unittest")
   importList.add("from specwrite.common_spec import CommonSpec")
 
@@ -18,7 +18,7 @@ class PythonWriteSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGen
 
   override def indentStr: String = "    "
 
-  override def header(): Unit = {
+  override def run(): Unit = {
     out.puts
     out.puts(s"from testwrite.${spec.id} import $className")
     out.puts
@@ -32,25 +32,17 @@ class PythonWriteSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGen
     out.puts(s"self.struct_class = $className")
     out.puts(s"self.src_filename = 'src/${spec.data}'")
     out.dec
+
+    spec.exception match {
+      case None =>
+      case Some(_) =>
+        out.puts
+        out.puts("def test_read_write_roundtrip(self):")
+        out.inc
+        out.puts("""self.skipTest("cannot use roundtrip because parsing is expected to fail")""")
+        out.dec
+    }
   }
-
-  override def runParse(): Unit = {}
-
-  override def runParseExpectError(exception: KSError): Unit = {
-    out.puts
-    out.puts("def test_read_write_roundtrip(self):")
-    out.inc
-    out.puts("""self.skipTest("cannot use roundtrip because parsing is expected to fail")""")
-    out.dec
-  }
-
-  override def footer(): Unit = {}
-
-  override def runAsserts(): Unit = {}
-
-  override def simpleAssert(check: TestAssert): Unit = ???
-  override def nullAssert(actual: Ast.expr): Unit = ???
-  override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit = ???
 
   override def results: String =
     "# " + AUTOGEN_COMMENT + "\n\n" + super.results
