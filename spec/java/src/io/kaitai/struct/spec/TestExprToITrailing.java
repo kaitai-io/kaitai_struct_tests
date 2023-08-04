@@ -12,8 +12,18 @@ public class TestExprToITrailing extends CommonSpec {
     public void testExprToITrailing() throws Exception {
         ExprToITrailing r = ExprToITrailing.fromFile(SRC_DIR + "term_strz.bin");
 
-        assertThrows(NumberFormatException.class, () -> r.toIR10());
+        assertThrows(NumberFormatException.class, new ThrowingRunnable() {
+            @Override
+            public void run() throws Throwable {
+                r.toIR10();
+            }
+        });
         assertIntEquals(r.toIR16(), 152517308);
-        assertThrows(NumberFormatException.class, () -> r.toIGarbage());
+        assertThrows(NumberFormatException.class, new ThrowingRunnable() {
+            @Override
+            public void run() throws Throwable {
+                r.toIGarbage();
+            }
+        });
     }
 }
