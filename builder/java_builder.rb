@@ -103,6 +103,6 @@ class JavaBuilder < PartialBuilder
     run_and_tee({}, cli, out_log)
     Dir.chdir(orig_dir)
 
-    File.exists?(File.join(@test_out_dir, 'junitreports'))
+    File.exist?(File.join(@test_out_dir, 'junitreports'))
   end
 end

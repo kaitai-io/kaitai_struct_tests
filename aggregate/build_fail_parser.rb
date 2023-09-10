@@ -41,6 +41,6 @@ class BuildFailParser
           yield TestResult.new(name, :format_build_failed, 0, fail)
         end
       }
-    } if FileTest::exists?(fn)
+    } if FileTest::exist?(fn)
   end
 end
