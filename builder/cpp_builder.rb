@@ -331,7 +331,7 @@ class CppBuilder < PartialBuilder
     Dir.chdir(@test_dir)
     run_and_tee({}, tests_cli, "#{@abs_cpp_test_out_dir}/test_run.stdout")
 
-    File.exists?(xml_log)
+    File.exist?(xml_log)
   end
 
   private
