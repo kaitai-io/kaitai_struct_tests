@@ -43,10 +43,12 @@ class JUnitXMLParser < TestParser
 
           if @include_classname
             classname = tc.attribute('classname').value
-            raise "Unable to parse classname: \"#{classname}\"" unless classname =~ /\.Test([^.]*)$/
-            classname = $1
-            name = "#{classname}.#{name}"
-          else
+            if classname =~ /\.Test([^.]*)$/
+              classname = $1
+              name = "#{classname}.#{name}"
+            else
+              warn "Unable to parse classname #{classname.inspect} at #{tc.xpath}"
+            end
           end
         end
 
