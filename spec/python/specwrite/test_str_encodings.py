@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import unittest
 from kaitaistruct import ConsistencyError
 from specwrite.common_spec import CommonSpec
@@ -24,10 +25,10 @@ class TestStrEncodings(CommonSpec.Base):
     def test_check_mismatch(self):
         r = StrEncodings()
 
-        r.str1 = "Some ASCII"
-        r.str2 = "こんにちは"
-        r.str3 = "こんにちは"
-        r.str4 = "░▒▓"
+        r.str1 = u"Some ASCII"
+        r.str2 = u"こんにちは"
+        r.str3 = u"こんにちは"
+        r.str4 = u"░▒▓"
 
         # To be auto-derived
         r.len_of_1 = 10

@@ -122,9 +122,6 @@ class CommonSpec:
             if isinstance(value, KaitaiStream):
                 value = value.to_byte_array()
 
-            if PY2 and isinstance(value, bytes):
-                value = bytearray(value)
-
             if isinstance(value, (bytes, bytearray)):
                 # https://stackoverflow.com/a/19210468
                 value = CommonSpec.Base.byte_array_to_hex(value)
@@ -133,4 +130,7 @@ class CommonSpec:
 
         @staticmethod
         def byte_array_to_hex(arr):
+            if PY2 and isinstance(arr, bytes):
+                arr = bytearray(arr)
+
             return ' '.join('%02x' % b for b in arr)
