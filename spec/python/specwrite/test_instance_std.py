@@ -34,7 +34,7 @@ class TestInstanceStd(CommonSpec.Base):
 
     def test_write(self):
         r = InstanceStd()
-        r.header = "Hello"
+        r.header = u"Hello"
 
         # see <CommonSpec.Base>.test_read_write_roundtrip
         orig_dump = CommonSpec.Base.dump_struct(r)
