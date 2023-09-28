@@ -22,7 +22,7 @@ digraph {
 	enum_0 -> enum_fancy;
 	{expr_0 enum_0} -> expr_enum -> enum_of_value_inst;
 	enum_0 -> enum_negative;
-	enum_0 -> enum_for_unknown_id;
+	enum_0 -> enum_invalid;
 	enum_0 -> enum_to_i;
 	{enum_of_value_inst if_struct} -> enum_if;
 
