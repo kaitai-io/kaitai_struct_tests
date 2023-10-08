@@ -8,6 +8,7 @@ testHelper('EnumToI', 'src/enum_0.bin', function(r, EnumToI) {
   assert.strictEqual(r.pet1, EnumToI.Animal.CAT);
   assert.strictEqual(r.pet2, EnumToI.Animal.CHICKEN);
   assert.strictEqual(r.pet1I, 7);
+  assert.strictEqual(r.pet1IToS, "7");
   assert.strictEqual(r.pet1Mod, 32775);
   assert.strictEqual(r.oneLtTwo, true);
   assert.strictEqual(r.pet1EqInt, true);
