@@ -8,6 +8,11 @@ if [ ! -e "$JAVASCRIPT_MODULES_DIR/kaitai-struct" ]; then
 	ABS_JS_RUNTIME=$(pwd)/$JAVASCRIPT_RUNTIME_DIR
 	ln -s "$ABS_JS_RUNTIME" "$JAVASCRIPT_MODULES_DIR/kaitai-struct"
 fi
+# The `iconv-lite` package is assumed to be installed globally in the Docker
+# image, but in Node.js 10 and older, you can only `require()` local packages,
+# not global packages. `npm link` creates a symbolic link in the local
+# `node_modules/` directory pointing to the globally installed package.
+npm link iconv-lite
 
 mkdir -p "$TEST_OUT_DIR/javascript"
 NODE_PATH=compiled/javascript:helpers/javascript:$JAVASCRIPT_MODULES_DIR:$JAVASCRIPT_RUNTIME_DIR \
