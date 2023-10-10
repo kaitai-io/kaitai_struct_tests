@@ -157,7 +157,7 @@ if [ "$REBUILD_FLAG" = 1 ]; then
 fi
 
 # If we run in Mingw/MSYS environment on Windows, it will invoke `docker.exe` here,
-# but it will attempt to do Linux-to-Windows paths conversion with `cypath.exe`.
+# but it will attempt to do Linux-to-Windows paths conversion with `cygpath.exe`.
 # We disable it with MSYS2_ARG_CONV_EXCL argument: looks like `docker.exe` is
 # intelligent enough to understand Mingw-style Windows paths by itself.
 #
