@@ -11,52 +11,52 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestEnumToI(t *testing.T) {
+func TestEnumToIInvalid(t *testing.T) {
 	defer func() {
 		if r := recover(); r != nil {
 			debug.PrintStack()
 			t.Fatal("unexpected panic:", r)
 		}
 	}()
-	f, err := os.Open("../../src/enum_0.bin")
+	f, err := os.Open("../../src/term_strz.bin")
 	if err != nil {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r EnumToI
+	var r EnumToIInvalid
 	err = r.Read(s, &r, &r)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, EnumToI_Animal__Cat, r.Pet1)
-	assert.EqualValues(t, EnumToI_Animal__Chicken, r.Pet2)
-	tmp1, err := r.Pet1I()
+	assert.EqualValues(t, EnumToIInvalid_Animal__Dog, r.Pet1)
+	assert.EqualValues(t, 111, r.Pet2)
+	tmp1, err := r.Pet2I()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 7, tmp1)
-	tmp2, err := r.Pet1IToS()
+	assert.EqualValues(t, 111, tmp1)
+	tmp2, err := r.Pet2IToS()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, "7", tmp2)
-	tmp3, err := r.Pet1Mod()
+	assert.EqualValues(t, "111", tmp2)
+	tmp3, err := r.Pet2Mod()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 32775, tmp3)
+	assert.EqualValues(t, 32879, tmp3)
 	tmp4, err := r.OneLtTwo()
 	if err != nil {
 		t.Fatal(err)
 	}
 	assert.EqualValues(t, true, tmp4)
-	tmp5, err := r.Pet1EqInt()
+	tmp5, err := r.Pet2EqIntT()
 	if err != nil {
 		t.Fatal(err)
 	}
 	assert.EqualValues(t, true, tmp5)
-	tmp6, err := r.Pet2EqInt()
+	tmp6, err := r.Pet2EqIntF()
 	if err != nil {
 		t.Fatal(err)
 	}

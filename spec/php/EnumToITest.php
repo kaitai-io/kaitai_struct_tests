@@ -10,6 +10,7 @@ class EnumToITest extends TestCase {
         $this->assertSame(\Kaitai\Struct\Tests\EnumToI\Animal::CAT, $r->pet1());
         $this->assertSame(\Kaitai\Struct\Tests\EnumToI\Animal::CHICKEN, $r->pet2());
         $this->assertSame(7, $r->pet1I());
+        $this->assertSame("7", $r->pet1IToS());
         $this->assertSame(32775, $r->pet1Mod());
         $this->assertSame(true, $r->oneLtTwo());
         $this->assertSame(true, $r->pet1EqInt());

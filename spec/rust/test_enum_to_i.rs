@@ -13,6 +13,7 @@ fn test_enum_to_i() {
         assert_eq!(r.pet_1, EnumToI__Animal::CAT);
         assert_eq!(r.pet_2, EnumToI__Animal::CHICKEN);
         assert_eq!(r.pet_1_i, 7);
+        assert_eq!(r.pet_1_i_to_s, "7");
         assert_eq!(r.pet_1_mod, 32775);
         assert_eq!(r.one_lt_two, true);
         assert_eq!(r.pet_1_eq_int, true);
