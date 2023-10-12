@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.BufferedStruct;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestBufferedStruct extends CommonSpec {
-
     @Test
     public void testBufferedStruct() throws Exception {
         BufferedStruct r = BufferedStruct.fromFile(SRC_DIR + "buffered_struct.bin");
