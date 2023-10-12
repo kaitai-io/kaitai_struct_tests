@@ -129,7 +129,10 @@ public abstract class CommonSpec extends io.kaitai.struct.spec.CommonSpec {
                         continue;
                     }
                 }
-                if (m.getParameterCount() != 0) continue; // we only want getters (which must have 0 args)
+                // // The `java.lang.reflect.Method.getParameterCount()` method
+                // // is only available since Java 8
+                // if (m.getParameterCount() != 0) continue; // we only want getters (which must have 0 args)
+                if (m.getParameterTypes().length != 0) continue; // we only want getters (which must have 0 args)
 
                 // here we could maybe set `_raw_*` properties to `null` to avoid fooling the test
                 // as easily as merely writing the `_raw_*` bytes left over from parsing, but so far
