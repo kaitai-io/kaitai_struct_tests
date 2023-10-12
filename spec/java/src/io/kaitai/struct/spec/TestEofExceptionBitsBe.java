@@ -6,7 +6,7 @@ import static org.testng.Assert.*;
 public class TestEofExceptionBitsBe extends CommonSpec {
     @Test
     public void testEofExceptionBitsBe() throws Exception {
-        EofExceptionBitsBe r = EofExceptionBitsBe.fromFile(SRC_DIR + "nav_parent_switch.bin");
+        final EofExceptionBitsBe r = EofExceptionBitsBe.fromFile(SRC_DIR + "nav_parent_switch.bin");
         assertThrowsEofError(new ThrowingRunnable() {
             @Override
             public void run() throws Throwable {
