@@ -5,10 +5,12 @@ require_relative 'partial_builder'
 require_relative 'shellconfig'
 
 class JavaBuilder < PartialBuilder
-  def initialize(suite_names = nil, test_out_dir = nil)
+  def initialize(suite_name, test_out_dir = nil)
     super()
 
-    @suite_names = suite_names || 'spec,specwrite'
+    raise "Expected suite_name to be \"spec\" or \"specwrite\", but got #{suite_name.inspect}" unless suite_name == 'spec' || suite_name == 'specwrite'
+
+    @suite_name = suite_name
     @test_out_dir = File.absolute_path(test_out_dir || "#{@config['TEST_OUT_DIR']}/java")
 
     @spec_dir     = File.join('spec', 'java', 'src')
@@ -32,8 +34,19 @@ class JavaBuilder < PartialBuilder
   end
 
   def list_disposable_files
-    Dir.glob(File.join("#{@spec_dir}", '**/*.java')) +
-    Dir.glob(File.join("#{@compiled_dir}", 'src', '**/*.java'))
+    suite_files =
+      if @suite_name == 'specwrite'
+        [File.join(@spec_dir, 'io', 'kaitai', 'struct', 'spec', 'CommonSpec.java')] +
+        Dir.glob(File.join(@spec_dir, 'io', 'kaitai', 'struct', 'specwrite', '*.java')) +
+        Dir.glob(File.join(@spec_dir, 'io', 'kaitai', 'struct', 'testwrite', '*.java')) +
+        Dir.glob(File.join(@compiled_dir, 'src', 'io', 'kaitai', 'struct', 'testwrite', '*.java'))
+      else
+        Dir.glob(File.join(@spec_dir, 'io', 'kaitai', 'struct', 'spec', '*.java')) +
+        Dir.glob(File.join(@spec_dir, 'io', 'kaitai', 'struct', 'testformats', '*.java')) +
+        Dir.glob(File.join(@compiled_dir, 'src', 'io', 'kaitai', 'struct', 'testformats', '*.java'))
+      end
+
+    suite_files + Dir.glob(File.join("#{@spec_dir}", 'nested', '**/*.java'))
   end
 
   def create_project(mand_files, disp_files)
@@ -94,7 +107,7 @@ class JavaBuilder < PartialBuilder
       '-cp', @java_classpath,
       'org.testng.TestNG',
       '-d', @test_out_dir,
-      '-testnames', @suite_names,
+      '-testnames', @suite_name,
       File.absolute_path(File.join('spec', 'java', 'testng.xml'))
     ]
     out_log = File.join(@test_out_dir, 'test_run.stdout')
