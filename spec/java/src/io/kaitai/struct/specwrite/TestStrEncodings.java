@@ -4,18 +4,29 @@ import io.kaitai.struct.ConsistencyError;
 import io.kaitai.struct.KaitaiStruct.ReadWrite;
 import io.kaitai.struct.testwrite.StrEncodings;
 import org.testng.annotations.Test;
+import static org.testng.Assert.*;
 
 public class TestStrEncodings extends CommonSpec {
-    @Test(expectedExceptions = NullPointerException.class, expectedExceptionsMessageRegExp = ".*\\bstr2\\b.*")
+    @Test
     public void testCheckNull() throws Exception {
-        StrEncodings r = new StrEncodings();
+        final StrEncodings r = new StrEncodings();
 
         r.setStr1("woo");
         r.setLenOf1(3);
 
         r.setLenOf2(15);
 
-        r._check();
+        Throwable thr = expectThrows(NullPointerException.class, new ThrowingRunnable() {
+            @Override
+            public void run() throws Throwable {
+                r._check();
+            }
+        });
+        final String msg = thr.getMessage();
+        if (msg != null) {
+            final String fieldName = "str2";
+            assertTrue(msg.matches(".*\\b" + fieldName + "\\b.*"), "expected the error message to contain '" + fieldName + "', but got [" + msg + "]");
+        }
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: str2,.*")

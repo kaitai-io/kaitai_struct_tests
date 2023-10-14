@@ -4,6 +4,7 @@ import io.kaitai.struct.ConsistencyError;
 import io.kaitai.struct.KaitaiStruct.ReadWrite;
 import io.kaitai.struct.testwrite.RepeatNStrz;
 import org.testng.annotations.Test;
+import static org.testng.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,12 +20,22 @@ public class TestRepeatNStrz extends CommonSpec {
         r._check();
     }
 
-    @Test(expectedExceptions = NullPointerException.class, expectedExceptionsMessageRegExp = ".*\\blines\\b.*")
+    @Test
     public void testCheckNull() throws Exception {
-        RepeatNStrz r = new RepeatNStrz();
+        final RepeatNStrz r = new RepeatNStrz();
         r.setQty(0);
 
-        r._check();
+        Throwable thr = expectThrows(NullPointerException.class, new ThrowingRunnable() {
+            @Override
+            public void run() throws Throwable {
+                r._check();
+            }
+        });
+        final String msg = thr.getMessage();
+        if (msg != null) {
+            final String fieldName = "lines";
+            assertTrue(msg.matches(".*\\b" + fieldName + "\\b.*"), "expected the error message to contain '" + fieldName + "', but got [" + msg + "]");
+        }
     }
 
     @Override
