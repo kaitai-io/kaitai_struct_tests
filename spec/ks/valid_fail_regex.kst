@@ -1,0 +1,3 @@
+id: valid_fail_regex
+data: fixed_struct.bin
+exception: ValidationRegexMatchError<str>
