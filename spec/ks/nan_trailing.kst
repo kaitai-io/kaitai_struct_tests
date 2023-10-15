@@ -1,0 +1,7 @@
+id: nan_leading
+data: nan_leading.bin
+asserts:
+  - actual: afloat_max
+    expected: 2
+  - actual: afloat_min
+    expected: 1
