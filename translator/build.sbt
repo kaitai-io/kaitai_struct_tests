@@ -1,6 +1,6 @@
 name := "translator"
 
-version := "0.10-SNAPSHOT"
+version := "0.11-SNAPSHOT"
 
 scalaVersion := "2.12.8"
 
