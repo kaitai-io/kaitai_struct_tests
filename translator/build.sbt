@@ -9,7 +9,7 @@ resolvers ++= Resolver.sonatypeOssRepos("public")
 
 libraryDependencies ++= Seq(
   "io.kaitai" %% "kaitai-struct-compiler" % "0.11-SNAPSHOT",
-  "com.github.scopt" %% "scopt" % "3.7.1"
+  "com.github.scopt" %% "scopt" % "4.1.0"
 )
 
 mainClass := Some("io.kaitai.struct.testtranslator.Main")

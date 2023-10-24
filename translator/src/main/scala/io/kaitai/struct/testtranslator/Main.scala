@@ -46,7 +46,7 @@ object Main extends App {
   KSVersion.current = Version.version
 
   val parser = new scopt.OptionParser[CLIOptions]("kst_translator") {
-    override def showUsageOnError = true
+    override def showUsageOnError = Some(true)
 
     head("KST translator", KSVersion.current.toString)
 
@@ -84,6 +84,11 @@ object Main extends App {
     opt[Unit]('f', "force") action { (x, c) =>
       c.copy(outDir = specDir)
     } text(s"force overwrite specs in production spec dirs (default: generate in $defaultOutDir)")
+
+    checkConfig(
+      c =>
+        if (c.srcFiles.isEmpty) failure("no test names found")
+        else success)
   }
 
   parser.parse(args, CLIOptions()) match {
@@ -94,8 +99,6 @@ object Main extends App {
       } else {
         config0
       }
-      if (config.srcFiles.isEmpty)
-        parser.showUsage()
       new TestTranslator(config).run()
   }
 }
