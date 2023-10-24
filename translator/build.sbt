@@ -5,7 +5,7 @@ version := "0.10-SNAPSHOT"
 scalaVersion := "2.12.8"
 
 resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
-resolvers += Resolver.sonatypeRepo("public")
+resolvers ++= Resolver.sonatypeOssRepos("public")
 
 libraryDependencies ++= Seq(
   "io.kaitai" % "kaitai-struct-compiler_2.12" % "0.11-SNAPSHOT",
