@@ -2,7 +2,7 @@ name := "translator"
 
 version := "0.11-SNAPSHOT"
 
-scalaVersion := "2.12.8"
+scalaVersion := "2.12.18"
 
 resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 resolvers ++= Resolver.sonatypeOssRepos("public")
