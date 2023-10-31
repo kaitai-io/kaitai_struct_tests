@@ -11,34 +11,29 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTypeIntUnaryOp(t *testing.T) {
+func TestParamsPassArrayInt(t *testing.T) {
 	defer func() {
 		if r := recover(); r != nil {
 			debug.PrintStack()
 			t.Fatal("unexpected panic:", r)
 		}
 	}()
-	f, err := os.Open("../../src/fixed_struct.bin")
+	f, err := os.Open("../../src/position_to_end.bin")
 	if err != nil {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r TypeIntUnaryOp
+	var r ParamsPassArrayInt
 	err = r.Read(s, &r, &r)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, 16720, r.ValueS2)
-	assert.EqualValues(t, int64(4706543082108963651), r.ValueS8)
-	tmp1, err := r.UnaryS2()
-	if err != nil {
-		t.Fatal(err)
-	}
-	assert.EqualValues(t, -16720, tmp1)
-	tmp2, err := r.UnaryS8()
-	if err != nil {
-		t.Fatal(err)
-	}
-	assert.EqualValues(t, int64(-4706543082108963651), tmp2)
+	assert.EqualValues(t, 3, len(r.PassInts.Nums))
+	assert.EqualValues(t, 513, r.PassInts.Nums[0])
+	assert.EqualValues(t, 1027, r.PassInts.Nums[1])
+	assert.EqualValues(t, 1541, r.PassInts.Nums[2])
+	assert.EqualValues(t, 2, len(r.PassIntsCalc.Nums))
+	assert.EqualValues(t, 27643, r.PassIntsCalc.Nums[0])
+	assert.EqualValues(t, 7, r.PassIntsCalc.Nums[1])
 }
