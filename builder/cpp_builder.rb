@@ -186,8 +186,12 @@ class CppBuilder < PartialBuilder
             # they are always included from some other .cpp
             # files. Thus, we report error against original .cpp file,
             # which we've memorized previously.
-            if filename =~ /\.h$/
-              raise "Found error in #{filename.inspect} file, but no original .cpp file reference found before" if orig_cpp_filename.nil?
+
+            if !filename.end_with?('.cpp')
+              if !filename.end_with?('.h')
+                log "line #{line_no}: found error in #{filename.inspect} file, which has neither .cpp nor .h extension (this is unusual)"
+              end
+              raise "line #{line_no}: found error in #{filename.inspect} file, but no original .cpp file reference found before" if orig_cpp_filename.nil?
               filename = orig_cpp_filename
             end
 
