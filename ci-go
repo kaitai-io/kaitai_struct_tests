@@ -20,8 +20,8 @@ ln -s ../../../../../../runtime/go compiled/go/src/github.com/kaitai-io/kaitai_s
 
 ABS_TEST_OUT_DIR="$(pwd)/$TEST_OUT_DIR"
 ABS_TEST_RUN_LOG="$ABS_TEST_OUT_DIR/go/test_run.stdout"
-rm -rf "$TEST_OUT_DIR/go"
-mkdir -p "$TEST_OUT_DIR/go"
+rm -rf "$TEST_OUT_DIR/go" "$TEST_OUT_DIR/go-write"
+mkdir -p "$TEST_OUT_DIR/go" "$TEST_OUT_DIR/go-write"
 
 ABS_SPEC_DIR="$(pwd)/spec/go"
 ABS_COMPILED_DIR="$(pwd)/compiled/go"
@@ -95,4 +95,6 @@ COUNT_PASS=$(grep -c '^--- PASS' "$ABS_TEST_RUN_LOG")
 echo "Totals: $COUNT_TOTAL ran, $COUNT_PASS passed, $COUNT_FAIL failed"
 
 ./kst-adoption-report go
+./kst-adoption-report go-write
 aggregate/convert_to_json go "$TEST_OUT_DIR/go" "$TEST_OUT_DIR/go/ci.json"
+aggregate/convert_to_json go-write "$TEST_OUT_DIR/go-write" "$TEST_OUT_DIR/go-write/ci.json"

@@ -112,7 +112,11 @@ class TestTranslator(options: CLIOptions) {
     case "cpp_stl_98" => new CppStlSG(testSpec, provider, CppRuntimeConfig().copyAsCpp98())
     case "cpp_stl_11" => new CppStlSG(testSpec, provider, CppRuntimeConfig().copyAsCpp11())
     case "csharp" => new CSharpSG(testSpec, provider)
-    case "go" => new GoSG(testSpec, provider)
+    case "go" => if (options.readWrite) {
+      new GoWriteSG(testSpec, provider)
+    } else {
+      new GoSG(testSpec, provider)
+    }
     case "java" => if (options.readWrite) {
       new JavaWriteSG(testSpec, provider)
     } else {
