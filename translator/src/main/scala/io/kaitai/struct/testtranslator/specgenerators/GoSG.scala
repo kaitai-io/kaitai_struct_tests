@@ -1,6 +1,6 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import _root_.io.kaitai.struct.datatype.{DataType, KSError}
+import _root_.io.kaitai.struct.datatype.{DataType, KSError, EndOfStreamError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.GoCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
@@ -34,7 +34,7 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
   val className = GoCompiler.types2class(List(spec.id))
   val translator = new GoTranslator(new GoOutputWriter(out), provider, importList)
 
-  override def fileName(name: String): String = s"${name}_test.go"
+  override def fileName(name: String): String = s"spec/${name}_test.go"
 
   importList.add("\"runtime/debug\"")
   importList.add("\"os\"")

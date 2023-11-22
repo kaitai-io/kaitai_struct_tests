@@ -15,7 +15,9 @@ def glob_spec_files(lang)
   when 'csharp'
     Dir.glob('spec/csharp/kaitai_struct_csharp_tests/tests/Spec*.cs')
   when 'go'
-    Dir.glob('spec/go/*_test.go')
+    Dir.glob('spec/go/spec/*_test.go')
+  when 'go-write'
+    Dir.glob('spec/go/specwrite/*_test.go')
   when 'java'
     Dir.glob('spec/java/src/**/spec/Test*.java')
   when 'java-write'
@@ -51,7 +53,7 @@ def spec_file_to_test_name(lang, fn)
   when 'csharp'
     raise "Unable to extract test name from #{fn.inspect}" unless fn =~ /^Spec(.*?)\.cs$/
     $1
-  when 'go'
+  when 'go', 'go-write' 
     raise "Unable to extract test name from #{fn.inspect}" unless fn =~ /^(.*?)_test\.go$/
     underscore_to_ucamelcase($1)
   when 'java', 'java-write'
