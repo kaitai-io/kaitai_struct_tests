@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::params_pass_array_str::*;
+use rust::formats::params_pass_array_str::*;
 
 #[test]
 fn test_params_pass_array_str() {

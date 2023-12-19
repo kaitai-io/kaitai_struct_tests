@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::integers_double_overflow::*;
+use rust::formats::integers_double_overflow::*;
 
 #[test]
 fn test_integers_double_overflow() {

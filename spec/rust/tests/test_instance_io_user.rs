@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::instance_io_user::*;
+use rust::formats::instance_io_user::*;
 
 #[test]
 fn test_instance_io_user() {

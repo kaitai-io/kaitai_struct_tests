@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::instance_user_array::*;
+use rust::formats::instance_user_array::*;
 
 #[test]
 fn test_instance_user_array() {

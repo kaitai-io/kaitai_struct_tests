@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::enum_long_range_s::*;
+use rust::formats::enum_long_range_s::*;
 
 #[test]
 fn test_enum_long_range_s() {

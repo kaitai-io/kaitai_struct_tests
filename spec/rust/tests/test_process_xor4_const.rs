@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::process_xor4_const::*;
+use rust::formats::process_xor4_const::*;
 
 #[test]
 fn test_process_xor4_const() {

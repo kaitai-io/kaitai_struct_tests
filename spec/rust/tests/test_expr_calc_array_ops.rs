@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::expr_calc_array_ops::*;
+use rust::formats::expr_calc_array_ops::*;
 
 #[test]
 fn test_expr_calc_array_ops() {

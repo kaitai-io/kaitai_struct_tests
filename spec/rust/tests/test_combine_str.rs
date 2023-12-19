@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::combine_str::*;
+use rust::formats::combine_str::*;
 
 #[test]
 fn test_combine_str() {

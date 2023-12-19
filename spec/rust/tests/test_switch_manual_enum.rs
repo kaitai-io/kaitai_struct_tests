@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::switch_manual_enum::*;
+use rust::formats::switch_manual_enum::*;
 
 #[test]
 fn test_switch_manual_enum() {

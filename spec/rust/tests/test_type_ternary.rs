@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::type_ternary::*;
+use rust::formats::type_ternary::*;
 
 #[test]
 fn test_type_ternary() {

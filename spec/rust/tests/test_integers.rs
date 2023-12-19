@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::integers::*;
+use rust::formats::integers::*;
 
 #[test]
 fn test_integers() {

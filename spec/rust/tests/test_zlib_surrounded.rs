@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::zlib_surrounded::*;
+use rust::formats::zlib_surrounded::*;
 
 #[test]
 fn test_zlib_surrounded() {

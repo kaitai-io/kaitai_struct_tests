@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::repeat_n_strz::*;
+use rust::formats::repeat_n_strz::*;
 
 #[test]
 fn test_repeat_n_strz() {

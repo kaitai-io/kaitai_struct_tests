@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::str_pad_term_empty::*;
+use rust::formats::str_pad_term_empty::*;
 
 #[test]
 fn test_str_pad_term_empty() {

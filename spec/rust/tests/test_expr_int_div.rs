@@ -2,19 +2,16 @@
 #![allow(unused_assignments)]
 #![allow(overflowing_literals)]
 use std::fs;
-
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::expr_int_div::*;
-
+use rust::formats::expr_int_div::*;
 
 #[test]
 fn test_expr_int_div() {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let res: KResult<OptRc<ExprIntDiv>> = ExprIntDiv::read_into(&_io, None, None);
-    let r : OptRc<ExprIntDiv>;
+    let r: OptRc<ExprIntDiv>;
 
     if let Err(err) = res {
         panic!("{:?}", err);

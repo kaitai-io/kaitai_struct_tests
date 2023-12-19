@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::js_signed_right_shift::*;
+use rust::formats::js_signed_right_shift::*;
 
 #[test]
 fn test_js_signed_right_shift() {

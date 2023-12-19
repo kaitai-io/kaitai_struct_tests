@@ -2,8 +2,7 @@ use std::fs;
 
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::type_ternary_opaque::*;
+use rust::formats::type_ternary_opaque::*;
 
 #[test]
 fn test_type_ternary_opaque() {

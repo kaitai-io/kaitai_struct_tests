@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::if_values::*;
+use rust::formats::if_values::*;
 
 #[test]
 fn test_if_values() {

@@ -2,8 +2,7 @@ use std::fs;
 
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::opaque_external_type::*;
+use rust::formats::opaque_external_type::*;
 
 #[test]
 fn test_opaque_external_type() {

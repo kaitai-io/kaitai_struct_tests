@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::bits_shift_by_b64_le::*;
+use rust::formats::bits_shift_by_b64_le::*;
 
 #[test]
 fn test_bits_shift_by_b64_le() {

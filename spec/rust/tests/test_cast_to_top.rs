@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::cast_to_top::*;
+use rust::formats::cast_to_top::*;
 
 #[test]
 fn test_cast_to_top() {

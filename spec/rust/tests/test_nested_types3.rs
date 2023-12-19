@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::nested_types3::*;
+use rust::formats::nested_types3::*;
 
 #[test]
 fn test_nested_types3() {

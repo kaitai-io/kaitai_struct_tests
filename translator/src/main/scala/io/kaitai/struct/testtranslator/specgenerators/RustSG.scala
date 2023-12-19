@@ -30,10 +30,9 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     importList.add("use std::fs;")
     importList.add("extern crate kaitai;")
     importList.add("use self::kaitai::*;")
-    importList.add("#[path = \"../formats/mod.rs\"] mod formats;")
-    importList.add(s"${use_mod}formats::${spec.id}::*;")
+    importList.add(s"${use_mod}rust::formats::${spec.id}::*;")
 
-    spec.extraImports.foreach{ name => importList.add(s"${use_mod}formats::$name::*;") }
+    spec.extraImports.foreach{ name => importList.add(s"${use_mod}rust::formats::$name::*;") }
 
     val code =
       s"""|#[test]

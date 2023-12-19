@@ -6,9 +6,8 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::imports0::*;
-use formats::hello_world::*;
+use rust::formats::imports0::*;
+use rust::formats::hello_world::*;
 
 #[test]
 fn test_imports0() {

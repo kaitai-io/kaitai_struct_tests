@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::floating_points::*;
+use rust::formats::floating_points::*;
 
 #[test]
 fn test_floating_points() {

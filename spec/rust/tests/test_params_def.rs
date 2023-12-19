@@ -2,9 +2,7 @@ use std::fs;
 
 extern crate kaitai;
 use self::kaitai::*;
-
-#[path = "../formats/mod.rs"] mod formats;
-use formats::params_def::*;
+use rust::formats::params_def::*;
 
 #[test]
 fn test_params_def() {

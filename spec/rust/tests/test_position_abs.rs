@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::position_abs::*;
+use rust::formats::position_abs::*;
 
 #[test]
 fn test_position_abs() {

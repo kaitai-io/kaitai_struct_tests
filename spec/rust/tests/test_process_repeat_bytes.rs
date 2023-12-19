@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::process_repeat_bytes::*;
+use rust::formats::process_repeat_bytes::*;
 
 #[test]
 fn test_process_repeat_bytes() {

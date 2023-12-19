@@ -2,8 +2,7 @@ use std::fs;
 
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::opaque_external_type_02_parent::*;
+use rust::formats::opaque_external_type_02_parent::*;
 
 #[test]
 fn test_term_strz() {

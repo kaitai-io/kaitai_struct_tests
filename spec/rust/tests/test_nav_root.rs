@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::nav_root::*;
+use rust::formats::nav_root::*;
 
 #[test]
 fn test_nav_root() {

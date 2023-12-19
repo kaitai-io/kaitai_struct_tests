@@ -6,11 +6,13 @@ pub struct MyCustomFx {
 }
 
 impl MyCustomFx {
-    pub fn new(p_key: u8, p_flag :bool, _p_some_bytes: &[u8]) -> Self {
-        if (p_flag) {
+    pub fn new(p_key: u8, p_flag: bool, _p_some_bytes: &[u8]) -> Self {
+        if p_flag {
             Self { key: p_key as i32 }
         } else {
-            Self { key: -(p_key as i32) }
+            Self {
+                key: -(p_key as i32),
+            }
         }
     }
 }

@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::bits_seq_endian_combo::*;
+use rust::formats::bits_seq_endian_combo::*;
 
 #[test]
 fn test_bits_seq_endian_combo() {

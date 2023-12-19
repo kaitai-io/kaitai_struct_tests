@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::valid_fail_range_bytes::*;
+use rust::formats::valid_fail_range_bytes::*;
 
 #[test]
 fn test_valid_fail_range_bytes() {

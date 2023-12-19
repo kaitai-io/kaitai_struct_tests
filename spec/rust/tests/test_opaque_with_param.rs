@@ -2,9 +2,7 @@ use std::fs;
 
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::opaque_with_param::*;
-
+use rust::formats::opaque_with_param::*;
 
 #[test]
 fn test_opaque_with_param() {

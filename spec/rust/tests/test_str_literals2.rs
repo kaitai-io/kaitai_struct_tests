@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::str_literals2::*;
+use rust::formats::str_literals2::*;
 
 #[test]
 fn test_str_literals2() {

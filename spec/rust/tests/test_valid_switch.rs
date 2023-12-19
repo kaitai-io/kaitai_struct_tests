@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::valid_switch::*;
+use rust::formats::valid_switch::*;
 
 #[test]
 fn test_valid_switch() {

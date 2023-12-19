@@ -6,9 +6,8 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::enum_to_i_class_border_1::*;
-use formats::enum_to_i_class_border_2::*;
+use rust::formats::enum_to_i_class_border_1::*;
+use rust::formats::enum_to_i_class_border_2::*;
 
 #[test]
 fn test_enum_to_i_class_border_1() {

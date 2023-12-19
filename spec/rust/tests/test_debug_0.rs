@@ -1,8 +1,7 @@
 #![allow(dead_code)]
 
 extern crate kaitai;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::debug_0::*;
+use rust::formats::debug_0::*;
 
 #[test]
 fn basic_parse() {

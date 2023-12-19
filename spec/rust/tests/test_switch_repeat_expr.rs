@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::switch_repeat_expr::*;
+use rust::formats::switch_repeat_expr::*;
 
 #[test]
 fn test_switch_repeat_expr() {

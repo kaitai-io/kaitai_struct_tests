@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::default_big_endian::*;
+use rust::formats::default_big_endian::*;
 
 #[test]
 fn test_default_big_endian() {

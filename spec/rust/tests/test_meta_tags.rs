@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::meta_tags::*;
+use rust::formats::meta_tags::*;
 
 #[test]
 fn test_meta_tags() {

@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::valid_optional_id::*;
+use rust::formats::valid_optional_id::*;
 
 #[test]
 fn test_valid_optional_id() {

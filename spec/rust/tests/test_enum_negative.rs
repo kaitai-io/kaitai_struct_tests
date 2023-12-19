@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::enum_negative::*;
+use rust::formats::enum_negative::*;
 
 #[test]
 fn test_enum_negative() {

@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::ts_packet_header::*;
+use rust::formats::ts_packet_header::*;
 
 #[test]
 fn test_ts_packet_header() {

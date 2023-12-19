@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::str_encodings_default::*;
+use rust::formats::str_encodings_default::*;
 
 #[test]
 fn test_str_encodings_default() {

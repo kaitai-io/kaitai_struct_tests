@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::valid_short::*;
+use rust::formats::valid_short::*;
 
 #[test]
 fn test_valid_short() {

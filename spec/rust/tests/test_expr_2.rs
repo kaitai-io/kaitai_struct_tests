@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::expr_2::*;
+use rust::formats::expr_2::*;
 
 #[test]
 fn test_expr_2() {

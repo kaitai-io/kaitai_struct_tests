@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::params_call_short::*;
+use rust::formats::params_call_short::*;
 
 #[test]
 fn test_params_call_short() {

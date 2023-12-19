@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::repeat_until_calc_array_type::*;
+use rust::formats::repeat_until_calc_array_type::*;
 
 #[test]
 fn test_repeat_until_calc_array_type() {

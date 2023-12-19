@@ -1,10 +1,10 @@
 extern crate kaitai;
-use kaitai::CustomDecoder;
+
+#[allow(non_snake_case)]
 
 pub mod Nested {
     pub mod Deeply {
-        pub struct CustomFx {
-        }
+        pub struct CustomFx {}
 
         impl CustomFx {
             pub fn new(_p_key: u8) -> Self {

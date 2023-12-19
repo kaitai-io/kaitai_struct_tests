@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::term_u1_val::*;
+use rust::formats::term_u1_val::*;
 
 #[test]
 fn test_term_u1_val() {

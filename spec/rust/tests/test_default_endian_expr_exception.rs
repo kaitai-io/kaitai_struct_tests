@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::default_endian_expr_exception::*;
+use rust::formats::default_endian_expr_exception::*;
 
 #[test]
 fn test_default_endian_expr_exception() {

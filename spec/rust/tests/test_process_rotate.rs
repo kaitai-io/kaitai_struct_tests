@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::process_rotate::*;
+use rust::formats::process_rotate::*;
 
 #[test]
 fn test_process_rotate() {

@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::yaml_ints::*;
+use rust::formats::yaml_ints::*;
 
 #[test]
 fn test_yaml_ints() {

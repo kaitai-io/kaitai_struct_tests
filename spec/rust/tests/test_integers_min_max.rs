@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::integers_min_max::*;
+use rust::formats::integers_min_max::*;
 
 #[test]
 fn test_integers_min_max() {

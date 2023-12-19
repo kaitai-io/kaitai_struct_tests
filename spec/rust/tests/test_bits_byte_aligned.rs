@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::bits_byte_aligned::*;
+use rust::formats::bits_byte_aligned::*;
 
 #[test]
 fn test_bits_byte_aligned() {

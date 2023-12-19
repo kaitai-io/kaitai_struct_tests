@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::switch_multi_bool_ops::*;
+use rust::formats::switch_multi_bool_ops::*;
 
 #[test]
 fn test_switch_multi_bool_ops() {

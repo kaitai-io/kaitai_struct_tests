@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::docstrings_docref::*;
+use rust::formats::docstrings_docref::*;
 
 #[test]
 fn test_docstrings_docref() {

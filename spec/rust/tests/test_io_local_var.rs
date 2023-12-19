@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::io_local_var::*;
+use rust::formats::io_local_var::*;
 
 #[test]
 fn test_io_local_var() {

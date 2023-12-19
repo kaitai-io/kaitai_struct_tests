@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::process_custom_no_args::*;
+use rust::formats::process_custom_no_args::*;
 
 #[test]
 fn test_process_custom_no_args() {

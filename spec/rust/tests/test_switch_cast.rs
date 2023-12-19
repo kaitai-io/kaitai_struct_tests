@@ -3,8 +3,7 @@ use std::fs;
 
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::switch_cast::*;
+use rust::formats::switch_cast::*;
 
 #[test]
 fn basic_parse() {

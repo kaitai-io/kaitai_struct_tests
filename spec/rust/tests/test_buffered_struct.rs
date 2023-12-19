@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::buffered_struct::*;
+use rust::formats::buffered_struct::*;
 
 #[test]
 fn test_buffered_struct() {

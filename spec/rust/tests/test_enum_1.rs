@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::enum_1::*;
+use rust::formats::enum_1::*;
 
 #[test]
 fn test_enum_1() {

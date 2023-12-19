@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::repeat_until_complex::*;
+use rust::formats::repeat_until_complex::*;
 
 #[test]
 fn test_repeat_until_complex() {

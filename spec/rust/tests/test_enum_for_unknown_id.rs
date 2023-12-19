@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::enum_for_unknown_id::*;
+use rust::formats::enum_for_unknown_id::*;
 
 #[test]
 fn test_enum_for_unknown_id() {

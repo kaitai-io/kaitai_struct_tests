@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::debug_switch_user::*;
+use rust::formats::debug_switch_user::*;
 
 #[test]
 fn test_debug_switch_user() {

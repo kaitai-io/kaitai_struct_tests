@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::bcd_user_type_le::*;
+use rust::formats::bcd_user_type_le::*;
 
 #[test]
 fn test_bcd_user_type_le() {

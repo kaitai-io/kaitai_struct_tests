@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::expr_sizeof_value_sized::*;
+use rust::formats::expr_sizeof_value_sized::*;
 
 #[test]
 fn test_expr_sizeof_value_sized() {

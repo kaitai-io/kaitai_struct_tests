@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::expr_if_int_ops::*;
+use rust::formats::expr_if_int_ops::*;
 
 #[test]
 fn test_expr_if_int_ops() {

@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::position_in_seq::*;
+use rust::formats::position_in_seq::*;
 
 #[test]
 fn test_position_in_seq() {

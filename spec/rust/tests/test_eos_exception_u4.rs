@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::eos_exception_u4::*;
+use rust::formats::eos_exception_u4::*;
 
 #[test]
 fn test_eos_exception_u4() {

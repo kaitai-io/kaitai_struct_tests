@@ -1,10 +1,8 @@
 use std::{
-    io::{
-        self,
-        prelude::*
-    },
+    ffi::OsStr,
     fs,
-    path::Path, ffi::OsStr
+    io::{self, prelude::*},
+    path::Path,
 };
 
 pub fn path_exists(path: &Path) -> bool {
@@ -13,7 +11,7 @@ pub fn path_exists(path: &Path) -> bool {
 
 fn main() {
     let source_path = Path::new("../../compiled/rust");
-    let destination_path = Path::new("./formats");
+    let destination_path = Path::new("./src/formats");
 
     if !path_exists(destination_path) {
         fs::create_dir(destination_path).unwrap_or_else(|e| {
@@ -21,11 +19,7 @@ fn main() {
         });
     }
 
-    let rm_except_files = vec![
-        "custom_fx_no_args.rs",
-        "my_custom_fx.rs",
-        "custom_fx.rs",
-    ];
+    let rm_except_files = vec![];
 
     // we don't support this tests yet
     let copy_except_files = vec![
@@ -36,14 +30,20 @@ fn main() {
     ];
 
     remove_existing(destination_path, rm_except_files).unwrap_or_else(|e| {
-        println!("Unable to remove existing files under test: {}", e.to_string());
+        println!(
+            "Unable to remove existing files under test: {}",
+            e.to_string()
+        );
     });
 
     copy_new(source_path, destination_path, copy_except_files).unwrap_or_else(|e| {
         println!("Unable to copy new files under test: {}", e.to_string());
     });
 
-    println!("cargo:rerun-if-changed={}", source_path.display().to_string());
+    println!(
+        "cargo:rerun-if-changed={}",
+        source_path.display().to_string()
+    );
 }
 
 fn remove_existing(destination_path: &Path, except_files: Vec<&str>) -> io::Result<()> {
@@ -59,11 +59,15 @@ fn remove_existing(destination_path: &Path, except_files: Vec<&str>) -> io::Resu
             println!("leaving {}", path.display().to_string());
         }
     }
-    
+
     Ok(())
 }
 
-fn copy_new(source_path: &Path, destination_path: &Path, except_files: Vec<&str>) -> io::Result<()> {
+fn copy_new(
+    source_path: &Path,
+    destination_path: &Path,
+    except_files: Vec<&str>,
+) -> io::Result<()> {
     let mut librs = fs::File::create(destination_path.join("mod.rs"))?;
 
     write!(librs, "#![allow(unused_parens)]\n")?;
@@ -80,16 +84,32 @@ fn copy_new(source_path: &Path, destination_path: &Path, except_files: Vec<&str>
         let file_name = path.file_name().unwrap().to_os_string();
         if except_files.iter().find(|&&x| *x == file_name).is_none() {
             fs::copy(path.clone(), destination_path.join(file_name.clone()))?;
-            println!("copying {} to {}", path.as_path().display().to_string(),
-                destination_path.join(file_name.clone()).as_path().display().to_string());
+            println!(
+                "copying {} to {}",
+                path.as_path().display().to_string(),
+                destination_path
+                    .join(file_name.clone())
+                    .as_path()
+                    .display()
+                    .to_string()
+            );
 
-            write!(librs, "pub mod {};\n",
-                   path.file_stem().unwrap().to_str().unwrap())?;
-            println!("updating lib.rs with {}", path.file_stem().unwrap().to_str().unwrap());
+            write!(
+                librs,
+                "pub mod {};\n",
+                path.file_stem().unwrap().to_str().unwrap()
+            )?;
+            println!(
+                "updating lib.rs with {}",
+                path.file_stem().unwrap().to_str().unwrap()
+            );
         } else {
-            println!("skipping (not yet supported) {}", path.display().to_string());
+            println!(
+                "skipping (not yet supported) {}",
+                path.display().to_string()
+            );
         }
     }
-    
+
     Ok(())
 }

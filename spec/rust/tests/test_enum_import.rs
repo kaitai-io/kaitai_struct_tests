@@ -6,10 +6,9 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::enum_import::*;
-use formats::enum_0::*;
-use formats::enum_deep::*;
+use rust::formats::enum_import::*;
+use rust::formats::enum_0::*;
+use rust::formats::enum_deep::*;
 
 #[test]
 fn test_enum_import() {

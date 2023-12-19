@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::zlib_with_header_78::*;
+use rust::formats::zlib_with_header_78::*;
 
 #[test]
 fn test_zlib_with_header_78() {

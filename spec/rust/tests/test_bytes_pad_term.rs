@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::bytes_pad_term::*;
+use rust::formats::bytes_pad_term::*;
 
 #[test]
 fn test_bytes_pad_term() {

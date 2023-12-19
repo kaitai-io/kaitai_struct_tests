@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::position_to_end::*;
+use rust::formats::position_to_end::*;
 
 #[test]
 fn test_position_to_end() {

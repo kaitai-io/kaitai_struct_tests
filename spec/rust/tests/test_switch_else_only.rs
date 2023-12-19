@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::switch_else_only::*;
+use rust::formats::switch_else_only::*;
 
 #[test]
 fn test_switch_else_only() {

@@ -2,9 +2,7 @@ use std::fs;
 
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::imports_abs_abs::*;
-
+use rust::formats::imports_abs_abs::*;
 
 #[test]
 fn test_params_def() {

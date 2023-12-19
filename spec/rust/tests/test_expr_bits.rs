@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::expr_bits::*;
+use rust::formats::expr_bits::*;
 
 #[test]
 fn test_expr_bits() {

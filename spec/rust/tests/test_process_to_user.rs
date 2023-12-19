@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::process_to_user::*;
+use rust::formats::process_to_user::*;
 
 #[test]
 fn test_process_to_user() {

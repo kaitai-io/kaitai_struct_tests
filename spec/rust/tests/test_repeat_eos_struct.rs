@@ -1,17 +1,17 @@
+#![allow(unused_variables)]
+#![allow(unused_assignments)]
+#![allow(overflowing_literals)]
 use std::fs;
-
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::repeat_eos_struct::*;
-
+use rust::formats::repeat_eos_struct::*;
 
 #[test]
 fn test_repeat_eos_struct() {
     let bytes = fs::read("../../src/repeat_eos_struct.bin").unwrap();
     let _io = BytesReader::from(bytes);
-    let res = RepeatEosStruct::read_into(&_io, None, None);
-    let r : OptRc<RepeatEosStruct>;
+    let res: KResult<OptRc<RepeatEosStruct>> = RepeatEosStruct::read_into(&_io, None, None);
+    let r: OptRc<RepeatEosStruct>;
 
     if let Err(err) = res {
         panic!("{:?}", err);

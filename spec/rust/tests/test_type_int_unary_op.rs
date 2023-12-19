@@ -6,8 +6,7 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-#[path = "../formats/mod.rs"] mod formats;
-use formats::type_int_unary_op::*;
+use rust::formats::type_int_unary_op::*;
 
 #[test]
 fn test_type_int_unary_op() {
