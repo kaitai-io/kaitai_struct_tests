@@ -66,12 +66,16 @@ class CSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spe
   override def simpleEquality(check: TestEquals): Unit = {
     val ptr = translator.detectType(check.expected) match {
       case t: StrType => "*"
-      case t: BytesType => "*"
       case _ => ""
     }
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
-    out.puts(s"BOOST_CHECK_EQUAL($ptr$actStr, $ptr$expStr);")
+    translator.detectType(check.expected) match {
+      case t: BytesType =>
+        out.puts(s"BOOST_CHECK_EQUAL(bytes_wrapper($actStr), bytes_wrapper($expStr));")
+      case _ =>
+        out.puts(s"BOOST_CHECK_EQUAL($ptr$actStr, $ptr$expStr);")
+    }
   }
 
   override def floatEquality(check: TestEquals): Unit = {

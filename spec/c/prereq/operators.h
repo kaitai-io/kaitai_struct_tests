@@ -4,6 +4,12 @@ extern "C" {
 #include <iostream>
 #include <sstream>
 
+class bytes_wrapper {
+public:
+    const ks_bytes* data;
+    bytes_wrapper(const ks_bytes* bytes) : data(bytes) {}
+};
+
 inline bool operator==(const ks_string s1, const char* s2)
 {
     return strcmp(s1.data, s2) == 0;
@@ -24,22 +30,22 @@ inline std::ostream& operator<<(std::ostream& out, const ks_string s)
     return out << s.data;
 }
 
-inline bool operator==(const ks_bytes b1, const ks_bytes b2)
+inline bool operator==(const bytes_wrapper b1, const bytes_wrapper b2)
 {
     uint8_t* data1;
     uint8_t* data2;
     uint64_t length1, length2;
 
-    length1 = ks_bytes_get_length(&b1);
-    length2 = ks_bytes_get_length(&b2);
+    length1 = ks_bytes_get_length(b1.data);
+    length2 = ks_bytes_get_length(b2.data);
 
     if (length1 != length2)
         return false;
 
     data1 = (uint8_t*)malloc(length1);
     data2 = (uint8_t*)malloc(length2);
-    ks_bytes_get_data(&b1, data1);
-    ks_bytes_get_data(&b2, data2);
+    ks_bytes_get_data(b1.data, data1);
+    ks_bytes_get_data(b2.data, data2);
 
     for (uint64_t i = 0; i < length1; i++)
     {
@@ -56,27 +62,27 @@ inline bool operator==(const ks_bytes b1, const ks_bytes b2)
     return true;
 }
 
-inline std::ostream& operator<<(std::ostream& out, const ks_bytes b)
+inline std::ostream& operator<<(std::ostream& out, const bytes_wrapper b)
 {
     uint8_t* data;
     uint64_t length;
     std::stringstream ss;
 
-    length = ks_bytes_get_length(&b);
+    length = ks_bytes_get_length(b.data);
     data = (uint8_t*)malloc(length);
-    ks_bytes_get_data(&b, data);
+    ks_bytes_get_data(b.data, data);
 
     bool first = true;
     for (uint64_t i = 0; i < length; i++)
     {
         if (!first)
             ss << ", ";
-        ss << data[i];
+        ss << std::hex << "0x" << (int)data[i];
         first = false;
     }
     free(data);
 
-    return out << ss.str();
+    return out << "[ " << ss.str() << " ]";
 }
 
 #define COMPARE_ARRAY(typ, act, ...)            \
