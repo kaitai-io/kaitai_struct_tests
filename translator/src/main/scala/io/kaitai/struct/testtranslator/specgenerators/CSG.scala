@@ -109,7 +109,6 @@ class CSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spe
   override def results: String = {
     "// " + AUTOGEN_COMMENT + "\n\n" +
       "#define KS_USE_ZLIB\n" +
-      "#define KS_DEPEND_ON_INTERNALS\n" +
       "#define KS_USE_ICONV\n" +
       "extern \"C\" {\n" +
       "#include \"" + spec.id + ".h\"\n" +
