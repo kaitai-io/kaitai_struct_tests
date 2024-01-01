@@ -3,7 +3,7 @@ package io.kaitai.struct.testtranslator.specgenerators
 import io.kaitai.struct.datatype.{DataType, KSError}
 import io.kaitai.struct.exprlang.Ast
 import io.kaitai.struct.languages.CCompiler
-import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import io.kaitai.struct.testtranslator.{Main, TestEquals, TestSpec}
 import io.kaitai.struct.datatype.DataType._
 import io.kaitai.struct.translators.CTranslator
 import io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
@@ -63,7 +63,7 @@ class CSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spe
     out.puts("}")
   }
 
-  def simpleAssert(check: TestAssert): Unit = {
+  override def simpleEquality(check: TestEquals): Unit = {
     val ptr = translator.detectType(check.expected) match {
       case t: StrType => "*"
       case t: BytesType => "*"
@@ -74,13 +74,13 @@ class CSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spe
     out.puts(s"BOOST_CHECK_EQUAL($ptr$actStr, $ptr$expStr);")
   }
 
-  override def floatAssert(check: TestAssert): Unit = {
+  override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"BOOST_CHECK_CLOSE($actStr, $expStr, 1e-4);")
   }
 
-  def nullAssert(actual: Ast.expr): Unit = {
+  override def nullAssert(actual: Ast.expr): Unit = {
     val nullCheckStr = actual match {
       case Ast.expr.Attribute(x, Ast.identifier(attrName)) =>
        fixup("!" + translator.anyField(x, s"_is_valid_$attrName"))
@@ -88,7 +88,7 @@ class CSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spe
     out.puts(s"BOOST_CHECK($nullCheckStr);")
   }
 
-  def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit = {
+  override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit = {
     val elTypeName = CCompiler.kaitaiType2NativeType(elType)
     val eltsStr = elts.map(translator.translate).mkString(", ")
     val actStr = translateAct(check.actual)
