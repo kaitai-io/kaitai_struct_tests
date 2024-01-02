@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTypeIntUnaryOp(t *testing.T) {
+func TestYamlInts(t *testing.T) {
 	defer func() {
 		if r := recover(); r != nil {
 			debug.PrintStack()
@@ -23,22 +23,30 @@ func TestTypeIntUnaryOp(t *testing.T) {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r TypeIntUnaryOp
+	var r YamlInts
 	err = r.Read(s, &r, &r)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, 16720, r.ValueS2)
-	assert.EqualValues(t, int64(4706543082108963651), r.ValueS8)
-	tmp1, err := r.UnaryS2()
+	tmp1, err := r.TestU4Dec()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, -16720, tmp1)
-	tmp2, err := r.UnaryS8()
+	assert.EqualValues(t, uint32(4294967295), tmp1)
+	tmp2, err := r.TestU4Hex()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, int64(-4706543082108963651), tmp2)
+	assert.EqualValues(t, uint32(4294967295), tmp2)
+	tmp3, err := r.TestU8Dec()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, uint64(18446744073709551615), tmp3)
+	tmp4, err := r.TestU8Hex()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, uint64(18446744073709551615), tmp4)
 }

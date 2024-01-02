@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTypeIntUnaryOp(t *testing.T) {
+func TestCastToImported(t *testing.T) {
 	defer func() {
 		if r := recover(); r != nil {
 			debug.PrintStack()
@@ -23,22 +23,16 @@ func TestTypeIntUnaryOp(t *testing.T) {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r TypeIntUnaryOp
+	var r CastToImported
 	err = r.Read(s, &r, &r)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, 16720, r.ValueS2)
-	assert.EqualValues(t, int64(4706543082108963651), r.ValueS8)
-	tmp1, err := r.UnaryS2()
+	assert.EqualValues(t, 80, r.One.One)
+	tmp1, err := r.OneCasted()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, -16720, tmp1)
-	tmp2, err := r.UnaryS8()
-	if err != nil {
-		t.Fatal(err)
-	}
-	assert.EqualValues(t, int64(-4706543082108963651), tmp2)
+	assert.EqualValues(t, 80, tmp1.One)
 }

@@ -11,34 +11,42 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTypeIntUnaryOp(t *testing.T) {
+func TestCastNested(t *testing.T) {
 	defer func() {
 		if r := recover(); r != nil {
 			debug.PrintStack()
 			t.Fatal("unexpected panic:", r)
 		}
 	}()
-	f, err := os.Open("../../src/fixed_struct.bin")
+	f, err := os.Open("../../src/switch_opcodes.bin")
 	if err != nil {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r TypeIntUnaryOp
+	var r CastNested
 	err = r.Read(s, &r, &r)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, 16720, r.ValueS2)
-	assert.EqualValues(t, int64(4706543082108963651), r.ValueS8)
-	tmp1, err := r.UnaryS2()
+	tmp1, err := r.Opcodes0Str()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, -16720, tmp1)
-	tmp2, err := r.UnaryS8()
+	assert.EqualValues(t, "foobar", tmp1.Value)
+	tmp2, err := r.Opcodes0StrValue()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, int64(-4706543082108963651), tmp2)
+	assert.EqualValues(t, "foobar", tmp2)
+	tmp3, err := r.Opcodes1Int()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, 66, tmp3.Value)
+	tmp4, err := r.Opcodes1IntValue()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, 66, tmp4)
 }

@@ -160,14 +160,22 @@ class CppBuilder < PartialBuilder
     orig_cpp_filename_line_no = nil
     parse_mode = :normal
 
+    block_included_from_continued = false
+
     case @mode
     when :make_posix
       File.open(log_file, 'r') { |f|
-        f.each_line { |l|
+        f.each_line.with_index(1) { |l, line_no|
           l.chomp!
+          clear_block_included_from_continued = true
+
           case l
-          when /^In file included from (.+?):(\d+)(:\d+)?:$/
-            orig_cpp_filename = $1
+          when /^(?:(In file included) |\s+)from (.+?):(?:\d+)(?::\d+)?([:,])$/
+            is_block_start = $1 == 'In file included'
+            raise "line #{line_no}: continuation line of block 'In file included from ...' found, but not expected" if !is_block_start && !block_included_from_continued
+            orig_cpp_filename = $2
+            block_included_from_continued = ($3 == ',')
+            clear_block_included_from_continued = false
           when /^(.+?):(\d+):(\d+): (?:fatal )?error: (.*)$/
             filename = $1
             #row = $2
@@ -178,8 +186,12 @@ class CppBuilder < PartialBuilder
             # they are always included from some other .cpp
             # files. Thus, we report error against original .cpp file,
             # which we've memorized previously.
-            if filename =~ /\.h$/
-              raise "Found error in #{filename.inspect} file, but no original .cpp file reference found before" if orig_cpp_filename.nil?
+
+            if !filename.end_with?('.cpp')
+              if !filename.end_with?('.h')
+                log "line #{line_no}: found error in #{filename.inspect} file, which has neither .cpp nor .h extension (this is unusual)"
+              end
+              raise "line #{line_no}: found error in #{filename.inspect} file, but no original .cpp file reference found before" if orig_cpp_filename.nil?
               filename = orig_cpp_filename
             end
 
@@ -203,6 +215,11 @@ class CppBuilder < PartialBuilder
               filename = $2
               list << [:bare, filename]
             end
+          end
+
+          if block_included_from_continued && clear_block_included_from_continued
+            log "line #{line_no}: implicitly closing the active 'In file included from ...' block (this shouldn't be needed in a valid log file)"
+            block_included_from_continued = false
           end
         }
       }
@@ -252,7 +269,7 @@ class CppBuilder < PartialBuilder
             list << [:bare, filename]
           end
 
-          unless orig_cpp_filename.nil? || !clear_orig_cpp_filename
+          if !orig_cpp_filename.nil? && clear_orig_cpp_filename
             log "line #{line_no}: clearing orig_cpp_filename #{orig_cpp_filename.inspect}"\
               " from line #{orig_cpp_filename_line_no.inspect}"
             orig_cpp_filename = nil

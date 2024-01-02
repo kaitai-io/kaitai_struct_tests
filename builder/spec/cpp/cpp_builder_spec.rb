@@ -183,6 +183,56 @@ RSpec.describe CppBuilder do
     end
   end
 
+  context 'gcc11' do
+    before :context do
+      Dir.chdir("#{@spec_dir}/gcc11")
+      @builder = CppBuilder.new('compiled/cpp_stl_11', 'spec/cpp_stl_11', 'test_out/cpp_stl_11')
+    end
+
+    describe '#parse_failed_build' do
+      it 'parses failed build information' do
+        expect(@builder.parse_failed_build('test_out/cpp_stl_11/build-1.log')).to eq [
+          '/tests/spec/cpp_stl_11/test_enum_import.cpp',
+          '/tests/spec/cpp_stl_11/test_enum_import.cpp',
+          '/tests/spec/cpp_stl_11/test_enum_import.cpp',
+          '/tests/spec/cpp_stl_11/test_enum_import.cpp',
+          '/tests/spec/cpp_stl_11/test_enum_import.cpp',
+          '/tests/spec/cpp_stl_11/test_enum_import.cpp',
+          '/tests/spec/cpp_stl_11/test_expr_bytes_non_literal.cpp',
+          '/tests/spec/cpp_stl_11/test_process_coerce_switch.cpp',
+          '/tests/compiled/cpp_stl_11/debug_switch_user.cpp',
+          '/tests/compiled/cpp_stl_11/debug_switch_user.cpp',
+          '/tests/compiled/cpp_stl_11/debug_switch_user.cpp',
+          '/tests/compiled/cpp_stl_11/enum_import.cpp',
+          '/tests/compiled/cpp_stl_11/enum_import.cpp',
+          '/tests/compiled/cpp_stl_11/enum_import.cpp',
+          '/tests/compiled/cpp_stl_11/enum_import.cpp',
+          '/tests/compiled/cpp_stl_11/enum_import.cpp',
+          '/tests/compiled/cpp_stl_11/enum_import.cpp',
+          '/tests/compiled/cpp_stl_11/enum_import.cpp',
+          '/tests/compiled/cpp_stl_11/enum_import.cpp',
+          '/tests/compiled/cpp_stl_11/enum_import.cpp',
+          '/tests/compiled/cpp_stl_11/enum_import.cpp',
+          '/tests/compiled/cpp_stl_11/enum_import.cpp',
+          '/tests/compiled/cpp_stl_11/enum_import.cpp',
+          '/tests/compiled/cpp_stl_11/enum_import.cpp',
+          '/tests/compiled/cpp_stl_11/enum_import.cpp',
+          '/tests/compiled/cpp_stl_11/enum_import.cpp',
+          '/tests/compiled/cpp_stl_11/enum_import.cpp',
+          '/tests/compiled/cpp_stl_11/enum_to_i.cpp',
+          '/tests/compiled/cpp_stl_11/enum_to_i.cpp',
+          '/tests/compiled/cpp_stl_11/enum_to_i_class_border_1.cpp',
+          '/tests/compiled/cpp_stl_11/enum_to_i_class_border_2.cpp',
+          '/tests/compiled/cpp_stl_11/enum_to_i_invalid.cpp',
+          '/tests/compiled/cpp_stl_11/enum_to_i_invalid.cpp',
+          '/tests/compiled/cpp_stl_11/expr_ops_parens.cpp',
+          '/tests/compiled/cpp_stl_11/nav_parent_switch_cast.cpp',
+          '/tests/compiled/cpp_stl_11/params_pass_array_usertype.cpp',
+        ]
+      end
+    end
+  end
+
   # The log comes from https://ci.appveyor.com/project/kaitai-io/ci-targets/builds/31957431/job/e5q10o8urou743d9
   context 'msbuild_h' do
     before :context do
