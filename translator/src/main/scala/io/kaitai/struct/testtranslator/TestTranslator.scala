@@ -6,21 +6,39 @@ import io.kaitai.struct.datatype.DataType.UserTypeInstream
 import io.kaitai.struct.format._
 import io.kaitai.struct.formats.JavaKSYParser
 import io.kaitai.struct.problems.ProblemSeverity
-import io.kaitai.struct.testtranslator.Main.CLIOptions
+import io.kaitai.struct.testtranslator.Main.{CLIOptions, defaultOutDir}
 import io.kaitai.struct.testtranslator.specgenerators._
-import io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig}
+import io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig, RuntimeConfig}
+
+import java.nio.file.Path
 
 class TestTranslator(options: CLIOptions) {
   import Main._
 
   def run(): Unit = {
+    if(options.srcFiles.length == 1) {
+      val path = Path.of(options.srcFiles.head)
+
+      if (path.isAbsolute) {
+        val specKs = specKsDir.split('/').drop(1).mkString("/")
+        val parent = path.getParent.toString.replace('\\', '/')
+        assert(parent.endsWith(specKs))
+        baseDir = parent.replace(specKs, "")
+      }
+    }
+
     options.srcFiles.foreach(testName =>
-      doTestSpec(testName, options.targets, options.outDir)
+      doTestSpec(testName, options.targets, options)
     )
   }
 
-  def doTestSpec(testName: String, langs: Seq[String], outDir: String): Unit = {
-    Console.println(s"Translating: $testName")
+  def doTestSpec(ts: String, langs: Seq[String], options: CLIOptions): Unit = {
+    Console.println(s"Translating: $ts")
+    val outDir = options.outDir
+    val exactOutDir = options.outDir != defaultOutDir
+
+    val path = Path.of(ts)
+    val testName = if(path.isAbsolute) { path.getFileName.toString } else { ts }
 
     val testSpec = loadTestSpec(testName)
     val classSpecs = loadClassSpecs(testName)
@@ -28,10 +46,10 @@ class TestTranslator(options: CLIOptions) {
     val provider = new ClassTypeProvider(classSpecs, initObj)
 
     langs.foreach(langName => {
-      val sg = getSG(langName, testSpec, provider)
+      val sg = getSG(langName, testSpec, provider, classSpecs, options)
       try {
         sg.run()
-        val outFile = s"$outDir/$langName/${sg.fileName(testName)}"
+        val outFile = if(exactOutDir) { s"$outDir/${sg.fileName(testName)}" } else { s"$outDir/$langName/${sg.fileName(testName)}" }
         Console.println(s"... generating $outFile")
         writeFile(outFile, sg.results)
       } catch {
@@ -52,8 +70,9 @@ class TestTranslator(options: CLIOptions) {
     fw.close()
   }
 
-  def loadTestSpec(testName: String): TestSpec =
+  def loadTestSpec(testName: String): TestSpec = {
     TestSpec.fromFile(s"$specKsDir/$testName.kst")
+  }
 
   def loadClassSpecs(testName: String): ClassSpecs = {
     val cliConfig = CLIConfig(importPaths = Seq(importsDir))
@@ -107,7 +126,7 @@ class TestTranslator(options: CLIOptions) {
     origSpecs
   }
 
-  def getSG(lang: String, testSpec: TestSpec, provider: ClassTypeProvider): BaseGenerator = lang match {
+  def getSG(lang: String, testSpec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs, options: CLIOptions): BaseGenerator = lang match {
     case "construct" => new ConstructSG(testSpec, provider)
     case "cpp_stl_98" => new CppStlSG(testSpec, provider, CppRuntimeConfig().copyAsCpp98())
     case "cpp_stl_11" => new CppStlSG(testSpec, provider, CppRuntimeConfig().copyAsCpp11())
@@ -121,6 +140,6 @@ class TestTranslator(options: CLIOptions) {
     case "php" => new PHPSG(testSpec, provider)
     case "python" => new PythonSG(testSpec, provider)
     case "ruby" => new RubySG(testSpec, provider)
-    case "rust" => new RustSG(testSpec, provider)
+    case "rust" => new RustSG(testSpec, provider, classSpecs, options)
   }
 }
