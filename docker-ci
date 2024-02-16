@@ -1,0 +1,184 @@
+#!/bin/sh -ef
+
+. ./config
+
+TESTS_DIR="$(pwd)"
+
+print_usage()
+{
+	cat <<EOF
+$0 [--shell] [--download] --target {TARGET}  --implementation {IMPLEMENTATION} [--os {OS}] [--arch {ARCH}]"
+
+Runs Kaitai Struct CI for a specific target and implementation in a
+Docker container using image that guarantees to have all necessary
+prerequisites installed.
+
+Options:
+  -t|--target NAME          select target programming language
+  -u|--subtarget NAME       select variant of target programming language
+  -i|--implementation NAME  select implementation of programming language
+  --os NAME                 select operating system
+  --arch NAME               select architecture
+  -s|--shell                launches interactive shell instead of CI script
+  -d|--download             attempt to download image from ghcr.io if missing
+  -r|--rebuild              clean up everything and rebuild
+
+Available images:
+EOF
+	docker images --filter='label=io.kaitai.ci=true'
+}
+
+# Downloads previous CI results from ci_artifacts repo
+download_prev()
+{
+	PREV_CI_FILE="ci_results/$TARGET$SUBTARGET/$IMPLEMENTATION-$OS-$ARCH/ci.json"
+	if [ ! -r "$PREV_CI_FILE" ]; then
+		mkdir -p $(dirname "$PREV_CI_FILE")
+		curl -sSL "https://raw.githubusercontent.com/kaitai-io/ci_artifacts/$TARGET$SUBTARGET/$IMPLEMENTATION-$OS-$ARCH/test_out/$TARGET$SUBTARGET/ci.json" -o "$PREV_CI_FILE"
+	fi
+}
+
+# Cleans up leftover binary artifacts from previous builds to make sure we're starting from scratch
+cleanup_bin()
+{
+	echo "Cleaning up binary artifacts..."
+	case "$TARGET" in
+	cpp_stl|java)
+		sudo rm -rf "compiled/$TARGET$SUBTARGET/bin"
+		;;
+	esac
+}
+
+# Define default values for parameters
+TARGET=""
+SUBTARGET=""
+IMPLEMENTATION=""
+OS=linux
+ARCH=x86_64
+SHELL_FLAG=0
+DOWNLOAD_FLAG=0
+REBUILD_FLAG=0
+
+# Parse command-line options
+while [ $# -gt 0 ]; do
+	key="$1"
+
+	case "$key" in
+	--shell|-s)
+		SHELL_FLAG=1
+		shift
+		;;
+	--download|-d)
+		DOWNLOAD_FLAG=1
+		shift
+		;;
+	--rebuild|-r)
+		REBUILD_FLAG=1
+		shift
+		;;
+	--target|-t)
+		TARGET="$2"
+		shift 2
+		;;
+	--subtarget|-u)
+		SUBTARGET="$2"
+		shift 2
+		;;
+	--implementation|-i)
+		IMPLEMENTATION="$2"
+		shift 2
+		;;
+	--os)
+		OS="$2"
+		shift 2
+		;;
+	--arch)
+		ARCH="$2"
+		shift 2
+		;;
+	--help|-h)
+		print_usage
+		exit 0
+		;;
+	*)
+		echo "Unknown option: $1"
+		print_usage
+		exit 1
+		;;
+	esac
+done
+
+if [ -z "$TARGET" ] || [ -z "$IMPLEMENTATION" ] || [ -z "$OS" ] || [ -z "$ARCH" ]; then
+    echo "Missing required parameters."
+    exit 1
+fi
+
+EXTRA_OPTS=
+IMG_NAME="kaitai-$TARGET-$IMPLEMENTATION-$OS-$ARCH"
+
+# Check image availability
+if docker images -q "$IMG_NAME" | grep -q '[0-9a-f]'; then
+	# If locally-built image exists, prioritize that
+	IMG_COORD="$IMG_NAME"
+elif docker images -q "ghcr.io/kaitai-io/$IMG_NAME" | grep -q '[0-9a-f]'; then
+	# If ghcr.io image exists, use it
+	IMG_COORD="ghcr.io/kaitai-io/$IMG_NAME"
+elif [ "$DOWNLOAD_FLAG" = 1 ]; then
+	# No image, but we'll try to download
+	IMG_COORD="ghcr.io/kaitai-io/$IMG_NAME"
+	docker pull "$IMG_COORD"
+else
+	echo 'Neither locally-built nor remotely-built image is present. Try using `--download` to try downloading prebuilt image from ghcr.io.'
+	exit 2
+fi
+
+# If --shell used, invoke /bin/sh
+if [ "$SHELL_FLAG" = 1 ]; then
+	COMMAND=/bin/sh
+	EXTRA_OPTS=-it
+else
+	COMMAND="./ci-$TARGET$SUBTARGET"
+fi
+
+if [ -n "$GITHUB_ACTIONS" ]; then
+	echo "GITHUB_ACTIONS=$GITHUB_ACTIONS"
+	echo "GITHUB_RUN_ID=$GITHUB_RUN_ID"
+	echo "GITHUB_RUN_NUMBER=$GITHUB_RUN_NUMBER"
+	echo "GH_JOB_ID=$GH_JOB_ID"
+	echo "GH_HTML_URL=$GH_HTML_URL"
+fi
+
+if [ "$SHELL_FLAG" = 0 ]; then
+	download_prev
+fi
+
+if [ "$REBUILD_FLAG" = 1 ]; then
+	cleanup_bin
+fi
+
+# If we run in Mingw/MSYS environment on Windows, it will invoke `docker.exe` here,
+# but it will attempt to do Linux-to-Windows paths conversion with `cygpath.exe`.
+# We disable it with MSYS2_ARG_CONV_EXCL argument: looks like `docker.exe` is
+# intelligent enough to understand Mingw-style Windows paths by itself.
+#
+# See https://www.msys2.org/docs/filesystem-paths/
+
+MSYS2_ARG_CONV_EXCL='*' docker run $EXTRA_OPTS \
+	--rm \
+	-e GITHUB_ACTIONS \
+	-e GITHUB_RUN_ID \
+	-e GITHUB_RUN_NUMBER \
+	-e GH_JOB_ID \
+	-e GH_HTML_URL \
+	-v "$TESTS_DIR":/tests \
+	-v "$TESTS_DIR/../runtime":/runtime \
+	-w /tests \
+	--network none \
+	"$IMG_COORD" \
+	"$COMMAND"
+
+if [ "$SHELL_FLAG" = 0 ]; then
+	aggregate/compare_with_prev \
+		"ci_results/$TARGET$SUBTARGET/$IMPLEMENTATION-$OS-$ARCH/ci.json" \
+		"test_out/$TARGET$SUBTARGET/ci.json"
+fi

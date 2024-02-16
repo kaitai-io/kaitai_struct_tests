@@ -1,0 +1,64 @@
+#!/usr/bin/env ruby
+
+require 'json'
+
+def load_ci_json(fn)
+  doc = File.read(fn)
+  return {} if doc == "404: Not Found"
+  JSON.load(doc)
+end
+
+def dump_test_list(list)
+  list.each { |t|
+    if t.length == 2
+      puts "  #{t[0]} -> #{t[1].inspect}"
+    else
+      puts "  #{t[0]}: #{t[1].inspect} -> #{t[2].inspect}"
+    end
+  }
+end
+
+prev = load_ci_json(ARGV[0])
+now = load_ci_json(ARGV[1])
+
+prev.delete('$meta')
+now.delete('$meta')
+
+added = []
+changed = []
+removed = []
+
+puts "# Comparison with previous"
+puts
+
+# Detect added and changed tests
+now.each_pair { |name, now_res|
+  prev_res = prev[name]
+  if prev_res
+    if prev_res['status'] != now_res['status']
+      changed << [name, prev_res, now_res]
+    end
+  else
+    added << [name, now_res]
+  end
+}
+
+# Detect removed tests
+prev.each_pair { |name, res|
+  removed << [name, res] unless now[name]
+}
+
+unless added.empty?
+  puts "+#{added.length} tests added:"
+  dump_test_list(added)
+end
+
+unless removed.empty?
+  puts "-#{removed.length} tests removed:"
+  dump_test_list(removed)
+end
+
+unless changed.empty?
+  puts "-#{changed.length} tests changed:"
+  dump_test_list(changed)
+end

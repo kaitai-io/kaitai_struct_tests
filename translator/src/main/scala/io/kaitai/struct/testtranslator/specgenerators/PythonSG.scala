@@ -4,7 +4,7 @@ import _root_.io.kaitai.struct.ClassTypeProvider
 import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.PythonCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
 import _root_.io.kaitai.struct.translators.PythonTranslator
 
 class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
@@ -42,13 +42,13 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
 
   override def footer(): Unit = {}
 
-  override def simpleAssert(check: TestAssert): Unit = {
+  override def simpleEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translateExp(check.expected)
     out.puts(s"self.assertEqual($actStr, $expStr)")
   }
 
-  override def floatAssert(check: TestAssert): Unit = {
+  override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"self.assertAlmostEqual($actStr, $expStr, 6)")
@@ -59,8 +59,16 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
     out.puts(s"self.assertIsNone($actStr)")
   }
 
-  override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit =
-    simpleAssert(check)
+  override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit =
+    simpleEquality(check)
+
+  override def testException(actual: Ast.expr, exception: KSError): Unit = {
+    importList.add("import kaitaistruct")
+    out.puts(s"with self.assertRaises(${PythonCompiler.ksErrorName(exception)}):")
+    out.inc
+    out.puts(translateAct(actual))
+    out.dec
+  }
 
   override def noAsserts() =
     out.puts("pass")

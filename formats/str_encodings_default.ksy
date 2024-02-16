@@ -29,4 +29,4 @@ types:
       - id: str4
         type: str
         size: len_of_4
-        encoding: CP437
+        encoding: IBM437

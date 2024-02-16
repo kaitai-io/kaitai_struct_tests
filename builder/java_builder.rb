@@ -44,6 +44,7 @@ class JavaBuilder < PartialBuilder
   end
 
   def build_project(log_file)
+    FileUtils.rm_rf(@java_classes_dir)
     FileUtils.mkdir_p(@java_classes_dir)
     cli = [
       'javac',
@@ -55,7 +56,7 @@ class JavaBuilder < PartialBuilder
     run_and_tee({}, cli, log_file).exitstatus
   end
 
-  def parse_failed_build(log_file, disp_files)
+  def parse_failed_build(log_file)
     list = Set.new
 
     File.open(log_file, 'r') { |f|
@@ -102,6 +103,6 @@ class JavaBuilder < PartialBuilder
     run_and_tee({}, cli, out_log)
     Dir.chdir(orig_dir)
 
-    File.exists?(File.join(@test_out_dir, 'junitreports'))
+    File.exist?(File.join(@test_out_dir, 'junitreports'))
   end
 end

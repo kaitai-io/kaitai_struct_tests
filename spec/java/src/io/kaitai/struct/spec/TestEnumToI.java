@@ -14,6 +14,7 @@ public class TestEnumToI extends CommonSpec {
         assertEquals(r.pet1(), EnumToI.Animal.CAT);
         assertEquals(r.pet2(), EnumToI.Animal.CHICKEN);
         assertIntEquals(r.pet1I(), 7);
+        assertEquals(r.pet1IToS(), "7");
         assertIntEquals(r.pet1Mod(), 32775);
         assertIntEquals(r.oneLtTwo(), true);
         assertIntEquals(r.pet1EqInt(), true);

@@ -2,7 +2,7 @@ package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.exprlang.Ast
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
 import _root_.io.kaitai.struct.translators.RubyTranslator
 import _root_.io.kaitai.struct.{ClassTypeProvider, Utils}
 import io.kaitai.struct.languages.RubyCompiler
@@ -44,13 +44,13 @@ class RubySG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     out.puts("end")
   }
 
-  override def simpleAssert(check: TestAssert): Unit = {
+  override def simpleEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"expect($actStr).to eq $expStr")
   }
 
-  override def floatAssert(check: TestAssert): Unit = {
+  override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"expect($actStr).to be_within($FLOAT_DELTA).of $expStr")
@@ -61,8 +61,16 @@ class RubySG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     out.puts(s"expect($actStr).to be_nil")
   }
 
-  override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit =
-    simpleAssert(check)
+  override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit =
+    simpleEquality(check)
+
+  override def testException(actual: Ast.expr, exception: KSError): Unit = {
+    out.puts("expect {")
+    out.inc
+    out.puts(translateAct(actual))
+    out.dec
+    out.puts(s"}.to raise_error(${RubyCompiler.ksErrorName(exception)})")
+  }
 
   def translateAct(x: Ast.expr) =
     translator.translate(x).replace(Main.INIT_OBJ_NAME, "r")

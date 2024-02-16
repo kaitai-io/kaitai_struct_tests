@@ -1,4 +1,5 @@
 require_relative '../../csharp_builder'
+require 'pathname'
 
 $spec_dir = File.dirname(__FILE__)
 
@@ -15,7 +16,11 @@ RSpec.describe CSharpBuilder do
 
     describe '#list_mandatory_files' do
       it 'shows no mandatory files' do
-        expect(@builder.list_mandatory_files.to_a.sort).to eq ["CommonSpec.cs", "Properties\\AssemblyInfo.cs"]
+        base_dir = Pathname.pwd
+        expect(@builder.list_mandatory_files.map { |x| Pathname.new(x).relative_path_from(base_dir).to_s }).to match_array [
+          'spec/csharp/kaitai_struct_csharp_tests/CommonSpec.cs',
+          'spec/csharp/kaitai_struct_csharp_tests/Properties/AssemblyInfo.cs',
+        ]
       end
     end
 

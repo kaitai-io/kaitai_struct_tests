@@ -1,0 +1,9 @@
+id: expr_to_i_trailing
+data: term_strz.bin
+asserts:
+  - actual: to_i_r10
+    exception: ConversionError
+  - actual: to_i_r16
+    expected: 0x9173abc
+  - actual: to_i_garbage
+    exception: ConversionError

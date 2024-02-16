@@ -9,6 +9,7 @@ let r = EnumToI.fromFile("../../src/enum_0.bin")
 assert r.pet1 == enum_to_i.cat
 assert r.pet2 == enum_to_i.chicken
 assert r.pet1I == 7
+assert r.pet1IToS == "7"
 assert r.pet1Mod == 32775
 assert r.oneLtTwo == true
 assert r.pet1EqInt == true

@@ -4,6 +4,7 @@ import _root_.io.kaitai.struct.{ClassTypeProvider, JSON, RuntimeConfig}
 import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.RustCompiler
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
 import _root_.io.kaitai.struct.translators.RustTranslator
 import _root_.io.kaitai.struct.datatype.DataType.{ArrayType, BooleanType, BytesType, EnumType, IntType, SwitchType, UserType}
 import _root_.io.kaitai.struct.format.ClassSpecs
@@ -13,6 +14,7 @@ import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs, options: CLIOptions) extends BaseGenerator(spec) {
   val className: String = RustCompiler.type2class(spec.id)
   val translator = new RustTranslator(provider, RuntimeConfig())
+  val compiler = new RustCompiler(provider, RuntimeConfig())
   var do_panic = true
   var do_not_deref = false
 
@@ -91,11 +93,11 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     s
   }
 
-  override def simpleAssert(check: TestAssert): Unit = {
+  override def simpleEquality(check: TestEquals): Unit = {
     val actType = translator.detectType(check.actual)
     var actStr = translateAct(check.actual)
     val expType = translator.detectType(check.expected)
-    var expStr = translate(check.expected)
+    var expStr = translator.translate(check.expected)
     (actType, expType) match {
       case (at: EnumType, et: EnumType) =>
         expStr = remove_ref(expStr)
@@ -113,7 +115,6 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     finish_panic()
     //TODO: correct code generation
     actStr = correctIO(actStr)
-
     out.puts(s"assert_eq!($actStr, $expStr);")
   }
 
@@ -124,8 +125,14 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     // TODO: Figure out what's meant to happen here
   }
 
-  override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit = {
-    simpleAssert(check) // FIXME
+  override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit = {
+    simpleEquality(check)
+  }
+
+  override def testException(actual: Ast.expr, exception: KSError): Unit = {
+    val s = translator.remove_deref(correctIO(translateAct(actual).replace(")?", ").unwrap_err()")))
+    finish_panic()
+    out.puts(s"assert_eq!($s, ${compiler.ksErrorName(exception)});")
   }
 
   override def indentStr: String = "    "

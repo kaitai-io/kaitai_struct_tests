@@ -8,18 +8,40 @@ class CSharpBuilder < PartialBuilder
   def initialize
     super
 
-    @spec_dir = 'spec/csharp/kaitai_struct_csharp_tests'
-    @packages_dir = 'spec/csharp/packages'
+    @target_net = :netframework
+    @target_net = :netstd if ENV["KAITAI_NET"] == "netstd"
+
     @compiled_dir = 'compiled/csharp'
-    @project_file = "#{@spec_dir}/kaitai_struct_csharp_tests.csproj"
-    @project_template = "#{@spec_dir}/kaitai_struct_csharp_tests.csproj.in"
+    @spec_dir = 'spec/csharp/kaitai_struct_csharp_tests'
+
+    case @target_net
+    when :netframework
+      @project_file = "spec/csharp/kaitai_struct_csharp_tests_netframework/kaitai_struct_csharp_tests_netframework.csproj"
+      @out_dll = "spec/csharp/kaitai_struct_csharp_tests_netframework/bin/Debug/kaitai_struct_csharp_tests.dll"
+      check_msbuild
+    when :netstd
+      @project_file = "spec/csharp/kaitai_struct_csharp_tests_netstd/kaitai_struct_csharp_tests_netstd.csproj"
+      @out_dll = "spec/csharp/kaitai_struct_csharp_tests_netstd/bin/Debug/net6.0/kaitai_struct_csharp_tests_netstd.dll"
+      check_dotnet
+    else
+      raise "Unknown target .NET: #{@target_net}"
+    end
+
+    @project_template = @project_file + ".in"
 
     @test_out_dir = "#{@config['TEST_OUT_DIR']}/csharp"
-
-    detect_tools
   end
 
-  def detect_tools
+  def check_dotnet
+    if system("dotnet build --version")
+      @msbuild = 'dotnet'
+      @msbuild_args = ['build']
+    else
+      raise 'Unable to find `dotnet build`, bailing out'
+    end
+  end
+
+  def check_msbuild
     @msbuild_args = []
 
     # msbuild
@@ -27,9 +49,6 @@ class CSharpBuilder < PartialBuilder
       @msbuild = 'msbuild'
     elsif system("xbuild /version")
       @msbuild = 'xbuild'
-    elsif system("dotnet build /version")
-      @msbuild = 'dotnet'
-      @msbuild_args = ['build', '--framework', 'netstandard1.3']
     else
       raise 'Unable to find msbuild/xbuild, bailing out'
     end
@@ -44,10 +63,12 @@ class CSharpBuilder < PartialBuilder
   end
 
   def list_mandatory_files
-    convert_slashes([
-      'Properties/AssemblyInfo.cs',
-      'CommonSpec.cs',
-    ])
+    paths = [
+      "#{@spec_dir}/CommonSpec.cs",
+    ]
+    paths << "#{@spec_dir}/Properties/AssemblyInfo.cs" if @target_net == :netframework
+
+    convert_slashes(paths.map { |fn| File.absolute_path(fn) })
   end
 
   def list_disposable_files
@@ -65,11 +86,11 @@ class CSharpBuilder < PartialBuilder
   end
 
   def build_project(log_file)
-    cli = [@msbuild] + @msbuild_args + ["#{@spec_dir}/kaitai_struct_csharp_tests.csproj"]
+    cli = [@msbuild] + @msbuild_args + [@project_file]
     run_and_tee({}, cli, log_file).exitstatus
   end
 
-  def parse_failed_build(log_file, disp_files)
+  def parse_failed_build(log_file)
     list = Set.new
 
     File.open(log_file, 'r') { |f|
@@ -111,18 +132,46 @@ class CSharpBuilder < PartialBuilder
     end
   end
 
-  def run_tests
-    xml_log = "#{@test_out_dir}/TestResult.xml"
-    FileUtils.mkdir_p(@test_out_dir)
-    FileUtils.rm_f(xml_log)
-
-    cli = [
-      "#{@packages_dir}/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe",
-      "--result=#{xml_log}",
-      "#{@spec_dir}/bin/Debug/kaitai_struct_csharp_tests.dll",
+  # Detect where the runner is and blow up if it's not found
+  def detect_runner
+    candidates = [
+      ENV['HOME'] + "/.nuget/packages/nunit.consolerunner/3.4.1/tools/nunit3-console.exe",
+      "spec/csharp/packages/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe",
     ]
 
-    cli.unshift("mono") if @is_mono
+    candidates.each { |c|
+      return c if File.exist?(c)
+    }
+
+    raise "Unable to find NUnit.ConsoleRunner.3.4.1 exe file anywhere, tried: #{candidates.inspect}"
+  end
+
+  def run_tests
+    FileUtils.mkdir_p(@test_out_dir)
+    xml_log = nil
+
+    if @msbuild == 'dotnet'
+      xml_log = "#{@test_out_dir}/TestResultTrx.xml"
+      FileUtils.rm_f(xml_log)
+
+      cli = [
+        "dotnet",
+        "test",
+        @project_file,
+        "--logger:trx;LogFileName=TestResultTrx.xml",
+        "--results-directory", @test_out_dir,
+      ]
+    else
+      xml_log = "#{@test_out_dir}/TestResult.xml"
+      FileUtils.rm_f(xml_log)
+
+      cli = [
+        detect_runner,
+        "--result=#{xml_log}",
+        @out_dll
+      ]
+      cli.unshift("mono") if @is_mono
+    end
 
     run_and_tee(
       {"CSHARP_TEST_SRC_PATH" => "src"},
@@ -130,7 +179,7 @@ class CSharpBuilder < PartialBuilder
       "#{@test_out_dir}/test_run.stdout"
     )
 
-    File.exists?(xml_log)
+    File.exist?(xml_log)
   end
 
 #  private

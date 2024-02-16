@@ -40,5 +40,5 @@ func TestTypeIntUnaryOp(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, -int64(4706543082108963651), tmp2)
+	assert.EqualValues(t, int64(-4706543082108963651), tmp2)
 }

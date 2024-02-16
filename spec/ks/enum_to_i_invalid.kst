@@ -1,0 +1,20 @@
+id: enum_to_i_invalid
+data: term_strz.bin
+asserts:
+  - actual: pet_1
+    expected: enum_to_i_invalid::animal::dog
+  - actual: pet_2
+    expected: 0x6f
+
+  - actual: pet_2_i
+    expected: 111
+  - actual: pet_2_i_to_s
+    expected: '"111"'
+  - actual: pet_2_mod
+    expected: 0x806f
+  - actual: one_lt_two
+    expected: true
+  - actual: pet_2_eq_int_t
+    expected: true
+  - actual: pet_2_eq_int_f
+    expected: false

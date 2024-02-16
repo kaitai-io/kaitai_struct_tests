@@ -4,7 +4,7 @@ require 'rexml/document'
 
 class JUnitXMLParser < TestParser
   def initialize(fn)
-    @docs = if not File.exists?(fn)
+    @docs = if not File.exist?(fn)
       []
     elsif File.directory?(fn)
       Dir.glob("#{fn}/*.xml").map { |x|

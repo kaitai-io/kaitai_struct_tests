@@ -16,6 +16,8 @@ enums:
 instances:
   pet_1_i:
     value: pet_1.to_i
+  pet_1_i_to_s:
+    value: pet_1.to_i.to_s
   pet_1_mod:
     value: pet_1.to_i + 0x8000
   one_lt_two:

@@ -5,6 +5,18 @@
 mkdir -p "$TEST_OUT_DIR/php"
 
 export PHP_RUNTIME_DIR
+
+if [ ! -d "$PHP_RUNTIME_DIR"/vendor ]; then
+	if [ -d /download/runtime/php/vendor ]; then
+		# We're in Docker image, let's try restoring vendor/ dir from the
+		# prefilled one which came with the image
+		cp -r /download/runtime/php/vendor "$PHP_RUNTIME_DIR"/vendor
+	else
+		echo "run-php: unable to find `$PHP_RUNTIME_DIR/vendor`, can't run tests"
+		exit 2
+	fi
+fi
+
 "$PHP_RUNTIME_DIR"/vendor/bin/phpunit spec/php \
 	--bootstrap spec/php/_bootstrap.php \
 	--log-junit "$TEST_OUT_DIR/php/results.xml" \

@@ -6,7 +6,7 @@ import _root_.io.kaitai.struct.datatype.DataType
 import _root_.io.kaitai.struct.datatype.DataType._
 import _root_.io.kaitai.struct.translators.{NimTranslator, TypeDetector}
 import _root_.io.kaitai.struct.Utils
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
 import _root_.io.kaitai.struct.languages.NimCompiler.{ksToNim, namespaced}
 
 class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
@@ -50,7 +50,7 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
       case _: StrType => "\"\""
       case _: BytesType => "\"\""
 
-      case KaitaiStructType | CalcKaitaiStructType => "nil"
+      case KaitaiStructType | _: CalcKaitaiStructType => "nil"
       case KaitaiStreamType => "nil"
 
       case t: UserType => "nil"
@@ -58,12 +58,12 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
 
     out.puts(s"assert $actStr == $expStr")
   }
-  override def simpleAssert(check: TestAssert): Unit = {
+  override def simpleEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"assert $actStr == $expStr")
   }
-  override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[expr]): Unit = {
+  override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[expr]): Unit = {
     val arr = elts.map(v => translator.translate(v))
     val first = s"${ksToNim(elType)}(${arr.head})"
     val rvalue = {

@@ -14,7 +14,7 @@ fn test_imports_abs() {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let res: KResult<OptRc<ImportsAbs>> = ImportsAbs::read_into(&_io, None, None);
-    let r : OptRc<ImportsAbs>;
+    let r: OptRc<ImportsAbs>;
 
     if let Err(err) = res {
         panic!("{:?}", err);
