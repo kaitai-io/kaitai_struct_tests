@@ -6,7 +6,7 @@ function testHelperThrows(className, fileName, excClass) {
   describe(className, function() {
     it('parses test properly', function(done) {
       assert.ok(excClass);
-      var parser = require(className);
+      var parser = require(className)[className];
       fs.readFile(fileName, function(err, buf) {
         var st = new KaitaiStream(buf);
         assert.throws(
