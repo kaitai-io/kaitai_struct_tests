@@ -49,6 +49,11 @@ cleanup_bin()
 	esac
 }
 
+is_image_available()
+{
+	docker images --no-trunc -q "$1" 2> /dev/null | grep -q '^sha256:[0-9a-f]\+$'
+}
+
 # Define default values for parameters
 TARGET=""
 SUBTARGET=""
@@ -117,10 +122,10 @@ EXTRA_OPTS=
 IMG_NAME="kaitai-$TARGET-$IMPLEMENTATION-$OS-$ARCH"
 
 # Check image availability
-if docker images -q "$IMG_NAME" | grep -q '[0-9a-f]'; then
+if is_image_available "$IMG_NAME"; then
 	# If locally-built image exists, prioritize that
 	IMG_COORD="$IMG_NAME"
-elif docker images -q "ghcr.io/kaitai-io/$IMG_NAME" | grep -q '[0-9a-f]'; then
+elif is_image_available "ghcr.io/kaitai-io/$IMG_NAME"; then
 	# If ghcr.io image exists, use it
 	IMG_COORD="ghcr.io/kaitai-io/$IMG_NAME"
 elif [ "$DOWNLOAD_FLAG" = 1 ]; then
