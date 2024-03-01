@@ -10,6 +10,8 @@ import io.kaitai.struct.testtranslator.Main.CLIOptions
 import io.kaitai.struct.testtranslator.specgenerators._
 import io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig}
 
+import scala.collection.immutable.SortedMap
+
 class TestTranslator(options: CLIOptions) {
   import Main._
 
@@ -95,9 +97,9 @@ class TestTranslator(options: CLIOptions) {
           dataType = userType
         )
       ),
-      types = Map(),
-      instances = Map(),
-      enums = Map()
+      types = SortedMap(),
+      instances = SortedMap(),
+      enums = SortedMap()
     )
 
     initObj.name = List(INIT_OBJ_TYPE)
