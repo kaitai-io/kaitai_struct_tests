@@ -1,0 +1,21 @@
+id: expr_fstring_0
+data: term_strz.bin
+asserts:
+  - actual: seq_str
+    expected: '"foo|b"'
+  - actual: seq_int
+    expected: 97
+  - actual: empty
+    expected: '""'
+  - actual: literal
+    expected: '"abc"'
+  - actual: literal_with_escapes
+    expected: '"abc\n\tt"'
+  - actual: head_and_int_literal
+    expected: '"abc=123"'
+  - actual: head_and_str_literal
+    expected: '"abc=foo"'
+  - actual: head_and_int
+    expected: '"abc=97"'
+  - actual: head_and_str
+    expected: '"abc=foo|b"'
