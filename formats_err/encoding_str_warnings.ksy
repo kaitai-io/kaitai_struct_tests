@@ -4,11 +4,11 @@
 # encoding_str_warnings.ksy: /seq/2/encoding:
 # 	warning: use canonical encoding name `ISO-8859-1` instead of `latin1` (see https://doc.kaitai.io/ksy_style_guide.html#encoding-name)
 #
-# encoding_str_warnings.ksy: /instances/wrong_case/encoding:
-# 	warning: use canonical encoding name `ISO-8859-1` instead of `iSo-8859-1` (see https://doc.kaitai.io/ksy_style_guide.html#encoding-name)
-#
 # encoding_str_warnings.ksy: /instances/alias/encoding:
 # 	warning: use canonical encoding name `ISO-8859-1` instead of `ISo8859-1` (see https://doc.kaitai.io/ksy_style_guide.html#encoding-name)
+#
+# encoding_str_warnings.ksy: /instances/wrong_case/encoding:
+# 	warning: use canonical encoding name `ISO-8859-1` instead of `iSo-8859-1` (see https://doc.kaitai.io/ksy_style_guide.html#encoding-name)
 #
 meta:
   id: encoding_str_warnings
