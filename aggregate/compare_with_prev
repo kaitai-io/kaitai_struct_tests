@@ -28,9 +28,6 @@ added = []
 changed = []
 removed = []
 
-puts "# Comparison with previous"
-puts
-
 # Detect added and changed tests
 now.each_pair { |name, now_res|
   prev_res = prev[name]
@@ -59,6 +56,6 @@ unless removed.empty?
 end
 
 unless changed.empty?
-  puts "-#{changed.length} tests changed:"
+  puts "!#{changed.length} tests changed:"
   dump_test_list(changed)
 end
