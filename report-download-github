@@ -1,0 +1,14 @@
+#!/bin/sh -ef
+# Downloads previous CI results from ci_artifacts repo at GitHub
+
+TARGET=$1
+SUBTARGET=$2
+IMPLEMENTATION=$3
+OS=$4
+ARCH=$5
+
+PREV_CI_FILE="ci_results/$TARGET$SUBTARGET/$IMPLEMENTATION-$OS-$ARCH/ci.json"
+if [ ! -r "$PREV_CI_FILE" ]; then
+	mkdir -p $(dirname "$PREV_CI_FILE")
+	curl -sSL "https://raw.githubusercontent.com/kaitai-io/ci_artifacts/$TARGET$SUBTARGET/$IMPLEMENTATION-$OS-$ARCH/test_out/$TARGET$SUBTARGET/ci.json" -o "$PREV_CI_FILE"
+fi
