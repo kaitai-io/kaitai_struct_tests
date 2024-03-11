@@ -306,24 +306,6 @@ class CppBuilder < PartialBuilder
   def run_tests
     xml_log = "#{@abs_cpp_test_out_dir}/results.xml"
 
-    # Work around boost v1.62 bug: https://svn.boost.org/trac10/ticket/12507
-    # --log_sink is broken in boost v1.62, using workaround, as per
-    # https://stackoverflow.com/a/39999085/487064
-    #
-    # However, Travis has boost v1.54, which has problems with it, so we
-    # won't use the workaround on anything except exactly v1.62
-
-    boost_log_option = "--log_sink=#{xml_log}"
-
-    begin
-      if File.read('/usr/include/boost/version.hpp') =~ /BOOST_VERSION 106200/
-        # Boost v1.62 detected, enabling workaround
-        boost_log_option = "--logger=JUNIT,test_suite,#{xml_log}"
-      end
-    rescue Errno::ENOENT => e
-      # ignore
-    end
-
     # Choose test executable
     case @mode
     when :msbuild_windows
@@ -339,7 +321,7 @@ class CppBuilder < PartialBuilder
     tests_cli = [
       ks_tests_bin,
       '--log_format=XML',
-      boost_log_option,
+      "--log_sink=#{xml_log}",
       '--log_level=all',
       '--report_level=detailed',
     ]
