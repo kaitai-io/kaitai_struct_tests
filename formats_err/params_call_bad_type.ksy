@@ -1,8 +1,8 @@
-# params_call_short_bad_type.ksy: /seq/0/type:
+# params_call_bad_type.ksy: /seq/0/type:
 # 	error: can't pass argument #1 of type CalcFloatType into parameter `has_trailer` of type CalcBooleanType
 #
 meta:
-  id: params_call_short_bad_type
+  id: params_call_bad_type
 seq:
   - id: buf
     type: my_str(5, 3.14159)

@@ -1,5 +1,5 @@
 meta:
-  id: params_call_short
+  id: params_call
 seq:
   - id: buf1
     type: my_str1(5)

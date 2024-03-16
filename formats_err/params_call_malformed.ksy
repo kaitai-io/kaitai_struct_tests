@@ -1,11 +1,11 @@
-# params_call_short_too_many.ksy: /seq/0/type:
-# 	error: parameter count mismatch: 2 declared, but 3 used
+# params_call_malformed.ksy: /seq/0:
+# 	error: parsing expression '2 + 3, ' failed on 1:6, expected CharsWhile(Set( , n)) | "\\\n" | End
 #
 meta:
-  id: params_call_short_too_many
+  id: params_call_malformed
 seq:
   - id: buf
-    type: my_str(2 + 3, true, "woohoo")
+    type: my_str(2 + 3, )
 types:
   my_str:
     params:
