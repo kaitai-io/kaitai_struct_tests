@@ -3,9 +3,9 @@
 
 namespace Kaitai\Struct\Tests;
 
-class ParamsCallShortTest extends TestCase {
-    public function testParamsCallShort() {
-        $r = ParamsCallShort::fromFile(self::SRC_DIR_PATH . '/term_strz.bin');
+class ParamsCallTest extends TestCase {
+    public function testParamsCall() {
+        $r = ParamsCall::fromFile(self::SRC_DIR_PATH . '/term_strz.bin');
 
         $this->assertSame("foo|b", $r->buf1()->body());
         $this->assertSame("ar|ba", $r->buf2()->body());

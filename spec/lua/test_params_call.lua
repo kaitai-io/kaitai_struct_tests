@@ -2,12 +2,12 @@
 
 local luaunit = require("luaunit")
 
-require("params_call_short")
+require("params_call")
 
-TestParamsCallShort = {}
+TestParamsCall = {}
 
-function TestParamsCallShort:test_params_call_short()
-    local r = ParamsCallShort:from_file("src/term_strz.bin")
+function TestParamsCall:test_params_call()
+    local r = ParamsCall:from_file("src/term_strz.bin")
 
     luaunit.assertEquals(r.buf1.body, "foo|b")
     luaunit.assertEquals(r.buf2.body, "ar|ba")

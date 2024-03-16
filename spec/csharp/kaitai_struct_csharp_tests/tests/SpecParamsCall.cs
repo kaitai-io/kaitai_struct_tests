@@ -5,12 +5,12 @@ using NUnit.Framework;
 namespace Kaitai
 {
     [TestFixture]
-    public class SpecParamsCallShort : CommonSpec
+    public class SpecParamsCall : CommonSpec
     {
         [Test]
-        public void TestParamsCallShort()
+        public void TestParamsCall()
         {
-            var r = ParamsCallShort.FromFile(SourceFile("term_strz.bin"));
+            var r = ParamsCall.FromFile(SourceFile("term_strz.bin"));
 
             Assert.AreEqual(r.Buf1.Body, "foo|b");
             Assert.AreEqual(r.Buf2.Body, "ar|ba");

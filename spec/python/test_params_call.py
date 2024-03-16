@@ -2,11 +2,11 @@
 
 import unittest
 
-from params_call_short import ParamsCallShort
+from params_call import ParamsCall
 
-class TestParamsCallShort(unittest.TestCase):
-    def test_params_call_short(self):
-        with ParamsCallShort.from_file('src/term_strz.bin') as r:
+class TestParamsCall(unittest.TestCase):
+    def test_params_call(self):
+        with ParamsCall.from_file('src/term_strz.bin') as r:
             self.assertEqual(r.buf1.body, u"foo|b")
             self.assertEqual(r.buf2.body, u"ar|ba")
             self.assertEqual(r.buf2.trailer, 122)

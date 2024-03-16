@@ -2,10 +2,10 @@
 
 import unittest
 
-from params_call_short import _schema
+from params_call import _schema
 
-class TestParamsCallShort(unittest.TestCase):
-    def test_params_call_short(self):
+class TestParamsCall(unittest.TestCase):
+    def test_params_call(self):
         r = _schema.parse_file('src/term_strz.bin')
         self.assertEqual(r.buf1.body, u"foo|b")
         self.assertEqual(r.buf2.body, u"ar|ba")

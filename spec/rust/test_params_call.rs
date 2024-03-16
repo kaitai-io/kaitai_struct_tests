@@ -4,11 +4,11 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ParamsCallShort;
+use rust::ParamsCall;
 
 #[test]
-fn test_params_call_short() {
-    if let Ok(r) = ParamsCallShort::from_file("src/term_strz.bin") {
+fn test_params_call() {
+    if let Ok(r) = ParamsCall::from_file("src/term_strz.bin") {
         assert_eq!(r.buf1.body, "foo|b");
         assert_eq!(r.buf2.body, "ar|ba");
         assert_eq!(r.buf2.trailer, 122);

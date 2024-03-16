@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestParamsCallShort(t *testing.T) {
+func TestParamsCall(t *testing.T) {
 	defer func() {
 		if r := recover(); r != nil {
 			debug.PrintStack()
@@ -23,7 +23,7 @@ func TestParamsCallShort(t *testing.T) {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r ParamsCallShort
+	var r ParamsCall
 	err = r.Read(s, &r, &r)
 	if err != nil {
 		t.Fatal(err)

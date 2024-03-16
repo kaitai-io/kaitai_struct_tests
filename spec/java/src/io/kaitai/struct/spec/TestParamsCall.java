@@ -2,13 +2,13 @@
 
 package io.kaitai.struct.spec;
 
-import io.kaitai.struct.testformats.ParamsCallShort;
+import io.kaitai.struct.testformats.ParamsCall;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
-public class TestParamsCallShort extends CommonSpec {
+public class TestParamsCall extends CommonSpec {
     @Test
-    public void testParamsCallShort() throws Exception {
-        ParamsCallShort r = ParamsCallShort.fromFile(SRC_DIR + "term_strz.bin");
+    public void testParamsCall() throws Exception {
+        ParamsCall r = ParamsCall.fromFile(SRC_DIR + "term_strz.bin");
 
         assertEquals(r.buf1().body(), "foo|b");
         assertEquals(r.buf2().body(), "ar|ba");
