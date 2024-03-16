@@ -1,8 +1,8 @@
-# params_call_too_many.ksy: /seq/0/type:
+# params_call_too_many_subtype_local.ksy: /seq/0/type:
 # 	error: parameter count mismatch: 2 declared, but 3 used
 #
 meta:
-  id: params_call_too_many
+  id: params_call_too_many_subtype_local
 seq:
   - id: buf
     type: my_str(2 + 3, true, "woohoo")
