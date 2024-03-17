@@ -13,3 +13,16 @@ asserts:
     expected: 75
   - actual: b.a_c_d.value_d
     expected: 45
+
+  - actual: a_cc._parent
+    expected: 'null'
+  - actual: a_cc._root
+    expected: 'null'
+  - actual: a_c_d._parent
+    expected: 'null'
+  - actual: a_c_d._root
+    expected: 'null'
+  - actual: b._parent
+    expected: 'null'
+  - actual: b._root
+    expected: 'null'
