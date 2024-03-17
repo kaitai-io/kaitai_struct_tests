@@ -1,3 +1,4 @@
+# https://github.com/kaitai-io/kaitai_struct/issues/200
 meta:
   id: nav_parent_switch_cast
 seq:
