@@ -17,6 +17,12 @@ namespace Kaitai
             Assert.AreEqual(r.B.ValueB, 67);
             Assert.AreEqual(r.B.ACc.ValueCc, 75);
             Assert.AreEqual(r.B.ACD.ValueD, 45);
+            Assert.IsNull(r.ACc.M_Parent);
+            Assert.IsNull(r.ACc.M_Root);
+            Assert.IsNull(r.ACD.M_Parent);
+            Assert.IsNull(r.ACD.M_Root);
+            Assert.IsNull(r.B.M_Parent);
+            Assert.IsNull(r.B.M_Root);
         }
     }
 }

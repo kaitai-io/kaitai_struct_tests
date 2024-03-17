@@ -12,5 +12,11 @@ class NestedTypesImportTest extends TestCase {
         $this->assertSame(67, $r->b()->valueB());
         $this->assertSame(75, $r->b()->aCc()->valueCc());
         $this->assertSame(45, $r->b()->aCD()->valueD());
+        $this->assertNull($r->aCc()->_parent());
+        $this->assertNull($r->aCc()->_root());
+        $this->assertNull($r->aCD()->_parent());
+        $this->assertNull($r->aCD()->_root());
+        $this->assertNull($r->b()->_parent());
+        $this->assertNull($r->b()->_root());
     }
 }

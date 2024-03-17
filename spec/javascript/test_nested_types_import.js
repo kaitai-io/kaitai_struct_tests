@@ -10,4 +10,10 @@ testHelper('NestedTypesImport', 'src/fixed_struct.bin', function(r, NestedTypesI
   assert.strictEqual(r.b.valueB, 67);
   assert.strictEqual(r.b.aCc.valueCc, 75);
   assert.strictEqual(r.b.aCD.valueD, 45);
+  assert.strictEqual(r.aCc._parent, undefined);
+  assert.strictEqual(r.aCc._root, undefined);
+  assert.strictEqual(r.aCD._parent, undefined);
+  assert.strictEqual(r.aCD._root, undefined);
+  assert.strictEqual(r.b._parent, undefined);
+  assert.strictEqual(r.b._root, undefined);
 });

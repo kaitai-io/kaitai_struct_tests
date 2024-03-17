@@ -11,3 +11,9 @@ assert r.aCD.valueD == 65
 assert r.b.valueB == 67
 assert r.b.aCc.valueCc == 75
 assert r.b.aCD.valueD == 45
+assert r.aCc.parent == nil
+assert r.aCc.root == nil
+assert r.aCD.parent == nil
+assert r.aCD.root == nil
+assert r.b.parent == nil
+assert r.b.root == nil

@@ -34,4 +34,10 @@ func TestNestedTypesImport(t *testing.T) {
 	assert.EqualValues(t, 67, r.B.ValueB)
 	assert.EqualValues(t, 75, r.B.ACc.ValueCc)
 	assert.EqualValues(t, 45, r.B.ACD.ValueD)
+	assert.Nil(t, r.ACc._parent)
+	assert.Nil(t, r.ACc._root)
+	assert.Nil(t, r.ACD._parent)
+	assert.Nil(t, r.ACD._root)
+	assert.Nil(t, r.B._parent)
+	assert.Nil(t, r.B._root)
 }

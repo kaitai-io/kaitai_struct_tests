@@ -8,7 +8,7 @@ use base qw(Test::Class);
 use Test::More;
 use NestedTypesImport;
 
-sub test_nested_types_import: Test(5) {
+sub test_nested_types_import: Test(11) {
     my $r = NestedTypesImport->from_file('src/fixed_struct.bin');
 
     is($r->a_cc()->value_cc(), 80, 'Equals');
@@ -16,6 +16,12 @@ sub test_nested_types_import: Test(5) {
     is($r->b()->value_b(), 67, 'Equals');
     is($r->b()->a_cc()->value_cc(), 75, 'Equals');
     is($r->b()->a_c_d()->value_d(), 45, 'Equals');
+    ok(!defined($r->a_cc()->_parent()), 'nil');
+    ok(!defined($r->a_cc()->_root()), 'nil');
+    ok(!defined($r->a_c_d()->_parent()), 'nil');
+    ok(!defined($r->a_c_d()->_root()), 'nil');
+    ok(!defined($r->b()->_parent()), 'nil');
+    ok(!defined($r->b()->_root()), 'nil');
 }
 
 Test::Class->runtests;

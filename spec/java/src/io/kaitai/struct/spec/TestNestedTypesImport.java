@@ -16,5 +16,11 @@ public class TestNestedTypesImport extends CommonSpec {
         assertIntEquals(r.b().valueB(), 67);
         assertIntEquals(r.b().aCc().valueCc(), 75);
         assertIntEquals(r.b().aCD().valueD(), 45);
+        assertNull(r.aCc()._parent());
+        assertNull(r.aCc()._root());
+        assertNull(r.aCD()._parent());
+        assertNull(r.aCD()._root());
+        assertNull(r.b()._parent());
+        assertNull(r.b()._root());
     }
 }
