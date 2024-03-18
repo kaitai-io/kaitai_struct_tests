@@ -16,18 +16,18 @@ seq:
     repeat-until: _ == 0
 types:
   type_u1:
-   seq:
-     - id: count
-       type: u1
-     - id: values
-       type: u1
-       repeat: expr
-       repeat-expr: count
+    seq:
+      - id: count
+        type: u1
+      - id: values
+        type: u1
+        repeat: expr
+        repeat-expr: count
   type_u2:
-   seq:
-     - id: count
-       type: u2
-     - id: values
-       type: u2
-       repeat: expr
-       repeat-expr: count
+    seq:
+      - id: count
+        type: u2
+      - id: values
+        type: u2
+        repeat: expr
+        repeat-expr: count

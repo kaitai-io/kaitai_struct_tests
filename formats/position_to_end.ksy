@@ -8,7 +8,7 @@ instances:
 types:
   index_obj:
     seq:
-     - id: foo
-       type: u4
-     - id: bar
-       type: u4
+      - id: foo
+        type: u4
+      - id: bar
+        type: u4
