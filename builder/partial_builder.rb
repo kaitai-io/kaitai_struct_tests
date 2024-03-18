@@ -88,7 +88,7 @@ class PartialBuilder
       t2 = Time.now
       log "build attempt #{attempt_str}: elapsed: #{(t2 - t1).to_i}s"
       if result == 0
-        log attempt == 1 ? "perfect build succeeded" : "success on attempt \##{attempt_str}, #{disp_files.size}/#{orig_size} files survived"
+        log attempt == 1 ? "perfect build succeeded" : "success on build attempt #{attempt_str}, #{disp_files.size}/#{orig_size} files survived"
         return true
       else
         log "build failed"
@@ -104,7 +104,7 @@ class PartialBuilder
         attempt += 1
 
         if @max_attempts and attempt >= @max_attempts
-          log "maximum number of attempts reached, bailing out"
+          log "maximum number of build attempts reached, bailing out"
           return false
         end
       end
