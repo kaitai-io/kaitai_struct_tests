@@ -14,6 +14,10 @@ asserts:
   - actual: b.a_c_d.value_d
     expected: 45
 
+  # All `_parent` and `_root` fields should be `null` because they should only
+  # be passed between local types of a single .ksy spec, never between types in
+  # different .ksy specs (see
+  # https://github.com/kaitai-io/kaitai_struct/issues/963#issuecomment-1995142738)
   - actual: a_cc._parent
     expected: 'null'
   - actual: a_cc._root
