@@ -1,4 +1,7 @@
 # Check usage of a::b::c syntax where "a" is imported
+#
+# Demonstrates https://github.com/kaitai-io/kaitai_struct/issues/703 and
+# https://github.com/kaitai-io/kaitai_struct/issues/963
 meta:
   id: nested_types_import
   imports:
