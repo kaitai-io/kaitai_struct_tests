@@ -3,6 +3,7 @@ require 'set'
 
 require_relative 'partial_builder'
 require_relative 'shellconfig'
+require_relative '../aggregate/boost_test_parser'
 
 class CppBuilder < PartialBuilder
   attr_accessor :mode
@@ -304,33 +305,58 @@ class CppBuilder < PartialBuilder
   end
 
   def run_tests
-    xml_log = "#{@abs_cpp_test_out_dir}/results.xml"
+    attempt = 1
+    excluded_tests = []
 
-    # Choose test executable
-    case @mode
-    when :msbuild_windows
-      # On Windows/MSVC, executable will be nested in Debug/
-      ks_tests_bin = "#{@obj_dir}/Debug/ks_tests"
-    when :make_posix
-      # On POSIX systems, it will be directly in obj dir
-      ks_tests_bin = "#{@obj_dir}/ks_tests"
-    else
-      raise "Unknown mode=#{@mode}"
-    end
+    loop {
+      attempt_str = @max_attempts ? "#{attempt}/#{@max_attempts}" : attempt
 
-    tests_cli = [
-      ks_tests_bin,
-      '--log_format=XML',
-      "--log_sink=#{xml_log}",
-      '--log_level=all',
-      '--report_level=detailed',
-    ]
+      xml_log = "#{@abs_cpp_test_out_dir}/results-#{attempt}.xml"
+      log "run attempt #{attempt_str} (log: #{xml_log})"
 
-    # Actually run the tests
-    Dir.chdir(@test_dir)
-    run_and_tee({}, tests_cli, "#{@abs_cpp_test_out_dir}/test_run.stdout")
+      # Choose test executable
+      case @mode
+      when :msbuild_windows
+        # On Windows/MSVC, executable will be nested in Debug/
+        ks_tests_bin = "#{@obj_dir}/Debug/ks_tests"
+      when :make_posix
+        # On POSIX systems, it will be directly in obj dir
+        ks_tests_bin = "#{@obj_dir}/ks_tests"
+      else
+        raise "Unknown mode=#{@mode}"
+      end
 
-    File.exist?(xml_log)
+      tests_cli = [
+        ks_tests_bin,
+        '--log_format=XML',
+        "--log_sink=#{xml_log}",
+        '--log_level=all',
+        '--report_level=detailed',
+      ]
+      excluded_tests.each { |test| tests_cli << "--run_test=!#{test}" }
+
+      # Actually run the tests
+      Dir.chdir(@test_dir) do
+        run_and_tee({}, tests_cli, "#{@abs_cpp_test_out_dir}/test_run-#{attempt}.stdout")
+      end
+
+      parser = BoostTestParser.new(xml_log)
+      aborted_tests = parser.aborted_tests
+      File.write("#{@abs_cpp_test_out_dir}/aborted_tests-#{attempt}.txt", aborted_tests.map { |test| "#{test}\n" }.join)
+      if aborted_tests.empty?
+        log "success on run attempt #{attempt_str} (#{excluded_tests.size} tests excluded)"
+        return true
+      end
+      log "run attempt #{attempt_str} aborted (#{aborted_tests.size} tests aborted)"
+      aborted_tests.each { |test| excluded_tests << test }
+
+      attempt += 1
+
+      if @max_attempts and attempt >= @max_attempts
+        log "maximum number of run attempts reached, bailing out"
+        return false
+      end
+    }
   end
 
   private

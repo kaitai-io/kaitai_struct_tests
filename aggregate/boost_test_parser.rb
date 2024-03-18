@@ -3,48 +3,80 @@ require 'rexml/document'
 require_relative 'test_parser'
 
 class BoostTestParser < TestParser
-  def initialize(fn)
-    @doc = REXML::Document.new(File.read(fn))
+  def initialize(fn, glob = false)
+    @docs =
+      if glob
+        Dir.glob(fn).map { |x|
+          REXML::Document.new(File.read(x))
+        }
+      else
+        [REXML::Document.new(File.read(fn))]
+      end
   end
 
   def each_test
-    @doc.root.elements.each('TestSuite') { |ts|
-      ts.elements.each('TestCase') { |tc|
-        name = tc.attribute('name').value
+    @docs.each do |doc|
+      r = doc.root
+      next unless r
 
-        raise "Unable to parse name: \"#{name}\"" unless name =~ /^test_(.*?)$/
-        name = underscore_to_ucamelcase($1)
+      r.elements.each('TestSuite') { |ts|
+        ts.elements.each('TestCase') { |tc|
+          name = tc.attribute('name').value
 
-        failures = []
-        tc.elements.each('Error') { |err|
-          failures << TestResult::Failure.new(
-            err.attribute('file'),
-            err.attribute('line'),
-            err.text,
-            nil
-          )
+          raise "Unable to parse name: \"#{name}\"" unless name =~ /^test_(.*?)$/
+          name = underscore_to_ucamelcase($1)
+
+          failures = []
+          tc.elements.each('Error') { |err|
+            failures << TestResult::Failure.new(
+              err.attribute('file'),
+              err.attribute('line'),
+              err.text,
+              nil
+            )
+          }
+          tc.elements.each('Exception') { |err|
+            failures << TestResult::Failure.new(
+              err.attribute('file'),
+              err.attribute('line'),
+              err.text,
+              nil
+            )
+          }
+
+          if failures.empty?
+            status = :passed
+            failure = nil
+          else
+            status = :failed
+            failure = failures[0]
+          end
+
+          # `<TestCase>` elements of tests that are disabled (using the
+          # `--run_test=!<test_name>` command-line option) because they aborted
+          # (typically due to a memory access violation, which terminates the
+          # entire test suite) in a previous run attempt look like this in the
+          # XML log:
+          #
+          # ```xml
+          #     <TestCase name="test_debug_array_user" skipped="yes" reason="disabled"/>
+          # ```
+          #
+          # As you can see, they don't contain any `<TestingTime>` tag, so we
+          # need to make sure we handle this case gracefully.
+          testing_time_node = tc.elements['TestingTime']
+          testing_time =
+            if testing_time_node.nil?
+              0.0
+            else
+              testing_time_node.text.to_f
+            end
+
+          tr = TestResult.new(name, status, testing_time, failure)
+          yield tr
         }
-        tc.elements.each('Exception') { |err|
-          failures << TestResult::Failure.new(
-            err.attribute('file'),
-            err.attribute('line'),
-            err.text,
-            nil
-          )
-        }
-
-        if failures.empty?
-          status = :passed
-          failure = nil
-        else
-          status = :failed
-          failure = failures[0]
-        end
-
-        tr = TestResult.new(name, status, tc.elements['TestingTime'].text.to_f, failure)
-        yield tr
       }
-    }
+    end
   end
 
   def aborted_tests
@@ -59,29 +91,33 @@ class BoostTestParser < TestParser
   end
 
   def each_aborted_test
-    r = @doc.root
-    r.elements.each('TestSuite/TestCase') { |tc|
-      next if tc.elements['Exception'].nil?
+    @docs.each do |doc|
+      r = doc.root
+      next unless r
 
-      aborted = false
+      r.elements.each('TestSuite/TestCase') { |tc|
+        next if tc.elements['Exception'].nil?
 
-      tc.elements.each('Message') { |msg|
-        next unless msg.text == 'Test is aborted'
+        aborted = false
 
-        file_attr = msg.attribute('file')
-        next if file_attr.nil?
+        tc.elements.each('Message') { |msg|
+          next unless msg.text == 'Test is aborted'
 
-        file = file_attr.value
-        next unless file.end_with?('/boost/test/impl/unit_test_log.ipp')
+          file_attr = msg.attribute('file')
+          next if file_attr.nil?
 
-        aborted = true
-        break
+          file = file_attr.value
+          next unless file.end_with?('/boost/test/impl/unit_test_log.ipp')
+
+          aborted = true
+          break
+        }
+
+        next unless aborted
+
+        name = tc.attribute('name').value
+        yield name
       }
-
-      next unless aborted
-
-      name = tc.attribute('name').value
-      yield name
-    }
+    end
   end
 end
