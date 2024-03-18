@@ -1,0 +1,226 @@
+<TestLog>
+  <TestSuite name="C++/STL test units for Kaitai Struct">
+    <TestCase name="test_bcd_user_type_be" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_bcd_user_type_be.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bcd_user_type_be.cpp" line="14"><![CDATA[check r->ltr()->as_int() == 12345678 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bcd_user_type_be.cpp" line="15"><![CDATA[check r->ltr()->as_str() == std::string("12345678") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bcd_user_type_be.cpp" line="16"><![CDATA[check r->rtl()->as_int() == 87654321 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bcd_user_type_be.cpp" line="17"><![CDATA[check r->rtl()->as_str() == std::string("87654321") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bcd_user_type_be.cpp" line="18"><![CDATA[check r->leading_zero_ltr()->as_int() == 123456 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bcd_user_type_be.cpp" line="19"><![CDATA[check r->leading_zero_ltr()->as_str() == std::string("00123456") has passed]]></Info>
+      <TestingTime>1474</TestingTime>
+    </TestCase>
+    <TestCase name="test_bcd_user_type_le" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_bcd_user_type_le.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bcd_user_type_le.cpp" line="14"><![CDATA[check r->ltr()->as_int() == 12345678 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bcd_user_type_le.cpp" line="15"><![CDATA[check r->ltr()->as_str() == std::string("12345678") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bcd_user_type_le.cpp" line="16"><![CDATA[check r->rtl()->as_int() == 87654321 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bcd_user_type_le.cpp" line="17"><![CDATA[check r->rtl()->as_str() == std::string("87654321") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bcd_user_type_le.cpp" line="18"><![CDATA[check r->leading_zero_ltr()->as_int() == 123456 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bcd_user_type_le.cpp" line="19"><![CDATA[check r->leading_zero_ltr()->as_str() == std::string("00123456") has passed]]></Info>
+      <TestingTime>808</TestingTime>
+    </TestCase>
+    <TestCase name="test_bits_byte_aligned" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_bits_byte_aligned.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_byte_aligned.cpp" line="14"><![CDATA[check r->one() == 20 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_byte_aligned.cpp" line="15"><![CDATA[check r->byte_1() == 65 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_byte_aligned.cpp" line="16"><![CDATA[check r->two() == 2 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_byte_aligned.cpp" line="17"><![CDATA[check r->three() == false has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_byte_aligned.cpp" line="18"><![CDATA[check r->byte_2() == 75 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_byte_aligned.cpp" line="19"><![CDATA[check r->four() == 2892 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_byte_aligned.cpp" line="20"><![CDATA[check r->byte_3() == std::string("\xFF", 1) has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_byte_aligned.cpp" line="21"><![CDATA[check r->full_byte() == 255 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_byte_aligned.cpp" line="22"><![CDATA[check r->byte_4() == 80 has passed]]></Info>
+      <TestingTime>828</TestingTime>
+    </TestCase>
+    <TestCase name="test_bits_enum" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_bits_enum.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_enum.cpp" line="14"><![CDATA[check r->one() == bits_enum_t::ANIMAL_PLATYPUS has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_enum.cpp" line="15"><![CDATA[check r->two() == bits_enum_t::ANIMAL_HORSE has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_enum.cpp" line="16"><![CDATA[check r->three() == bits_enum_t::ANIMAL_CAT has passed]]></Info>
+      <TestingTime>503</TestingTime>
+    </TestCase>
+    <TestCase name="test_bits_seq_endian_combo" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_bits_seq_endian_combo.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_seq_endian_combo.cpp" line="14"><![CDATA[check r->be1() == 59 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_seq_endian_combo.cpp" line="15"><![CDATA[check r->be2() == 187 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_seq_endian_combo.cpp" line="16"><![CDATA[check r->le3() == 163 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_seq_endian_combo.cpp" line="17"><![CDATA[check r->be4() == 20 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_seq_endian_combo.cpp" line="18"><![CDATA[check r->le5() == 10 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_seq_endian_combo.cpp" line="19"><![CDATA[check r->le6() == 36 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_seq_endian_combo.cpp" line="20"><![CDATA[check r->le7() == 26 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_seq_endian_combo.cpp" line="21"><![CDATA[check r->be8() == true has passed]]></Info>
+      <TestingTime>731</TestingTime>
+    </TestCase>
+    <TestCase name="test_bits_shift_by_b32_le" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_bits_shift_by_b32_le.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_shift_by_b32_le.cpp" line="14"><![CDATA[check r->a() == 4294967295UL has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_shift_by_b32_le.cpp" line="15"><![CDATA[check r->b() == 0 has passed]]></Info>
+      <TestingTime>340</TestingTime>
+    </TestCase>
+    <TestCase name="test_bits_shift_by_b64_le" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_bits_shift_by_b64_le.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_shift_by_b64_le.cpp" line="14"><![CDATA[check r->a() == 18446744073709551615ULL has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_shift_by_b64_le.cpp" line="15"><![CDATA[check r->b() == 0 has passed]]></Info>
+      <TestingTime>330</TestingTime>
+    </TestCase>
+    <TestCase name="test_bits_signed_res_b32_be" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_bits_signed_res_b32_be.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_signed_res_b32_be.cpp" line="14"><![CDATA[check r->a() == 4294967295UL has passed]]></Info>
+      <TestingTime>266</TestingTime>
+    </TestCase>
+    <TestCase name="test_bits_signed_res_b32_le" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_bits_signed_res_b32_le.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_signed_res_b32_le.cpp" line="14"><![CDATA[check r->a() == 4294967295UL has passed]]></Info>
+      <TestingTime>223</TestingTime>
+    </TestCase>
+    <TestCase name="test_bits_signed_shift_b32_le" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_bits_signed_shift_b32_le.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_signed_shift_b32_le.cpp" line="14"><![CDATA[check r->a() == 0 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_signed_shift_b32_le.cpp" line="15"><![CDATA[check r->b() == 255 has passed]]></Info>
+      <TestingTime>357</TestingTime>
+    </TestCase>
+    <TestCase name="test_bits_signed_shift_b64_le" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_bits_signed_shift_b64_le.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_signed_shift_b64_le.cpp" line="14"><![CDATA[check r->a() == 0 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_signed_shift_b64_le.cpp" line="15"><![CDATA[check r->b() == 255 has passed]]></Info>
+      <TestingTime>328</TestingTime>
+    </TestCase>
+    <TestCase name="test_bits_simple" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_bits_simple.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple.cpp" line="14"><![CDATA[check r->byte_1() == 80 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple.cpp" line="15"><![CDATA[check r->byte_2() == 65 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple.cpp" line="16"><![CDATA[check r->bits_a() == false has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple.cpp" line="17"><![CDATA[check r->bits_b() == 4 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple.cpp" line="18"><![CDATA[check r->bits_c() == 3 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple.cpp" line="19"><![CDATA[check r->large_bits_1() == 300 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple.cpp" line="20"><![CDATA[check r->spacer() == 5 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple.cpp" line="21"><![CDATA[check r->large_bits_2() == 1329 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple.cpp" line="22"><![CDATA[check r->normal_s2() == -1 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple.cpp" line="23"><![CDATA[check r->byte_8_9_10() == 5259587 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple.cpp" line="24"><![CDATA[check r->byte_11_to_14() == 1261262125 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple.cpp" line="25"><![CDATA[check r->byte_15_to_19() == 293220057087LL has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple.cpp" line="26"><![CDATA[check r->byte_20_to_27() == 18446744073709551615ULL has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple.cpp" line="27"><![CDATA[check r->test_if_b1() == 123 has passed]]></Info>
+      <TestingTime>2104</TestingTime>
+    </TestCase>
+    <TestCase name="test_bits_simple_le" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_bits_simple_le.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple_le.cpp" line="14"><![CDATA[check r->byte_1() == 80 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple_le.cpp" line="15"><![CDATA[check r->byte_2() == 65 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple_le.cpp" line="16"><![CDATA[check r->bits_a() == true has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple_le.cpp" line="17"><![CDATA[check r->bits_b() == 1 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple_le.cpp" line="18"><![CDATA[check r->bits_c() == 4 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple_le.cpp" line="19"><![CDATA[check r->large_bits_1() == 331 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple_le.cpp" line="20"><![CDATA[check r->spacer() == 3 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple_le.cpp" line="21"><![CDATA[check r->large_bits_2() == 393 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple_le.cpp" line="22"><![CDATA[check r->normal_s2() == -1 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple_le.cpp" line="23"><![CDATA[check r->byte_8_9_10() == 4407632 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple_le.cpp" line="24"><![CDATA[check r->byte_11_to_14() == 760556875 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple_le.cpp" line="25"><![CDATA[check r->byte_15_to_19() == 1099499455812LL has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple_le.cpp" line="26"><![CDATA[check r->byte_20_to_27() == 18446744073709551615ULL has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_simple_le.cpp" line="27"><![CDATA[check r->test_if_b1() == 123 has passed]]></Info>
+      <TestingTime>1501</TestingTime>
+    </TestCase>
+    <TestCase name="test_bits_unaligned_b32_be" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_bits_unaligned_b32_be.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_unaligned_b32_be.cpp" line="14"><![CDATA[check r->a() == true has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_unaligned_b32_be.cpp" line="15"><![CDATA[check r->b() == 3648472617UL has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_unaligned_b32_be.cpp" line="16"><![CDATA[check r->c() == 10 has passed]]></Info>
+      <TestingTime>597</TestingTime>
+    </TestCase>
+    <TestCase name="test_bits_unaligned_b32_le" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_bits_unaligned_b32_le.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_unaligned_b32_le.cpp" line="14"><![CDATA[check r->a() == false has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_unaligned_b32_le.cpp" line="15"><![CDATA[check r->b() == 173137398 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_unaligned_b32_le.cpp" line="16"><![CDATA[check r->c() == 69 has passed]]></Info>
+      <TestingTime>386</TestingTime>
+    </TestCase>
+    <TestCase name="test_bits_unaligned_b64_be" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_bits_unaligned_b64_be.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_unaligned_b64_be.cpp" line="14"><![CDATA[check r->a() == true has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_unaligned_b64_be.cpp" line="15"><![CDATA[check r->b() == 15670070570729969769ULL has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_unaligned_b64_be.cpp" line="16"><![CDATA[check r->c() == 14 has passed]]></Info>
+      <TestingTime>537</TestingTime>
+    </TestCase>
+    <TestCase name="test_bits_unaligned_b64_le" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_bits_unaligned_b64_le.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_unaligned_b64_le.cpp" line="14"><![CDATA[check r->a() == false has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_unaligned_b64_le.cpp" line="15"><![CDATA[check r->b() == 1902324737369038326LL has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bits_unaligned_b64_le.cpp" line="16"><![CDATA[check r->c() == 71 has passed]]></Info>
+      <TestingTime>819</TestingTime>
+    </TestCase>
+    <TestCase name="test_buffered_struct" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_buffered_struct.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_buffered_struct.cpp" line="14"><![CDATA[check r->len1() == 16 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_buffered_struct.cpp" line="15"><![CDATA[check r->block1()->number1() == 66 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_buffered_struct.cpp" line="16"><![CDATA[check r->block1()->number2() == 67 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_buffered_struct.cpp" line="17"><![CDATA[check r->len2() == 8 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_buffered_struct.cpp" line="18"><![CDATA[check r->block2()->number1() == 68 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_buffered_struct.cpp" line="19"><![CDATA[check r->block2()->number2() == 69 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_buffered_struct.cpp" line="20"><![CDATA[check r->finisher() == 238 has passed]]></Info>
+      <TestingTime>1136</TestingTime>
+    </TestCase>
+    <TestCase name="test_bytes_pad_term" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_bytes_pad_term.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bytes_pad_term.cpp" line="14"><![CDATA[check r->str_pad() == std::string("\x73\x74\x72\x31", 4) has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bytes_pad_term.cpp" line="15"><![CDATA[check r->str_term() == std::string("\x73\x74\x72\x32\x66\x6F\x6F", 7) has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bytes_pad_term.cpp" line="16"><![CDATA[check r->str_term_and_pad() == std::string("\x73\x74\x72\x2B\x2B\x2B\x33\x62\x61\x72\x2B\x2B\x2B", 13) has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_bytes_pad_term.cpp" line="17"><![CDATA[check r->str_term_include() == std::string("\x73\x74\x72\x34\x62\x61\x7A\x40", 8) has passed]]></Info>
+      <TestingTime>1071</TestingTime>
+    </TestCase>
+    <TestCase name="test_cast_nested" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_cast_nested.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_cast_nested.cpp" line="14"><![CDATA[check r->opcodes_0_str()->value() == std::string("foobar") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_cast_nested.cpp" line="15"><![CDATA[check r->opcodes_0_str_value() == std::string("foobar") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_cast_nested.cpp" line="16"><![CDATA[check r->opcodes_1_int()->value() == 66 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_cast_nested.cpp" line="17"><![CDATA[check r->opcodes_1_int_value() == 66 has passed]]></Info>
+      <TestingTime>1068</TestingTime>
+    </TestCase>
+    <TestCase name="test_cast_to_imported" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_cast_to_imported.cpp" line="10">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_cast_to_imported.cpp" line="15"><![CDATA[check r->one()->one() == 80 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_cast_to_imported.cpp" line="16"><![CDATA[check r->one_casted()->one() == 80 has passed]]></Info>
+      <TestingTime>330</TestingTime>
+    </TestCase>
+    <TestCase name="test_cast_to_top" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_cast_to_top.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_cast_to_top.cpp" line="14"><![CDATA[check r->code() == 80 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_cast_to_top.cpp" line="15"><![CDATA[check r->header()->code() == 65 has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_cast_to_top.cpp" line="16"><![CDATA[check r->header_casted()->code() == 65 has passed]]></Info>
+      <TestingTime>401</TestingTime>
+    </TestCase>
+    <TestCase name="test_combine_bool" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_combine_bool.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_bool.cpp" line="14"><![CDATA[check r->bool_bit() == true has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_bool.cpp" line="15"><![CDATA[check r->bool_calc_bit() == false has passed]]></Info>
+      <TestingTime>301</TestingTime>
+    </TestCase>
+    <TestCase name="test_combine_bytes" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_combine_bytes.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_bytes.cpp" line="14"><![CDATA[check r->bytes_term() == std::string("\x66\x6F\x6F", 3) has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_bytes.cpp" line="15"><![CDATA[check r->bytes_limit() == std::string("\x62\x61\x72\x7C", 4) has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_bytes.cpp" line="16"><![CDATA[check r->bytes_eos() == std::string("\x62\x61\x7A\x40", 4) has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_bytes.cpp" line="17"><![CDATA[check r->bytes_calc() == std::string("\x52\x6E\x44", 3) has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_bytes.cpp" line="18"><![CDATA[check r->term_or_limit() == std::string("\x66\x6F\x6F", 3) has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_bytes.cpp" line="19"><![CDATA[check r->term_or_eos() == std::string("\x62\x61\x7A\x40", 4) has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_bytes.cpp" line="20"><![CDATA[check r->term_or_calc() == std::string("\x66\x6F\x6F", 3) has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_bytes.cpp" line="21"><![CDATA[check r->limit_or_eos() == std::string("\x62\x61\x72\x7C", 4) has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_bytes.cpp" line="22"><![CDATA[check r->limit_or_calc() == std::string("\x52\x6E\x44", 3) has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_bytes.cpp" line="23"><![CDATA[check r->eos_or_calc() == std::string("\x62\x61\x7A\x40", 4) has passed]]></Info>
+      <TestingTime>1068</TestingTime>
+    </TestCase>
+    <TestCase name="test_combine_enum" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_combine_enum.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_enum.cpp" line="14"><![CDATA[check r->enum_u4() == combine_enum_t::ANIMAL_PIG has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_enum.cpp" line="15"><![CDATA[check r->enum_u2() == combine_enum_t::ANIMAL_HORSE has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_enum.cpp" line="16"><![CDATA[check r->enum_u4_u2() == combine_enum_t::ANIMAL_HORSE has passed]]></Info>
+      <TestingTime>375</TestingTime>
+    </TestCase>
+    <TestCase name="test_combine_str" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_combine_str.cpp" line="9">
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_str.cpp" line="14"><![CDATA[check r->str_term() == std::string("foo") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_str.cpp" line="15"><![CDATA[check r->str_limit() == std::string("bar|") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_str.cpp" line="16"><![CDATA[check r->str_eos() == std::string("baz@") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_str.cpp" line="17"><![CDATA[check r->str_calc() == std::string("bar") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_str.cpp" line="18"><![CDATA[check r->str_calc_bytes() == std::string("baz") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_str.cpp" line="19"><![CDATA[check r->term_or_limit() == std::string("foo") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_str.cpp" line="20"><![CDATA[check r->term_or_eos() == std::string("baz@") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_str.cpp" line="21"><![CDATA[check r->term_or_calc() == std::string("foo") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_str.cpp" line="22"><![CDATA[check r->term_or_calc_bytes() == std::string("baz") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_str.cpp" line="23"><![CDATA[check r->limit_or_eos() == std::string("bar|") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_str.cpp" line="24"><![CDATA[check r->limit_or_calc() == std::string("bar") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_str.cpp" line="25"><![CDATA[check r->limit_or_calc_bytes() == std::string("bar|") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_str.cpp" line="26"><![CDATA[check r->eos_or_calc() == std::string("bar") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_str.cpp" line="27"><![CDATA[check r->eos_or_calc_bytes() == std::string("baz@") has passed]]></Info>
+      <Info file="C:/projects/ci-targets/tests/spec/cpp_stl_11/test_combine_str.cpp" line="28"><![CDATA[check r->calc_or_calc_bytes() == std::string("baz") has passed]]></Info>
+      <TestingTime>1619</TestingTime>
+    </TestCase>
+    <TestCase name="test_debug_0" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_debug_0.cpp" line="9">
+      <Message file="boost.test framework" line="244"><![CDATA[Test case test_debug_0 did not check any assertions]]></Message>
+      <TestingTime>65</TestingTime>
+    </TestCase>
+    <TestCase name="test_debug_array_user" file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_debug_array_user.cpp" line="7">
+      <Exception file="unknown location" line="0"><![CDATA[memory access violation occurred at address 0x00000008, while attempting to  read inaccessible data]]>
+        <LastCheckpoint file="C:\projects\ci-targets\tests\spec\cpp_stl_11\test_debug_array_user.cpp" line="7"><![CDATA["test_debug_array_user" test entry]]></LastCheckpoint>
+      </Exception>
+      <Message file="C:/Tools/vcpkg/buildtrees/boost-test/src/ost-1.71.0-4b298197d6/include/boost/test/impl/unit_test_log.ipp" line="205"><![CDATA[Test is aborted]]></Message>
+      <TestingTime>504</TestingTime>
+    </TestCase>
+    <Message file="C:/Tools/vcpkg/buildtrees/boost-test/src/ost-1.71.0-4b298197d6/include/boost/test/impl/unit_test_log.ipp" line="205"><![CDATA[Test is aborted]]></Message>
+  </TestSuite>
+</TestLog>
