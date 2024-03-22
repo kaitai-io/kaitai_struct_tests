@@ -1,4 +1,4 @@
-# meta_imports_rel_unknown: /meta/imports/0:
+# meta_imports_rel_unknown.ksy: /meta/imports/0:
 # 	error: unknown_relative_name.ksy (No such file or directory)
 #
 meta:
