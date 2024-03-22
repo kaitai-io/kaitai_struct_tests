@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 require_relative 'builder/java_builder'
-JavaBuilder.new.command_line(ARGV)
+JavaBuilder.new(ARGV[0], ARGV[1]).command_line(ARGV[2..-1] || [])

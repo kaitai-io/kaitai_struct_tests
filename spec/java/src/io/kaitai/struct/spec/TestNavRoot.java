@@ -13,7 +13,7 @@ public class TestNavRoot extends CommonSpec {
         assertIntEquals(r.header().qtyEntries(), 2);
         assertIntEquals(r.header().filenameLen(), 8);
         assertIntEquals(r.index().entries().size(), 2);
-        assertEquals(r.index().entries().get((int) 0).filename(), "FIRST___");
-        assertEquals(r.index().entries().get((int) 1).filename(), "SECOND__");
+        assertEquals(r.index().entries().get(((int) 0)).filename(), "FIRST___");
+        assertEquals(r.index().entries().get(((int) 1)).filename(), "SECOND__");
     }
 }

@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.DefaultBitEndianMod;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestDefaultBitEndianMod extends CommonSpec {
-
     @Test
     public void testDefaultBitEndianMod() throws Exception {
         DefaultBitEndianMod r = DefaultBitEndianMod.fromFile(SRC_DIR + "fixed_struct.bin");

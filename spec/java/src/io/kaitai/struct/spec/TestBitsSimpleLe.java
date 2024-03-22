@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.BitsSimpleLe;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestBitsSimpleLe extends CommonSpec {
-
     @Test
     public void testBitsSimpleLe() throws Exception {
         BitsSimpleLe r = BitsSimpleLe.fromFile(SRC_DIR + "fixed_struct.bin");

@@ -7,7 +7,6 @@ import io.kaitai.struct.testformats.ImportsCircularB;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestImportsCircularA extends CommonSpec {
-
     @Test
     public void testImportsCircularA() throws Exception {
         ImportsCircularA r = ImportsCircularA.fromFile(SRC_DIR + "fixed_struct.bin");

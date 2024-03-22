@@ -11,11 +11,11 @@ public class TestIndexToParamEos extends CommonSpec {
         IndexToParamEos r = IndexToParamEos.fromFile(SRC_DIR + "index_sizes.bin");
 
         assertIntEquals(r.qty(), 3);
-        assertIntEquals(r.sizes().get((int) 0), 1);
-        assertIntEquals(r.sizes().get((int) 1), 8);
-        assertIntEquals(r.sizes().get((int) 2), 4);
-        assertEquals(r.blocks().get((int) 0).buf(), "A");
-        assertEquals(r.blocks().get((int) 1).buf(), "BBBBBBBB");
-        assertEquals(r.blocks().get((int) 2).buf(), "CCCC");
+        assertIntEquals(r.sizes().get(((int) 0)), 1);
+        assertIntEquals(r.sizes().get(((int) 1)), 8);
+        assertIntEquals(r.sizes().get(((int) 2)), 4);
+        assertEquals(r.blocks().get(((int) 0)).buf(), "A");
+        assertEquals(r.blocks().get(((int) 1)).buf(), "BBBBBBBB");
+        assertEquals(r.blocks().get(((int) 2)).buf(), "CCCC");
     }
 }

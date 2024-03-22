@@ -1,0 +1,12 @@
+id: repeat_until_bytes_pad_term
+data: repeat_until_process.bin
+asserts:
+  - actual: records.size
+    expected: 3
+
+  - actual: records[0]
+    expected: '[0xe8, 0xba]'
+  - actual: records[1]
+    expected: '[0xfa, 0x9e, 0xb8]'
+  - actual: records[2]
+    expected: '[0xaa, 0x55]'

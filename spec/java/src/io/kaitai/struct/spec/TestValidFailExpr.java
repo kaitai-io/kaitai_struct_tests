@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import io.kaitai.struct.KaitaiStream;
 public class TestValidFailExpr extends CommonSpec {
-
     @Test(expectedExceptions = KaitaiStream.ValidationExprError.class)
     public void testValidFailExpr() throws Exception {
         ValidFailExpr r = ValidFailExpr.fromFile(SRC_DIR + "nav_parent_switch.bin");

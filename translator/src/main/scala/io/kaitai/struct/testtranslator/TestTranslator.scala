@@ -109,19 +109,27 @@ class TestTranslator(options: CLIOptions) {
     origSpecs
   }
 
-  def getSG(lang: String, testSpec: TestSpec, provider: ClassTypeProvider): BaseGenerator = lang match {
+  def getSG(lang: String, testSpec: TestSpec, provider: ClassTypeProvider): SpecGenerator = lang match {
     case "construct" => new ConstructSG(testSpec, provider)
     case "cpp_stl_98" => new CppStlSG(testSpec, provider, CppRuntimeConfig().copyAsCpp98())
     case "cpp_stl_11" => new CppStlSG(testSpec, provider, CppRuntimeConfig().copyAsCpp11())
     case "csharp" => new CSharpSG(testSpec, provider)
     case "go" => new GoSG(testSpec, provider)
-    case "java" => new JavaSG(testSpec, provider)
+    case "java" => if (options.readWrite) {
+      new JavaWriteSG(testSpec, provider)
+    } else {
+      new JavaSG(testSpec, provider)
+    }
     case "javascript" => new JavaScriptSG(testSpec, provider)
     case "lua" => new LuaSG(testSpec, provider)
     case "nim" => new NimSG(testSpec, provider)
     case "perl" => new PerlSG(testSpec, provider)
     case "php" => new PHPSG(testSpec, provider)
-    case "python" => new PythonSG(testSpec, provider)
+    case "python" => if (options.readWrite) {
+      new PythonWriteSG(testSpec, provider)
+    } else {
+      new PythonSG(testSpec, provider)
+    }
     case "ruby" => new RubySG(testSpec, provider)
     case "rust" => new RustSG(testSpec, provider)
   }

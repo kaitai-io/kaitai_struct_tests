@@ -12,13 +12,13 @@ public class TestNavParent2 extends CommonSpec {
 
         assertIntEquals(r.ofsTags(), 8);
         assertIntEquals(r.numTags(), 2);
-        assertEquals(r.tags().get((int) 0).name(), "RAHC");
-        assertIntEquals(r.tags().get((int) 0).ofs(), 32);
-        assertIntEquals(r.tags().get((int) 0).numItems(), 3);
-        assertEquals(r.tags().get((int) 0).tagContent().content(), "foo");
-        assertEquals(r.tags().get((int) 1).name(), "RAHC");
-        assertIntEquals(r.tags().get((int) 1).ofs(), 35);
-        assertIntEquals(r.tags().get((int) 1).numItems(), 6);
-        assertEquals(r.tags().get((int) 1).tagContent().content(), "barbaz");
+        assertEquals(r.tags().get(((int) 0)).name(), "RAHC");
+        assertIntEquals(r.tags().get(((int) 0)).ofs(), 32);
+        assertIntEquals(r.tags().get(((int) 0)).numItems(), 3);
+        assertEquals(r.tags().get(((int) 0)).tagContent().content(), "foo");
+        assertEquals(r.tags().get(((int) 1)).name(), "RAHC");
+        assertIntEquals(r.tags().get(((int) 1)).ofs(), 35);
+        assertIntEquals(r.tags().get(((int) 1)).numItems(), 6);
+        assertEquals(r.tags().get(((int) 1)).tagContent().content(), "barbaz");
     }
 }

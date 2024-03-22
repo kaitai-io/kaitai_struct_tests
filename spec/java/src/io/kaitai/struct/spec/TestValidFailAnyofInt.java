@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import io.kaitai.struct.KaitaiStream;
 public class TestValidFailAnyofInt extends CommonSpec {
-
     @Test(expectedExceptions = KaitaiStream.ValidationNotAnyOfError.class)
     public void testValidFailAnyofInt() throws Exception {
         ValidFailAnyofInt r = ValidFailAnyofInt.fromFile(SRC_DIR + "fixed_struct.bin");

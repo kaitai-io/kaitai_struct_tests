@@ -3,6 +3,7 @@
 package io.kaitai.struct.spec;
 
 import io.kaitai.struct.testformats.Imports0;
+import io.kaitai.struct.testformats.HelloWorld;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestImports0 extends CommonSpec {

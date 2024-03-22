@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ExprStrOps;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestExprStrOps extends CommonSpec {
-
     @Test
     public void testExprStrOps() throws Exception {
         ExprStrOps r = ExprStrOps.fromFile(SRC_DIR + "term_strz.bin");

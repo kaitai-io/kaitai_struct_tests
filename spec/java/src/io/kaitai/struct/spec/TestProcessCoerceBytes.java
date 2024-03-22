@@ -10,9 +10,9 @@ public class TestProcessCoerceBytes extends CommonSpec {
     public void testProcessCoerceBytes() throws Exception {
         ProcessCoerceBytes r = ProcessCoerceBytes.fromFile(SRC_DIR + "process_coerce_bytes.bin");
 
-        assertIntEquals(r.records().get((int) 0).flag(), 0);
-        assertEquals(r.records().get((int) 0).buf(), new byte[] { 65, 65, 65, 65 });
-        assertIntEquals(r.records().get((int) 1).flag(), 1);
-        assertEquals(r.records().get((int) 1).buf(), new byte[] { 66, 66, 66, 66 });
+        assertIntEquals(r.records().get(((int) 0)).flag(), 0);
+        assertEquals(r.records().get(((int) 0)).buf(), new byte[] { 65, 65, 65, 65 });
+        assertIntEquals(r.records().get(((int) 1)).flag(), 1);
+        assertEquals(r.records().get(((int) 1)).buf(), new byte[] { 66, 66, 66, 66 });
     }
 }

@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ExprCalcArrayOps;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestExprCalcArrayOps extends CommonSpec {
-
     @Test
     public void testExprCalcArrayOps() throws Exception {
         ExprCalcArrayOps r = ExprCalcArrayOps.fromFile(SRC_DIR + "fixed_struct.bin");

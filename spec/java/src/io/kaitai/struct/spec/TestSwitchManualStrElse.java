@@ -11,13 +11,13 @@ public class TestSwitchManualStrElse extends CommonSpec {
         SwitchManualStrElse r = SwitchManualStrElse.fromFile(SRC_DIR + "switch_opcodes2.bin");
 
         assertIntEquals(r.opcodes().size(), 4);
-        assertEquals(r.opcodes().get((int) 0).code(), "S");
-        assertEquals(((SwitchManualStrElse.Opcode.Strval) (r.opcodes().get((int) 0).body())).value(), "foo");
-        assertEquals(r.opcodes().get((int) 1).code(), "X");
-        assertIntEquals(((SwitchManualStrElse.Opcode.Noneval) (r.opcodes().get((int) 1).body())).filler(), 66);
-        assertEquals(r.opcodes().get((int) 2).code(), "Y");
-        assertIntEquals(((SwitchManualStrElse.Opcode.Noneval) (r.opcodes().get((int) 2).body())).filler(), 51966);
-        assertEquals(r.opcodes().get((int) 3).code(), "I");
-        assertIntEquals(((SwitchManualStrElse.Opcode.Intval) (r.opcodes().get((int) 3).body())).value(), 7);
+        assertEquals(r.opcodes().get(((int) 0)).code(), "S");
+        assertEquals(((SwitchManualStrElse.Opcode.Strval) (r.opcodes().get(((int) 0)).body())).value(), "foo");
+        assertEquals(r.opcodes().get(((int) 1)).code(), "X");
+        assertIntEquals(((SwitchManualStrElse.Opcode.Noneval) (r.opcodes().get(((int) 1)).body())).filler(), 66);
+        assertEquals(r.opcodes().get(((int) 2)).code(), "Y");
+        assertIntEquals(((SwitchManualStrElse.Opcode.Noneval) (r.opcodes().get(((int) 2)).body())).filler(), 51966);
+        assertEquals(r.opcodes().get(((int) 3)).code(), "I");
+        assertIntEquals(((SwitchManualStrElse.Opcode.Intval) (r.opcodes().get(((int) 3)).body())).value(), 7);
     }
 }

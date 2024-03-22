@@ -8,7 +8,6 @@ import io.kaitai.struct.testformats.EnumDeep;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestEnumImport extends CommonSpec {
-
     @Test
     public void testEnumImport() throws Exception {
         EnumImport r = EnumImport.fromFile(SRC_DIR + "enum_0.bin");

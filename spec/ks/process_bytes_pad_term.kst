@@ -1,0 +1,12 @@
+id: process_bytes_pad_term
+data: str_pad_term.bin
+asserts:
+  # See https://gchq.github.io/CyberChef/#recipe=XOR(%7B'option':'Hex','string':'15'%7D,'Standard',false)&input=c3RyMUBAQEBAQEBAQEBAQEBAQEBzdHIyZm9vQCsrKysrKysrKysrK3N0cisrKzNiYXIrKytAKysrKysrc3RyNGJhekAuLi4uLi4uLi4uLi4
+  - actual: str_pad
+    expected: '[0x66, 0x61, 0x67, 0x24]' # fag$
+  - actual: str_term
+    expected: '[0x66, 0x61, 0x67, 0x27, 0x73, 0x7a, 0x7a]' # fag'szz
+  - actual: str_term_and_pad
+    expected: '[0x66, 0x61, 0x67, 0x3e, 0x3e, 0x3e, 0x26, 0x77, 0x74, 0x67, 0x3e, 0x3e, 0x3e]' # fag>>>&wtg>>>
+  - actual: str_term_include
+    expected: '[0x66, 0x61, 0x67, 0x21, 0x77, 0x74, 0x6f, 0x55]' # fag!wtoU

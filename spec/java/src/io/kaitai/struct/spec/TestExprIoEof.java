@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ExprIoEof;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestExprIoEof extends CommonSpec {
-
     @Test
     public void testExprIoEof() throws Exception {
         ExprIoEof r = ExprIoEof.fromFile(SRC_DIR + "fixed_struct.bin");

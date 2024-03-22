@@ -1,0 +1,38 @@
+id: instance_io_user_earlier
+data: switch_opcodes2.bin
+asserts:
+  - actual: sized_a.content
+    expected: 0x53
+  - actual: into_a.inst.content
+    expected: 0x66
+  - actual: a_mid
+    expected: 0x6f_6f
+  - actual: into_a.inst.last
+    expected: 0x00
+  - actual: sized_a.last
+    expected: 0x58
+
+  - actual: sized_b.content
+    expected: 0x42
+  - actual: into_b.inst.content
+    expected: 0x00
+  - actual: b_mid
+    expected: 0x00_00
+  - actual: into_b.inst.last
+    expected: 0x59
+  - actual: sized_b.last
+    expected: 0xfe
+
+  - actual: into_b.indicator
+    expected: 0xca
+  - actual: into_a_skipped.indicator
+    expected: 0x00
+  - actual: into_a_skipped.inst._io.size
+    expected: 0
+  - actual: into_a.indicator
+    expected: 0x00
+  - actual: into_a.bar
+    expected: 0x49
+
+  - actual: last_accessor.v
+    expected: 0x07

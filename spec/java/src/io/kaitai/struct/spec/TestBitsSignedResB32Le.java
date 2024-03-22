@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.BitsSignedResB32Le;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestBitsSignedResB32Le extends CommonSpec {
-
     @Test
     public void testBitsSignedResB32Le() throws Exception {
         BitsSignedResB32Le r = BitsSignedResB32Le.fromFile(SRC_DIR + "bits_shift_by_b32_le.bin");

@@ -4,7 +4,6 @@ import io.kaitai.struct.testformats.OptionalId;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestOptionalId extends CommonSpec {
-
     @Test
     public void testOptionalId() throws Exception {
         OptionalId r = OptionalId.fromFile(SRC_DIR + "fixed_struct.bin");

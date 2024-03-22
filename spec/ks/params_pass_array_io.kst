@@ -1,0 +1,7 @@
+id: params_pass_array_io
+data: enum_negative.bin
+asserts:
+  - actual: first.foo
+    expected: 255
+  - actual: one.buf
+    expected: '[1]'

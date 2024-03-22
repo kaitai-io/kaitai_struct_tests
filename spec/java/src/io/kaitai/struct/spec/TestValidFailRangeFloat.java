@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import io.kaitai.struct.KaitaiStream;
 public class TestValidFailRangeFloat extends CommonSpec {
-
     @Test(expectedExceptions = KaitaiStream.ValidationGreaterThanError.class)
     public void testValidFailRangeFloat() throws Exception {
         ValidFailRangeFloat r = ValidFailRangeFloat.fromFile(SRC_DIR + "floating_points.bin");

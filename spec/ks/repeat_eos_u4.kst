@@ -1,5 +1,13 @@
 id: repeat_eos_u4
 data: repeat_eos_struct.bin
 asserts:
-  - actual: numbers
-    expected: '[0, 0x42, 0x42, 0x815]'
+  - actual: numbers.size
+    expected: 4
+  - actual: numbers[0]
+    expected: 0
+  - actual: numbers[1]
+    expected: 0x42
+  - actual: numbers[2]
+    expected: 0x42
+  - actual: numbers[3]
+    expected: 0x815

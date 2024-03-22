@@ -4,10 +4,10 @@ meta:
 seq:
   - id: blocks
     size: 5
+    process: xor(0x9e)
     type: block
     repeat: expr
     repeat-expr: 2
-    process: xor(0x9e)
 types:
   block:
     seq:

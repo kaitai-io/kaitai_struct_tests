@@ -1,0 +1,23 @@
+id: repeat_n_term_struct
+data: repeat_until_process.bin
+asserts:
+  - actual: records1.size
+    expected: 2
+  - actual: records1[0].value
+    expected: '[0xe8, 0xba]'
+  - actual: records1[1].value
+    expected: '[].as<bytes>'
+
+  - actual: records2.size
+    expected: 2
+  - actual: records2[0].value
+    expected: '[0xaa]'
+  - actual: records2[1].value
+    expected: '[0xfa, 0x9e, 0xb8, 0xaa]'
+
+  - actual: records3.size
+    expected: 2
+  - actual: records3[0].value
+    expected: '[0xaa, 0xaa]'
+  - actual: records3[1].value
+    expected: '[].as<bytes>'

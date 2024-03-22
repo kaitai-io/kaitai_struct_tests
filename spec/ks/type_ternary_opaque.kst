@@ -1,0 +1,7 @@
+id: type_ternary_opaque
+data: term_strz.bin
+asserts:
+  # the `.as<u1>` type cast is effectively a hack that fools the type validation
+  # of the compiler, but it's better to have a hacky KST spec than none
+  - actual: dif.one.as<u1>
+    expected: 0x66

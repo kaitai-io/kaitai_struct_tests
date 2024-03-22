@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.SwitchElseOnly;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestSwitchElseOnly extends CommonSpec {
-
     @Test
     public void testSwitchElseOnly() throws Exception {
         SwitchElseOnly r = SwitchElseOnly.fromFile(SRC_DIR + "switch_opcodes.bin");

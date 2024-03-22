@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ParamsPassBool;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestParamsPassBool extends CommonSpec {
-
     @Test
     public void testParamsPassBool() throws Exception {
         ParamsPassBool r = ParamsPassBool.fromFile(SRC_DIR + "term_strz.bin");

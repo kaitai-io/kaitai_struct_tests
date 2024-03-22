@@ -11,9 +11,9 @@ public class TestRepeatNStruct extends CommonSpec {
         RepeatNStruct r = RepeatNStruct.fromFile(SRC_DIR + "repeat_n_struct.bin");
 
         assertIntEquals(r.chunks().size(), 2);
-        assertIntEquals(r.chunks().get((int) 0).offset(), 16);
-        assertIntEquals(r.chunks().get((int) 0).len(), 8312);
-        assertIntEquals(r.chunks().get((int) 1).offset(), 8328);
-        assertIntEquals(r.chunks().get((int) 1).len(), 15);
+        assertIntEquals(r.chunks().get(((int) 0)).offset(), 16);
+        assertIntEquals(r.chunks().get(((int) 0)).len(), 8312);
+        assertIntEquals(r.chunks().get(((int) 1)).offset(), 8328);
+        assertIntEquals(r.chunks().get(((int) 1)).len(), 15);
     }
 }
