@@ -3,8 +3,16 @@
 require 'json'
 
 def load_ci_json(fn)
-  doc = File.read(fn)
-  return {} if doc == "404: Not Found"
+  begin
+    doc = File.read(fn)
+  rescue => e
+    # Note: `Exception#full_message` is only available since Ruby 2.5 (see
+    # https://www.bigbinary.com/blog/ruby-2-5-adds-exception-full_message-method),
+    # but it seems that the oldest Ruby of all CI hosts we use is Ruby 2.6 in
+    # AppVeyor (all GitHub Actions jobs should have Ruby 3), so it should be fine.
+    $stderr.puts e.full_message
+    return {}
+  end
   JSON.load(doc)
 end
 

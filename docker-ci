@@ -151,7 +151,7 @@ if [ -n "$GITHUB_ACTIONS" ]; then
 fi
 
 if [ "$DO_COMPARE_FLAG" = 1 ]; then
-	./report-download-github "$TARGET" "$SUBTARGET" "$IMPLEMENTATION" "$OS" "$ARCH"
+	./report-download-github "$TARGET" "$SUBTARGET" "$IMPLEMENTATION" "$OS" "$ARCH" || :
 fi
 
 if [ "$REBUILD_FLAG" = 1 ]; then
