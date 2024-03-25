@@ -162,7 +162,7 @@ expr_ruby()
 
 # Parse command line
 PARALLEL_FLAG=0
-while [ $# -gt 0 ]; do
+while [ $# -gt 1 ]; do
 	key="$1"
 
 	case "$key" in
@@ -181,6 +181,12 @@ while [ $# -gt 0 ]; do
 		;;
 	esac
 done
+
+if [ $# -ne 1 ]; then
+	echo "Error: missing EXPRESSION"
+	print_usage
+	exit 1
+fi
 
 EXPRESSION="$1"
 
