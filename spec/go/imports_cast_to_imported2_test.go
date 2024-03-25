@@ -11,28 +11,28 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestCastToImported(t *testing.T) {
+func TestImportsCastToImported2(t *testing.T) {
 	defer func() {
 		if r := recover(); r != nil {
 			debug.PrintStack()
 			t.Fatal("unexpected panic:", r)
 		}
 	}()
-	f, err := os.Open("../../src/fixed_struct.bin")
+	f, err := os.Open("../../src/process_xor_4.bin")
 	if err != nil {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r CastToImported
+	var r ImportsCastToImported2
 	err = r.Read(s, &r, &r)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, 80, r.One.One)
-	tmp1, err := r.OneCasted()
+	assert.EqualValues(t, 236, r.Hw.One)
+	tmp1, err := r.Two.Hw()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 80, tmp1.One)
+	assert.EqualValues(t, 236, tmp1.One)
 }
