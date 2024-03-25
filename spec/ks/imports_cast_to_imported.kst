@@ -1,0 +1,7 @@
+id: imports_cast_to_imported
+data: process_xor_4.bin
+asserts:
+  - actual: hw.one
+    expected: 0xEC
+  - actual: two.hw_one
+    expected: 0xEC
