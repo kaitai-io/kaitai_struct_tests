@@ -14,3 +14,7 @@ spec/nim/bin
 
 # Rust compiled code, cargo and rls data
 spec/rust/target/
+
+src/bin
+.vscode
+spec/c/test_*
