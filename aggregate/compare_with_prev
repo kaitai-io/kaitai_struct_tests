@@ -21,18 +21,21 @@ class CIComparison
     # Detect added and changed tests
     @now.each_pair { |name, now_res|
       prev_res = @prev[name]
-      if prev_res
-        if prev_res['status'] != now_res['status']
-          if prev_res['status'] != 'passed' and now_res['status'] == 'passed'
-            @fixed << [name, prev_res, now_res]
-          elsif prev_res['status'] == 'passed' and now_res['status'] != 'passed'
-            @broken << [name, prev_res, now_res]
-          else
-            @changed << [name, prev_res, now_res]
-          end
-        end
-      else
+      if prev_res.nil?
         @added << [name, now_res]
+        next
+      end
+
+      has_changed = prev_res['status'] != now_res['status'] ||
+                    prev_res['failure'] != now_res['failure']
+      next unless has_changed
+
+      if prev_res['status'] != 'passed' && now_res['status'] == 'passed'
+        @fixed << [name, prev_res, now_res]
+      elsif prev_res['status'] == 'passed' && now_res['status'] != 'passed'
+        @broken << [name, prev_res, now_res]
+      else
+        @changed << [name, prev_res, now_res]
       end
     }
 
