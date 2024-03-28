@@ -23,6 +23,10 @@ class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGene
 
     out.puts(s"testHelper('$className', 'src/${spec.data}', function(r, $className) {")
     out.inc
+    spec.extraImports.foreach { (entry) =>
+      val entryClass = JavaScriptCompiler.type2class(entry)
+      out.puts(s"var $entryClass = require('$entryClass').$entryClass;")
+    }
   }
 
   override def runParseExpectError(exception: KSError): Unit = {
