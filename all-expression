@@ -27,8 +27,11 @@ Interpretes EXPRESSION in various programming languages using Docker images
 and prints the result.
 
 Options:
+  --target, -t    Comma-separated list of targets to run (default: all)
   --parallel, -p  Run all targets in parallel
   --help, -h      Show this help message
+
+Available targets: $ALL_TARGETS
 EOF
 }
 
@@ -161,6 +164,7 @@ expr_ruby()
 }
 
 # Parse command line
+TARGETS="$ALL_TARGETS"
 PARALLEL_FLAG=0
 while [ $# -gt 1 ]; do
 	key="$1"
@@ -173,6 +177,10 @@ while [ $# -gt 1 ]; do
 	--help|-h)
 		print_usage
 		exit 0
+		;;
+	--target|-t)
+		TARGETS=$(echo "$2" | tr ',' ' ')
+		shift 2
 		;;
 	*)
 		echo "Unknown option: $1"
@@ -194,13 +202,13 @@ EXPRESSION="$1"
 WORKDIR=$(mktemp -d)
 
 if [ "$PARALLEL_FLAG" = 1 ]; then
-	for TARGET in $ALL_TARGETS; do
+	for TARGET in $TARGETS; do
 		export -f "expr_$TARGET"
 	done
 	export EXPRESSION WORKDIR DOCKER_ARGS DOCKER_REPO
 	parallel expr_{} ::: $ALL_TARGETS
 else
-	for TARGET in $ALL_TARGETS; do
+	for TARGET in $TARGETS; do
 		"expr_$TARGET"
 	done
 fi
