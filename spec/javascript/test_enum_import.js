@@ -4,6 +4,8 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('EnumImport', 'src/enum_0.bin', function(r, EnumImport) {
+  var Enum0 = require('Enum0').Enum0;
+  var EnumDeep = require('EnumDeep').EnumDeep;
 
   assert.strictEqual(r.pet1, Enum0.Animal.CAT);
   assert.strictEqual(r.pet2, EnumDeep.Container1.Container2.Animal.HARE);
