@@ -68,7 +68,7 @@ class CIComparison
       $stderr.puts e.full_message
       return {}
     end
-    JSON.load(doc)
+    JSON.parse(doc)
   end
 
   def dump_test_list(icon, status, list)
