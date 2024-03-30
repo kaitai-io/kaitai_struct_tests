@@ -5,6 +5,6 @@ RSpec.describe 'PositionInSeq' do
     require 'position_in_seq'
     r = PositionInSeq.from_file('src/position_in_seq.bin')
 
-    expect(r.numbers).to eq [(0 + 1), 2, 3]
+    expect(r.numbers).to eq [0 + 1, 2, 3]
   end
 end

@@ -7,5 +7,5 @@ from expr_sizeof_type_1 import _schema
 class TestExprSizeofType1(unittest.TestCase):
     def test_expr_sizeof_type_1(self):
         r = _schema.parse_file('src/fixed_struct.bin')
-        self.assertEqual(r.sizeof_block, (((1 + 4) + 2) + 4))
+        self.assertEqual(r.sizeof_block, ((1 + 4) + 2) + 4)
         self.assertEqual(r.sizeof_subblock, 4)

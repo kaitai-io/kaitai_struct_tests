@@ -7,6 +7,6 @@ class ExprSizeofType0Test extends TestCase {
     public function testExprSizeofType0() {
         $r = ExprSizeofType0::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
 
-        $this->assertSame(((1 + 4) + 2), $r->sizeofBlock());
+        $this->assertSame((1 + 4) + 2, $r->sizeofBlock());
     }
 }

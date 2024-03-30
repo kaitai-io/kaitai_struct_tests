@@ -11,8 +11,8 @@ use ExprSizeofValue0;
 sub test_expr_sizeof_value_0: Test(5) {
     my $r = ExprSizeofValue0->from_file('src/fixed_struct.bin');
 
-    is($r->self_sizeof(), (((1 + 4) + 2) + 2), 'Equals');
-    is($r->sizeof_block(), ((1 + 4) + 2), 'Equals');
+    is($r->self_sizeof(), ((1 + 4) + 2) + 2, 'Equals');
+    is($r->sizeof_block(), (1 + 4) + 2, 'Equals');
     is($r->sizeof_block_a(), 1, 'Equals');
     is($r->sizeof_block_b(), 4, 'Equals');
     is($r->sizeof_block_c(), 2, 'Equals');

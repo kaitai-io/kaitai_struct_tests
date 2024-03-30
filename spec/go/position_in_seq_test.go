@@ -29,5 +29,5 @@ func TestPositionInSeq(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, []int{(0 + 1), 2, 3}, r.Numbers)
+	assert.EqualValues(t, []int{0 + 1, 2, 3}, r.Numbers)
 }

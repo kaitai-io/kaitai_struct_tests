@@ -10,7 +10,7 @@ public class TestExprSizeofType1 extends CommonSpec {
     public void testExprSizeofType1() throws Exception {
         ExprSizeofType1 r = ExprSizeofType1.fromFile(SRC_DIR + "fixed_struct.bin");
 
-        assertIntEquals(r.sizeofBlock(), (((1 + 4) + 2) + 4));
+        assertIntEquals(r.sizeofBlock(), ((1 + 4) + 2) + 4);
         assertIntEquals(r.sizeofSubblock(), 4);
     }
 }
