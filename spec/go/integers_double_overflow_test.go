@@ -9,7 +9,7 @@ import (
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	. "test_formats"
 	"github.com/stretchr/testify/assert"
-	"strconv"
+	strconv
 )
 
 func TestIntegersDoubleOverflow(t *testing.T) {
@@ -34,8 +34,8 @@ func TestIntegersDoubleOverflow(t *testing.T) {
 	assert.EqualValues(t, -int64(9007199254740991), r.SignedSafeMinLe)
 	assert.EqualValues(t, int64(9007199254740991), r.SignedSafeMaxBe)
 	assert.EqualValues(t, int64(9007199254740991), r.SignedSafeMaxLe)
-	assert.EqualValues(t, "-9007199254740993", strconv.FormatInt(int64(r.SignedUnsafeNegBe), 10))
-	assert.EqualValues(t, "-9007199254740993", strconv.FormatInt(int64(r.SignedUnsafeNegLe), 10))
-	assert.EqualValues(t, "9007199254740993", strconv.FormatInt(int64(r.SignedUnsafePosBe), 10))
-	assert.EqualValues(t, "9007199254740993", strconv.FormatInt(int64(r.SignedUnsafePosBe), 10))
+	assert.EqualValues(t, "-9007199254740993", strconv.Itoa(int64(r.SignedUnsafeNegBe)))
+	assert.EqualValues(t, "-9007199254740993", strconv.Itoa(int64(r.SignedUnsafeNegLe)))
+	assert.EqualValues(t, "9007199254740993", strconv.Itoa(int64(r.SignedUnsafePosBe)))
+	assert.EqualValues(t, "9007199254740993", strconv.Itoa(int64(r.SignedUnsafePosBe)))
 }
