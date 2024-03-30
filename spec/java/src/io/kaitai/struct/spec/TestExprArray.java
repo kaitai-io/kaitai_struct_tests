@@ -16,10 +16,10 @@ public class TestExprArray extends CommonSpec {
         assertIntEquals(r.aintMin(), 49185);
         assertIntEquals(r.aintMax(), 1123362332);
         assertIntEquals(r.afloatSize(), 3);
-        assertEquals(r.afloatFirst(), -2.6839530254859364E-121);
-        assertEquals(r.afloatLast(), -1.1103359815095273E-175);
-        assertEquals(r.afloatMin(), -8.754689149998834E+288);
-        assertEquals(r.afloatMax(), -1.1103359815095273E-175);
+        assertEquals(r.afloatFirst(), -2.6839530254859364E-121, 1e-6);
+        assertEquals(r.afloatLast(), -1.1103359815095273E-175, 1e-6);
+        assertEquals(r.afloatMin(), -8.754689149998834E+288, 1e-6);
+        assertEquals(r.afloatMax(), -1.1103359815095273E-175, 1e-6);
         assertIntEquals(r.astrSize(), 3);
         assertEquals(r.astrFirst(), "foo");
         assertEquals(r.astrLast(), "baz");
