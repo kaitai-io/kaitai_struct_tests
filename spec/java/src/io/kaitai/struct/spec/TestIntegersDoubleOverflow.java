@@ -15,9 +15,9 @@ public class TestIntegersDoubleOverflow extends CommonSpec {
         assertIntEquals(r.signedSafeMinLe(), -9007199254740991L);
         assertIntEquals(r.signedSafeMaxBe(), 9007199254740991L);
         assertIntEquals(r.signedSafeMaxLe(), 9007199254740991L);
-        assertEquals(Long.toString(r.signedUnsafeNegBe(), 10), "-9007199254740993");
-        assertEquals(Long.toString(r.signedUnsafeNegLe(), 10), "-9007199254740993");
-        assertEquals(Long.toString(r.signedUnsafePosBe(), 10), "9007199254740993");
-        assertEquals(Long.toString(r.signedUnsafePosBe(), 10), "9007199254740993");
+        assertEquals(Long.toString(r.signedUnsafeNegBe()), "-9007199254740993");
+        assertEquals(Long.toString(r.signedUnsafeNegLe()), "-9007199254740993");
+        assertEquals(Long.toString(r.signedUnsafePosBe()), "9007199254740993");
+        assertEquals(Long.toString(r.signedUnsafePosBe()), "9007199254740993");
     }
 }

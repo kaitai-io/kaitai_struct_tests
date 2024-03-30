@@ -9,8 +9,8 @@ testHelper('IntegersDoubleOverflow', 'src/integers_double_overflow.bin', functio
   assert.strictEqual(r.signedSafeMinLe, -9007199254740991);
   assert.strictEqual(r.signedSafeMaxBe, 9007199254740991);
   assert.strictEqual(r.signedSafeMaxLe, 9007199254740991);
-  assert.strictEqual((r.signedUnsafeNegBe).toString(10), "-9007199254740993");
-  assert.strictEqual((r.signedUnsafeNegLe).toString(10), "-9007199254740993");
-  assert.strictEqual((r.signedUnsafePosBe).toString(10), "9007199254740993");
-  assert.strictEqual((r.signedUnsafePosBe).toString(10), "9007199254740993");
+  assert.strictEqual((r.signedUnsafeNegBe).toString(), "-9007199254740993");
+  assert.strictEqual((r.signedUnsafeNegLe).toString(), "-9007199254740993");
+  assert.strictEqual((r.signedUnsafePosBe).toString(), "9007199254740993");
+  assert.strictEqual((r.signedUnsafePosBe).toString(), "9007199254740993");
 });

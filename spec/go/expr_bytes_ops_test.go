@@ -9,7 +9,7 @@ import (
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	. "test_formats"
 	"github.com/stretchr/testify/assert"
-	"strconv"
+	strconv
 )
 
 func TestExprBytesOps(t *testing.T) {
@@ -54,7 +54,7 @@ func TestExprBytesOps(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, "255", strconv.FormatInt(int64(tmp5), 10))
+	assert.EqualValues(t, "255", strconv.Itoa(int64(tmp5)))
 	tmp6, err := r.OneMin()
 	if err != nil {
 		t.Fatal(err)
@@ -69,7 +69,7 @@ func TestExprBytesOps(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, "255", strconv.FormatInt(int64(tmp8), 10))
+	assert.EqualValues(t, "255", strconv.Itoa(int64(tmp8)))
 	tmp9, err := r.TwoSize()
 	if err != nil {
 		t.Fatal(err)
@@ -89,7 +89,7 @@ func TestExprBytesOps(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, "255", strconv.FormatInt(int64(tmp12), 10))
+	assert.EqualValues(t, "255", strconv.Itoa(int64(tmp12)))
 	tmp13, err := r.TwoLast()
 	if err != nil {
 		t.Fatal(err)
@@ -109,5 +109,5 @@ func TestExprBytesOps(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, "255", strconv.FormatInt(int64(tmp16), 10))
+	assert.EqualValues(t, "255", strconv.Itoa(int64(tmp16)))
 }
