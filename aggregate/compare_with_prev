@@ -2,6 +2,13 @@
 
 require 'json'
 
+unless ARGV.length == 2
+  $stderr.puts "Usage: #{$PROGRAM_NAME} <prev_ci_json> <now_ci_json>"
+  exit 1
+end
+
+prev_ci_json, now_ci_json = ARGV
+
 class CIComparison
   def initialize(prev_file, now_file)
     @prev = load_ci_json(prev_file)
@@ -98,6 +105,6 @@ class CIComparison
   end
 end
 
-cic = CIComparison.new(ARGV[0], ARGV[1])
+cic = CIComparison.new(prev_ci_json, now_ci_json)
 cic.compare
 cic.report_all
