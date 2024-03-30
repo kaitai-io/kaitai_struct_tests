@@ -6,4 +6,4 @@ import auxiliary/test_utils
 
 let r = ExprSizeofType0.fromFile("../../src/fixed_struct.bin")
 
-assert r.sizeofBlock == ((1 + 4) + 2)
+assert r.sizeofBlock == (1 + 4) + 2

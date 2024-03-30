@@ -9,8 +9,8 @@ TestExprSizeofValue0 = {}
 function TestExprSizeofValue0:test_expr_sizeof_value_0()
     local r = ExprSizeofValue0:from_file("src/fixed_struct.bin")
 
-    luaunit.assertEquals(r.self_sizeof, (((1 + 4) + 2) + 2))
-    luaunit.assertEquals(r.sizeof_block, ((1 + 4) + 2))
+    luaunit.assertEquals(r.self_sizeof, ((1 + 4) + 2) + 2)
+    luaunit.assertEquals(r.sizeof_block, (1 + 4) + 2)
     luaunit.assertEquals(r.sizeof_block_a, 1)
     luaunit.assertEquals(r.sizeof_block_b, 4)
     luaunit.assertEquals(r.sizeof_block_c, 2)
