@@ -1,5 +1,5 @@
 meta:
-  id: enum_import
+  id: enum_import_seq
   endian: le
   imports:
     - enum_0

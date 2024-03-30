@@ -1,4 +1,4 @@
-id: enum_import
+id: enum_import_seq
 data: enum_0.bin
 imports:
   - enum_0
