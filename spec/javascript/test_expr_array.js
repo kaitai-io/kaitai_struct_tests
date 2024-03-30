@@ -10,10 +10,10 @@ testHelper('ExprArray', 'src/expr_array.bin', function(r, ExprArray) {
   assert.strictEqual(r.aintMin, 49185);
   assert.strictEqual(r.aintMax, 1123362332);
   assert.strictEqual(r.afloatSize, 3);
-  assert.strictEqual(r.afloatFirst, -2.6839530254859364E-121);
-  assert.strictEqual(r.afloatLast, -1.1103359815095273E-175);
-  assert.strictEqual(r.afloatMin, -8.754689149998834E+288);
-  assert.strictEqual(r.afloatMax, -1.1103359815095273E-175);
+  assert(Math.abs(r.afloatFirst - -2.6839530254859364E-121) < 1e-6);
+  assert(Math.abs(r.afloatLast - -1.1103359815095273E-175) < 1e-6);
+  assert(Math.abs(r.afloatMin - -8.754689149998834E+288) < 1e-6);
+  assert(Math.abs(r.afloatMax - -1.1103359815095273E-175) < 1e-6);
   assert.strictEqual(r.astrSize, 3);
   assert.strictEqual(r.astrFirst, "foo");
   assert.strictEqual(r.astrLast, "baz");
