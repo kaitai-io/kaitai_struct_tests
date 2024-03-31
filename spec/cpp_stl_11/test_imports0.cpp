@@ -2,7 +2,6 @@
 
 #include <boost/test/unit_test.hpp>
 #include "imports0.h"
-#include "hello_world.h"
 #include <iostream>
 #include <fstream>
 #include <vector>

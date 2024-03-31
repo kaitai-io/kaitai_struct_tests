@@ -3,7 +3,6 @@
 RSpec.describe 'ImportsCircularA' do
   it 'parses test properly' do
     require 'imports_circular_a'
-    require 'imports_circular_b'
     r = ImportsCircularA.from_file('src/fixed_struct.bin')
 
     expect(r.code).to eq 80
