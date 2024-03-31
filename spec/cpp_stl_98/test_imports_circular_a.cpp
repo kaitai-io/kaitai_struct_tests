@@ -2,7 +2,6 @@
 
 #include <boost/test/unit_test.hpp>
 #include "imports_circular_a.h"
-#include "imports_circular_b.h"
 #include <iostream>
 #include <fstream>
 #include <vector>

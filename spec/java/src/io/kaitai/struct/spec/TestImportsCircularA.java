@@ -3,7 +3,6 @@
 package io.kaitai.struct.spec;
 
 import io.kaitai.struct.testformats.ImportsCircularA;
-import io.kaitai.struct.testformats.ImportsCircularB;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestImportsCircularA extends CommonSpec {

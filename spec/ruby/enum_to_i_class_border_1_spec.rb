@@ -3,7 +3,6 @@
 RSpec.describe 'EnumToIClassBorder1' do
   it 'parses test properly' do
     require 'enum_to_i_class_border_1'
-    require 'enum_to_i_class_border_2'
     r = EnumToIClassBorder1.from_file('src/enum_0.bin')
 
     expect(r.pet_1).to eq :animal_cat

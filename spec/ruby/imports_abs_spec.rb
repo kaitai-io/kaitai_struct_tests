@@ -3,7 +3,6 @@
 RSpec.describe 'ImportsAbs' do
   it 'parses test properly' do
     require 'imports_abs'
-    require 'vlq_base128_le'
     r = ImportsAbs.from_file('src/fixed_struct.bin')
 
     expect(r.len.value).to eq 80
