@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL);
 require getcwd() . '/' . getenv('PHP_RUNTIME_DIR') . '/vendor/autoload.php';
 
 require __DIR__ . '/extra/CustomFx.php';
