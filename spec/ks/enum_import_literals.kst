@@ -1,0 +1,11 @@
+id: enum_import_literals
+data: enum_0.bin
+imports:
+  - enum_deep
+asserts:
+  - actual: pet_1_to_i
+    expected: 7
+  - actual: pet_1_eq
+    expected: true
+  - actual: pet_2
+    expected: enum_deep::container1::container2::animal::hare
