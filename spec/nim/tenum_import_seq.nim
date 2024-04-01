@@ -3,10 +3,10 @@
 import ../../compiled/nim/enum_0
 import ../../compiled/nim/enum_deep
 import os, streams, options, sequtils
-import ../../compiled/nim/enum_import
+import ../../compiled/nim/enum_import_seq
 import auxiliary/test_utils
 
-let r = EnumImport.fromFile("../../src/enum_0.bin")
+let r = EnumImportSeq.fromFile("../../src/enum_0.bin")
 
 assert r.pet1 == enum_0.cat
 assert r.pet2 == enum_deep.hare

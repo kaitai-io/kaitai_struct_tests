@@ -3,9 +3,9 @@
 
 namespace Kaitai\Struct\Tests;
 
-class EnumImportTest extends TestCase {
-    public function testEnumImport() {
-        $r = EnumImport::fromFile(self::SRC_DIR_PATH . '/enum_0.bin');
+class EnumImportSeqTest extends TestCase {
+    public function testEnumImportSeq() {
+        $r = EnumImportSeq::fromFile(self::SRC_DIR_PATH . '/enum_0.bin');
 
         $this->assertSame(\Kaitai\Struct\Tests\Enum0\Animal::CAT, $r->pet1());
         $this->assertSame(\Kaitai\Struct\Tests\EnumDeep\Container1\Container2\Animal::HARE, $r->pet2());

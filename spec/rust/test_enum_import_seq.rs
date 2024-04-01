@@ -4,11 +4,11 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::EnumImport;
+use rust::EnumImportSeq;
 
 #[test]
-fn test_enum_import() {
-    if let Ok(r) = EnumImport::from_file("src/enum_0.bin") {
+fn test_enum_import_seq() {
+    if let Ok(r) = EnumImportSeq::from_file("src/enum_0.bin") {
 
         assert_eq!(r.pet_1, Enum0__Animal::CAT);
         assert_eq!(r.pet_2, EnumDeep__Container1__Container2__Animal::HARE);

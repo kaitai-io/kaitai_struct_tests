@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestEnumImport(t *testing.T) {
+func TestEnumImportSeq(t *testing.T) {
 	defer func() {
 		if r := recover(); r != nil {
 			debug.PrintStack()
@@ -23,7 +23,7 @@ func TestEnumImport(t *testing.T) {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r EnumImport
+	var r EnumImportSeq
 	err = r.Read(s, &r, &r)
 	if err != nil {
 		t.Fatal(err)

@@ -5,12 +5,12 @@ using NUnit.Framework;
 namespace Kaitai
 {
     [TestFixture]
-    public class SpecEnumImport : CommonSpec
+    public class SpecEnumImportSeq : CommonSpec
     {
         [Test]
-        public void TestEnumImport()
+        public void TestEnumImportSeq()
         {
-            var r = EnumImport.FromFile(SourceFile("enum_0.bin"));
+            var r = EnumImportSeq.FromFile(SourceFile("enum_0.bin"));
 
             Assert.AreEqual(r.Pet1, Enum0.Animal.Cat);
             Assert.AreEqual(r.Pet2, EnumDeep.Container1.Container2.Animal.Hare);

@@ -2,12 +2,12 @@
 
 local luaunit = require("luaunit")
 
-require("enum_import")
+require("enum_import_seq")
 
-TestEnumImport = {}
+TestEnumImportSeq = {}
 
-function TestEnumImport:test_enum_import()
-    local r = EnumImport:from_file("src/enum_0.bin")
+function TestEnumImportSeq:test_enum_import_seq()
+    local r = EnumImportSeq:from_file("src/enum_0.bin")
 
     luaunit.assertEquals(r.pet_1, Enum0.Animal.cat)
     luaunit.assertEquals(r.pet_2, EnumDeep.Container1.Container2.Animal.hare)

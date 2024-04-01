@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('EnumImport', 'src/enum_0.bin', function(r, EnumImport) {
+testHelper('EnumImportSeq', 'src/enum_0.bin', function(r, EnumImportSeq) {
   var Enum0 = require('Enum0').Enum0;
   var EnumDeep = require('EnumDeep').EnumDeep;
 
