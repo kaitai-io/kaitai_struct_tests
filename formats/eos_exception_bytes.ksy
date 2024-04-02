@@ -2,8 +2,8 @@ meta:
   id: eos_exception_bytes
 seq:
   - id: envelope
-    type: data
     size: 6
+    type: data
 types:
   data:
     seq:
