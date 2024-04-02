@@ -1,0 +1,23 @@
+# Like "str_encodings_escaping_to_s", this is not a KST spec for automatic use,
+# but only a helper for when writing the language specs manually. You should
+# temporarily uncomment `asserts` and proceed as described in
+# "str_encodings_escaping_to_s.kst".
+id: str_encodings_escaping_enc
+data: str_encodings.bin
+# asserts:
+#   - actual: str1.v
+#     # exception: UnknownEncodingError('ASCII\\x')
+#     expected: |
+#       'ASCII\\x'
+#   - actual: str2.v
+#     # exception: UnknownEncodingError("UTF-8\\'x")
+#     expected: |
+#       "UTF-8\\'x"
+#   - actual: str3.v
+#     # exception: UnknownEncodingError('SJIS\"x')
+#     expected: |
+#       'SJIS\"x'
+#   - actual: str4.v
+#     # exception: UnknownEncodingError('IBM437\nx')
+#     expected: |
+#       'IBM437\nx'
