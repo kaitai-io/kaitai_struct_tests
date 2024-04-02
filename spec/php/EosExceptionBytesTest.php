@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class EosExceptionBytesTest extends TestCase {
-    /** @expectedException \Kaitai\Struct\Error\EndOfStreamError */
     public function testEosExceptionBytes() {
+        $this->expectException(\Kaitai\Struct\Error\EndOfStreamError::class);
         $r = EosExceptionBytes::fromFile(self::SRC_DIR_PATH . '/term_strz.bin');
     }
 }

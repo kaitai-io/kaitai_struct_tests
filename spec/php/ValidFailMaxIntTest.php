@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class ValidFailMaxIntTest extends TestCase {
-    /** @expectedException \Kaitai\Struct\Error\ValidationGreaterThanError */
     public function testValidFailMaxInt() {
+        $this->expectException(\Kaitai\Struct\Error\ValidationGreaterThanError::class);
         $r = ValidFailMaxInt::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
     }
 }

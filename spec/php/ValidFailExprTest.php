@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class ValidFailExprTest extends TestCase {
-    /** @expectedException \Kaitai\Struct\Error\ValidationExprError */
     public function testValidFailExpr() {
+        $this->expectException(\Kaitai\Struct\Error\ValidationExprError::class);
         $r = ValidFailExpr::fromFile(self::SRC_DIR_PATH . '/nav_parent_switch.bin');
     }
 }

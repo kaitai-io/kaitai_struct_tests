@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class ValidFailMinIntTest extends TestCase {
-    /** @expectedException \Kaitai\Struct\Error\ValidationLessThanError */
     public function testValidFailMinInt() {
+        $this->expectException(\Kaitai\Struct\Error\ValidationLessThanError::class);
         $r = ValidFailMinInt::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
     }
 }
