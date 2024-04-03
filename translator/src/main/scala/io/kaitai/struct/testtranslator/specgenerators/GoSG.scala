@@ -69,16 +69,10 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
   override def runParseExpectError(exception: KSError): Unit = {
     val errorName = GoCompiler.ksErrorName(exception)
     out.puts("err = r.Read(s, &r, &r)")
-    out.puts("switch v := err.(type) {")
-    out.puts(s"case ${errorName}:")
-    out.inc
-    out.puts("break")
-    out.dec
-    out.puts("default:")
-    out.inc
-    out.puts("t.Fatalf(\"expected " + errorName + ", got %T\", v)")
-    out.dec
-    out.puts("}")
+    importList.add("\"github.com/stretchr/testify/assert\"")
+    out.puts("assert.Error(t, err)")
+    out.puts(s"var wantErr ${errorName}")
+    out.puts("assert.ErrorAs(t, err, &wantErr)")
   }
 
   override def footer() = {
