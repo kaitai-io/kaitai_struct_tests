@@ -9,6 +9,7 @@ import (
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	. "test_formats"
 	"github.com/stretchr/testify/assert"
+	"io"
 )
 
 func TestEosExceptionBytes(t *testing.T) {
@@ -26,6 +27,5 @@ func TestEosExceptionBytes(t *testing.T) {
 	var r EosExceptionBytes
 	err = r.Read(s, &r, &r)
 	assert.Error(t, err)
-	var wantErr kaitai.EndOfStreamError
-	assert.ErrorAs(t, err, &wantErr)
+	assert.ErrorIs(t, err, io.ErrUnexpectedEOF)
 }

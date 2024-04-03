@@ -9,6 +9,7 @@ import (
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	. "test_formats"
 	"github.com/stretchr/testify/assert"
+	"io"
 )
 
 func TestEofExceptionSized(t *testing.T) {
@@ -26,6 +27,5 @@ func TestEofExceptionSized(t *testing.T) {
 	var r EofExceptionSized
 	err = r.Read(s, &r, &r)
 	assert.Error(t, err)
-	var wantErr kaitai.EndOfStreamError
-	assert.ErrorAs(t, err, &wantErr)
+	assert.ErrorIs(t, err, io.ErrUnexpectedEOF)
 }
