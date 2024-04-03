@@ -1,6 +1,6 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import _root_.io.kaitai.struct.datatype.{DataType, KSError}
+import _root_.io.kaitai.struct.datatype.{DataType, EndOfStreamError, KSError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.GoCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
@@ -67,12 +67,18 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
   }
 
   override def runParseExpectError(exception: KSError): Unit = {
-    val errorName = GoCompiler.ksErrorName(exception)
     out.puts("err = r.Read(s, &r, &r)")
     importList.add("\"github.com/stretchr/testify/assert\"")
     out.puts("assert.Error(t, err)")
-    out.puts(s"var wantErr ${errorName}")
-    out.puts("assert.ErrorAs(t, err, &wantErr)")
+    exception match {
+      case EndOfStreamError =>
+        importList.add("\"io\"")
+        out.puts("assert.ErrorIs(t, err, io.ErrUnexpectedEOF)")
+      case _ =>
+        val errorName = GoCompiler.ksErrorName(exception)
+        out.puts(s"var wantErr ${errorName}")
+        out.puts("assert.ErrorAs(t, err, &wantErr)")
+    }
   }
 
   override def footer() = {
