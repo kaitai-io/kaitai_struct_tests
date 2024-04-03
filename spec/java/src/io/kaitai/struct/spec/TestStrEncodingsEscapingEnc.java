@@ -8,7 +8,7 @@ public class TestStrEncodingsEscapingEnc extends CommonSpec {
 
     @Test
     public void testStrEncodingsEscapingEnc() throws Exception {
-        StrEncodingsEscapingEnc r = StrEncodingsEscapingEnc.fromFile(SRC_DIR + "str_encodings.bin");
+        final StrEncodingsEscapingEnc r = StrEncodingsEscapingEnc.fromFile(SRC_DIR + "str_encodings.bin");
 
         assertUnknownEncoding("ASCII\\\\x", new ThrowingRunnable() {
             @Override
