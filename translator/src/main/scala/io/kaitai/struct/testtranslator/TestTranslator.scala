@@ -32,9 +32,9 @@ class TestTranslator(options: CLIOptions) {
     langs.foreach(langName => {
       val sg = getSG(langName, testSpec, provider)
       try {
-        sg.run()
         val outFile = s"$outDir/$langName/${sg.fileName(testName)}"
         Console.println(s"... generating $outFile")
+        sg.run()
         writeFile(outFile, sg.results)
       } catch {
         case e: Throwable => e.printStackTrace(Console.err)
