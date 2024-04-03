@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestEofExceptionU4(t *testing.T) {
+func TestEofExceptionSized(t *testing.T) {
 	defer func() {
 		if r := recover(); r != nil {
 			debug.PrintStack()
@@ -23,7 +23,7 @@ func TestEofExceptionU4(t *testing.T) {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r EofExceptionU4
+	var r EofExceptionSized
 	err = r.Read(s, &r, &r)
 	assert.Error(t, err)
 	var wantErr kaitai.EndOfStreamError

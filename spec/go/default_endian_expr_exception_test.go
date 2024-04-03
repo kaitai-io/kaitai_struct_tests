@@ -8,6 +8,7 @@ import (
 	"testing"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	. "test_formats"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestDefaultEndianExprException(t *testing.T) {
@@ -24,10 +25,7 @@ func TestDefaultEndianExprException(t *testing.T) {
 	s := kaitai.NewStream(f)
 	var r DefaultEndianExprException
 	err = r.Read(s, &r, &r)
-	switch v := err.(type) {
-	case kaitai.UndecidedEndiannessError:
-		break
-	default:
-		t.Fatalf("expected kaitai.UndecidedEndiannessError, got %T", v)
-	}
+	assert.Error(t, err)
+	var wantErr kaitai.UndecidedEndiannessError
+	assert.ErrorAs(t, err, &wantErr)
 }

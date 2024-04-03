@@ -8,6 +8,7 @@ import (
 	"testing"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	. "test_formats"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestEosExceptionU4(t *testing.T) {
@@ -24,10 +25,7 @@ func TestEosExceptionU4(t *testing.T) {
 	s := kaitai.NewStream(f)
 	var r EosExceptionU4
 	err = r.Read(s, &r, &r)
-	switch v := err.(type) {
-	case kaitai.EndOfStreamError:
-		break
-	default:
-		t.Fatalf("expected kaitai.EndOfStreamError, got %T", v)
-	}
+	assert.Error(t, err)
+	var wantErr kaitai.EndOfStreamError
+	assert.ErrorAs(t, err, &wantErr)
 }
