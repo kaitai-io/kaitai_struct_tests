@@ -1,6 +1,6 @@
 meta:
   id: params_pass_array_str
-  encoding: ascii
+  encoding: ASCII
 seq:
   - id: str_array
     type: str
