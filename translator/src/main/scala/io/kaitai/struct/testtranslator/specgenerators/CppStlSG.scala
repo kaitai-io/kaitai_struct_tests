@@ -2,6 +2,7 @@ package io.kaitai.struct.testtranslator.specgenerators
 
 import io.kaitai.struct.datatype.{DataType, KSError}
 import io.kaitai.struct.exprlang.Ast
+import io.kaitai.struct.format.Identifier
 import io.kaitai.struct.languages.CppCompiler
 import io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec, ExpectedException}
 import io.kaitai.struct.translators.CppTranslator
@@ -76,9 +77,19 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
   override def nullAssert(actual: Ast.expr): Unit = {
     val nullCheckStr = actual match {
       case Ast.expr.Attribute(x, Ast.identifier(attrName)) =>
-        translateAct(x) + s"->_is_null_$attrName()"
+        val expr = translateAct(x)
+        attrName match {
+          case Identifier.PARENT | Identifier.ROOT =>
+            config.cppConfig.pointers match {
+              case CppRuntimeConfig.UniqueAndRawPointers =>
+                out.puts(s"BOOST_CHECK_EQUAL($expr->$attrName(), nullptr);")
+              case CppRuntimeConfig.RawPointers =>
+                out.puts(s"BOOST_CHECK(!$expr->$attrName());")
+            }
+          case _ =>
+            out.puts(s"BOOST_CHECK($expr->_is_null_$attrName());")
+        }
     }
-    out.puts(s"BOOST_CHECK($nullCheckStr);")
   }
 
   override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit = {
