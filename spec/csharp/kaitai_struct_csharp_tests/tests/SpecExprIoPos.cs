@@ -12,12 +12,12 @@ namespace Kaitai
         {
             var r = ExprIoPos.FromFile(SourceFile("expr_io_pos.bin"));
 
-            Assert.AreEqual(r.Substream1.MyStr, "CURIOSITY");
-            Assert.AreEqual(r.Substream1.Body, new byte[] { 17, 34, 51, 68 });
-            Assert.AreEqual(r.Substream1.Number, 66);
-            Assert.AreEqual(r.Substream2.MyStr, "KILLED");
-            Assert.AreEqual(r.Substream2.Body, new byte[] { 97, 32, 99, 97, 116 });
-            Assert.AreEqual(r.Substream2.Number, 103);
+            AreEqual(r.Substream1.MyStr, "CURIOSITY");
+            AreEqual(r.Substream1.Body, new byte[] { 17, 34, 51, 68 });
+            AreEqual(r.Substream1.Number, 66);
+            AreEqual(r.Substream2.MyStr, "KILLED");
+            AreEqual(r.Substream2.Body, new byte[] { 97, 32, 99, 97, 116 });
+            AreEqual(r.Substream2.Number, 103);
         }
     }
 }

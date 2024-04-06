@@ -12,7 +12,7 @@ namespace Kaitai
         {
             var r = HelloWorld.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.One, 80);
+            AreEqual(r.One, 80);
         }
     }
 }

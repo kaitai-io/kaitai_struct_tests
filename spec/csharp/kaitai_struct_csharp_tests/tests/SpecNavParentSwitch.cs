@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = NavParentSwitch.FromFile(SourceFile("nav_parent_switch.bin"));
 
-            Assert.AreEqual(r.Category, 1);
-            Assert.AreEqual(((NavParentSwitch.Element1) (r.Content)).Foo, 66);
-            Assert.AreEqual(((NavParentSwitch.Element1) (r.Content)).Subelement.Bar, 255);
+            AreEqual(r.Category, 1);
+            AreEqual(((NavParentSwitch.Element1) (r.Content)).Foo, 66);
+            AreEqual(((NavParentSwitch.Element1) (r.Content)).Subelement.Bar, 255);
         }
     }
 }

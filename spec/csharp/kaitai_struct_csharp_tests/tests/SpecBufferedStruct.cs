@@ -12,13 +12,13 @@ namespace Kaitai
         {
             var r = BufferedStruct.FromFile(SourceFile("buffered_struct.bin"));
 
-            Assert.AreEqual(r.Len1, 16);
-            Assert.AreEqual(r.Block1.Number1, 66);
-            Assert.AreEqual(r.Block1.Number2, 67);
-            Assert.AreEqual(r.Len2, 8);
-            Assert.AreEqual(r.Block2.Number1, 68);
-            Assert.AreEqual(r.Block2.Number2, 69);
-            Assert.AreEqual(r.Finisher, 238);
+            AreEqual(r.Len1, 16);
+            AreEqual(r.Block1.Number1, 66);
+            AreEqual(r.Block1.Number2, 67);
+            AreEqual(r.Len2, 8);
+            AreEqual(r.Block2.Number1, 68);
+            AreEqual(r.Block2.Number2, 69);
+            AreEqual(r.Finisher, 238);
         }
     }
 }

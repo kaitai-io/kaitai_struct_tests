@@ -12,21 +12,21 @@ namespace Kaitai
         {
             var r = CombineStr.FromFile(SourceFile("term_strz.bin"));
 
-            Assert.AreEqual(r.StrTerm, "foo");
-            Assert.AreEqual(r.StrLimit, "bar|");
-            Assert.AreEqual(r.StrEos, "baz@");
-            Assert.AreEqual(r.StrCalc, "bar");
-            Assert.AreEqual(r.StrCalcBytes, "baz");
-            Assert.AreEqual(r.TermOrLimit, "foo");
-            Assert.AreEqual(r.TermOrEos, "baz@");
-            Assert.AreEqual(r.TermOrCalc, "foo");
-            Assert.AreEqual(r.TermOrCalcBytes, "baz");
-            Assert.AreEqual(r.LimitOrEos, "bar|");
-            Assert.AreEqual(r.LimitOrCalc, "bar");
-            Assert.AreEqual(r.LimitOrCalcBytes, "bar|");
-            Assert.AreEqual(r.EosOrCalc, "bar");
-            Assert.AreEqual(r.EosOrCalcBytes, "baz@");
-            Assert.AreEqual(r.CalcOrCalcBytes, "baz");
+            AreEqual(r.StrTerm, "foo");
+            AreEqual(r.StrLimit, "bar|");
+            AreEqual(r.StrEos, "baz@");
+            AreEqual(r.StrCalc, "bar");
+            AreEqual(r.StrCalcBytes, "baz");
+            AreEqual(r.TermOrLimit, "foo");
+            AreEqual(r.TermOrEos, "baz@");
+            AreEqual(r.TermOrCalc, "foo");
+            AreEqual(r.TermOrCalcBytes, "baz");
+            AreEqual(r.LimitOrEos, "bar|");
+            AreEqual(r.LimitOrCalc, "bar");
+            AreEqual(r.LimitOrCalcBytes, "bar|");
+            AreEqual(r.EosOrCalc, "bar");
+            AreEqual(r.EosOrCalcBytes, "baz@");
+            AreEqual(r.CalcOrCalcBytes, "baz");
         }
     }
 }

@@ -12,20 +12,20 @@ namespace Kaitai
         {
             var r = ParamsPassBool.FromFile(SourceFile("term_strz.bin"));
 
-            Assert.AreEqual(r.SFalse, false);
-            Assert.AreEqual(r.STrue, true);
-            Assert.AreEqual(r.SeqB1.Arg, true);
-            Assert.AreEqual(r.SeqB1.Foo.Length, 1);
-            Assert.AreEqual(r.SeqBool.Arg, false);
-            Assert.AreEqual(r.SeqBool.Foo.Length, 2);
-            Assert.AreEqual(r.LiteralB1.Arg, false);
-            Assert.AreEqual(r.LiteralB1.Foo.Length, 2);
-            Assert.AreEqual(r.LiteralBool.Arg, true);
-            Assert.AreEqual(r.LiteralBool.Foo.Length, 1);
-            Assert.AreEqual(r.InstB1.Arg, true);
-            Assert.AreEqual(r.InstB1.Foo.Length, 1);
-            Assert.AreEqual(r.InstBool.Arg, false);
-            Assert.AreEqual(r.InstBool.Foo.Length, 2);
+            AreEqual(r.SFalse, false);
+            AreEqual(r.STrue, true);
+            AreEqual(r.SeqB1.Arg, true);
+            AreEqual(r.SeqB1.Foo.Length, 1);
+            AreEqual(r.SeqBool.Arg, false);
+            AreEqual(r.SeqBool.Foo.Length, 2);
+            AreEqual(r.LiteralB1.Arg, false);
+            AreEqual(r.LiteralB1.Foo.Length, 2);
+            AreEqual(r.LiteralBool.Arg, true);
+            AreEqual(r.LiteralBool.Foo.Length, 1);
+            AreEqual(r.InstB1.Arg, true);
+            AreEqual(r.InstB1.Foo.Length, 1);
+            AreEqual(r.InstBool.Arg, false);
+            AreEqual(r.InstBool.Foo.Length, 2);
         }
     }
 }

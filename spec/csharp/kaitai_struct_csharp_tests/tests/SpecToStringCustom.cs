@@ -10,7 +10,7 @@ namespace Kaitai
         {
             var r = ToStringCustom.FromFile(SourceFile("term_strz.bin"));
 
-            Assert.AreEqual(r.ToString(), "s1 = foo, s2 = bar");
+            AreEqual(r.ToString(), "s1 = foo, s2 = bar");
         }
     }
 }

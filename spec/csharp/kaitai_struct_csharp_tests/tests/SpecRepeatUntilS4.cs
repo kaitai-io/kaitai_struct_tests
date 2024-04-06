@@ -13,8 +13,8 @@ namespace Kaitai
         {
             var r = RepeatUntilS4.FromFile(SourceFile("repeat_until_s4.bin"));
 
-            Assert.AreEqual(r.Entries, new List<int> { 66, 4919, -251658241, -1 });
-            Assert.AreEqual(r.Afterall, "foobar");
+            AreEqual(r.Entries, new List<int> { 66, 4919, -251658241, -1 });
+            AreEqual(r.Afterall, "foobar");
         }
     }
 }

@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = ImportsCastToImported2.FromFile(SourceFile("process_xor_4.bin"));
 
-            Assert.AreEqual(r.Hw.One, 236);
-            Assert.AreEqual(r.Two.Hw.One, 236);
+            AreEqual(r.Hw.One, 236);
+            AreEqual(r.Two.Hw.One, 236);
         }
     }
 }

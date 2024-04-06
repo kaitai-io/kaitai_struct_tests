@@ -12,18 +12,18 @@ namespace Kaitai
         {
             var r = Expr3.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.One, 80);
-            Assert.AreEqual(r.Two, "ACK");
-            Assert.AreEqual(r.Three, "@ACK");
-            Assert.AreEqual(r.Four, "_ACK_");
-            Assert.AreEqual(r.IsStrEq, true);
-            Assert.AreEqual(r.IsStrNe, false);
-            Assert.AreEqual(r.IsStrLt, true);
-            Assert.AreEqual(r.IsStrGt, false);
-            Assert.AreEqual(r.IsStrLe, true);
-            Assert.AreEqual(r.IsStrGe, false);
-            Assert.AreEqual(r.IsStrLt2, true);
-            Assert.AreEqual(r.TestNot, true);
+            AreEqual(r.One, 80);
+            AreEqual(r.Two, "ACK");
+            AreEqual(r.Three, "@ACK");
+            AreEqual(r.Four, "_ACK_");
+            AreEqual(r.IsStrEq, true);
+            AreEqual(r.IsStrNe, false);
+            AreEqual(r.IsStrLt, true);
+            AreEqual(r.IsStrGt, false);
+            AreEqual(r.IsStrLe, true);
+            AreEqual(r.IsStrGe, false);
+            AreEqual(r.IsStrLt2, true);
+            AreEqual(r.TestNot, true);
         }
     }
 }

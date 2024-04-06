@@ -12,13 +12,13 @@ namespace Kaitai
         {
             var r = NestedTypes2.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.One.TypedAtRoot.ValueB, 80);
-            Assert.AreEqual(r.One.TypedHere1.ValueC, 65);
-            Assert.AreEqual(r.One.TypedHere1.TypedHere.ValueD, 67);
-            Assert.AreEqual(r.One.TypedHere1.TypedParent.ValueCc, 75);
-            Assert.AreEqual(r.One.TypedHere1.TypedRoot.ValueB, 45);
-            Assert.AreEqual(r.One.TypedHere2.ValueCc, 49);
-            Assert.AreEqual(r.Two.ValueB, -1);
+            AreEqual(r.One.TypedAtRoot.ValueB, 80);
+            AreEqual(r.One.TypedHere1.ValueC, 65);
+            AreEqual(r.One.TypedHere1.TypedHere.ValueD, 67);
+            AreEqual(r.One.TypedHere1.TypedParent.ValueCc, 75);
+            AreEqual(r.One.TypedHere1.TypedRoot.ValueB, 45);
+            AreEqual(r.One.TypedHere2.ValueCc, 49);
+            AreEqual(r.Two.ValueB, -1);
         }
     }
 }

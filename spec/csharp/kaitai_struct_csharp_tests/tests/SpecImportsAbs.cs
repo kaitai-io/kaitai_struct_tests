@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = ImportsAbs.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.Len.Value, 80);
-            Assert.AreEqual(r.Body.Length, 80);
+            AreEqual(r.Len.Value, 80);
+            AreEqual(r.Body.Length, 80);
         }
     }
 }

@@ -13,16 +13,16 @@ namespace Kaitai
         {
             var r = SwitchManualIntSizeElse.FromFile(SourceFile("switch_tlv.bin"));
 
-            Assert.AreEqual(r.Chunks.Count, 4);
-            Assert.AreEqual(r.Chunks[0].Code, 17);
-            Assert.AreEqual(((SwitchManualIntSizeElse.Chunk.ChunkMeta) (r.Chunks[0].Body)).Title, "Stuff");
-            Assert.AreEqual(((SwitchManualIntSizeElse.Chunk.ChunkMeta) (r.Chunks[0].Body)).Author, "Me");
-            Assert.AreEqual(r.Chunks[1].Code, 34);
-            Assert.AreEqual(((SwitchManualIntSizeElse.Chunk.ChunkDir) (r.Chunks[1].Body)).Entries, new List<string> { "AAAA", "BBBB", "CCCC" });
-            Assert.AreEqual(r.Chunks[2].Code, 51);
-            Assert.AreEqual(((SwitchManualIntSizeElse.Chunk.Dummy) (r.Chunks[2].Body)).Rest, new byte[] { 16, 32, 48, 64, 80, 96, 112, 128 });
-            Assert.AreEqual(r.Chunks[3].Code, 255);
-            Assert.AreEqual(((SwitchManualIntSizeElse.Chunk.Dummy) (r.Chunks[3].Body)).Rest, new byte[] {  });
+            AreEqual(r.Chunks.Count, 4);
+            AreEqual(r.Chunks[0].Code, 17);
+            AreEqual(((SwitchManualIntSizeElse.Chunk.ChunkMeta) (r.Chunks[0].Body)).Title, "Stuff");
+            AreEqual(((SwitchManualIntSizeElse.Chunk.ChunkMeta) (r.Chunks[0].Body)).Author, "Me");
+            AreEqual(r.Chunks[1].Code, 34);
+            AreEqual(((SwitchManualIntSizeElse.Chunk.ChunkDir) (r.Chunks[1].Body)).Entries, new List<string> { "AAAA", "BBBB", "CCCC" });
+            AreEqual(r.Chunks[2].Code, 51);
+            AreEqual(((SwitchManualIntSizeElse.Chunk.Dummy) (r.Chunks[2].Body)).Rest, new byte[] { 16, 32, 48, 64, 80, 96, 112, 128 });
+            AreEqual(r.Chunks[3].Code, 255);
+            AreEqual(((SwitchManualIntSizeElse.Chunk.Dummy) (r.Chunks[3].Body)).Rest, new byte[] {  });
         }
     }
 }

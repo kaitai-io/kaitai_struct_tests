@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = BitsShiftByB32Le.FromFile(SourceFile("bits_shift_by_b32_le.bin"));
 
-            Assert.AreEqual(r.A, 4294967295);
-            Assert.AreEqual(r.B, 0);
+            AreEqual(r.A, 4294967295);
+            AreEqual(r.B, 0);
         }
     }
 }

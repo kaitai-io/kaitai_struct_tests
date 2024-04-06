@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = PositionAbs.FromFile(SourceFile("position_abs.bin"));
 
-            Assert.AreEqual(r.IndexOffset, 32);
-            Assert.AreEqual(r.Index.Entry, "foo");
+            AreEqual(r.IndexOffset, 32);
+            AreEqual(r.Index.Entry, "foo");
         }
     }
 }

@@ -12,15 +12,15 @@ namespace Kaitai
         {
             var r = SwitchBytearray.FromFile(SourceFile("switch_opcodes.bin"));
 
-            Assert.AreEqual(r.Opcodes.Count, 4);
-            Assert.AreEqual(r.Opcodes[0].Code, new byte[] { 83 });
-            Assert.AreEqual(((SwitchBytearray.Opcode.Strval) (r.Opcodes[0].Body)).Value, "foobar");
-            Assert.AreEqual(r.Opcodes[1].Code, new byte[] { 73 });
-            Assert.AreEqual(((SwitchBytearray.Opcode.Intval) (r.Opcodes[1].Body)).Value, 66);
-            Assert.AreEqual(r.Opcodes[2].Code, new byte[] { 73 });
-            Assert.AreEqual(((SwitchBytearray.Opcode.Intval) (r.Opcodes[2].Body)).Value, 55);
-            Assert.AreEqual(r.Opcodes[3].Code, new byte[] { 83 });
-            Assert.AreEqual(((SwitchBytearray.Opcode.Strval) (r.Opcodes[3].Body)).Value, "");
+            AreEqual(r.Opcodes.Count, 4);
+            AreEqual(r.Opcodes[0].Code, new byte[] { 83 });
+            AreEqual(((SwitchBytearray.Opcode.Strval) (r.Opcodes[0].Body)).Value, "foobar");
+            AreEqual(r.Opcodes[1].Code, new byte[] { 73 });
+            AreEqual(((SwitchBytearray.Opcode.Intval) (r.Opcodes[1].Body)).Value, 66);
+            AreEqual(r.Opcodes[2].Code, new byte[] { 73 });
+            AreEqual(((SwitchBytearray.Opcode.Intval) (r.Opcodes[2].Body)).Value, 55);
+            AreEqual(r.Opcodes[3].Code, new byte[] { 83 });
+            AreEqual(((SwitchBytearray.Opcode.Strval) (r.Opcodes[3].Body)).Value, "");
         }
     }
 }

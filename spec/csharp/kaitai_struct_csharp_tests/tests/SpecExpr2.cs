@@ -12,23 +12,23 @@ namespace Kaitai
         {
             var r = Expr2.FromFile(SourceFile("str_encodings.bin"));
 
-            Assert.AreEqual(r.Str1.LenOrig, 10);
-            Assert.AreEqual(r.Str1.LenMod, 7);
-            Assert.AreEqual(r.Str1.Str, "Some AS");
-            Assert.AreEqual(r.Str1Len, 7);
-            Assert.AreEqual(r.Str1LenMod, 7);
-            Assert.AreEqual(r.Str1Byte1, 73);
-            Assert.AreEqual(r.Str1Avg, 73);
-            Assert.AreEqual(r.Str1Char5, "e");
-            Assert.AreEqual(r.Str1Tuple5.Byte0, 101);
-            Assert.AreEqual(r.Str1Tuple5.Byte0, 101);
-            Assert.AreEqual(r.Str1Tuple5.Byte1, 32);
-            Assert.AreEqual(r.Str1Tuple5.Byte2, 65);
-            Assert.AreEqual(r.Str1Tuple5.Avg, 48);
-            Assert.AreEqual(r.Str2Tuple5.Byte0, 101);
-            Assert.AreEqual(r.Str2Tuple5.Byte1, 32);
-            Assert.AreEqual(r.Str2Tuple5.Byte2, 65);
-            Assert.AreEqual(r.Str2Tuple5.Avg, 48);
+            AreEqual(r.Str1.LenOrig, 10);
+            AreEqual(r.Str1.LenMod, 7);
+            AreEqual(r.Str1.Str, "Some AS");
+            AreEqual(r.Str1Len, 7);
+            AreEqual(r.Str1LenMod, 7);
+            AreEqual(r.Str1Byte1, 73);
+            AreEqual(r.Str1Avg, 73);
+            AreEqual(r.Str1Char5, "e");
+            AreEqual(r.Str1Tuple5.Byte0, 101);
+            AreEqual(r.Str1Tuple5.Byte0, 101);
+            AreEqual(r.Str1Tuple5.Byte1, 32);
+            AreEqual(r.Str1Tuple5.Byte2, 65);
+            AreEqual(r.Str1Tuple5.Avg, 48);
+            AreEqual(r.Str2Tuple5.Byte0, 101);
+            AreEqual(r.Str2Tuple5.Byte1, 32);
+            AreEqual(r.Str2Tuple5.Byte2, 65);
+            AreEqual(r.Str2Tuple5.Avg, 48);
         }
     }
 }

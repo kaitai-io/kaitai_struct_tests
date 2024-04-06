@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = EnumDeepLiterals.FromFile(SourceFile("enum_0.bin"));
 
-            Assert.AreEqual(r.IsPet1Ok, true);
-            Assert.AreEqual(r.IsPet2Ok, true);
+            AreEqual(r.IsPet1Ok, true);
+            AreEqual(r.IsPet2Ok, true);
         }
     }
 }

@@ -10,8 +10,8 @@ namespace Kaitai
         public void TestSwitchCast()
         {
             var r = SwitchCast.FromFile(SourceFile("switch_opcodes.bin"));
-            Assert.AreEqual(r.FirstObj.Value, "foobar");
-            Assert.AreEqual(r.SecondVal, 0x42);
+            AreEqual(r.FirstObj.Value, "foobar");
+            AreEqual(r.SecondVal, 0x42);
             Assert.Throws<InvalidCastException>(
                 delegate {
                     var tmp = r.ErrCast;

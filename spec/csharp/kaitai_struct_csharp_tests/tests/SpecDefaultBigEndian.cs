@@ -12,7 +12,7 @@ namespace Kaitai
         {
             var r = DefaultBigEndian.FromFile(SourceFile("enum_0.bin"));
 
-            Assert.AreEqual(r.One, 117440512);
+            AreEqual(r.One, 117440512);
         }
     }
 }

@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = MultipleUse.FromFile(SourceFile("position_abs.bin"));
 
-            Assert.AreEqual(r.T1.FirstUse.Value, 32);
-            Assert.AreEqual(r.T2.SecondUse.Value, 32);
+            AreEqual(r.T1.FirstUse.Value, 32);
+            AreEqual(r.T2.SecondUse.Value, 32);
         }
     }
 }

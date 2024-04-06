@@ -12,24 +12,24 @@ namespace Kaitai
         {
             var r = ExprCalcArrayOps.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.IntArraySize, 7);
-            Assert.AreEqual(r.IntArrayFirst, 10);
-            Assert.AreEqual(r.IntArrayMid, 25);
-            Assert.AreEqual(r.IntArrayLast, 1000);
-            Assert.AreEqual(r.IntArrayMin, 10);
-            Assert.AreEqual(r.IntArrayMax, 1000);
-            Assert.AreEqual(r.DoubleArraySize, 5);
-            Assert.AreEqual(r.DoubleArrayFirst, 10.0, 1e-6);
-            Assert.AreEqual(r.DoubleArrayMid, 25.0, 1e-6);
-            Assert.AreEqual(r.DoubleArrayLast, 3.14159, 1e-6);
-            Assert.AreEqual(r.DoubleArrayMin, 3.14159, 1e-6);
-            Assert.AreEqual(r.DoubleArrayMax, 100.0, 1e-6);
-            Assert.AreEqual(r.StrArraySize, 4);
-            Assert.AreEqual(r.StrArrayFirst, "un");
-            Assert.AreEqual(r.StrArrayMid, "deux");
-            Assert.AreEqual(r.StrArrayLast, "quatre");
-            Assert.AreEqual(r.StrArrayMin, "deux");
-            Assert.AreEqual(r.StrArrayMax, "un");
+            AreEqual(r.IntArraySize, 7);
+            AreEqual(r.IntArrayFirst, 10);
+            AreEqual(r.IntArrayMid, 25);
+            AreEqual(r.IntArrayLast, 1000);
+            AreEqual(r.IntArrayMin, 10);
+            AreEqual(r.IntArrayMax, 1000);
+            AreEqual(r.DoubleArraySize, 5);
+            AreEqual(r.DoubleArrayFirst, 10.0, 1e-6);
+            AreEqual(r.DoubleArrayMid, 25.0, 1e-6);
+            AreEqual(r.DoubleArrayLast, 3.14159, 1e-6);
+            AreEqual(r.DoubleArrayMin, 3.14159, 1e-6);
+            AreEqual(r.DoubleArrayMax, 100.0, 1e-6);
+            AreEqual(r.StrArraySize, 4);
+            AreEqual(r.StrArrayFirst, "un");
+            AreEqual(r.StrArrayMid, "deux");
+            AreEqual(r.StrArrayLast, "quatre");
+            AreEqual(r.StrArrayMin, "deux");
+            AreEqual(r.StrArrayMax, "un");
         }
     }
 }

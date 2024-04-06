@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = ProcessCoerceBytes.FromFile(SourceFile("process_coerce_bytes.bin"));
 
-            Assert.AreEqual(r.Records[0].Flag, 0);
-            Assert.AreEqual(r.Records[0].Buf, new byte[] { 65, 65, 65, 65 });
-            Assert.AreEqual(r.Records[1].Flag, 1);
-            Assert.AreEqual(r.Records[1].Buf, new byte[] { 66, 66, 66, 66 });
+            AreEqual(r.Records[0].Flag, 0);
+            AreEqual(r.Records[0].Buf, new byte[] { 65, 65, 65, 65 });
+            AreEqual(r.Records[1].Flag, 1);
+            AreEqual(r.Records[1].Buf, new byte[] { 66, 66, 66, 66 });
         }
     }
 }

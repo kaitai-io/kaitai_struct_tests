@@ -10,9 +10,9 @@ namespace Kaitai
         {
             var io = new KaitaiStream(SourceFile("term_strz.bin"));
             var r = new ParamsDef(5, true, io);
-    
-            Assert.AreEqual(r.Buf, "foo|b");
-            Assert.AreEqual(r.Trailer, 0x61);
+
+            AreEqual(r.Buf, "foo|b");
+            AreEqual(r.Trailer, 0x61);
         }
     }
 }

@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = ParamsEnum.FromFile(SourceFile("enum_0.bin"));
 
-            Assert.AreEqual(r.One, ParamsEnum.Animal.Cat);
-            Assert.AreEqual(r.InvokeWithParam.IsCat, true);
+            AreEqual(r.One, ParamsEnum.Animal.Cat);
+            AreEqual(r.InvokeWithParam.IsCat, true);
         }
     }
 }

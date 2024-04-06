@@ -12,19 +12,19 @@ namespace Kaitai
         {
             var r = TypeTernary2ndFalsy.FromFile(SourceFile("switch_integers.bin"));
 
-            Assert.AreEqual(r.VFalse, false);
-            Assert.AreEqual(r.VIntZero, 0);
-            Assert.AreEqual(r.VIntNegZero, -0);
-            Assert.AreEqual(r.VFloatZero, 0.0, 1e-6);
-            Assert.AreEqual(r.VFloatNegZero, -0.0, 1e-6);
-            Assert.AreEqual(r.VStrWZero, "0");
-            Assert.AreEqual(r.VStrWZero.Length, 1);
-            Assert.AreEqual(r.Ut.M, 7);
+            AreEqual(r.VFalse, false);
+            AreEqual(r.VIntZero, 0);
+            AreEqual(r.VIntNegZero, -0);
+            AreEqual(r.VFloatZero, 0.0, 1e-6);
+            AreEqual(r.VFloatNegZero, -0.0, 1e-6);
+            AreEqual(r.VStrWZero, "0");
+            AreEqual(r.VStrWZero.Length, 1);
+            AreEqual(r.Ut.M, 7);
             Assert.IsNull(r.VNullUt);
-            Assert.AreEqual(r.VStrEmpty, "");
-            Assert.AreEqual(r.VStrEmpty.Length, 0);
-            Assert.AreEqual(r.IntArray.Count, 2);
-            Assert.AreEqual(r.VIntArrayEmpty.Count, 0);
+            AreEqual(r.VStrEmpty, "");
+            AreEqual(r.VStrEmpty.Length, 0);
+            AreEqual(r.IntArray.Count, 2);
+            AreEqual(r.VIntArrayEmpty.Count, 0);
         }
     }
 }
