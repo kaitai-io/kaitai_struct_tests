@@ -12,13 +12,13 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   val className = RustCompiler.type2class(spec.id)
   val translator = new RustTranslator(provider, RuntimeConfig())
 
-  override def fileName(name: String): String = s"test_$name.rs"
+  override def fileName(name: String): String = s"tests/$name.rs"
 
   override def header(): Unit = {
     out.puts("extern crate kaitai_struct;")
     out.puts(s"extern crate rust;")
     out.puts
-    
+
     out.puts("use kaitai_struct::KaitaiStruct;")
     out.puts(s"use rust::$className;")
     out.puts
