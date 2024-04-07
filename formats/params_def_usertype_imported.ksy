@@ -2,8 +2,8 @@
 # "imports_params_def_usertype_imported".
 #
 # This spec tests that the `import` statement is inserted into the generated
-# code (in languages where it is needed) for the imported .ksy module if it's
-# only used as a top-level parameter type.
+# code (in languages where it is needed) for the imported .ksy module if we only
+# declare a top-level parameter of the imported top-level type.
 meta:
   id: params_def_usertype_imported
   imports:
