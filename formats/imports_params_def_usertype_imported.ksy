@@ -5,6 +5,7 @@
 meta:
   id: imports_params_def_usertype_imported
   imports:
+    - hello_world
     - params_def_usertype_imported
 seq:
   - id: hw
