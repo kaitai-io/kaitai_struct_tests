@@ -3,7 +3,7 @@ package io.kaitai.struct.testtranslator.specgenerators
 import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.datatype.DataType.{ArrayType, BytesType, FloatType}
 import _root_.io.kaitai.struct.exprlang.Ast
-import _root_.io.kaitai.struct.testtranslator.{TestAssert, TestEquals, TestException, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{TestAssert, TestEquals, TestException, TestSpec, TestToString}
 import _root_.io.kaitai.struct.translators.{AbstractTranslator, TypeDetector}
 
 abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
@@ -28,6 +28,8 @@ abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
   def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit
 
   def testException(actual: Ast.expr, exception: KSError): Unit = ???
+
+  def testToString(expected: String): Unit
 
   def noAsserts(): Unit = {}
 
@@ -75,6 +77,8 @@ abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
           }
         case TestException(actual, exception) =>
           testException(actual, exception)
+        case TestToString(expected) =>
+          testToString(expected)
       }
     }
 

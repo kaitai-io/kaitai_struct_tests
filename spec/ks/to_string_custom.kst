@@ -1,0 +1,4 @@
+id: to_string_custom
+data: term_strz.bin
+asserts:
+  - to-string: s1 = foo, s2 = bar
