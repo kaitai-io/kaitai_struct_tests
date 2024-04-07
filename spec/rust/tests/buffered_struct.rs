@@ -4,17 +4,17 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::BufferedStruct;
+use rust::buffered_struct::BufferedStruct;
 
 #[test]
 fn test_buffered_struct() {
-    if let Ok(r) = BufferedStruct::from_file("src/buffered_struct.bin") {
-        assert_eq!(r.len1, 16);
-        assert_eq!(r.block1.number1, 66);
-        assert_eq!(r.block1.number2, 67);
-        assert_eq!(r.len2, 8);
-        assert_eq!(r.block2.number1, 68);
-        assert_eq!(r.block2.number2, 69);
-        assert_eq!(r.finisher, 238);
-    }
+    let r = BufferedStruct::from_file("../../src/buffered_struct.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.len1, 16);
+    assert_eq!(r.block1.number1, 66);
+    assert_eq!(r.block1.number2, 67);
+    assert_eq!(r.len2, 8);
+    assert_eq!(r.block2.number1, 68);
+    assert_eq!(r.block2.number2, 69);
+    assert_eq!(r.finisher, 238);
 }

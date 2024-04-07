@@ -4,21 +4,20 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::CombineBytes;
+use rust::combine_bytes::CombineBytes;
 
 #[test]
 fn test_combine_bytes() {
-    if let Ok(r) = CombineBytes::from_file("src/term_strz.bin") {
+    let r = CombineBytes::from_file("../../src/term_strz.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.bytes_term, vec!([0x66, 0x6f, 0x6f]));
-        assert_eq!(r.bytes_limit, vec!([0x62, 0x61, 0x72, 0x7c]));
-        assert_eq!(r.bytes_eos, vec!([0x62, 0x61, 0x7a, 0x40]));
-        assert_eq!(r.bytes_calc, vec!([0x52, 0x6e, 0x44]));
-        assert_eq!(r.term_or_limit, vec!([0x66, 0x6f, 0x6f]));
-        assert_eq!(r.term_or_eos, vec!([0x62, 0x61, 0x7a, 0x40]));
-        assert_eq!(r.term_or_calc, vec!([0x66, 0x6f, 0x6f]));
-        assert_eq!(r.limit_or_eos, vec!([0x62, 0x61, 0x72, 0x7c]));
-        assert_eq!(r.limit_or_calc, vec!([0x52, 0x6e, 0x44]));
-        assert_eq!(r.eos_or_calc, vec!([0x62, 0x61, 0x7a, 0x40]));
-    }
+    assert_eq!(r.bytes_term, vec!([0x66, 0x6f, 0x6f]));
+    assert_eq!(r.bytes_limit, vec!([0x62, 0x61, 0x72, 0x7c]));
+    assert_eq!(r.bytes_eos, vec!([0x62, 0x61, 0x7a, 0x40]));
+    assert_eq!(r.bytes_calc, vec!([0x52, 0x6e, 0x44]));
+    assert_eq!(r.term_or_limit, vec!([0x66, 0x6f, 0x6f]));
+    assert_eq!(r.term_or_eos, vec!([0x62, 0x61, 0x7a, 0x40]));
+    assert_eq!(r.term_or_calc, vec!([0x66, 0x6f, 0x6f]));
+    assert_eq!(r.limit_or_eos, vec!([0x62, 0x61, 0x72, 0x7c]));
+    assert_eq!(r.limit_or_calc, vec!([0x52, 0x6e, 0x44]));
+    assert_eq!(r.eos_or_calc, vec!([0x62, 0x61, 0x7a, 0x40]));
 }

@@ -4,15 +4,14 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::YamlInts;
+use rust::yaml_ints::YamlInts;
 
 #[test]
 fn test_yaml_ints() {
-    if let Ok(r) = YamlInts::from_file("src/fixed_struct.bin") {
+    let r = YamlInts::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.test_u4_dec, 4294967295);
-        assert_eq!(r.test_u4_hex, 4294967295);
-        assert_eq!(r.test_u8_dec, 18446744073709551615);
-        assert_eq!(r.test_u8_hex, 18446744073709551615);
-    }
+    assert_eq!(r.test_u4_dec, 4294967295);
+    assert_eq!(r.test_u4_hex, 4294967295);
+    assert_eq!(r.test_u8_dec, 18446744073709551615);
+    assert_eq!(r.test_u8_hex, 18446744073709551615);
 }

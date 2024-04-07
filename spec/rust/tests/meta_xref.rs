@@ -4,10 +4,10 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::MetaXref;
+use rust::meta_xref::MetaXref;
 
 #[test]
 fn test_meta_xref() {
-    if let Ok(r) = MetaXref::from_file("src/fixed_struct.bin") {
-    }
+    let r = MetaXref::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
+
 }

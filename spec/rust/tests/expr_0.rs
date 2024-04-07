@@ -4,12 +4,12 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::Expr0;
+use rust::expr_0::Expr0;
 
 #[test]
 fn test_expr_0() {
-    if let Ok(r) = Expr0::from_file("src/str_encodings.bin") {
-        assert_eq!(r.must_be_f7, 247);
-        assert_eq!(r.must_be_abc123, "abc123");
-    }
+    let r = Expr0::from_file("../../src/str_encodings.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.must_be_f7, 247);
+    assert_eq!(r.must_be_abc123, "abc123");
 }

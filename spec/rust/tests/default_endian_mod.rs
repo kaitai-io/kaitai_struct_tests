@@ -4,13 +4,13 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::DefaultEndianMod;
+use rust::default_endian_mod::DefaultEndianMod;
 
 #[test]
 fn test_default_endian_mod() {
-    if let Ok(r) = DefaultEndianMod::from_file("src/fixed_struct.bin") {
-        assert_eq!(r.main.one, 1262698832);
-        assert_eq!(r.main.nest.two, -52947);
-        assert_eq!(r.main.nest_be.two, 1346454347);
-    }
+    let r = DefaultEndianMod::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.main.one, 1262698832);
+    assert_eq!(r.main.nest.two, -52947);
+    assert_eq!(r.main.nest_be.two, 1346454347);
 }

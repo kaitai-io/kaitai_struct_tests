@@ -4,17 +4,17 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::IndexSizes;
+use rust::index_sizes::IndexSizes;
 
 #[test]
 fn test_index_sizes() {
-    if let Ok(r) = IndexSizes::from_file("src/index_sizes.bin") {
-        assert_eq!(r.qty, 3);
-        assert_eq!(r.sizes[0], 1);
-        assert_eq!(r.sizes[1], 8);
-        assert_eq!(r.sizes[2], 4);
-        assert_eq!(r.bufs[0], "A");
-        assert_eq!(r.bufs[1], "BBBBBBBB");
-        assert_eq!(r.bufs[2], "CCCC");
-    }
+    let r = IndexSizes::from_file("../../src/index_sizes.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.qty, 3);
+    assert_eq!(r.sizes[0], 1);
+    assert_eq!(r.sizes[1], 8);
+    assert_eq!(r.sizes[2], 4);
+    assert_eq!(r.bufs[0], "A");
+    assert_eq!(r.bufs[1], "BBBBBBBB");
+    assert_eq!(r.bufs[2], "CCCC");
 }

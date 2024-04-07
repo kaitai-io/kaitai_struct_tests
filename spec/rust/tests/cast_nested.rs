@@ -4,14 +4,14 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::CastNested;
+use rust::cast_nested::CastNested;
 
 #[test]
 fn test_cast_nested() {
-    if let Ok(r) = CastNested::from_file("src/switch_opcodes.bin") {
-        assert_eq!(r.opcodes_0_str.value, "foobar");
-        assert_eq!(r.opcodes_0_str_value, "foobar");
-        assert_eq!(r.opcodes_1_int.value, 66);
-        assert_eq!(r.opcodes_1_int_value, 66);
-    }
+    let r = CastNested::from_file("../../src/switch_opcodes.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.opcodes_0_str.value, "foobar");
+    assert_eq!(r.opcodes_0_str_value, "foobar");
+    assert_eq!(r.opcodes_1_int.value, 66);
+    assert_eq!(r.opcodes_1_int_value, 66);
 }

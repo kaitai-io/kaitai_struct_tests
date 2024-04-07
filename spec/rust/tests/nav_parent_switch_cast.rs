@@ -4,14 +4,13 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::NavParentSwitchCast;
+use rust::nav_parent_switch_cast::NavParentSwitchCast;
 
 #[test]
 fn test_nav_parent_switch_cast() {
-    if let Ok(r) = NavParentSwitchCast::from_file("src/switch_integers.bin") {
+    let r = NavParentSwitchCast::from_file("../../src/switch_integers.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.main.buf_type, 1);
-        assert_eq!(r.main.flag, 7);
-        assert_eq!(r.main.buf.branch.flag, 7);
-    }
+    assert_eq!(r.main.buf_type, 1);
+    assert_eq!(r.main.flag, 7);
+    assert_eq!(r.main.buf.branch.flag, 7);
 }

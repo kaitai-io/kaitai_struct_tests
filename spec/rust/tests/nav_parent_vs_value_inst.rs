@@ -4,11 +4,11 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::NavParentVsValueInst;
+use rust::nav_parent_vs_value_inst::NavParentVsValueInst;
 
 #[test]
 fn test_nav_parent_vs_value_inst() {
-    if let Ok(r) = NavParentVsValueInst::from_file("src/term_strz.bin") {
-        assert_eq!(r.s1, "foo");
-    }
+    let r = NavParentVsValueInst::from_file("../../src/term_strz.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.s1, "foo");
 }

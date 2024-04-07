@@ -4,12 +4,12 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::JsSignedRightShift;
+use rust::js_signed_right_shift::JsSignedRightShift;
 
 #[test]
 fn test_js_signed_right_shift() {
-    if let Ok(r) = JsSignedRightShift::from_file("src/fixed_struct.bin") {
-        assert_eq!(r.should_be_40000000, 1073741824);
-        assert_eq!(r.should_be_a00000, 10485760);
-    }
+    let r = JsSignedRightShift::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.should_be_40000000, 1073741824);
+    assert_eq!(r.should_be_a00000, 10485760);
 }

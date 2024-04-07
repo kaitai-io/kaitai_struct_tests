@@ -4,18 +4,18 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::FloatToI;
+use rust::float_to_i::FloatToI;
 
 #[test]
 fn test_float_to_i() {
-    if let Ok(r) = FloatToI::from_file("src/floating_points.bin") {
-        assert_eq!(r.single_value, 0.5);
-        assert_eq!(r.double_value, 0.25);
-        assert_eq!(r.single_i, 0);
-        assert_eq!(r.double_i, 0);
-        assert_eq!(r.float1_i, 1);
-        assert_eq!(r.float2_i, 1);
-        assert_eq!(r.float3_i, 1);
-        assert_eq!(r.float4_i, -2);
-    }
+    let r = FloatToI::from_file("../../src/floating_points.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.single_value, 0.5);
+    assert_eq!(r.double_value, 0.25);
+    assert_eq!(r.single_i, 0);
+    assert_eq!(r.double_i, 0);
+    assert_eq!(r.float1_i, 1);
+    assert_eq!(r.float2_i, 1);
+    assert_eq!(r.float3_i, 1);
+    assert_eq!(r.float4_i, -2);
 }

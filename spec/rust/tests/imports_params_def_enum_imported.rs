@@ -4,15 +4,14 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ImportsParamsDefEnumImported;
+use rust::imports_params_def_enum_imported::ImportsParamsDefEnumImported;
 
 #[test]
 fn test_imports_params_def_enum_imported() {
-    if let Ok(r) = ImportsParamsDefEnumImported::from_file("src/enum_0.bin") {
+    let r = ImportsParamsDefEnumImported::from_file("../../src/enum_0.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.one.pet_1, Enum0__Animal::CAT);
-        assert_eq!(r.one.pet_2, EnumDeep__Container1__Container2__Animal::HARE);
-        assert_eq!(r.two.pet_1_param, Enum0__Animal::CAT);
-        assert_eq!(r.two.pet_2_param, EnumDeep__Container1__Container2__Animal::HARE);
-    }
+    assert_eq!(r.one.pet_1, Enum0__Animal::CAT);
+    assert_eq!(r.one.pet_2, EnumDeep__Container1__Container2__Animal::HARE);
+    assert_eq!(r.two.pet_1_param, Enum0__Animal::CAT);
+    assert_eq!(r.two.pet_2_param, EnumDeep__Container1__Container2__Animal::HARE);
 }

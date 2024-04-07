@@ -4,13 +4,13 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ProcessCoerceSwitch;
+use rust::process_coerce_switch::ProcessCoerceSwitch;
 
 #[test]
 fn test_process_coerce_switch() {
-    if let Ok(r) = ProcessCoerceSwitch::from_file("src/process_coerce_switch.bin") {
-        assert_eq!(r.buf_type, 0);
-        assert_eq!(r.flag, 0);
-        assert_eq!(r.buf.bar, vec!([0x41, 0x41, 0x41, 0x41]));
-    }
+    let r = ProcessCoerceSwitch::from_file("../../src/process_coerce_switch.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.buf_type, 0);
+    assert_eq!(r.flag, 0);
+    assert_eq!(r.buf.bar, vec!([0x41, 0x41, 0x41, 0x41]));
 }

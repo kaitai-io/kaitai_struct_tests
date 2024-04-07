@@ -4,19 +4,19 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::BitsByteAligned;
+use rust::bits_byte_aligned::BitsByteAligned;
 
 #[test]
 fn test_bits_byte_aligned() {
-    if let Ok(r) = BitsByteAligned::from_file("src/fixed_struct.bin") {
-        assert_eq!(r.one, 20);
-        assert_eq!(r.byte_1, 65);
-        assert_eq!(r.two, 2);
-        assert_eq!(r.three, false);
-        assert_eq!(r.byte_2, 75);
-        assert_eq!(r.four, 2892);
-        assert_eq!(r.byte_3, vec!([0xff]));
-        assert_eq!(r.full_byte, 255);
-        assert_eq!(r.byte_4, 80);
-    }
+    let r = BitsByteAligned::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.one, 20);
+    assert_eq!(r.byte_1, 65);
+    assert_eq!(r.two, 2);
+    assert_eq!(r.three, false);
+    assert_eq!(r.byte_2, 75);
+    assert_eq!(r.four, 2892);
+    assert_eq!(r.byte_3, vec!([0xff]));
+    assert_eq!(r.full_byte, 255);
+    assert_eq!(r.byte_4, 80);
 }

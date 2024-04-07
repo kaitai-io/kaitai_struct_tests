@@ -4,19 +4,19 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::SwitchIntegers;
+use rust::switch_integers::SwitchIntegers;
 
 #[test]
 fn test_switch_integers() {
-    if let Ok(r) = SwitchIntegers::from_file("src/switch_integers.bin") {
-        assert_eq!(r.opcodes.len(), 4);
-        assert_eq!(r.opcodes[0].code, 1);
-        assert_eq!(r.opcodes[0].body, 7);
-        assert_eq!(r.opcodes[1].code, 2);
-        assert_eq!(r.opcodes[1].body, 16448);
-        assert_eq!(r.opcodes[2].code, 4);
-        assert_eq!(r.opcodes[2].body, 4919);
-        assert_eq!(r.opcodes[3].code, 8);
-        assert_eq!(r.opcodes[3].body, 4919);
-    }
+    let r = SwitchIntegers::from_file("../../src/switch_integers.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.opcodes.len(), 4);
+    assert_eq!(r.opcodes[0].code, 1);
+    assert_eq!(r.opcodes[0].body, 7);
+    assert_eq!(r.opcodes[1].code, 2);
+    assert_eq!(r.opcodes[1].body, 16448);
+    assert_eq!(r.opcodes[2].code, 4);
+    assert_eq!(r.opcodes[2].body, 4919);
+    assert_eq!(r.opcodes[3].code, 8);
+    assert_eq!(r.opcodes[3].body, 4919);
 }

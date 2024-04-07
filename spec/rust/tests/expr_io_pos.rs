@@ -4,16 +4,16 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ExprIoPos;
+use rust::expr_io_pos::ExprIoPos;
 
 #[test]
 fn test_expr_io_pos() {
-    if let Ok(r) = ExprIoPos::from_file("src/expr_io_pos.bin") {
-        assert_eq!(r.substream1.my_str, "CURIOSITY");
-        assert_eq!(r.substream1.body, vec!([0x11, 0x22, 0x33, 0x44]));
-        assert_eq!(r.substream1.number, 66);
-        assert_eq!(r.substream2.my_str, "KILLED");
-        assert_eq!(r.substream2.body, vec!([0x61, 0x20, 0x63, 0x61, 0x74]));
-        assert_eq!(r.substream2.number, 103);
-    }
+    let r = ExprIoPos::from_file("../../src/expr_io_pos.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.substream1.my_str, "CURIOSITY");
+    assert_eq!(r.substream1.body, vec!([0x11, 0x22, 0x33, 0x44]));
+    assert_eq!(r.substream1.number, 66);
+    assert_eq!(r.substream2.my_str, "KILLED");
+    assert_eq!(r.substream2.body, vec!([0x61, 0x20, 0x63, 0x61, 0x74]));
+    assert_eq!(r.substream2.number, 103);
 }

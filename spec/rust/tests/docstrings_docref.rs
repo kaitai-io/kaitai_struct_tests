@@ -4,10 +4,10 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::DocstringsDocref;
+use rust::docstrings_docref::DocstringsDocref;
 
 #[test]
 fn test_docstrings_docref() {
-    if let Ok(r) = DocstringsDocref::from_file("src/fixed_struct.bin") {
-    }
+    let r = DocstringsDocref::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
+
 }

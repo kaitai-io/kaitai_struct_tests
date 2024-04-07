@@ -4,19 +4,19 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::SwitchBytearray;
+use rust::switch_bytearray::SwitchBytearray;
 
 #[test]
 fn test_switch_bytearray() {
-    if let Ok(r) = SwitchBytearray::from_file("src/switch_opcodes.bin") {
-        assert_eq!(r.opcodes.len(), 4);
-        assert_eq!(r.opcodes[0].code, vec!([0x53]));
-        assert_eq!(r.opcodes[0].body.value, "foobar");
-        assert_eq!(r.opcodes[1].code, vec!([0x49]));
-        assert_eq!(r.opcodes[1].body.value, 66);
-        assert_eq!(r.opcodes[2].code, vec!([0x49]));
-        assert_eq!(r.opcodes[2].body.value, 55);
-        assert_eq!(r.opcodes[3].code, vec!([0x53]));
-        assert_eq!(r.opcodes[3].body.value, "");
-    }
+    let r = SwitchBytearray::from_file("../../src/switch_opcodes.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.opcodes.len(), 4);
+    assert_eq!(r.opcodes[0].code, vec!([0x53]));
+    assert_eq!(r.opcodes[0].body.value, "foobar");
+    assert_eq!(r.opcodes[1].code, vec!([0x49]));
+    assert_eq!(r.opcodes[1].body.value, 66);
+    assert_eq!(r.opcodes[2].code, vec!([0x49]));
+    assert_eq!(r.opcodes[2].body.value, 55);
+    assert_eq!(r.opcodes[3].code, vec!([0x53]));
+    assert_eq!(r.opcodes[3].body.value, "");
 }

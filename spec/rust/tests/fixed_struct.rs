@@ -4,30 +4,30 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::FixedStruct;
+use rust::fixed_struct::FixedStruct;
 
 #[test]
 fn test_fixed_struct() {
-    if let Ok(r) = FixedStruct::from_file("src/fixed_struct.bin") {
-        assert_eq!(r.hdr.uint8, 255);
-        assert_eq!(r.hdr.uint16, 65535);
-        assert_eq!(r.hdr.uint32, 4294967295);
-        assert_eq!(r.hdr.uint64, 18446744073709551615);
-        assert_eq!(r.hdr.sint8, -1);
-        assert_eq!(r.hdr.sint16, -1);
-        assert_eq!(r.hdr.sint32, -1);
-        assert_eq!(r.hdr.sint64, -1);
-        assert_eq!(r.hdr.uint16le, 66);
-        assert_eq!(r.hdr.uint32le, 66);
-        assert_eq!(r.hdr.uint64le, 66);
-        assert_eq!(r.hdr.sint16le, -66);
-        assert_eq!(r.hdr.sint32le, -66);
-        assert_eq!(r.hdr.sint64le, -66);
-        assert_eq!(r.hdr.uint16be, 66);
-        assert_eq!(r.hdr.uint32be, 66);
-        assert_eq!(r.hdr.uint64be, 66);
-        assert_eq!(r.hdr.sint16be, -66);
-        assert_eq!(r.hdr.sint32be, -66);
-        assert_eq!(r.hdr.sint64be, -66);
-    }
+    let r = FixedStruct::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.hdr.uint8, 255);
+    assert_eq!(r.hdr.uint16, 65535);
+    assert_eq!(r.hdr.uint32, 4294967295);
+    assert_eq!(r.hdr.uint64, 18446744073709551615);
+    assert_eq!(r.hdr.sint8, -1);
+    assert_eq!(r.hdr.sint16, -1);
+    assert_eq!(r.hdr.sint32, -1);
+    assert_eq!(r.hdr.sint64, -1);
+    assert_eq!(r.hdr.uint16le, 66);
+    assert_eq!(r.hdr.uint32le, 66);
+    assert_eq!(r.hdr.uint64le, 66);
+    assert_eq!(r.hdr.sint16le, -66);
+    assert_eq!(r.hdr.sint32le, -66);
+    assert_eq!(r.hdr.sint64le, -66);
+    assert_eq!(r.hdr.uint16be, 66);
+    assert_eq!(r.hdr.uint32be, 66);
+    assert_eq!(r.hdr.uint64be, 66);
+    assert_eq!(r.hdr.sint16be, -66);
+    assert_eq!(r.hdr.sint32be, -66);
+    assert_eq!(r.hdr.sint64be, -66);
 }

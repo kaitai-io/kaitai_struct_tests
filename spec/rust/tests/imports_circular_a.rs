@@ -4,16 +4,15 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ImportsCircularA;
+use rust::imports_circular_a::ImportsCircularA;
 
 #[test]
 fn test_imports_circular_a() {
-    if let Ok(r) = ImportsCircularA::from_file("src/fixed_struct.bin") {
+    let r = ImportsCircularA::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.code, 80);
-        assert_eq!(r.two.initial, 65);
-        assert_eq!(r.two.back_ref.code, 67);
-        assert_eq!(r.two.back_ref.two.initial, 75);
-        assertNull(r.two.back_ref.two.back_ref);
-    }
+    assert_eq!(r.code, 80);
+    assert_eq!(r.two.initial, 65);
+    assert_eq!(r.two.back_ref.code, 67);
+    assert_eq!(r.two.back_ref.two.initial, 75);
+    assertNull(r.two.back_ref.two.back_ref);
 }

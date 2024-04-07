@@ -4,12 +4,12 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::RepeatUntilS4;
+use rust::repeat_until_s4::RepeatUntilS4;
 
 #[test]
 fn test_repeat_until_s4() {
-    if let Ok(r) = RepeatUntilS4::from_file("src/repeat_until_s4.bin") {
-        assert_eq!(r.entries, [66, 4919, -251658241, -1]);
-        assert_eq!(r.afterall, "foobar");
-    }
+    let r = RepeatUntilS4::from_file("../../src/repeat_until_s4.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.entries, [66, 4919, -251658241, -1]);
+    assert_eq!(r.afterall, "foobar");
 }

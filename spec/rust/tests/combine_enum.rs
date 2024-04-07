@@ -4,14 +4,13 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::CombineEnum;
+use rust::combine_enum::CombineEnum;
 
 #[test]
 fn test_combine_enum() {
-    if let Ok(r) = CombineEnum::from_file("src/enum_0.bin") {
+    let r = CombineEnum::from_file("../../src/enum_0.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.enum_u4, CombineEnum__Animal::PIG);
-        assert_eq!(r.enum_u2, CombineEnum__Animal::HORSE);
-        assert_eq!(r.enum_u4_u2, CombineEnum__Animal::HORSE);
-    }
+    assert_eq!(r.enum_u4, CombineEnum__Animal::PIG);
+    assert_eq!(r.enum_u2, CombineEnum__Animal::HORSE);
+    assert_eq!(r.enum_u4_u2, CombineEnum__Animal::HORSE);
 }

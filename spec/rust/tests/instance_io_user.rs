@@ -4,14 +4,14 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::InstanceIoUser;
+use rust::instance_io_user::InstanceIoUser;
 
 #[test]
 fn test_instance_io_user() {
-    if let Ok(r) = InstanceIoUser::from_file("src/instance_io.bin") {
-        assert_eq!(r.qty_entries, 3);
-        assert_eq!(r.entries[0].name, "the");
-        assert_eq!(r.entries[1].name, "rainy");
-        assert_eq!(r.entries[2].name, "day it is");
-    }
+    let r = InstanceIoUser::from_file("../../src/instance_io.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.qty_entries, 3);
+    assert_eq!(r.entries[0].name, "the");
+    assert_eq!(r.entries[1].name, "rainy");
+    assert_eq!(r.entries[2].name, "day it is");
 }

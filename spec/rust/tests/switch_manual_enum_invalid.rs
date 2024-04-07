@@ -4,16 +4,15 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::SwitchManualEnumInvalid;
+use rust::switch_manual_enum_invalid::SwitchManualEnumInvalid;
 
 #[test]
 fn test_switch_manual_enum_invalid() {
-    if let Ok(r) = SwitchManualEnumInvalid::from_file("src/enum_negative.bin") {
+    let r = SwitchManualEnumInvalid::from_file("../../src/enum_negative.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.opcodes.len(), 2);
-        assert_eq!(r.opcodes[0].code, 255);
-        assertNull(r.opcodes[0].body);
-        assert_eq!(r.opcodes[1].code, 1);
-        assertNull(r.opcodes[1].body);
-    }
+    assert_eq!(r.opcodes.len(), 2);
+    assert_eq!(r.opcodes[0].code, 255);
+    assertNull(r.opcodes[0].body);
+    assert_eq!(r.opcodes[1].code, 1);
+    assertNull(r.opcodes[1].body);
 }

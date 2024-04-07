@@ -4,16 +4,16 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::BcdUserTypeBe;
+use rust::bcd_user_type_be::BcdUserTypeBe;
 
 #[test]
 fn test_bcd_user_type_be() {
-    if let Ok(r) = BcdUserTypeBe::from_file("src/bcd_user_type_be.bin") {
-        assert_eq!(r.ltr.as_int, 12345678);
-        assert_eq!(r.ltr.as_str, "12345678");
-        assert_eq!(r.rtl.as_int, 87654321);
-        assert_eq!(r.rtl.as_str, "87654321");
-        assert_eq!(r.leading_zero_ltr.as_int, 123456);
-        assert_eq!(r.leading_zero_ltr.as_str, "00123456");
-    }
+    let r = BcdUserTypeBe::from_file("../../src/bcd_user_type_be.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.ltr.as_int, 12345678);
+    assert_eq!(r.ltr.as_str, "12345678");
+    assert_eq!(r.rtl.as_int, 87654321);
+    assert_eq!(r.rtl.as_str, "87654321");
+    assert_eq!(r.leading_zero_ltr.as_int, 123456);
+    assert_eq!(r.leading_zero_ltr.as_str, "00123456");
 }

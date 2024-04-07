@@ -4,14 +4,13 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ExprIoTernary;
+use rust::expr_io_ternary::ExprIoTernary;
 
 #[test]
 fn test_expr_io_ternary() {
-    if let Ok(r) = ExprIoTernary::from_file("src/term_strz.bin") {
+    let r = ExprIoTernary::from_file("../../src/term_strz.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.one_or_two_io_size1, 8);
-        assert_eq!(r.one_or_two_io_size2, 8);
-        assert_eq!(r.one_or_two_io_size_add_3, 11);
-    }
+    assert_eq!(r.one_or_two_io_size1, 8);
+    assert_eq!(r.one_or_two_io_size2, 8);
+    assert_eq!(r.one_or_two_io_size_add_3, 11);
 }

@@ -4,13 +4,12 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::EnumInvalid;
+use rust::enum_invalid::EnumInvalid;
 
 #[test]
 fn test_enum_invalid() {
-    if let Ok(r) = EnumInvalid::from_file("src/term_strz.bin") {
+    let r = EnumInvalid::from_file("../../src/term_strz.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.pet_1, EnumInvalid__Animal::DOG);
-        assert_eq!(r.pet_2, 111);
-    }
+    assert_eq!(r.pet_1, EnumInvalid__Animal::DOG);
+    assert_eq!(r.pet_2, 111);
 }

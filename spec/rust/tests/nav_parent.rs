@@ -4,15 +4,15 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::NavParent;
+use rust::nav_parent::NavParent;
 
 #[test]
 fn test_nav_parent() {
-    if let Ok(r) = NavParent::from_file("src/nav.bin") {
-        assert_eq!(r.header.qty_entries, 2);
-        assert_eq!(r.header.filename_len, 8);
-        assert_eq!(r.index.entries.len(), 2);
-        assert_eq!(r.index.entries[0].filename, "FIRST___");
-        assert_eq!(r.index.entries[1].filename, "SECOND__");
-    }
+    let r = NavParent::from_file("../../src/nav.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.header.qty_entries, 2);
+    assert_eq!(r.header.filename_len, 8);
+    assert_eq!(r.index.entries.len(), 2);
+    assert_eq!(r.index.entries[0].filename, "FIRST___");
+    assert_eq!(r.index.entries[1].filename, "SECOND__");
 }

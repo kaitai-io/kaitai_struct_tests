@@ -4,16 +4,15 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ParamsPassArrayUsertype;
+use rust::params_pass_array_usertype::ParamsPassArrayUsertype;
 
 #[test]
 fn test_params_pass_array_usertype() {
-    if let Ok(r) = ParamsPassArrayUsertype::from_file("src/position_to_end.bin") {
+    let r = ParamsPassArrayUsertype::from_file("../../src/position_to_end.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.pass_blocks.bar.len(), 2);
-        assert_eq!(r.pass_blocks.bar[0].foo, 1);
-        assert_eq!(r.pass_blocks.bar[1].foo, 2);
-        assert_eq!(r.pass_blocks.one, vec!([0x3]));
-        assert_eq!(r.pass_blocks.two, vec!([0x4, 0x5]));
-    }
+    assert_eq!(r.pass_blocks.bar.len(), 2);
+    assert_eq!(r.pass_blocks.bar[0].foo, 1);
+    assert_eq!(r.pass_blocks.bar[1].foo, 2);
+    assert_eq!(r.pass_blocks.one, vec!([0x3]));
+    assert_eq!(r.pass_blocks.two, vec!([0x4, 0x5]));
 }

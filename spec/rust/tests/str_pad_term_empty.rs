@@ -4,14 +4,14 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::StrPadTermEmpty;
+use rust::str_pad_term_empty::StrPadTermEmpty;
 
 #[test]
 fn test_str_pad_term_empty() {
-    if let Ok(r) = StrPadTermEmpty::from_file("src/str_pad_term_empty.bin") {
-        assert_eq!(r.str_pad, "");
-        assert_eq!(r.str_term, "");
-        assert_eq!(r.str_term_and_pad, "");
-        assert_eq!(r.str_term_include, "@");
-    }
+    let r = StrPadTermEmpty::from_file("../../src/str_pad_term_empty.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.str_pad, "");
+    assert_eq!(r.str_term, "");
+    assert_eq!(r.str_term_and_pad, "");
+    assert_eq!(r.str_term_include, "@");
 }

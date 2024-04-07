@@ -4,11 +4,11 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::RepeatEosU4;
+use rust::repeat_eos_u4::RepeatEosU4;
 
 #[test]
 fn test_repeat_eos_u4() {
-    if let Ok(r) = RepeatEosU4::from_file("src/repeat_eos_struct.bin") {
-        assert_eq!(r.numbers, [0, 66, 66, 2069]);
-    }
+    let r = RepeatEosU4::from_file("../../src/repeat_eos_struct.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.numbers, [0, 66, 66, 2069]);
 }

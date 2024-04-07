@@ -4,13 +4,12 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::CombineBool;
+use rust::combine_bool::CombineBool;
 
 #[test]
 fn test_combine_bool() {
-    if let Ok(r) = CombineBool::from_file("src/enum_negative.bin") {
+    let r = CombineBool::from_file("../../src/enum_negative.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.bool_bit, true);
-        assert_eq!(r.bool_calc_bit, false);
-    }
+    assert_eq!(r.bool_bit, true);
+    assert_eq!(r.bool_calc_bit, false);
 }

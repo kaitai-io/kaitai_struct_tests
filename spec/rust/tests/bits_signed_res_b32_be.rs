@@ -4,12 +4,11 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::BitsSignedResB32Be;
+use rust::bits_signed_res_b32_be::BitsSignedResB32Be;
 
 #[test]
 fn test_bits_signed_res_b32_be() {
-    if let Ok(r) = BitsSignedResB32Be::from_file("src/bits_shift_by_b32_le.bin") {
+    let r = BitsSignedResB32Be::from_file("../../src/bits_shift_by_b32_le.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.a, 4294967295);
-    }
+    assert_eq!(r.a, 4294967295);
 }

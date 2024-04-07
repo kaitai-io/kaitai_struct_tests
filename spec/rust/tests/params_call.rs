@@ -4,13 +4,13 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ParamsCall;
+use rust::params_call::ParamsCall;
 
 #[test]
 fn test_params_call() {
-    if let Ok(r) = ParamsCall::from_file("src/term_strz.bin") {
-        assert_eq!(r.buf1.body, "foo|b");
-        assert_eq!(r.buf2.body, "ar|ba");
-        assert_eq!(r.buf2.trailer, 122);
-    }
+    let r = ParamsCall::from_file("../../src/term_strz.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.buf1.body, "foo|b");
+    assert_eq!(r.buf2.body, "ar|ba");
+    assert_eq!(r.buf2.trailer, 122);
 }

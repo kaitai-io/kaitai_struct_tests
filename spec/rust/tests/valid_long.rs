@@ -4,11 +4,10 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ValidLong;
+use rust::valid_long::ValidLong;
 
 #[test]
 fn test_valid_long() {
-    if let Ok(r) = ValidLong::from_file("src/fixed_struct.bin") {
+    let r = ValidLong::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
 
-    }
 }

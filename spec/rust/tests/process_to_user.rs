@@ -4,11 +4,11 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ProcessToUser;
+use rust::process_to_user::ProcessToUser;
 
 #[test]
 fn test_process_to_user() {
-    if let Ok(r) = ProcessToUser::from_file("src/process_rotate.bin") {
-        assert_eq!(r.buf1.str, "Hello");
-    }
+    let r = ProcessToUser::from_file("../../src/process_rotate.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.buf1.str, "Hello");
 }

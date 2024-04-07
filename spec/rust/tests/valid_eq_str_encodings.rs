@@ -4,11 +4,10 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ValidEqStrEncodings;
+use rust::valid_eq_str_encodings::ValidEqStrEncodings;
 
 #[test]
 fn test_valid_eq_str_encodings() {
-    if let Ok(r) = ValidEqStrEncodings::from_file("src/str_encodings.bin") {
+    let r = ValidEqStrEncodings::from_file("../../src/str_encodings.bin").expect("file for parsing is not found");
 
-    }
 }

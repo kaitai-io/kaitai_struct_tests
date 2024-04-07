@@ -4,13 +4,13 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::NavParentSwitch;
+use rust::nav_parent_switch::NavParentSwitch;
 
 #[test]
 fn test_nav_parent_switch() {
-    if let Ok(r) = NavParentSwitch::from_file("src/nav_parent_switch.bin") {
-        assert_eq!(r.category, 1);
-        assert_eq!(r.content.foo, 66);
-        assert_eq!(r.content.subelement.bar, 255);
-    }
+    let r = NavParentSwitch::from_file("../../src/nav_parent_switch.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.category, 1);
+    assert_eq!(r.content.foo, 66);
+    assert_eq!(r.content.subelement.bar, 255);
 }

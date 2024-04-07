@@ -4,25 +4,24 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ParamsPassBool;
+use rust::params_pass_bool::ParamsPassBool;
 
 #[test]
 fn test_params_pass_bool() {
-    if let Ok(r) = ParamsPassBool::from_file("src/term_strz.bin") {
+    let r = ParamsPassBool::from_file("../../src/term_strz.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.s_false, false);
-        assert_eq!(r.s_true, true);
-        assert_eq!(r.seq_b1.arg, true);
-        assert_eq!(r.seq_b1.foo.len(), 1);
-        assert_eq!(r.seq_bool.arg, false);
-        assert_eq!(r.seq_bool.foo.len(), 2);
-        assert_eq!(r.literal_b1.arg, false);
-        assert_eq!(r.literal_b1.foo.len(), 2);
-        assert_eq!(r.literal_bool.arg, true);
-        assert_eq!(r.literal_bool.foo.len(), 1);
-        assert_eq!(r.inst_b1.arg, true);
-        assert_eq!(r.inst_b1.foo.len(), 1);
-        assert_eq!(r.inst_bool.arg, false);
-        assert_eq!(r.inst_bool.foo.len(), 2);
-    }
+    assert_eq!(r.s_false, false);
+    assert_eq!(r.s_true, true);
+    assert_eq!(r.seq_b1.arg, true);
+    assert_eq!(r.seq_b1.foo.len(), 1);
+    assert_eq!(r.seq_bool.arg, false);
+    assert_eq!(r.seq_bool.foo.len(), 2);
+    assert_eq!(r.literal_b1.arg, false);
+    assert_eq!(r.literal_b1.foo.len(), 2);
+    assert_eq!(r.literal_bool.arg, true);
+    assert_eq!(r.literal_bool.foo.len(), 1);
+    assert_eq!(r.inst_b1.arg, true);
+    assert_eq!(r.inst_b1.foo.len(), 1);
+    assert_eq!(r.inst_bool.arg, false);
+    assert_eq!(r.inst_bool.foo.len(), 2);
 }

@@ -4,14 +4,14 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ProcessCoerceUsertype2;
+use rust::process_coerce_usertype2::ProcessCoerceUsertype2;
 
 #[test]
 fn test_process_coerce_usertype2() {
-    if let Ok(r) = ProcessCoerceUsertype2::from_file("src/process_coerce_bytes.bin") {
-        assert_eq!(r.records[0].flag, 0);
-        assert_eq!(r.records[0].buf.value, 1094795585);
-        assert_eq!(r.records[1].flag, 1);
-        assert_eq!(r.records[1].buf.value, 1111638594);
-    }
+    let r = ProcessCoerceUsertype2::from_file("../../src/process_coerce_bytes.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.records[0].flag, 0);
+    assert_eq!(r.records[0].buf.value, 1094795585);
+    assert_eq!(r.records[1].flag, 1);
+    assert_eq!(r.records[1].buf.value, 1111638594);
 }

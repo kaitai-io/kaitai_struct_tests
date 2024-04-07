@@ -4,18 +4,17 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::EnumLongRangeS;
+use rust::enum_long_range_s::EnumLongRangeS;
 
 #[test]
 fn test_enum_long_range_s() {
-    if let Ok(r) = EnumLongRangeS::from_file("src/enum_long_range_s.bin") {
+    let r = EnumLongRangeS::from_file("../../src/enum_long_range_s.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.f1, EnumLongRangeS__Constants::LONG_MIN);
-        assert_eq!(r.f2, EnumLongRangeS__Constants::INT_BELOW_MIN);
-        assert_eq!(r.f3, EnumLongRangeS__Constants::INT_MIN);
-        assert_eq!(r.f4, EnumLongRangeS__Constants::ZERO);
-        assert_eq!(r.f5, EnumLongRangeS__Constants::INT_MAX);
-        assert_eq!(r.f6, EnumLongRangeS__Constants::INT_OVER_MAX);
-        assert_eq!(r.f7, EnumLongRangeS__Constants::LONG_MAX);
-    }
+    assert_eq!(r.f1, EnumLongRangeS__Constants::LONG_MIN);
+    assert_eq!(r.f2, EnumLongRangeS__Constants::INT_BELOW_MIN);
+    assert_eq!(r.f3, EnumLongRangeS__Constants::INT_MIN);
+    assert_eq!(r.f4, EnumLongRangeS__Constants::ZERO);
+    assert_eq!(r.f5, EnumLongRangeS__Constants::INT_MAX);
+    assert_eq!(r.f6, EnumLongRangeS__Constants::INT_OVER_MAX);
+    assert_eq!(r.f7, EnumLongRangeS__Constants::LONG_MAX);
 }

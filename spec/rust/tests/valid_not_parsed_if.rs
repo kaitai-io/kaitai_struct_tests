@@ -4,11 +4,10 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ValidNotParsedIf;
+use rust::valid_not_parsed_if::ValidNotParsedIf;
 
 #[test]
 fn test_valid_not_parsed_if() {
-    if let Ok(r) = ValidNotParsedIf::from_file("src/fixed_struct.bin") {
+    let r = ValidNotParsedIf::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
 
-    }
 }

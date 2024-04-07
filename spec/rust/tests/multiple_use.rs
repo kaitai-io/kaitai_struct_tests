@@ -4,12 +4,12 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::MultipleUse;
+use rust::multiple_use::MultipleUse;
 
 #[test]
 fn test_multiple_use() {
-    if let Ok(r) = MultipleUse::from_file("src/position_abs.bin") {
-        assert_eq!(r.t1.first_use.value, 32);
-        assert_eq!(r.t2.second_use.value, 32);
-    }
+    let r = MultipleUse::from_file("../../src/position_abs.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.t1.first_use.value, 32);
+    assert_eq!(r.t2.second_use.value, 32);
 }

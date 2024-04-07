@@ -4,12 +4,12 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ExprSizeofType1;
+use rust::expr_sizeof_type_1::ExprSizeofType1;
 
 #[test]
 fn test_expr_sizeof_type_1() {
-    if let Ok(r) = ExprSizeofType1::from_file("src/fixed_struct.bin") {
-        assert_eq!(r.sizeof_block, (((1 + 4) + 2) + 4));
-        assert_eq!(r.sizeof_subblock, 4);
-    }
+    let r = ExprSizeofType1::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.sizeof_block, ((1 + 4) + 2) + 4);
+    assert_eq!(r.sizeof_subblock, 4);
 }

@@ -4,19 +4,18 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::EnumToI;
+use rust::enum_to_i::EnumToI;
 
 #[test]
 fn test_enum_to_i() {
-    if let Ok(r) = EnumToI::from_file("src/enum_0.bin") {
+    let r = EnumToI::from_file("../../src/enum_0.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.pet_1, EnumToI__Animal::CAT);
-        assert_eq!(r.pet_2, EnumToI__Animal::CHICKEN);
-        assert_eq!(r.pet_1_i, 7);
-        assert_eq!(r.pet_1_i_to_s, "7");
-        assert_eq!(r.pet_1_mod, 32775);
-        assert_eq!(r.one_lt_two, true);
-        assert_eq!(r.pet_1_eq_int, true);
-        assert_eq!(r.pet_2_eq_int, false);
-    }
+    assert_eq!(r.pet_1, EnumToI__Animal::CAT);
+    assert_eq!(r.pet_2, EnumToI__Animal::CHICKEN);
+    assert_eq!(r.pet_1_i, 7);
+    assert_eq!(r.pet_1_i_to_s, "7");
+    assert_eq!(r.pet_1_mod, 32775);
+    assert_eq!(r.one_lt_two, true);
+    assert_eq!(r.pet_1_eq_int, true);
+    assert_eq!(r.pet_2_eq_int, false);
 }

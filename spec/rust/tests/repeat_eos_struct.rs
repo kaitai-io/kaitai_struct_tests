@@ -4,15 +4,15 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::RepeatEosStruct;
+use rust::repeat_eos_struct::RepeatEosStruct;
 
 #[test]
 fn test_repeat_eos_struct() {
-    if let Ok(r) = RepeatEosStruct::from_file("src/repeat_eos_struct.bin") {
-        assert_eq!(r.chunks.len(), 2);
-        assert_eq!(r.chunks[0].offset, 0);
-        assert_eq!(r.chunks[0].len, 66);
-        assert_eq!(r.chunks[1].offset, 66);
-        assert_eq!(r.chunks[1].len, 2069);
-    }
+    let r = RepeatEosStruct::from_file("../../src/repeat_eos_struct.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.chunks.len(), 2);
+    assert_eq!(r.chunks[0].offset, 0);
+    assert_eq!(r.chunks[0].len, 66);
+    assert_eq!(r.chunks[1].offset, 66);
+    assert_eq!(r.chunks[1].len, 2069);
 }

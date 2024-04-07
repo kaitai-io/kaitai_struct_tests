@@ -4,11 +4,11 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::PositionInSeq;
+use rust::position_in_seq::PositionInSeq;
 
 #[test]
 fn test_position_in_seq() {
-    if let Ok(r) = PositionInSeq::from_file("src/position_in_seq.bin") {
-        assert_eq!(r.numbers, [(0 + 1), 2, 3]);
-    }
+    let r = PositionInSeq::from_file("../../src/position_in_seq.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.numbers, [0 + 1, 2, 3]);
 }

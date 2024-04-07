@@ -4,11 +4,11 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::RepeatEosBit;
+use rust::repeat_eos_bit::RepeatEosBit;
 
 #[test]
 fn test_repeat_eos_bit() {
-    if let Ok(r) = RepeatEosBit::from_file("src/enum_0.bin") {
-        assert_eq!(r.nibbles.len(), 16);
-    }
+    let r = RepeatEosBit::from_file("../../src/enum_0.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.nibbles.len(), 16);
 }

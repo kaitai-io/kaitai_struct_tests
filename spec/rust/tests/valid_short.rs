@@ -4,11 +4,10 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ValidShort;
+use rust::valid_short::ValidShort;
 
 #[test]
 fn test_valid_short() {
-    if let Ok(r) = ValidShort::from_file("src/fixed_struct.bin") {
+    let r = ValidShort::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
 
-    }
 }

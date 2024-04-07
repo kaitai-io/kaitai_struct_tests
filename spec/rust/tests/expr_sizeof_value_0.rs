@@ -4,15 +4,15 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ExprSizeofValue0;
+use rust::expr_sizeof_value_0::ExprSizeofValue0;
 
 #[test]
 fn test_expr_sizeof_value_0() {
-    if let Ok(r) = ExprSizeofValue0::from_file("src/fixed_struct.bin") {
-        assert_eq!(r.self_sizeof, (((1 + 4) + 2) + 2));
-        assert_eq!(r.sizeof_block, ((1 + 4) + 2));
-        assert_eq!(r.sizeof_block_a, 1);
-        assert_eq!(r.sizeof_block_b, 4);
-        assert_eq!(r.sizeof_block_c, 2);
-    }
+    let r = ExprSizeofValue0::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.self_sizeof, ((1 + 4) + 2) + 2);
+    assert_eq!(r.sizeof_block, (1 + 4) + 2);
+    assert_eq!(r.sizeof_block_a, 1);
+    assert_eq!(r.sizeof_block_b, 4);
+    assert_eq!(r.sizeof_block_c, 2);
 }

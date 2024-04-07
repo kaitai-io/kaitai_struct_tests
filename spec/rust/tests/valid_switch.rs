@@ -4,11 +4,10 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ValidSwitch;
+use rust::valid_switch::ValidSwitch;
 
 #[test]
 fn test_valid_switch() {
-    if let Ok(r) = ValidSwitch::from_file("src/fixed_struct.bin") {
+    let r = ValidSwitch::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
 
-    }
 }

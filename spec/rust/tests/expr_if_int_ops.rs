@@ -4,13 +4,12 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ExprIfIntOps;
+use rust::expr_if_int_ops::ExprIfIntOps;
 
 #[test]
 fn test_expr_if_int_ops() {
-    if let Ok(r) = ExprIfIntOps::from_file("src/process_coerce_switch.bin") {
+    let r = ExprIfIntOps::from_file("../../src/process_coerce_switch.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.is_eq_prim, true);
-        assert_eq!(r.is_eq_boxed, true);
-    }
+    assert_eq!(r.is_eq_prim, true);
+    assert_eq!(r.is_eq_boxed, true);
 }

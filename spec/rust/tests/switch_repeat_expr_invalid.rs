@@ -4,14 +4,13 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::SwitchRepeatExprInvalid;
+use rust::switch_repeat_expr_invalid::SwitchRepeatExprInvalid;
 
 #[test]
 fn test_switch_repeat_expr_invalid() {
-    if let Ok(r) = SwitchRepeatExprInvalid::from_file("src/switch_tlv.bin") {
+    let r = SwitchRepeatExprInvalid::from_file("../../src/switch_tlv.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.code, 17);
-        assert_eq!(r.size, 9);
-        assert_eq!(r.body[0], vec!([0x53, 0x74, 0x75, 0x66, 0x66, 0x0, 0x4d, 0x65, 0x0]));
-    }
+    assert_eq!(r.code, 17);
+    assert_eq!(r.size, 9);
+    assert_eq!(r.body[0], vec!([0x53, 0x74, 0x75, 0x66, 0x66, 0x0, 0x4d, 0x65, 0x0]));
 }

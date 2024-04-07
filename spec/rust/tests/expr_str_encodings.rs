@@ -4,18 +4,17 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ExprStrEncodings;
+use rust::expr_str_encodings::ExprStrEncodings;
 
 #[test]
 fn test_expr_str_encodings() {
-    if let Ok(r) = ExprStrEncodings::from_file("src/str_encodings.bin") {
+    let r = ExprStrEncodings::from_file("../../src/str_encodings.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.str1_eq, true);
-        assert_eq!(r.str2_eq, true);
-        assert_eq!(r.str3_eq, true);
-        assert_eq!(r.str3_eq_str2, true);
-        assert_eq!(r.str4_eq, true);
-        assert_eq!(r.str4_gt_str_calc, true);
-        assert_eq!(r.str4_gt_str_from_bytes, true);
-    }
+    assert_eq!(r.str1_eq, true);
+    assert_eq!(r.str2_eq, true);
+    assert_eq!(r.str3_eq, true);
+    assert_eq!(r.str3_eq_str2, true);
+    assert_eq!(r.str4_eq, true);
+    assert_eq!(r.str4_gt_str_calc, true);
+    assert_eq!(r.str4_gt_str_from_bytes, true);
 }

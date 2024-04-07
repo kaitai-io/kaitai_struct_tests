@@ -4,12 +4,12 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::PositionAbs;
+use rust::position_abs::PositionAbs;
 
 #[test]
 fn test_position_abs() {
-    if let Ok(r) = PositionAbs::from_file("src/position_abs.bin") {
-        assert_eq!(r.index_offset, 32);
-        assert_eq!(r.index.entry, "foo");
-    }
+    let r = PositionAbs::from_file("../../src/position_abs.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.index_offset, 32);
+    assert_eq!(r.index.entry, "foo");
 }

@@ -4,12 +4,12 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::PositionToEnd;
+use rust::position_to_end::PositionToEnd;
 
 #[test]
 fn test_position_to_end() {
-    if let Ok(r) = PositionToEnd::from_file("src/position_to_end.bin") {
-        assert_eq!(r.index.foo, 66);
-        assert_eq!(r.index.bar, 4660);
-    }
+    let r = PositionToEnd::from_file("../../src/position_to_end.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.index.foo, 66);
+    assert_eq!(r.index.bar, 4660);
 }

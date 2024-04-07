@@ -4,13 +4,13 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::CastToTop;
+use rust::cast_to_top::CastToTop;
 
 #[test]
 fn test_cast_to_top() {
-    if let Ok(r) = CastToTop::from_file("src/fixed_struct.bin") {
-        assert_eq!(r.code, 80);
-        assert_eq!(r.header.code, 65);
-        assert_eq!(r.header_casted.code, 65);
-    }
+    let r = CastToTop::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.code, 80);
+    assert_eq!(r.header.code, 65);
+    assert_eq!(r.header_casted.code, 65);
 }

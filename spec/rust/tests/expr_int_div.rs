@@ -4,17 +4,16 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ExprIntDiv;
+use rust::expr_int_div::ExprIntDiv;
 
 #[test]
 fn test_expr_int_div() {
-    if let Ok(r) = ExprIntDiv::from_file("src/fixed_struct.bin") {
+    let r = ExprIntDiv::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.int_u, 1262698832);
-        assert_eq!(r.int_s, -52947);
-        assert_eq!(r.div_pos_const, 756);
-        assert_eq!(r.div_neg_const, -757);
-        assert_eq!(r.div_pos_seq, 97130679);
-        assert_eq!(r.div_neg_seq, -4073);
-    }
+    assert_eq!(r.int_u, 1262698832);
+    assert_eq!(r.int_s, -52947);
+    assert_eq!(r.div_pos_const, 756);
+    assert_eq!(r.div_neg_const, -757);
+    assert_eq!(r.div_pos_seq, 97130679);
+    assert_eq!(r.div_neg_seq, -4073);
 }

@@ -4,11 +4,11 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::TypeTernary;
+use rust::type_ternary::TypeTernary;
 
 #[test]
 fn test_type_ternary() {
-    if let Ok(r) = TypeTernary::from_file("src/term_strz.bin") {
-        assert_eq!(r.dif.value, 101);
-    }
+    let r = TypeTernary::from_file("../../src/term_strz.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.dif.value, 101);
 }

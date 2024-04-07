@@ -4,12 +4,12 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::RepeatNStrz;
+use rust::repeat_n_strz::RepeatNStrz;
 
 #[test]
 fn test_repeat_n_strz() {
-    if let Ok(r) = RepeatNStrz::from_file("src/repeat_n_strz.bin") {
-        assert_eq!(r.qty, 2);
-        assert_eq!(r.lines, ["foo", "bar"]);
-    }
+    let r = RepeatNStrz::from_file("../../src/repeat_n_strz.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.qty, 2);
+    assert_eq!(r.lines, ["foo", "bar"]);
 }

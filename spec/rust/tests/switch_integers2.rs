@@ -4,15 +4,15 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::SwitchIntegers2;
+use rust::switch_integers2::SwitchIntegers2;
 
 #[test]
 fn test_switch_integers2() {
-    if let Ok(r) = SwitchIntegers2::from_file("src/switch_integers.bin") {
-        assert_eq!(r.code, 1);
-        assert_eq!(r.len, 7);
-        assert_eq!(r.ham, vec!([0x2, 0x40, 0x40, 0x4, 0x37, 0x13, 0x0]));
-        assert_eq!(r.padding, 0);
-        assert_eq!(r.len_mod_str, "13");
-    }
+    let r = SwitchIntegers2::from_file("../../src/switch_integers.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.code, 1);
+    assert_eq!(r.len, 7);
+    assert_eq!(r.ham, vec!([0x2, 0x40, 0x40, 0x4, 0x37, 0x13, 0x0]));
+    assert_eq!(r.padding, 0);
+    assert_eq!(r.len_mod_str, "13");
 }

@@ -4,13 +4,12 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::BitsShiftByB32Le;
+use rust::bits_shift_by_b32_le::BitsShiftByB32Le;
 
 #[test]
 fn test_bits_shift_by_b32_le() {
-    if let Ok(r) = BitsShiftByB32Le::from_file("src/bits_shift_by_b32_le.bin") {
+    let r = BitsShiftByB32Le::from_file("../../src/bits_shift_by_b32_le.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.a, 4294967295);
-        assert_eq!(r.b, 0);
-    }
+    assert_eq!(r.a, 4294967295);
+    assert_eq!(r.b, 0);
 }

@@ -4,16 +4,16 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::IfValues;
+use rust::if_values::IfValues;
 
 #[test]
 fn test_if_values() {
-    if let Ok(r) = IfValues::from_file("src/fixed_struct.bin") {
-        assert_eq!(r.codes[0].opcode, 80);
-        assert_eq!(r.codes[0].half_opcode, 40);
-        assert_eq!(r.codes[1].opcode, 65);
-        assertNull(r.codes[1].half_opcode);
-        assert_eq!(r.codes[2].opcode, 67);
-        assertNull(r.codes[2].half_opcode);
-    }
+    let r = IfValues::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.codes[0].opcode, 80);
+    assert_eq!(r.codes[0].half_opcode, 40);
+    assert_eq!(r.codes[1].opcode, 65);
+    assertNull(r.codes[1].half_opcode);
+    assert_eq!(r.codes[2].opcode, 67);
+    assertNull(r.codes[2].half_opcode);
 }

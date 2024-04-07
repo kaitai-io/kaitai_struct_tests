@@ -4,13 +4,12 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::DebugSwitchUser;
+use rust::debug_switch_user::DebugSwitchUser;
 
 #[test]
 fn test_debug_switch_user() {
-    if let Ok(r) = DebugSwitchUser::from_file("src/nav_parent_switch.bin") {
+    let r = DebugSwitchUser::from_file("../../src/nav_parent_switch.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.code, 1);
-        assert_eq!(r.data.val, -190);
-    }
+    assert_eq!(r.code, 1);
+    assert_eq!(r.data.val, -190);
 }

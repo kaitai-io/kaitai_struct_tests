@@ -4,12 +4,12 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ParamsPassUsertype;
+use rust::params_pass_usertype::ParamsPassUsertype;
 
 #[test]
 fn test_params_pass_usertype() {
-    if let Ok(r) = ParamsPassUsertype::from_file("src/position_in_seq.bin") {
-        assert_eq!(r.first.foo, 1);
-        assert_eq!(r.one.buf, vec!([0x2]));
-    }
+    let r = ParamsPassUsertype::from_file("../../src/position_in_seq.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.first.foo, 1);
+    assert_eq!(r.one.buf, vec!([0x2]));
 }

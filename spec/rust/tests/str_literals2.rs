@@ -4,14 +4,14 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::StrLiterals2;
+use rust::str_literals2::StrLiterals2;
 
 #[test]
 fn test_str_literals2() {
-    if let Ok(r) = StrLiterals2::from_file("src/fixed_struct.bin") {
-        assert_eq!(r.dollar1, "$foo");
-        assert_eq!(r.dollar2, "${foo}");
-        assert_eq!(r.hash, "#{foo}");
-        assert_eq!(r.at_sign, "@foo");
-    }
+    let r = StrLiterals2::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.dollar1, "$foo");
+    assert_eq!(r.dollar2, "${foo}");
+    assert_eq!(r.hash, "#{foo}");
+    assert_eq!(r.at_sign, "@foo");
 }

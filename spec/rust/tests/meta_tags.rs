@@ -4,10 +4,10 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::MetaTags;
+use rust::meta_tags::MetaTags;
 
 #[test]
 fn test_meta_tags() {
-    if let Ok(r) = MetaTags::from_file("src/fixed_struct.bin") {
-    }
+    let r = MetaTags::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
+
 }

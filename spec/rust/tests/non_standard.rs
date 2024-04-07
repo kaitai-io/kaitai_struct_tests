@@ -4,11 +4,11 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::NonStandard;
+use rust::non_standard::NonStandard;
 
 #[test]
 fn test_non_standard() {
-    if let Ok(r) = NonStandard::from_file("src/fixed_struct.bin") {
-        assert_eq!(r.foo, 80);
-    }
+    let r = NonStandard::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.foo, 80);
 }

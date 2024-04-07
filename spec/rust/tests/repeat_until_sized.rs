@@ -4,17 +4,17 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::RepeatUntilSized;
+use rust::repeat_until_sized::RepeatUntilSized;
 
 #[test]
 fn test_repeat_until_sized() {
-    if let Ok(r) = RepeatUntilSized::from_file("src/repeat_until_process.bin") {
-        assert_eq!(r.records.len(), 3);
-        assert_eq!(r.records[0].marker, 232);
-        assert_eq!(r.records[0].body, 2863311546);
-        assert_eq!(r.records[1].marker, 250);
-        assert_eq!(r.records[1].body, 2863315102);
-        assert_eq!(r.records[2].marker, 170);
-        assert_eq!(r.records[2].body, 1431655765);
-    }
+    let r = RepeatUntilSized::from_file("../../src/repeat_until_process.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.records.len(), 3);
+    assert_eq!(r.records[0].marker, 232);
+    assert_eq!(r.records[0].body, 2863311546);
+    assert_eq!(r.records[1].marker, 250);
+    assert_eq!(r.records[1].body, 2863315102);
+    assert_eq!(r.records[2].marker, 170);
+    assert_eq!(r.records[2].body, 1431655765);
 }

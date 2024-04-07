@@ -4,13 +4,13 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::TermStrz;
+use rust::term_strz::TermStrz;
 
 #[test]
 fn test_term_strz() {
-    if let Ok(r) = TermStrz::from_file("src/term_strz.bin") {
-        assert_eq!(r.s1, "foo");
-        assert_eq!(r.s2, "bar");
-        assert_eq!(r.s3, "|baz@");
-    }
+    let r = TermStrz::from_file("../../src/term_strz.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.s1, "foo");
+    assert_eq!(r.s2, "bar");
+    assert_eq!(r.s3, "|baz@");
 }

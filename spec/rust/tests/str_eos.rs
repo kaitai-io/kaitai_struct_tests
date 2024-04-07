@@ -4,11 +4,11 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::StrEos;
+use rust::str_eos::StrEos;
 
 #[test]
 fn test_str_eos() {
-    if let Ok(r) = StrEos::from_file("src/term_strz.bin") {
-        assert_eq!(r.str, "foo|bar|baz@");
-    }
+    let r = StrEos::from_file("../../src/term_strz.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.str, "foo|bar|baz@");
 }

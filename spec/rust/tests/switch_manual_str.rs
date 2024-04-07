@@ -4,19 +4,19 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::SwitchManualStr;
+use rust::switch_manual_str::SwitchManualStr;
 
 #[test]
 fn test_switch_manual_str() {
-    if let Ok(r) = SwitchManualStr::from_file("src/switch_opcodes.bin") {
-        assert_eq!(r.opcodes.len(), 4);
-        assert_eq!(r.opcodes[0].code, "S");
-        assert_eq!(r.opcodes[0].body.value, "foobar");
-        assert_eq!(r.opcodes[1].code, "I");
-        assert_eq!(r.opcodes[1].body.value, 66);
-        assert_eq!(r.opcodes[2].code, "I");
-        assert_eq!(r.opcodes[2].body.value, 55);
-        assert_eq!(r.opcodes[3].code, "S");
-        assert_eq!(r.opcodes[3].body.value, "");
-    }
+    let r = SwitchManualStr::from_file("../../src/switch_opcodes.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.opcodes.len(), 4);
+    assert_eq!(r.opcodes[0].code, "S");
+    assert_eq!(r.opcodes[0].body.value, "foobar");
+    assert_eq!(r.opcodes[1].code, "I");
+    assert_eq!(r.opcodes[1].body.value, 66);
+    assert_eq!(r.opcodes[2].code, "I");
+    assert_eq!(r.opcodes[2].body.value, 55);
+    assert_eq!(r.opcodes[3].code, "S");
+    assert_eq!(r.opcodes[3].body.value, "");
 }

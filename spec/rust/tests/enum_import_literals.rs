@@ -4,14 +4,13 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::EnumImportLiterals;
+use rust::enum_import_literals::EnumImportLiterals;
 
 #[test]
 fn test_enum_import_literals() {
-    if let Ok(r) = EnumImportLiterals::from_file("src/enum_0.bin") {
+    let r = EnumImportLiterals::from_file("../../src/enum_0.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.pet_1_to_i, 7);
-        assert_eq!(r.pet_1_eq, true);
-        assert_eq!(r.pet_2, EnumDeep__Container1__Container2__Animal::HARE);
-    }
+    assert_eq!(r.pet_1_to_i, 7);
+    assert_eq!(r.pet_1_eq, true);
+    assert_eq!(r.pet_2, EnumDeep__Container1__Container2__Animal::HARE);
 }

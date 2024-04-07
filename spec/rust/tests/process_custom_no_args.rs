@@ -4,12 +4,11 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ProcessCustomNoArgs;
+use rust::process_custom_no_args::ProcessCustomNoArgs;
 
 #[test]
 fn test_process_custom_no_args() {
-    if let Ok(r) = ProcessCustomNoArgs::from_file("src/process_rotate.bin") {
+    let r = ProcessCustomNoArgs::from_file("../../src/process_rotate.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.buf, vec!([0x5f, 0x9, 0xac, 0x8d, 0x8d, 0xed, 0x5f]));
-    }
+    assert_eq!(r.buf, vec!([0x5f, 0x9, 0xac, 0x8d, 0x8d, 0xed, 0x5f]));
 }

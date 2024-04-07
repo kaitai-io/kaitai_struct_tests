@@ -4,20 +4,20 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::NavParent3;
+use rust::nav_parent3::NavParent3;
 
 #[test]
 fn test_nav_parent3() {
-    if let Ok(r) = NavParent3::from_file("src/nav_parent2.bin") {
-        assert_eq!(r.ofs_tags, 8);
-        assert_eq!(r.num_tags, 2);
-        assert_eq!(r.tags[0].name, "RAHC");
-        assert_eq!(r.tags[0].ofs, 32);
-        assert_eq!(r.tags[0].num_items, 3);
-        assert_eq!(r.tags[0].tag_content.content, "foo");
-        assert_eq!(r.tags[1].name, "RAHC");
-        assert_eq!(r.tags[1].ofs, 35);
-        assert_eq!(r.tags[1].num_items, 6);
-        assert_eq!(r.tags[1].tag_content.content, "barbaz");
-    }
+    let r = NavParent3::from_file("../../src/nav_parent2.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.ofs_tags, 8);
+    assert_eq!(r.num_tags, 2);
+    assert_eq!(r.tags[0].name, "RAHC");
+    assert_eq!(r.tags[0].ofs, 32);
+    assert_eq!(r.tags[0].num_items, 3);
+    assert_eq!(r.tags[0].tag_content.content, "foo");
+    assert_eq!(r.tags[1].name, "RAHC");
+    assert_eq!(r.tags[1].ofs, 35);
+    assert_eq!(r.tags[1].num_items, 6);
+    assert_eq!(r.tags[1].tag_content.content, "barbaz");
 }

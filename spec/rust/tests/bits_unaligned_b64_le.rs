@@ -4,14 +4,13 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::BitsUnalignedB64Le;
+use rust::bits_unaligned_b64_le::BitsUnalignedB64Le;
 
 #[test]
 fn test_bits_unaligned_b64_le() {
-    if let Ok(r) = BitsUnalignedB64Le::from_file("src/process_xor_4.bin") {
+    let r = BitsUnalignedB64Le::from_file("../../src/process_xor_4.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.a, false);
-        assert_eq!(r.b, 1902324737369038326);
-        assert_eq!(r.c, 71);
-    }
+    assert_eq!(r.a, false);
+    assert_eq!(r.b, 1902324737369038326);
+    assert_eq!(r.c, 71);
 }

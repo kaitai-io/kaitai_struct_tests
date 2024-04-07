@@ -20,20 +20,17 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     out.puts
 
     out.puts("use kaitai_struct::KaitaiStruct;")
-    out.puts(s"use rust::$className;")
+    out.puts(s"use rust::${spec.id}::$className;")
     out.puts
 
     out.puts("#[test]")
     out.puts(s"fn test_${spec.id}() {")
     out.inc
 
-    out.puts("if let Ok(r) = " + className + "::from_file(\"src/" + spec.data + "\") {")
-    out.inc
+    out.puts(s"let r = $className::from_file(\"../../src/${spec.data}\").expect(\"file for parsing is not found\");")
   }
 
   override def footer(): Unit = {
-    out.dec
-    out.puts("}")
     out.dec
     out.puts("}")
   }

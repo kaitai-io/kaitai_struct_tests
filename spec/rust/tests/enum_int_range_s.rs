@@ -4,14 +4,13 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::EnumIntRangeS;
+use rust::enum_int_range_s::EnumIntRangeS;
 
 #[test]
 fn test_enum_int_range_s() {
-    if let Ok(r) = EnumIntRangeS::from_file("src/enum_int_range_s.bin") {
+    let r = EnumIntRangeS::from_file("../../src/enum_int_range_s.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.f1, EnumIntRangeS__Constants::INT_MIN);
-        assert_eq!(r.f2, EnumIntRangeS__Constants::ZERO);
-        assert_eq!(r.f3, EnumIntRangeS__Constants::INT_MAX);
-    }
+    assert_eq!(r.f1, EnumIntRangeS__Constants::INT_MIN);
+    assert_eq!(r.f2, EnumIntRangeS__Constants::ZERO);
+    assert_eq!(r.f3, EnumIntRangeS__Constants::INT_MAX);
 }

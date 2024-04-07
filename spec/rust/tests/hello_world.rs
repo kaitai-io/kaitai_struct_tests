@@ -4,11 +4,11 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::HelloWorld;
+use rust::hello_world::HelloWorld;
 
 #[test]
 fn test_hello_world() {
-    if let Ok(r) = HelloWorld::from_file("src/fixed_struct.bin") {
-        assert_eq!(r.one, 80);
-    }
+    let r = HelloWorld::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.one, 80);
 }

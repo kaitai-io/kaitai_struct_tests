@@ -4,14 +4,13 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::SwitchElseOnly;
+use rust::switch_else_only::SwitchElseOnly;
 
 #[test]
 fn test_switch_else_only() {
-    if let Ok(r) = SwitchElseOnly::from_file("src/switch_opcodes.bin") {
+    let r = SwitchElseOnly::from_file("../../src/switch_opcodes.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.opcode, 83);
-        assert_eq!(r.prim_byte, 102);
-        assert_eq!(r.ut.value, vec!([0x72, 0x0, 0x49, 0x42]));
-    }
+    assert_eq!(r.opcode, 83);
+    assert_eq!(r.prim_byte, 102);
+    assert_eq!(r.ut.value, vec!([0x72, 0x0, 0x49, 0x42]));
 }

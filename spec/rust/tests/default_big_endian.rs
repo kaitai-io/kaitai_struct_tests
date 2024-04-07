@@ -4,11 +4,11 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::DefaultBigEndian;
+use rust::default_big_endian::DefaultBigEndian;
 
 #[test]
 fn test_default_big_endian() {
-    if let Ok(r) = DefaultBigEndian::from_file("src/enum_0.bin") {
-        assert_eq!(r.one, 117440512);
-    }
+    let r = DefaultBigEndian::from_file("../../src/enum_0.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.one, 117440512);
 }

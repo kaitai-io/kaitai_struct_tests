@@ -4,13 +4,12 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ProcessRepeatBytes;
+use rust::process_repeat_bytes::ProcessRepeatBytes;
 
 #[test]
 fn test_process_repeat_bytes() {
-    if let Ok(r) = ProcessRepeatBytes::from_file("src/process_xor_4.bin") {
+    let r = ProcessRepeatBytes::from_file("../../src/process_xor_4.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.bufs[0], vec!([0x72, 0x25, 0x3d, 0x8a, 0x14]));
-        assert_eq!(r.bufs[1], vec!([0x4a, 0x52, 0xaa, 0x10, 0x44]));
-    }
+    assert_eq!(r.bufs[0], vec!([0x72, 0x25, 0x3d, 0x8a, 0x14]));
+    assert_eq!(r.bufs[1], vec!([0x4a, 0x52, 0xaa, 0x10, 0x44]));
 }

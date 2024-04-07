@@ -4,14 +4,13 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::ParamsPassArrayStruct;
+use rust::params_pass_array_struct::ParamsPassArrayStruct;
 
 #[test]
 fn test_params_pass_array_struct() {
-    if let Ok(r) = ParamsPassArrayStruct::from_file("src/position_to_end.bin") {
+    let r = ParamsPassArrayStruct::from_file("../../src/position_to_end.bin").expect("file for parsing is not found");
 
-        assert_eq!(r.pass_structs.structs.len(), 2);
-        assert_eq!(r.pass_structs.structs[0].f, 1);
-        assert_eq!(r.pass_structs.structs[1].b, 2);
-    }
+    assert_eq!(r.pass_structs.structs.len(), 2);
+    assert_eq!(r.pass_structs.structs[0].f, 1);
+    assert_eq!(r.pass_structs.structs[1].b, 2);
 }

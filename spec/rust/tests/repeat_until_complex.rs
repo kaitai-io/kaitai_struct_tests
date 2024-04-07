@@ -4,25 +4,25 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::RepeatUntilComplex;
+use rust::repeat_until_complex::RepeatUntilComplex;
 
 #[test]
 fn test_repeat_until_complex() {
-    if let Ok(r) = RepeatUntilComplex::from_file("src/repeat_until_complex.bin") {
-        assert_eq!(r.first.len(), 3);
-        assert_eq!(r.first[0].count, 4);
-        assert_eq!(r.first[0].values, [(0 + 1), 2, 3, 4]);
-        assert_eq!(r.first[1].count, 2);
-        assert_eq!(r.first[1].values, [(0 + 1), 2]);
-        assert_eq!(r.first[2].count, 0);
-        assert_eq!(r.second.len(), 4);
-        assert_eq!(r.second[0].count, 6);
-        assert_eq!(r.second[0].values, [(0 + 1), 2, 3, 4, 5, 6]);
-        assert_eq!(r.second[1].count, 3);
-        assert_eq!(r.second[1].values, [(0 + 1), 2, 3]);
-        assert_eq!(r.second[2].count, 4);
-        assert_eq!(r.second[2].values, [(0 + 1), 2, 3, 4]);
-        assert_eq!(r.second[3].count, 0);
-        assert_eq!(r.third, [(0 + 102), 111, 111, 98, 97, 114, 0]);
-    }
+    let r = RepeatUntilComplex::from_file("../../src/repeat_until_complex.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.first.len(), 3);
+    assert_eq!(r.first[0].count, 4);
+    assert_eq!(r.first[0].values, [0 + 1, 2, 3, 4]);
+    assert_eq!(r.first[1].count, 2);
+    assert_eq!(r.first[1].values, [0 + 1, 2]);
+    assert_eq!(r.first[2].count, 0);
+    assert_eq!(r.second.len(), 4);
+    assert_eq!(r.second[0].count, 6);
+    assert_eq!(r.second[0].values, [0 + 1, 2, 3, 4, 5, 6]);
+    assert_eq!(r.second[1].count, 3);
+    assert_eq!(r.second[1].values, [0 + 1, 2, 3]);
+    assert_eq!(r.second[2].count, 4);
+    assert_eq!(r.second[2].values, [0 + 1, 2, 3, 4]);
+    assert_eq!(r.second[3].count, 0);
+    assert_eq!(r.third, [0 + 102, 111, 111, 98, 97, 114, 0]);
 }

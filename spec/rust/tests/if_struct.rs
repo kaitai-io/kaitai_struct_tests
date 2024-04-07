@@ -4,17 +4,17 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::IfStruct;
+use rust::if_struct::IfStruct;
 
 #[test]
 fn test_if_struct() {
-    if let Ok(r) = IfStruct::from_file("src/if_struct.bin") {
-        assert_eq!(r.op1.opcode, 83);
-        assert_eq!(r.op1.arg_str.str, "foo");
-        assert_eq!(r.op2.opcode, 84);
-        assert_eq!(r.op2.arg_tuple.num1, 66);
-        assert_eq!(r.op2.arg_tuple.num2, 67);
-        assert_eq!(r.op3.opcode, 83);
-        assert_eq!(r.op3.arg_str.str, "bar");
-    }
+    let r = IfStruct::from_file("../../src/if_struct.bin").expect("file for parsing is not found");
+
+    assert_eq!(r.op1.opcode, 83);
+    assert_eq!(r.op1.arg_str.str, "foo");
+    assert_eq!(r.op2.opcode, 84);
+    assert_eq!(r.op2.arg_tuple.num1, 66);
+    assert_eq!(r.op2.arg_tuple.num2, 67);
+    assert_eq!(r.op3.opcode, 83);
+    assert_eq!(r.op3.arg_str.str, "bar");
 }

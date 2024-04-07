@@ -4,10 +4,10 @@ extern crate kaitai_struct;
 extern crate rust;
 
 use kaitai_struct::KaitaiStruct;
-use rust::FixedContents;
+use rust::fixed_contents::FixedContents;
 
 #[test]
 fn test_fixed_contents() {
-    if let Ok(r) = FixedContents::from_file("src/fixed_struct.bin") {
-    }
+    let r = FixedContents::from_file("../../src/fixed_struct.bin").expect("file for parsing is not found");
+
 }
