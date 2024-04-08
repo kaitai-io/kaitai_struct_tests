@@ -15,10 +15,10 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   override def fileName(name: String): String = s"tests/$name.rs"
 
   override def header(): Unit = {
-    out.puts("use kaitai_struct::KaitaiStruct;")
-    out.puts(s"use kaitai_test_suite::${spec.id}::$className;")
-    out.puts
+    importList.add("use kaitai_struct::KaitaiStruct;")
+    importList.add(s"use kaitai_test_suite::${spec.id}::$className;")
 
+    out.puts
     out.puts("#[test]")
     out.puts(s"fn test_${spec.id}() {")
     out.inc
@@ -50,8 +50,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   override def indentStr: String = "    "
 
   override def results: String = {
-    "// " + AUTOGEN_COMMENT + "\n\n" +
-      out.result
+    "// " + AUTOGEN_COMMENT + "\n\n" + super.results
   }
 
   def translateAct(x: Ast.expr) =
