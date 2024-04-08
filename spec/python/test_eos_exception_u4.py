@@ -1,9 +1,8 @@
-import unittest
+from base_test import BaseTest
 from eos_exception_u4 import EosExceptionU4
-import kaitaistruct
 
-class TestEosExceptionU4(unittest.TestCase):
+class TestEosExceptionU4(BaseTest):
     def test_eos_exception_u4(self):
-        with self.assertRaisesRegexp(EOFError, "^requested \d+ bytes, but only \d+ bytes available$"):
+        with self.assertRaisesRegex(EOFError, "^requested \d+ bytes, but only \d+ bytes available$"):
             with EosExceptionU4.from_file('src/term_strz.bin') as r:
                 pass
