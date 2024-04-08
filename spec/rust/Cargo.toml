@@ -1,8 +1,9 @@
 [package]
-name = "rust"
+name = "kaitai_test_suite"
 version = "0.1.0"
 authors = ["Connor Wood <connorwood71@gmail.com>"]
 build = "build.rs"
+edition = "2021"
 
 [dependencies]
 kaitai_struct = { git = "https://github.com/CWood1/kaitai_struct_rust_runtime" }

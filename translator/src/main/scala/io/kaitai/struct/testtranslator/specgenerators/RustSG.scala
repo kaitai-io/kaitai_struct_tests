@@ -15,12 +15,8 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   override def fileName(name: String): String = s"tests/$name.rs"
 
   override def header(): Unit = {
-    out.puts("extern crate kaitai_struct;")
-    out.puts(s"extern crate rust;")
-    out.puts
-
     out.puts("use kaitai_struct::KaitaiStruct;")
-    out.puts(s"use rust::${spec.id}::$className;")
+    out.puts(s"use kaitai_test_suite::${spec.id}::$className;")
     out.puts
 
     out.puts("#[test]")
