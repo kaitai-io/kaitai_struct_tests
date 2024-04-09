@@ -4,12 +4,11 @@ import _root_.io.kaitai.struct.ClassTypeProvider
 import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.JuliaCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestEquals, TestSpec}
 import _root_.io.kaitai.struct.translators.JuliaTranslator
 
 class JuliaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   importList.add("using Test")
-  importList.add("using TestReports")
 
   val translator = new JuliaTranslator(provider, importList)
   val className = JuliaCompiler.type2class(spec.id)
@@ -19,19 +18,20 @@ class JuliaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator
   override def indentStr: String = "    "
 
   override def header(): Unit = {
-    importList.add(s"include(${'"'}../../compiled/julia/${spec.id}.jl${'"'})")
+    importList.add(s"import ${className}Module")
     out.puts
     out.puts(s"@testset ${'"'}$className test${'"'} begin")
     out.inc
   }
 
   override def runParse(): Unit = {
-    out.puts(s"r = from_file(${'"'}../../src/${spec.data}${'"'})")
+    out.puts(s"r = ${className}Module.from_file(${'"'}src/${spec.data}${'"'})")
     out.puts
   }
 
   override def runParseExpectError(exception: KSError): Unit = {
-    out.puts(s"@test_throws ${JuliaCompiler.ksErrorName(exception)} from_file(${'"'}../../src/${spec.data}${'"'})")
+    importList.add("using KaitaiStruct")
+    out.puts(s"@test_throws ${JuliaCompiler.ksErrorName(exception)} ${className}Module.from_file(${'"'}src/${spec.data}${'"'})")
   }
 
   override def footer(): Unit = {
@@ -39,13 +39,13 @@ class JuliaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator
     out.puts("end")
   }
 
-  override def simpleAssert(check: TestAssert): Unit = {
+  override def simpleEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translateExp(check.expected)
     out.puts(s"@test $actStr == $expStr")
   }
 
-  override def floatAssert(check: TestAssert): Unit = {
+  override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     out.puts(s"@test $actStr ≈ $expStr atol=10^(-6)")
@@ -56,8 +56,13 @@ class JuliaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator
     out.puts(s"@test $actStr === nothing")
   }
 
-  override def trueArrayAssert(check: TestAssert, elType: DataType, elts: Seq[Ast.expr]): Unit =
-    simpleAssert(check)
+  override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit =
+    simpleEquality(check)
+
+  override def testException(actual: Ast.expr, exception: KSError): Unit = {
+    importList.add("using KaitaiStruct")
+    out.puts(s"@test_throws ${JuliaCompiler.ksErrorName(exception)} ${translateAct(actual)}")
+  }
 
   override def noAsserts() =
     out.puts("")
