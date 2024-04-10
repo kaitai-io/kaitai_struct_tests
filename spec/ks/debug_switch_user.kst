@@ -1,5 +1,6 @@
 id: debug_switch_user
 data: nav_parent_switch.bin
+debug: true
 asserts:
   - actual: code
     expected: 1

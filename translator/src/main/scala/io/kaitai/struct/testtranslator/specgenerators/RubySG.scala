@@ -27,6 +27,9 @@ class RubySG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
   override def runParse(): Unit = {
     out.puts(s"r = $className.from_file('src/${spec.data}')")
+    if (spec.debug) {
+      out.puts("r._read")
+    }
   }
 
   override def runParseExpectError(exception: KSError): Unit = {
