@@ -1,0 +1,12 @@
+id: debug_array_user
+data: fixed_struct.bin
+debug: true
+asserts:
+  - actual: one_cat.meow
+    expected: 0x50
+  - actual: array_of_cats[0].meow
+    expected: 0x41
+  - actual: array_of_cats[1].meow
+    expected: 0x43
+  - actual: array_of_cats[2].meow
+    expected: 0x4b
