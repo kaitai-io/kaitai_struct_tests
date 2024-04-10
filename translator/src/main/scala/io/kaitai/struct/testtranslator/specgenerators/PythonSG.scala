@@ -34,6 +34,9 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
   override def runParse(): Unit = {
     out.puts(s"with $className.from_file('src/${spec.data}') as r:")
     out.inc
+    if (spec.debug) {
+      out.puts("r._read()")
+    }
   }
 
   override def runParseExpectError(exception: KSError): Unit = {

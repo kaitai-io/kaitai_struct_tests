@@ -25,7 +25,7 @@ class TestTranslator(options: CLIOptions) {
     Console.println(s"Translating: $testName")
 
     val testSpec = loadTestSpec(testName)
-    val classSpecs = loadClassSpecs(testName)
+    val classSpecs = loadClassSpecs(testName, testSpec.debug)
     val initObj = classSpecs(INIT_OBJ_TYPE)
     val provider = new ClassTypeProvider(classSpecs, initObj)
 
@@ -57,7 +57,7 @@ class TestTranslator(options: CLIOptions) {
   def loadTestSpec(testName: String): TestSpec =
     TestSpec.fromFile(s"$specKsDir/$testName.kst")
 
-  def loadClassSpecs(testName: String): ClassSpecs = {
+  def loadClassSpecs(testName: String, debug: Boolean): ClassSpecs = {
     val cliConfig = CLIConfig(importPaths = importDirs)
     val (origSpecsOpt, errors) = JavaKSYParser.localFileToSpecs(s"$formatsDir/$testName.ksy", cliConfig)
 
@@ -82,7 +82,7 @@ class TestTranslator(options: CLIOptions) {
         endian = None,
         bitEndian = None,
         encoding = None,
-        forceDebug = false,
+        forceDebug = debug,
         opaqueTypes = None,
         zeroCopySubstream = None,
         imports = List()
