@@ -31,6 +31,9 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
   override def runParse(): Unit = {
     out.puts(s"let r: OptRc<$className> = $className::read_into(&_io, None, None)?;")
+    if (spec.debug) {
+      out.puts("r.read().expect(\"cannot read test file\");")
+    }
   }
 
   override def runParseExpectError(expException: ExpectedException): Unit = {
