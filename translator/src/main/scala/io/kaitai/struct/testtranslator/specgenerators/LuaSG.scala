@@ -35,13 +35,7 @@ class LuaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
 
   override def runParseExpectError(expException: ExpectedException): Unit = {
     val exception = expException.exception
-    val msg = exception match {
-      case _: ValidationNotEqualError => "not equal, expected .*, but got .*"
-      case UndecidedEndiannessError => "unable to decide endianness"
-      case EndOfStreamError => "requested %d+ bytes, but only %d+ bytes available"
-      case _ => LuaCompiler.ksErrorName(exception)
-    }
-    out.puts(s"""luaunit.assertErrorMsgMatches(".+: $msg", $className.from_file, $className, "src/${spec.data}")""")
+    out.puts(s"""luaunit.assertErrorMsgMatches(".+: ${toPattern(exception)}", $className.from_file, $className, "src/${spec.data}")""")
   }
 
   override def footer(): Unit = {
@@ -69,11 +63,28 @@ class LuaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
   override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit =
     simpleEquality(check)
 
+  override def testException(actual: Ast.expr, exception: KSError): Unit = {
+    out.puts(s"""luaunit.assertErrorMsgMatches(".+: ${toPattern(exception)}", function()""")
+    out.inc
+    out.puts(s"local _ = ${translateAct(actual)}")
+    out.dec
+    out.puts("end)")
+  }
+
   def translateAct(x: Ast.expr) =
     translator.translate(x).replace("self." + Main.INIT_OBJ_NAME, "r")
 
   def translateExp(x: Ast.expr) =
     translator.translate(x).replace("self._root", className)
+
+  def toPattern(exception: KSError): String = {
+    exception match {
+      case _: ValidationNotEqualError => "not equal, expected .*, but got .*"
+      case UndecidedEndiannessError => "unable to decide endianness"
+      case EndOfStreamError => "requested %d+ bytes, but only %d+ bytes available"
+      case _ => LuaCompiler.ksErrorName(exception)
+    }
+  }
 
   override def results: String =
     "-- " + AUTOGEN_COMMENT + "\n\n" + super.results
