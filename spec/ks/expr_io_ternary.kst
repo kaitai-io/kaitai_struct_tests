@@ -1,5 +1,5 @@
 id: expr_io_ternary
-data: term_strz.bin
+data: if_struct.bin
 asserts:
   - actual: one_or_two_io_size1
     expected: 8

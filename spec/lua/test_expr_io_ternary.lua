@@ -7,7 +7,7 @@ require("expr_io_ternary")
 TestExprIoTernary = {}
 
 function TestExprIoTernary:test_expr_io_ternary()
-    local r = ExprIoTernary:from_file("src/term_strz.bin")
+    local r = ExprIoTernary:from_file("src/if_struct.bin")
 
     luaunit.assertEquals(r.one_or_two_io_size1, 8)
     luaunit.assertEquals(r.one_or_two_io_size2, 8)
