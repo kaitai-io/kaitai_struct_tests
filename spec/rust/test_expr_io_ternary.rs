@@ -8,7 +8,7 @@ use rust::ExprIoTernary;
 
 #[test]
 fn test_expr_io_ternary() {
-    if let Ok(r) = ExprIoTernary::from_file("src/term_strz.bin") {
+    if let Ok(r) = ExprIoTernary::from_file("src/if_struct.bin") {
 
         assert_eq!(r.one_or_two_io_size1, 8);
         assert_eq!(r.one_or_two_io_size2, 8);

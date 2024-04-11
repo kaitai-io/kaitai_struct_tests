@@ -4,7 +4,7 @@ import os, streams, options, sequtils
 import ../../compiled/nim/expr_io_ternary
 import auxiliary/test_utils
 
-let r = ExprIoTernary.fromFile("../../src/term_strz.bin")
+let r = ExprIoTernary.fromFile("../../src/if_struct.bin")
 
 assert r.oneOrTwoIoSize1 == 8
 assert r.oneOrTwoIoSize2 == 8

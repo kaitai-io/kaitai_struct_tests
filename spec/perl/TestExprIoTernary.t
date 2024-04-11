@@ -9,7 +9,7 @@ use Test::More;
 use ExprIoTernary;
 
 sub test_expr_io_ternary: Test(3) {
-    my $r = ExprIoTernary->from_file('src/term_strz.bin');
+    my $r = ExprIoTernary->from_file('src/if_struct.bin');
 
     is($r->one_or_two_io_size1(), 8, 'Equals');
     is($r->one_or_two_io_size2(), 8, 'Equals');

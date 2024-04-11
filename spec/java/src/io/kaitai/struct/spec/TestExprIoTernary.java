@@ -9,7 +9,7 @@ public class TestExprIoTernary extends CommonSpec {
 
     @Test
     public void testExprIoTernary() throws Exception {
-        ExprIoTernary r = ExprIoTernary.fromFile(SRC_DIR + "term_strz.bin");
+        ExprIoTernary r = ExprIoTernary.fromFile(SRC_DIR + "if_struct.bin");
 
         assertIntEquals(r.oneOrTwoIoSize1(), 8);
         assertIntEquals(r.oneOrTwoIoSize2(), 8);
