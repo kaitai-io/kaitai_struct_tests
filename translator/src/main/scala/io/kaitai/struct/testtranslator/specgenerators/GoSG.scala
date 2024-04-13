@@ -12,27 +12,17 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
     * Special wrapper around StringLanguageOutputWriter that catches all attempts
     * to access "this.INIT_OBJ_NAME" and replaces it with "r."
     */
-  class GoOutputWriter(out: StringLanguageOutputWriter) extends StringLanguageOutputWriter(indentStr) {
-    override def inc: Unit = out.inc
-    override def dec: Unit = out.dec
-    override def indentNow: String = out.indentNow
-
-    override def add(other: StringLanguageOutputWriter): Unit = out.add(other)
+  class GoOutputWriter(indentStr: String) extends StringLanguageOutputWriter(indentStr) {
     override def puts(s: String): Unit = {
       val mangled = s.replace(REPLACER, "r.").replaceAll("return err$", "t.Fatal(err)")
-      out.puts(mangled)
+      super.puts(mangled)
     }
-    override def puts = out.puts
-    override def close = out.close
-    override def putsLines(prefix: String, lines: String, hanging: String): Unit =
-      out.putsLines(prefix, lines, hanging)
-
-    override def result: String = out.result
   }
 
+  override val out = new GoOutputWriter(indentStr)
   val compiler = new GoCompiler(provider, RuntimeConfig())
   val className = GoCompiler.types2class(List(spec.id))
-  val translator = new GoTranslator(new GoOutputWriter(out), provider, importList)
+  val translator = new GoTranslator(out, provider, importList)
 
   override def fileName(name: String): String = s"${name}_test.go"
 
