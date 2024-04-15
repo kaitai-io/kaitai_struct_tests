@@ -4,11 +4,11 @@ asserts:
   - actual: hws.size
     expected: 2
   - actual: hws[0].one
-    expected: 0xEC
+    expected: 0xec
   - actual: hws[1].one
-    expected: 0xBB
+    expected: 0xbb
 
   - actual: two.hw0_one
-    expected: 0xEC
+    expected: 0xec
   - actual: two.hw1_one
-    expected: 0xBB
+    expected: 0xbb
