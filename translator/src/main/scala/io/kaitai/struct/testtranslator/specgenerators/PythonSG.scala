@@ -1,6 +1,6 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import _root_.io.kaitai.struct.ClassTypeProvider
+import io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
 import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.PythonCompiler
@@ -10,7 +10,8 @@ import _root_.io.kaitai.struct.translators.PythonTranslator
 class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   importList.add("import unittest")
 
-  val translator = new PythonTranslator(provider, importList)
+  val config = RuntimeConfig()
+  val translator = new PythonTranslator(provider, importList, config)
   val className = PythonCompiler.type2class(spec.id)
 
   importList.add(s"from ${spec.id} import $className")
