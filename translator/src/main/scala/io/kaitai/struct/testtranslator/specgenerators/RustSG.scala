@@ -21,20 +21,15 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
   override def fileName(name: String): String = s"test_$name.rs"
 
   override def header(): Unit = {
-    val use_mod = if (options.unitTest)
-                    s"use crate::"
-                  else
-                    s"use "
-
     importList.add("#![allow(unused_variables)]")
     importList.add("#![allow(unused_assignments)]")
     importList.add("#![allow(overflowing_literals)]")
     importList.add("use std::fs;")
     importList.add("extern crate kaitai;")
     importList.add("use self::kaitai::*;")
-    importList.add(s"${use_mod}rust::formats::${spec.id}::*;")
+    importList.add(s"use rust::formats::${spec.id}::*;")
 
-    spec.extraImports.foreach{ name => importList.add(s"${use_mod}rust::formats::$name::*;") }
+    spec.extraImports.foreach{ name => importList.add(s"use rust::formats::$name::*;") }
 
     val code =
       s"""|#[test]
