@@ -8,10 +8,9 @@ import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, Tes
 import _root_.io.kaitai.struct.translators.RustTranslator
 import _root_.io.kaitai.struct.datatype.DataType.{ArrayType, BooleanType, BytesType, EnumType, IntType, SwitchType, UserType}
 import _root_.io.kaitai.struct.format.ClassSpecs
-import io.kaitai.struct.testtranslator.Main.CLIOptions
 import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 
-class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs, options: CLIOptions) extends BaseGenerator(spec) {
+class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs) extends BaseGenerator(spec) {
   val className: String = RustCompiler.type2class(spec.id)
   val translator = new RustTranslator(provider, RuntimeConfig())
   val compiler = new RustCompiler(provider, RuntimeConfig())
