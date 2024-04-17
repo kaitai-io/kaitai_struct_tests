@@ -6,7 +6,7 @@ import io.kaitai.struct.datatype.DataType.UserTypeInstream
 import io.kaitai.struct.format._
 import io.kaitai.struct.formats.JavaKSYParser
 import io.kaitai.struct.problems.ProblemSeverity
-import io.kaitai.struct.testtranslator.Main.{CLIOptions, defaultOutDir}
+import io.kaitai.struct.testtranslator.Main.CLIOptions
 import io.kaitai.struct.testtranslator.specgenerators._
 import io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig}
 
@@ -17,11 +17,11 @@ class TestTranslator(options: CLIOptions) {
 
   def run(): Unit = {
     options.srcFiles.foreach(testName =>
-      doTestSpec(testName, options.targets, options.outDir, options.outDir != defaultOutDir)
+      doTestSpec(testName, options.targets, options.outDir)
     )
   }
 
-  def doTestSpec(testName: String, langs: Seq[String], outDir: String, exactOutDir: Boolean): Unit = {
+  def doTestSpec(testName: String, langs: Seq[String], outDir: String): Unit = {
     Console.println(s"Translating: $testName")
 
     val testSpec = loadTestSpec(testName)
@@ -32,7 +32,7 @@ class TestTranslator(options: CLIOptions) {
     langs.foreach(langName => {
       val sg = getSG(langName, testSpec, provider, classSpecs)
       try {
-        val outFile = if(exactOutDir) { s"$outDir/${sg.fileName(testName)}" } else { s"$outDir/$langName/${sg.fileName(testName)}" }
+        val outFile = s"$outDir/$langName/${sg.fileName(testName)}"
         Console.println(s"... generating $outFile")
         sg.run()
         writeFile(outFile, sg.results)
