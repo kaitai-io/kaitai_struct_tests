@@ -17,7 +17,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
   var do_panic = true
   var do_not_deref = false
 
-  override def fileName(name: String): String = s"test_$name.rs"
+  override def fileName(name: String): String = s"tests/test_$name.rs"
 
   override def header(): Unit = {
     importList.add("#![allow(unused_variables)]")
