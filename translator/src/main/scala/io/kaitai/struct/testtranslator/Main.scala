@@ -83,8 +83,8 @@ object Main extends App {
       c.copy(srcFiles = list.toSeq)
     } text("process all KST files available")
 
-    opt[String]('f', "force") action { (x, c) =>
-      c.copy(outDir = x)
+    opt[Unit]('f', "force") action { (x, c) =>
+      c.copy(outDir = specDir)
     } text(s"force overwrite specs in production spec dirs (default: generate in $defaultOutDir)")
 
     checkConfig(
