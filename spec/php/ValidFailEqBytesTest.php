@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class ValidFailEqBytesTest extends TestCase {
-    /** @expectedException \Kaitai\Struct\Error\ValidationNotEqualError */
     public function testValidFailEqBytes() {
+        $this->expectException(\Kaitai\Struct\Error\ValidationNotEqualError::class);
         $r = ValidFailEqBytes::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
     }
 }

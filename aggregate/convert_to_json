@@ -66,7 +66,7 @@ result = case lang
 when 'cpp_stl'
   add_kst_adoption(
     add_fails(
-      BoostTestParser.new("#{infile}/results.xml").to_h,
+      BoostTestParser.new("#{infile}/results-*.xml", true).to_h,
       BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h,
       ValgrindXMLParser.new("#{infile}/valgrind.xml").to_h
     ),

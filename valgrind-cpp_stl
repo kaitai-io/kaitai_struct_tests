@@ -12,4 +12,36 @@ CPP_TEST_OUT_DIR="$2"
 
 OBJ_DIR="$SRC_DIR/bin"
 
-valgrind --leak-check=full --xml=yes --xml-file="$CPP_TEST_OUT_DIR/valgrind.xml" "$OBJ_DIR/ks_tests"
+run_valgrind() {
+	_attempt_no=$1
+	shift
+	_xml_file="$CPP_TEST_OUT_DIR/valgrind-${_attempt_no}.xml"
+	valgrind --leak-check=full --xml=yes --xml-file="${_xml_file}" "$OBJ_DIR/ks_tests" "$@"
+
+	# For some obscure reason, valgrind generates this file as 0600 (owner-readable only).
+	# This disrupts invocation from Docker pipeline, as after return back from the Docker container
+	# this will become root-owned and root-only-readable file. We fix it here.
+	chmod 644 "${_xml_file}"
+}
+
+read_next=1
+
+run_attempt=0
+set --
+
+while [ -n "${read_next}" ]; do
+	run_attempt=$((run_attempt+1))
+	run_valgrind "${run_attempt}" "$@" || :
+
+	# if the `aborted_tests-{N}.txt` file is empty, then there were no aborted
+	# tests and it's the last attempt we need to process
+	read_next=
+	while IFS= read -r line; do
+		read_next=1
+		set -- "$@" "--run_test=!${line}"
+	done < "${CPP_TEST_OUT_DIR}/aborted_tests-${run_attempt}.txt"
+done
+
+# Currently, aggregate/convert_to_json only processes "valgrind.xml", so we
+# make a copy with that name of the last (successful) attempt's log
+cp -v "$CPP_TEST_OUT_DIR/valgrind-${run_attempt}.xml" "$CPP_TEST_OUT_DIR/valgrind.xml"

@@ -52,7 +52,7 @@ object Main extends App {
 
     head("KST translator", KSVersion.current.toString)
 
-    arg[String]("<test_name>...") unbounded() optional() action { (x, c) =>
+    arg[String]("<test_name>...").unbounded().optional().action { (x, c) =>
       val testName: String = if (x.endsWith("kst")) {
         x.substring(0, x.length - 4)
       } else {
@@ -61,7 +61,7 @@ object Main extends App {
       c.copy(srcFiles = c.srcFiles :+ testName)
     } text "source test names (.kst)"
 
-    opt[String]('t', "target") unbounded() valueName "<language>" action { (x, c) =>
+    opt[String]('t', "target").unbounded().valueName("<language>").action { (x, c) =>
       if (x == "all") {
         c.copy(targets = ALL_GOOD_LANGS)
       } else {

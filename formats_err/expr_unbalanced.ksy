@@ -1,4 +1,4 @@
-# expr_unbalanced.ksy: /seq/0:
+# expr_unbalanced.ksy: /seq/0/size:
 # 	error: parsing expression '(1 + 5' failed on 1:1, expected "not" ~ !(namePart) ~ not_test | comparison
 #
 meta:

@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class ValidFailEqIntTest extends TestCase {
-    /** @expectedException \Kaitai\Struct\Error\ValidationNotEqualError */
     public function testValidFailEqInt() {
+        $this->expectException(\Kaitai\Struct\Error\ValidationNotEqualError::class);
         $r = ValidFailEqInt::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
     }
 }

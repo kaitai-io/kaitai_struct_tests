@@ -3,8 +3,6 @@
 package io.kaitai.struct.spec;
 
 import io.kaitai.struct.testformats.ImportsRel1;
-import io.kaitai.struct.testformats.Imported1;
-import io.kaitai.struct.testformats.Imported2;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestImportsRel1 extends CommonSpec {

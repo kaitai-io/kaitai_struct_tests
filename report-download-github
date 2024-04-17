@@ -1,0 +1,60 @@
+#!/bin/sh -ef
+# Downloads previous CI results from ci_artifacts repo at GitHub
+
+print_usage()
+{
+	echo "Usage: $0 <target> <subtarget> <implementation> <os> <arch>"
+}
+
+if [ "$#" -ne 5 ]; then
+	print_usage
+	exit 1
+fi
+
+TARGET=$1
+SUBTARGET=$2
+IMPLEMENTATION=$3
+OS=$4
+ARCH=$5
+
+if [ -z "$TARGET" ]; then
+	echo '<target> must not be empty'; echo
+	print_usage
+	exit 1
+fi
+
+if [ -z "$IMPLEMENTATION" ]; then
+	echo '<implementation> must not be empty'; echo
+	print_usage
+	exit 1
+fi
+
+if [ -z "$OS" ]; then
+	echo '<os> must not be empty'; echo
+	print_usage
+	exit 1
+fi
+
+if [ -z "$ARCH" ]; then
+	echo '<arch> must not be empty'; echo
+	print_usage
+	exit 1
+fi
+
+FULL_TARGET_NAME=${TARGET}${SUBTARGET}/${IMPLEMENTATION}-${OS}-${ARCH}
+PREV_CI_FILE="ci_results/${FULL_TARGET_NAME}/ci.json"
+if [ -r "$PREV_CI_FILE" ]; then
+	exit 0
+fi
+
+mkdir -p "$(dirname "$PREV_CI_FILE")"
+
+REPO_URL=https://github.com/kaitai-io/ci_artifacts
+FILE_PATH=test_out/${TARGET}${SUBTARGET}/ci.json
+
+curl_ex=0
+curl -fsSL "${REPO_URL}/raw/${FULL_TARGET_NAME}/${FILE_PATH}" -o "$PREV_CI_FILE" || curl_ex=$?
+if  [ "$curl_ex" -ne 0 ]; then
+	echo "Check ${REPO_URL}/blob/${FULL_TARGET_NAME}/${FILE_PATH}"
+	exit "$curl_ex"
+fi

@@ -3,6 +3,7 @@ require 'set'
 
 require_relative 'partial_builder'
 require_relative 'shellconfig'
+require_relative '../aggregate/boost_test_parser'
 
 class CppBuilder < PartialBuilder
   attr_accessor :mode
@@ -304,51 +305,58 @@ class CppBuilder < PartialBuilder
   end
 
   def run_tests
-    xml_log = "#{@abs_cpp_test_out_dir}/results.xml"
+    attempt = 1
+    excluded_tests = []
 
-    # Work around boost v1.62 bug: https://svn.boost.org/trac10/ticket/12507
-    # --log_sink is broken in boost v1.62, using workaround, as per
-    # https://stackoverflow.com/a/39999085/487064
-    #
-    # However, Travis has boost v1.54, which has problems with it, so we
-    # won't use the workaround on anything except exactly v1.62
+    loop {
+      attempt_str = @max_attempts ? "#{attempt}/#{@max_attempts}" : attempt
 
-    boost_log_option = "--log_sink=#{xml_log}"
+      xml_log = "#{@abs_cpp_test_out_dir}/results-#{attempt}.xml"
+      log "run attempt #{attempt_str} (log: #{xml_log})"
 
-    begin
-      if File.read('/usr/include/boost/version.hpp') =~ /BOOST_VERSION 106200/
-        # Boost v1.62 detected, enabling workaround
-        boost_log_option = "--logger=JUNIT,test_suite,#{xml_log}"
+      # Choose test executable
+      case @mode
+      when :msbuild_windows
+        # On Windows/MSVC, executable will be nested in Debug/
+        ks_tests_bin = "#{@obj_dir}/Debug/ks_tests"
+      when :make_posix
+        # On POSIX systems, it will be directly in obj dir
+        ks_tests_bin = "#{@obj_dir}/ks_tests"
+      else
+        raise "Unknown mode=#{@mode}"
       end
-    rescue Errno::ENOENT => e
-      # ignore
-    end
 
-    # Choose test executable
-    case @mode
-    when :msbuild_windows
-      # On Windows/MSVC, executable will be nested in Debug/
-      ks_tests_bin = "#{@obj_dir}/Debug/ks_tests"
-    when :make_posix
-      # On POSIX systems, it will be directly in obj dir
-      ks_tests_bin = "#{@obj_dir}/ks_tests"
-    else
-      raise "Unknown mode=#{@mode}"
-    end
+      tests_cli = [
+        ks_tests_bin,
+        '--log_format=XML',
+        "--log_sink=#{xml_log}",
+        '--log_level=all',
+        '--report_level=detailed',
+      ]
+      excluded_tests.each { |test| tests_cli << "--run_test=!#{test}" }
 
-    tests_cli = [
-      ks_tests_bin,
-      '--log_format=XML',
-      boost_log_option,
-      '--log_level=all',
-      '--report_level=detailed',
-    ]
+      # Actually run the tests
+      Dir.chdir(@test_dir) do
+        run_and_tee({}, tests_cli, "#{@abs_cpp_test_out_dir}/test_run-#{attempt}.stdout")
+      end
 
-    # Actually run the tests
-    Dir.chdir(@test_dir)
-    run_and_tee({}, tests_cli, "#{@abs_cpp_test_out_dir}/test_run.stdout")
+      parser = BoostTestParser.new(xml_log)
+      aborted_tests = parser.aborted_tests
+      File.write("#{@abs_cpp_test_out_dir}/aborted_tests-#{attempt}.txt", aborted_tests.map { |test| "#{test}\n" }.join)
+      if aborted_tests.empty?
+        log "success on run attempt #{attempt_str} (#{excluded_tests.size} tests excluded)"
+        return true
+      end
+      log "run attempt #{attempt_str} aborted (#{aborted_tests.size} tests aborted)"
+      aborted_tests.each { |test| excluded_tests << test }
 
-    File.exist?(xml_log)
+      attempt += 1
+
+      if @max_attempts and attempt >= @max_attempts
+        log "maximum number of run attempts reached, bailing out"
+        return false
+      end
+    }
   end
 
   private

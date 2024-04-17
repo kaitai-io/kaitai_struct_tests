@@ -1,4 +1,4 @@
-# switch_invalid_key.ksy: /seq/0/bar:
+# switch_invalid_key.ksy: /seq/0/type/bar:
 # 	error: unknown key found, expected: cases, switch-on
 #
 meta:

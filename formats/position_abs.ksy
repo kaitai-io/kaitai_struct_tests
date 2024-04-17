@@ -7,9 +7,9 @@ seq:
 types:
   index_obj:
     seq:
-     - id: entry
-       type: strz
-       encoding: UTF-8
+      - id: entry
+        type: strz
+        encoding: UTF-8
 instances:
   index:
     pos: index_offset

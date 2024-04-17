@@ -1,4 +1,4 @@
-# switch_no_switch_on.ksy: /seq/0/switch-on:
+# switch_no_switch_on.ksy: /seq/0/type:
 # 	error: missing mandatory argument `switch-on`
 #
 meta:

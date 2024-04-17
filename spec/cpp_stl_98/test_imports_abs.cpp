@@ -2,7 +2,6 @@
 
 #include <boost/test/unit_test.hpp>
 #include "imports_abs.h"
-#include "vlq_base128_le.h"
 #include <iostream>
 #include <fstream>
 #include <vector>

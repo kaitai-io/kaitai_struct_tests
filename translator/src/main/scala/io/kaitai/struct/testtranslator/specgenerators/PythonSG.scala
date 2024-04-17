@@ -1,6 +1,6 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import _root_.io.kaitai.struct.ClassTypeProvider
+import io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
 import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.PythonCompiler
@@ -10,16 +10,20 @@ import _root_.io.kaitai.struct.translators.PythonTranslator
 class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   importList.add("import unittest")
 
-  val translator = new PythonTranslator(provider, importList)
+  val config = RuntimeConfig()
+  val translator = new PythonTranslator(provider, importList, config)
   val className = PythonCompiler.type2class(spec.id)
+
+  importList.add(s"from ${spec.id} import $className")
+  spec.extraImports.foreach(entry =>
+    importList.add(s"from $entry import ${PythonCompiler.type2class(entry)}")
+  )
 
   override def fileName(name: String): String = s"test_$name.py"
 
   override def indentStr: String = "    "
 
   override def header(): Unit = {
-    out.puts
-    out.puts(s"from ${spec.id} import $className")
     out.puts
     out.puts(s"class Test$className(unittest.TestCase):")
     out.inc
@@ -50,7 +54,7 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
 
   override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
-    val expStr = translator.translate(check.expected)
+    val expStr = translateExp(check.expected)
     out.puts(s"self.assertAlmostEqual($actStr, $expStr, 6)")
   }
 

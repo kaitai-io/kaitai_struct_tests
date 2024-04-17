@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class ValidFailRangeBytesTest extends TestCase {
-    /** @expectedException \Kaitai\Struct\Error\ValidationGreaterThanError */
     public function testValidFailRangeBytes() {
+        $this->expectException(\Kaitai\Struct\Error\ValidationGreaterThanError::class);
         $r = ValidFailRangeBytes::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
     }
 }

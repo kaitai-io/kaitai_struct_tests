@@ -2,63 +2,109 @@
 
 require 'json'
 
-def load_ci_json(fn)
-  doc = File.read(fn)
-  return {} if doc == "404: Not Found"
-  JSON.load(doc)
+unless ARGV.length == 2
+  $stderr.puts "Usage: #{$PROGRAM_NAME} <prev_ci_json> <now_ci_json>"
+  exit 1
 end
 
-def dump_test_list(list)
-  list.each { |t|
-    if t.length == 2
-      puts "  #{t[0]} -> #{t[1].inspect}"
-    else
-      puts "  #{t[0]}: #{t[1].inspect} -> #{t[2].inspect}"
-    end
-  }
-end
+prev_ci_json, now_ci_json = ARGV
 
-prev = load_ci_json(ARGV[0])
-now = load_ci_json(ARGV[1])
+class CIComparison
+  def initialize(prev_file, now_file)
+    @prev = load_ci_json(prev_file)
+    @now = load_ci_json(now_file)
 
-prev.delete('$meta')
-now.delete('$meta')
-
-added = []
-changed = []
-removed = []
-
-puts "# Comparison with previous"
-puts
-
-# Detect added and changed tests
-now.each_pair { |name, now_res|
-  prev_res = prev[name]
-  if prev_res
-    if prev_res['status'] != now_res['status']
-      changed << [name, prev_res, now_res]
-    end
-  else
-    added << [name, now_res]
+    @prev.delete('$meta')
+    @now.delete('$meta')
   end
-}
 
-# Detect removed tests
-prev.each_pair { |name, res|
-  removed << [name, res] unless now[name]
-}
+  def compare
+    @added = []
+    @changed = []
+    @removed = []
+    @fixed = []
+    @broken = []
 
-unless added.empty?
-  puts "+#{added.length} tests added:"
-  dump_test_list(added)
+    # Detect added and changed tests
+    @now.each_pair { |name, now_res|
+      prev_res = @prev[name]
+      if prev_res.nil?
+        @added << [name, now_res]
+        next
+      end
+
+      has_changed = prev_res['status'] != now_res['status'] ||
+                    prev_res['failure'] != now_res['failure']
+      next unless has_changed
+
+      if prev_res['status'] != 'passed' && now_res['status'] == 'passed'
+        @fixed << [name, prev_res, now_res]
+      elsif prev_res['status'] == 'passed' && now_res['status'] != 'passed'
+        @broken << [name, prev_res, now_res]
+      else
+        @changed << [name, prev_res, now_res]
+      end
+    }
+
+    # Detect removed tests
+    @prev.each_pair { |name, res|
+      @removed << [name, res] unless @now[name]
+    }
+  end
+
+  def report_all
+    @no_changes = true
+
+    dump_test_list('➕', 'added', @added)
+    dump_test_list('➖', 'removed', @removed)
+    dump_test_list('🟢', 'fixed', @fixed)
+    dump_test_list('🔴', 'broken', @broken)
+    dump_test_list('🔵', 'changed', @changed)
+
+    puts "(no changes)" if @no_changes
+  end
+
+  def load_ci_json(fn)
+    begin
+      doc = File.read(fn)
+    rescue => e
+      # Note: `Exception#full_message` is only available since Ruby 2.5 (see
+      # https://www.bigbinary.com/blog/ruby-2-5-adds-exception-full_message-method),
+      # but it seems that the oldest Ruby of all CI hosts we use is Ruby 2.6 in
+      # AppVeyor (all GitHub Actions jobs should have Ruby 3), so it should be fine.
+      $stderr.puts e.full_message
+      return {}
+    end
+    JSON.parse(doc)
+  end
+
+  def dump_test_list(icon, status, list)
+    return if list.empty?
+
+    puts "* #{icon} #{list.length} tests #{status}:"
+    list.each { |t|
+      if t.length == 2
+        puts "  * #{t[0]} -> #{t[1].inspect}"
+      else
+        prev_test = t[1]
+        now_test = t[2]
+
+        if prev_test['is_kst'] == now_test['is_kst']
+          prev_test.delete('is_kst')
+          now_test.delete('is_kst')
+        end
+
+        # Remove "elapsed", as fluctuation is expected and ultimately not interesting
+        prev_test.delete('elapsed')
+        now_test.delete('elapsed')
+
+        puts "  * #{t[0]}: #{t[1].inspect} -> #{t[2].inspect}"
+      end
+    }
+    @no_changes = false
+  end
 end
 
-unless removed.empty?
-  puts "-#{removed.length} tests removed:"
-  dump_test_list(removed)
-end
-
-unless changed.empty?
-  puts "-#{changed.length} tests changed:"
-  dump_test_list(changed)
-end
+cic = CIComparison.new(prev_ci_json, now_ci_json)
+cic.compare
+cic.report_all

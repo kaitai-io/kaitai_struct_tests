@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class ValidFailAnyofIntTest extends TestCase {
-    /** @expectedException \Kaitai\Struct\Error\ValidationNotAnyOfError */
     public function testValidFailAnyofInt() {
+        $this->expectException(\Kaitai\Struct\Error\ValidationNotAnyOfError::class);
         $r = ValidFailAnyofInt::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
     }
 }

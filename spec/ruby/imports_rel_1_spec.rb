@@ -3,8 +3,6 @@
 RSpec.describe 'ImportsRel1' do
   it 'parses test properly' do
     require 'imports_rel_1'
-    require 'imported_1'
-    require 'imported_2'
     r = ImportsRel1.from_file('src/fixed_struct.bin')
 
     expect(r.one).to eq 80

@@ -20,21 +20,17 @@ class PHPSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     out.puts
     out.puts(s"class ${className}Test extends TestCase {")
     out.inc
+    out.puts(s"public function test$className() {")
+    out.inc
   }
 
   override def runParse(): Unit = {
-    runParseCommon()
+    out.puts(s"$$r = $className::fromFile(self::SRC_DIR_PATH . '/${spec.data}');")
   }
 
   override def runParseExpectError(exception: KSError): Unit = {
-    out.puts(s"/** @expectedException ${PHPCompiler.ksErrorName(exception)} */")
-    runParseCommon()
-  }
-
-  def runParseCommon(): Unit = {
-    out.puts(s"public function test$className() {")
-    out.inc
-    out.puts(s"$$r = $className::fromFile(self::SRC_DIR_PATH . '/${spec.data}');")
+    out.puts(s"$$this->expectException(${PHPCompiler.ksErrorName(exception)}::class);")
+    runParse()
   }
 
   override def footer(): Unit = {

@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class DefaultEndianExprExceptionTest extends TestCase {
-    /** @expectedException \Kaitai\Struct\Error\UndecidedEndiannessError */
     public function testDefaultEndianExprException() {
+        $this->expectException(\Kaitai\Struct\Error\UndecidedEndiannessError::class);
         $r = DefaultEndianExprException::fromFile(self::SRC_DIR_PATH . '/endian_expr.bin');
     }
 }

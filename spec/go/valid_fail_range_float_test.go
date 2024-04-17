@@ -8,6 +8,7 @@ import (
 	"testing"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	. "test_formats"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestValidFailRangeFloat(t *testing.T) {
@@ -24,10 +25,7 @@ func TestValidFailRangeFloat(t *testing.T) {
 	s := kaitai.NewStream(f)
 	var r ValidFailRangeFloat
 	err = r.Read(s, &r, &r)
-	switch v := err.(type) {
-	case kaitai.ValidationGreaterThanError:
-		break
-	default:
-		t.Fatalf("expected kaitai.ValidationGreaterThanError, got %T", v)
-	}
+	assert.Error(t, err)
+	var wantErr kaitai.ValidationGreaterThanError
+	assert.ErrorAs(t, err, &wantErr)
 }

@@ -17,11 +17,6 @@ CPP_TEST_OUT_DIR="$3"
 echo 'Running Valgrind checks...'
 if valgrind --version; then
 	./valgrind-cpp_stl "$SRC_DIR" "$CPP_TEST_OUT_DIR" || :
-
-	# For some obscure reason, valgrind generates this file as 0600 (owner-readable only).
-	# This disrupts invocation from Docker pipeline, as after return back from the Docker container
-	# this will become root-owned and root-only-readable file. We fix it here.
-	chmod 644 "$CPP_TEST_OUT_DIR/valgrind.xml"
 else
 	echo 'Valgrind not found :-('
 

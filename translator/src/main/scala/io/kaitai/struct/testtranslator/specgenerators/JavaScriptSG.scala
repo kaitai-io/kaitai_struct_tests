@@ -10,7 +10,7 @@ import _root_.io.kaitai.struct.translators.JavaScriptTranslator
 
 class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   val className = JavaScriptCompiler.type2class(spec.id)
-  val translator = new JavaScriptTranslator(provider)
+  val translator = new JavaScriptTranslator(provider, importList)
 
   importList.add("assert")
 
@@ -23,6 +23,10 @@ class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGene
 
     out.puts(s"testHelper('$className', 'src/${spec.data}', function(r, $className) {")
     out.inc
+    spec.extraImports.foreach { (entry) =>
+      val entryClass = JavaScriptCompiler.type2class(entry)
+      out.puts(s"var $entryClass = require('$entryClass').$entryClass;")
+    }
   }
 
   override def runParseExpectError(exception: KSError): Unit = {

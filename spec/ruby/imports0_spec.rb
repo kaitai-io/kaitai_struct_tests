@@ -3,7 +3,6 @@
 RSpec.describe 'Imports0' do
   it 'parses test properly' do
     require 'imports0'
-    require 'hello_world'
     r = Imports0.from_file('src/fixed_struct.bin')
 
     expect(r.two).to eq 80

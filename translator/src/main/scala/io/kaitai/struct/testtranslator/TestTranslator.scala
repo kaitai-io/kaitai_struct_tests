@@ -12,6 +12,8 @@ import io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig, RuntimeConfig}
 
 import java.nio.file.Path
 
+import scala.collection.immutable.SortedMap
+
 class TestTranslator(options: CLIOptions) {
   import Main._
 
@@ -48,9 +50,9 @@ class TestTranslator(options: CLIOptions) {
     langs.foreach(langName => {
       val sg = getSG(langName, testSpec, provider, classSpecs, options)
       try {
-        sg.run()
         val outFile = if(exactOutDir) { s"$outDir/${sg.fileName(testName)}" } else { s"$outDir/$langName/${sg.fileName(testName)}" }
         Console.println(s"... generating $outFile")
+        sg.run()
         writeFile(outFile, sg.results)
       } catch {
         case e: Throwable => e.printStackTrace(Console.err)
@@ -114,9 +116,9 @@ class TestTranslator(options: CLIOptions) {
           dataType = userType
         )
       ),
-      types = Map(),
-      instances = Map(),
-      enums = Map()
+      types = SortedMap(),
+      instances = SortedMap(),
+      enums = SortedMap()
     )
 
     initObj.name = List(INIT_OBJ_TYPE)

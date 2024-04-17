@@ -7,7 +7,7 @@ TESTS_DIR="$(pwd)"
 print_usage()
 {
 	cat <<EOF
-$0 [--shell] [--download] --target {TARGET}  --implementation {IMPLEMENTATION} [--os {OS}] [--arch {ARCH}]"
+$0 [--shell] [--download] [--no-compare] --target {TARGET}  --implementation {IMPLEMENTATION} [--os {OS}] [--arch {ARCH}]"
 
 Runs Kaitai Struct CI for a specific target and implementation in a
 Docker container using image that guarantees to have all necessary
@@ -22,20 +22,11 @@ Options:
   -s|--shell                launches interactive shell instead of CI script
   -d|--download             attempt to download image from ghcr.io if missing
   -r|--rebuild              clean up everything and rebuild
+  --no-compare              don't compare with previous master build from CI
 
 Available images:
 EOF
 	docker images --filter='label=io.kaitai.ci=true'
-}
-
-# Downloads previous CI results from ci_artifacts repo
-download_prev()
-{
-	PREV_CI_FILE="ci_results/$TARGET$SUBTARGET/$IMPLEMENTATION-$OS-$ARCH/ci.json"
-	if [ ! -r "$PREV_CI_FILE" ]; then
-		mkdir -p $(dirname "$PREV_CI_FILE")
-		curl -sSL "https://raw.githubusercontent.com/kaitai-io/ci_artifacts/$TARGET$SUBTARGET/$IMPLEMENTATION-$OS-$ARCH/test_out/$TARGET$SUBTARGET/ci.json" -o "$PREV_CI_FILE"
-	fi
 }
 
 # Cleans up leftover binary artifacts from previous builds to make sure we're starting from scratch
@@ -49,6 +40,11 @@ cleanup_bin()
 	esac
 }
 
+is_image_available()
+{
+	docker images --no-trunc -q "$1" 2> /dev/null | grep -q '^sha256:[0-9a-f]\+$'
+}
+
 # Define default values for parameters
 TARGET=""
 SUBTARGET=""
@@ -58,6 +54,7 @@ ARCH=x86_64
 SHELL_FLAG=0
 DOWNLOAD_FLAG=0
 REBUILD_FLAG=0
+DO_COMPARE_FLAG=1
 
 # Parse command-line options
 while [ $# -gt 0 ]; do
@@ -66,6 +63,7 @@ while [ $# -gt 0 ]; do
 	case "$key" in
 	--shell|-s)
 		SHELL_FLAG=1
+		DO_COMPARE_FLAG=0
 		shift
 		;;
 	--download|-d)
@@ -96,6 +94,10 @@ while [ $# -gt 0 ]; do
 		ARCH="$2"
 		shift 2
 		;;
+	--no-compare)
+		DO_COMPARE_FLAG=0
+		shift
+		;;
 	--help|-h)
 		print_usage
 		exit 0
@@ -117,10 +119,10 @@ EXTRA_OPTS=
 IMG_NAME="kaitai-$TARGET-$IMPLEMENTATION-$OS-$ARCH"
 
 # Check image availability
-if docker images -q "$IMG_NAME" | grep -q '[0-9a-f]'; then
+if is_image_available "$IMG_NAME"; then
 	# If locally-built image exists, prioritize that
 	IMG_COORD="$IMG_NAME"
-elif docker images -q "ghcr.io/kaitai-io/$IMG_NAME" | grep -q '[0-9a-f]'; then
+elif is_image_available "ghcr.io/kaitai-io/$IMG_NAME"; then
 	# If ghcr.io image exists, use it
 	IMG_COORD="ghcr.io/kaitai-io/$IMG_NAME"
 elif [ "$DOWNLOAD_FLAG" = 1 ]; then
@@ -148,8 +150,8 @@ if [ -n "$GITHUB_ACTIONS" ]; then
 	echo "GH_HTML_URL=$GH_HTML_URL"
 fi
 
-if [ "$SHELL_FLAG" = 0 ]; then
-	download_prev
+if [ "$DO_COMPARE_FLAG" = 1 ]; then
+	./report-download-github "$TARGET" "$SUBTARGET" "$IMPLEMENTATION" "$OS" "$ARCH" || :
 fi
 
 if [ "$REBUILD_FLAG" = 1 ]; then
@@ -177,7 +179,9 @@ MSYS2_ARG_CONV_EXCL='*' docker run $EXTRA_OPTS \
 	"$IMG_COORD" \
 	"$COMMAND"
 
-if [ "$SHELL_FLAG" = 0 ]; then
+if [ "$DO_COMPARE_FLAG" = 1 ]; then
+	echo "# Comparison with previous"
+	echo
 	aggregate/compare_with_prev \
 		"ci_results/$TARGET$SUBTARGET/$IMPLEMENTATION-$OS-$ARCH/ci.json" \
 		"test_out/$TARGET$SUBTARGET/ci.json"

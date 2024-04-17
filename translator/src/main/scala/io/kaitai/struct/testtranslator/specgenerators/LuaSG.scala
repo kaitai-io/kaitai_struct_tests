@@ -56,7 +56,7 @@ class LuaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
 
   override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
-    val expStr = translator.translate(check.expected)
+    val expStr = translateExp(check.expected)
     out.puts(s"luaunit.assertAlmostEquals($actStr, $expStr, 0.000001)")
   }
 
