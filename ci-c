@@ -1,0 +1,23 @@
+#!/bin/sh -ef
+
+. ./config
+
+SRC_DIR="$(pwd)/compiled/c"
+C_SPEC_DIR="$(pwd)/spec/c"
+C_TEST_OUT_DIR="$TEST_OUT_DIR/c"
+
+./run-c "$SRC_DIR" "$C_SPEC_DIR" "$C_TEST_OUT_DIR"
+
+# Run C valgrind check, generates Valgrind XML report
+echo 'Running Valgrind checks...'
+if valgrind --version; then
+	./valgrind-c "$SRC_DIR" "$C_TEST_OUT_DIR" || :
+else
+	echo 'Valgrind not found :-('
+
+	# Generate empty valgrind output - this is normal and it should not stop `ci.json` generation
+	echo '<?xml version="1.0"?><valgrindoutput></valgrindoutput>' >"$C_TEST_OUT_DIR/valgrind.xml"
+fi
+
+./kst-adoption-report $(basename "$SRC_DIR")
+aggregate/convert_to_json cpp_stl "$C_TEST_OUT_DIR" "$C_TEST_OUT_DIR/ci.json"

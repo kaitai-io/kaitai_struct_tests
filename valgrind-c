@@ -1,0 +1,15 @@
+#!/bin/sh -e
+
+. ./config
+
+if [ "$#" -ne 2 ]; then
+	echo "$0 <src_dir> <c_test_out_dir>"
+	exit 1
+fi
+
+SRC_DIR="$1"
+C_TEST_OUT_DIR="$2"
+
+OBJ_DIR="$SRC_DIR/bin"
+
+valgrind --leak-check=full --xml=yes --xml-file="$C_TEST_OUT_DIR/valgrind.xml" "$OBJ_DIR/ks_tests"

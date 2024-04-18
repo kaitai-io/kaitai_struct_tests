@@ -34,6 +34,8 @@ def glob_spec_files(lang)
     Dir.glob('spec/construct/**/test_*.py')
   when 'ruby'
     Dir.glob('spec/ruby/**/*_spec.rb')
+  when 'c'
+    Dir.glob('spec/c/**/test_*.cpp')
   else
     raise "Unable to handle language #{@lang.inspect}"
   end
@@ -73,6 +75,9 @@ def spec_file_to_test_name(lang, fn)
     underscore_to_ucamelcase($1)
   when 'ruby'
     raise "Unable to extract test name from #{fn.inspect}" unless fn =~ /^(.*?)_spec\.rb$/
+    underscore_to_ucamelcase($1)
+  when 'c'
+    raise "Unable to extract test name from #{fn.inspect}" unless fn =~ /^test_(.*?)\.cpp$/
     underscore_to_ucamelcase($1)
   else
     raise "Unable to handle language #{lang.inspect}"
