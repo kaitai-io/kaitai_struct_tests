@@ -13,7 +13,7 @@ public class TestEnumImportSeq extends CommonSpec {
     public void testEnumImportSeq() throws Exception {
         EnumImportSeq r = EnumImportSeq.fromFile(SRC_DIR + "enum_0.bin");
 
-        assertEquals(r.pet1(), Enum0.Animal.CAT);
-        assertEquals(r.pet2(), EnumDeep.Container1.Container2.Animal.HARE);
+        assertEquals(r.pet1(), Enum0.Animal.Known.CAT);
+        assertEquals(r.pet2(), EnumDeep.Container1.Container2.Animal.Known.HARE);
     }
 }

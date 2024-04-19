@@ -11,8 +11,8 @@ public class TestEnumToIClassBorder1 extends CommonSpec {
     public void testEnumToIClassBorder1() throws Exception {
         EnumToIClassBorder1 r = EnumToIClassBorder1.fromFile(SRC_DIR + "enum_0.bin");
 
-        assertEquals(r.pet1(), EnumToIClassBorder1.Animal.CAT);
-        assertEquals(r.pet2(), EnumToIClassBorder1.Animal.CHICKEN);
+        assertEquals(r.pet1(), EnumToIClassBorder1.Animal.Known.CAT);
+        assertEquals(r.pet2(), EnumToIClassBorder1.Animal.Known.CHICKEN);
         assertIntEquals(r.checker().isDog(), true);
     }
 }

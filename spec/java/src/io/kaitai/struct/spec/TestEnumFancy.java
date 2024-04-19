@@ -6,11 +6,12 @@ import io.kaitai.struct.testformats.EnumFancy;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestEnumFancy extends CommonSpec {
+
     @Test
     public void testEnumFancy() throws Exception {
         EnumFancy r = EnumFancy.fromFile(SRC_DIR + "enum_0.bin");
 
-        assertEquals(r.pet1(), EnumFancy.Animal.CAT);
-        assertEquals(r.pet2(), EnumFancy.Animal.CHICKEN);
+        assertEquals(r.pet1(), EnumFancy.Animal.Known.CAT);
+        assertEquals(r.pet2(), EnumFancy.Animal.Known.CHICKEN);
     }
 }

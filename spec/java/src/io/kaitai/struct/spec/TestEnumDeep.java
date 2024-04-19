@@ -6,11 +6,12 @@ import io.kaitai.struct.testformats.EnumDeep;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestEnumDeep extends CommonSpec {
+
     @Test
     public void testEnumDeep() throws Exception {
         EnumDeep r = EnumDeep.fromFile(SRC_DIR + "enum_0.bin");
 
-        assertEquals(r.pet1(), EnumDeep.Container1.Animal.CAT);
-        assertEquals(r.pet2(), EnumDeep.Container1.Container2.Animal.HARE);
+        assertEquals(r.pet1(), EnumDeep.Container1.Animal.Known.CAT);
+        assertEquals(r.pet2(), EnumDeep.Container1.Container2.Animal.Known.HARE);
     }
 }
