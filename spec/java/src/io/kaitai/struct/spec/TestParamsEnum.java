@@ -6,11 +6,12 @@ import io.kaitai.struct.testformats.ParamsEnum;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestParamsEnum extends CommonSpec {
+
     @Test
     public void testParamsEnum() throws Exception {
         ParamsEnum r = ParamsEnum.fromFile(SRC_DIR + "enum_0.bin");
 
-        assertEquals(r.one(), ParamsEnum.Animal.CAT);
+        assertEquals(r.one(), ParamsEnum.Animal.Known.CAT);
         assertIntEquals(r.invokeWithParam().isCat(), true);
     }
 }

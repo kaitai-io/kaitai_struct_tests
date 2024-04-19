@@ -11,8 +11,8 @@ public class TestCombineEnum extends CommonSpec {
     public void testCombineEnum() throws Exception {
         CombineEnum r = CombineEnum.fromFile(SRC_DIR + "enum_0.bin");
 
-        assertEquals(r.enumU4(), CombineEnum.Animal.PIG);
-        assertEquals(r.enumU2(), CombineEnum.Animal.HORSE);
-        assertEquals(r.enumU4U2(), CombineEnum.Animal.HORSE);
+        assertEquals(r.enumU4(), CombineEnum.Animal.Known.PIG);
+        assertEquals(r.enumU2(), CombineEnum.Animal.Known.HORSE);
+        assertEquals(r.enumU4U2(), CombineEnum.Animal.Known.HORSE);
     }
 }

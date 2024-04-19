@@ -14,6 +14,6 @@ public class TestEnumImportLiterals extends CommonSpec {
 
         assertIntEquals(r.pet1ToI(), 7);
         assertIntEquals(r.pet1Eq(), true);
-        assertEquals(r.pet2(), EnumDeep.Container1.Container2.Animal.HARE);
+        assertEquals(r.pet2(), EnumDeep.Container1.Container2.Animal.Known.HARE);
     }
 }

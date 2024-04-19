@@ -6,18 +6,19 @@ import io.kaitai.struct.testformats.SwitchManualEnum;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestSwitchManualEnum extends CommonSpec {
+
     @Test
     public void testSwitchManualEnum() throws Exception {
         SwitchManualEnum r = SwitchManualEnum.fromFile(SRC_DIR + "switch_opcodes.bin");
 
         assertIntEquals(r.opcodes().size(), 4);
-        assertEquals(r.opcodes().get((int) 0).code(), SwitchManualEnum.Opcode.CodeEnum.STRVAL);
+        assertEquals(r.opcodes().get((int) 0).code(), SwitchManualEnum.Opcode.CodeEnum.Known.STRVAL);
         assertEquals(((SwitchManualEnum.Opcode.Strval) (r.opcodes().get((int) 0).body())).value(), "foobar");
-        assertEquals(r.opcodes().get((int) 1).code(), SwitchManualEnum.Opcode.CodeEnum.INTVAL);
+        assertEquals(r.opcodes().get((int) 1).code(), SwitchManualEnum.Opcode.CodeEnum.Known.INTVAL);
         assertIntEquals(((SwitchManualEnum.Opcode.Intval) (r.opcodes().get((int) 1).body())).value(), 66);
-        assertEquals(r.opcodes().get((int) 2).code(), SwitchManualEnum.Opcode.CodeEnum.INTVAL);
+        assertEquals(r.opcodes().get((int) 2).code(), SwitchManualEnum.Opcode.CodeEnum.Known.INTVAL);
         assertIntEquals(((SwitchManualEnum.Opcode.Intval) (r.opcodes().get((int) 2).body())).value(), 55);
-        assertEquals(r.opcodes().get((int) 3).code(), SwitchManualEnum.Opcode.CodeEnum.STRVAL);
+        assertEquals(r.opcodes().get((int) 3).code(), SwitchManualEnum.Opcode.CodeEnum.Known.STRVAL);
         assertEquals(((SwitchManualEnum.Opcode.Strval) (r.opcodes().get((int) 3).body())).value(), "");
     }
 }

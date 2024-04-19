@@ -11,12 +11,12 @@ public class TestEnumLongRangeS extends CommonSpec {
     public void testEnumLongRangeS() throws Exception {
         EnumLongRangeS r = EnumLongRangeS.fromFile(SRC_DIR + "enum_long_range_s.bin");
 
-        assertEquals(r.f1(), EnumLongRangeS.Constants.LONG_MIN);
-        assertEquals(r.f2(), EnumLongRangeS.Constants.INT_BELOW_MIN);
-        assertEquals(r.f3(), EnumLongRangeS.Constants.INT_MIN);
-        assertEquals(r.f4(), EnumLongRangeS.Constants.ZERO);
-        assertEquals(r.f5(), EnumLongRangeS.Constants.INT_MAX);
-        assertEquals(r.f6(), EnumLongRangeS.Constants.INT_OVER_MAX);
-        assertEquals(r.f7(), EnumLongRangeS.Constants.LONG_MAX);
+        assertEquals(r.f1(), EnumLongRangeS.Constants.Known.LONG_MIN);
+        assertEquals(r.f2(), EnumLongRangeS.Constants.Known.INT_BELOW_MIN);
+        assertEquals(r.f3(), EnumLongRangeS.Constants.Known.INT_MIN);
+        assertEquals(r.f4(), EnumLongRangeS.Constants.Known.ZERO);
+        assertEquals(r.f5(), EnumLongRangeS.Constants.Known.INT_MAX);
+        assertEquals(r.f6(), EnumLongRangeS.Constants.Known.INT_OVER_MAX);
+        assertEquals(r.f7(), EnumLongRangeS.Constants.Known.LONG_MAX);
     }
 }
