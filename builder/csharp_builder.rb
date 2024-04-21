@@ -82,7 +82,7 @@ class CSharpBuilder < PartialBuilder
     files_xml = (mand_files + disp_files).map { |x| "    <Compile Include=\"#{x}\" />" }.join("\n")
     project = tmpl.gsub(/%%%FILES%%%/, files_xml)
     File.write(@project_file, project)
-    @project_file
+    [@project_file]
   end
 
   def build_project(log_file)
