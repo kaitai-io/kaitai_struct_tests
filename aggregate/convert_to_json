@@ -86,14 +86,17 @@ when 'lua', 'nim'
     infile
   )
 when 'rust'
-
+  JUnitXMLParser.new(infile).to_h
 when 'go', 'perl', 'python', 'construct'
   add_kst_adoption(
     JUnitXMLParser.new("#{infile}/report.xml").to_h,
     infile
   )
 when 'julia'
-  JUnitXMLParser.new(infile).to_h
+  add_kst_adoption(
+    JUnitXMLParser.new("#{infile}/report.xml").to_h,
+    infile
+  )
 when 'javascript'
   add_kst_adoption(
     JUnitXMLParser.new("#{infile}/test-output-javascript.xml").to_h,
