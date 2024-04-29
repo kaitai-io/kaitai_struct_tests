@@ -110,28 +110,44 @@ while [ $# -gt 0 ]; do
 	esac
 done
 
-if [ -z "$TARGET" ] || [ -z "$IMPLEMENTATION" ] || [ -z "$OS" ] || [ -z "$ARCH" ]; then
+if [ -z "$TARGET" ] || [ -z "$OS" ] || [ -z "$ARCH" ]; then
     echo "Missing required parameters."
     exit 1
 fi
 
 EXTRA_OPTS=
-IMG_NAME="kaitai-$TARGET-$IMPLEMENTATION-$OS-$ARCH"
 
-# Check image availability
-if is_image_available "$IMG_NAME"; then
-	# If locally-built image exists, prioritize that
+# If IMPLEMENTATION is missing, auto-select first available one
+if [ -z "$IMPLEMENTATION" ]; then
+	IMG_NAME=$(docker images --format='{{.Repository}}' \
+		--filter='label=io.kaitai.ci=true' \
+		--filter="reference=kaitai-$TARGET-"'*'"-$OS-$ARCH" | head -n1)
+	if [ -z "$IMG_NAME" ]; then
+		echo "No local Docker images found at all for target '$TARGET'. Please specify '-i' with an implementation and '--download' to download it."
+		exit 3
+	fi
+
+	# Extract implementation name from image name
+	IMPLEMENTATION=$(echo "$IMG_NAME" | sed -e "s/^kaitai-$TARGET-//" -e "s/-$OS-$ARCH$//")
 	IMG_COORD="$IMG_NAME"
-elif is_image_available "ghcr.io/kaitai-io/$IMG_NAME"; then
-	# If ghcr.io image exists, use it
-	IMG_COORD="ghcr.io/kaitai-io/$IMG_NAME"
-elif [ "$DOWNLOAD_FLAG" = 1 ]; then
-	# No image, but we'll try to download
-	IMG_COORD="ghcr.io/kaitai-io/$IMG_NAME"
-	docker pull "$IMG_COORD"
 else
-	echo 'Neither locally-built nor remotely-built image is present. Try using `--download` to try downloading prebuilt image from ghcr.io.'
-	exit 2
+	IMG_NAME="kaitai-$TARGET-$IMPLEMENTATION-$OS-$ARCH"
+
+	# Check image availability
+	if is_image_available "$IMG_NAME"; then
+		# If locally-built image exists, prioritize that
+		IMG_COORD="$IMG_NAME"
+	elif is_image_available "ghcr.io/kaitai-io/$IMG_NAME"; then
+		# If ghcr.io image exists, use it
+		IMG_COORD="ghcr.io/kaitai-io/$IMG_NAME"
+	elif [ "$DOWNLOAD_FLAG" = 1 ]; then
+		# No image, but we'll try to download
+		IMG_COORD="ghcr.io/kaitai-io/$IMG_NAME"
+		docker pull "$IMG_COORD"
+	else
+		echo 'Neither locally-built nor remotely-built image is present. Try using `--download` to try downloading prebuilt image from ghcr.io.'
+		exit 2
+	fi
 fi
 
 # If --shell used, invoke /bin/sh
