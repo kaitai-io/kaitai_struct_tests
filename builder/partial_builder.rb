@@ -215,6 +215,8 @@ class PartialBuilder
 
   # Creates a project file, given a list of disposable and mandatory
   # files to include in it.
+  # @param mand_files [Enumerable<String>] collection of mandatory files
+  # @param disp_files [Enumerable<String>] collection of disposable files
   # @return [Array<String>] project file names created
   def create_project(mand_files, disp_files)
     raise NotImplementedError

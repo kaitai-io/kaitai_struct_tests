@@ -3,7 +3,10 @@ name = "rust"
 version = "0.1.0"
 authors = ["Aon"]
 edition = "2018"
-build = "build.rs"
+autotests = false
 
 [dependencies]
 kaitai = { path = "../../../runtime/rust" }
+
+[[test]]
+name = "spec"

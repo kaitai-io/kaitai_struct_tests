@@ -1,9 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env ruby
 
-. ./config
-
-mkdir -p "$TEST_OUT_DIR/rust"
-
-cd spec/rust
-cargo build
-cargo test
+require_relative 'builder/rust_builder'
+RustBuilder.new.command_line(ARGV)

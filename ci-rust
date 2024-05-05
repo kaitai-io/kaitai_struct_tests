@@ -2,11 +2,7 @@
 
 . ./config
 
-mkdir -p "$TEST_OUT_DIR/rust"
+./run-rust
 
-cd spec/rust
-mkdir src
-touch src/lib.rs
-cargo build
-cargo test-junit \
-      --name "../../$TEST_OUT_DIR/rust/results.xml"
+./kst-adoption-report rust
+aggregate/convert_to_json rust "$TEST_OUT_DIR/rust" "$TEST_OUT_DIR/rust/ci.json"

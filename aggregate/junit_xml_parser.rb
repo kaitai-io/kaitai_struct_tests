@@ -33,6 +33,9 @@ class JUnitXMLParser < TestParser
         elsif name =~ /^t(?!est)(.*?)$/
           # Nim output
           name = underscore_to_ucamelcase($1)
+        elsif name =~ /^test_.*::test_(.*?)$/
+          # Rust output
+          name = underscore_to_ucamelcase($1)
         else
           raise "Unable to parse name: \"#{name}\"" unless name =~ /^[Tt]est(.*?)$/
           if $1[0] == '_'
