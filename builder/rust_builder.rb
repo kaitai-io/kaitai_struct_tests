@@ -100,12 +100,7 @@ class RustBuilder < PartialBuilder
 
   def run_tests
     Dir.chdir(@base_spec_dir) do
-      # We specify `--cargo-quiet` twice "for no Cargo output at all" (see
-      # https://nexte.st/book/running?highlight=--cargo-quiet#options-and-arguments).
-      # The point is that the `build_project` method has already run
-      # `cargo check`, recovered from errors and printed all warnings, so
-      # there's no need to see the same warnings again.
-      cli = %w[cargo nextest run --test spec --cargo-quiet --cargo-quiet]
+      cli = %w[cargo nextest run --test spec]
       out_log = File.join(@test_out_dir, 'test_run.stdout')
       run_and_tee({}, cli, out_log)
 
