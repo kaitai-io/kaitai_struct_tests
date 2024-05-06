@@ -40,7 +40,7 @@ class JavaBuilder < PartialBuilder
     File.open(@project_file, 'w') { |f|
       (mand_files + disp_files).each { |l| f.puts "\"#{l}\"" }
     }
-    @project_file
+    [@project_file]
   end
 
   def build_project(log_file)
