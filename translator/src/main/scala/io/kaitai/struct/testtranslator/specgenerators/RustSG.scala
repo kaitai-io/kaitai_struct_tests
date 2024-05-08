@@ -14,7 +14,6 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
   val className: String = RustCompiler.type2class(spec.id)
   val translator = new RustTranslator(provider, RuntimeConfig())
   val compiler = new RustCompiler(provider, RuntimeConfig())
-  var do_panic = true
   var do_not_deref = false
 
   override def fileName(name: String): String = s"tests/test_$name.rs"
@@ -30,47 +29,33 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
 
     spec.extraImports.foreach{ name => importList.add(s"use rust::formats::$name::*;") }
 
-    val code =
-      s"""|#[test]
-          |fn test_${spec.id}() {
-          |    let bytes = fs::read("../../src/${spec.data}").unwrap();
-          |    let _io = BytesReader::from(bytes);
-          |    let res: KResult<OptRc<$className>> = $className::read_into(&_io, None, None);
-          |    let r : OptRc<$className>;
-          |
-          |    if let Err(err) = res {""".stripMargin
-    out.puts(code)
+    out.puts("#[test]")
+    out.puts(s"fn test_${spec.id}() -> KResult<()> {")
     out.inc
+    out.puts(s"""let bytes = fs::read("../../src/${spec.data}").unwrap();""")
+    out.puts("let _io = BytesReader::from(bytes);")
   }
 
   override def runParse(): Unit = {
-    finish_panic()
+    out.puts(s"let r: OptRc<$className> = $className::read_into(&_io, None, None)?;")
   }
 
   override def runParseExpectError(exception: KSError): Unit = {
-    val code =
-      s"""    println!("expected err: {:?}, exception: $exception", err);
-      |    } else {
-      |        panic!("no expected exception: $exception");
-      |    }""".stripMargin
-    out.puts(code)
-    do_panic = false
+    out.puts(s"let res: KResult<OptRc<$className>> = $className::read_into(&_io, None, None);")
+    out.puts
+    out.puts(s"if let Err(err) = res {")
+    out.inc
+    out.puts(s"""println!("expected err: {:?}, exception: $exception", err);""")
+    out.dec
+    out.puts("} else {")
+    out.inc
+    out.puts(s"""panic!("no expected exception: $exception");""")
+    out.dec
+    out.puts("}")
   }
 
-  def finish_panic(): Unit = {
-    if (do_panic) {
-      out.inc
-      out.puts("panic!(\"{:?}\", err);")
-      out.dec
-      out.puts("} else {")
-      out.inc
-      out.puts("r = res.unwrap();")
-      out.dec
-      out.puts("}")
-      do_panic = false
-    }
-  }
   override def footer(): Unit = {
+    out.puts("Ok(())")
     out.dec
     out.puts("}")
   }
@@ -83,7 +68,6 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     }
 
     s = s.replace("_io", "&_io")
-    s = s.replace(")?", ").expect(\"error reading\")")
     s
   }
 
@@ -106,7 +90,6 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
     if (actStr.charAt(0) == '*' && expStr.startsWith("&vec![")) {
       expStr = remove_ref(expStr)
     }
-    finish_panic()
     //TODO: correct code generation
     actStr = correctIO(actStr)
     out.puts(s"assert_eq!($actStr, $expStr);")
@@ -114,7 +97,6 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
 
   override def nullAssert(actual: Ast.expr): Unit = {
     val actStr = correctIO(translateAct(actual))
-    finish_panic()
     out.puts(s"assert_eq!($actStr, 0);")
     // TODO: Figure out what's meant to happen here
   }
@@ -125,7 +107,6 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
 
   override def testException(actual: Ast.expr, exception: KSError): Unit = {
     val s = translator.remove_deref(correctIO(translateAct(actual).replace(")?", ").unwrap_err()")))
-    finish_panic()
     out.puts(s"assert_eq!($s, ${compiler.ksErrorName(exception)});")
   }
 
