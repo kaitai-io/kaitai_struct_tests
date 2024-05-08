@@ -80,8 +80,7 @@ class RustBuilder < PartialBuilder
         next unless rustc_msg['level'] == 'error'
 
         files =
-          rustc_msg['spans']
-          .select { |span| span['is_primary'] }
+          select_rustc_msg_culprit_spans(rustc_msg['spans'])
           .map { |span| File.absolute_path(span['file_name'], @base_spec_dir) }
 
         list.concat(files)
@@ -113,6 +112,17 @@ class RustBuilder < PartialBuilder
   end
 
   private
+
+  def select_rustc_msg_culprit_spans(spans)
+    primary_spans =
+      spans
+      .select { |span| span['is_primary'] }
+      .map do |span|
+        span = span['expansion']['span'] until span['expansion'].nil?
+        span
+      end
+    primary_spans.uniq { |span| span['file_name'] }
+  end
 
   def file_to_kind(path)
     if path_directly_in_dir?(path, @spec_dir)
@@ -158,9 +168,7 @@ class RustBuilder < PartialBuilder
 
       if rustc_msg['$message_type'] == 'diagnostic'
         files =
-          rustc_msg['spans']
-          .select { |span| span['is_primary'] }
-          .uniq { |span| span['file_name'] }
+          select_rustc_msg_culprit_spans(rustc_msg['spans'])
           .map { |span| "#{span['file_name']}:#{span['line_start']}:#{span['column_start']}" }
         code_appendix = rustc_msg['code'].nil? ? '' : "[#{rustc_msg['code']['code']}]"
         files_prefix =
