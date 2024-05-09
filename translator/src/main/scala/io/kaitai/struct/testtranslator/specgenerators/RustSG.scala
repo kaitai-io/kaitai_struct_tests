@@ -82,7 +82,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
       case (at: EnumType, et: BooleanType) =>
         expStr = remove_ref(expStr)
       case (at: EnumType, et: IntType) =>
-        out.puts(s"let n : i64 = (&$actStr).into();")
+        out.puts(s"let n: i64 = (&$actStr).into();")
         actStr = s"n"
       case _ =>
     }
