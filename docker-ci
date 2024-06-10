@@ -26,7 +26,8 @@ Options:
 
 Available images:
 EOF
-	docker images --filter='label=io.kaitai.ci=true'
+	detect_docker
+	"$DOCKER_BIN" images --filter='label=io.kaitai.ci=true'
 }
 
 # Cleans up leftover binary artifacts from previous builds to make sure we're starting from scratch
@@ -38,6 +39,19 @@ cleanup_bin()
 		sudo rm -rf "compiled/$TARGET$SUBTARGET/bin"
 		;;
 	esac
+}
+
+detect_docker()
+{
+	if docker --version >/dev/null 2>/dev/null; then
+		DOCKER_BIN=docker
+	elif podman --version >/dev/null 2>/dev/null; then
+		DOCKER_BIN=podman
+		EXTRA_OPTS='--security-opt label=disable'
+	else
+		echo "ERROR: Docker or Podman binary not found."
+		exit 1
+	fi
 }
 
 is_image_available()
@@ -117,6 +131,8 @@ fi
 
 EXTRA_OPTS=
 
+detect_docker
+
 # If IMPLEMENTATION is missing, auto-select first available one
 if [ -z "$IMPLEMENTATION" ]; then
 	IMG_NAME=$(docker images --format='{{.Repository}}' \
@@ -143,7 +159,7 @@ else
 	elif [ "$DOWNLOAD_FLAG" = 1 ]; then
 		# No image, but we'll try to download
 		IMG_COORD="ghcr.io/kaitai-io/$IMG_NAME"
-		docker pull "$IMG_COORD"
+		"$DOCKER_BIN" pull "$IMG_COORD"
 	else
 		echo 'Neither locally-built nor remotely-built image is present. Try using `--download` to try downloading prebuilt image from ghcr.io.'
 		exit 2
@@ -153,7 +169,7 @@ fi
 # If --shell used, invoke /bin/sh
 if [ "$SHELL_FLAG" = 1 ]; then
 	COMMAND=/bin/sh
-	EXTRA_OPTS=-it
+	EXTRA_OPTS="-it $EXTRA_OPTS"
 else
 	COMMAND="./ci-$TARGET$SUBTARGET"
 fi
@@ -181,7 +197,7 @@ fi
 #
 # See https://www.msys2.org/docs/filesystem-paths/
 
-MSYS2_ARG_CONV_EXCL='*' docker run $EXTRA_OPTS \
+MSYS2_ARG_CONV_EXCL='*' "$DOCKER_BIN" run $EXTRA_OPTS \
 	--rm \
 	-e GITHUB_ACTIONS \
 	-e GITHUB_RUN_ID \
