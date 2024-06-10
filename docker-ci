@@ -56,7 +56,7 @@ detect_docker()
 
 is_image_available()
 {
-	docker images --no-trunc -q "$1" 2> /dev/null | grep -q '^sha256:[0-9a-f]\+$'
+	"$DOCKER_BIN" images --no-trunc -q "$1" 2> /dev/null | grep -q '^sha256:[0-9a-f]\+$'
 }
 
 # Define default values for parameters
@@ -125,8 +125,8 @@ while [ $# -gt 0 ]; do
 done
 
 if [ -z "$TARGET" ] || [ -z "$OS" ] || [ -z "$ARCH" ]; then
-    echo "Missing required parameters."
-    exit 1
+	echo "Missing required parameters."
+	exit 1
 fi
 
 EXTRA_OPTS=
@@ -135,7 +135,7 @@ detect_docker
 
 # If IMPLEMENTATION is missing, auto-select first available one
 if [ -z "$IMPLEMENTATION" ]; then
-	IMG_NAME=$(docker images --format='{{.Repository}}' \
+	IMG_NAME=$("$DOCKER_BIN" images --format='{{.Repository}}' \
 		--filter='label=io.kaitai.ci=true' \
 		--filter="reference=kaitai-$TARGET-"'*'"-$OS-$ARCH" | head -n1)
 	if [ -z "$IMG_NAME" ]; then
