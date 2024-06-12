@@ -9,6 +9,7 @@ use rust::DebugSwitchUser;
 #[test]
 fn test_debug_switch_user() {
     if let Ok(r) = DebugSwitchUser::from_file("src/nav_parent_switch.bin") {
+        r.read().expect("cannot read test file");
 
         assert_eq!(r.code, 1);
         assert_eq!(r.data.val, -190);

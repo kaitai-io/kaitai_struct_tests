@@ -54,6 +54,9 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     val needsFinal = spec.asserts.exists(assert => assert.isInstanceOf[TestException])
     val finalKeyword = if (needsFinal) "final " else ""
     out.puts(s"${finalKeyword}$className r = $className.fromFile(SRC_DIR + " + "\"" + spec.data + "\");")
+    if (spec.debug) {
+      out.puts("r._read();")
+    }
   }
 
   override def footer(): Unit = {
