@@ -8,5 +8,5 @@ cd spec/rust
 mkdir src
 touch src/lib.rs
 cargo build
-cargo test-junit \
+cargo junit \
       --name "../../$TEST_OUT_DIR/rust/results.xml"
