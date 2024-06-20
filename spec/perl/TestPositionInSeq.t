@@ -11,7 +11,7 @@ use PositionInSeq;
 sub test_position_in_seq: Test(1) {
     my $r = PositionInSeq->from_file('src/position_in_seq.bin');
 
-    is_deeply($r->numbers(), [(0 + 1), 2, 3], 'Equals');
+    is_deeply($r->numbers(), [0 + 1, 2, 3], 'Equals');
 }
 
 Test::Class->runtests;

@@ -9,5 +9,5 @@ TestExprSizeofType0 = {}
 function TestExprSizeofType0:test_expr_sizeof_type_0()
     local r = ExprSizeofType0:from_file("src/fixed_struct.bin")
 
-    luaunit.assertEquals(r.sizeof_block, ((1 + 4) + 2))
+    luaunit.assertEquals(r.sizeof_block, (1 + 4) + 2)
 end

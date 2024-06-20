@@ -11,7 +11,7 @@ use ExprSizeofType0;
 sub test_expr_sizeof_type_0: Test(1) {
     my $r = ExprSizeofType0->from_file('src/fixed_struct.bin');
 
-    is($r->sizeof_block(), ((1 + 4) + 2), 'Equals');
+    is($r->sizeof_block(), (1 + 4) + 2, 'Equals');
 }
 
 Test::Class->runtests;

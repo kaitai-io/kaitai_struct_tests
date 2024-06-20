@@ -5,8 +5,8 @@ RSpec.describe 'ExprSizeofValue0' do
     require 'expr_sizeof_value_0'
     r = ExprSizeofValue0.from_file('src/fixed_struct.bin')
 
-    expect(r.self_sizeof).to eq (((1 + 4) + 2) + 2)
-    expect(r.sizeof_block).to eq ((1 + 4) + 2)
+    expect(r.self_sizeof).to eq ((1 + 4) + 2) + 2
+    expect(r.sizeof_block).to eq (1 + 4) + 2
     expect(r.sizeof_block_a).to eq 1
     expect(r.sizeof_block_b).to eq 4
     expect(r.sizeof_block_c).to eq 2

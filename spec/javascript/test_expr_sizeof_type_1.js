@@ -4,6 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('ExprSizeofType1', 'src/fixed_struct.bin', function(r, ExprSizeofType1) {
-  assert.strictEqual(r.sizeofBlock, (((1 + 4) + 2) + 4));
+  assert.strictEqual(r.sizeofBlock, ((1 + 4) + 2) + 4);
   assert.strictEqual(r.sizeofSubblock, 4);
 });

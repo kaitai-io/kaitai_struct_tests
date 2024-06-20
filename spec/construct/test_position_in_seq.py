@@ -7,4 +7,4 @@ from position_in_seq import _schema
 class TestPositionInSeq(unittest.TestCase):
     def test_position_in_seq(self):
         r = _schema.parse_file('src/position_in_seq.bin')
-        self.assertEqual(r.numbers, [(0 + 1), 2, 3])
+        self.assertEqual(r.numbers, [0 + 1, 2, 3])
