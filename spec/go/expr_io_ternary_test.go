@@ -18,7 +18,7 @@ func TestExprIoTernary(t *testing.T) {
 			t.Fatal("unexpected panic:", r)
 		}
 	}()
-	f, err := os.Open("../../src/term_strz.bin")
+	f, err := os.Open("../../src/if_struct.bin")
 	if err != nil {
 		t.Fatal(err)
 	}
