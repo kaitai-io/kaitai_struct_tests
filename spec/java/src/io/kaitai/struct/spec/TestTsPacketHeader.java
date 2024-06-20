@@ -6,6 +6,7 @@ import io.kaitai.struct.testformats.TsPacketHeader;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestTsPacketHeader extends CommonSpec {
+
     @Test
     public void testTsPacketHeader() throws Exception {
         TsPacketHeader r = TsPacketHeader.fromFile(SRC_DIR + "ts_packet.bin");
@@ -16,6 +17,6 @@ public class TestTsPacketHeader extends CommonSpec {
         assertIntEquals(r.transportPriority(), true);
         assertIntEquals(r.pid(), 33);
         assertIntEquals(r.transportScramblingControl(), 0);
-        assertEquals(r.adaptationFieldControl(), TsPacketHeader.AdaptationFieldControlEnum.PAYLOAD_ONLY);
+        assertEquals(r.adaptationFieldControl(), TsPacketHeader.AdaptationFieldControlEnum.Known.PAYLOAD_ONLY);
     }
 }

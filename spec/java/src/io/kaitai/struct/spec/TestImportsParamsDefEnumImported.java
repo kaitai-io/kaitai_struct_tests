@@ -13,9 +13,9 @@ public class TestImportsParamsDefEnumImported extends CommonSpec {
     public void testImportsParamsDefEnumImported() throws Exception {
         ImportsParamsDefEnumImported r = ImportsParamsDefEnumImported.fromFile(SRC_DIR + "enum_0.bin");
 
-        assertEquals(r.one().pet1(), Enum0.Animal.CAT);
-        assertEquals(r.one().pet2(), EnumDeep.Container1.Container2.Animal.HARE);
-        assertEquals(r.two().pet1Param(), Enum0.Animal.CAT);
-        assertEquals(r.two().pet2Param(), EnumDeep.Container1.Container2.Animal.HARE);
+        assertEquals(r.one().pet1(), Enum0.Animal.Known.CAT);
+        assertEquals(r.one().pet2(), EnumDeep.Container1.Container2.Animal.Known.HARE);
+        assertEquals(r.two().pet1Param(), Enum0.Animal.Known.CAT);
+        assertEquals(r.two().pet2Param(), EnumDeep.Container1.Container2.Animal.Known.HARE);
     }
 }

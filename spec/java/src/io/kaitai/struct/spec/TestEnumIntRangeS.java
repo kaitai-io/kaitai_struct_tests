@@ -11,8 +11,8 @@ public class TestEnumIntRangeS extends CommonSpec {
     public void testEnumIntRangeS() throws Exception {
         EnumIntRangeS r = EnumIntRangeS.fromFile(SRC_DIR + "enum_int_range_s.bin");
 
-        assertEquals(r.f1(), EnumIntRangeS.Constants.INT_MIN);
-        assertEquals(r.f2(), EnumIntRangeS.Constants.ZERO);
-        assertEquals(r.f3(), EnumIntRangeS.Constants.INT_MAX);
+        assertEquals(r.f1(), EnumIntRangeS.Constants.Known.INT_MIN);
+        assertEquals(r.f2(), EnumIntRangeS.Constants.Known.ZERO);
+        assertEquals(r.f3(), EnumIntRangeS.Constants.Known.INT_MAX);
     }
 }

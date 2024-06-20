@@ -6,12 +6,13 @@ import io.kaitai.struct.testformats.ExprEnum;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestExprEnum extends CommonSpec {
+
     @Test
     public void testExprEnum() throws Exception {
         ExprEnum r = ExprEnum.fromFile(SRC_DIR + "term_strz.bin");
 
-        assertEquals(r.constDog(), ExprEnum.Animal.DOG);
-        assertEquals(r.derivedBoom(), ExprEnum.Animal.BOOM);
-        assertEquals(r.derivedDog(), ExprEnum.Animal.DOG);
+        assertEquals(r.constDog(), ExprEnum.Animal.Known.DOG);
+        assertEquals(r.derivedBoom(), ExprEnum.Animal.Known.BOOM);
+        assertEquals(r.derivedDog(), ExprEnum.Animal.Known.DOG);
     }
 }
