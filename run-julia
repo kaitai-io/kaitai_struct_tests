@@ -1,10 +1,5 @@
-#!/bin/bash
+#!/bin/sh -ef
 
+. ./config
 
-source ./config
-
-# Define the command to run the Julia script with redirected output
-command="JULIA_LOAD_PATH=\"$JULIA_LOAD_PATH:$JULIA_RUNTIME_DIR:compiled/julia:spec/julia/extra\" julia \"spec/julia/runtests.jl\""
-
-# Run the command
-eval $command
+JULIA_LOAD_PATH="$JULIA_LOAD_PATH:$JULIA_RUNTIME_DIR:compiled/julia:spec/julia/extra" julia spec/julia/runtests.jl
