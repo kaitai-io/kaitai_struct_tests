@@ -20,7 +20,7 @@ class JuliaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator
   override def header(): Unit = {
     importList.add(s"import ${className}Module")
     out.puts
-    out.puts(s"@testset ${'"'}$className test${'"'} begin")
+    out.puts(s"""@testset "$className test" begin""")
     out.inc
   }
 
@@ -41,7 +41,7 @@ class JuliaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator
 
   override def simpleEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
-    val expStr = translateExp(check.expected)
+    val expStr = translator.translate(check.expected)
     out.puts(s"@test $actStr == $expStr")
   }
 
@@ -69,9 +69,6 @@ class JuliaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator
 
   def translateAct(x: Ast.expr) =
     translator.translate(x).replace("this." + Main.INIT_OBJ_NAME, "r")
-
-  def translateExp(x: Ast.expr) =
-    translator.translate(x).replace("this._root", className)
 
   override def results: String =
     "# " + AUTOGEN_COMMENT + "\n\n" + super.results
