@@ -13,6 +13,12 @@ class RustBuilder < PartialBuilder
     @base_spec_dir = File.absolute_path(base_spec_dir)
 
     @spec_dir          = File.join(@base_spec_dir, 'tests')
+    FileUtils.mkdir_p(@spec_dir)
+
+    # move generated tests from base dir to tests subdir
+    spec_files = Dir.glob('test_*.rs', base: @base_spec_dir)
+    spec_files.map { |fn| FileUtils.mv(File.join(@base_spec_dir, fn), @spec_dir) }
+
     @formats_dir       = File.join(@base_spec_dir, 'src/formats')
     @spec_list_file    = File.join(@base_spec_dir, 'tests/spec.rs')
     @formats_list_file = File.join(@base_spec_dir, 'src/formats.rs')
