@@ -1,24 +1,15 @@
 use std::fs;
-
 extern crate kaitai;
 use self::kaitai::*;
 use rust::formats::opaque_with_param::*;
 
 #[test]
-fn test_opaque_with_param() {
+fn test_opaque_with_param() -> KResult<()> {
     let bytes = fs::read("../../src/term_strz.bin").unwrap();
     let _io = BytesReader::from(bytes);
-    let res = OpaqueWithParam::read_into(&_io, None, None);
-    let r : OptRc<OpaqueWithParam>;
+    let r: OptRc<OpaqueWithParam> = OpaqueWithParam::read_into(&_io, None, None)?;
 
-    if let Err(err) = res {
-        panic!("{:?}", err);
-    } else {
-        r = res.unwrap();
-    }
-
-    let one = r.one();
-    let p = one;
-    assert_eq!(*p.buf(), "foo|b");
-    assert_eq!(*p.trailer(), 0x61);
+    assert_eq!(*r.one().buf(), "foo|b");
+    assert_eq!(*r.one().trailer(), 0x61);
+    Ok(())
 }
