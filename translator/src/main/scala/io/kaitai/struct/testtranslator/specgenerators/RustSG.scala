@@ -96,9 +96,8 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
   }
 
   override def nullAssert(actual: Ast.expr): Unit = {
-    val actStr = correctIO(translateAct(actual))
-    out.puts(s"assert_eq!($actStr, 0);")
-    // TODO: Figure out what's meant to happen here
+    val actStr = translator.remove_deref(correctIO(translateAct(actual)))
+    out.puts(s"assert!($actStr.is_none());")
   }
 
   override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit = {
