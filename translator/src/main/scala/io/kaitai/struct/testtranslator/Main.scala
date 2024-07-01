@@ -11,7 +11,7 @@ object Main extends App {
   val specKsDir = s"$baseDir/spec/ks"
   val formatsDir = s"$baseDir/formats"
   val defaultOutDir = s"$specKsDir/out"
-  val importsDir = s"$baseDir/../formats"
+  val importDirs = List(s"$baseDir/../formats", s"$formatsDir/ks_path")
 
   val ALL_LANGS = List(
     "construct",
