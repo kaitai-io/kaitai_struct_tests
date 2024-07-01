@@ -42,7 +42,6 @@ class RustBuilder < PartialBuilder
     File.open(@spec_list_file, 'w') { |f|
       f.puts '#![allow(unused_variables)]'
       f.puts '#![allow(unused_assignments)]'
-      f.puts '#![allow(overflowing_literals)]'
       grouped_files[:spec].each { |fn| f.puts "pub mod #{File.basename(fn, '.rs')};" }
     }
     File.open(@formats_list_file, 'w') { |f|
