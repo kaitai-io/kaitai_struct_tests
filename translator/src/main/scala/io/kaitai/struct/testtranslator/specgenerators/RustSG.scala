@@ -19,15 +19,12 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider, classSpecs: ClassSpecs
   override def fileName(name: String): String = s"tests/test_$name.rs"
 
   override def header(): Unit = {
-    importList.add("#![allow(unused_variables)]")
-    importList.add("#![allow(unused_assignments)]")
-    importList.add("#![allow(overflowing_literals)]")
     importList.add("use std::fs;")
     importList.add("extern crate kaitai;")
     importList.add("use self::kaitai::*;")
     importList.add(s"use rust::formats::${spec.id}::*;")
 
-    spec.extraImports.foreach{ name => importList.add(s"use rust::formats::$name::*;") }
+    spec.extraImports.foreach(entry => importList.add(s"use rust::formats::$entry::*;"))
 
     out.puts("#[test]")
     out.puts(s"fn test_${spec.id}() -> KResult<()> {")
