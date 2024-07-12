@@ -193,7 +193,7 @@ result['$meta'] = meta
 # Try to ensure order of output in generated JSON, but this only works for Ruby 2+
 result = result.sort.to_h if [].respond_to?(:to_h)
 
-json = JSON.pretty_generate(result)
+json = JSON.pretty_generate(result) + "\n"
 
 File.write(outfile, json)
 
