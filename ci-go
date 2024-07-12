@@ -28,10 +28,15 @@ ABS_COMPILED_DIR="$(pwd)/compiled/go"
 
 cd spec/go || exit 1
 
+cleanup()
+{
+	find "$ABS_SPEC_DIR" "$ABS_COMPILED_DIR" -iname '*.disabled' -exec sh -c 'mv -n "$1" "${1%.disabled}"' sh {} \;
+}
+
 # NOTE: in Bash, `trap ... EXIT` would be enough (and recommended), but unfortunately we
 # cannot change the shebang to `/bin/bash` here because our Docker images run on Alpine
 # and don't have Bash.
-trap 'find "$ABS_SPEC_DIR" "$ABS_COMPILED_DIR" -iname '\''*.disabled'\'' -exec sh -c '\''mv -n "$1" "${1%.disabled}"'\'' sh {} \;' INT TERM HUP EXIT
+trap 'cleanup' INT TERM HUP EXIT
 
 attempt=1
 
