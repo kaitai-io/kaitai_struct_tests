@@ -287,7 +287,7 @@ class CppBuilder < PartialBuilder
 
   def file_to_test(filename)
     # Treat bare files as all others
-    if filename.respond_to?(:[]) and filename[0] == :bare
+    if is_bare?(filename)
       filename = filename[1]
     end
 
