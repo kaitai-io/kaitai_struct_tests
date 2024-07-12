@@ -28,8 +28,6 @@ ABS_COMPILED_DIR="$(pwd)/compiled/go"
 
 cd spec/go || exit 1
 
-BUILD_FAILED_FILES_DIR=$(mktemp -d)
-mkdir -p "$BUILD_FAILED_FILES_DIR"/compiled "$BUILD_FAILED_FILES_DIR"/spec
 # NOTE: in Bash, `trap ... EXIT` would be enough (and recommended), but unfortunately we
 # cannot change the shebang to `/bin/bash` here because our Docker images run on Alpine
 # and don't have Bash.
