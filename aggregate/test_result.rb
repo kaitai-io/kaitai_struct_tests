@@ -44,7 +44,7 @@ class TestResult
   def to_h
     h = {
 #      'name' => name,
-      'status' => status.to_s,
+      'status' => status,
       'elapsed' => elapsed,
     }
     h['failure'] = failure.to_h unless failure.nil?
