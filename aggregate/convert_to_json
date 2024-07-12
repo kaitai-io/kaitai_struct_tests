@@ -190,8 +190,15 @@ end
 
 result['$meta'] = meta
 
-# Try to ensure order of output in generated JSON, but this only works for Ruby 2+
-result = result.sort.to_h if [].respond_to?(:to_h)
+# Try to ensure stable order of tests in generated JSON. There are two ways to
+# achieve this: `Array#to_h` is [better](https://stackoverflow.com/a/28303699)
+# but only available since Ruby 2.0, `Hash.[]` is "tricky" but available in 1.9,
+# so we use it as a fallback.
+if [].respond_to?(:to_h)
+  result = result.sort.to_h
+else
+  result = Hash[result.sort]
+end
 
 json = JSON.pretty_generate(result) + "\n"
 
