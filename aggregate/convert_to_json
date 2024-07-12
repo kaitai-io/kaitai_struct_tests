@@ -44,7 +44,7 @@ def reports_to_h(*reports)
       new_status = v['status']
 
       if STATUS_PRIORITY[new_status] > STATUS_PRIORITY[old_status]
-        warn "#{k}: overwriting #{obj[k].inspect} with #{v.inspect}"
+        warn "#{k}: overwriting #{JSON.generate(obj[k])} with #{JSON.generate(v)}"
         obj[k] = v
       end
     }
@@ -63,16 +63,16 @@ def add_kst_adoption(tests, log_dir)
 end
 
 def report_summary(result)
-  by_status = {'kst' => 0}
+  by_status = {kst: 0}
   result.each_pair { |name, test_result|
     next if name[0] == '$'
     status = test_result['status']
     by_status[status] ||= 0
     by_status[status] += 1
-    by_status['kst'] += 1 if test_result['is_kst']
+    by_status[:kst] += 1 if test_result['is_kst']
   }
 
-  puts "SUMMARY: #{by_status.inspect}"
+  puts "SUMMARY: #{JSON.generate(by_status)}"
 end
 
 lang, infile, outfile = ARGV
