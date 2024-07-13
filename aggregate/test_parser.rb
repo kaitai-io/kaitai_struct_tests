@@ -11,6 +11,10 @@ class TestParser
   end
 
   def to_json
-    JSON.pretty_generate(to_enum(:each_test).map { |t| {name: t.name, **t.to_h} })
+    JSON.pretty_generate(to_enum(:each_test).map { |t|
+      h = {'name' => t.name}
+      h.merge!(t.to_h)
+      h
+    })
   end
 end
