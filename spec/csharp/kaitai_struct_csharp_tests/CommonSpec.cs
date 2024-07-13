@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Kaitai
 {
-    public class CommonSpec
+    public abstract class CommonSpec
     {
         private string _testPrefix;
 
