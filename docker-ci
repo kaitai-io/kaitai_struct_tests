@@ -56,7 +56,22 @@ detect_docker()
 
 is_image_available()
 {
-	"$DOCKER_BIN" images --no-trunc -q "$1" 2> /dev/null | grep -q '^sha256:[0-9a-f]\+$'
+	# Strictly speaking, `local` is undefined in POSIX sh, but "quite a lot of
+	# real world shells support this feature" (see
+	# https://www.shellcheck.net/wiki/SC3043#exceptions), so it's probably not a
+	# problem. If it becomes a problem, we can always replace it with some
+	# workaround.
+	local images
+
+	# This splitting (first collect the output into a variable, then load it to
+	# `grep`) is necessary, because we want to fail if `docker images` has a
+	# non-zero exit code, not look for matches in the error output. This comment
+	# explains it well:
+	# https://www.reddit.com/r/programming/comments/1bvinup/comment/ky31m01/
+	if ! images=$("$DOCKER_BIN" images --no-trunc -q "$1"); then
+		exit 1
+	fi
+	printf '%s\n' "$images" | grep -q '^sha256:[0-9a-f]\+$'
 }
 
 # Define default values for parameters
