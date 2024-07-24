@@ -150,9 +150,13 @@ detect_docker
 
 # If IMPLEMENTATION is missing, auto-select first available one
 if [ -z "$IMPLEMENTATION" ]; then
-	IMG_NAME=$("$DOCKER_BIN" images --format='{{.Repository}}' \
+	# We're running the script with `set -e`, so all we need to do in order to
+	# check the exit code of `docker images` is to have it on a separate line
+	# like this (if it fails, the script will exit immediately).
+	MATCHING_IMGS=$("$DOCKER_BIN" images --format='{{.Repository}}' \
 		--filter='label=io.kaitai.ci=true' \
-		--filter="reference=kaitai-$TARGET-"'*'"-$OS-$ARCH" | head -n1)
+		--filter="reference=kaitai-$TARGET-"'*'"-$OS-$ARCH")
+	IMG_NAME=$(printf '%s\n' "$MATCHING_IMGS" | head -n1)
 	if [ -z "$IMG_NAME" ]; then
 		echo "No local Docker images found at all for target '$TARGET'. Please specify '-i' with an implementation and '--download' to download it."
 		exit 3
