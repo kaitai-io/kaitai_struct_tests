@@ -202,7 +202,10 @@ if [ -n "$GITHUB_ACTIONS" ]; then
 fi
 
 if [ "$DO_COMPARE_FLAG" = 1 ]; then
-	./report-download-github "$TARGET" "$SUBTARGET" "$IMPLEMENTATION" "$OS" "$ARCH" || :
+	PREV_REPORT_DOWNLOADED=0
+	if ./report-download-github "$TARGET" "$SUBTARGET" "$IMPLEMENTATION" "$OS" "$ARCH"; then
+		PREV_REPORT_DOWNLOADED=1
+	fi
 fi
 
 if [ "$REBUILD_FLAG" = 1 ]; then
@@ -233,7 +236,11 @@ MSYS2_ARG_CONV_EXCL='*' "$DOCKER_BIN" run $EXTRA_OPTS \
 if [ "$DO_COMPARE_FLAG" = 1 ]; then
 	echo "# Comparison with previous"
 	echo
+	PREV_REPORT=
+	if [ "$PREV_REPORT_DOWNLOADED" = 1 ]; then
+		PREV_REPORT="ci_results/$TARGET$SUBTARGET/$IMPLEMENTATION-$OS-$ARCH/ci.json"
+	fi
 	aggregate/compare_with_prev \
-		"ci_results/$TARGET$SUBTARGET/$IMPLEMENTATION-$OS-$ARCH/ci.json" \
+		"$PREV_REPORT" \
 		"test_out/$TARGET$SUBTARGET/ci.json"
 fi
