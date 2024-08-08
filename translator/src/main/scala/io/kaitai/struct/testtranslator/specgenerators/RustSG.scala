@@ -18,7 +18,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     out.puts("extern crate kaitai_struct;")
     out.puts(s"extern crate rust;")
     out.puts
-    
+
     out.puts("use kaitai_struct::KaitaiStruct;")
     out.puts(s"use rust::$className;")
     out.puts
@@ -29,6 +29,9 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
     out.puts("if let Ok(r) = " + className + "::from_file(\"src/" + spec.data + "\") {")
     out.inc
+    if (spec.debug) {
+      out.puts("r.read().expect(\"cannot read test file\");")
+    }
   }
 
   override def footer(): Unit = {

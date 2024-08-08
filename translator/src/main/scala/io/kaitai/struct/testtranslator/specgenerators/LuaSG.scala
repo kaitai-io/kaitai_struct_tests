@@ -31,6 +31,9 @@ class LuaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
 
   override def runParse(): Unit = {
     out.puts(s"""local r = $className:from_file("src/${spec.data}")""")
+    if (spec.debug) {
+      out.puts("r:_read()")
+    }
   }
 
   override def runParseExpectError(exception: KSError): Unit = {
@@ -40,7 +43,12 @@ class LuaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
       case EndOfStreamError => "requested %d+ bytes, but only %d+ bytes available"
       case _ => LuaCompiler.ksErrorName(exception)
     }
-    out.puts(s"""luaunit.assertErrorMsgMatches(".+: $msg", $className.from_file, $className, "src/${spec.data}")""")
+    if (spec.debug) {
+      out.puts(s"""local r = $className:from_file("src/${spec.data}")""")
+      out.puts(s"""luaunit.assertErrorMsgMatches(".+: $msg", r.read, r")""")
+    } else {
+      out.puts(s"""luaunit.assertErrorMsgMatches(".+: $msg", $className.from_file, $className, "src/${spec.data}")""")
+    }
   }
 
   override def footer(): Unit = {
