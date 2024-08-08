@@ -12,11 +12,11 @@ namespace Kaitai
         {
             var r = RepeatNStruct.FromFile(SourceFile("repeat_n_struct.bin"));
 
-            Assert.AreEqual(r.Chunks.Count, 2);
-            Assert.AreEqual(r.Chunks[0].Offset, 16);
-            Assert.AreEqual(r.Chunks[0].Len, 8312);
-            Assert.AreEqual(r.Chunks[1].Offset, 8328);
-            Assert.AreEqual(r.Chunks[1].Len, 15);
+            AreEqual(r.Chunks.Count, 2);
+            AreEqual(r.Chunks[0].Offset, 16);
+            AreEqual(r.Chunks[0].Len, 8312);
+            AreEqual(r.Chunks[1].Offset, 8328);
+            AreEqual(r.Chunks[1].Len, 15);
         }
     }
 }

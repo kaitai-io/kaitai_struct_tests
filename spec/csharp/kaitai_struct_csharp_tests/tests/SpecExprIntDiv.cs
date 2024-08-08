@@ -12,12 +12,12 @@ namespace Kaitai
         {
             var r = ExprIntDiv.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.IntU, 1262698832);
-            Assert.AreEqual(r.IntS, -52947);
-            Assert.AreEqual(r.DivPosConst, 756);
-            Assert.AreEqual(r.DivNegConst, -757);
-            Assert.AreEqual(r.DivPosSeq, 97130679);
-            Assert.AreEqual(r.DivNegSeq, -4073);
+            AreEqual(r.IntU, 1262698832);
+            AreEqual(r.IntS, -52947);
+            AreEqual(r.DivPosConst, 756);
+            AreEqual(r.DivNegConst, -757);
+            AreEqual(r.DivPosSeq, 97130679);
+            AreEqual(r.DivNegSeq, -4073);
         }
     }
 }

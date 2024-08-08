@@ -12,7 +12,7 @@ namespace Kaitai
         {
             var r = ZlibWithHeader78.FromFile(SourceFile("zlib_with_header_78.bin"));
 
-            Assert.AreEqual(r.Data, new byte[] { 97, 32, 113, 117, 105, 99, 107, 32, 98, 114, 111, 119, 110, 32, 102, 111, 120, 32, 106, 117, 109, 112, 115, 32, 111, 118, 101, 114 });
+            AreEqual(r.Data, new byte[] { 97, 32, 113, 117, 105, 99, 107, 32, 98, 114, 111, 119, 110, 32, 102, 111, 120, 32, 106, 117, 109, 112, 115, 32, 111, 118, 101, 114 });
         }
     }
 }

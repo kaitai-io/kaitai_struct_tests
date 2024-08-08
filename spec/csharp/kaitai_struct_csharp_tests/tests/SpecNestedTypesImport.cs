@@ -12,11 +12,11 @@ namespace Kaitai
         {
             var r = NestedTypesImport.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.ACc.ValueCc, 80);
-            Assert.AreEqual(r.ACD.ValueD, 65);
-            Assert.AreEqual(r.B.ValueB, 67);
-            Assert.AreEqual(r.B.ACc.ValueCc, 75);
-            Assert.AreEqual(r.B.ACD.ValueD, 45);
+            AreEqual(r.ACc.ValueCc, 80);
+            AreEqual(r.ACD.ValueD, 65);
+            AreEqual(r.B.ValueB, 67);
+            AreEqual(r.B.ACc.ValueCc, 75);
+            AreEqual(r.B.ACD.ValueD, 45);
             Assert.IsNull(r.ACc.M_Parent);
             Assert.IsNull(r.ACc.M_Root);
             Assert.IsNull(r.ACD.M_Parent);

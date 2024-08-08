@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = ProcessRotate.FromFile(SourceFile("process_rotate.bin"));
 
-            Assert.AreEqual(r.Buf1, new byte[] { 72, 101, 108, 108, 111 });
-            Assert.AreEqual(r.Buf2, new byte[] { 87, 111, 114, 108, 100 });
-            Assert.AreEqual(r.Buf3, new byte[] { 84, 104, 101, 114, 101 });
+            AreEqual(r.Buf1, new byte[] { 72, 101, 108, 108, 111 });
+            AreEqual(r.Buf2, new byte[] { 87, 111, 114, 108, 100 });
+            AreEqual(r.Buf3, new byte[] { 84, 104, 101, 114, 101 });
         }
     }
 }

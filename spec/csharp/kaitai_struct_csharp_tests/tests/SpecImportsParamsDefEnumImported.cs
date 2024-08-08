@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = ImportsParamsDefEnumImported.FromFile(SourceFile("enum_0.bin"));
 
-            Assert.AreEqual(r.One.Pet1, Enum0.Animal.Cat);
-            Assert.AreEqual(r.One.Pet2, EnumDeep.Container1.Container2.Animal.Hare);
-            Assert.AreEqual(r.Two.Pet1Param, Enum0.Animal.Cat);
-            Assert.AreEqual(r.Two.Pet2Param, EnumDeep.Container1.Container2.Animal.Hare);
+            AreEqual(r.One.Pet1, Enum0.Animal.Cat);
+            AreEqual(r.One.Pet2, EnumDeep.Container1.Container2.Animal.Hare);
+            AreEqual(r.Two.Pet1Param, Enum0.Animal.Cat);
+            AreEqual(r.Two.Pet2Param, EnumDeep.Container1.Container2.Animal.Hare);
         }
     }
 }

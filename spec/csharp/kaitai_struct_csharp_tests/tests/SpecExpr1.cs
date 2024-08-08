@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = Expr1.FromFile(SourceFile("str_encodings.bin"));
 
-            Assert.AreEqual(r.LenOf1, 10);
-            Assert.AreEqual(r.LenOf1Mod, 8);
-            Assert.AreEqual(r.Str1, "Some ASC");
-            Assert.AreEqual(r.Str1Len, 8);
+            AreEqual(r.LenOf1, 10);
+            AreEqual(r.LenOf1Mod, 8);
+            AreEqual(r.Str1, "Some ASC");
+            AreEqual(r.Str1Len, 8);
         }
     }
 }

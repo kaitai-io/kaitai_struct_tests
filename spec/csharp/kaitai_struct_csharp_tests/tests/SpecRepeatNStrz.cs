@@ -13,8 +13,8 @@ namespace Kaitai
         {
             var r = RepeatNStrz.FromFile(SourceFile("repeat_n_strz.bin"));
 
-            Assert.AreEqual(r.Qty, 2);
-            Assert.AreEqual(r.Lines, new List<string> { "foo", "bar" });
+            AreEqual(r.Qty, 2);
+            AreEqual(r.Lines, new List<string> { "foo", "bar" });
         }
     }
 }

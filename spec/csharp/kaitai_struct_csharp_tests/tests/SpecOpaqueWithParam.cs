@@ -9,8 +9,8 @@ namespace Kaitai
         public void TestOpaqueWithParam()
         {
             var r = OpaqueWithParam.FromFile(SourceFile("term_strz.bin"));
-            Assert.AreEqual(r.One.Buf, "foo|b");
-            Assert.AreEqual(r.One.Trailer, 0x61);
+            AreEqual(r.One.Buf, "foo|b");
+            AreEqual(r.One.Trailer, 0x61);
         }
     }
 }

@@ -12,20 +12,20 @@ namespace Kaitai
         {
             var r = BitsSimpleLe.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.Byte1, 80);
-            Assert.AreEqual(r.Byte2, 65);
-            Assert.AreEqual(r.BitsA, true);
-            Assert.AreEqual(r.BitsB, 1);
-            Assert.AreEqual(r.BitsC, 4);
-            Assert.AreEqual(r.LargeBits1, 331);
-            Assert.AreEqual(r.Spacer, 3);
-            Assert.AreEqual(r.LargeBits2, 393);
-            Assert.AreEqual(r.NormalS2, -1);
-            Assert.AreEqual(r.Byte8910, 4407632);
-            Assert.AreEqual(r.Byte11To14, 760556875);
-            Assert.AreEqual(r.Byte15To19, 1099499455812);
-            Assert.AreEqual(r.Byte20To27, 18446744073709551615);
-            Assert.AreEqual(r.TestIfB1, 123);
+            AreEqual(r.Byte1, 80);
+            AreEqual(r.Byte2, 65);
+            AreEqual(r.BitsA, true);
+            AreEqual(r.BitsB, 1);
+            AreEqual(r.BitsC, 4);
+            AreEqual(r.LargeBits1, 331);
+            AreEqual(r.Spacer, 3);
+            AreEqual(r.LargeBits2, 393);
+            AreEqual(r.NormalS2, -1);
+            AreEqual(r.Byte8910, 4407632);
+            AreEqual(r.Byte11To14, 760556875);
+            AreEqual(r.Byte15To19, 1099499455812);
+            AreEqual(r.Byte20To27, 18446744073709551615);
+            AreEqual(r.TestIfB1, 123);
         }
     }
 }

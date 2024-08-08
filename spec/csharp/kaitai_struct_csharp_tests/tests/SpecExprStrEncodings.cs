@@ -12,13 +12,13 @@ namespace Kaitai
         {
             var r = ExprStrEncodings.FromFile(SourceFile("str_encodings.bin"));
 
-            Assert.AreEqual(r.Str1Eq, true);
-            Assert.AreEqual(r.Str2Eq, true);
-            Assert.AreEqual(r.Str3Eq, true);
-            Assert.AreEqual(r.Str3EqStr2, true);
-            Assert.AreEqual(r.Str4Eq, true);
-            Assert.AreEqual(r.Str4GtStrCalc, true);
-            Assert.AreEqual(r.Str4GtStrFromBytes, true);
+            AreEqual(r.Str1Eq, true);
+            AreEqual(r.Str2Eq, true);
+            AreEqual(r.Str3Eq, true);
+            AreEqual(r.Str3EqStr2, true);
+            AreEqual(r.Str4Eq, true);
+            AreEqual(r.Str4GtStrCalc, true);
+            AreEqual(r.Str4GtStrFromBytes, true);
         }
     }
 }

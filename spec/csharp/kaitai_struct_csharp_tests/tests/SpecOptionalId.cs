@@ -10,9 +10,9 @@ namespace Kaitai
         {
             var r = OptionalId.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.Unnamed_0, 80);
-            Assert.AreEqual(r.Unnamed_1, 65);
-            Assert.AreEqual(r.Unnamed_2, new byte[] { 67, 75, 45, 49, 255 });
+            AreEqual(r.Unnamed_0, 80);
+            AreEqual(r.Unnamed_1, 65);
+            AreEqual(r.Unnamed_2, new byte[] { 67, 75, 45, 49, 255 });
         }
     }
 }

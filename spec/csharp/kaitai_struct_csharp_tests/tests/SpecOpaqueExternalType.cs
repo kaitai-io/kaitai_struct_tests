@@ -9,9 +9,9 @@ namespace Kaitai
         public void TestOpaqueExternalType()
         {
             var r = OpaqueExternalType.FromFile(SourceFile("term_strz.bin"));
-            Assert.AreEqual(r.One.S1, "foo");
-            Assert.AreEqual(r.One.S2, "bar");
-            Assert.AreEqual(r.One.S3, "|baz@");
+            AreEqual(r.One.S1, "foo");
+            AreEqual(r.One.S2, "bar");
+            AreEqual(r.One.S3, "|baz@");
         }
     }
 }

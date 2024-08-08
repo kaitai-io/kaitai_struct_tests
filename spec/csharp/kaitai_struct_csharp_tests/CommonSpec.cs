@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Text;
+using NUnit.Framework;
 
 namespace Kaitai
 {
@@ -86,5 +87,52 @@ namespace Kaitai
         {
             return Path.Combine(DetectTestPrefix(), filename);
         }
+
+        #region Assertions
+        protected static void AreEqual<T>(T actual, T expected)
+        {
+            Assert.AreEqual(expected, actual);
+        }
+
+        protected static void AreEqual(decimal actual, decimal expected)
+        {
+            Assert.AreEqual(expected, actual);
+        }
+
+        protected static void AreEqual(double actual, double expected, double delta)
+        {
+            Assert.AreEqual(expected, actual, delta);
+        }
+
+        protected static void AreEqual(double? actual, double expected, double delta)
+        {
+            Assert.AreEqual(expected, actual, delta);
+        }
+
+        protected static void AreEqual(int actual, int expected)
+        {
+            Assert.AreEqual(expected, actual);
+        }
+
+        protected static void AreEqual(long actual, long expected)
+        {
+            Assert.AreEqual(expected, actual);
+        }
+
+        protected static void AreEqual(uint actual, uint expected)
+        {
+            Assert.AreEqual(expected, actual);
+        }
+
+        protected static void AreEqual(ulong actual, ulong expected)
+        {
+            Assert.AreEqual(expected, actual);
+        }
+
+        protected static void AreEqual(object actual, object expected)
+        {
+            Assert.AreEqual(expected, actual);
+        }
+        #endregion Assertions
     }
 }

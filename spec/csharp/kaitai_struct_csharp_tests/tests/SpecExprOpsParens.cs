@@ -12,15 +12,15 @@ namespace Kaitai
         {
             var r = ExprOpsParens.FromFile(SourceFile("enum_negative.bin"));
 
-            Assert.AreEqual(r.ISumToStr, "29");
-            Assert.AreEqual(r.FSumToInt, 9);
-            Assert.AreEqual(r.StrConcatLen, 10);
-            Assert.AreEqual(r.StrConcatRev, "9876543210");
-            Assert.AreEqual(r.StrConcatSubstr2To7, "23456");
-            Assert.AreEqual(r.StrConcatToI, 123456789);
-            Assert.AreEqual(r.BoolEq, 0);
-            Assert.AreEqual(r.BoolAnd, 0);
-            Assert.AreEqual(r.BoolOr, 1);
+            AreEqual(r.ISumToStr, "29");
+            AreEqual(r.FSumToInt, 9);
+            AreEqual(r.StrConcatLen, 10);
+            AreEqual(r.StrConcatRev, "9876543210");
+            AreEqual(r.StrConcatSubstr2To7, "23456");
+            AreEqual(r.StrConcatToI, 123456789);
+            AreEqual(r.BoolEq, 0);
+            AreEqual(r.BoolAnd, 0);
+            AreEqual(r.BoolOr, 1);
         }
     }
 }

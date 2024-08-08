@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = PositionToEnd.FromFile(SourceFile("position_to_end.bin"));
 
-            Assert.AreEqual(r.Index.Foo, 66);
-            Assert.AreEqual(r.Index.Bar, 4660);
+            AreEqual(r.Index.Foo, 66);
+            AreEqual(r.Index.Bar, 4660);
         }
     }
 }

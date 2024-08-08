@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = InstanceIoUser.FromFile(SourceFile("instance_io.bin"));
 
-            Assert.AreEqual(r.QtyEntries, 3);
-            Assert.AreEqual(r.Entries[0].Name, "the");
-            Assert.AreEqual(r.Entries[1].Name, "rainy");
-            Assert.AreEqual(r.Entries[2].Name, "day it is");
+            AreEqual(r.QtyEntries, 3);
+            AreEqual(r.Entries[0].Name, "the");
+            AreEqual(r.Entries[1].Name, "rainy");
+            AreEqual(r.Entries[2].Name, "day it is");
         }
     }
 }

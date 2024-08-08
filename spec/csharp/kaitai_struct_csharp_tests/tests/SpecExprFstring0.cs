@@ -12,15 +12,15 @@ namespace Kaitai
         {
             var r = ExprFstring0.FromFile(SourceFile("term_strz.bin"));
 
-            Assert.AreEqual(r.SeqStr, "foo|b");
-            Assert.AreEqual(r.SeqInt, 97);
-            Assert.AreEqual(r.Empty, "");
-            Assert.AreEqual(r.Literal, "abc");
-            Assert.AreEqual(r.LiteralWithEscapes, "abc\n\tt");
-            Assert.AreEqual(r.HeadAndIntLiteral, "abc=123");
-            Assert.AreEqual(r.HeadAndStrLiteral, "abc=foo");
-            Assert.AreEqual(r.HeadAndInt, "abc=97");
-            Assert.AreEqual(r.HeadAndStr, "abc=foo|b");
+            AreEqual(r.SeqStr, "foo|b");
+            AreEqual(r.SeqInt, 97);
+            AreEqual(r.Empty, "");
+            AreEqual(r.Literal, "abc");
+            AreEqual(r.LiteralWithEscapes, "abc\n\tt");
+            AreEqual(r.HeadAndIntLiteral, "abc=123");
+            AreEqual(r.HeadAndStrLiteral, "abc=foo");
+            AreEqual(r.HeadAndInt, "abc=97");
+            AreEqual(r.HeadAndStr, "abc=foo|b");
         }
     }
 }

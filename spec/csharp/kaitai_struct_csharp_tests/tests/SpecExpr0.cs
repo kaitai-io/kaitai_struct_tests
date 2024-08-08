@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = Expr0.FromFile(SourceFile("str_encodings.bin"));
 
-            Assert.AreEqual(r.MustBeF7, 247);
-            Assert.AreEqual(r.MustBeAbc123, "abc123");
+            AreEqual(r.MustBeF7, 247);
+            AreEqual(r.MustBeAbc123, "abc123");
         }
     }
 }

@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = StrLiterals2.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.Dollar1, "$foo");
-            Assert.AreEqual(r.Dollar2, "${foo}");
-            Assert.AreEqual(r.Hash, "#{foo}");
-            Assert.AreEqual(r.AtSign, "@foo");
+            AreEqual(r.Dollar1, "$foo");
+            AreEqual(r.Dollar2, "${foo}");
+            AreEqual(r.Hash, "#{foo}");
+            AreEqual(r.AtSign, "@foo");
         }
     }
 }

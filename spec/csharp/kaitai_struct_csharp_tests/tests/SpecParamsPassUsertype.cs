@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = ParamsPassUsertype.FromFile(SourceFile("position_in_seq.bin"));
 
-            Assert.AreEqual(r.First.Foo, 1);
-            Assert.AreEqual(r.One.Buf, new byte[] { 2 });
+            AreEqual(r.First.Foo, 1);
+            AreEqual(r.One.Buf, new byte[] { 2 });
         }
     }
 }

@@ -10,9 +10,9 @@ namespace Kaitai
         {
             var r = OpaqueExternalType02Parent.FromFile(SourceFile("term_strz.bin"));
 
-            Assert.AreEqual(r.Parent.Child.S1, "foo");
-            Assert.AreEqual(r.Parent.Child.S2, "bar");
-            Assert.AreEqual(r.Parent.Child.S3.S3, "|baz@");
+            AreEqual(r.Parent.Child.S1, "foo");
+            AreEqual(r.Parent.Child.S2, "bar");
+            AreEqual(r.Parent.Child.S3.S3, "|baz@");
         }
     }
 }

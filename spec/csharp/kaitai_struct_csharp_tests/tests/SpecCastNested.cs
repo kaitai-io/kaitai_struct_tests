@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = CastNested.FromFile(SourceFile("switch_opcodes.bin"));
 
-            Assert.AreEqual(r.Opcodes0Str.Value, "foobar");
-            Assert.AreEqual(r.Opcodes0StrValue, "foobar");
-            Assert.AreEqual(r.Opcodes1Int.Value, 66);
-            Assert.AreEqual(r.Opcodes1IntValue, 66);
+            AreEqual(r.Opcodes0Str.Value, "foobar");
+            AreEqual(r.Opcodes0StrValue, "foobar");
+            AreEqual(r.Opcodes1Int.Value, 66);
+            AreEqual(r.Opcodes1IntValue, 66);
         }
     }
 }

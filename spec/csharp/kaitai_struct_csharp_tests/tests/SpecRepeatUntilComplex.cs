@@ -13,21 +13,21 @@ namespace Kaitai
         {
             var r = RepeatUntilComplex.FromFile(SourceFile("repeat_until_complex.bin"));
 
-            Assert.AreEqual(r.First.Count, 3);
-            Assert.AreEqual(r.First[0].Count, 4);
-            Assert.AreEqual(r.First[0].Values, new List<int> { (0 + 1), 2, 3, 4 });
-            Assert.AreEqual(r.First[1].Count, 2);
-            Assert.AreEqual(r.First[1].Values, new List<int> { (0 + 1), 2 });
-            Assert.AreEqual(r.First[2].Count, 0);
-            Assert.AreEqual(r.Second.Count, 4);
-            Assert.AreEqual(r.Second[0].Count, 6);
-            Assert.AreEqual(r.Second[0].Values, new List<int> { (0 + 1), 2, 3, 4, 5, 6 });
-            Assert.AreEqual(r.Second[1].Count, 3);
-            Assert.AreEqual(r.Second[1].Values, new List<int> { (0 + 1), 2, 3 });
-            Assert.AreEqual(r.Second[2].Count, 4);
-            Assert.AreEqual(r.Second[2].Values, new List<int> { (0 + 1), 2, 3, 4 });
-            Assert.AreEqual(r.Second[3].Count, 0);
-            Assert.AreEqual(r.Third, new List<int> { (0 + 102), 111, 111, 98, 97, 114, 0 });
+            AreEqual(r.First.Count, 3);
+            AreEqual(r.First[0].Count, 4);
+            AreEqual(r.First[0].Values, new List<int> { (0 + 1), 2, 3, 4 });
+            AreEqual(r.First[1].Count, 2);
+            AreEqual(r.First[1].Values, new List<int> { (0 + 1), 2 });
+            AreEqual(r.First[2].Count, 0);
+            AreEqual(r.Second.Count, 4);
+            AreEqual(r.Second[0].Count, 6);
+            AreEqual(r.Second[0].Values, new List<int> { (0 + 1), 2, 3, 4, 5, 6 });
+            AreEqual(r.Second[1].Count, 3);
+            AreEqual(r.Second[1].Values, new List<int> { (0 + 1), 2, 3 });
+            AreEqual(r.Second[2].Count, 4);
+            AreEqual(r.Second[2].Values, new List<int> { (0 + 1), 2, 3, 4 });
+            AreEqual(r.Second[3].Count, 0);
+            AreEqual(r.Third, new List<int> { (0 + 102), 111, 111, 98, 97, 114, 0 });
         }
     }
 }

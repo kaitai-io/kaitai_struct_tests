@@ -12,14 +12,14 @@ namespace Kaitai
         {
             var r = EnumToI.FromFile(SourceFile("enum_0.bin"));
 
-            Assert.AreEqual(r.Pet1, EnumToI.Animal.Cat);
-            Assert.AreEqual(r.Pet2, EnumToI.Animal.Chicken);
-            Assert.AreEqual(r.Pet1I, 7);
-            Assert.AreEqual(r.Pet1IToS, "7");
-            Assert.AreEqual(r.Pet1Mod, 32775);
-            Assert.AreEqual(r.OneLtTwo, true);
-            Assert.AreEqual(r.Pet1EqInt, true);
-            Assert.AreEqual(r.Pet2EqInt, false);
+            AreEqual(r.Pet1, EnumToI.Animal.Cat);
+            AreEqual(r.Pet2, EnumToI.Animal.Chicken);
+            AreEqual(r.Pet1I, 7);
+            AreEqual(r.Pet1IToS, "7");
+            AreEqual(r.Pet1Mod, 32775);
+            AreEqual(r.OneLtTwo, true);
+            AreEqual(r.Pet1EqInt, true);
+            AreEqual(r.Pet2EqInt, false);
         }
     }
 }

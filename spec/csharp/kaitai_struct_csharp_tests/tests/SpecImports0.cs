@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = Imports0.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.Two, 80);
-            Assert.AreEqual(r.Hw.One, 65);
-            Assert.AreEqual(r.HwOne, 65);
+            AreEqual(r.Two, 80);
+            AreEqual(r.Hw.One, 65);
+            AreEqual(r.HwOne, 65);
         }
     }
 }

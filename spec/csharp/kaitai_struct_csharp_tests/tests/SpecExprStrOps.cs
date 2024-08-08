@@ -12,23 +12,23 @@ namespace Kaitai
         {
             var r = ExprStrOps.FromFile(SourceFile("term_strz.bin"));
 
-            Assert.AreEqual(r.One, "foo|b");
-            Assert.AreEqual(r.OneLen, 5);
-            Assert.AreEqual(r.OneRev, "b|oof");
-            Assert.AreEqual(r.OneSubstr0To3, "foo");
-            Assert.AreEqual(r.OneSubstr2To5, "o|b");
-            Assert.AreEqual(r.OneSubstr3To3, "");
-            Assert.AreEqual(r.Two, "0123456789");
-            Assert.AreEqual(r.TwoLen, 10);
-            Assert.AreEqual(r.TwoRev, "9876543210");
-            Assert.AreEqual(r.TwoSubstr0To7, "0123456");
-            Assert.AreEqual(r.TwoSubstr4To10, "456789");
-            Assert.AreEqual(r.TwoSubstr0To10, "0123456789");
-            Assert.AreEqual(r.ToIAttr, 9173);
-            Assert.AreEqual(r.ToIR10, -72);
-            Assert.AreEqual(r.ToIR2, 86);
-            Assert.AreEqual(r.ToIR8, 465);
-            Assert.AreEqual(r.ToIR16, 18383);
+            AreEqual(r.One, "foo|b");
+            AreEqual(r.OneLen, 5);
+            AreEqual(r.OneRev, "b|oof");
+            AreEqual(r.OneSubstr0To3, "foo");
+            AreEqual(r.OneSubstr2To5, "o|b");
+            AreEqual(r.OneSubstr3To3, "");
+            AreEqual(r.Two, "0123456789");
+            AreEqual(r.TwoLen, 10);
+            AreEqual(r.TwoRev, "9876543210");
+            AreEqual(r.TwoSubstr0To7, "0123456");
+            AreEqual(r.TwoSubstr4To10, "456789");
+            AreEqual(r.TwoSubstr0To10, "0123456789");
+            AreEqual(r.ToIAttr, 9173);
+            AreEqual(r.ToIR10, -72);
+            AreEqual(r.ToIR2, 86);
+            AreEqual(r.ToIR8, 465);
+            AreEqual(r.ToIR16, 18383);
         }
     }
 }

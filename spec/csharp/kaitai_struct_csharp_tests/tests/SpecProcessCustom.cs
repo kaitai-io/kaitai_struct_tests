@@ -27,7 +27,7 @@ namespace Kaitai
     public class MyCustomFx : CustomDecoder
     {
         private int key;
-        
+
         public MyCustomFx(int k, bool flag, byte[] someBytes)
         {
             key = flag ? k : -k;

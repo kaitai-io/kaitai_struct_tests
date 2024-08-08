@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = EnumOfValueInst.FromFile(SourceFile("enum_0.bin"));
 
-            Assert.AreEqual(r.Pet1, EnumOfValueInst.Animal.Cat);
-            Assert.AreEqual(r.Pet2, EnumOfValueInst.Animal.Chicken);
-            Assert.AreEqual(r.Pet3, EnumOfValueInst.Animal.Dog);
-            Assert.AreEqual(r.Pet4, EnumOfValueInst.Animal.Dog);
+            AreEqual(r.Pet1, EnumOfValueInst.Animal.Cat);
+            AreEqual(r.Pet2, EnumOfValueInst.Animal.Chicken);
+            AreEqual(r.Pet3, EnumOfValueInst.Animal.Dog);
+            AreEqual(r.Pet4, EnumOfValueInst.Animal.Dog);
         }
     }
 }

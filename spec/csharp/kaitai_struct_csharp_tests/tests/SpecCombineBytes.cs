@@ -12,16 +12,16 @@ namespace Kaitai
         {
             var r = CombineBytes.FromFile(SourceFile("term_strz.bin"));
 
-            Assert.AreEqual(r.BytesTerm, new byte[] { 102, 111, 111 });
-            Assert.AreEqual(r.BytesLimit, new byte[] { 98, 97, 114, 124 });
-            Assert.AreEqual(r.BytesEos, new byte[] { 98, 97, 122, 64 });
-            Assert.AreEqual(r.BytesCalc, new byte[] { 82, 110, 68 });
-            Assert.AreEqual(r.TermOrLimit, new byte[] { 102, 111, 111 });
-            Assert.AreEqual(r.TermOrEos, new byte[] { 98, 97, 122, 64 });
-            Assert.AreEqual(r.TermOrCalc, new byte[] { 102, 111, 111 });
-            Assert.AreEqual(r.LimitOrEos, new byte[] { 98, 97, 114, 124 });
-            Assert.AreEqual(r.LimitOrCalc, new byte[] { 82, 110, 68 });
-            Assert.AreEqual(r.EosOrCalc, new byte[] { 98, 97, 122, 64 });
+            AreEqual(r.BytesTerm, new byte[] { 102, 111, 111 });
+            AreEqual(r.BytesLimit, new byte[] { 98, 97, 114, 124 });
+            AreEqual(r.BytesEos, new byte[] { 98, 97, 122, 64 });
+            AreEqual(r.BytesCalc, new byte[] { 82, 110, 68 });
+            AreEqual(r.TermOrLimit, new byte[] { 102, 111, 111 });
+            AreEqual(r.TermOrEos, new byte[] { 98, 97, 122, 64 });
+            AreEqual(r.TermOrCalc, new byte[] { 102, 111, 111 });
+            AreEqual(r.LimitOrEos, new byte[] { 98, 97, 114, 124 });
+            AreEqual(r.LimitOrCalc, new byte[] { 82, 110, 68 });
+            AreEqual(r.EosOrCalc, new byte[] { 98, 97, 122, 64 });
         }
     }
 }

@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = ParamsPassArrayStruct.FromFile(SourceFile("position_to_end.bin"));
 
-            Assert.AreEqual(r.PassStructs.Structs.Count, 2);
-            Assert.AreEqual(((ParamsPassArrayStruct.Foo) (r.PassStructs.Structs[0])).F, 1);
-            Assert.AreEqual(((ParamsPassArrayStruct.Bar) (r.PassStructs.Structs[1])).B, 2);
+            AreEqual(r.PassStructs.Structs.Count, 2);
+            AreEqual(((ParamsPassArrayStruct.Foo) (r.PassStructs.Structs[0])).F, 1);
+            AreEqual(((ParamsPassArrayStruct.Bar) (r.PassStructs.Structs[1])).B, 2);
         }
     }
 }
