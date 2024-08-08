@@ -12,6 +12,6 @@ public class TestPositionInSeq extends CommonSpec {
     public void testPositionInSeq() throws Exception {
         PositionInSeq r = PositionInSeq.fromFile(SRC_DIR + "position_in_seq.bin");
 
-        assertEquals(r.numbers(), new ArrayList<Integer>(Arrays.asList((0 + 1), 2, 3)));
+        assertEquals(r.numbers(), new ArrayList<Integer>(Arrays.asList(0 + 1, 2, 3)));
     }
 }

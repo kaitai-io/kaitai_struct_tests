@@ -9,6 +9,6 @@ use rust::ExprSizeofType0;
 #[test]
 fn test_expr_sizeof_type_0() {
     if let Ok(r) = ExprSizeofType0::from_file("src/fixed_struct.bin") {
-        assert_eq!(r.sizeof_block, ((1 + 4) + 2));
+        assert_eq!(r.sizeof_block, (1 + 4) + 2);
     }
 }

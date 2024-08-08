@@ -33,7 +33,7 @@ func TestExprSizeofType1(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, (((1 + 4) + 2) + 4), tmp1)
+	assert.EqualValues(t, ((1 + 4) + 2) + 4, tmp1)
 	tmp2, err := r.SizeofSubblock()
 	if err != nil {
 		t.Fatal(err)

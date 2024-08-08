@@ -9,9 +9,9 @@ RSpec.describe 'IntegersDoubleOverflow' do
     expect(r.signed_safe_min_le).to eq -9007199254740991
     expect(r.signed_safe_max_be).to eq 9007199254740991
     expect(r.signed_safe_max_le).to eq 9007199254740991
-    expect(r.signed_unsafe_neg_be.to_s(10)).to eq "-9007199254740993"
-    expect(r.signed_unsafe_neg_le.to_s(10)).to eq "-9007199254740993"
-    expect(r.signed_unsafe_pos_be.to_s(10)).to eq "9007199254740993"
-    expect(r.signed_unsafe_pos_be.to_s(10)).to eq "9007199254740993"
+    expect(r.signed_unsafe_neg_be.to_s).to eq "-9007199254740993"
+    expect(r.signed_unsafe_neg_le.to_s).to eq "-9007199254740993"
+    expect(r.signed_unsafe_pos_be.to_s).to eq "9007199254740993"
+    expect(r.signed_unsafe_pos_be.to_s).to eq "9007199254740993"
   end
 end

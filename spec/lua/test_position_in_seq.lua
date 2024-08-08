@@ -9,5 +9,5 @@ TestPositionInSeq = {}
 function TestPositionInSeq:test_position_in_seq()
     local r = PositionInSeq:from_file("src/position_in_seq.bin")
 
-    luaunit.assertEquals(r.numbers, {(0 + 1), 2, 3})
+    luaunit.assertEquals(r.numbers, {0 + 1, 2, 3})
 end
