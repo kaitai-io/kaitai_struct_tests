@@ -11,8 +11,8 @@ public class TestEnumToI extends CommonSpec {
     public void testEnumToI() throws Exception {
         EnumToI r = EnumToI.fromFile(SRC_DIR + "enum_0.bin");
 
-        assertEquals(r.pet1(), EnumToI.Animal.CAT);
-        assertEquals(r.pet2(), EnumToI.Animal.CHICKEN);
+        assertEquals(r.pet1(), EnumToI.Animal.Known.CAT);
+        assertEquals(r.pet2(), EnumToI.Animal.Known.CHICKEN);
         assertIntEquals(r.pet1I(), 7);
         assertEquals(r.pet1IToS(), "7");
         assertIntEquals(r.pet1Mod(), 32775);
