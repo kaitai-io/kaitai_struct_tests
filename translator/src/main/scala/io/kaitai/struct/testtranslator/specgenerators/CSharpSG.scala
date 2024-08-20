@@ -74,15 +74,14 @@ class CSharpSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
       }
       case _ => expStr
     }
-    // TODO: fix order - actually it is (expected, actual)
-    out.puts(s"Assert.AreEqual($actStr, $expStr);")
+    out.puts(s"Assert.AreEqual($expStr, $actStr);")
   }
 
   override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
-    // TODO: fix order - actually it is (expected, actual)
-    out.puts(s"Assert.AreEqual($actStr, $expStr, $FLOAT_DELTA);")
+
+    out.puts(s"Assert.AreEqual($expStr, $actStr, $FLOAT_DELTA);")
   }
 
   override def nullAssert(actual: Ast.expr): Unit = {
