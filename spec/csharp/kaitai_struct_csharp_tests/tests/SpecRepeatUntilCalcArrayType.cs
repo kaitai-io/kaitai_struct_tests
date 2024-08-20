@@ -12,13 +12,13 @@ namespace Kaitai
         {
             var r = RepeatUntilCalcArrayType.FromFile(SourceFile("repeat_until_process.bin"));
 
-            Assert.AreEqual(r.Records.Count, 3);
-            Assert.AreEqual(r.Records[0].Marker, 232);
-            Assert.AreEqual(r.Records[0].Body, 2863311546);
-            Assert.AreEqual(r.Records[1].Marker, 250);
-            Assert.AreEqual(r.Records[1].Body, 2863315102);
-            Assert.AreEqual(r.Records[2].Marker, 170);
-            Assert.AreEqual(r.Records[2].Body, 1431655765);
+            Assert.AreEqual(3, r.Records.Count);
+            Assert.AreEqual(232, r.Records[0].Marker);
+            Assert.AreEqual(2863311546, r.Records[0].Body);
+            Assert.AreEqual(250, r.Records[1].Marker);
+            Assert.AreEqual(2863315102, r.Records[1].Body);
+            Assert.AreEqual(170, r.Records[2].Marker);
+            Assert.AreEqual(1431655765, r.Records[2].Body);
         }
     }
 }

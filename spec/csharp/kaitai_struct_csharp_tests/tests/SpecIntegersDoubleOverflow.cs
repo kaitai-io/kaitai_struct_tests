@@ -13,14 +13,14 @@ namespace Kaitai
         {
             var r = IntegersDoubleOverflow.FromFile(SourceFile("integers_double_overflow.bin"));
 
-            Assert.AreEqual(r.SignedSafeMinBe, -9007199254740991);
-            Assert.AreEqual(r.SignedSafeMinLe, -9007199254740991);
-            Assert.AreEqual(r.SignedSafeMaxBe, 9007199254740991);
-            Assert.AreEqual(r.SignedSafeMaxLe, 9007199254740991);
-            Assert.AreEqual(Convert.ToString((long) (r.SignedUnsafeNegBe), 10), "-9007199254740993");
-            Assert.AreEqual(Convert.ToString((long) (r.SignedUnsafeNegLe), 10), "-9007199254740993");
-            Assert.AreEqual(Convert.ToString((long) (r.SignedUnsafePosBe), 10), "9007199254740993");
-            Assert.AreEqual(Convert.ToString((long) (r.SignedUnsafePosBe), 10), "9007199254740993");
+            Assert.AreEqual(-9007199254740991, r.SignedSafeMinBe);
+            Assert.AreEqual(-9007199254740991, r.SignedSafeMinLe);
+            Assert.AreEqual(9007199254740991, r.SignedSafeMaxBe);
+            Assert.AreEqual(9007199254740991, r.SignedSafeMaxLe);
+            Assert.AreEqual("-9007199254740993", Convert.ToString((long) (r.SignedUnsafeNegBe), 10));
+            Assert.AreEqual("-9007199254740993", Convert.ToString((long) (r.SignedUnsafeNegLe), 10));
+            Assert.AreEqual("9007199254740993", Convert.ToString((long) (r.SignedUnsafePosBe), 10));
+            Assert.AreEqual("9007199254740993", Convert.ToString((long) (r.SignedUnsafePosBe), 10));
         }
     }
 }

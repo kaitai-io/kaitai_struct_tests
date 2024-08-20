@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = CastToTop.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.Code, 80);
-            Assert.AreEqual(r.Header.Code, 65);
-            Assert.AreEqual(r.HeaderCasted.Code, 65);
+            Assert.AreEqual(80, r.Code);
+            Assert.AreEqual(65, r.Header.Code);
+            Assert.AreEqual(65, r.HeaderCasted.Code);
         }
     }
 }

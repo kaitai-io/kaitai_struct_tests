@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = SwitchManualEnumInvalid.FromFile(SourceFile("enum_negative.bin"));
 
-            Assert.AreEqual(r.Opcodes.Count, 2);
-            Assert.AreEqual(r.Opcodes[0].Code, (SwitchManualEnumInvalid.Opcode.CodeEnum) 255);
+            Assert.AreEqual(2, r.Opcodes.Count);
+            Assert.AreEqual((SwitchManualEnumInvalid.Opcode.CodeEnum) 255, r.Opcodes[0].Code);
             Assert.IsNull(r.Opcodes[0].Body);
-            Assert.AreEqual(r.Opcodes[1].Code, (SwitchManualEnumInvalid.Opcode.CodeEnum) 1);
+            Assert.AreEqual((SwitchManualEnumInvalid.Opcode.CodeEnum) 1, r.Opcodes[1].Code);
             Assert.IsNull(r.Opcodes[1].Body);
         }
     }

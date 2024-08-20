@@ -12,15 +12,15 @@ namespace Kaitai
         {
             var r = BitsByteAligned.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.One, 20);
-            Assert.AreEqual(r.Byte1, 65);
-            Assert.AreEqual(r.Two, 2);
-            Assert.AreEqual(r.Three, false);
-            Assert.AreEqual(r.Byte2, 75);
-            Assert.AreEqual(r.Four, 2892);
-            Assert.AreEqual(r.Byte3, new byte[] { 255 });
-            Assert.AreEqual(r.FullByte, 255);
-            Assert.AreEqual(r.Byte4, 80);
+            Assert.AreEqual(20, r.One);
+            Assert.AreEqual(65, r.Byte1);
+            Assert.AreEqual(2, r.Two);
+            Assert.AreEqual(false, r.Three);
+            Assert.AreEqual(75, r.Byte2);
+            Assert.AreEqual(2892, r.Four);
+            Assert.AreEqual(new byte[] { 255 }, r.Byte3);
+            Assert.AreEqual(255, r.FullByte);
+            Assert.AreEqual(80, r.Byte4);
         }
     }
 }

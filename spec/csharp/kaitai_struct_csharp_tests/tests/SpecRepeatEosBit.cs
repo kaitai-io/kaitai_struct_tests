@@ -12,7 +12,7 @@ namespace Kaitai
         {
             var r = RepeatEosBit.FromFile(SourceFile("enum_0.bin"));
 
-            Assert.AreEqual(r.Nibbles.Count, 16);
+            Assert.AreEqual(16, r.Nibbles.Count);
         }
     }
 }

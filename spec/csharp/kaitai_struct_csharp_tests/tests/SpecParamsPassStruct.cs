@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = ParamsPassStruct.FromFile(SourceFile("enum_negative.bin"));
 
-            Assert.AreEqual(r.First.Foo, 255);
-            Assert.AreEqual(r.One.Bar.Qux, 1);
-            Assert.AreEqual(((ParamsPassStruct.Block) (r.One.Foo)).Foo, 255);
-            Assert.AreEqual(((ParamsPassStruct.Block) (r.One.Bar.Foo)).Foo, 255);
+            Assert.AreEqual(255, r.First.Foo);
+            Assert.AreEqual(1, r.One.Bar.Qux);
+            Assert.AreEqual(255, ((ParamsPassStruct.Block) (r.One.Foo)).Foo);
+            Assert.AreEqual(255, ((ParamsPassStruct.Block) (r.One.Bar.Foo)).Foo);
         }
     }
 }

@@ -12,14 +12,14 @@ namespace Kaitai
         {
             var r = BitsSeqEndianCombo.FromFile(SourceFile("process_xor_4.bin"));
 
-            Assert.AreEqual(r.Be1, 59);
-            Assert.AreEqual(r.Be2, 187);
-            Assert.AreEqual(r.Le3, 163);
-            Assert.AreEqual(r.Be4, 20);
-            Assert.AreEqual(r.Le5, 10);
-            Assert.AreEqual(r.Le6, 36);
-            Assert.AreEqual(r.Le7, 26);
-            Assert.AreEqual(r.Be8, true);
+            Assert.AreEqual(59, r.Be1);
+            Assert.AreEqual(187, r.Be2);
+            Assert.AreEqual(163, r.Le3);
+            Assert.AreEqual(20, r.Be4);
+            Assert.AreEqual(10, r.Le5);
+            Assert.AreEqual(36, r.Le6);
+            Assert.AreEqual(26, r.Le7);
+            Assert.AreEqual(true, r.Be8);
         }
     }
 }

@@ -12,12 +12,12 @@ namespace Kaitai
         {
             var r = BcdUserTypeLe.FromFile(SourceFile("bcd_user_type_le.bin"));
 
-            Assert.AreEqual(r.Ltr.AsInt, 12345678);
-            Assert.AreEqual(r.Ltr.AsStr, "12345678");
-            Assert.AreEqual(r.Rtl.AsInt, 87654321);
-            Assert.AreEqual(r.Rtl.AsStr, "87654321");
-            Assert.AreEqual(r.LeadingZeroLtr.AsInt, 123456);
-            Assert.AreEqual(r.LeadingZeroLtr.AsStr, "00123456");
+            Assert.AreEqual(12345678, r.Ltr.AsInt);
+            Assert.AreEqual("12345678", r.Ltr.AsStr);
+            Assert.AreEqual(87654321, r.Rtl.AsInt);
+            Assert.AreEqual("87654321", r.Rtl.AsStr);
+            Assert.AreEqual(123456, r.LeadingZeroLtr.AsInt);
+            Assert.AreEqual("00123456", r.LeadingZeroLtr.AsStr);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Kaitai
         {
             var r = ParamsCallExtraParens.FromFile(SourceFile("term_strz.bin"));
 
-            Assert.AreEqual(r.Buf1.Body, "foo|b");
+            Assert.AreEqual("foo|b", r.Buf1.Body);
         }
     }
 }

@@ -12,14 +12,14 @@ namespace Kaitai
         {
             var r = FloatToI.FromFile(SourceFile("floating_points.bin"));
 
-            Assert.AreEqual(r.SingleValue, 0.5, 1e-6);
-            Assert.AreEqual(r.DoubleValue, 0.25, 1e-6);
-            Assert.AreEqual(r.SingleI, 0);
-            Assert.AreEqual(r.DoubleI, 0);
-            Assert.AreEqual(r.Float1I, 1);
-            Assert.AreEqual(r.Float2I, 1);
-            Assert.AreEqual(r.Float3I, 1);
-            Assert.AreEqual(r.Float4I, -2);
+            Assert.AreEqual(0.5, r.SingleValue, 1e-6);
+            Assert.AreEqual(0.25, r.DoubleValue, 1e-6);
+            Assert.AreEqual(0, r.SingleI);
+            Assert.AreEqual(0, r.DoubleI);
+            Assert.AreEqual(1, r.Float1I);
+            Assert.AreEqual(1, r.Float2I);
+            Assert.AreEqual(1, r.Float3I);
+            Assert.AreEqual(-2, r.Float4I);
         }
     }
 }

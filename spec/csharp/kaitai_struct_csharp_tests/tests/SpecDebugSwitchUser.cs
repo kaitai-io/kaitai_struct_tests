@@ -14,8 +14,8 @@ namespace Kaitai
             r._read();
 
 
-            Assert.AreEqual(r.Code, 1);
-            Assert.AreEqual(((DebugSwitchUser.One) (r.Data)).Val, -190);
+            Assert.AreEqual(1, r.Code);
+            Assert.AreEqual(-190, ((DebugSwitchUser.One) (r.Data)).Val);
         }
     }
 }

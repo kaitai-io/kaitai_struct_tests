@@ -12,16 +12,16 @@ namespace Kaitai
         {
             var r = ExprBits.FromFile(SourceFile("switch_opcodes.bin"));
 
-            Assert.AreEqual(r.A, 2);
-            Assert.AreEqual(r.EnumSeq, ExprBits.Items.Foo);
-            Assert.AreEqual(r.ByteSize, new byte[] { 102, 111 });
-            Assert.AreEqual(r.RepeatExpr.Count, 2);
-            Assert.AreEqual(r.RepeatExpr[0], 111);
-            Assert.AreEqual(r.RepeatExpr[1], 98);
-            Assert.AreEqual(r.SwitchOnType, 97);
-            Assert.AreEqual(r.SwitchOnEndian.Foo, 29184);
-            Assert.AreEqual(r.EnumInst, ExprBits.Items.Bar);
-            Assert.AreEqual(r.InstPos, 111);
+            Assert.AreEqual(2, r.A);
+            Assert.AreEqual(ExprBits.Items.Foo, r.EnumSeq);
+            Assert.AreEqual(new byte[] { 102, 111 }, r.ByteSize);
+            Assert.AreEqual(2, r.RepeatExpr.Count);
+            Assert.AreEqual(111, r.RepeatExpr[0]);
+            Assert.AreEqual(98, r.RepeatExpr[1]);
+            Assert.AreEqual(97, r.SwitchOnType);
+            Assert.AreEqual(29184, r.SwitchOnEndian.Foo);
+            Assert.AreEqual(ExprBits.Items.Bar, r.EnumInst);
+            Assert.AreEqual(111, r.InstPos);
         }
     }
 }

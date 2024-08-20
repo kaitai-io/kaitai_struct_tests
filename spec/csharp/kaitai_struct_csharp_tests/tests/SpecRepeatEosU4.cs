@@ -13,7 +13,7 @@ namespace Kaitai
         {
             var r = RepeatEosU4.FromFile(SourceFile("repeat_eos_struct.bin"));
 
-            Assert.AreEqual(r.Numbers, new List<int> { 0, 66, 66, 2069 });
+            Assert.AreEqual(new List<int> { 0, 66, 66, 2069 }, r.Numbers);
         }
     }
 }
