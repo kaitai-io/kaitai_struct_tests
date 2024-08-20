@@ -65,11 +65,24 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
   override def simpleEquality(check: TestEquals): Unit = {
     val actType = translator.detectType(check.actual)
+    val expType = translator.detectType(check.expected)
+
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
-    actType match {
-      case _: IntType | _: BooleanType =>
+
+    (actType, expType) match {
+      case (_: IntType | _: BooleanType, _) =>
         out.puts(s"assertIntEquals($actStr, $expStr);")
+      case (et: EnumType, _: IntType) => {
+        // When we expect unknown value of enumeration, in KST we uses just it integer value
+        // That expression would be translated to number. Wh should wrap it to enum
+        val enumSpec = et.enumSpec.get
+        val expEnum = translator.doEnumById(enumSpec, expStr)
+        val enumName = translator.enumClass(enumSpec.name)
+
+        out.puts(s"assertEquals($actStr, $expEnum);")
+        out.puts(s"assertTrue($expEnum instanceof $enumName.Unknown);")
+      }
       case _ =>
         out.puts(s"assertEquals($actStr, $expStr);")
     }
