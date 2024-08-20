@@ -12,21 +12,21 @@ namespace Kaitai
         {
             var r = DefaultEndianExprInherited.FromFile(SourceFile("endian_expr.bin"));
 
-            Assert.AreEqual(r.Docs[0].Indicator, new byte[] { 73, 73 });
-            Assert.AreEqual(r.Docs[0].Main.Insides.SomeInt, 66);
-            Assert.AreEqual(r.Docs[0].Main.Insides.More.SomeInt1, 16896);
-            Assert.AreEqual(r.Docs[0].Main.Insides.More.SomeInt2, 66);
-            Assert.AreEqual(r.Docs[0].Main.Insides.More.SomeInst, 66);
-            Assert.AreEqual(r.Docs[1].Indicator, new byte[] { 77, 77 });
-            Assert.AreEqual(r.Docs[1].Main.Insides.SomeInt, 66);
-            Assert.AreEqual(r.Docs[1].Main.Insides.More.SomeInt1, 66);
-            Assert.AreEqual(r.Docs[1].Main.Insides.More.SomeInt2, 16896);
-            Assert.AreEqual(r.Docs[1].Main.Insides.More.SomeInst, 1107296256);
-            Assert.AreEqual(r.Docs[2].Indicator, new byte[] { 88, 88 });
-            Assert.AreEqual(r.Docs[2].Main.Insides.SomeInt, 66);
-            Assert.AreEqual(r.Docs[2].Main.Insides.More.SomeInt1, 66);
-            Assert.AreEqual(r.Docs[2].Main.Insides.More.SomeInt2, 16896);
-            Assert.AreEqual(r.Docs[2].Main.Insides.More.SomeInst, 1107296256);
+            Assert.AreEqual(new byte[] { 73, 73 }, r.Docs[0].Indicator);
+            Assert.AreEqual(66, r.Docs[0].Main.Insides.SomeInt);
+            Assert.AreEqual(16896, r.Docs[0].Main.Insides.More.SomeInt1);
+            Assert.AreEqual(66, r.Docs[0].Main.Insides.More.SomeInt2);
+            Assert.AreEqual(66, r.Docs[0].Main.Insides.More.SomeInst);
+            Assert.AreEqual(new byte[] { 77, 77 }, r.Docs[1].Indicator);
+            Assert.AreEqual(66, r.Docs[1].Main.Insides.SomeInt);
+            Assert.AreEqual(66, r.Docs[1].Main.Insides.More.SomeInt1);
+            Assert.AreEqual(16896, r.Docs[1].Main.Insides.More.SomeInt2);
+            Assert.AreEqual(1107296256, r.Docs[1].Main.Insides.More.SomeInst);
+            Assert.AreEqual(new byte[] { 88, 88 }, r.Docs[2].Indicator);
+            Assert.AreEqual(66, r.Docs[2].Main.Insides.SomeInt);
+            Assert.AreEqual(66, r.Docs[2].Main.Insides.More.SomeInt1);
+            Assert.AreEqual(16896, r.Docs[2].Main.Insides.More.SomeInt2);
+            Assert.AreEqual(1107296256, r.Docs[2].Main.Insides.More.SomeInst);
         }
     }
 }

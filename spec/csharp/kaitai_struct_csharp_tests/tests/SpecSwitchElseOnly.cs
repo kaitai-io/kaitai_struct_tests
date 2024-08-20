@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = SwitchElseOnly.FromFile(SourceFile("switch_opcodes.bin"));
 
-            Assert.AreEqual(r.Opcode, 83);
-            Assert.AreEqual(r.PrimByte, 102);
-            Assert.AreEqual(r.Ut.Value, new byte[] { 114, 0, 73, 66 });
+            Assert.AreEqual(83, r.Opcode);
+            Assert.AreEqual(102, r.PrimByte);
+            Assert.AreEqual(new byte[] { 114, 0, 73, 66 }, r.Ut.Value);
         }
     }
 }

@@ -13,21 +13,21 @@ namespace Kaitai
         {
             var r = RepeatUntilComplex.FromFile(SourceFile("repeat_until_complex.bin"));
 
-            Assert.AreEqual(r.First.Count, 3);
-            Assert.AreEqual(r.First[0].Count, 4);
-            Assert.AreEqual(r.First[0].Values, new List<int> { (0 + 1), 2, 3, 4 });
-            Assert.AreEqual(r.First[1].Count, 2);
-            Assert.AreEqual(r.First[1].Values, new List<int> { (0 + 1), 2 });
-            Assert.AreEqual(r.First[2].Count, 0);
-            Assert.AreEqual(r.Second.Count, 4);
-            Assert.AreEqual(r.Second[0].Count, 6);
-            Assert.AreEqual(r.Second[0].Values, new List<int> { (0 + 1), 2, 3, 4, 5, 6 });
-            Assert.AreEqual(r.Second[1].Count, 3);
-            Assert.AreEqual(r.Second[1].Values, new List<int> { (0 + 1), 2, 3 });
-            Assert.AreEqual(r.Second[2].Count, 4);
-            Assert.AreEqual(r.Second[2].Values, new List<int> { (0 + 1), 2, 3, 4 });
-            Assert.AreEqual(r.Second[3].Count, 0);
-            Assert.AreEqual(r.Third, new List<int> { (0 + 102), 111, 111, 98, 97, 114, 0 });
+            Assert.AreEqual(3, r.First.Count);
+            Assert.AreEqual(4, r.First[0].Count);
+            Assert.AreEqual(new List<int> { (0 + 1), 2, 3, 4 }, r.First[0].Values);
+            Assert.AreEqual(2, r.First[1].Count);
+            Assert.AreEqual(new List<int> { (0 + 1), 2 }, r.First[1].Values);
+            Assert.AreEqual(0, r.First[2].Count);
+            Assert.AreEqual(4, r.Second.Count);
+            Assert.AreEqual(6, r.Second[0].Count);
+            Assert.AreEqual(new List<int> { (0 + 1), 2, 3, 4, 5, 6 }, r.Second[0].Values);
+            Assert.AreEqual(3, r.Second[1].Count);
+            Assert.AreEqual(new List<int> { (0 + 1), 2, 3 }, r.Second[1].Values);
+            Assert.AreEqual(4, r.Second[2].Count);
+            Assert.AreEqual(new List<int> { (0 + 1), 2, 3, 4 }, r.Second[2].Values);
+            Assert.AreEqual(0, r.Second[3].Count);
+            Assert.AreEqual(new List<int> { (0 + 102), 111, 111, 98, 97, 114, 0 }, r.Third);
         }
     }
 }

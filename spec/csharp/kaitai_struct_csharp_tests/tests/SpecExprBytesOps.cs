@@ -13,22 +13,22 @@ namespace Kaitai
         {
             var r = ExprBytesOps.FromFile(SourceFile("nav_parent_switch.bin"));
 
-            Assert.AreEqual(r.OneSize, 3);
-            Assert.AreEqual(r.OneFirst, 1);
-            Assert.AreEqual(r.OneMid, 66);
-            Assert.AreEqual(r.OneLast, 255);
-            Assert.AreEqual(Convert.ToString((long) (r.OneLast), 10), "255");
-            Assert.AreEqual(r.OneMin, 1);
-            Assert.AreEqual(r.OneMax, 255);
-            Assert.AreEqual(Convert.ToString((long) (r.OneMax), 10), "255");
-            Assert.AreEqual(r.TwoSize, 3);
-            Assert.AreEqual(r.TwoFirst, 65);
-            Assert.AreEqual(r.TwoMid, 255);
-            Assert.AreEqual(Convert.ToString((long) (r.TwoMid), 10), "255");
-            Assert.AreEqual(r.TwoLast, 75);
-            Assert.AreEqual(r.TwoMin, 65);
-            Assert.AreEqual(r.TwoMax, 255);
-            Assert.AreEqual(Convert.ToString((long) (r.TwoMax), 10), "255");
+            Assert.AreEqual(3, r.OneSize);
+            Assert.AreEqual(1, r.OneFirst);
+            Assert.AreEqual(66, r.OneMid);
+            Assert.AreEqual(255, r.OneLast);
+            Assert.AreEqual("255", Convert.ToString((long) (r.OneLast), 10));
+            Assert.AreEqual(1, r.OneMin);
+            Assert.AreEqual(255, r.OneMax);
+            Assert.AreEqual("255", Convert.ToString((long) (r.OneMax), 10));
+            Assert.AreEqual(3, r.TwoSize);
+            Assert.AreEqual(65, r.TwoFirst);
+            Assert.AreEqual(255, r.TwoMid);
+            Assert.AreEqual("255", Convert.ToString((long) (r.TwoMid), 10));
+            Assert.AreEqual(75, r.TwoLast);
+            Assert.AreEqual(65, r.TwoMin);
+            Assert.AreEqual(255, r.TwoMax);
+            Assert.AreEqual("255", Convert.ToString((long) (r.TwoMax), 10));
         }
     }
 }

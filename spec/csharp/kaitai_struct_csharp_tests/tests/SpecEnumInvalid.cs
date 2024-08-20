@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = EnumInvalid.FromFile(SourceFile("term_strz.bin"));
 
-            Assert.AreEqual(r.Pet1, EnumInvalid.Animal.Dog);
-            Assert.AreEqual(r.Pet2, (EnumInvalid.Animal) 111);
+            Assert.AreEqual(EnumInvalid.Animal.Dog, r.Pet1);
+            Assert.AreEqual((EnumInvalid.Animal) 111, r.Pet2);
         }
     }
 }

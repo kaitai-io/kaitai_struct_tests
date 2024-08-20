@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = YamlInts.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.TestU4Dec, 4294967295);
-            Assert.AreEqual(r.TestU4Hex, 4294967295);
-            Assert.AreEqual(r.TestU8Dec, 18446744073709551615);
-            Assert.AreEqual(r.TestU8Hex, 18446744073709551615);
+            Assert.AreEqual(4294967295, r.TestU4Dec);
+            Assert.AreEqual(4294967295, r.TestU4Hex);
+            Assert.AreEqual(18446744073709551615, r.TestU8Dec);
+            Assert.AreEqual(18446744073709551615, r.TestU8Hex);
         }
     }
 }

@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = CombineBool.FromFile(SourceFile("enum_negative.bin"));
 
-            Assert.AreEqual(r.BoolBit, true);
-            Assert.AreEqual(r.BoolCalcBit, false);
+            Assert.AreEqual(true, r.BoolBit);
+            Assert.AreEqual(false, r.BoolCalcBit);
         }
     }
 }

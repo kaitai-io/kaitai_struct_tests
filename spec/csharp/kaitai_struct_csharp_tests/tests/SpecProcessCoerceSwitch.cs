@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = ProcessCoerceSwitch.FromFile(SourceFile("process_coerce_switch.bin"));
 
-            Assert.AreEqual(r.BufType, 0);
-            Assert.AreEqual(r.Flag, 0);
-            Assert.AreEqual(((ProcessCoerceSwitch.Foo) (r.Buf)).Bar, new byte[] { 65, 65, 65, 65 });
+            Assert.AreEqual(0, r.BufType);
+            Assert.AreEqual(0, r.Flag);
+            Assert.AreEqual(new byte[] { 65, 65, 65, 65 }, ((ProcessCoerceSwitch.Foo) (r.Buf)).Bar);
         }
     }
 }
