@@ -15,19 +15,19 @@ namespace Kaitai
 
             Assert.AreEqual(3, r.First.Count);
             Assert.AreEqual(4, r.First[0].Count);
-            Assert.AreEqual(new List<int> { (0 + 1), 2, 3, 4 }, r.First[0].Values);
+            Assert.AreEqual(new List<int> { 0 + 1, 2, 3, 4 }, r.First[0].Values);
             Assert.AreEqual(2, r.First[1].Count);
-            Assert.AreEqual(new List<int> { (0 + 1), 2 }, r.First[1].Values);
+            Assert.AreEqual(new List<int> { 0 + 1, 2 }, r.First[1].Values);
             Assert.AreEqual(0, r.First[2].Count);
             Assert.AreEqual(4, r.Second.Count);
             Assert.AreEqual(6, r.Second[0].Count);
-            Assert.AreEqual(new List<int> { (0 + 1), 2, 3, 4, 5, 6 }, r.Second[0].Values);
+            Assert.AreEqual(new List<int> { 0 + 1, 2, 3, 4, 5, 6 }, r.Second[0].Values);
             Assert.AreEqual(3, r.Second[1].Count);
-            Assert.AreEqual(new List<int> { (0 + 1), 2, 3 }, r.Second[1].Values);
+            Assert.AreEqual(new List<int> { 0 + 1, 2, 3 }, r.Second[1].Values);
             Assert.AreEqual(4, r.Second[2].Count);
-            Assert.AreEqual(new List<int> { (0 + 1), 2, 3, 4 }, r.Second[2].Values);
+            Assert.AreEqual(new List<int> { 0 + 1, 2, 3, 4 }, r.Second[2].Values);
             Assert.AreEqual(0, r.Second[3].Count);
-            Assert.AreEqual(new List<int> { (0 + 102), 111, 111, 98, 97, 114, 0 }, r.Third);
+            Assert.AreEqual(new List<int> { 0 + 102, 111, 111, 98, 97, 114, 0 }, r.Third);
         }
     }
 }
