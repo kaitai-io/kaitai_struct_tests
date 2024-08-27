@@ -13,6 +13,8 @@ asserts:
     expected: '"o|b"'
   - actual: one_substr_3_to_3
     expected: '""'
+  - actual: one_substr_0_to_0
+    expected: '""'
 
   - actual: two
     expected: '"0123456789"'
