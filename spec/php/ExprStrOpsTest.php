@@ -13,6 +13,7 @@ class ExprStrOpsTest extends TestCase {
         $this->assertSame("foo", $r->oneSubstr0To3());
         $this->assertSame("o|b", $r->oneSubstr2To5());
         $this->assertSame("", $r->oneSubstr3To3());
+        $this->assertSame("", $r->oneSubstr0To0());
         $this->assertSame("0123456789", $r->two());
         $this->assertSame(10, $r->twoLen());
         $this->assertSame("9876543210", $r->twoRev());

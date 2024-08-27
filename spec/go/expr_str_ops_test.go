@@ -55,59 +55,64 @@ func TestExprStrOps(t *testing.T) {
 		t.Fatal(err)
 	}
 	assert.EqualValues(t, "", tmp5)
-	tmp6, err := r.Two()
+	tmp6, err := r.OneSubstr0To0()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, "0123456789", tmp6)
-	tmp7, err := r.TwoLen()
+	assert.EqualValues(t, "", tmp6)
+	tmp7, err := r.Two()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 10, tmp7)
-	tmp8, err := r.TwoRev()
+	assert.EqualValues(t, "0123456789", tmp7)
+	tmp8, err := r.TwoLen()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, "9876543210", tmp8)
-	tmp9, err := r.TwoSubstr0To7()
+	assert.EqualValues(t, 10, tmp8)
+	tmp9, err := r.TwoRev()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, "0123456", tmp9)
-	tmp10, err := r.TwoSubstr4To10()
+	assert.EqualValues(t, "9876543210", tmp9)
+	tmp10, err := r.TwoSubstr0To7()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, "456789", tmp10)
-	tmp11, err := r.TwoSubstr0To10()
+	assert.EqualValues(t, "0123456", tmp10)
+	tmp11, err := r.TwoSubstr4To10()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, "0123456789", tmp11)
-	tmp12, err := r.ToIAttr()
+	assert.EqualValues(t, "456789", tmp11)
+	tmp12, err := r.TwoSubstr0To10()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 9173, tmp12)
-	tmp13, err := r.ToIR10()
+	assert.EqualValues(t, "0123456789", tmp12)
+	tmp13, err := r.ToIAttr()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, -72, tmp13)
-	tmp14, err := r.ToIR2()
+	assert.EqualValues(t, 9173, tmp13)
+	tmp14, err := r.ToIR10()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 86, tmp14)
-	tmp15, err := r.ToIR8()
+	assert.EqualValues(t, -72, tmp14)
+	tmp15, err := r.ToIR2()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 465, tmp15)
-	tmp16, err := r.ToIR16()
+	assert.EqualValues(t, 86, tmp15)
+	tmp16, err := r.ToIR8()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 18383, tmp16)
+	assert.EqualValues(t, 465, tmp16)
+	tmp17, err := r.ToIR16()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, 18383, tmp17)
 }

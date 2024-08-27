@@ -16,6 +16,7 @@ fn test_expr_str_ops() {
         assert_eq!(r.one_substr_0_to_3, "foo");
         assert_eq!(r.one_substr_2_to_5, "o|b");
         assert_eq!(r.one_substr_3_to_3, "");
+        assert_eq!(r.one_substr_0_to_0, "");
         assert_eq!(r.two, "0123456789");
         assert_eq!(r.two_len, 10);
         assert_eq!(r.two_rev, "9876543210");

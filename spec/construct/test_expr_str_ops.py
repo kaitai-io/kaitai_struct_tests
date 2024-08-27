@@ -14,6 +14,7 @@ class TestExprStrOps(unittest.TestCase):
         self.assertEqual(r.one_substr_0_to_3, u"foo")
         self.assertEqual(r.one_substr_2_to_5, u"o|b")
         self.assertEqual(r.one_substr_3_to_3, u"")
+        self.assertEqual(r.one_substr_0_to_0, u"")
         self.assertEqual(r.two, u"0123456789")
         self.assertEqual(r.two_len, 10)
         self.assertEqual(r.two_rev, u"9876543210")
