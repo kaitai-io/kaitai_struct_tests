@@ -1,5 +1,5 @@
-# id_clash_params_vs_seq.ksy: /seq/0:
-# 	error: duplicate attribute ID 'foo', previously defined at /params/1
+# id_clash_params_vs_seq.ksy: /seq/0/id:
+# 	error: duplicate attribute ID 'foo', previously defined at /params/1/id
 #
 meta:
   id: id_clash_params_vs_seq

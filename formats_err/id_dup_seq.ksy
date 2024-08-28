@@ -1,5 +1,5 @@
-# id_dup_seq.ksy: /seq/2:
-# 	error: duplicate attribute ID 'foo', previously defined at /seq/0
+# id_dup_seq.ksy: /seq/2/id:
+# 	error: duplicate attribute ID 'foo', previously defined at /seq/0/id
 #
 meta:
   id: id_dup_seq

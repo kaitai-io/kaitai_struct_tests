@@ -1,5 +1,5 @@
 # id_clash_params_vs_inst_pos.ksy: /instances/foo:
-# 	error: duplicate attribute ID 'foo', previously defined at /params/0
+# 	error: duplicate attribute ID 'foo', previously defined at /params/0/id
 #
 meta:
   id: id_clash_params_vs_inst_pos
