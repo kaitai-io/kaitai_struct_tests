@@ -1,5 +1,5 @@
 # expr_wrong_and.ksy: /instances/both/value:
-# 	error: parsing expression 'foo == 1 && bar == 2' failed on 1:10, expected "or" | CharsWhile(Set( , n)) | "\\\n" | End, did you mean 'and'?
+# 	error: parsing expression 'foo == 1 && bar == 2' failed on "&& bar == " at position 1:10, expected end-of-input, did you mean 'and'?
 #
 meta:
   id: expr_wrong_and

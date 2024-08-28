@@ -1,5 +1,5 @@
 # expr_inst_value_broken.ksy: /instances/foo/value:
-# 	error: parsing expression '1 *' failed on 1:3, expected "or" | CharsWhile(Set( , n)) | "\\\n" | End
+# 	error: parsing expression '1 *' failed on "*" at position 1:3, expected end-of-input
 #
 meta:
   id: expr_inst_value_broken
