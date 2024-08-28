@@ -1,8 +1,8 @@
-# seq_value_inst_id_clash.ksy: /instances/bar:
+# id_clash_seq_vs_inst_value.ksy: /instances/bar:
 # 	error: duplicate attribute ID 'bar', previously defined at /seq/1
 #
 meta:
-  id: seq_value_inst_id_clash
+  id: id_clash_seq_vs_inst_value
 seq:
   - id: foo
     type: u1

@@ -1,8 +1,8 @@
-# params_dup_id.ksy: /params/2:
+# id_dup_params.ksy: /params/2:
 # 	error: duplicate attribute ID 'foo', previously defined at /params/0
 #
 meta:
-  id: params_dup_id
+  id: id_dup_params
 params:
   - id: foo
     type: u1
