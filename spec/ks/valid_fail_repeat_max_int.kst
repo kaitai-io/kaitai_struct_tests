@@ -1,0 +1,3 @@
+id: valid_fail_repeat_max_int
+data: nav_parent_switch.bin
+exception: ValidationGreaterThanError<u1>

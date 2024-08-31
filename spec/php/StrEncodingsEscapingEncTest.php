@@ -25,8 +25,10 @@ class StrEncodingsEscapingEncTest extends TestCase {
             $fn();
             $this->fail("A warning was expected, but none thrown");
         // `Warning` in PHP 8.3, `Notice` in PHP 7.1
-        } catch (\PHPUnit\Framework\Error\Warning | \PHPUnit\Framework\Error\Notice $e) {
+        } catch (\PHPUnit\Framework\Error\Warning $e) {
             $this->assertSame('iconv(): Wrong encoding, conversion from "' . $expectedEncoding . '" to "utf-8" is not allowed', $e->getMessage());
+        } catch (\PHPUnit\Framework\Error\Notice $e) {
+            $this->assertSame('iconv(): Wrong charset, conversion from `' . $expectedEncoding . '\' to `utf-8\' is not allowed', $e->getMessage());
         }
     }
 }

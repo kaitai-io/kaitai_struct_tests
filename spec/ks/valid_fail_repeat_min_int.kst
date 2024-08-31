@@ -1,0 +1,3 @@
+id: valid_fail_repeat_min_int
+data: process_coerce_bytes.bin
+exception: ValidationLessThanError<s1>

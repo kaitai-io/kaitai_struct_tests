@@ -1,4 +1,4 @@
-# meta_high_version.ksy: /meta:
+# meta_high_version.ksy: /meta/ks-version:
 # 	error: this ksy requires compiler version at least 99.99.99, but you have $KS_VERSION
 #
 meta:

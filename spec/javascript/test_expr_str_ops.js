@@ -11,6 +11,7 @@ testHelper('ExprStrOps', 'src/term_strz.bin', function(r, ExprStrOps) {
   assert.strictEqual(r.oneSubstr0To3, "foo");
   assert.strictEqual(r.oneSubstr2To5, "o|b");
   assert.strictEqual(r.oneSubstr3To3, "");
+  assert.strictEqual(r.oneSubstr0To0, "");
   assert.strictEqual(r.two, "0123456789");
   assert.strictEqual(r.twoLen, 10);
   assert.strictEqual(r.twoRev, "9876543210");

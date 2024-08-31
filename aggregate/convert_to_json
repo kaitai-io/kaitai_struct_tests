@@ -19,22 +19,37 @@ require_relative 'trx_xml_parser'
 
 raise 'Needs exactly 3 arguments' unless ARGV.size == 3
 
-def add_fails(first, *seconds)
-  seconds.each { |second|
-    second.each_pair { |k, v|
-      old_status = (first[k] || {})['status']
+# Priority of test result statuses (in case of a collision, the higher priority wins)
+STATUS_PRIORITY = {
+  passed: 0,
+  skipped: 1,
+  leak: 2,
+  failed: 3,
+  spec_build_failed: 4,
+  format_build_failed: 5,
+}
+
+def reports_to_h(*reports)
+  obj = {}
+  reports.each { |report|
+    report.each_test { |t|
+      k = t.name
+      v = t.to_h
+      if !obj.key?(k)
+        obj[k] = v
+        next
+      end
+
+      old_status = obj[k]['status']
       new_status = v['status']
 
-      # format_build_failed is always more imporant than spec_build_failed
-      next if old_status == 'format_build_failed' and new_status == 'spec_build_failed'
-
-      first[k] = v if (
-          ((old_status.nil? or old_status == 'passed') and (new_status != 'passed')) or
-          (old_status == 'spec_build_failed' and new_status == 'format_build_failed')
-        )
+      if STATUS_PRIORITY[new_status] > STATUS_PRIORITY[old_status]
+        warn "#{k}: overwriting #{JSON.generate(obj[k])} with #{JSON.generate(v)}"
+        obj[k] = v
+      end
     }
   }
-  first
+  obj
 end
 
 def add_kst_adoption(tests, log_dir)
@@ -48,16 +63,16 @@ def add_kst_adoption(tests, log_dir)
 end
 
 def report_summary(result)
-  by_status = {'kst' => 0}
+  by_status = {kst: 0}
   result.each_pair { |name, test_result|
     next if name[0] == '$'
     status = test_result['status']
     by_status[status] ||= 0
     by_status[status] += 1
-    by_status['kst'] += 1 if test_result['is_kst']
+    by_status[:kst] += 1 if test_result['is_kst']
   }
 
-  puts "SUMMARY: #{by_status.inspect}"
+  puts "SUMMARY: #{JSON.generate(by_status)}"
 end
 
 lang, infile, outfile = ARGV
@@ -65,52 +80,52 @@ lang, infile, outfile = ARGV
 result = case lang
 when 'cpp_stl'
   add_kst_adoption(
-    add_fails(
-      BoostTestParser.new("#{infile}/results-*.xml", true).to_h,
-      BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h,
-      ValgrindXMLParser.new("#{infile}/valgrind.xml").to_h
+    reports_to_h(
+      BoostTestParser.new("#{infile}/results-*.xml", true),
+      BuildFailedParser.new("#{infile}/build_failed_tests.txt"),
+      ValgrindXMLParser.new("#{infile}/valgrind.xml")
     ),
     infile
   )
 when 'java'
   add_kst_adoption(
-    add_fails(
-      JUnitXMLParser.new("#{infile}/junitreports").to_h,
-      BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h
+    reports_to_h(
+      JUnitXMLParser.new("#{infile}/junitreports"),
+      BuildFailedParser.new("#{infile}/build_failed_tests.txt")
     ),
     infile
   )
 when 'rust'
   add_kst_adoption(
-    add_fails(
-      JUnitXMLParser.new("#{infile}/report.xml").to_h,
-      BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h
+    reports_to_h(
+      JUnitXMLParser.new("#{infile}/report.xml"),
+      BuildFailedParser.new("#{infile}/build_failed_tests.txt")
     ),
     infile
   )
 when 'lua', 'nim'
   add_kst_adoption(
-    JUnitXMLParser.new("#{infile}/report.xml").to_h,
+    reports_to_h(JUnitXMLParser.new("#{infile}/report.xml")),
     infile
   )
-when 'go', 'perl', 'python', 'construct'
+when 'go', 'perl', 'python', 'construct', 'julia'
   add_kst_adoption(
-    JUnitXMLParser.new("#{infile}/report.xml").to_h,
+    reports_to_h(JUnitXMLParser.new("#{infile}/report.xml")),
     infile
   )
 when 'javascript'
   add_kst_adoption(
-    JUnitXMLParser.new("#{infile}/test-output-javascript.xml").to_h,
+    reports_to_h(JUnitXMLParser.new("#{infile}/test-output-javascript.xml")),
     infile
   )
 when 'php'
   add_kst_adoption(
-    JUnitXMLParser.new(infile).to_h,
+    reports_to_h(JUnitXMLParser.new(infile)),
     infile
   )
 when 'ruby'
   add_kst_adoption(
-    RSpecJSONParser.new("#{infile}/test-output-ruby.json").to_h,
+    reports_to_h(RSpecJSONParser.new("#{infile}/test-output-ruby.json")),
     infile
   )
 when 'csharp'
@@ -123,16 +138,16 @@ when 'csharp'
   raise "No XML test results files found in #{infile}" unless test_results
 
   add_kst_adoption(
-    add_fails(
-      test_results.to_h,
-      BuildFailedParser.new("#{infile}/build_failed_tests.txt").to_h,
+    reports_to_h(
+      test_results,
+      BuildFailedParser.new("#{infile}/build_failed_tests.txt"),
     ),
     infile
   )
 when 'graphviz'
-  add_fails(
-    TextListParser.new("#{infile}/passed.log").to_h,
-    BuildFailedParser.new("#{infile}/build_failed_tests.txt", true).to_h,
+  reports_to_h(
+    TextListParser.new("#{infile}/passed.log"),
+    BuildFailedParser.new("#{infile}/build_failed_tests.txt", true),
   )
 else
   raise "Unable to handle language #{lang.inspect}"
@@ -181,10 +196,17 @@ end
 
 result['$meta'] = meta
 
-# Try to ensure order of output in generated JSON, but this only works for Ruby 2+
-result = result.sort.to_h if [].respond_to?(:to_h)
+# Try to ensure stable order of tests in generated JSON. There are two ways to
+# achieve this: `Array#to_h` is [better](https://stackoverflow.com/a/28303699)
+# but only available since Ruby 2.0, `Hash.[]` is "tricky" but available in 1.9,
+# so we use it as a fallback.
+if [].respond_to?(:to_h)
+  result = result.sort.to_h
+else
+  result = Hash[result.sort]
+end
 
-json = JSON.pretty_generate(result)
+json = JSON.pretty_generate(result) + "\n"
 
 File.write(outfile, json)
 

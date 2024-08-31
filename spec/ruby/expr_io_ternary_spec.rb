@@ -3,7 +3,7 @@
 RSpec.describe 'ExprIoTernary' do
   it 'parses test properly' do
     require 'expr_io_ternary'
-    r = ExprIoTernary.from_file('src/term_strz.bin')
+    r = ExprIoTernary.from_file('src/if_struct.bin')
 
     expect(r.one_or_two_io_size1).to eq 8
     expect(r.one_or_two_io_size2).to eq 8

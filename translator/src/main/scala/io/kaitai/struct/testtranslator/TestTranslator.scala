@@ -58,7 +58,7 @@ class TestTranslator(options: CLIOptions) {
     TestSpec.fromFile(s"$specKsDir/$testName.kst")
 
   def loadClassSpecs(testName: String): ClassSpecs = {
-    val cliConfig = CLIConfig(importPaths = Seq(importsDir))
+    val cliConfig = CLIConfig(importPaths = importDirs)
     val (origSpecsOpt, errors) = JavaKSYParser.localFileToSpecs(s"$formatsDir/$testName.ksy", cliConfig)
 
     errors.foreach(problem => Console.err.println(problem.message))
@@ -117,6 +117,7 @@ class TestTranslator(options: CLIOptions) {
     case "go" => new GoSG(testSpec, provider)
     case "java" => new JavaSG(testSpec, provider)
     case "javascript" => new JavaScriptSG(testSpec, provider)
+    case "julia" => new JuliaSG(testSpec, provider)
     case "lua" => new LuaSG(testSpec, provider)
     case "nim" => new NimSG(testSpec, provider)
     case "perl" => new PerlSG(testSpec, provider)

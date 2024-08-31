@@ -6,7 +6,7 @@ from expr_io_ternary import _schema
 
 class TestExprIoTernary(unittest.TestCase):
     def test_expr_io_ternary(self):
-        r = _schema.parse_file('src/term_strz.bin')
+        r = _schema.parse_file('src/if_struct.bin')
 
         self.assertEqual(r.one_or_two_io_size1, 8)
         self.assertEqual(r.one_or_two_io_size2, 8)

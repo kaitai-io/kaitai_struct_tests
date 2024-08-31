@@ -18,6 +18,7 @@ namespace Kaitai
             Assert.AreEqual(r.OneSubstr0To3, "foo");
             Assert.AreEqual(r.OneSubstr2To5, "o|b");
             Assert.AreEqual(r.OneSubstr3To3, "");
+            Assert.AreEqual(r.OneSubstr0To0, "");
             Assert.AreEqual(r.Two, "0123456789");
             Assert.AreEqual(r.TwoLen, 10);
             Assert.AreEqual(r.TwoRev, "9876543210");

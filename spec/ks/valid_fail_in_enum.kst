@@ -1,0 +1,11 @@
+id: valid_fail_in_enum
+data: enum_0.bin
+# NOTE: `s4` is not correct here. It should be the `valid_fail_in_enum::animal`
+# enum. However, if we specified it as
+# `ValidationNotInEnumError<valid_fail_in_enum::animal>`, KSC would think it's a
+# user-defined type and throw an error, because such user type doesn't exist.
+#
+# The type argument is only relevant to C++, though, so we pass `s4` here just
+# to pass something and the generated C++ test specs will have to be fixed
+# manually.
+exception: ValidationNotInEnumError<s4>

@@ -12,6 +12,7 @@ assert r.oneRev == "b|oof"
 assert r.oneSubstr0To3 == "foo"
 assert r.oneSubstr2To5 == "o|b"
 assert r.oneSubstr3To3 == ""
+assert r.oneSubstr0To0 == ""
 assert r.two == "0123456789"
 assert r.twoLen == 10
 assert r.twoRev == "9876543210"

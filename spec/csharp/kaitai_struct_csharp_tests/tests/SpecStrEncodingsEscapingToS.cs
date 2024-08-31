@@ -36,7 +36,7 @@ namespace Kaitai
             );
         }
 
-        private void AssertUnknownEncoding(String expectedEncoding, TestDelegate code)
+        private void AssertUnknownEncoding(string expectedEncoding, TestDelegate code)
         {
             var exc = Assert.Throws<System.ArgumentException>(code);
             StringAssert.StartsWith("'" + expectedEncoding + "' is not a supported encoding name.", exc.Message);

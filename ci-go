@@ -2,21 +2,7 @@
 
 . ./config
 
-DIVIDER=":"
-CWD=$(pwd)
-
-if [ "$OS" = "Windows_NT" ]; then
-	DIVIDER=";"
-	# GOPATH needs the real Windows path, `pwd -W` should work (at least works for me in Git Bash for Windows (MSYS2 terminal))
-	CWD=$(pwd -W || pwd)
-fi
-
-export GOPATH="$CWD/compiled/go${DIVIDER}$GOPATH"
-
-# Symlink Go runtime libraries from full umbrella project checkout
-mkdir -p compiled/go/src/github.com/kaitai-io
-rm -rf compiled/go/src/github.com/kaitai-io/kaitai_struct_go_runtime
-ln -s ../../../../../../runtime/go compiled/go/src/github.com/kaitai-io/kaitai_struct_go_runtime
+./prepare-go
 
 ABS_TEST_OUT_DIR="$(pwd)/$TEST_OUT_DIR"
 ABS_TEST_RUN_LOG="$ABS_TEST_OUT_DIR/go/test_run.stdout"
@@ -26,14 +12,17 @@ mkdir -p "$TEST_OUT_DIR/go"
 ABS_SPEC_DIR="$(pwd)/spec/go"
 ABS_COMPILED_DIR="$(pwd)/compiled/go"
 
-cd spec/go || exit 1
+cd spec/go
 
-BUILD_FAILED_FILES_DIR=$(mktemp -d)
-mkdir -p "$BUILD_FAILED_FILES_DIR"/compiled "$BUILD_FAILED_FILES_DIR"/spec
+cleanup()
+{
+	find "$ABS_SPEC_DIR" "$ABS_COMPILED_DIR" -iname '*.disabled' -exec sh -c 'mv -n "$1" "${1%.disabled}"' sh {} \;
+}
+
 # NOTE: in Bash, `trap ... EXIT` would be enough (and recommended), but unfortunately we
 # cannot change the shebang to `/bin/bash` here because our Docker images run on Alpine
 # and don't have Bash.
-trap 'find "$ABS_SPEC_DIR" "$ABS_COMPILED_DIR" -iname '\''*.disabled'\'' -exec sh -c '\''mv -n "$1" "${1%.disabled}"'\'' sh {} \;' INT TERM HUP EXIT
+trap 'cleanup' INT TERM HUP EXIT
 
 attempt=1
 
@@ -53,7 +42,7 @@ while true; do
 	#
 	# So we ignore the exit code of `go test` and always inspect the `stderr` output.
 	go_exit_code=0
-	GO111MODULE=off CGO_ENABLED=0 go test -v . >"$ABS_TEST_RUN_LOG" 2>"$build_log" || go_exit_code=$?
+	CGO_ENABLED=0 go test -v . >"$ABS_TEST_RUN_LOG" 2>"$build_log" || go_exit_code=$?
 	echo '`go test` exited with code '"$go_exit_code"
 	echo 'STDERR:'
 	cat "$build_log"

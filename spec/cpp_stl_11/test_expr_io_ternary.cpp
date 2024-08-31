@@ -7,7 +7,7 @@
 #include <vector>
 
 BOOST_AUTO_TEST_CASE(test_expr_io_ternary) {
-    std::ifstream ifs("src/term_strz.bin", std::ifstream::binary);
+    std::ifstream ifs("src/if_struct.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     expr_io_ternary_t* r = new expr_io_ternary_t(&ks);
 

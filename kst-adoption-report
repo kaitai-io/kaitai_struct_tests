@@ -36,6 +36,8 @@ def glob_spec_files(lang)
     Dir.glob('spec/ruby/**/*_spec.rb')
   when 'rust'
     Dir.glob('spec/rust/tests/test_*.rs')
+  when 'julia'
+    Dir.glob('spec/julia/test_*.jl')
   else
     raise "Unable to handle language #{@lang.inspect}"
   end
@@ -78,6 +80,9 @@ def spec_file_to_test_name(lang, fn)
     underscore_to_ucamelcase($1)
   when 'rust'
     raise "Unable to extract test name from #{fn.inspect}" unless fn =~ /^test_(.*?)\.rs$/
+    underscore_to_ucamelcase($1)
+  when 'julia'
+    raise "Unable to extract test name from #{fn.inspect}" unless fn =~ /^test_(.*?)\.jl$/
     underscore_to_ucamelcase($1)
   else
     raise "Unable to handle language #{lang.inspect}"

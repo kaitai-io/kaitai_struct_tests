@@ -1,0 +1,9 @@
+id: str_pad_term_utf16
+data: str_pad_term_utf16.bin
+asserts:
+  - actual: str_term
+    expected: '"aȀb"'
+  - actual: str_term_include
+    expected: '"cȀd\u0000"'
+  - actual: str_term_and_pad
+    expected: '"eȀf"'

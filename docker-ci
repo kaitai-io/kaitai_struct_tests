@@ -26,7 +26,8 @@ Options:
 
 Available images:
 EOF
-	docker images --filter='label=io.kaitai.ci=true'
+	detect_docker
+	"$DOCKER_BIN" images --filter='label=io.kaitai.ci=true'
 }
 
 # Cleans up leftover binary artifacts from previous builds to make sure we're starting from scratch
@@ -40,9 +41,37 @@ cleanup_bin()
 	esac
 }
 
+detect_docker()
+{
+	if docker --version >/dev/null 2>/dev/null; then
+		DOCKER_BIN=docker
+	elif podman --version >/dev/null 2>/dev/null; then
+		DOCKER_BIN=podman
+		EXTRA_OPTS='--security-opt label=disable'
+	else
+		echo "ERROR: Docker or Podman binary not found."
+		exit 1
+	fi
+}
+
 is_image_available()
 {
-	docker images --no-trunc -q "$1" 2> /dev/null | grep -q '^sha256:[0-9a-f]\+$'
+	# Strictly speaking, `local` is undefined in POSIX sh, but "quite a lot of
+	# real world shells support this feature" (see
+	# https://www.shellcheck.net/wiki/SC3043#exceptions), so it's probably not a
+	# problem. If it becomes a problem, we can always replace it with some
+	# workaround.
+	local images
+
+	# This splitting (first collect the output into a variable, then load it to
+	# `grep`) is necessary, because we want to fail if `docker images` has a
+	# non-zero exit code, not look for matches in the error output. This comment
+	# explains it well:
+	# https://www.reddit.com/r/programming/comments/1bvinup/comment/ky31m01/
+	if ! images=$("$DOCKER_BIN" images --no-trunc -q "$1"); then
+		exit 1
+	fi
+	printf '%s\n' "$images" | grep -q '^sha256:[0-9a-f]\+$'
 }
 
 # Define default values for parameters
@@ -110,34 +139,56 @@ while [ $# -gt 0 ]; do
 	esac
 done
 
-if [ -z "$TARGET" ] || [ -z "$IMPLEMENTATION" ] || [ -z "$OS" ] || [ -z "$ARCH" ]; then
-    echo "Missing required parameters."
-    exit 1
+if [ -z "$TARGET" ] || [ -z "$OS" ] || [ -z "$ARCH" ]; then
+	echo "Missing required parameters."
+	exit 1
 fi
 
 EXTRA_OPTS=
-IMG_NAME="kaitai-$TARGET-$IMPLEMENTATION-$OS-$ARCH"
 
-# Check image availability
-if is_image_available "$IMG_NAME"; then
-	# If locally-built image exists, prioritize that
+detect_docker
+
+# If IMPLEMENTATION is missing, auto-select first available one
+if [ -z "$IMPLEMENTATION" ]; then
+	# We're running the script with `set -e`, so all we need to do in order to
+	# check the exit code of `docker images` is to have it on a separate line
+	# like this (if it fails, the script will exit immediately).
+	MATCHING_IMGS=$("$DOCKER_BIN" images --format='{{.Repository}}' \
+		--filter='label=io.kaitai.ci=true' \
+		--filter="reference=kaitai-$TARGET-"'*'"-$OS-$ARCH")
+	IMG_NAME=$(printf '%s\n' "$MATCHING_IMGS" | head -n1)
+	if [ -z "$IMG_NAME" ]; then
+		echo "No local Docker images found at all for target '$TARGET'. Please specify '-i' with an implementation and '--download' to download it."
+		exit 3
+	fi
+
+	# Extract implementation name from image name
+	IMPLEMENTATION=$(echo "$IMG_NAME" | sed -e "s/^kaitai-$TARGET-//" -e "s/-$OS-$ARCH$//")
 	IMG_COORD="$IMG_NAME"
-elif is_image_available "ghcr.io/kaitai-io/$IMG_NAME"; then
-	# If ghcr.io image exists, use it
-	IMG_COORD="ghcr.io/kaitai-io/$IMG_NAME"
-elif [ "$DOWNLOAD_FLAG" = 1 ]; then
-	# No image, but we'll try to download
-	IMG_COORD="ghcr.io/kaitai-io/$IMG_NAME"
-	docker pull "$IMG_COORD"
 else
-	echo 'Neither locally-built nor remotely-built image is present. Try using `--download` to try downloading prebuilt image from ghcr.io.'
-	exit 2
+	IMG_NAME="kaitai-$TARGET-$IMPLEMENTATION-$OS-$ARCH"
+
+	# Check image availability
+	if is_image_available "$IMG_NAME"; then
+		# If locally-built image exists, prioritize that
+		IMG_COORD="$IMG_NAME"
+	elif is_image_available "ghcr.io/kaitai-io/$IMG_NAME"; then
+		# If ghcr.io image exists, use it
+		IMG_COORD="ghcr.io/kaitai-io/$IMG_NAME"
+	elif [ "$DOWNLOAD_FLAG" = 1 ]; then
+		# No image, but we'll try to download
+		IMG_COORD="ghcr.io/kaitai-io/$IMG_NAME"
+		"$DOCKER_BIN" pull "$IMG_COORD"
+	else
+		echo 'Neither locally-built nor remotely-built image is present. Try using `--download` to try downloading prebuilt image from ghcr.io.'
+		exit 2
+	fi
 fi
 
 # If --shell used, invoke /bin/sh
 if [ "$SHELL_FLAG" = 1 ]; then
 	COMMAND=/bin/sh
-	EXTRA_OPTS=-it
+	EXTRA_OPTS="-it $EXTRA_OPTS"
 else
 	COMMAND="./ci-$TARGET$SUBTARGET"
 fi
@@ -151,7 +202,10 @@ if [ -n "$GITHUB_ACTIONS" ]; then
 fi
 
 if [ "$DO_COMPARE_FLAG" = 1 ]; then
-	./report-download-github "$TARGET" "$SUBTARGET" "$IMPLEMENTATION" "$OS" "$ARCH" || :
+	PREV_REPORT_DOWNLOADED=0
+	if ./report-download-github "$TARGET" "$SUBTARGET" "$IMPLEMENTATION" "$OS" "$ARCH"; then
+		PREV_REPORT_DOWNLOADED=1
+	fi
 fi
 
 if [ "$REBUILD_FLAG" = 1 ]; then
@@ -165,7 +219,7 @@ fi
 #
 # See https://www.msys2.org/docs/filesystem-paths/
 
-MSYS2_ARG_CONV_EXCL='*' docker run $EXTRA_OPTS \
+MSYS2_ARG_CONV_EXCL='*' "$DOCKER_BIN" run $EXTRA_OPTS \
 	--rm \
 	-e GITHUB_ACTIONS \
 	-e GITHUB_RUN_ID \
@@ -182,7 +236,11 @@ MSYS2_ARG_CONV_EXCL='*' docker run $EXTRA_OPTS \
 if [ "$DO_COMPARE_FLAG" = 1 ]; then
 	echo "# Comparison with previous"
 	echo
+	PREV_REPORT=
+	if [ "$PREV_REPORT_DOWNLOADED" = 1 ]; then
+		PREV_REPORT="ci_results/$TARGET$SUBTARGET/$IMPLEMENTATION-$OS-$ARCH/ci.json"
+	fi
 	aggregate/compare_with_prev \
-		"ci_results/$TARGET$SUBTARGET/$IMPLEMENTATION-$OS-$ARCH/ci.json" \
+		"$PREV_REPORT" \
 		"test_out/$TARGET$SUBTARGET/ci.json"
 fi

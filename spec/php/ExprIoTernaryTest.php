@@ -5,7 +5,7 @@ namespace Kaitai\Struct\Tests;
 
 class ExprIoTernaryTest extends TestCase {
     public function testExprIoTernary() {
-        $r = ExprIoTernary::fromFile(self::SRC_DIR_PATH . '/term_strz.bin');
+        $r = ExprIoTernary::fromFile(self::SRC_DIR_PATH . '/if_struct.bin');
 
         $this->assertSame(8, $r->oneOrTwoIoSize1());
         $this->assertSame(8, $r->oneOrTwoIoSize2());

@@ -4,9 +4,17 @@ var testHelper = require('testHelper');
 // FIXME: fix duplication of `test_str_encodings_escaping_to_s.js` (this is a
 // copy of the `validateErr` function from there without comments)
 function validateErr(expectedEncoding, err) {
-  assert(err instanceof RangeError, "expected " + RangeError.name + ", but got " + err);
-  assert.strictEqual(err.code, 'ERR_ENCODING_NOT_SUPPORTED');
-  assert.strictEqual(err.message, 'The "' + expectedEncoding + '" encoding is not supported');
+  if (err instanceof RangeError) {
+    assert.strictEqual(err.code, 'ERR_ENCODING_NOT_SUPPORTED');
+    assert.strictEqual(err.message, 'The "' + expectedEncoding + '" encoding is not supported');
+  } else if (Object.getPrototypeOf(err) === Error.prototype) {
+    var regex = /^Encoding not recognized: '(.*)' \(searched as: '.*'\)$/;
+    var match = err.message.match(regex);
+    assert.notStrictEqual(match, null, "message [" + err.message + "] does not match regex " + regex);
+    assert.strictEqual(match[1], expectedEncoding);
+  } else {
+    assert.fail("expected " + RangeError.name + " or " + Error.name + ", but got " + err);
+  }
   return true;
 }
 

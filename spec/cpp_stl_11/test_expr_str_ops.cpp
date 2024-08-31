@@ -17,6 +17,7 @@ BOOST_AUTO_TEST_CASE(test_expr_str_ops) {
     BOOST_CHECK_EQUAL(r->one_substr_0_to_3(), std::string("foo"));
     BOOST_CHECK_EQUAL(r->one_substr_2_to_5(), std::string("o|b"));
     BOOST_CHECK_EQUAL(r->one_substr_3_to_3(), std::string(""));
+    BOOST_CHECK_EQUAL(r->one_substr_0_to_0(), std::string(""));
     BOOST_CHECK_EQUAL(r->two(), std::string("0123456789"));
     BOOST_CHECK_EQUAL(r->two_len(), 10);
     BOOST_CHECK_EQUAL(r->two_rev(), std::string("9876543210"));

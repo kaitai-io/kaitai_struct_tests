@@ -11,7 +11,7 @@ object Main extends App {
   val specKsDir = s"$baseDir/spec/ks"
   val formatsDir = s"$baseDir/formats"
   val defaultOutDir = s"$specKsDir/out"
-  val importsDir = s"$baseDir/../formats"
+  val importDirs = List(s"$baseDir/../formats", s"$formatsDir/ks_path")
 
   val ALL_LANGS = List(
     "construct",
@@ -21,6 +21,7 @@ object Main extends App {
     "go",
     "java",
     "javascript",
+    "julia",
     "lua",
     "nim",
     "perl",
@@ -29,8 +30,6 @@ object Main extends App {
     "ruby",
     "rust"
   )
-
-  val ALL_GOOD_LANGS = ALL_LANGS.filterNot(_ == "go")
 
   val INIT_OBJ_TYPE = "unique_top_level_container"
   val INIT_OBJ_NAME = "q1w2e3"
@@ -61,7 +60,7 @@ object Main extends App {
 
     opt[String]('t', "target").unbounded().valueName("<language>").action { (x, c) =>
       if (x == "all") {
-        c.copy(targets = ALL_GOOD_LANGS)
+        c.copy(targets = ALL_LANGS)
       } else {
         c.copy(targets = c.targets :+ x)
       }
@@ -95,7 +94,7 @@ object Main extends App {
     case None => System.exit(1)
     case Some(config0) =>
       val config = if (config0.targets.isEmpty) {
-        config0.copy(targets = ALL_GOOD_LANGS)
+        config0.copy(targets = ALL_LANGS)
       } else {
         config0
       }

@@ -8,6 +8,7 @@ JAVA_RUNTIME_DIR=../runtime/java
 JAVA_TESTNG_JAR=$HOME/.m2/repository/org/testng/testng/6.9.10/testng-6.9.10.jar:$HOME/.m2/repository/com/beust/jcommander/1.48/jcommander-1.48.jar
 JAVASCRIPT_RUNTIME_DIR=../runtime/javascript
 JAVASCRIPT_MODULES_DIR=node_modules
+JULIA_RUNTIME_DIR=../runtime/julia
 LUA_RUNTIME_DIR=../runtime/lua
 NIM_RUNTIME_DIR=../runtime/nim
 NIM_TESTIFY_DIR=spec/nim/testify

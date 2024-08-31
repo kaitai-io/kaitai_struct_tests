@@ -135,15 +135,15 @@ class CSharpBuilder < PartialBuilder
   # Detect where the runner is and blow up if it's not found
   def detect_runner
     candidates = [
-      ENV['HOME'] + "/.nuget/packages/nunit.consolerunner/3.4.1/tools/nunit3-console.exe",
-      "spec/csharp/packages/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe",
+      ENV['HOME'] + "/.nuget/packages/nunit.consolerunner/3.12.0/tools/nunit3-console.exe",
+      "spec/csharp/packages/NUnit.ConsoleRunner.3.12.0/tools/nunit3-console.exe",
     ]
 
     candidates.each { |c|
       return c if File.exist?(c)
     }
 
-    raise "Unable to find NUnit.ConsoleRunner.3.4.1 exe file anywhere, tried: #{candidates.inspect}"
+    raise "Unable to find NUnit.ConsoleRunner.3.12.0 exe file anywhere, tried: #{candidates.inspect}"
   end
 
   def run_tests

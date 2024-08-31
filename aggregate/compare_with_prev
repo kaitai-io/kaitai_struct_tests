@@ -3,7 +3,7 @@
 require 'json'
 
 unless ARGV.length == 2
-  $stderr.puts "Usage: #{$PROGRAM_NAME} <prev_ci_json> <now_ci_json>"
+  $stderr.puts "Usage: #{$PROGRAM_NAME} (<prev_ci_json> | '') <now_ci_json>"
   exit 1
 end
 
@@ -11,7 +11,12 @@ prev_ci_json, now_ci_json = ARGV
 
 class CIComparison
   def initialize(prev_file, now_file)
-    @prev = load_ci_json(prev_file)
+    @prev =
+      if prev_file.empty?
+        {}
+      else
+        load_ci_json(prev_file)
+      end
     @now = load_ci_json(now_file)
 
     @prev.delete('$meta')
@@ -65,16 +70,7 @@ class CIComparison
   end
 
   def load_ci_json(fn)
-    begin
-      doc = File.read(fn)
-    rescue => e
-      # Note: `Exception#full_message` is only available since Ruby 2.5 (see
-      # https://www.bigbinary.com/blog/ruby-2-5-adds-exception-full_message-method),
-      # but it seems that the oldest Ruby of all CI hosts we use is Ruby 2.6 in
-      # AppVeyor (all GitHub Actions jobs should have Ruby 3), so it should be fine.
-      $stderr.puts e.full_message
-      return {}
-    end
+    doc = File.read(fn)
     JSON.parse(doc)
   end
 

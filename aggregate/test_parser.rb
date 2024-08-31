@@ -10,17 +10,11 @@ class TestParser
     raise 'Abstract method'
   end
 
-  def to_h
-    r = {}
-    each_test { |t|
-      if (not r.key?(t.name)) || r[t.name]['status'] == 'passed'
-        r[t.name] = t.to_h
-      end
-    }
-    r
-  end
-
   def to_json
-    JSON.pretty_generate(to_h)
+    JSON.pretty_generate(to_enum(:each_test).map { |t|
+      h = {'name' => t.name}
+      h.merge!(t.to_h)
+      h
+    })
   end
 end
