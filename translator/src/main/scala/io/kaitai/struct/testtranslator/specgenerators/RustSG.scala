@@ -1,7 +1,7 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.{ClassTypeProvider, JSON, RuntimeConfig}
-import _root_.io.kaitai.struct.datatype.{DataType, KSError}
+import _root_.io.kaitai.struct.datatype.{DataType, EndOfStreamError, KSError, UndecidedEndiannessError, ValidationError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.RustCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
@@ -12,7 +12,6 @@ import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   val className: String = RustCompiler.type2class(spec.id)
   val translator = new RustTranslator(provider, RuntimeConfig())
-  val compiler = new RustCompiler(provider, RuntimeConfig())
 
   override def fileName(name: String): String = s"tests/test_$name.rs"
 
@@ -37,16 +36,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
   override def runParseExpectError(exception: KSError): Unit = {
     out.puts(s"let res: KResult<OptRc<$className>> = $className::read_into(&_io, None, None);")
-    out.puts
-    out.puts(s"if let Err(err) = res {")
-    out.inc
-    out.puts(s"""println!("expected err: {:?}, exception: $exception", err);""")
-    out.dec
-    out.puts("} else {")
-    out.inc
-    out.puts(s"""panic!("no expected exception: $exception");""")
-    out.dec
-    out.puts("}")
+    exceptionAssert("res", exception)
   }
 
   override def footer(): Unit = {
@@ -79,8 +69,10 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   }
 
   override def testException(actual: Ast.expr, exception: KSError): Unit = {
-    val s = translator.remove_deref(translateAct(actual).replace(")?", ").unwrap_err()"))
-    out.puts(s"assert_eq!($s, ${compiler.ksErrorName(exception)});")
+    val actStr = translateAct(actual)
+    require(actStr.endsWith(")?"), s"$actStr does not end with )?")
+    val s = translator.remove_deref(actStr.stripSuffix(")?") + ")")
+    exceptionAssert(s, exception)
   }
 
   override def indentStr: String = "    "
@@ -93,4 +85,27 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
   def translateAct(x: Ast.expr): String =
     translator.translate(x).replace(s"self.${Main.INIT_OBJ_NAME}()", "r")
+
+  private def exceptionAssert(actualStr: String, exception: KSError): Unit = {
+    out.puts(s"""let err = $actualStr.expect_err("expected Err representing $exception, but got Ok");""")
+    val errorName = RustCompiler.ksErrorName(exception)
+    val expectedErrPattern = exception match {
+      case EndOfStreamError | UndecidedEndiannessError =>
+        s"$errorName { .. }"
+      case err: ValidationError =>
+        val validationKind = RustCompiler.validationErrorKind(err)
+        s"$errorName(ValidationFailedError { kind: $validationKind, .. })"
+      case _ =>
+        out.puts(s"assert_eq!(err, $errorName);")
+        return
+    }
+    val expectedErrPatternStr = translator.translate(Ast.expr.Str(expectedErrPattern))
+    out.puts("assert!(")
+    out.inc
+    out.puts(s"matches!(err, $expectedErrPattern),")
+    out.puts("\"expected: {}\\n but got: {:?}\",")
+    out.puts(s"$expectedErrPatternStr, err")
+    out.dec
+    out.puts(");")
+  }
 }
