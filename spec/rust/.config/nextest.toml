@@ -1,8 +1,7 @@
 # See https://nexte.st/book/configuration#profiles
 [profile.default]
-# Print out output for failing tests as soon as they fail, and also at the end
-# of the run (for easy scrollability).
-failure-output = "immediate-final"
+# Print stdout and stderr of failed tests only at the end of the run.
+failure-output = "final"
 # Do not cancel the test run on the first failure.
 fail-fast = false
 
