@@ -18,11 +18,11 @@ impl MyCustomFx {
 }
 
 impl CustomDecoder for MyCustomFx {
-    fn decode(&self, bytes: &[u8]) -> Vec<u8> {
+    fn decode(&self, bytes: &[u8]) -> Result<Vec<u8>, String> {
         let mut res = bytes.to_vec();
         for i in res.iter_mut() {
             *i = (*i as i32 + self.key) as u8;
         }
-        res
+        Ok(res)
     }
 }

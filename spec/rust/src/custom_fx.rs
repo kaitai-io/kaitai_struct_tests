@@ -13,11 +13,11 @@ pub mod Nested {
         }
 
         impl kaitai::CustomDecoder for CustomFx {
-            fn decode(&self, bytes: &[u8]) -> Vec<u8> {
+            fn decode(&self, bytes: &[u8]) -> Result<Vec<u8>, String> {
                 let mut res = bytes.to_vec();
                 res.insert(0, '_' as u8);
                 res.push('_' as u8);
-                res
+                Ok(res)
             }
         }
     }
