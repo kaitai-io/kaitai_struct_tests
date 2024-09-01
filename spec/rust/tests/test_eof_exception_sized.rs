@@ -3,13 +3,13 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-use rust::formats::eof_exception_u4::*;
+use rust::formats::eof_exception_sized::*;
 
 #[test]
-fn test_eof_exception_u4() -> KResult<()> {
+fn test_eof_exception_sized() -> KResult<()> {
     let bytes = fs::read("../../src/term_strz.bin").unwrap();
     let _io = BytesReader::from(bytes);
-    let res: KResult<OptRc<EofExceptionU4>> = EofExceptionU4::read_into(&_io, None, None);
+    let res: KResult<OptRc<EofExceptionSized>> = EofExceptionSized::read_into(&_io, None, None);
     let err = res.expect_err("expected Err representing EndOfStreamError, but got Ok");
     assert!(
         matches!(err, KError::Eof { .. }),

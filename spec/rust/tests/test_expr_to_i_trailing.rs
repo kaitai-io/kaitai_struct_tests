@@ -11,8 +11,10 @@ fn test_expr_to_i_trailing() -> KResult<()> {
     let _io = BytesReader::from(bytes);
     let r: OptRc<ExprToITrailing> = ExprToITrailing::read_into(&_io, None, None)?;
 
-    assert_eq!(r.to_i_r10().unwrap_err(), KError::CastError);
+    let err = r.to_i_r10().expect_err("expected Err representing ConversionError, but got Ok");
+    assert_eq!(err, KError::CastError);
     assert_eq!(*r.to_i_r16()?, 152517308);
-    assert_eq!(r.to_i_garbage().unwrap_err(), KError::CastError);
+    let err = r.to_i_garbage().expect_err("expected Err representing ConversionError, but got Ok");
+    assert_eq!(err, KError::CastError);
     Ok(())
 }

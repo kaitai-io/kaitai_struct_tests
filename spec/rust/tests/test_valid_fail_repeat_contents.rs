@@ -3,14 +3,14 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-use rust::formats::valid_fail_eq_int::*;
+use rust::formats::valid_fail_repeat_contents::*;
 
 #[test]
-fn test_valid_fail_eq_int() -> KResult<()> {
-    let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
+fn test_valid_fail_repeat_contents() -> KResult<()> {
+    let bytes = fs::read("../../src/bcd_user_type_be.bin").unwrap();
     let _io = BytesReader::from(bytes);
-    let res: KResult<OptRc<ValidFailEqInt>> = ValidFailEqInt::read_into(&_io, None, None);
-    let err = res.expect_err("expected Err representing ValidationNotEqualError(Int1Type(false)), but got Ok");
+    let res: KResult<OptRc<ValidFailRepeatContents>> = ValidFailRepeatContents::read_into(&_io, None, None);
+    let err = res.expect_err("expected Err representing ValidationNotEqualError(CalcBytesType), but got Ok");
     assert!(
         matches!(err, KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::NotEqual, .. })),
         "expected: {}\n but got: {:?}",

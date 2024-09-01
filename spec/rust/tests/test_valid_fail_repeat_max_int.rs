@@ -3,13 +3,13 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-use rust::formats::valid_fail_max_int::*;
+use rust::formats::valid_fail_repeat_max_int::*;
 
 #[test]
-fn test_valid_fail_max_int() -> KResult<()> {
-    let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
+fn test_valid_fail_repeat_max_int() -> KResult<()> {
+    let bytes = fs::read("../../src/nav_parent_switch.bin").unwrap();
     let _io = BytesReader::from(bytes);
-    let res: KResult<OptRc<ValidFailMaxInt>> = ValidFailMaxInt::read_into(&_io, None, None);
+    let res: KResult<OptRc<ValidFailRepeatMaxInt>> = ValidFailRepeatMaxInt::read_into(&_io, None, None);
     let err = res.expect_err("expected Err representing ValidationGreaterThanError(Int1Type(false)), but got Ok");
     assert!(
         matches!(err, KError::ValidationFailed(ValidationFailedError { kind: ValidationKind::GreaterThan, .. })),
