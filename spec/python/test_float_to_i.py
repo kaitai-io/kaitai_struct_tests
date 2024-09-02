@@ -7,8 +7,8 @@ from float_to_i import FloatToI
 class TestFloatToI(unittest.TestCase):
     def test_float_to_i(self):
         with FloatToI.from_file('src/floating_points.bin') as r:
-            self.assertEqual(r.single_value, 0.5)
-            self.assertEqual(r.double_value, 0.25)
+            self.assertAlmostEqual(r.single_value, 0.5, 6)
+            self.assertAlmostEqual(r.double_value, 0.25, 6)
             self.assertEqual(r.single_i, 0)
             self.assertEqual(r.double_i, 0)
             self.assertEqual(r.float1_i, 1)

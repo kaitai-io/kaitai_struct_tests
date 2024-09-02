@@ -14,18 +14,18 @@ public class TestRepeatUntilComplex extends CommonSpec {
 
         assertIntEquals(r.first().size(), 3);
         assertIntEquals(r.first().get((int) 0).count(), 4);
-        assertEquals(r.first().get((int) 0).values(), new ArrayList<Integer>(Arrays.asList((0 + 1), 2, 3, 4)));
+        assertEquals(r.first().get((int) 0).values(), new ArrayList<Integer>(Arrays.asList(0 + 1, 2, 3, 4)));
         assertIntEquals(r.first().get((int) 1).count(), 2);
-        assertEquals(r.first().get((int) 1).values(), new ArrayList<Integer>(Arrays.asList((0 + 1), 2)));
+        assertEquals(r.first().get((int) 1).values(), new ArrayList<Integer>(Arrays.asList(0 + 1, 2)));
         assertIntEquals(r.first().get((int) 2).count(), 0);
         assertIntEquals(r.second().size(), 4);
         assertIntEquals(r.second().get((int) 0).count(), 6);
-        assertEquals(r.second().get((int) 0).values(), new ArrayList<Integer>(Arrays.asList((0 + 1), 2, 3, 4, 5, 6)));
+        assertEquals(r.second().get((int) 0).values(), new ArrayList<Integer>(Arrays.asList(0 + 1, 2, 3, 4, 5, 6)));
         assertIntEquals(r.second().get((int) 1).count(), 3);
-        assertEquals(r.second().get((int) 1).values(), new ArrayList<Integer>(Arrays.asList((0 + 1), 2, 3)));
+        assertEquals(r.second().get((int) 1).values(), new ArrayList<Integer>(Arrays.asList(0 + 1, 2, 3)));
         assertIntEquals(r.second().get((int) 2).count(), 4);
-        assertEquals(r.second().get((int) 2).values(), new ArrayList<Integer>(Arrays.asList((0 + 1), 2, 3, 4)));
+        assertEquals(r.second().get((int) 2).values(), new ArrayList<Integer>(Arrays.asList(0 + 1, 2, 3, 4)));
         assertIntEquals(r.second().get((int) 3).count(), 0);
-        assertEquals(r.third(), new ArrayList<Integer>(Arrays.asList((0 + 102), 111, 111, 98, 97, 114, 0)));
+        assertEquals(r.third(), new ArrayList<Integer>(Arrays.asList(0 + 102, 111, 111, 98, 97, 114, 0)));
     }
 }

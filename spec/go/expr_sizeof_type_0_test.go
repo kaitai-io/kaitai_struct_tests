@@ -33,5 +33,5 @@ func TestExprSizeofType0(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, ((1 + 4) + 2), tmp1)
+	assert.EqualValues(t, (1 + 4) + 2, tmp1)
 }

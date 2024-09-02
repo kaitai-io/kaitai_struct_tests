@@ -1,6 +1,6 @@
 meta:
   id: valid_long
-  encoding: utf-8
+  encoding: UTF-8
   endian: le
 seq:
   - id: magic1

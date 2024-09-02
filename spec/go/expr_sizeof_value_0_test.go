@@ -33,12 +33,12 @@ func TestExprSizeofValue0(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, (((1 + 4) + 2) + 2), tmp1)
+	assert.EqualValues(t, ((1 + 4) + 2) + 2, tmp1)
 	tmp2, err := r.SizeofBlock()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, ((1 + 4) + 2), tmp2)
+	assert.EqualValues(t, (1 + 4) + 2, tmp2)
 	tmp3, err := r.SizeofBlockA()
 	if err != nil {
 		t.Fatal(err)

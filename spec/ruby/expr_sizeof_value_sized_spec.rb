@@ -5,7 +5,7 @@ RSpec.describe 'ExprSizeofValueSized' do
     require 'expr_sizeof_value_sized'
     r = ExprSizeofValueSized.from_file('src/fixed_struct.bin')
 
-    expect(r.self_sizeof).to eq (12 + 2)
+    expect(r.self_sizeof).to eq 12 + 2
     expect(r.sizeof_block).to eq 12
     expect(r.sizeof_block_a).to eq 1
     expect(r.sizeof_block_b).to eq 4

@@ -23,11 +23,11 @@ class IntegersMinMaxTest extends TestCase {
         $this->assertSame(-1, $r->unsignedMax()->u8be());
         $this->assertSame(-128, $r->signedMin()->s1());
         $this->assertSame(-32768, $r->signedMin()->s2le());
-        $this->assertSame((-2147483647 - 1), $r->signedMin()->s4le());
-        $this->assertSame((-9223372036854775807 - 1), $r->signedMin()->s8le());
+        $this->assertSame(-2147483647 - 1, $r->signedMin()->s4le());
+        $this->assertSame(-9223372036854775807 - 1, $r->signedMin()->s8le());
         $this->assertSame(-32768, $r->signedMin()->s2be());
-        $this->assertSame((-2147483647 - 1), $r->signedMin()->s4be());
-        $this->assertSame((-9223372036854775807 - 1), $r->signedMin()->s8be());
+        $this->assertSame(-2147483647 - 1, $r->signedMin()->s4be());
+        $this->assertSame(-9223372036854775807 - 1, $r->signedMin()->s8be());
         $this->assertSame(127, $r->signedMax()->s1());
         $this->assertSame(32767, $r->signedMax()->s2le());
         $this->assertSame(2147483647, $r->signedMax()->s4le());
