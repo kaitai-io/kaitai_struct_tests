@@ -31,6 +31,9 @@ class PerlSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
   override def runParse(): Unit = {
     out.puts(s"my $$r = $className->from_file('src/${spec.data}');")
+    if (spec.debug) {
+      out.puts("$r->_read();")
+    }
   }
 
   override def runParseExpectError(exception: KSError): Unit = {
@@ -38,7 +41,11 @@ class PerlSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
       case UndecidedEndiannessError => "Unable to decide on endianness"
       case EndOfStreamError => "Requested \\d+ bytes, but only \\d+ bytes available"
     }
-    out.puts(s"""throws_ok { $className->from_file('src/${spec.data}') } '/^$msg/';""")
+    out.puts("throws_ok {")
+    out.inc
+    runParse()
+    out.dec
+    out.puts(s"""} '/^$msg/';""")
   }
 
   override def footer(): Unit = {

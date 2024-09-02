@@ -14,6 +14,7 @@ case class TestException(actual: Ast.expr, exception: KSError) extends TestAsser
 case class TestSpec(
   id: String,
   data: String,
+  debug: Boolean,
   asserts: List[TestAssert],
   exception: Option[KSError],
   extraImports: List[String]
@@ -48,11 +49,12 @@ object TestSpec {
 
     val id = ParseUtils.getValueStr(srcMap, "id", List())
     val data = ParseUtils.getValueStr(srcMap, "data", List())
+    val debug = ParseUtils.getOptValueBool(srcMap, "debug", List()).getOrElse(false)
     val asserts = ParseUtils.getList[TestAssert](srcMap, "asserts", testAssertFromYaml, List())
     val exception = ParseUtils.getOptValueStr(srcMap, "exception", List()).map(KSError.fromName)
     val extraImports = ParseUtils.getListStr(srcMap, "imports", List())
 
-    TestSpec(id, data, asserts, exception, extraImports)
+    TestSpec(id, data, debug, asserts, exception, extraImports)
   }
 
   def fromFile(fileName: String): TestSpec = {

@@ -26,6 +26,9 @@ class PHPSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
 
   override def runParse(): Unit = {
     out.puts(s"$$r = $className::fromFile(self::SRC_DIR_PATH . '/${spec.data}');")
+    if (spec.debug) {
+      out.puts("$r->_read();")
+    }
   }
 
   override def runParseExpectError(exception: KSError): Unit = {

@@ -25,8 +25,12 @@ class ConstructSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGener
     out.inc
   }
 
-  override def runParse(): Unit =
+  override def runParse(): Unit = {
     out.puts(s"r = _schema.parse_file('src/${spec.data}')")
+    if (spec.debug) {
+      out.puts("r._read()")
+    }
+  }
 
   override def footer(): Unit = {}
 
