@@ -2,6 +2,15 @@
 
 . ./config
 
+if [ -f /download/runtime/Cargo.lock ]; then
+    # We're in the Docker container, let's copy the lockfile recording the
+    # prefetched dependencies into the runtime library dir
+    ( cd -- "$RUST_RUNTIME_DIR" && cp -v -t . /download/runtime/Cargo.lock )
+    # Tell Cargo to work in `--offline` mode (see
+    # https://doc.rust-lang.org/cargo/reference/config.html#netoffline)
+    export CARGO_NET_OFFLINE=true
+fi
+
 ./run-rust
 
 ./kst-adoption-report rust
