@@ -54,7 +54,13 @@ class RustBuilder < PartialBuilder
 
   def build_project(log_file)
     Dir.chdir(@base_spec_dir) do
-      cli = %w[cargo check --test spec --message-format json]
+      # We don't use `cargo check` here (which would seem like a more logical
+      # choice) because unfortunately it doesn't report all build errors, see
+      # https://doc.rust-lang.org/cargo/commands/cargo-check.html#description:
+      #
+      # > Some diagnostics and errors are only emitted during code generation,
+      # > so they inherently won't be reported with `cargo check`.
+      cli = %w[cargo test --no-run --test spec --message-format json]
       run_cargo_build({}, cli, log_file).exitstatus
     end
   end
