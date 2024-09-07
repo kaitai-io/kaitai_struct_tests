@@ -16,5 +16,6 @@ PERL_RUNTIME_DIR=../runtime/perl/lib
 PHP_RUNTIME_DIR=../runtime/php
 PYTHON_RUNTIME_DIR=../runtime/python
 RUBY_RUNTIME_DIR=../runtime/ruby/lib
+RUST_RUNTIME_DIR=../runtime/rust
 
 TEST_OUT_DIR=test_out

@@ -95,13 +95,19 @@ when 'java'
     ),
     infile
   )
+when 'rust'
+  add_kst_adoption(
+    reports_to_h(
+      JUnitXMLParser.new("#{infile}/report.xml"),
+      BuildFailedParser.new("#{infile}/build_failed_tests.txt")
+    ),
+    infile
+  )
 when 'lua', 'nim'
   add_kst_adoption(
     reports_to_h(JUnitXMLParser.new("#{infile}/report.xml")),
     infile
   )
-when 'rust'
-  reports_to_h(JUnitXMLParser.new(infile))
 when 'go', 'perl', 'python', 'construct', 'julia'
   add_kst_adoption(
     reports_to_h(JUnitXMLParser.new("#{infile}/report.xml")),

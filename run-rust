@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require_relative 'builder/rust_builder'
+RustBuilder.new.command_line(ARGV)

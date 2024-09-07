@@ -1,0 +1,9 @@
+[package]
+name = "rust"
+edition = "2018"
+autotests = false
+
+[dependencies]
+
+[[test]]
+name = "spec"

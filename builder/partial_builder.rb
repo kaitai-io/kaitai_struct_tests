@@ -33,8 +33,8 @@ class PartialBuilder
       l1 = list_mandatory_files
       l2 = list_disposable_files
       log "creating project with #{(l1 + l2).size} files"
-      fn = create_project(l1, l2)
-      log "project file created: #{fn.inspect}"
+      fns = create_project(l1, l2)
+      log "project files created: #{fns.inspect}"
     elsif arg == ['--once']
       @max_attempts = 1
       exit run
@@ -78,8 +78,8 @@ class PartialBuilder
       attempt_str = @max_attempts ? "#{attempt}/#{@max_attempts}" : attempt
 
       log "creating project with #{disp_files.size}/#{orig_size} files"
-      fn = create_project(mand_files, disp_files)
-      log "project file created: #{fn.inspect}"
+      fns = create_project(mand_files, disp_files)
+      log "project files created: #{fns.inspect}"
 
       build_log = "#{@test_out_dir}/build-#{attempt}.log"
       log "build attempt #{attempt_str} (log: #{build_log})"
@@ -215,7 +215,9 @@ class PartialBuilder
 
   # Creates a project file, given a list of disposable and mandatory
   # files to include in it.
-  # @return [String] project file name created
+  # @param mand_files [Enumerable<String>] collection of mandatory files
+  # @param disp_files [Enumerable<String>] collection of disposable files
+  # @return [Array<String>] project file names created
   def create_project(mand_files, disp_files)
     raise NotImplementedError
   end

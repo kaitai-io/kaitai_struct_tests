@@ -33,6 +33,9 @@ class JUnitXMLParser < TestParser
         elsif name =~ /^t(?!est)(.*?)$/
           # Nim output
           name = underscore_to_ucamelcase($1)
+        elsif name =~ /^test_.*::test_(.*?)$/
+          # Rust output
+          name = underscore_to_ucamelcase($1)
         elsif tc.attribute('classname') and tc.attribute('classname').value =~ /^\/(.*?) test$/
           # Julia output
           name = $1
