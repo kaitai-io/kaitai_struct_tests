@@ -1,4 +1,4 @@
-# This tests checks whether the encoding string passed as an argument to the
+# This test checks whether the encoding string passed as an argument to the
 # `.to_s(encoding)` method is correctly escaped in the generated code (this
 # follows up on the concern that I raised in
 # https://github.com/kaitai-io/kaitai_struct_compiler/commit/6500c68cbc6cf13f29a2e002acbccbb9b6fbba16#r122025444).
