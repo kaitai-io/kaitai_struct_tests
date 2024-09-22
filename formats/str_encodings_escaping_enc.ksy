@@ -28,8 +28,8 @@ types:
   # The single-quoted strings in YAML are treated similarly as in the KS
   # expression language ('\\' are two literal backslashes, "\\" is one
   # backslash) - every character in '(...)' is treated literally, except that
-  # it's possible to get a literal single quote by doubling it (i.e. `value:
-  # 'here '' is a single quote'` stands for `{ "value": "here ' is a single
+  # it's possible to get a literal single quote by doubling it (i.e. `foo:
+  # 'here '' is a single quote'` stands for `{ "foo": "here ' is a single
   # quote" }`).
   str1_wrapper:
     instances:
