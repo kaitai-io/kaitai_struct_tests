@@ -19,6 +19,8 @@ instances:
     value: one.min
   one_max:
     value: one.max
+  one_to_s:
+    value: one.to_s('IBM866')
 
   two_size:
     value: two.size
@@ -32,3 +34,5 @@ instances:
     value: two.min
   two_max:
     value: two.max
+  two_to_s:
+    value: two.to_s('IBM866')
