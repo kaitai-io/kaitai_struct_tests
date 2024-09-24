@@ -8,7 +8,7 @@ use base qw(Test::Class);
 use Test::More;
 use ExprBytesOps;
 
-sub test_expr_bytes_ops: Test(16) {
+sub test_expr_bytes_ops: Test(18) {
     my $r = ExprBytesOps->from_file('src/nav_parent_switch.bin');
 
     is($r->one_size(), 3, 'Equals');
@@ -19,6 +19,7 @@ sub test_expr_bytes_ops: Test(16) {
     is($r->one_min(), 1, 'Equals');
     is($r->one_max(), 255, 'Equals');
     is(sprintf('%d', $r->one_max()), "255", 'Equals');
+    is($r->one_to_s(), "\001B\240", 'Equals');
     is($r->two_size(), 3, 'Equals');
     is($r->two_first(), 65, 'Equals');
     is($r->two_mid(), 255, 'Equals');
@@ -27,6 +28,7 @@ sub test_expr_bytes_ops: Test(16) {
     is($r->two_min(), 65, 'Equals');
     is($r->two_max(), 255, 'Equals');
     is(sprintf('%d', $r->two_max()), "255", 'Equals');
+    is($r->two_to_s(), "A\240K", 'Equals');
 }
 
 Test::Class->runtests;

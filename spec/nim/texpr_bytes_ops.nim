@@ -15,6 +15,7 @@ assert intToStr(int(r.oneLast)) == "255"
 assert r.oneMin == 1
 assert r.oneMax == 255
 assert intToStr(int(r.oneMax)) == "255"
+assert r.oneToS == "\001B\240"
 assert r.twoSize == 3
 assert r.twoFirst == 65
 assert r.twoMid == 255
@@ -23,3 +24,4 @@ assert r.twoLast == 75
 assert r.twoMin == 65
 assert r.twoMax == 255
 assert intToStr(int(r.twoMax)) == "255"
+assert r.twoToS == "A\240K"
