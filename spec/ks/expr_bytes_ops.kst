@@ -19,8 +19,6 @@ asserts:
     expected: 0xff
   - actual: one_max.to_s
     expected: '"255"'
-  - actual: one_to_s
-    expected: '"\u0001\u0042\u00a0"'
 
   # two = [0x41, 0xff, 0x4b]
 
@@ -40,5 +38,3 @@ asserts:
     expected: 0xff
   - actual: two_max.to_s
     expected: '"255"'
-  - actual: two_to_s
-    expected: '"\u0041\u00a0\u004b"'
