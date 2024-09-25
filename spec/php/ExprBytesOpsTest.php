@@ -15,7 +15,6 @@ class ExprBytesOpsTest extends TestCase {
         $this->assertSame(1, $r->oneMin());
         $this->assertSame(255, $r->oneMax());
         $this->assertSame("255", strval($r->oneMax()));
-        $this->assertSame("\001B\240", $r->oneToS());
         $this->assertSame(3, $r->twoSize());
         $this->assertSame(65, $r->twoFirst());
         $this->assertSame(255, $r->twoMid());
@@ -24,6 +23,5 @@ class ExprBytesOpsTest extends TestCase {
         $this->assertSame(65, $r->twoMin());
         $this->assertSame(255, $r->twoMax());
         $this->assertSame("255", strval($r->twoMax()));
-        $this->assertSame("A\240K", $r->twoToS());
     }
 }

@@ -19,7 +19,6 @@ fn test_expr_bytes_ops() -> KResult<()> {
     assert_eq!(*r.one_min()?, 1);
     assert_eq!(*r.one_max()?, 255);
     assert_eq!(r.one_max()?.to_string(), "255");
-    assert_eq!(*r.one_to_s()?, "\u{1}B\u{a0}");
     assert_eq!(*r.two_size()?, 3);
     assert_eq!(*r.two_first()?, 65);
     assert_eq!(*r.two_mid()?, 255);
@@ -28,6 +27,5 @@ fn test_expr_bytes_ops() -> KResult<()> {
     assert_eq!(*r.two_min()?, 65);
     assert_eq!(*r.two_max()?, 255);
     assert_eq!(r.two_max()?.to_string(), "255");
-    assert_eq!(*r.two_to_s()?, "A\u{a0}K");
     Ok(())
 }

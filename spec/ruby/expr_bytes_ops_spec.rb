@@ -9,19 +9,17 @@ RSpec.describe 'ExprBytesOps' do
     expect(r.one_first).to eq 1
     expect(r.one_mid).to eq 66
     expect(r.one_last).to eq 255
-    expect(r.one_last.to_s).to eq "255"
+    expect(r.one_last.to_s(10)).to eq "255"
     expect(r.one_min).to eq 1
     expect(r.one_max).to eq 255
-    expect(r.one_max.to_s).to eq "255"
-    expect(r.one_to_s).to eq "\001B\240"
+    expect(r.one_max.to_s(10)).to eq "255"
     expect(r.two_size).to eq 3
     expect(r.two_first).to eq 65
     expect(r.two_mid).to eq 255
-    expect(r.two_mid.to_s).to eq "255"
+    expect(r.two_mid.to_s(10)).to eq "255"
     expect(r.two_last).to eq 75
     expect(r.two_min).to eq 65
     expect(r.two_max).to eq 255
-    expect(r.two_max.to_s).to eq "255"
-    expect(r.two_to_s).to eq "A\240K"
+    expect(r.two_max.to_s(10)).to eq "255"
   end
 end

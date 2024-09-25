@@ -19,7 +19,6 @@ BOOST_AUTO_TEST_CASE(test_expr_bytes_ops) {
     BOOST_CHECK_EQUAL(r->one_min(), 1);
     BOOST_CHECK_EQUAL(r->one_max(), 255);
     BOOST_CHECK_EQUAL(kaitai::kstream::to_string(r->one_max()), std::string("255"));
-    BOOST_CHECK_EQUAL(r->one_to_s(), std::string("\001B\240"));
     BOOST_CHECK_EQUAL(r->two_size(), 3);
     BOOST_CHECK_EQUAL(r->two_first(), 65);
     BOOST_CHECK_EQUAL(r->two_mid(), 255);
@@ -28,7 +27,6 @@ BOOST_AUTO_TEST_CASE(test_expr_bytes_ops) {
     BOOST_CHECK_EQUAL(r->two_min(), 65);
     BOOST_CHECK_EQUAL(r->two_max(), 255);
     BOOST_CHECK_EQUAL(kaitai::kstream::to_string(r->two_max()), std::string("255"));
-    BOOST_CHECK_EQUAL(r->two_to_s(), std::string("A\240K"));
 
     delete r;
 }

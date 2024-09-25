@@ -15,19 +15,17 @@ public class TestExprBytesOps extends CommonSpec {
         assertIntEquals(r.oneFirst(), 1);
         assertIntEquals(r.oneMid(), 66);
         assertIntEquals(r.oneLast(), 255);
-        assertEquals(Long.toString(r.oneLast()), "255");
+        assertEquals(Long.toString(r.oneLast(), 10), "255");
         assertIntEquals(r.oneMin(), 1);
         assertIntEquals(r.oneMax(), 255);
-        assertEquals(Long.toString(r.oneMax()), "255");
-        assertEquals(r.oneToS(), "\001B\240");
+        assertEquals(Long.toString(r.oneMax(), 10), "255");
         assertIntEquals(r.twoSize(), 3);
         assertIntEquals(r.twoFirst(), 65);
         assertIntEquals(r.twoMid(), 255);
-        assertEquals(Long.toString(r.twoMid()), "255");
+        assertEquals(Long.toString(r.twoMid(), 10), "255");
         assertIntEquals(r.twoLast(), 75);
         assertIntEquals(r.twoMin(), 65);
         assertIntEquals(r.twoMax(), 255);
-        assertEquals(Long.toString(r.twoMax()), "255");
-        assertEquals(r.twoToS(), "A\240K");
+        assertEquals(Long.toString(r.twoMax(), 10), "255");
     }
 }
