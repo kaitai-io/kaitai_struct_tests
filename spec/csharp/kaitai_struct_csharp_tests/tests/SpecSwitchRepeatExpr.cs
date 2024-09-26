@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = SwitchRepeatExpr.FromFile(SourceFile("switch_tlv.bin"));
 
-            Assert.AreEqual(r.Code, 17);
-            Assert.AreEqual(r.Size, 9);
-            Assert.AreEqual(((SwitchRepeatExpr.One) (r.Body[0])).First, new byte[] { 83, 116, 117, 102, 102, 0, 77, 101, 0 });
+            Assert.AreEqual(17, r.Code);
+            Assert.AreEqual(9, r.Size);
+            Assert.AreEqual(new byte[] { 83, 116, 117, 102, 102, 0, 77, 101, 0 }, ((SwitchRepeatExpr.One) (r.Body[0])).First);
         }
     }
 }

@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = ImportsCircularA.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.Code, 80);
-            Assert.AreEqual(r.Two.Initial, 65);
-            Assert.AreEqual(r.Two.BackRef.Code, 67);
-            Assert.AreEqual(r.Two.BackRef.Two.Initial, 75);
+            Assert.AreEqual(80, r.Code);
+            Assert.AreEqual(65, r.Two.Initial);
+            Assert.AreEqual(67, r.Two.BackRef.Code);
+            Assert.AreEqual(75, r.Two.BackRef.Two.Initial);
             Assert.IsNull(r.Two.BackRef.Two.BackRef);
         }
     }

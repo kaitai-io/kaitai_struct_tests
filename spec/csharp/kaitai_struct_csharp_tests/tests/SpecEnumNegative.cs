@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = EnumNegative.FromFile(SourceFile("enum_negative.bin"));
 
-            Assert.AreEqual(r.F1, EnumNegative.Constants.NegativeOne);
-            Assert.AreEqual(r.F2, EnumNegative.Constants.PositiveOne);
+            Assert.AreEqual(EnumNegative.Constants.NegativeOne, r.F1);
+            Assert.AreEqual(EnumNegative.Constants.PositiveOne, r.F2);
         }
     }
 }

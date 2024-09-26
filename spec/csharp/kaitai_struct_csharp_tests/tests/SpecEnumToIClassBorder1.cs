@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = EnumToIClassBorder1.FromFile(SourceFile("enum_0.bin"));
 
-            Assert.AreEqual(r.Pet1, EnumToIClassBorder1.Animal.Cat);
-            Assert.AreEqual(r.Pet2, EnumToIClassBorder1.Animal.Chicken);
-            Assert.AreEqual(r.Checker.IsDog, true);
+            Assert.AreEqual(EnumToIClassBorder1.Animal.Cat, r.Pet1);
+            Assert.AreEqual(EnumToIClassBorder1.Animal.Chicken, r.Pet2);
+            Assert.AreEqual(true, r.Checker.IsDog);
         }
     }
 }

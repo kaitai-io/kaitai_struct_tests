@@ -2,6 +2,7 @@ package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.{ClassTypeProvider, Utils}
 import _root_.io.kaitai.struct.datatype.{DataType, EndOfStreamError, KSError}
+import _root_.io.kaitai.struct.datatype.DataType.{EnumType, IntType}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.CSharpCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
@@ -57,21 +58,30 @@ class CSharpSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
   }
 
   override def simpleEquality(check: TestEquals): Unit = {
-    val actType = translator.detectType(check.actual)
     val actStr = translateAct(check.actual)
-    val expStr = translator.translate(check.expected)
-    actType match {
-      case _ =>
-        // TODO: fix order - actually it is (expected, actual)
-        out.puts(s"Assert.AreEqual($actStr, $expStr);")
+    var expStr = translator.translate(check.expected)
+
+    // Specially for enums with is tested for unknown values
+    val actType = translator.detectType(check.actual)
+    val expType = translator.detectType(check.expected)
+
+    // If type of value is enum but we check it against numeric value,
+    // do the cast of expected value to enum
+    expStr = (actType, expType) match {
+      case (act: EnumType, _: IntType) => {
+        val casted = CSharpCompiler.kaitaiType2NativeType(importList, act, true)
+        s"($casted) $expStr"
+      }
+      case _ => expStr
     }
+    out.puts(s"Assert.AreEqual($expStr, $actStr);")
   }
 
   override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
-    // TODO: fix order - actually it is (expected, actual)
-    out.puts(s"Assert.AreEqual($actStr, $expStr, $FLOAT_DELTA);")
+
+    out.puts(s"Assert.AreEqual($expStr, $actStr, $FLOAT_DELTA);")
   }
 
   override def nullAssert(actual: Ast.expr): Unit = {

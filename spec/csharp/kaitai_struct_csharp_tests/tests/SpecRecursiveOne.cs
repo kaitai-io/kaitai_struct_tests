@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = RecursiveOne.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.One, 80);
-            Assert.AreEqual(((RecursiveOne) (r.Next)).One, 65);
-            Assert.AreEqual(((RecursiveOne) (((RecursiveOne) (r.Next)).Next)).One, 67);
-            Assert.AreEqual(((RecursiveOne.Fini) (((RecursiveOne) (((RecursiveOne) (r.Next)).Next)).Next)).Finisher, 11595);
+            Assert.AreEqual(80, r.One);
+            Assert.AreEqual(65, ((RecursiveOne) (r.Next)).One);
+            Assert.AreEqual(67, ((RecursiveOne) (((RecursiveOne) (r.Next)).Next)).One);
+            Assert.AreEqual(11595, ((RecursiveOne.Fini) (((RecursiveOne) (((RecursiveOne) (r.Next)).Next)).Next)).Finisher);
         }
     }
 }

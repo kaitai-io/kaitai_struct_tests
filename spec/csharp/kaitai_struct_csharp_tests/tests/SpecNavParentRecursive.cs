@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = NavParentRecursive.FromFile(SourceFile("enum_negative.bin"));
 
-            Assert.AreEqual(r.Value, 255);
-            Assert.AreEqual(r.Next.Value, 1);
-            Assert.AreEqual(r.Next.ParentValue, 255);
+            Assert.AreEqual(255, r.Value);
+            Assert.AreEqual(1, r.Next.Value);
+            Assert.AreEqual(255, r.Next.ParentValue);
             Assert.IsNull(r.Next.Next);
         }
     }

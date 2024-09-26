@@ -12,13 +12,13 @@ namespace Kaitai
         {
             var r = IfStruct.FromFile(SourceFile("if_struct.bin"));
 
-            Assert.AreEqual(r.Op1.Opcode, 83);
-            Assert.AreEqual(r.Op1.ArgStr.Str, "foo");
-            Assert.AreEqual(r.Op2.Opcode, 84);
-            Assert.AreEqual(r.Op2.ArgTuple.Num1, 66);
-            Assert.AreEqual(r.Op2.ArgTuple.Num2, 67);
-            Assert.AreEqual(r.Op3.Opcode, 83);
-            Assert.AreEqual(r.Op3.ArgStr.Str, "bar");
+            Assert.AreEqual(83, r.Op1.Opcode);
+            Assert.AreEqual("foo", r.Op1.ArgStr.Str);
+            Assert.AreEqual(84, r.Op2.Opcode);
+            Assert.AreEqual(66, r.Op2.ArgTuple.Num1);
+            Assert.AreEqual(67, r.Op2.ArgTuple.Num2);
+            Assert.AreEqual(83, r.Op3.Opcode);
+            Assert.AreEqual("bar", r.Op3.ArgStr.Str);
         }
     }
 }

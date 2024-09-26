@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = ExprIoTernary.FromFile(SourceFile("if_struct.bin"));
 
-            Assert.AreEqual(r.OneOrTwoIoSize1, 8);
-            Assert.AreEqual(r.OneOrTwoIoSize2, 8);
-            Assert.AreEqual(r.OneOrTwoIoSizeAdd3, 11);
+            Assert.AreEqual(8, r.OneOrTwoIoSize1);
+            Assert.AreEqual(8, r.OneOrTwoIoSize2);
+            Assert.AreEqual(11, r.OneOrTwoIoSizeAdd3);
         }
     }
 }

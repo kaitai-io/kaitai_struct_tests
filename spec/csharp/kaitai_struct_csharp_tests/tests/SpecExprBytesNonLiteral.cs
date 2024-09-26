@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = ExprBytesNonLiteral.FromFile(SourceFile("enum_negative.bin"));
 
-            Assert.AreEqual(r.CalcBytes.Length, 2);
-            Assert.AreEqual(r.CalcBytes[0], 255);
-            Assert.AreEqual(r.CalcBytes[1], 1);
+            Assert.AreEqual(2, r.CalcBytes.Length);
+            Assert.AreEqual(255, r.CalcBytes[0]);
+            Assert.AreEqual(1, r.CalcBytes[1]);
         }
     }
 }

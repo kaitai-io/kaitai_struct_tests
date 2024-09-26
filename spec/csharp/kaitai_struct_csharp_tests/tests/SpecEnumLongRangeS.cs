@@ -12,13 +12,13 @@ namespace Kaitai
         {
             var r = EnumLongRangeS.FromFile(SourceFile("enum_long_range_s.bin"));
 
-            Assert.AreEqual(r.F1, EnumLongRangeS.Constants.LongMin);
-            Assert.AreEqual(r.F2, EnumLongRangeS.Constants.IntBelowMin);
-            Assert.AreEqual(r.F3, EnumLongRangeS.Constants.IntMin);
-            Assert.AreEqual(r.F4, EnumLongRangeS.Constants.Zero);
-            Assert.AreEqual(r.F5, EnumLongRangeS.Constants.IntMax);
-            Assert.AreEqual(r.F6, EnumLongRangeS.Constants.IntOverMax);
-            Assert.AreEqual(r.F7, EnumLongRangeS.Constants.LongMax);
+            Assert.AreEqual(EnumLongRangeS.Constants.LongMin, r.F1);
+            Assert.AreEqual(EnumLongRangeS.Constants.IntBelowMin, r.F2);
+            Assert.AreEqual(EnumLongRangeS.Constants.IntMin, r.F3);
+            Assert.AreEqual(EnumLongRangeS.Constants.Zero, r.F4);
+            Assert.AreEqual(EnumLongRangeS.Constants.IntMax, r.F5);
+            Assert.AreEqual(EnumLongRangeS.Constants.IntOverMax, r.F6);
+            Assert.AreEqual(EnumLongRangeS.Constants.LongMax, r.F7);
         }
     }
 }

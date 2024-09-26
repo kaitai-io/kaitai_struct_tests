@@ -12,7 +12,7 @@ namespace Kaitai
         {
             var r = NavParentVsValueInst.FromFile(SourceFile("term_strz.bin"));
 
-            Assert.AreEqual(r.S1, "foo");
+            Assert.AreEqual("foo", r.S1);
         }
     }
 }

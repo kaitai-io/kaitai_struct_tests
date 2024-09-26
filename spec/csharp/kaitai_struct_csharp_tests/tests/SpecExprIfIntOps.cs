@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = ExprIfIntOps.FromFile(SourceFile("process_coerce_switch.bin"));
 
-            Assert.AreEqual(r.IsEqPrim, true);
-            Assert.AreEqual(r.IsEqBoxed, true);
+            Assert.AreEqual(true, r.IsEqPrim);
+            Assert.AreEqual(true, r.IsEqBoxed);
         }
     }
 }

@@ -12,11 +12,11 @@ namespace Kaitai
         {
             var r = SwitchIntegers2.FromFile(SourceFile("switch_integers.bin"));
 
-            Assert.AreEqual(r.Code, 1);
-            Assert.AreEqual(r.Len, 7);
-            Assert.AreEqual(r.Ham, new byte[] { 2, 64, 64, 4, 55, 19, 0 });
-            Assert.AreEqual(r.Padding, 0);
-            Assert.AreEqual(r.LenModStr, "13");
+            Assert.AreEqual(1, r.Code);
+            Assert.AreEqual(7, r.Len);
+            Assert.AreEqual(new byte[] { 2, 64, 64, 4, 55, 19, 0 }, r.Ham);
+            Assert.AreEqual(0, r.Padding);
+            Assert.AreEqual("13", r.LenModStr);
         }
     }
 }

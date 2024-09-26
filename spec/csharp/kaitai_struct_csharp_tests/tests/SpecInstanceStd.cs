@@ -12,7 +12,7 @@ namespace Kaitai
         {
             var r = InstanceStd.FromFile(SourceFile("str_encodings.bin"));
 
-            Assert.AreEqual(r.Header, "Some ");
+            Assert.AreEqual("Some ", r.Header);
         }
     }
 }

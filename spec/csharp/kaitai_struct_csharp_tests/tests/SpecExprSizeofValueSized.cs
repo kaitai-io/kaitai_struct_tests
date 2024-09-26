@@ -12,11 +12,11 @@ namespace Kaitai
         {
             var r = ExprSizeofValueSized.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.SelfSizeof, (12 + 2));
-            Assert.AreEqual(r.SizeofBlock, 12);
-            Assert.AreEqual(r.SizeofBlockA, 1);
-            Assert.AreEqual(r.SizeofBlockB, 4);
-            Assert.AreEqual(r.SizeofBlockC, 2);
+            Assert.AreEqual(12 + 2, r.SelfSizeof);
+            Assert.AreEqual(12, r.SizeofBlock);
+            Assert.AreEqual(1, r.SizeofBlockA);
+            Assert.AreEqual(4, r.SizeofBlockB);
+            Assert.AreEqual(2, r.SizeofBlockC);
         }
     }
 }
