@@ -10,7 +10,7 @@ function validateErr(expectedEncoding, err) {
   } else if (Object.getPrototypeOf(err) === Error.prototype) {
     var regex = /^Encoding not recognized: '(.*)' \(searched as: '.*'\)$/;
     var match = err.message.match(regex);
-    assert.notStrictEqual(match, null, "message [" + err.message + "] does not match regex " + regex);
+    assert.ok(match !== null, "message [" + err.message + "] does not match regex " + regex);
     assert.strictEqual(match[1], expectedEncoding);
   } else {
     assert.fail("expected " + RangeError.name + " or " + Error.name + ", but got " + err);
