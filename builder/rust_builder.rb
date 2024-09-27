@@ -56,7 +56,7 @@ class RustBuilder < PartialBuilder
     Dir.chdir(@base_spec_dir) do
       # We don't use `cargo check` here (which would seem like a more logical
       # choice) because unfortunately it doesn't report all build errors, see
-      # https://doc.rust-lang.org/cargo/commands/cargo-check.html#description:
+      # <https://doc.rust-lang.org/cargo/commands/cargo-check.html#description>:
       #
       # > Some diagnostics and errors are only emitted during code generation,
       # > so they inherently won't be reported with `cargo check`.
@@ -74,7 +74,7 @@ class RustBuilder < PartialBuilder
         # See https://doc.rust-lang.org/cargo/reference/external-tools.html#json-messages
         cargo_msg = JSON.parse(line)
 
-        # See https://doc.rust-lang.org/cargo/reference/external-tools.html#build-finished:
+        # See <https://doc.rust-lang.org/cargo/reference/external-tools.html#build-finished>:
         # > The "build-finished" message is emitted at the end of the build.
         #
         # > This message can be helpful for tools to know when to stop reading JSON messages.
