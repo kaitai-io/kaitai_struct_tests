@@ -2,11 +2,10 @@
 
 var assert = require('assert');
 var testHelper = require('testHelper');
-var hexString = require('hexString');
 
 testHelper('ExprBytesCmp', 'src/fixed_struct.bin', function(r, ExprBytesCmp_) {
-  assert.strictEqual(hexString(r.one), hexString([80]));
-  assert.strictEqual(hexString(r.two), hexString([65, 67, 75]));
+  assert.deepStrictEqual(r.one, new Uint8Array([80]));
+  assert.deepStrictEqual(r.two, new Uint8Array([65, 67, 75]));
   assert.strictEqual(r.isEq, true);
   assert.strictEqual(r.isNe, false);
   assert.strictEqual(r.isLt, true);

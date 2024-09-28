@@ -2,9 +2,8 @@
 
 var assert = require('assert');
 var testHelper = require('testHelper');
-var hexString = require('hexString');
 
 testHelper('NestedSameName', 'src/repeat_n_struct.bin', function(r, NestedSameName_) {
   assert.strictEqual(r.mainData.mainSize, 2);
-  assert.strictEqual(hexString(r.mainData.foo.data), hexString([16, 0, 0, 0]));
+  assert.deepStrictEqual(r.mainData.foo.data, new Uint8Array([16, 0, 0, 0]));
 });

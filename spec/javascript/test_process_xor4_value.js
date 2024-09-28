@@ -2,9 +2,8 @@
 
 var assert = require('assert');
 var testHelper = require('testHelper');
-var hexString = require('hexString');
 
 testHelper('ProcessXor4Value', 'src/process_xor_4.bin', function(r, ProcessXor4Value_) {
-  assert.strictEqual(hexString(r.key), hexString([236, 187, 163, 20]));
-  assert.strictEqual(hexString(r.buf), hexString([102, 111, 111, 32, 98, 97, 114]));
+  assert.deepStrictEqual(r.key, new Uint8Array([236, 187, 163, 20]));
+  assert.deepStrictEqual(r.buf, new Uint8Array([102, 111, 111, 32, 98, 97, 114]));
 });

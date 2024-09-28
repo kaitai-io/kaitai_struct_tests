@@ -2,7 +2,6 @@
 
 var assert = require('assert');
 var testHelper = require('testHelper');
-var hexString = require('hexString');
 
 testHelper('BitsByteAligned', 'src/fixed_struct.bin', function(r, BitsByteAligned_) {
   assert.strictEqual(r.one, 20);
@@ -11,7 +10,7 @@ testHelper('BitsByteAligned', 'src/fixed_struct.bin', function(r, BitsByteAligne
   assert.strictEqual(r.three, false);
   assert.strictEqual(r.byte2, 75);
   assert.strictEqual(r.four, 2892);
-  assert.strictEqual(hexString(r.byte3), hexString([255]));
+  assert.deepStrictEqual(r.byte3, new Uint8Array([255]));
   assert.strictEqual(r.fullByte, 255);
   assert.strictEqual(r.byte4, 80);
 });

@@ -2,7 +2,6 @@
 
 var assert = require('assert');
 var testHelper = require('testHelper');
-var hexString = require('hexString');
 
 testHelper('SwitchManualIntSize', 'src/switch_tlv.bin', function(r, SwitchManualIntSize_) {
   assert.strictEqual(r.chunks.length, 4);
@@ -12,7 +11,7 @@ testHelper('SwitchManualIntSize', 'src/switch_tlv.bin', function(r, SwitchManual
   assert.strictEqual(r.chunks[1].code, 34);
   assert.deepStrictEqual(r.chunks[1].body.entries, ["AAAA", "BBBB", "CCCC"]);
   assert.strictEqual(r.chunks[2].code, 51);
-  assert.strictEqual(hexString(r.chunks[2].body), hexString([16, 32, 48, 64, 80, 96, 112, 128]));
+  assert.deepStrictEqual(r.chunks[2].body, new Uint8Array([16, 32, 48, 64, 80, 96, 112, 128]));
   assert.strictEqual(r.chunks[3].code, 255);
-  assert.strictEqual(hexString(r.chunks[3].body), hexString([]));
+  assert.deepStrictEqual(r.chunks[3].body, new Uint8Array([]));
 });

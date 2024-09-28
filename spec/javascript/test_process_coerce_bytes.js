@@ -2,11 +2,10 @@
 
 var assert = require('assert');
 var testHelper = require('testHelper');
-var hexString = require('hexString');
 
 testHelper('ProcessCoerceBytes', 'src/process_coerce_bytes.bin', function(r, ProcessCoerceBytes_) {
   assert.strictEqual(r.records[0].flag, 0);
-  assert.strictEqual(hexString(r.records[0].buf), hexString([65, 65, 65, 65]));
+  assert.deepStrictEqual(r.records[0].buf, new Uint8Array([65, 65, 65, 65]));
   assert.strictEqual(r.records[1].flag, 1);
-  assert.strictEqual(hexString(r.records[1].buf), hexString([66, 66, 66, 66]));
+  assert.deepStrictEqual(r.records[1].buf, new Uint8Array([66, 66, 66, 66]));
 });

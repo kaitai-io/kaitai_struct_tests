@@ -2,11 +2,10 @@
 
 var assert = require('assert');
 var testHelper = require('testHelper');
-var hexString = require('hexString');
 
 testHelper('BytesPadTerm', 'src/str_pad_term.bin', function(r, BytesPadTerm_) {
-  assert.strictEqual(hexString(r.strPad), hexString([115, 116, 114, 49]));
-  assert.strictEqual(hexString(r.strTerm), hexString([115, 116, 114, 50, 102, 111, 111]));
-  assert.strictEqual(hexString(r.strTermAndPad), hexString([115, 116, 114, 43, 43, 43, 51, 98, 97, 114, 43, 43, 43]));
-  assert.strictEqual(hexString(r.strTermInclude), hexString([115, 116, 114, 52, 98, 97, 122, 64]));
+  assert.deepStrictEqual(r.strPad, new Uint8Array([115, 116, 114, 49]));
+  assert.deepStrictEqual(r.strTerm, new Uint8Array([115, 116, 114, 50, 102, 111, 111]));
+  assert.deepStrictEqual(r.strTermAndPad, new Uint8Array([115, 116, 114, 43, 43, 43, 51, 98, 97, 114, 43, 43, 43]));
+  assert.deepStrictEqual(r.strTermInclude, new Uint8Array([115, 116, 114, 52, 98, 97, 122, 64]));
 });

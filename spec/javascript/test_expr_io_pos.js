@@ -2,13 +2,12 @@
 
 var assert = require('assert');
 var testHelper = require('testHelper');
-var hexString = require('hexString');
 
 testHelper('ExprIoPos', 'src/expr_io_pos.bin', function(r, ExprIoPos_) {
   assert.strictEqual(r.substream1.myStr, "CURIOSITY");
-  assert.strictEqual(hexString(r.substream1.body), hexString([17, 34, 51, 68]));
+  assert.deepStrictEqual(r.substream1.body, new Uint8Array([17, 34, 51, 68]));
   assert.strictEqual(r.substream1.number, 66);
   assert.strictEqual(r.substream2.myStr, "KILLED");
-  assert.strictEqual(hexString(r.substream2.body), hexString([97, 32, 99, 97, 116]));
+  assert.deepStrictEqual(r.substream2.body, new Uint8Array([97, 32, 99, 97, 116]));
   assert.strictEqual(r.substream2.number, 103);
 });

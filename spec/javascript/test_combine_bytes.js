@@ -2,17 +2,16 @@
 
 var assert = require('assert');
 var testHelper = require('testHelper');
-var hexString = require('hexString');
 
 testHelper('CombineBytes', 'src/term_strz.bin', function(r, CombineBytes_) {
-  assert.strictEqual(hexString(r.bytesTerm), hexString([102, 111, 111]));
-  assert.strictEqual(hexString(r.bytesLimit), hexString([98, 97, 114, 124]));
-  assert.strictEqual(hexString(r.bytesEos), hexString([98, 97, 122, 64]));
-  assert.strictEqual(hexString(r.bytesCalc), hexString([82, 110, 68]));
-  assert.strictEqual(hexString(r.termOrLimit), hexString([102, 111, 111]));
-  assert.strictEqual(hexString(r.termOrEos), hexString([98, 97, 122, 64]));
-  assert.strictEqual(hexString(r.termOrCalc), hexString([102, 111, 111]));
-  assert.strictEqual(hexString(r.limitOrEos), hexString([98, 97, 114, 124]));
-  assert.strictEqual(hexString(r.limitOrCalc), hexString([82, 110, 68]));
-  assert.strictEqual(hexString(r.eosOrCalc), hexString([98, 97, 122, 64]));
+  assert.deepStrictEqual(r.bytesTerm, new Uint8Array([102, 111, 111]));
+  assert.deepStrictEqual(r.bytesLimit, new Uint8Array([98, 97, 114, 124]));
+  assert.deepStrictEqual(r.bytesEos, new Uint8Array([98, 97, 122, 64]));
+  assert.deepStrictEqual(r.bytesCalc, new Uint8Array([82, 110, 68]));
+  assert.deepStrictEqual(r.termOrLimit, new Uint8Array([102, 111, 111]));
+  assert.deepStrictEqual(r.termOrEos, new Uint8Array([98, 97, 122, 64]));
+  assert.deepStrictEqual(r.termOrCalc, new Uint8Array([102, 111, 111]));
+  assert.deepStrictEqual(r.limitOrEos, new Uint8Array([98, 97, 114, 124]));
+  assert.deepStrictEqual(r.limitOrCalc, new Uint8Array([82, 110, 68]));
+  assert.deepStrictEqual(r.eosOrCalc, new Uint8Array([98, 97, 122, 64]));
 });

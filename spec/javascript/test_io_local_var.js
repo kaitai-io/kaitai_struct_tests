@@ -2,9 +2,8 @@
 
 var assert = require('assert');
 var testHelper = require('testHelper');
-var hexString = require('hexString');
 
 testHelper('IoLocalVar', 'src/full256.bin', function(r, IoLocalVar_) {
-  assert.strictEqual(hexString(r.skip), hexString([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]));
+  assert.deepStrictEqual(r.skip, new Uint8Array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]));
   assert.strictEqual(r.followup, 20);
 });

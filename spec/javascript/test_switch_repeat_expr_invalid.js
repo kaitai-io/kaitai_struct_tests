@@ -2,10 +2,9 @@
 
 var assert = require('assert');
 var testHelper = require('testHelper');
-var hexString = require('hexString');
 
 testHelper('SwitchRepeatExprInvalid', 'src/switch_tlv.bin', function(r, SwitchRepeatExprInvalid_) {
   assert.strictEqual(r.code, 17);
   assert.strictEqual(r.size, 9);
-  assert.strictEqual(hexString(r.body[0]), hexString([83, 116, 117, 102, 102, 0, 77, 101, 0]));
+  assert.deepStrictEqual(r.body[0], new Uint8Array([83, 116, 117, 102, 102, 0, 77, 101, 0]));
 });
