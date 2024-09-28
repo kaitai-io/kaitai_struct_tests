@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('EnumDeep', 'src/enum_0.bin', function(r, EnumDeep) {
-  assert.strictEqual(r.pet1, EnumDeep.Container1.Animal.CAT);
-  assert.strictEqual(r.pet2, EnumDeep.Container1.Container2.Animal.HARE);
+testHelper('EnumDeep', 'src/enum_0.bin', function(r, EnumDeep_) {
+  assert.strictEqual(r.pet1, EnumDeep_.EnumDeep.Container1.Animal.CAT);
+  assert.strictEqual(r.pet2, EnumDeep_.EnumDeep.Container1.Container2.Animal.HARE);
 });

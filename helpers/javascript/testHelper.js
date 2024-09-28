@@ -4,16 +4,16 @@ function testHelper(className, fileName, testFunc) {
 
   describe(className, function() {
     it('parses test properly', function(done) {
-      var parser = require(className)[className];
+      var parser_ = require(className);
       fs.readFile(fileName, function(err, buf) {
         if (err) {
           done(err);
           return;
         }
         var st = new KaitaiStream(buf);
-        var r = new parser(st);
+        var r = new parser_[className](st);
         try {
-          testFunc(r, parser);
+          testFunc(r, parser_);
         } catch (e) {
           done(e);
           return;

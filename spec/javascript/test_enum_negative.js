@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('EnumNegative', 'src/enum_negative.bin', function(r, EnumNegative) {
-  assert.strictEqual(r.f1, EnumNegative.Constants.NEGATIVE_ONE);
-  assert.strictEqual(r.f2, EnumNegative.Constants.POSITIVE_ONE);
+testHelper('EnumNegative', 'src/enum_negative.bin', function(r, EnumNegative_) {
+  assert.strictEqual(r.f1, EnumNegative_.EnumNegative.Constants.NEGATIVE_ONE);
+  assert.strictEqual(r.f2, EnumNegative_.EnumNegative.Constants.POSITIVE_ONE);
 });
