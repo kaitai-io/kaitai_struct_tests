@@ -65,8 +65,7 @@ class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGene
     val expStr = translator.translate(check.expected)
     actType match {
       case _: BytesType =>
-        importList.add("hexString")
-        out.puts(s"assert.strictEqual(hexString($actStr), hexString($expStr));")
+        out.puts(s"assert.deepStrictEqual($actStr, $expStr);")
       case _ =>
         out.puts(s"assert.strictEqual($actStr, $expStr);")
     }
