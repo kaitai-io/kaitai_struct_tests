@@ -4,7 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('YamlInts', 'src/fixed_struct.bin', function(r, YamlInts) {
-
   assert.strictEqual(r.testU4Dec, 4294967295);
   assert.strictEqual(r.testU4Hex, 4294967295);
   assert.strictEqual(r.testU8Dec, 18446744073709551615);

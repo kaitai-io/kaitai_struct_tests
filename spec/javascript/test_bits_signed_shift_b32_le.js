@@ -4,7 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('BitsSignedShiftB32Le', 'src/bits_signed_shift_b32_le.bin', function(r, BitsSignedShiftB32Le) {
-
   assert.strictEqual(r.a, 0);
   assert.strictEqual(r.b, 255);
 });

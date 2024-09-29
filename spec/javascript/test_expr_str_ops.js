@@ -4,7 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('ExprStrOps', 'src/term_strz.bin', function(r, ExprStrOps) {
-
   assert.strictEqual(r.one, "foo|b");
   assert.strictEqual(r.oneLen, 5);
   assert.strictEqual(r.oneRev, "b|oof");

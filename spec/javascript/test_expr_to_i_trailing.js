@@ -4,7 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('ExprToITrailing', 'src/term_strz.bin', function(r, ExprToITrailing) {
-
   assert.throws(
     function() {
       r.toIR10;

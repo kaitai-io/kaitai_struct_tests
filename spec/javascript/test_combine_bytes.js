@@ -5,7 +5,6 @@ var testHelper = require('testHelper');
 var hexString = require('hexString');
 
 testHelper('CombineBytes', 'src/term_strz.bin', function(r, CombineBytes) {
-
   assert.strictEqual(hexString(r.bytesTerm), hexString([102, 111, 111]));
   assert.strictEqual(hexString(r.bytesLimit), hexString([98, 97, 114, 124]));
   assert.strictEqual(hexString(r.bytesEos), hexString([98, 97, 122, 64]));

@@ -5,7 +5,6 @@ var testHelper = require('testHelper');
 
 testHelper('EnumImportLiterals', 'src/enum_0.bin', function(r, EnumImportLiterals) {
   var EnumDeep = require('EnumDeep').EnumDeep;
-
   assert.strictEqual(r.pet1ToI, 7);
   assert.strictEqual(r.pet1Eq, true);
   assert.strictEqual(r.pet2, EnumDeep.Container1.Container2.Animal.HARE);

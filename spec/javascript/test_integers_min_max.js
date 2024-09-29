@@ -4,7 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('IntegersMinMax', 'src/integers_min_max.bin', function(r, IntegersMinMax) {
-
   assert.strictEqual(r.unsignedMin.u1, 0);
   assert.strictEqual(r.unsignedMin.u2le, 0);
   assert.strictEqual(r.unsignedMin.u4le, 0);

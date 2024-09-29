@@ -4,7 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('SwitchManualEnumInvalid', 'src/enum_negative.bin', function(r, SwitchManualEnumInvalid) {
-
   assert.strictEqual(r.opcodes.length, 2);
   assert.strictEqual(r.opcodes[0].code, 255);
   assert.strictEqual(r.opcodes[0].body, undefined);

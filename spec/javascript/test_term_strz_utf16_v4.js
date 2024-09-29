@@ -4,7 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('TermStrzUtf16V4', 'src/term_strz_utf16.bin', function(r, TermStrzUtf16V4) {
-
   assert.strictEqual(r.s1.value, "a\u0200b");
   assert.strictEqual(r.s2.value, "c\u0200d");
   assert.strictEqual(r.s3.value, "e\u0200f");

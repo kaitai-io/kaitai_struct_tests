@@ -4,7 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('ExprBytesOps', 'src/nav_parent_switch.bin', function(r, ExprBytesOps) {
-
   assert.strictEqual(r.oneSize, 3);
   assert.strictEqual(r.oneFirst, 1);
   assert.strictEqual(r.oneMid, 66);

@@ -4,7 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('TypeIntUnaryOp', 'src/fixed_struct.bin', function(r, TypeIntUnaryOp) {
-
   assert.strictEqual(r.valueS2, 16720);
   assert.strictEqual(r.valueS8, 4706543082108963651);
   assert.strictEqual(r.unaryS2, -16720);

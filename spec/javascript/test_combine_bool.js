@@ -4,7 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('CombineBool', 'src/enum_negative.bin', function(r, CombineBool) {
-
   assert.strictEqual(r.boolBit, true);
   assert.strictEqual(r.boolCalcBit, false);
 });

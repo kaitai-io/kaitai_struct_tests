@@ -4,7 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('ParamsPassBool', 'src/term_strz.bin', function(r, ParamsPassBool) {
-
   assert.strictEqual(r.sFalse, false);
   assert.strictEqual(r.sTrue, true);
   assert.strictEqual(r.seqB1.arg, true);

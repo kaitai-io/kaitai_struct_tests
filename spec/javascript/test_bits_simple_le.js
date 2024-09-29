@@ -4,7 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('BitsSimpleLe', 'src/fixed_struct.bin', function(r, BitsSimpleLe) {
-
   assert.strictEqual(r.byte1, 80);
   assert.strictEqual(r.byte2, 65);
   assert.strictEqual(r.bitsA, true);

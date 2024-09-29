@@ -5,7 +5,6 @@ var testHelper = require('testHelper');
 var hexString = require('hexString');
 
 testHelper('ExprBits', 'src/switch_opcodes.bin', function(r, ExprBits) {
-
   assert.strictEqual(r.a, 2);
   assert.strictEqual(r.enumSeq, ExprBits.Items.FOO);
   assert.strictEqual(hexString(r.byteSize), hexString([102, 111]));

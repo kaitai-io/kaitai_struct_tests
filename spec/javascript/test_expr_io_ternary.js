@@ -4,7 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('ExprIoTernary', 'src/if_struct.bin', function(r, ExprIoTernary) {
-
   assert.strictEqual(r.oneOrTwoIoSize1, 8);
   assert.strictEqual(r.oneOrTwoIoSize2, 8);
   assert.strictEqual(r.oneOrTwoIoSizeAdd3, 11);

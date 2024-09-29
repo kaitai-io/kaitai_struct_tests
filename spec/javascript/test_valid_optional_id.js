@@ -4,5 +4,4 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('ValidOptionalId', 'src/fixed_struct.bin', function(r, ValidOptionalId) {
-
 });

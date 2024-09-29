@@ -5,7 +5,6 @@ var testHelper = require('testHelper');
 var hexString = require('hexString');
 
 testHelper('ParamsPassArrayUsertype', 'src/position_to_end.bin', function(r, ParamsPassArrayUsertype) {
-
   assert.strictEqual(r.passBlocks.bar.length, 2);
   assert.strictEqual(r.passBlocks.bar[0].foo, 1);
   assert.strictEqual(r.passBlocks.bar[1].foo, 2);

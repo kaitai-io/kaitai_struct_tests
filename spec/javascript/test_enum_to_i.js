@@ -4,7 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('EnumToI', 'src/enum_0.bin', function(r, EnumToI) {
-
   assert.strictEqual(r.pet1, EnumToI.Animal.CAT);
   assert.strictEqual(r.pet2, EnumToI.Animal.CHICKEN);
   assert.strictEqual(r.pet1I, 7);

@@ -4,5 +4,4 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('ValidNotParsedIf', 'src/fixed_struct.bin', function(r, ValidNotParsedIf) {
-
 });

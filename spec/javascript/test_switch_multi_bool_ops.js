@@ -4,7 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('SwitchMultiBoolOps', 'src/switch_integers.bin', function(r, SwitchMultiBoolOps) {
-
   assert.strictEqual(r.opcodes.length, 4);
   assert.strictEqual(r.opcodes[0].code, 1);
   assert.strictEqual(r.opcodes[0].body, 7);

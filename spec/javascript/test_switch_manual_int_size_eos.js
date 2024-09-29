@@ -5,7 +5,6 @@ var testHelper = require('testHelper');
 var hexString = require('hexString');
 
 testHelper('SwitchManualIntSizeEos', 'src/switch_tlv.bin', function(r, SwitchManualIntSizeEos) {
-
   assert.strictEqual(r.chunks.length, 4);
   assert.strictEqual(r.chunks[0].code, 17);
   assert.strictEqual(r.chunks[0].body.body.title, "Stuff");

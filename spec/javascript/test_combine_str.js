@@ -4,7 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('CombineStr', 'src/term_strz.bin', function(r, CombineStr) {
-
   assert.strictEqual(r.strTerm, "foo");
   assert.strictEqual(r.strLimit, "bar|");
   assert.strictEqual(r.strEos, "baz@");

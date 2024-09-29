@@ -4,7 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('DefaultBitEndianMod', 'src/fixed_struct.bin', function(r, DefaultBitEndianMod) {
-
   assert.strictEqual(r.main.one, 336);
   assert.strictEqual(r.main.two, 8608);
   assert.strictEqual(r.main.nest.two, 11595);

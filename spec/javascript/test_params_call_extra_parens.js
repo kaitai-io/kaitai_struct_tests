@@ -4,6 +4,5 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('ParamsCallExtraParens', 'src/term_strz.bin', function(r, ParamsCallExtraParens) {
-
   assert.strictEqual(r.buf1.body, "foo|b");
 });

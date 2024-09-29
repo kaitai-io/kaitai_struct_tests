@@ -4,7 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('EnumLongRangeU', 'src/enum_long_range_u.bin', function(r, EnumLongRangeU) {
-
   assert.strictEqual(r.f1, EnumLongRangeU.Constants.ZERO);
   assert.strictEqual(r.f2, EnumLongRangeU.Constants.INT_MAX);
   assert.strictEqual(r.f3, EnumLongRangeU.Constants.INT_OVER_MAX);
