@@ -2,8 +2,6 @@
 
 import unittest
 from imports_params_def_enum_imported import ImportsParamsDefEnumImported
-from enum_0 import Enum0
-from enum_deep import EnumDeep
 import enum_0
 import enum_deep
 

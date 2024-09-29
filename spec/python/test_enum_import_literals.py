@@ -2,7 +2,6 @@
 
 import unittest
 from enum_import_literals import EnumImportLiterals
-from enum_deep import EnumDeep
 import enum_deep
 
 class TestEnumImportLiterals(unittest.TestCase):

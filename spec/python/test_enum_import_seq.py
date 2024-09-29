@@ -2,8 +2,6 @@
 
 import unittest
 from enum_import_seq import EnumImportSeq
-from enum_0 import Enum0
-from enum_deep import EnumDeep
 import enum_0
 import enum_deep
 
