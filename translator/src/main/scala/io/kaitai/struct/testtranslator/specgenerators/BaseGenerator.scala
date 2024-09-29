@@ -37,7 +37,6 @@ abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
     spec.exception match {
       case None =>
         runParse()
-        out.puts
         runAsserts()
       case Some(ex) =>
         runParseExpectError(ex)
