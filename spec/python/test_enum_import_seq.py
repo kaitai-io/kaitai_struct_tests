@@ -4,10 +4,12 @@ import unittest
 from enum_import_seq import EnumImportSeq
 from enum_0 import Enum0
 from enum_deep import EnumDeep
+import enum_0
+import enum_deep
 
 class TestEnumImportSeq(unittest.TestCase):
     def test_enum_import_seq(self):
         with EnumImportSeq.from_file('src/enum_0.bin') as r:
 
-            self.assertEqual(r.pet_1, Enum0.Animal.cat)
-            self.assertEqual(r.pet_2, EnumDeep.Container1.Container2.Animal.hare)
+            self.assertEqual(r.pet_1, enum_0.Enum0.Animal.cat)
+            self.assertEqual(r.pet_2, enum_deep.EnumDeep.Container1.Container2.Animal.hare)

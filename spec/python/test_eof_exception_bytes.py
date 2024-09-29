@@ -1,7 +1,7 @@
 import unittest
-import kaitaistruct
 
 from eof_exception_bytes import EofExceptionBytes
+import kaitaistruct
 
 class TestEofExceptionBytes(unittest.TestCase):
     def test_eof_exception_bytes(self):

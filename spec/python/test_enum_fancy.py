@@ -3,9 +3,10 @@
 import unittest
 
 from enum_fancy import EnumFancy
+import enum_fancy
 
 class TestEnumFancy(unittest.TestCase):
     def test_enum_fancy(self):
         with EnumFancy.from_file('src/enum_0.bin') as r:
-            self.assertEqual(r.pet_1, EnumFancy.Animal.cat)
-            self.assertEqual(r.pet_2, EnumFancy.Animal.chicken)
+            self.assertEqual(r.pet_1, enum_fancy.EnumFancy.Animal.cat)
+            self.assertEqual(r.pet_2, enum_fancy.EnumFancy.Animal.chicken)

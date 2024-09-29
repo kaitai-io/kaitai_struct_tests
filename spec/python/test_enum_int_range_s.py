@@ -3,11 +3,12 @@
 import unittest
 
 from enum_int_range_s import EnumIntRangeS
+import enum_int_range_s
 
 class TestEnumIntRangeS(unittest.TestCase):
     def test_enum_int_range_s(self):
         with EnumIntRangeS.from_file('src/enum_int_range_s.bin') as r:
 
-            self.assertEqual(r.f1, EnumIntRangeS.Constants.int_min)
-            self.assertEqual(r.f2, EnumIntRangeS.Constants.zero)
-            self.assertEqual(r.f3, EnumIntRangeS.Constants.int_max)
+            self.assertEqual(r.f1, enum_int_range_s.EnumIntRangeS.Constants.int_min)
+            self.assertEqual(r.f2, enum_int_range_s.EnumIntRangeS.Constants.zero)
+            self.assertEqual(r.f3, enum_int_range_s.EnumIntRangeS.Constants.int_max)

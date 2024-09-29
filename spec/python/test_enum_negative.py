@@ -3,9 +3,10 @@
 import unittest
 
 from enum_negative import EnumNegative
+import enum_negative
 
 class TestEnumNegative(unittest.TestCase):
     def test_enum_negative(self):
         with EnumNegative.from_file('src/enum_negative.bin') as r:
-            self.assertEqual(r.f1, EnumNegative.Constants.negative_one)
-            self.assertEqual(r.f2, EnumNegative.Constants.positive_one)
+            self.assertEqual(r.f1, enum_negative.EnumNegative.Constants.negative_one)
+            self.assertEqual(r.f2, enum_negative.EnumNegative.Constants.positive_one)

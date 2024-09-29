@@ -3,6 +3,7 @@
 import unittest
 from enum_import_literals import EnumImportLiterals
 from enum_deep import EnumDeep
+import enum_deep
 
 class TestEnumImportLiterals(unittest.TestCase):
     def test_enum_import_literals(self):
@@ -10,4 +11,4 @@ class TestEnumImportLiterals(unittest.TestCase):
 
             self.assertEqual(r.pet_1_to_i, 7)
             self.assertEqual(r.pet_1_eq, True)
-            self.assertEqual(r.pet_2, EnumDeep.Container1.Container2.Animal.hare)
+            self.assertEqual(r.pet_2, enum_deep.EnumDeep.Container1.Container2.Animal.hare)

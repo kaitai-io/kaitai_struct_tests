@@ -3,9 +3,10 @@
 import unittest
 
 from params_enum import ParamsEnum
+import params_enum
 
 class TestParamsEnum(unittest.TestCase):
     def test_params_enum(self):
         with ParamsEnum.from_file('src/enum_0.bin') as r:
-            self.assertEqual(r.one, ParamsEnum.Animal.cat)
+            self.assertEqual(r.one, params_enum.ParamsEnum.Animal.cat)
             self.assertEqual(r.invoke_with_param.is_cat, True)

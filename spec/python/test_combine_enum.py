@@ -3,11 +3,12 @@
 import unittest
 
 from combine_enum import CombineEnum
+import combine_enum
 
 class TestCombineEnum(unittest.TestCase):
     def test_combine_enum(self):
         with CombineEnum.from_file('src/enum_0.bin') as r:
 
-            self.assertEqual(r.enum_u4, CombineEnum.Animal.pig)
-            self.assertEqual(r.enum_u2, CombineEnum.Animal.horse)
-            self.assertEqual(r.enum_u4_u2, CombineEnum.Animal.horse)
+            self.assertEqual(r.enum_u4, combine_enum.CombineEnum.Animal.pig)
+            self.assertEqual(r.enum_u2, combine_enum.CombineEnum.Animal.horse)
+            self.assertEqual(r.enum_u4_u2, combine_enum.CombineEnum.Animal.horse)

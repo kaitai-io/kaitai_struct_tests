@@ -3,10 +3,11 @@
 import unittest
 
 from bits_enum import BitsEnum
+import bits_enum
 
 class TestBitsEnum(unittest.TestCase):
     def test_bits_enum(self):
         with BitsEnum.from_file('src/fixed_struct.bin') as r:
-            self.assertEqual(r.one, BitsEnum.Animal.platypus)
-            self.assertEqual(r.two, BitsEnum.Animal.horse)
-            self.assertEqual(r.three, BitsEnum.Animal.cat)
+            self.assertEqual(r.one, bits_enum.BitsEnum.Animal.platypus)
+            self.assertEqual(r.two, bits_enum.BitsEnum.Animal.horse)
+            self.assertEqual(r.three, bits_enum.BitsEnum.Animal.cat)

@@ -1,7 +1,7 @@
 import unittest
-import kaitaistruct
 
 from eos_exception_u4 import EosExceptionU4
+import kaitaistruct
 
 class TestEosExceptionU4(unittest.TestCase):
     def test_eos_exception_u4(self):

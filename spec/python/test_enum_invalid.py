@@ -3,10 +3,11 @@
 import unittest
 
 from enum_invalid import EnumInvalid
+import enum_invalid
 
 class TestEnumInvalid(unittest.TestCase):
     def test_enum_invalid(self):
         with EnumInvalid.from_file('src/term_strz.bin') as r:
 
-            self.assertEqual(r.pet_1, EnumInvalid.Animal.dog)
+            self.assertEqual(r.pet_1, enum_invalid.EnumInvalid.Animal.dog)
             self.assertEqual(r.pet_2, 111)
