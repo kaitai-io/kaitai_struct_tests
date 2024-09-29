@@ -15,9 +15,10 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
   val className = PythonCompiler.type2class(spec.id)
 
   importList.add(s"from ${spec.id} import $className")
-  spec.extraImports.foreach(entry =>
-    importList.add(s"from $entry import ${PythonCompiler.type2class(entry)}")
-  )
+  // NOTE: some other languages use `spec.extraImports` here, but since we pass
+  // `importList` to PythonTranslator above, which will insert necessary imports
+  // when translating external enum literals itself, we don't need to use it
+  // here. It would only generate redundant imports.
 
   override def fileName(name: String): String = s"test_$name.py"
 
