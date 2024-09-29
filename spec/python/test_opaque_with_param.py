@@ -1,5 +1,4 @@
 import unittest
-
 from opaque_with_param import OpaqueWithParam
 
 class TestOpaqueWithParam(unittest.TestCase):

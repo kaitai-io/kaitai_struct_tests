@@ -1,5 +1,4 @@
 import unittest
-
 from debug_array_user import DebugArrayUser
 
 class TestDebugArrayUser(unittest.TestCase):

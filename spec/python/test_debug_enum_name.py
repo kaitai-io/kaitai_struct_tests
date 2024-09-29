@@ -1,5 +1,4 @@
 import unittest
-
 from debug_enum_name import DebugEnumName
 
 class TestDebugEnumName(unittest.TestCase):

@@ -1,5 +1,4 @@
 import unittest
-
 from type_ternary_opaque import TypeTernaryOpaque
 
 class TestTypeTernaryOpaque(unittest.TestCase):

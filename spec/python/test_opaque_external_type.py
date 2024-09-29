@@ -1,5 +1,4 @@
 import unittest
-
 from opaque_external_type import OpaqueExternalType
 
 class TestOpaqueExternalType(unittest.TestCase):

@@ -1,5 +1,4 @@
 import unittest
-
 from params_def import ParamsDef
 from kaitaistruct import KaitaiStream
 

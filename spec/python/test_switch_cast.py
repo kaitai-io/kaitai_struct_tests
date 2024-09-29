@@ -1,5 +1,4 @@
 import unittest
-
 from switch_cast import SwitchCast
 
 class TestSwitchCast(unittest.TestCase):

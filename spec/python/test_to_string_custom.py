@@ -1,5 +1,4 @@
 import unittest
-
 from to_string_custom import ToStringCustom
 
 class TestToStringCustom(unittest.TestCase):
