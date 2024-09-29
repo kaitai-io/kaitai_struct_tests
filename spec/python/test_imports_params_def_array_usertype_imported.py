@@ -6,7 +6,6 @@ from imports_params_def_array_usertype_imported import ImportsParamsDefArrayUser
 class TestImportsParamsDefArrayUsertypeImported(unittest.TestCase):
     def test_imports_params_def_array_usertype_imported(self):
         with ImportsParamsDefArrayUsertypeImported.from_file('src/process_xor_4.bin') as r:
-
             self.assertEqual(len(r.hws), 2)
             self.assertEqual(r.hws[0].one, 236)
             self.assertEqual(r.hws[1].one, 187)

@@ -7,7 +7,6 @@ import enum_deep
 class TestEnumImportLiterals(unittest.TestCase):
     def test_enum_import_literals(self):
         with EnumImportLiterals.from_file('src/enum_0.bin') as r:
-
             self.assertEqual(r.pet_1_to_i, 7)
             self.assertEqual(r.pet_1_eq, True)
             self.assertEqual(r.pet_2, enum_deep.EnumDeep.Container1.Container2.Animal.hare)

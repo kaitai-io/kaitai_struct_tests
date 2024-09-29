@@ -1,5 +1,4 @@
 import unittest
-
 from eos_exception_bytes import EosExceptionBytes
 import kaitaistruct
 

@@ -1,7 +1,6 @@
 # runs in debug mode, so the _read() needs to be called manually
 
 import unittest
-
 from debug_switch_user import DebugSwitchUser
 
 class TestDebugSwitchUser(unittest.TestCase):

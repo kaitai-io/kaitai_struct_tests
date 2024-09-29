@@ -1,5 +1,4 @@
 import unittest
-
 from eof_exception_u4 import EofExceptionU4
 import kaitaistruct
 

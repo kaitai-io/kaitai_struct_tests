@@ -6,7 +6,6 @@ from expr_str_ops import ExprStrOps
 class TestExprStrOps(unittest.TestCase):
     def test_expr_str_ops(self):
         with ExprStrOps.from_file('src/term_strz.bin') as r:
-
             self.assertEqual(r.one, u"foo|b")
             self.assertEqual(r.one_len, 5)
             self.assertEqual(r.one_rev, u"b|oof")
