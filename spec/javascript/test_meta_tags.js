@@ -3,5 +3,5 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('MetaTags', 'src/fixed_struct.bin', function(r, MetaTags) {
+testHelper('MetaTags', 'src/fixed_struct.bin', function(r, MetaTags_) {
 });

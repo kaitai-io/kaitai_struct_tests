@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ExprStrEncodings', 'src/str_encodings.bin', function(r, ExprStrEncodings) {
+testHelper('ExprStrEncodings', 'src/str_encodings.bin', function(r, ExprStrEncodings_) {
   assert.strictEqual(r.str1Eq, true);
   assert.strictEqual(r.str2Eq, true);
   assert.strictEqual(r.str3Eq, true);

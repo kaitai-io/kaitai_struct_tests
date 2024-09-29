@@ -3,5 +3,5 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ValidSwitch', 'src/fixed_struct.bin', function(r, ValidSwitch) {
+testHelper('ValidSwitch', 'src/fixed_struct.bin', function(r, ValidSwitch_) {
 });

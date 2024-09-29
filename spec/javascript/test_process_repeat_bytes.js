@@ -4,7 +4,7 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 var hexString = require('hexString');
 
-testHelper('ProcessRepeatBytes', 'src/process_xor_4.bin', function(r, ProcessRepeatBytes) {
+testHelper('ProcessRepeatBytes', 'src/process_xor_4.bin', function(r, ProcessRepeatBytes_) {
   assert.strictEqual(hexString(r.bufs[0]), hexString([114, 37, 61, 138, 20]));
   assert.strictEqual(hexString(r.bufs[1]), hexString([74, 82, 170, 16, 68]));
 });

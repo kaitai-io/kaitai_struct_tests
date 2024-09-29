@@ -3,6 +3,6 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('TypeTernary', 'src/term_strz.bin', function(r, TypeTernary) {
+testHelper('TypeTernary', 'src/term_strz.bin', function(r, TypeTernary_) {
   assert.strictEqual(r.dif.value, 101);
 });

@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ExprBytesNonLiteral', 'src/enum_negative.bin', function(r, ExprBytesNonLiteral) {
+testHelper('ExprBytesNonLiteral', 'src/enum_negative.bin', function(r, ExprBytesNonLiteral_) {
   assert.strictEqual(r.calcBytes.length, 2);
   assert.strictEqual(r.calcBytes[0], 255);
   assert.strictEqual(r.calcBytes[1], 1);

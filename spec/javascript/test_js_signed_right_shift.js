@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('JsSignedRightShift', 'src/fixed_struct.bin', function(r, JsSignedRightShift) {
+testHelper('JsSignedRightShift', 'src/fixed_struct.bin', function(r, JsSignedRightShift_) {
   assert.strictEqual(r.shouldBe40000000, 1073741824);
   assert.strictEqual(r.shouldBeA00000, 10485760);
 });

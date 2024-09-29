@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ImportsParamsDefArrayUsertypeImported', 'src/process_xor_4.bin', function(r, ImportsParamsDefArrayUsertypeImported) {
+testHelper('ImportsParamsDefArrayUsertypeImported', 'src/process_xor_4.bin', function(r, ImportsParamsDefArrayUsertypeImported_) {
   assert.strictEqual(r.hws.length, 2);
   assert.strictEqual(r.hws[0].one, 236);
   assert.strictEqual(r.hws[1].one, 187);

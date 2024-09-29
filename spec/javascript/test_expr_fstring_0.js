@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ExprFstring0', 'src/term_strz.bin', function(r, ExprFstring0) {
+testHelper('ExprFstring0', 'src/term_strz.bin', function(r, ExprFstring0_) {
   assert.strictEqual(r.seqStr, "foo|b");
   assert.strictEqual(r.seqInt, 97);
   assert.strictEqual(r.empty, "");

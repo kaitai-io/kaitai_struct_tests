@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('StrPadTermUtf16', 'src/str_pad_term_utf16.bin', function(r, StrPadTermUtf16) {
+testHelper('StrPadTermUtf16', 'src/str_pad_term_utf16.bin', function(r, StrPadTermUtf16_) {
   assert.strictEqual(r.strTerm, "a\u0200b");
   assert.strictEqual(r.strTermInclude, "c\u0200d\x00");
   assert.strictEqual(r.strTermAndPad, "e\u0200f");

@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ExprCalcArrayOps', 'src/fixed_struct.bin', function(r, ExprCalcArrayOps) {
+testHelper('ExprCalcArrayOps', 'src/fixed_struct.bin', function(r, ExprCalcArrayOps_) {
   assert.strictEqual(r.intArraySize, 7);
   assert.strictEqual(r.intArrayFirst, 10);
   assert.strictEqual(r.intArrayMid, 25);

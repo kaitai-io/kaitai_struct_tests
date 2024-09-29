@@ -31,7 +31,7 @@ function assertUnknownEncoding(expectedEncoding, fn) {
   assert.throws(fn, validateErr.bind(null, expectedEncoding));
 }
 
-testHelper('StrEncodingsEscapingToS', 'src/str_encodings.bin', function(r, StrEncodingsEscapingToS) {
+testHelper('StrEncodingsEscapingToS', 'src/str_encodings.bin', function(r, StrEncodingsEscapingToS_) {
   assertUnknownEncoding(
     "ASCII\\\\x",
     function() {

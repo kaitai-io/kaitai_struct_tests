@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ImportsCastToImported2', 'src/process_xor_4.bin', function(r, ImportsCastToImported2) {
+testHelper('ImportsCastToImported2', 'src/process_xor_4.bin', function(r, ImportsCastToImported2_) {
   assert.strictEqual(r.hw.one, 236);
   assert.strictEqual(r.two.hw.one, 236);
 });

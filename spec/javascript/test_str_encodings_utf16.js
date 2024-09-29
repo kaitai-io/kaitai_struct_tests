@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('StrEncodingsUtf16', 'src/str_encodings_utf16.bin', function(r, StrEncodingsUtf16) {
+testHelper('StrEncodingsUtf16', 'src/str_encodings_utf16.bin', function(r, StrEncodingsUtf16_) {
   assert.strictEqual(r.lenBe, 12);
   assert.strictEqual(r.beBomRemoved.bom, 65279);
   assert.strictEqual(r.beBomRemoved.str, "\u3053\u3093\u306b\u3061\u306f");

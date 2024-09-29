@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ExprSizeofValueSized', 'src/fixed_struct.bin', function(r, ExprSizeofValueSized) {
+testHelper('ExprSizeofValueSized', 'src/fixed_struct.bin', function(r, ExprSizeofValueSized_) {
   assert.strictEqual(r.selfSizeof, (12 + 2));
   assert.strictEqual(r.sizeofBlock, 12);
   assert.strictEqual(r.sizeofBlockA, 1);

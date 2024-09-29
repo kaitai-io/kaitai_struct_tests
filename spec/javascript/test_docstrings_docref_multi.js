@@ -3,5 +3,5 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('DocstringsDocrefMulti', 'src/fixed_struct.bin', function(r, DocstringsDocrefMulti) {
+testHelper('DocstringsDocrefMulti', 'src/fixed_struct.bin', function(r, DocstringsDocrefMulti_) {
 });

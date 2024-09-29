@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ParamsPassStruct', 'src/enum_negative.bin', function(r, ParamsPassStruct) {
+testHelper('ParamsPassStruct', 'src/enum_negative.bin', function(r, ParamsPassStruct_) {
   assert.strictEqual(r.first.foo, 255);
   assert.strictEqual(r.one.bar.qux, 1);
   assert.strictEqual(r.one.foo.foo, 255);

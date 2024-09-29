@@ -4,7 +4,7 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 var hexString = require('hexString');
 
-testHelper('SwitchRepeatExpr', 'src/switch_tlv.bin', function(r, SwitchRepeatExpr) {
+testHelper('SwitchRepeatExpr', 'src/switch_tlv.bin', function(r, SwitchRepeatExpr_) {
   assert.strictEqual(r.code, 17);
   assert.strictEqual(r.size, 9);
   assert.strictEqual(hexString(r.body[0].first), hexString([83, 116, 117, 102, 102, 0, 77, 101, 0]));

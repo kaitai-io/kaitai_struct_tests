@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('RepeatUntilCalcArrayType', 'src/repeat_until_process.bin', function(r, RepeatUntilCalcArrayType) {
+testHelper('RepeatUntilCalcArrayType', 'src/repeat_until_process.bin', function(r, RepeatUntilCalcArrayType_) {
   assert.strictEqual(r.records.length, 3);
   assert.strictEqual(r.records[0].marker, 232);
   assert.strictEqual(r.records[0].body, 2863311546);

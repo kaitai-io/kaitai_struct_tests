@@ -3,6 +3,6 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('BitsSignedResB32Be', 'src/bits_shift_by_b32_le.bin', function(r, BitsSignedResB32Be) {
+testHelper('BitsSignedResB32Be', 'src/bits_shift_by_b32_le.bin', function(r, BitsSignedResB32Be_) {
   assert.strictEqual(r.a, 4294967295);
 });

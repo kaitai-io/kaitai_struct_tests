@@ -4,6 +4,6 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 var hexString = require('hexString');
 
-testHelper('ZlibWithHeader78', 'src/zlib_with_header_78.bin', function(r, ZlibWithHeader78) {
+testHelper('ZlibWithHeader78', 'src/zlib_with_header_78.bin', function(r, ZlibWithHeader78_) {
   assert.strictEqual(hexString(r.data), hexString([97, 32, 113, 117, 105, 99, 107, 32, 98, 114, 111, 119, 110, 32, 102, 111, 120, 32, 106, 117, 109, 112, 115, 32, 111, 118, 101, 114]));
 });

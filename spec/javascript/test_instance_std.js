@@ -3,6 +3,6 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('InstanceStd', 'src/str_encodings.bin', function(r, InstanceStd) {
+testHelper('InstanceStd', 'src/str_encodings.bin', function(r, InstanceStd_) {
   assert.strictEqual(r.header, "Some ");
 });

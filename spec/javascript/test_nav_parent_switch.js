@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('NavParentSwitch', 'src/nav_parent_switch.bin', function(r, NavParentSwitch) {
+testHelper('NavParentSwitch', 'src/nav_parent_switch.bin', function(r, NavParentSwitch_) {
   assert.strictEqual(r.category, 1);
   assert.strictEqual(r.content.foo, 66);
   assert.strictEqual(r.content.subelement.bar, 255);

@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ParamsPassArrayInt', 'src/position_to_end.bin', function(r, ParamsPassArrayInt) {
+testHelper('ParamsPassArrayInt', 'src/position_to_end.bin', function(r, ParamsPassArrayInt_) {
   assert.strictEqual(r.passInts.nums.length, 3);
   assert.strictEqual(r.passInts.nums[0], 513);
   assert.strictEqual(r.passInts.nums[1], 1027);

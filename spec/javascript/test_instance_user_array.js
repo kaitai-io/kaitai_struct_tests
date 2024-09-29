@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('InstanceUserArray', 'src/instance_std_array.bin', function(r, InstanceUserArray) {
+testHelper('InstanceUserArray', 'src/instance_std_array.bin', function(r, InstanceUserArray_) {
   assert.strictEqual(r.ofs, 16);
   assert.strictEqual(r.qtyEntries, 3);
   assert.strictEqual(r.entrySize, 4);

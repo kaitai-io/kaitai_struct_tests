@@ -4,7 +4,7 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 var hexString = require('hexString');
 
-testHelper('SwitchManualIntSizeEos', 'src/switch_tlv.bin', function(r, SwitchManualIntSizeEos) {
+testHelper('SwitchManualIntSizeEos', 'src/switch_tlv.bin', function(r, SwitchManualIntSizeEos_) {
   assert.strictEqual(r.chunks.length, 4);
   assert.strictEqual(r.chunks[0].code, 17);
   assert.strictEqual(r.chunks[0].body.body.title, "Stuff");
