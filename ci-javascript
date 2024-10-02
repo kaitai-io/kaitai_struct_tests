@@ -1,13 +1,28 @@
-#!/bin/sh
+#!/bin/sh -ef
 
 . ./config
 
-# Symlinks fresh KS JavaScript runtime into node_modules dir
-mkdir -p "$JAVASCRIPT_MODULES_DIR"
-if [ ! -e "$JAVASCRIPT_MODULES_DIR/kaitai-struct" ]; then
-	ABS_JS_RUNTIME=$(pwd)/$JAVASCRIPT_RUNTIME_DIR
-	ln -s "$ABS_JS_RUNTIME" "$JAVASCRIPT_MODULES_DIR/kaitai-struct"
+if [ -f "${JAVASCRIPT_RUNTIME_DIR}/KaitaiStream.js" ]; then
+	# Symlinks fresh KS JavaScript runtime into node_modules dir
+	( cd "$JAVASCRIPT_RUNTIME_DIR" && npm link --ignore-scripts --production )
+else
+	# This is normal in CI, see
+	# <https://github.com/kaitai-io/kaitai_struct_docker_images/blob/15da60f219b9ac24b5273093f99a159e1a048bfc/src/javascript/_common/prepare#L29-L57>.
+	# When testing changes to the JavaScript runtime library locally, go to
+	# `$JAVASCRIPT_RUNTIME_DIR` and run `npm run build` there - then the local
+	# runtime library will be used instead.
+	echo "Warning: $(realpath "$JAVASCRIPT_RUNTIME_DIR")/KaitaiStream.js doesn't exist (maybe you forgot to run 'npm run build'?)"
+	global_js_runtime_ver=$(npm ls --loglevel notice --parseable --long -g kaitai-struct | cut -d':' -f2)
+	if [ -z "$global_js_runtime_ver" ]; then
+		echo '  => using globally installed kaitai-struct@<???>'
+		echo 'Error: npm package "kaitai-struct" is not installed globally, cannot continue'
+		exit 1
+	fi
+	echo "  => using globally installed $global_js_runtime_ver"
 fi
+mkdir -p "$JAVASCRIPT_MODULES_DIR"
+npm link kaitai-struct
+
 # The `iconv-lite` package is assumed to be installed globally in the Docker
 # image, but in Node.js 10 and older, you can only `require()` local packages,
 # not global packages. `npm link` creates a symbolic link in the local
@@ -17,7 +32,7 @@ npm link iconv-lite
 mkdir -p "$TEST_OUT_DIR/javascript"
 NODE_PATH=compiled/javascript:helpers/javascript:$JAVASCRIPT_MODULES_DIR:$JAVASCRIPT_RUNTIME_DIR \
 	mocha \
-	-R xunit spec/javascript >"$TEST_OUT_DIR/javascript/test-output-javascript.xml"
+	-R xunit spec/javascript >"$TEST_OUT_DIR/javascript/test-output-javascript.xml" || :
 
 ./kst-adoption-report javascript
 aggregate/convert_to_json javascript "$TEST_OUT_DIR/javascript" "$TEST_OUT_DIR/javascript/ci.json"
