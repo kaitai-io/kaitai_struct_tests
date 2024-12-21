@@ -4,12 +4,12 @@ var testHelper = require('testHelper');
 testHelper('Debug0', 'src/fixed_struct.bin', function(r) {
     r._read();
 
-    assert.equal(r.one, 80);
-    assert.equal(r.arrayOfInts.toString(), [65, 67, 75].toString());
-    assert.equal(r._unnamed2, 45);
+    assert.strictEqual(r.one, 80);
+    assert.strictEqual(r.arrayOfInts.toString(), [65, 67, 75].toString());
+    assert.strictEqual(r._unnamed2, 45);
 
     var actual = JSON.stringify(r._debug, (k,v) => k === '_root' || k === '_parent' || k === '_io' ? undefined : v, 4);
-    assert.equal(actual, `{
+    assert.strictEqual(actual, `{
     "one": {
         "start": 0,
         "ioOffset": 0,

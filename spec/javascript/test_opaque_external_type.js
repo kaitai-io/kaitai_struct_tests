@@ -2,7 +2,7 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('OpaqueExternalType', 'src/term_strz.bin', function(r) {
-  assert.equal(r.one.s1, 'foo');
-  assert.equal(r.one.s2, 'bar');
-  assert.equal(r.one.s3, '|baz@');
+  assert.strictEqual(r.one.s1, 'foo');
+  assert.strictEqual(r.one.s2, 'bar');
+  assert.strictEqual(r.one.s3, '|baz@');
 });
