@@ -1,0 +1,16 @@
+# This test is intended only for languages that have --debug and do not save
+# enum type info (at the time of writing, only JavaScript).
+#
+# This KST spec exists for other languages. It verifies that at least the
+# parsing works.
+id: debug_enum_name
+data: fixed_struct.bin
+asserts:
+  - actual: one
+    expected: debug_enum_name::test_enum1::enum_value_80
+  - actual: array_of_ints[0]
+    expected: debug_enum_name::test_enum2::enum_value_65
+  - actual: test_type.field1
+    expected: debug_enum_name::test_subtype::inner_enum1::enum_value_67
+  - actual: test_type.instance_field
+    expected: debug_enum_name::test_subtype::inner_enum2::enum_value_11
