@@ -197,15 +197,15 @@ class CppBuilder < PartialBuilder
             end
 
             list << filename
-          # Linux ld, variant 1
-          when /^\/usr\/bin\/ld: ([^:]+?):(\d+): undefined reference/
+          # GNU ld
+          #
+          # Since GNU ld 2.41 (commit
+          # https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=02d2a36902c7b0fefe05e8d9bdbf11e846ac71fe),
+          # `filename:linenumber:` is followed by `(section+offset):` (e.g. `(.text+0x106f)`).
+          when /^(?:\/usr\/bin\/ld: )?([^:]+?):(\d+):(?:\((.*?)\):)? undefined reference to /
             filename = $1
             #row = $2
-            list << filename
-          # Linux ld, variant 2
-          when /^([^:]+?):(\d+): undefined reference/
-            filename = $1
-            #row = $2
+            #section = $3
             list << filename
           # Mac OS X ld
           when /, referenced from:$/
