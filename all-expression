@@ -113,7 +113,7 @@ expr_lua()
 	IMG_COORD=kaitai-lua-5.3-linux-x86_64
 	echo -n "* Lua: "
 	docker run $DOCKER_ARGS "$DOCKER_REPO$IMG_COORD" \
-		/lua_install/bin/lua -e "print(string.format('%q', $EXPRESSION))"
+		lua -e "print(string.format('%q', $EXPRESSION))"
 }
 
 expr_nim()
