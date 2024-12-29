@@ -1,8 +1,6 @@
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.11)
 
 project(KS_TEST_CPP_STL)
-
-set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 find_package(ZLIB REQUIRED)
