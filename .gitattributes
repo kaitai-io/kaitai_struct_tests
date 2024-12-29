@@ -7,9 +7,9 @@ spec_* eol=lf
 # Explicitly mark binary files for Git
 *.bin binary
 
-# Highlight ksy and kst files as YAML on GitHub
+# Highlight .kst files as YAML on GitHub (.ksy files are recognized by GitHub
+# itself since https://github.com/github-linguist/linguist/pull/4830)
 *.kst linguist-language=yaml
-*.ksy linguist-language=yaml
 
 # Mark generated files for GitHub
 spec/** linguist-generated=true
