@@ -3,7 +3,6 @@ build-* eol=lf
 config eol=lf
 run-* eol=lf
 spec_* eol=lf
-translator-tests eol=lf
 
 # Explicitly mark binary files for Git
 *.bin binary
