@@ -77,9 +77,9 @@ class CSharpBuilder < PartialBuilder
     convert_slashes(abs_files)
   end
 
-  def create_project(mand_files, disp_files)
+  def create_project(files)
     tmpl = File.read(@project_template)
-    files_xml = (mand_files + disp_files).map { |x| "    <Compile Include=\"#{x}\" />" }.join("\n")
+    files_xml = files.map { |x| "    <Compile Include=\"#{x}\" />" }.join("\n")
     project = tmpl.gsub(/%%%FILES%%%/, files_xml)
     File.write(@project_file, project)
     [@project_file]

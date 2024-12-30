@@ -78,11 +78,11 @@ class CppBuilder < PartialBuilder
     }
   end
 
-  def create_project(mand_files, disp_files)
+  def create_project(files)
     FileUtils.mkdir_p(@obj_dir)
     File.open(@disposable_cmake, 'w') { |f|
       f.puts("set(DISPOSABLE_SOURCES")
-      (mand_files + disp_files).each { |l| f.puts(l) }
+      files.each { |l| f.puts(l) }
       f.puts(")")
     }
     [@disposable_cmake]

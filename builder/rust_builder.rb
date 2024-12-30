@@ -33,8 +33,8 @@ class RustBuilder < PartialBuilder
       format_basenames.map { |fn| File.join(@formats_dir, fn) }
   end
 
-  def create_project(mand_files, disp_files)
-    grouped_files = mand_files.chain(disp_files).group_by { |fn| file_to_kind(fn) }
+  def create_project(files)
+    grouped_files = files.group_by { |fn| file_to_kind(fn) }
     if grouped_files.key?(nil)
       raise "unexpected files that are neither ':spec' or ':format': #{grouped_files[nil].inspect}"
     end

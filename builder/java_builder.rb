@@ -36,9 +36,9 @@ class JavaBuilder < PartialBuilder
     Dir.glob(File.join("#{@compiled_dir}", 'src', '**/*.java'))
   end
 
-  def create_project(mand_files, disp_files)
+  def create_project(files)
     File.open(@project_file, 'w') { |f|
-      (mand_files + disp_files).each { |l| f.puts "\"#{l}\"" }
+      files.each { |l| f.puts "\"#{l}\"" }
     }
     [@project_file]
   end
