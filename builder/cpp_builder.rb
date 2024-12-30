@@ -1,5 +1,6 @@
 require 'fileutils'
 require 'set'
+require 'rexml/document'
 
 require_relative 'partial_builder'
 require_relative 'shellconfig'
@@ -340,6 +341,16 @@ class CppBuilder < PartialBuilder
       # Actually run the tests
       Dir.chdir(@test_dir) do
         run_and_tee({}, tests_cli, "#{@abs_cpp_test_out_dir}/test_run-#{attempt}.stdout")
+      end
+
+      # Pretty-print the XML log (the original from Boost.Test is one super long
+      # line, which is ugly)
+      doc_xml_log = File.open(xml_log, 'r') { |f| REXML::Document.new(f) }
+      formatter = REXML::Formatters::Pretty.new
+      formatter.compact = true
+      File.open(xml_log, 'w') do |f|
+        formatter.write(doc_xml_log, f)
+        f.write("\n")
       end
 
       parser = BoostTestParser.new(xml_log)
