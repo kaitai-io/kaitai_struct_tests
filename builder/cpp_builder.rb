@@ -63,7 +63,9 @@ class CppBuilder < PartialBuilder
   end
 
   def list_disposable_files
-    list = Dir.glob("#{@cpp_spec_dir}/**/*.cpp") + Dir.glob("#{@src_dir}/*.cpp")
+    # NOTE: `sort!` is only meaningful for Ruby 2.7 and older, in Ruby 3.0 and
+    # later `Dir.glob` already returns sorted output by default
+    list = Dir.glob("#{@cpp_spec_dir}/**/*.cpp").sort! + Dir.glob("#{@src_dir}/*.cpp").sort!
     list.map { |x|
       r = File.absolute_path(x)
 
