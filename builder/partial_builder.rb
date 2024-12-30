@@ -118,9 +118,9 @@ class PartialBuilder
   # Adjusts list of disposable files by disposing of "bad" files, as
   # per a log file of failed build.
   # @param build_log [String] path to build log file
-  # @param mand_files [Set] set of mandatory files
-  # @param disp_files [Set] set of disposable files (to be modified!)
-  # @return [Set, FalseClass] set of bad files if disposal of bad
+  # @param mand_files [Set<String>] set of mandatory files
+  # @param disp_files [Set<String>] set of disposable files (to be modified!)
+  # @return [Set<String>, FalseClass] set of bad files if disposal of bad
   #   files was succesful (and we can do another build attempt), false
   #   if we've encountered some unrecoverrable error and thus it's
   #   pointless to retry.
@@ -198,7 +198,7 @@ class PartialBuilder
   # log files "build_failes_files.txt" with a plain list of rejected
   # files and "build_failed_tests" with two tab-separated columns:
   # type of file and name of relevant test.
-  # @param bad_files [Set] set of "bad" (rejected) files
+  # @param bad_files [Set<String>] set of "bad" (rejected) files
   def register_bad_files(bad_files)
     File.open(@build_failed_files, 'a') { |f|
       bad_files.each { |fn| f.puts fn }
