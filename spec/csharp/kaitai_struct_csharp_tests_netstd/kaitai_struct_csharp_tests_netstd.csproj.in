@@ -38,7 +38,10 @@
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
 		<PackageReference Include="NUnit" Version="3.14.0" />
 		<PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
-		<PackageReference Include="System.Text.Encoding.CodePages" Version="9.0.0" />
+		<!-- NOTE: we should probably stay on `8.0.0` as long as we support .NET 6,
+		otherwise we get "warning : System.Text.Encoding.CodePages 9.0.0 doesn't support
+		net6.0 and has not been tested with it." -->
+		<PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
