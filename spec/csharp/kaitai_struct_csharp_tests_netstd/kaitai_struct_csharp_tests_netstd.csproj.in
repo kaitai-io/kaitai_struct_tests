@@ -2,7 +2,23 @@
 
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
-		<TargetFramework>net6.0</TargetFramework>
+		<!--
+		  NOTE: Detecting the installed SDK and selecting the right `TargetFramework`
+		  accordingly is the only working way I know of. Various simpler options have been
+		  tried and failed:
+
+		  1. `<TargetFramework>net6.0</TargetFramework>` does not work on `net9.0`, see
+		     https://github.com/kaitai-io/ci_artifacts/blob/5ca28e323356c7f64a5f7061c05d3c2f890926ba/test_out/csharp/test_run.stdout#L14-L24
+		  2. `<TargetFramework>net9.0</TargetFramework>` cannot be restored on `net6.0`
+		     (the Docker image build would fail on
+		     https://github.com/kaitai-io/kaitai_struct_docker_images/blob/f1f1d11ded824918c5bd5b5e1dbb6a48d8201b94/src/csharp/_common/prepare#L8)
+		  3. `<TargetFrameworks>net9.0;net6.0</TargetFrameworks>` cannot be restored on
+		     `net6.0`
+		  4. `<TargetFrameworks>net6.0;net9.0</TargetFrameworks>` cannot be restored on
+		     `net6.0`
+		-->
+		<TargetFramework Condition="$([MSBuild]::VersionGreaterThanOrEquals('$(NETCoreSdkVersion)', '9.0'))">net9.0</TargetFramework>
+		<TargetFramework Condition="!$([MSBuild]::VersionGreaterThanOrEquals('$(NETCoreSdkVersion)', '9.0'))">net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 	</PropertyGroup>
