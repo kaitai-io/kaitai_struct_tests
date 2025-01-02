@@ -19,7 +19,6 @@ class CppBuilder < PartialBuilder
     @obj_dir = "#{@src_dir}/bin"
     @disposable_cmake = "#{@obj_dir}/disposable.cmake"
     @abs_cpp_test_out_dir = File.absolute_path(@test_out_dir)
-    @test_dir = Dir.pwd
 
     @mode = :make_posix
     @mode = :msbuild_windows if ENV['APPVEYOR']
@@ -102,59 +101,55 @@ class CppBuilder < PartialBuilder
   end
 
   def run_cmake(log_file)
-    orig_dir = Dir.pwd
-    Dir.chdir(@obj_dir)
-
     cmake_cli = [
       "cmake",
       "-DCMAKE_BUILD_TYPE=Debug",
       "-DINC_PATH=#{File.absolute_path(@disposable_cmake)}",
       "-DKS_PATH=#{File.absolute_path(@src_dir)}",
     ]
+    spec_dir = File.absolute_path(@cpp_spec_dir)
 
-    # Building on Appveyor/Windows requires extra argument to CMake
-    if ENV['APPVEYOR']
-      cmake_cli << "-DCMAKE_TOOLCHAIN_FILE=c:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake"
+    Dir.chdir(@obj_dir) do
+      # Building on Appveyor/Windows requires extra argument to CMake
+      if ENV['APPVEYOR']
+        cmake_cli << "-DCMAKE_TOOLCHAIN_FILE=c:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake"
 
-      arch = ENV['ARCH'] || 'x64'
-      cmake_cli << "-DCMAKE_GENERATOR_PLATFORM=#{arch}"
+        arch = ENV['ARCH'] || 'x64'
+        cmake_cli << "-DCMAKE_GENERATOR_PLATFORM=#{arch}"
+      end
+
+      cmake_cli << spec_dir
+
+      r = run_and_tee({"LC_ALL" => "en_US.UTF-8"}, cmake_cli, log_file).exitstatus
+      r
     end
-
-    cmake_cli << @cpp_spec_dir
-
-    r = run_and_tee({"LC_ALL" => "en_US.UTF-8"}, cmake_cli, log_file).exitstatus
-    Dir.chdir(orig_dir)
-    r
   end
 
   def run_build(log_file)
     abs_log_file = File.absolute_path(log_file)
 
-    orig_dir = Dir.pwd
-    Dir.chdir(@obj_dir)
+    Dir.chdir(@obj_dir) do
+      case @mode
+      when :make_posix
+        cmd = ["cmake", "--build", ".", "--parallel", "8", "--verbose", "--", "-k"]
+        cmd << "--output-sync=target" if @make_version[0] >= 4
 
-    case @mode
-    when :make_posix
-      cmd = ["cmake", "--build", ".", "--parallel", "8", "--verbose", "--", "-k"]
-      cmd << "--output-sync=target" if @make_version[0] >= 4
-
-      r = run_and_tee(
-        {"LC_ALL" => "en_US.UTF-8"},
-        cmd,
-        abs_log_file
-      )
-    when :msbuild_windows
-      r = run_and_tee(
-        {},
-        ["msbuild", "KS_TEST_CPP_STL.sln"], # -fl -flp:logfile=#{@abs_cpp_test_out_dir}\\msbuild.log"
-        abs_log_file
-      )
-    else
-      raise "Unknown mode=#{@mode}"
+        r = run_and_tee(
+          {"LC_ALL" => "en_US.UTF-8"},
+          cmd,
+          abs_log_file
+        )
+      when :msbuild_windows
+        r = run_and_tee(
+          {},
+          ["msbuild", "KS_TEST_CPP_STL.sln"], # -fl -flp:logfile=#{@abs_cpp_test_out_dir}\\msbuild.log"
+          abs_log_file
+        )
+      else
+        raise "Unknown mode=#{@mode}"
+      end
+      r
     end
-
-    Dir.chdir(orig_dir)
-    r
   end
 
   def parse_failed_build(log_file)
@@ -318,9 +313,7 @@ class CppBuilder < PartialBuilder
       excluded_tests.each { |test| tests_cli << "--run_test=!#{test}" }
 
       # Actually run the tests
-      Dir.chdir(@test_dir) do
-        run_and_tee({}, tests_cli, "#{@abs_cpp_test_out_dir}/test_run-#{attempt}.stdout")
-      end
+      run_and_tee({}, tests_cli, "#{@abs_cpp_test_out_dir}/test_run-#{attempt}.stdout")
 
       # Pretty-print the XML log (the original from Boost.Test is one super long
       # line, which is ugly)
