@@ -89,7 +89,7 @@ RSpec.describe CppBuilder do
     end
 
     describe '#parse_failed_build' do
-      it 'parses failed build information for make' do
+      it 'parses failed build information for ld' do
         expect(@builder.parse_failed_build('test_out/cpp_stl_98/build-2.log')).to eq [
           '/home/greycat/git/kaitai_struct/tests/spec/cpp_stl_98/test_imports_abs.cpp',
           '/home/greycat/git/kaitai_struct/tests/spec/cpp_stl_98/test_imports_abs.cpp',
@@ -141,15 +141,8 @@ RSpec.describe CppBuilder do
 
     describe '#parse_failed_build' do
       it 'parses failed build information (compiler)' do
-        expect(@builder.parse_failed_build('test_out/cpp_stl_11/build-1.log')).to eq [
+        expect(@builder.parse_failed_build('test_out/cpp_stl_11/build-1.log').uniq).to eq [
           '/Users/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_11/enum_to_i_class_border_2.cpp',
-          '/Users/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_11/enum_to_i_class_border_2.cpp',
-          '/Users/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_11/enum_to_i_class_border_2.cpp',
-          '/Users/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_11/enum_to_i_class_border_2.cpp',
-          '/Users/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_11/enum_to_i_class_border_2.cpp',
-          '/Users/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_11/io_local_var.cpp',
-          '/Users/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_11/io_local_var.cpp',
-          '/Users/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_11/io_local_var.cpp',
           '/Users/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_11/io_local_var.cpp',
         ]
       end
@@ -171,13 +164,8 @@ RSpec.describe CppBuilder do
 
     describe '#parse_failed_build' do
       it 'parses failed build information' do
-        expect(@builder.parse_failed_build('test_out/cpp_stl_11/build-1.log')).to eq [
+        expect(@builder.parse_failed_build('test_out/cpp_stl_11/build-1.log').uniq).to eq [
           '/home/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_11/io_local_var.cpp',
-          '/home/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_11/io_local_var.cpp',
-          '/home/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_11/enum_to_i_class_border_2.cpp',
-          '/home/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_11/enum_to_i_class_border_2.cpp',
-          '/home/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_11/enum_to_i_class_border_2.cpp',
-          '/home/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_11/enum_to_i_class_border_2.cpp',
           '/home/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_11/enum_to_i_class_border_2.cpp',
         ]
       end
@@ -192,39 +180,20 @@ RSpec.describe CppBuilder do
 
     describe '#parse_failed_build' do
       it 'parses failed build information' do
-        expect(@builder.parse_failed_build('test_out/cpp_stl_11/build-1.log')).to eq [
-          '/tests/spec/cpp_stl_11/test_enum_import.cpp',
-          '/tests/spec/cpp_stl_11/test_enum_import.cpp',
-          '/tests/spec/cpp_stl_11/test_enum_import.cpp',
-          '/tests/spec/cpp_stl_11/test_enum_import.cpp',
-          '/tests/spec/cpp_stl_11/test_enum_import.cpp',
+        # FIXME: this monkey patching is ugly and fragile, but I don't know how to do this better
+        allow(File).to receive(:absolute_path) do |arg|
+          File.join('/tests', arg)
+        end
+
+        expect(@builder.parse_failed_build('test_out/cpp_stl_11/build-1.log').uniq).to eq [
           '/tests/spec/cpp_stl_11/test_enum_import.cpp',
           '/tests/spec/cpp_stl_11/test_expr_bytes_non_literal.cpp',
           '/tests/spec/cpp_stl_11/test_process_coerce_switch.cpp',
           '/tests/compiled/cpp_stl_11/debug_switch_user.cpp',
-          '/tests/compiled/cpp_stl_11/debug_switch_user.cpp',
-          '/tests/compiled/cpp_stl_11/debug_switch_user.cpp',
           '/tests/compiled/cpp_stl_11/enum_import.cpp',
-          '/tests/compiled/cpp_stl_11/enum_import.cpp',
-          '/tests/compiled/cpp_stl_11/enum_import.cpp',
-          '/tests/compiled/cpp_stl_11/enum_import.cpp',
-          '/tests/compiled/cpp_stl_11/enum_import.cpp',
-          '/tests/compiled/cpp_stl_11/enum_import.cpp',
-          '/tests/compiled/cpp_stl_11/enum_import.cpp',
-          '/tests/compiled/cpp_stl_11/enum_import.cpp',
-          '/tests/compiled/cpp_stl_11/enum_import.cpp',
-          '/tests/compiled/cpp_stl_11/enum_import.cpp',
-          '/tests/compiled/cpp_stl_11/enum_import.cpp',
-          '/tests/compiled/cpp_stl_11/enum_import.cpp',
-          '/tests/compiled/cpp_stl_11/enum_import.cpp',
-          '/tests/compiled/cpp_stl_11/enum_import.cpp',
-          '/tests/compiled/cpp_stl_11/enum_import.cpp',
-          '/tests/compiled/cpp_stl_11/enum_import.cpp',
-          '/tests/compiled/cpp_stl_11/enum_to_i.cpp',
           '/tests/compiled/cpp_stl_11/enum_to_i.cpp',
           '/tests/compiled/cpp_stl_11/enum_to_i_class_border_1.cpp',
           '/tests/compiled/cpp_stl_11/enum_to_i_class_border_2.cpp',
-          '/tests/compiled/cpp_stl_11/enum_to_i_invalid.cpp',
           '/tests/compiled/cpp_stl_11/enum_to_i_invalid.cpp',
           '/tests/compiled/cpp_stl_11/expr_ops_parens.cpp',
           '/tests/compiled/cpp_stl_11/nav_parent_switch_cast.cpp',
@@ -388,14 +357,8 @@ RSpec.describe CppBuilder do
 
     describe '#parse_failed_build' do
       it 'parses failed build information' do
-        expect(@builder.parse_failed_build('test_out/cpp_stl_98/build-1.log')).to eq [
+        expect(@builder.parse_failed_build('test_out/cpp_stl_98/build-1.log').uniq).to eq [
           '/home/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_98/io_local_var.cpp',
-          '/home/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_98/io_local_var.cpp',
-          '/home/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_98/io_local_var.cpp',
-          '/home/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_98/io_local_var.cpp',
-          '/home/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_98/enum_to_i_class_border_2.cpp',
-          '/home/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_98/enum_to_i_class_border_2.cpp',
-          '/home/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_98/enum_to_i_class_border_2.cpp',
           '/home/travis/build/kaitai-io/ci_targets/tests/compiled/cpp_stl_98/enum_to_i_class_border_2.cpp',
         ]
       end
@@ -410,6 +373,11 @@ RSpec.describe CppBuilder do
 
     describe '#parse_failed_build' do
       it 'parses failed build information' do
+        # FIXME: this monkey patching is ugly and fragile, but I don't know how to do this better
+        allow(File).to receive(:absolute_path) do |arg|
+          File.join('/home/travis/build/kaitai-io/ci_targets/tests', arg)
+        end
+
         expect(@builder.parse_failed_build('test_out/cpp_stl_11/build-2.log')).to eq [
           '/home/travis/build/kaitai-io/ci_targets/tests/spec/cpp_stl_11/test_expr_calc_array_ops.cpp',
         ]
