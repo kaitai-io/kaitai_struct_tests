@@ -2,6 +2,8 @@ require 'rexml/document'
 
 require_relative 'test_parser'
 
+ONE_MICROSECOND_IN_SECONDS = 1e-6
+
 class BoostTestParser < TestParser
   def initialize(fn, glob = false)
     @docs =
@@ -69,7 +71,11 @@ class BoostTestParser < TestParser
             if testing_time_node.nil?
               0.0
             else
-              testing_time_node.text.to_f
+              # `<TestingTime>` contains the elapsed time in microseconds, see:
+              #
+              # 1. https://github.com/boostorg/test/blob/d2895ebfdfdf16074c58c9801d53e190c4654fcb/include/boost/test/impl/xml_log_formatter.ipp#L100
+              # 2. https://github.com/boostorg/test/blob/d2895ebfdfdf16074c58c9801d53e190c4654fcb/include/boost/test/unit_test_log_formatter.hpp#L160
+              testing_time_node.text.to_f * ONE_MICROSECOND_IN_SECONDS
             end
 
           tr = TestResult.new(name, status, testing_time, failure)
