@@ -36,7 +36,7 @@ class TestResult
     # test results constantly jumping from 0 to 0.001 all the time,
     # while in reality there were absolutely no changes in test
     # execution
-    @elapsed = elapsed.round(1)
+    @elapsed = elapsed && elapsed.round(1)
 
     @failure = failure
   end

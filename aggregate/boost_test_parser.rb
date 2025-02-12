@@ -69,7 +69,7 @@ class BoostTestParser < TestParser
           testing_time_node = tc.elements['TestingTime']
           testing_time =
             if testing_time_node.nil?
-              0.0
+              nil
             else
               # `<TestingTime>` contains the elapsed time in microseconds, see:
               #
