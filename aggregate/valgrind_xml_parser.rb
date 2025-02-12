@@ -36,7 +36,7 @@ class ValgrindXMLParser < TestParser
               end
         failure = TestResult::Failure.new(nil, nil, msg, nil)
         affected.each { |name|
-          tr = TestResult.new(underscore_to_ucamelcase(name), :leak, 0, failure)
+          tr = TestResult.new(underscore_to_ucamelcase(name), :leak, nil, failure)
           yield tr
         }
       end

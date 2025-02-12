@@ -28,7 +28,7 @@ class TextListParser < TestParser
     @doc.each { |name|
       name = underscore_to_ucamelcase(name.chomp)
       next if BLACK_LIST.include?(name)
-      yield TestResult.new(name, :passed, 0, nil)
+      yield TestResult.new(name, :passed, nil)
     }
   end
 end
