@@ -101,11 +101,11 @@ class CppBuilder < PartialBuilder
   end
 
   def run_cmake(log_file)
-    cmake_cli = [
-      "cmake",
-      "-DCMAKE_BUILD_TYPE=Debug",
-      "-DINC_PATH=#{File.absolute_path(@disposable_cmake)}",
-      "-DKS_PATH=#{File.absolute_path(@src_dir)}",
+    cmake_cli = %W[
+      cmake
+      -DCMAKE_BUILD_TYPE=Debug
+      -DINC_PATH=#{File.absolute_path(@disposable_cmake)}
+      -DKS_PATH=#{File.absolute_path(@src_dir)}
     ]
     spec_dir = File.absolute_path(@cpp_spec_dir)
 
@@ -131,7 +131,7 @@ class CppBuilder < PartialBuilder
     Dir.chdir(@obj_dir) do
       case @mode
       when :make_posix
-        cmd = ["cmake", "--build", ".", "--parallel", "8", "--verbose", "--", "-k"]
+        cmd = %w[cmake --build . --parallel 8 --verbose -- -k]
         cmd << "--output-sync=target" if @make_version[0] >= 4
 
         r = run_and_tee(
@@ -142,7 +142,7 @@ class CppBuilder < PartialBuilder
       when :msbuild_windows
         r = run_and_tee(
           {},
-          ["msbuild", "KS_TEST_CPP_STL.sln"], # -fl -flp:logfile=#{@abs_cpp_test_out_dir}\\msbuild.log"
+          %w[msbuild KS_TEST_CPP_STL.sln], # -fl -flp:logfile=#{@abs_cpp_test_out_dir}\\msbuild.log"
           abs_log_file
         )
       else
@@ -303,12 +303,12 @@ class CppBuilder < PartialBuilder
         raise "Unknown mode=#{@mode}"
       end
 
-      tests_cli = [
-        ks_tests_bin,
-        '--log_format=XML',
-        "--log_sink=#{xml_log}",
-        '--log_level=all',
-        '--report_level=detailed',
+      tests_cli = %W[
+        #{ks_tests_bin}
+        --log_format=XML
+        --log_sink=#{xml_log}
+        --log_level=all
+        --report_level=detailed
       ]
       excluded_tests.each { |test| tests_cli << "--run_test=!#{test}" }
 
