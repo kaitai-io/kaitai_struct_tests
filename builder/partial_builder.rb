@@ -74,8 +74,10 @@ class PartialBuilder
     FileUtils.rm_f(@build_failed_files)
     FileUtils.rm_f(@build_failed_tests)
 
-    attempt = 1
-    loop {
+    # In Ruby 2.6, this could be just `(1..).each { ... }` without the need for
+    # `Float::INFINITY`, but at the time of writing, some of our targets are
+    # still using older versions of Ruby, such as Ruby 1.9.
+    (1..Float::INFINITY).each { |attempt|
       attempt_str = @max_attempts ? "#{attempt}/#{@max_attempts}" : attempt
 
       log "creating project with #{disp_files.size}/#{orig_size} files"
@@ -104,8 +106,6 @@ class PartialBuilder
         end
 
         register_bad_files(bad_files)
-
-        attempt += 1
 
         if @max_attempts and attempt >= @max_attempts
           log "maximum number of build attempts reached, bailing out"
