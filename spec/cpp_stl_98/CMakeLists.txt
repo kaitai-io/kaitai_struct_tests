@@ -1,4 +1,7 @@
-cmake_minimum_required(VERSION 3.11)
+# We require CMake 3.15 because we want to use `$<CXX_COMPILER_ID:compiler_ids>`
+# with multiple `compiler_ids`:
+# https://cmake.org/cmake/help/v3.31/manual/cmake-generator-expressions.7.html#genex:CXX_COMPILER_ID
+cmake_minimum_required(VERSION 3.15)
 
 project(KS_TEST_CPP_STL)
 
@@ -83,7 +86,7 @@ target_compile_options(ks_tests PRIVATE
 		#
 		# Since warnings of this particular type clutter the output a lot and
 		# do not come from our own code, we turn them off.
-		$<$<CXX_COMPILER_ID:Clang>:-Wno-c99-extensions>
+		$<$<CXX_COMPILER_ID:AppleClang,Clang>:-Wno-c99-extensions>
 
 		# See <https://gcc.gnu.org/onlinedocs/gcc-13.3.0/gcc/Warning-Options.html#index-Wstrict-aliasing_003dn>:
 		#
