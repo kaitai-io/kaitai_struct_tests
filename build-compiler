@@ -5,3 +5,5 @@
 cd "$COMPILER_DIR"
 sbt compilerJVM/stage
 sbt compile fastOptJS
+# To make new compiler available for test generator (build-tests script)
+sbt publishLocal
