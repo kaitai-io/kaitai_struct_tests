@@ -117,7 +117,7 @@ class TestTranslator(options: CLIOptions) {
     case "go" => new GoSG(testSpec, provider)
     case "java" => new JavaSG(testSpec, provider)
     case "javascript" => new JavaScriptSG(testSpec, provider)
-    case "julia" => new JuliaSG(testSpec, provider)
+    // case "julia" => new JuliaSG(testSpec, provider)
     case "lua" => new LuaSG(testSpec, provider)
     case "nim" => new NimSG(testSpec, provider)
     case "perl" => new PerlSG(testSpec, provider)
