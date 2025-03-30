@@ -63,6 +63,9 @@ target_compile_options(ks_tests PRIVATE
 	$<$<NOT:$<CXX_COMPILER_ID:MSVC>>:
 		-Wall -Wextra -Wpedantic
 
+		# See https://github.com/kaitai-io/kaitai_struct_cpp_stl_runtime/blob/839e7a0752950751ad129ce96d337be4045eafee/Common.cmake#L19-L23
+		-Wno-long-long
+
 		# Clang's `-Wpedantic` under `-std=c++98` enables a Clang-specific flag
 		# [`-Wc99-extensions`](https://releases.llvm.org/18.1.4/tools/clang/docs/DiagnosticsReference.html#wc99-extensions).
 		# This includes `warning: empty macro arguments are a C99 feature`,
