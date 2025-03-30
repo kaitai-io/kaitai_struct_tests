@@ -7,6 +7,45 @@ import io.kaitai.struct.format.ParseUtils
 import io.kaitai.struct.formats.JavaKSYParser
 import io.kaitai.struct.problems.{KSYParseError, ProblemCoords, YAMLParserError}
 
+case class ExpectedException(exception: KSError, message: Option[String])
+
+object ExpectedException {
+  private final val LEGAL_KEYS = Set(
+    "type",
+    "message"
+  )
+
+  def fromYaml(src: Option[Any], path: List[String]): Option[ExpectedException] =
+    src.map { v =>
+      v match {
+        case str: String => ExpectedException(KSError.fromName(str), None)
+        case map: Map[String, _] => {
+          ParseUtils.ensureLegalKeys(map, LEGAL_KEYS, path)
+          val exception = getOptValueStr(map, "type", path) match {
+            case Some(str) =>
+              KSError.fromName(str)
+            case None =>
+              throw KSYParseError.noKey("type", path)
+          }
+          val message = getOptValueStr(map, "message", path)
+          ExpectedException(exception, message)
+        }
+        case unknown =>
+          throw KSYParseError.withText(s"expected map or string, found $unknown", path)
+      }
+    }
+
+  private def getOptValueStr(src: Map[String, _], field: String, path: List[String]): Option[String] =
+    src.get(field).map { v =>
+      v match {
+        case str: String =>
+          str
+        case unknown =>
+          throw KSYParseError.badType("string", unknown, path :+ field)
+      }
+    }
+}
+
 sealed trait TestAssert
 case class TestEquals(actual: Ast.expr, expected: Ast.expr) extends TestAssert
 case class TestException(actual: Ast.expr, exception: KSError) extends TestAssert
@@ -15,7 +54,7 @@ case class TestSpec(
   id: String,
   data: String,
   asserts: List[TestAssert],
-  exception: Option[KSError],
+  exception: Option[ExpectedException],
   extraImports: List[String]
 )
 
@@ -49,7 +88,7 @@ object TestSpec {
     val id = ParseUtils.getValueStr(srcMap, "id", List())
     val data = ParseUtils.getValueStr(srcMap, "data", List())
     val asserts = ParseUtils.getList[TestAssert](srcMap, "asserts", testAssertFromYaml, List())
-    val exception = ParseUtils.getOptValueStr(srcMap, "exception", List()).map(KSError.fromName)
+    val exception = ExpectedException.fromYaml(srcMap.get("exception"), List("exception"))
     val extraImports = ParseUtils.getListStr(srcMap, "imports", List())
 
     TestSpec(id, data, asserts, exception, extraImports)

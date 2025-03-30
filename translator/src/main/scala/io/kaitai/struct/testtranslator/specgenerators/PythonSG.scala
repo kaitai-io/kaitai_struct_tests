@@ -4,7 +4,7 @@ import io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
 import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.PythonCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec, ExpectedException}
 import _root_.io.kaitai.struct.translators.PythonTranslator
 
 class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
@@ -37,7 +37,8 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
     out.inc
   }
 
-  override def runParseExpectError(exception: KSError): Unit = {
+  override def runParseExpectError(expException: ExpectedException): Unit = {
+    val exception = expException.exception
     importList.add("import kaitaistruct")
     out.puts(s"with self.assertRaises(${PythonCompiler.ksErrorName(exception)}):")
     out.inc

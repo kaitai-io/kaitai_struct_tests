@@ -5,7 +5,7 @@ import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.datatype.DataType.BytesType
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.PHPCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec, ExpectedException}
 import _root_.io.kaitai.struct.translators.PHPTranslator
 
 class PHPSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
@@ -28,7 +28,8 @@ class PHPSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     out.puts(s"$$r = $className::fromFile(self::SRC_DIR_PATH . '/${spec.data}');")
   }
 
-  override def runParseExpectError(exception: KSError): Unit = {
+  override def runParseExpectError(expException: ExpectedException): Unit = {
+    val exception = expException.exception
     out.puts(s"$$this->expectException(${PHPCompiler.ksErrorName(exception)}::class);")
     runParse()
   }

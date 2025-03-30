@@ -5,7 +5,7 @@ import _root_.io.kaitai.struct.datatype.{EndOfStreamError, KSError, UndecidedEnd
 import _root_.io.kaitai.struct.datatype.DataType._
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.PerlCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec, ExpectedException}
 import _root_.io.kaitai.struct.translators.PerlTranslator
 import _root_.io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
 
@@ -33,7 +33,8 @@ class PerlSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     out.puts(s"my $$r = $className->from_file('src/${spec.data}');")
   }
 
-  override def runParseExpectError(exception: KSError): Unit = {
+  override def runParseExpectError(expException: ExpectedException): Unit = {
+    val exception = expException.exception
     val msg = exception match {
       case UndecidedEndiannessError => "Unable to decide on endianness"
       case EndOfStreamError => "Requested \\d+ bytes, but only \\d+ bytes available"

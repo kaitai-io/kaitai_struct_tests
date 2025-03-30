@@ -5,7 +5,7 @@ import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.datatype.DataType.BytesType
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.JavaScriptCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec, ExpectedException}
 import _root_.io.kaitai.struct.translators.JavaScriptTranslator
 
 class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
@@ -47,7 +47,8 @@ class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGene
     }
   }
 
-  override def runParseExpectError(exception: KSError): Unit = {
+  override def runParseExpectError(expException: ExpectedException): Unit = {
+    val exception = expException.exception
     importList.add("testHelperThrows")
     importList.add("KaitaiStream")
 

@@ -4,10 +4,9 @@ import _root_.io.kaitai.struct.{ClassTypeProvider, JSON, RuntimeConfig}
 import _root_.io.kaitai.struct.datatype.{DataType, EndOfStreamError, KSError, UndecidedEndiannessError, ValidationError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.RustCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec, ExpectedException}
 import _root_.io.kaitai.struct.translators.RustTranslator
 import _root_.io.kaitai.struct.datatype.DataType.{ArrayType, BooleanType, BytesType, EnumType, IntType, SwitchType, UserType}
-import io.kaitai.struct.testtranslator.{Main, TestAssert, TestSpec}
 
 class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   val className: String = RustCompiler.type2class(spec.id)
@@ -34,7 +33,8 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     out.puts(s"let r: OptRc<$className> = $className::read_into(&_io, None, None)?;")
   }
 
-  override def runParseExpectError(exception: KSError): Unit = {
+  override def runParseExpectError(expException: ExpectedException): Unit = {
+    val exception = expException.exception
     out.puts(s"let res: KResult<OptRc<$className>> = $className::read_into(&_io, None, None);")
     exceptionAssert("res", exception)
   }

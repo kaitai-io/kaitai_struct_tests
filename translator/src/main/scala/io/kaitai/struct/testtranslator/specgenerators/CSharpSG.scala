@@ -4,7 +4,7 @@ import _root_.io.kaitai.struct.{ClassTypeProvider, Utils}
 import _root_.io.kaitai.struct.datatype.{DataType, EndOfStreamError, KSError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.CSharpCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec, ExpectedException}
 import _root_.io.kaitai.struct.translators.CSharpTranslator
 
 class CSharpSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
@@ -33,7 +33,8 @@ class CSharpSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
     out.puts(s"var r = $className.FromFile(SourceFile(" + "\"" + spec.data + "\"));")
   }
 
-  override def runParseExpectError(exception: KSError): Unit = {
+  override def runParseExpectError(expException: ExpectedException): Unit = {
+    val exception = expException.exception
     exceptionToImports(exception)
     out.puts(s"Assert.Throws<${CSharpCompiler.ksErrorName(exception)}>(")
     out.inc
