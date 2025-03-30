@@ -40,10 +40,23 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
   override def runParseExpectError(expException: ExpectedException): Unit = {
     val exception = expException.exception
     importList.add("import kaitaistruct")
-    out.puts(s"with self.assertRaises(${PythonCompiler.ksErrorName(exception)}):")
+    expException.message match {
+      case Some(_) =>
+        out.puts(s"with self.assertRaises(${PythonCompiler.ksErrorName(exception)}) as cm:")
+      case None =>
+        out.puts(s"with self.assertRaises(${PythonCompiler.ksErrorName(exception)}):")
+    }
     out.inc
     runParse()
     out.puts("pass")
+    out.dec
+    out.dec
+    expException.message match {
+      case Some(msg) =>
+        val expStr = translator.translate(Ast.expr.Str(msg))
+        out.puts(s"self.assertEqual(str(cm.exception), $expStr)")
+      case None =>
+    }
   }
 
   override def footer(): Unit = {}
