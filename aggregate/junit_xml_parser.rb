@@ -77,14 +77,14 @@ class JUnitXMLParser < TestParser
 
           tr = TestResult.new(name, :skipped, nil)
           yield tr
-        elsif ts.attribute('errors') && ts.attribute('errors').value.to_f != 0 && ts.attribute('name').value =~ /^\/(.*?) test$/
+        elsif ts.attribute('errors') && ts.attribute('errors').value != '0' && ts.attribute('name').value =~ /^\/(.*?) test$/
           # Pick up Julia errored tests
           name = $1
           error_element = ts.elements['error']
           error_message = error_element.attribute('message').value if error_element
           error_trace = error_element.text.strip if error_element
 
-          tr = TestResult.new(name, :error, 0, TestResult::Failure.new(nil, nil, error_message, error_trace))
+          tr = TestResult.new(name, :failed, 0, TestResult::Failure.new(nil, nil, error_message, error_trace))
           yield tr
         end
       }
