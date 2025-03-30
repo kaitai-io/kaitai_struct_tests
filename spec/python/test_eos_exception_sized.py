@@ -6,6 +6,7 @@ import kaitaistruct
 
 class TestEosExceptionSized(unittest.TestCase):
     def test_eos_exception_sized(self):
-        with self.assertRaises(EOFError):
+        with self.assertRaises(EOFError) as cm:
             with EosExceptionSized.from_file('src/term_strz.bin') as r:
                 pass
+        self.assertEqual(str(cm.exception), u"requested 7 bytes, but only 6 bytes available")
