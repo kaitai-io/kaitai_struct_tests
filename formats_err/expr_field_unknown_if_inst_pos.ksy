@@ -1,5 +1,5 @@
 # expr_field_unknown_if_inst_pos.ksy: /instances/foo/if:
-# 	error: unable to access 'bar' in expr_field_unknown_if_inst_pos context
+# 	error: unable to access 'bar' in 'expr_field_unknown_if_inst_pos' context
 #
 meta:
   id: expr_field_unknown_if_inst_pos
