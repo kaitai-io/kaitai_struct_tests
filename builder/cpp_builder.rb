@@ -183,7 +183,7 @@ class CppBuilder < PartialBuilder
           #
           # Since GNU ld 2.41 (commit
           # https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=02d2a36902c7b0fefe05e8d9bdbf11e846ac71fe),
-          # `filename:linenumber:` is followed by `(section+offset):` (e.g. `(.text+0x106f)`).
+          # `filename:linenumber:` is followed by `(section+offset):` (e.g. `(.text+0x106f):`).
           when /^(?:\/usr\/bin\/ld: )?([^:]+?):(\d+):(?:\((.*?)\):)? undefined reference to /
             filename = $1
             #row = $2
