@@ -4,13 +4,15 @@ RSpec.describe 'IfStruct' do
   it 'parses test properly' do
     require 'if_struct'
     r = IfStruct.from_file('src/if_struct.bin')
-
     expect(r.op1.opcode).to eq 83
+    expect(r.op1.arg_tuple).to be_nil
     expect(r.op1.arg_str.str).to eq "foo"
     expect(r.op2.opcode).to eq 84
     expect(r.op2.arg_tuple.num1).to eq 66
     expect(r.op2.arg_tuple.num2).to eq 67
+    expect(r.op2.arg_str).to be_nil
     expect(r.op3.opcode).to eq 83
+    expect(r.op3.arg_tuple).to be_nil
     expect(r.op3.arg_str.str).to eq "bar"
   end
 end

@@ -6,13 +6,15 @@ namespace Kaitai\Struct\Tests;
 class IfStructTest extends TestCase {
     public function testIfStruct() {
         $r = IfStruct::fromFile(self::SRC_DIR_PATH . '/if_struct.bin');
-
         $this->assertSame(83, $r->op1()->opcode());
+        $this->assertNull($r->op1()->argTuple());
         $this->assertSame("foo", $r->op1()->argStr()->str());
         $this->assertSame(84, $r->op2()->opcode());
         $this->assertSame(66, $r->op2()->argTuple()->num1());
         $this->assertSame(67, $r->op2()->argTuple()->num2());
+        $this->assertNull($r->op2()->argStr());
         $this->assertSame(83, $r->op3()->opcode());
+        $this->assertNull($r->op3()->argTuple());
         $this->assertSame("bar", $r->op3()->argStr()->str());
     }
 }
