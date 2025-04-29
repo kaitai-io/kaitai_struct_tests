@@ -9,12 +9,12 @@ RSpec.describe BoostTestParser do
   end
 
   # The log comes from https://github.com/kaitai-io/ci_artifacts/blob/8b27b4eeaa8653cd33940fb620c184cd9763e6f0/test_out/cpp_stl_11/results.xml
-  context 'boost_aborted_gcc' do
+  context 'aborted_gcc' do
     before :context do
-      Dir.chdir("#{@spec_dir}/boost_aborted_gcc")
+      Dir.chdir("#{@spec_dir}/aborted_gcc")
     end
 
-    describe 'BoostTestParser#aborted_tests' do
+    describe '#aborted_tests' do
       it 'parses aborted tests' do
         infile = 'test_out/cpp_stl_11'
         p = BoostTestParser.new("#{infile}/results.xml")
@@ -26,12 +26,12 @@ RSpec.describe BoostTestParser do
   end
 
   # The log comes from https://github.com/kaitai-io/ci_artifacts/blob/a588faa1a35b658116d4ab5551f0863e61a7324c/test_out/cpp_stl_11/results.xml
-  context 'boost_aborted_msvc' do
+  context 'aborted_msvc' do
     before :context do
-      Dir.chdir("#{@spec_dir}/boost_aborted_msvc")
+      Dir.chdir("#{@spec_dir}/aborted_msvc")
     end
 
-    describe 'BoostTestParser#aborted_tests' do
+    describe '#aborted_tests' do
       it 'parses aborted tests' do
         infile = 'test_out/cpp_stl_11'
         p = BoostTestParser.new("#{infile}/results.xml")
