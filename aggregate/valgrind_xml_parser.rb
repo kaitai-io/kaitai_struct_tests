@@ -55,7 +55,14 @@ class ValgrindXMLParser < TestParser
       next unless path.include?('/spec/cpp_stl')
 
       basename = File.basename(path, '.cpp')
-      test_name = basename.delete_prefix('test_')
+      # # Since Ruby 2.5 (see
+      # # https://www.bigbinary.com/blog/ruby-2-5-added-delete_prefix-and-delete_suffix-methods),
+      # # we could use the `String#delete_prefix` method, but at the time of
+      # # writing, some of our C++/STL targets still use older versions of Ruby,
+      # # such as Ruby 1.9. Therefore, we use `String#sub` instead - see also
+      # # <https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancedeleteprefix>.
+      # test_name = basename.delete_prefix('test_')
+      test_name = basename.sub(/\Atest_/, '')
       return test_name
     end
 
