@@ -7,7 +7,7 @@ TESTS_DIR="$(pwd)"
 print_usage()
 {
 	cat <<EOF
-$0 [--shell] [--download] [--no-compare] --target {TARGET}  --implementation {IMPLEMENTATION} [--os {OS}] [--arch {ARCH}]"
+$0 [--shell] [--download] [--no-compare] --target {TARGET} --implementation {IMPLEMENTATION} [--os {OS}] [--arch {ARCH}]
 
 Runs Kaitai Struct CI for a specific target and implementation in a
 Docker container using image that guarantees to have all necessary
