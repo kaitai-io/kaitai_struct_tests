@@ -3,34 +3,22 @@
 require_relative 'test_parser'
 
 require 'rexml/document'
-require 'set'
 
 # See the documentation of Valgrind's XML output at
 # https://sourceware.org/git/?p=valgrind.git;a=blob;f=docs/internals/xml-output-protocol4.txt;hb=0b557127300197e0c779369d2e173eb85121fd66
 class ValgrindXMLParser < TestParser
   def initialize(fn)
+    @fn = fn
     @doc = REXML::Document.new(File.read(fn))
   end
 
   def each_test
-    @doc.root.elements.each('error') { |err|
-      affected = Set.new
-
-      err.elements.each('stack') { |stack|
-        stack.elements.each('frame') { |frame|
-          path = frame_to_path(frame)
-          next unless path
-
-          kind = file_to_kind(path)
-          next unless kind
-
-          basename = File.basename(path, '.cpp')
-          test_name = kind == :spec ? basename.delete_prefix('test_') : basename
-          affected << test_name
-        }
-      }
-
-      next if affected.empty?
+    @doc.root.elements.each('error') do |err|
+      test_name = stack_to_test_name(err.elements['stack'])
+      unless test_name
+        warn "[ValgrindXMLParser] warning: no test seems to be responsible for #{err.xpath} in #{@fn}"
+        next
+      end
 
       err_kind = err.elements['kind'].text
       status =
@@ -46,14 +34,33 @@ class ValgrindXMLParser < TestParser
           err.elements['what'].text
         end
       failure = TestResult::Failure.new(nil, nil, msg, nil)
-      affected.each { |name|
-        tr = TestResult.new(underscore_to_ucamelcase(name), status, nil, failure)
-        yield tr
-      }
-    }
+      tr = TestResult.new(underscore_to_ucamelcase(test_name), status, nil, failure)
+      yield tr
+    end
   end
 
   private
+
+  ##
+  # Given a `<stack>` element, returns the name of the corresponding test if
+  # available, otherwise returns `nil`.
+  #
+  # @param stack [REXML::Element] "stack" element
+  # @return [String, nil] test name or `nil`
+  def stack_to_test_name(stack)
+    stack.elements.reverse_each('frame') do |frame|
+      path = frame_to_path(frame)
+      next unless path
+
+      next unless path.include?('/spec/cpp_stl')
+
+      basename = File.basename(path, '.cpp')
+      test_name = basename.delete_prefix('test_')
+      return test_name
+    end
+
+    nil
+  end
 
   def frame_to_path(frame)
     dir = frame.elements['dir']
@@ -63,13 +70,5 @@ class ValgrindXMLParser < TestParser
     return nil unless file
 
     File.join(dir.text, file.text)
-  end
-
-  def file_to_kind(path)
-    if path.include?('/compiled/cpp_stl')
-      :format
-    elsif path.include?('/spec/cpp_stl')
-      :spec
-    end
   end
 end
