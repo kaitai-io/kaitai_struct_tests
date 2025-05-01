@@ -80,9 +80,17 @@ result = case lang
 when 'cpp_stl'
   add_kst_adoption(
     reports_to_h(
+      # Valgrind XML logs are processed first so that a Valgrind error caused by
+      # a test takes precedence over normal unit test failures (because the
+      # `reports_to_h` function keeps the first test result with a status of
+      # `:failed` if there are more than one).
+      #
+      # Note that if there is only a leak in a failed test, `reports_to_h` still
+      # selects the test assertion failure as the overall test result, because
+      # `:failed` has a higher priority than `:leak`.
+      ValgrindXMLParser.new("#{infile}/valgrind-*.xml", true),
       BoostTestParser.new("#{infile}/results-*.xml", true),
-      BuildFailedParser.new("#{infile}/build_failed_tests.txt"),
-      ValgrindXMLParser.new("#{infile}/valgrind-*.xml", true)
+      BuildFailedParser.new("#{infile}/build_failed_tests.txt")
     ),
     infile
   )
