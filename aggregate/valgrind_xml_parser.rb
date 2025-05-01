@@ -14,7 +14,8 @@ class ValgrindXMLParser < TestParser
 
   def each_test
     @doc.root.elements.each('error') do |err|
-      test_name = stack_to_test_name(err.elements['stack'])
+      stack = err.elements['stack']
+      test_name = stack_to_test_name(stack)
       unless test_name
         warn "[ValgrindXMLParser] warning: no test seems to be responsible for #{err.xpath} in #{@fn}"
         next
@@ -33,7 +34,20 @@ class ValgrindXMLParser < TestParser
         elsif err.elements['what']
           err.elements['what'].text
         end
-      failure = TestResult::Failure.new(nil, nil, msg, nil)
+
+      file_name = nil
+      line_num = nil
+      stack.elements.each('frame') do |frame|
+        path = frame_to_path(frame)
+        next unless path
+        next unless path.include?('/compiled/cpp_stl') || path.include?('/spec/cpp_stl')
+
+        file_name = path
+        line_num = frame.elements['line'].text
+        break
+      end
+
+      failure = TestResult::Failure.new(file_name, line_num, msg, nil)
       tr = TestResult.new(underscore_to_ucamelcase(test_name), status, nil, failure)
       yield tr
     end
