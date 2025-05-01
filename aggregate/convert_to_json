@@ -82,7 +82,7 @@ when 'cpp_stl'
     reports_to_h(
       BoostTestParser.new("#{infile}/results-*.xml", true),
       BuildFailedParser.new("#{infile}/build_failed_tests.txt"),
-      ValgrindXMLParser.new("#{infile}/valgrind.xml")
+      ValgrindXMLParser.new("#{infile}/valgrind-*.xml", true)
     ),
     infile
   )

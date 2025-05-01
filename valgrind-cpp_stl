@@ -41,7 +41,3 @@ while [ -n "${read_next}" ]; do
 		set -- "$@" "--run_test=!${line}"
 	done < "${CPP_TEST_OUT_DIR}/aborted_tests-${run_attempt}.txt"
 done
-
-# Currently, aggregate/convert_to_json only processes "valgrind.xml", so we
-# make a copy with that name of the last (successful) attempt's log
-cp -v "$CPP_TEST_OUT_DIR/valgrind-${run_attempt}.xml" "$CPP_TEST_OUT_DIR/valgrind.xml"

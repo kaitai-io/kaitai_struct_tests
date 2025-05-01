@@ -6,14 +6,8 @@ ONE_MICROSECOND_IN_SECONDS = 1e-6
 
 class BoostTestParser < TestParser
   def initialize(fn, glob = false)
-    @docs =
-      if glob
-        Dir.glob(fn).map { |x|
-          REXML::Document.new(File.read(x))
-        }
-      else
-        [REXML::Document.new(File.read(fn))]
-      end
+    files = glob ? Dir.glob(fn) : [fn]
+    @docs = files.map { |f| REXML::Document.new(File.read(f)) }
   end
 
   def each_test

@@ -7,49 +7,51 @@ require 'rexml/document'
 # See the documentation of Valgrind's XML output at
 # https://sourceware.org/git/?p=valgrind.git;a=blob;f=docs/internals/xml-output-protocol4.txt;hb=0b557127300197e0c779369d2e173eb85121fd66
 class ValgrindXMLParser < TestParser
-  def initialize(fn)
-    @fn = fn
-    @doc = REXML::Document.new(File.read(fn))
+  def initialize(fn, glob = false)
+    files = glob ? Dir.glob(fn) : [fn]
+    @fn_doc_pairs = files.map { |f| [f, REXML::Document.new(File.read(f))] }
   end
 
   def each_test
-    @doc.root.elements.each('error') do |err|
-      stack = err.elements['stack']
-      test_name = stack_to_test_name(stack)
-      unless test_name
-        warn "[ValgrindXMLParser] warning: no test seems to be responsible for #{err.xpath} in #{@fn}"
-        next
-      end
-
-      err_kind = err.elements['kind'].text
-      status =
-        if err_kind.start_with?('Leak_')
-          :leak
-        else
-          :failed
-        end
-      msg =
-        if err.elements['xwhat']
-          err.elements['xwhat'].elements['text'].text
-        elsif err.elements['what']
-          err.elements['what'].text
+    @fn_doc_pairs.each do |(fn, doc)|
+      doc.root.elements.each('error') do |err|
+        stack = err.elements['stack']
+        test_name = stack_to_test_name(stack)
+        unless test_name
+          warn "[ValgrindXMLParser] warning: no test seems to be responsible for #{err.xpath} in #{fn}"
+          next
         end
 
-      file_name = nil
-      line_num = nil
-      stack.elements.each('frame') do |frame|
-        path = frame_to_path(frame)
-        next unless path
-        next unless path.include?('/compiled/cpp_stl') || path.include?('/spec/cpp_stl')
+        err_kind = err.elements['kind'].text
+        status =
+          if err_kind.start_with?('Leak_')
+            :leak
+          else
+            :failed
+          end
+        msg =
+          if err.elements['xwhat']
+            err.elements['xwhat'].elements['text'].text
+          elsif err.elements['what']
+            err.elements['what'].text
+          end
 
-        file_name = path
-        line_num = frame.elements['line'].text
-        break
+        file_name = nil
+        line_num = nil
+        stack.elements.each('frame') do |frame|
+          path = frame_to_path(frame)
+          next unless path
+          next unless path.include?('/compiled/cpp_stl') || path.include?('/spec/cpp_stl')
+
+          file_name = path
+          line_num = frame.elements['line'].text
+          break
+        end
+
+        failure = TestResult::Failure.new(file_name, line_num, msg, nil)
+        tr = TestResult.new(underscore_to_ucamelcase(test_name), status, nil, failure)
+        yield tr
       end
-
-      failure = TestResult::Failure.new(file_name, line_num, msg, nil)
-      tr = TestResult.new(underscore_to_ucamelcase(test_name), status, nil, failure)
-      yield tr
     end
   end
 
