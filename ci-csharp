@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ./config
+. "$(dirname "$0")/config"
 
 ./run-csharp
 

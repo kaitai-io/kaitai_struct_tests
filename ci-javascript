@@ -1,6 +1,6 @@
 #!/bin/sh -ef
 
-. ./config
+. "$(dirname "$0")/config"
 
 if [ -f "${JAVASCRIPT_RUNTIME_DIR}/KaitaiStream.js" ]; then
 	# Symlinks fresh KS JavaScript runtime into node_modules dir

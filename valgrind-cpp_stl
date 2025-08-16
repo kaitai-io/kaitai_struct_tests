@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-. ./config
+. "$(dirname "$0")/config"
 
 if [ "$#" -ne 2 ]; then
 	echo "$0 <src_dir> <cpp_test_out_dir>"

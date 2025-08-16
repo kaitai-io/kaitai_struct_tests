@@ -1,6 +1,6 @@
 #!/bin/sh -ef
 
-. ./config
+. "$(dirname "$0")/config"
 
 export LUA_PATH="$LUA_PATH;$LUA_RUNTIME_DIR/?.lua;spec/lua/?.lua;spec/lua/extra/?.lua;compiled/lua/?.lua;;"
 

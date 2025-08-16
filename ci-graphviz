@@ -1,7 +1,6 @@
 #!/bin/sh -e
 
-. ./config
-
+. "$(dirname "$0")/config"
 
 DOT_LOG="$TEST_OUT_DIR/graphviz/dot.log"
 PASSED_LOG="$TEST_OUT_DIR/graphviz/passed.log"

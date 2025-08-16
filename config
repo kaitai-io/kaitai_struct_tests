@@ -19,3 +19,7 @@ RUBY_RUNTIME_DIR=../runtime/ruby/lib
 RUST_RUNTIME_DIR=../runtime/rust
 
 TEST_OUT_DIR=test_out
+
+# Reset working directory to tests/ root directory.
+# Assumes invoking script is in tests/.
+cd "$(dirname $0)"

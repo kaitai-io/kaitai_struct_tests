@@ -1,6 +1,6 @@
 #!/bin/sh -ef
 
-. ./config
+. "$(dirname "$0")/config"
 
 TESTS_DIR="$(pwd)"
 

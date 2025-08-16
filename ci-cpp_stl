@@ -1,6 +1,6 @@
 #!/bin/sh -ef
 
-. ./config
+. "$(dirname "$0")/config"
 
 if [ "$#" -ne 3 ]; then
 	echo "$0 <src_dir> <spec_dir> <test_out_dir>"

@@ -1,5 +1,5 @@
 #!/bin/sh -ef
 
-. ./config
+. "$(dirname "$0")/config"
 
 PYTHONPATH="$PYTHON_RUNTIME_DIR:compiled/python:spec/python/extra" PYTHONDONTWRITEBYTECODE=1 PYTHONDEVMODE=1 python -m unittest discover -s spec/python

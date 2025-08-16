@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ./config
+. "$(dirname "$0")/config"
 
 if [ -f /download/runtime/Cargo.lock ]; then
     # We're in the Docker container, let's copy the lockfile recording the
