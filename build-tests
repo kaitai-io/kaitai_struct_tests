@@ -8,7 +8,7 @@ if [ "$#" -ne 1 ]; then
     exit 1
 fi
 
-. ./config
+. "$(dirname "$0")/config"
 
 cd ../compiler
 sbt publishLocal

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ./config
+. "$(dirname "$0")/config"
 
 rm -rf "$FORMATS_COMPILED_DIR"
 mkdir -p "$FORMATS_COMPILED_DIR"
