@@ -163,7 +163,8 @@ if [ -z "$IMPLEMENTATION" ]; then
 	fi
 
 	# Extract implementation name from image name
-	IMPLEMENTATION=$(echo "$IMG_NAME" | sed -e "s/^kaitai-$TARGET-//" -e "s/-$OS-$ARCH$//")
+	# Handle both local images (kaitai-TARGET-IMPL-OS-ARCH) and remote images (ghcr.io/kaitai-io/kaitai-TARGET-IMPL-OS-ARCH)
+	IMPLEMENTATION=$(echo "$IMG_NAME" | sed -e "s/^.*\/kaitai-$TARGET-//" -e "s/^kaitai-$TARGET-//" -e "s/-$OS-$ARCH$//")
 	IMG_COORD="$IMG_NAME"
 else
 	IMG_NAME="kaitai-$TARGET-$IMPLEMENTATION-$OS-$ARCH"
