@@ -72,21 +72,28 @@ asserts:
     expected: 34
   - actual: yield
     expected: 35
-  # Test accessing keyword-named struct fields
-  - actual: keyword_struct.while
+  # Test accessing keyword-named struct fields in keyword-named type 'def'
+  - actual: keyword_struct_def.while
     expected: 36
-  - actual: keyword_struct.for
+  - actual: keyword_struct_def.for
     expected: 37
-  - actual: keyword_struct.with
+  - actual: keyword_struct_def.with
     expected: 38
+  # Test accessing keyword-named struct fields in keyword-named type 'false'
+  - actual: keyword_struct_false.pass
+    expected: 39
   # Test enum with keyword names
   - actual: keyword_enum
     expected: reserved_python_keywords::true::and
   - actual: keyword_nested_enum
     expected: reserved_python_keywords::def::try::except
   # Test instances with keyword names
-  - actual: inst1
+  - actual: inst_keyword_seq
     expected: 3  # and (1) + as (2)
+  - actual: inst_keyword_enum
+    expected: reserved_python_keywords::true::if
+  - actual: inst_keyword_enum_to_i
+    expected: 6
   # Test instance in keyword-named type
-  - actual: keyword_struct.return
+  - actual: keyword_struct_def.return
     expected: 73  # while (36) + for (37)

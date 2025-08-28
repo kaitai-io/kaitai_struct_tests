@@ -74,8 +74,10 @@ seq:
   - id: yield
     type: u1
   # Test user types with keyword names
-  - id: keyword_struct
+  - id: keyword_struct_def
     type: def
+  - id: keyword_struct_false
+    type: 'false'
   # Test enums with keyword names
   - id: keyword_enum
     type: u1
@@ -84,9 +86,15 @@ seq:
     type: u1
     enum: 'def::try'
 instances:
-  # Expression using keyword-named seq attributes
-  inst1:
+  # Value instance using keyword-named seq attributes
+  inst_keyword_seq:
     value: and + as
+  # Value instance using keyword-named enum and keyword-named enum values
+  inst_keyword_enum:
+    value: true::if
+  # Value instance using keyword-named enum and keyword-named enum values, converted to integer
+  inst_keyword_enum_to_i:
+    value: true::if.to_i
 types:
   # Type with keyword name containing seq atttributes with keyword names
   def:
