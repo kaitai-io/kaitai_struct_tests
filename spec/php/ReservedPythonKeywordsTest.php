@@ -41,12 +41,15 @@ class ReservedPythonKeywordsTest extends TestCase {
         $this->assertSame(33, $r->while());
         $this->assertSame(34, $r->with());
         $this->assertSame(35, $r->yield());
-        $this->assertSame(36, $r->keywordStruct()->while());
-        $this->assertSame(37, $r->keywordStruct()->for());
-        $this->assertSame(38, $r->keywordStruct()->with());
+        $this->assertSame(36, $r->keywordStructDef()->while());
+        $this->assertSame(37, $r->keywordStructDef()->for());
+        $this->assertSame(38, $r->keywordStructDef()->with());
+        $this->assertSame(39, $r->keywordStructFalse()->pass());
         $this->assertSame(\Kaitai\Struct\Tests\ReservedPythonKeywords\True::AND, $r->keywordEnum());
         $this->assertSame(\Kaitai\Struct\Tests\ReservedPythonKeywords\Def\Try::EXCEPT, $r->keywordNestedEnum());
-        $this->assertSame(3, $r->inst1());
-        $this->assertSame(73, $r->keywordStruct()->return());
+        $this->assertSame(3, $r->instKeywordSeq());
+        $this->assertSame(\Kaitai\Struct\Tests\ReservedPythonKeywords\True::IF, $r->instKeywordEnum());
+        $this->assertSame(6, $r->instKeywordEnumToI());
+        $this->assertSame(73, $r->keywordStructDef()->return());
     }
 }

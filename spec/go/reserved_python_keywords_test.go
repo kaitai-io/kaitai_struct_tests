@@ -63,19 +63,30 @@ func TestReservedPythonKeywords(t *testing.T) {
 	assert.EqualValues(t, 33, r.While)
 	assert.EqualValues(t, 34, r.With)
 	assert.EqualValues(t, 35, r.Yield)
-	assert.EqualValues(t, 36, r.KeywordStruct.While)
-	assert.EqualValues(t, 37, r.KeywordStruct.For)
-	assert.EqualValues(t, 38, r.KeywordStruct.With)
+	assert.EqualValues(t, 36, r.KeywordStructDef.While)
+	assert.EqualValues(t, 37, r.KeywordStructDef.For)
+	assert.EqualValues(t, 38, r.KeywordStructDef.With)
+	assert.EqualValues(t, 39, r.KeywordStructFalse.Pass)
 	assert.EqualValues(t, ReservedPythonKeywords_True__And, r.KeywordEnum)
 	assert.EqualValues(t, ReservedPythonKeywords_Def_Try__Except, r.KeywordNestedEnum)
-	tmp1, err := r.Inst1()
+	tmp1, err := r.InstKeywordSeq()
 	if err != nil {
 		t.Fatal(err)
 	}
 	assert.EqualValues(t, 3, tmp1)
-	tmp2, err := r.KeywordStruct.Return()
+	tmp2, err := r.InstKeywordEnum()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 73, tmp2)
+	assert.EqualValues(t, ReservedPythonKeywords_True__If, tmp2)
+	tmp3, err := r.InstKeywordEnumToI()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, 6, tmp3)
+	tmp4, err := r.KeywordStructDef.Return()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, 73, tmp4)
 }

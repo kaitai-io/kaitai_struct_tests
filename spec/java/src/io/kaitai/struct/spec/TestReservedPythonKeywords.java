@@ -45,12 +45,15 @@ public class TestReservedPythonKeywords extends CommonSpec {
         assertIntEquals(r.while(), 33);
         assertIntEquals(r.with(), 34);
         assertIntEquals(r.yield(), 35);
-        assertIntEquals(r.keywordStruct().while(), 36);
-        assertIntEquals(r.keywordStruct().for(), 37);
-        assertIntEquals(r.keywordStruct().with(), 38);
+        assertIntEquals(r.keywordStructDef().while(), 36);
+        assertIntEquals(r.keywordStructDef().for(), 37);
+        assertIntEquals(r.keywordStructDef().with(), 38);
+        assertIntEquals(r.keywordStructFalse().pass(), 39);
         assertEquals(r.keywordEnum(), ReservedPythonKeywords.True.AND);
         assertEquals(r.keywordNestedEnum(), ReservedPythonKeywords.Def.Try.EXCEPT);
-        assertIntEquals(r.inst1(), 3);
-        assertIntEquals(r.keywordStruct().return(), 73);
+        assertIntEquals(r.instKeywordSeq(), 3);
+        assertEquals(r.instKeywordEnum(), ReservedPythonKeywords.True.IF);
+        assertIntEquals(r.instKeywordEnumToI(), 6);
+        assertIntEquals(r.keywordStructDef().return(), 73);
     }
 }

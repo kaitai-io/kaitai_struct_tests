@@ -39,12 +39,15 @@ RSpec.describe 'ReservedPythonKeywords' do
     expect(r.while).to eq 33
     expect(r.with).to eq 34
     expect(r.yield).to eq 35
-    expect(r.keyword_struct.while).to eq 36
-    expect(r.keyword_struct.for).to eq 37
-    expect(r.keyword_struct.with).to eq 38
+    expect(r.keyword_struct_def.while).to eq 36
+    expect(r.keyword_struct_def.for).to eq 37
+    expect(r.keyword_struct_def.with).to eq 38
+    expect(r.keyword_struct_false.pass).to eq 39
     expect(r.keyword_enum).to eq :true_and
     expect(r.keyword_nested_enum).to eq :try_except
-    expect(r.inst1).to eq 3
-    expect(r.keyword_struct.return).to eq 73
+    expect(r.inst_keyword_seq).to eq 3
+    expect(r.inst_keyword_enum).to eq :true_if
+    expect(r.inst_keyword_enum_to_i).to eq 6
+    expect(r.keyword_struct_def.return).to eq 73
   end
 end

@@ -8,7 +8,7 @@ use base qw(Test::Class);
 use Test::More;
 use ReservedPythonKeywords;
 
-sub test_reserved_python_keywords: Test(42) {
+sub test_reserved_python_keywords: Test(45) {
     my $r = ReservedPythonKeywords->from_file('src/full256.bin');
     is($r->and(), 1, 'Equals');
     is($r->as(), 2, 'Equals');
@@ -45,13 +45,16 @@ sub test_reserved_python_keywords: Test(42) {
     is($r->while(), 33, 'Equals');
     is($r->with(), 34, 'Equals');
     is($r->yield(), 35, 'Equals');
-    is($r->keyword_struct()->while(), 36, 'Equals');
-    is($r->keyword_struct()->for(), 37, 'Equals');
-    is($r->keyword_struct()->with(), 38, 'Equals');
+    is($r->keyword_struct_def()->while(), 36, 'Equals');
+    is($r->keyword_struct_def()->for(), 37, 'Equals');
+    is($r->keyword_struct_def()->with(), 38, 'Equals');
+    is($r->keyword_struct_false()->pass(), 39, 'Equals');
     is($r->keyword_enum(), $ReservedPythonKeywords::TRUE_AND, 'Equals');
     is($r->keyword_nested_enum(), $ReservedPythonKeywords::Def::TRY_EXCEPT, 'Equals');
-    is($r->inst1(), 3, 'Equals');
-    is($r->keyword_struct()->return(), 73, 'Equals');
+    is($r->inst_keyword_seq(), 3, 'Equals');
+    is($r->inst_keyword_enum(), $ReservedPythonKeywords::TRUE_IF, 'Equals');
+    is($r->inst_keyword_enum_to_i(), 6, 'Equals');
+    is($r->keyword_struct_def()->return(), 73, 'Equals');
 }
 
 Test::Class->runtests;

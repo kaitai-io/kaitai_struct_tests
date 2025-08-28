@@ -45,12 +45,15 @@ fn test_reserved_python_keywords() -> KResult<()> {
     assert_eq!(*r.while(), 33);
     assert_eq!(*r.with(), 34);
     assert_eq!(*r.yield(), 35);
-    assert_eq!(*r.keyword_struct().while(), 36);
-    assert_eq!(*r.keyword_struct().for(), 37);
-    assert_eq!(*r.keyword_struct().with(), 38);
+    assert_eq!(*r.keyword_struct_def().while(), 36);
+    assert_eq!(*r.keyword_struct_def().for(), 37);
+    assert_eq!(*r.keyword_struct_def().with(), 38);
+    assert_eq!(*r.keyword_struct_false().pass(), 39);
     assert_eq!(*r.keyword_enum(), ReservedPythonKeywords_True::And);
     assert_eq!(*r.keyword_nested_enum(), ReservedPythonKeywords_Def_Try::Except);
-    assert_eq!(*r.inst1()?, 3);
-    assert_eq!(*r.keyword_struct().return()?, 73);
+    assert_eq!(*r.inst_keyword_seq()?, 3);
+    assert_eq!(*r.inst_keyword_enum()?, ReservedPythonKeywords_True::If);
+    assert_eq!(*r.inst_keyword_enum_to_i()?, 6);
+    assert_eq!(*r.keyword_struct_def().return()?, 73);
     Ok(())
 }

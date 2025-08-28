@@ -45,13 +45,16 @@ BOOST_AUTO_TEST_CASE(test_reserved_python_keywords) {
     BOOST_CHECK_EQUAL(r->while(), 33);
     BOOST_CHECK_EQUAL(r->with(), 34);
     BOOST_CHECK_EQUAL(r->yield(), 35);
-    BOOST_CHECK_EQUAL(r->keyword_struct()->while(), 36);
-    BOOST_CHECK_EQUAL(r->keyword_struct()->for(), 37);
-    BOOST_CHECK_EQUAL(r->keyword_struct()->with(), 38);
+    BOOST_CHECK_EQUAL(r->keyword_struct_def()->while(), 36);
+    BOOST_CHECK_EQUAL(r->keyword_struct_def()->for(), 37);
+    BOOST_CHECK_EQUAL(r->keyword_struct_def()->with(), 38);
+    BOOST_CHECK_EQUAL(r->keyword_struct_false()->pass(), 39);
     BOOST_CHECK_EQUAL(r->keyword_enum(), reserved_python_keywords_t::TRUE_AND);
     BOOST_CHECK_EQUAL(r->keyword_nested_enum(), reserved_python_keywords_t::def_t::TRY_EXCEPT);
-    BOOST_CHECK_EQUAL(r->inst1(), 3);
-    BOOST_CHECK_EQUAL(r->keyword_struct()->return(), 73);
+    BOOST_CHECK_EQUAL(r->inst_keyword_seq(), 3);
+    BOOST_CHECK_EQUAL(r->inst_keyword_enum(), reserved_python_keywords_t::TRUE_IF);
+    BOOST_CHECK_EQUAL(r->inst_keyword_enum_to_i(), 6);
+    BOOST_CHECK_EQUAL(r->keyword_struct_def()->return(), 73);
 
     delete r;
 }

@@ -46,13 +46,16 @@ namespace Kaitai
             Assert.AreEqual(r.While, 33);
             Assert.AreEqual(r.With, 34);
             Assert.AreEqual(r.Yield, 35);
-            Assert.AreEqual(r.KeywordStruct.While, 36);
-            Assert.AreEqual(r.KeywordStruct.For, 37);
-            Assert.AreEqual(r.KeywordStruct.With, 38);
+            Assert.AreEqual(r.KeywordStructDef.While, 36);
+            Assert.AreEqual(r.KeywordStructDef.For, 37);
+            Assert.AreEqual(r.KeywordStructDef.With, 38);
+            Assert.AreEqual(r.KeywordStructFalse.Pass, 39);
             Assert.AreEqual(r.KeywordEnum, ReservedPythonKeywords.True.And);
             Assert.AreEqual(r.KeywordNestedEnum, ReservedPythonKeywords.Def.Try.Except);
-            Assert.AreEqual(r.Inst1, 3);
-            Assert.AreEqual(r.KeywordStruct.Return, 73);
+            Assert.AreEqual(r.InstKeywordSeq, 3);
+            Assert.AreEqual(r.InstKeywordEnum, ReservedPythonKeywords.True.If);
+            Assert.AreEqual(r.InstKeywordEnumToI, 6);
+            Assert.AreEqual(r.KeywordStructDef.Return, 73);
         }
     }
 }
