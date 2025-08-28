@@ -1,0 +1,34 @@
+# At the moment, this KST spec only serves as a little aid in writing the test
+# specs for each target language manually, it doesn't work automatically. The
+# idea is to end up with the indicated `exception: UnknownEncodingError(...)`
+# assertions, but at the time of writing, they're not implemented in the KST
+# translator yet.
+#
+# Therefore, to create a spec for a new language, first uncomment the `asserts`
+# section and use the KST translator. What you get is not the final result, but
+# only a template so that you don't have to write the test spec from scratch.
+# You'll use both the generated instance name and the expected string, but you
+# need to figure out how to assert (with respect to the runtime library
+# implementation and test framework for the given target language) that the
+# instance access throws an "unknown encoding error", with the expected string
+# exactly matching the reported unknown encoding. For reference, check the
+# existing test specs in other languages.
+id: str_encodings_escaping_to_s
+data: str_encodings.bin
+# asserts:
+#   - actual: str1
+#     # exception: UnknownEncodingError('ASCII\\x')
+#     expected: |
+#       'ASCII\\x'
+#   - actual: str2
+#     # exception: UnknownEncodingError("UTF-8\\'x")
+#     expected: |
+#       "UTF-8\\'x"
+#   - actual: str3
+#     # exception: UnknownEncodingError('SJIS\"x')
+#     expected: |
+#       'SJIS\"x'
+#   - actual: str4
+#     # exception: UnknownEncodingError('IBM437\nx')
+#     expected: |
+#       'IBM437\nx'

@@ -8,6 +8,7 @@ import (
 	"testing"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	. "test_formats"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestValidFailExpr(t *testing.T) {
@@ -24,10 +25,7 @@ func TestValidFailExpr(t *testing.T) {
 	s := kaitai.NewStream(f)
 	var r ValidFailExpr
 	err = r.Read(s, &r, &r)
-	switch v := err.(type) {
-	case kaitai.ValidationExprError:
-		break
-	default:
-		t.Fatalf("expected kaitai.ValidationExprError, got %T", v)
-	}
+	assert.Error(t, err)
+	var wantErr kaitai.ValidationExprError
+	assert.ErrorAs(t, err, &wantErr)
 }

@@ -1,6 +1,6 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import _root_.io.kaitai.struct.ClassTypeProvider
+import io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
 import _root_.io.kaitai.struct.datatype.{DataType, KSError, EndOfStreamError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.PythonCompiler
@@ -11,7 +11,8 @@ class PythonWriteSG(spec: TestSpec, provider: ClassTypeProvider) extends SpecGen
   importList.add("import unittest")
   importList.add("from specwrite.common_spec import CommonSpec")
 
-  val translator = new PythonTranslator(provider, importList)
+  val config = RuntimeConfig()
+  val translator = new PythonTranslator(provider, importList, config)
   val className = PythonCompiler.type2class(spec.id)
 
   override def fileName(name: String): String = s"specwrite/test_$name.py"

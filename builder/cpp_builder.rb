@@ -1,8 +1,10 @@
 require 'fileutils'
 require 'set'
+require 'rexml/document'
 
 require_relative 'partial_builder'
 require_relative 'shellconfig'
+require_relative '../aggregate/boost_test_parser'
 
 class CppBuilder < PartialBuilder
   attr_accessor :mode
@@ -17,7 +19,6 @@ class CppBuilder < PartialBuilder
     @obj_dir = "#{@src_dir}/bin"
     @disposable_cmake = "#{@obj_dir}/disposable.cmake"
     @abs_cpp_test_out_dir = File.absolute_path(@test_out_dir)
-    @test_dir = Dir.pwd
 
     @mode = :make_posix
     @mode = :msbuild_windows if ENV['APPVEYOR']
@@ -62,7 +63,9 @@ class CppBuilder < PartialBuilder
   end
 
   def list_disposable_files
-    list = Dir.glob("#{@cpp_spec_dir}/**/*.cpp") + Dir.glob("#{@src_dir}/*.cpp")
+    # NOTE: `sort!` is only meaningful for Ruby 2.7 and older, in Ruby 3.0 and
+    # later `Dir.glob` already returns sorted output by default
+    list = Dir.glob("#{@cpp_spec_dir}/**/*.cpp").sort! + Dir.glob("#{@src_dir}/*.cpp").sort!
     list.map { |x|
       r = File.absolute_path(x)
 
@@ -77,14 +80,14 @@ class CppBuilder < PartialBuilder
     }
   end
 
-  def create_project(mand_files, disp_files)
+  def create_project(files)
     FileUtils.mkdir_p(@obj_dir)
     File.open(@disposable_cmake, 'w') { |f|
       f.puts("set(DISPOSABLE_SOURCES")
-      (mand_files + disp_files).each { |l| f.puts(l) }
+      files.each { |l| f.puts(l) }
       f.puts(")")
     }
-    @disposable_cmake
+    [@disposable_cmake]
   end
 
   def build_project(log_file)
@@ -98,59 +101,55 @@ class CppBuilder < PartialBuilder
   end
 
   def run_cmake(log_file)
-    orig_dir = Dir.pwd
-    Dir.chdir(@obj_dir)
-
-    cmake_cli = [
-      "cmake",
-      "-DCMAKE_BUILD_TYPE=Debug",
-      "-DINC_PATH=#{File.absolute_path(@disposable_cmake)}",
-      "-DKS_PATH=#{File.absolute_path(@src_dir)}",
+    cmake_cli = %W[
+      cmake
+      -DCMAKE_BUILD_TYPE=Debug
+      -DINC_PATH=#{File.absolute_path(@disposable_cmake)}
+      -DKS_PATH=#{File.absolute_path(@src_dir)}
     ]
+    spec_dir = File.absolute_path(@cpp_spec_dir)
 
-    # Building on Appveyor/Windows requires extra argument to CMake
-    if ENV['APPVEYOR']
-      cmake_cli << "-DCMAKE_TOOLCHAIN_FILE=c:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake"
+    Dir.chdir(@obj_dir) do
+      # Building on Appveyor/Windows requires extra argument to CMake
+      if ENV['APPVEYOR']
+        cmake_cli << "-DCMAKE_TOOLCHAIN_FILE=c:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake"
 
-      arch = ENV['ARCH'] || 'x64'
-      cmake_cli << "-DCMAKE_GENERATOR_PLATFORM=#{arch}"
+        arch = ENV['ARCH'] || 'x64'
+        cmake_cli << "-DCMAKE_GENERATOR_PLATFORM=#{arch}"
+      end
+
+      cmake_cli << spec_dir
+
+      r = run_and_tee({"LC_ALL" => "en_US.UTF-8"}, cmake_cli, log_file).exitstatus
+      r
     end
-
-    cmake_cli << @cpp_spec_dir
-
-    r = run_and_tee({"LC_ALL" => "en_US.UTF-8"}, cmake_cli, log_file).exitstatus
-    Dir.chdir(orig_dir)
-    r
   end
 
   def run_build(log_file)
     abs_log_file = File.absolute_path(log_file)
 
-    orig_dir = Dir.pwd
-    Dir.chdir(@obj_dir)
+    Dir.chdir(@obj_dir) do
+      case @mode
+      when :make_posix
+        cmd = %w[cmake --build . --parallel 8 --verbose -- -k]
+        cmd << "--output-sync=target" if @make_version[0] >= 4
 
-    case @mode
-    when :make_posix
-      cmd = ["cmake", "--build", ".", "--parallel", "8", "--verbose", "--", "-k"]
-      cmd << "--output-sync=target" if @make_version[0] >= 4
-
-      r = run_and_tee(
-        {"LC_ALL" => "en_US.UTF-8"},
-        cmd,
-        abs_log_file
-      )
-    when :msbuild_windows
-      r = run_and_tee(
-        {},
-        ["msbuild", "KS_TEST_CPP_STL.sln"], # -fl -flp:logfile=#{@abs_cpp_test_out_dir}\\msbuild.log"
-        abs_log_file
-      )
-    else
-      raise "Unknown mode=#{@mode}"
+        r = run_and_tee(
+          {"LC_ALL" => "en_US.UTF-8"},
+          cmd,
+          abs_log_file
+        )
+      when :msbuild_windows
+        r = run_and_tee(
+          {},
+          %w[msbuild KS_TEST_CPP_STL.sln], # -fl -flp:logfile=#{@abs_cpp_test_out_dir}\\msbuild.log"
+          abs_log_file
+        )
+      else
+        raise "Unknown mode=#{@mode}"
+      end
+      r
     end
-
-    Dir.chdir(orig_dir)
-    r
   end
 
   def parse_failed_build(log_file)
@@ -160,51 +159,35 @@ class CppBuilder < PartialBuilder
     orig_cpp_filename_line_no = nil
     parse_mode = :normal
 
-    block_included_from_continued = false
-
     case @mode
     when :make_posix
       File.open(log_file, 'r') { |f|
-        f.each_line.with_index(1) { |l, line_no|
+        f.each_line { |l|
           l.chomp!
-          clear_block_included_from_continued = true
 
           case l
-          when /^(?:(In file included) |\s+)from (.+?):(?:\d+)(?::\d+)?([:,])$/
-            is_block_start = $1 == 'In file included'
-            raise "line #{line_no}: continuation line of block 'In file included from ...' found, but not expected" if !is_block_start && !block_included_from_continued
-            orig_cpp_filename = $2
-            block_included_from_continued = ($3 == ',')
-            clear_block_included_from_continued = false
-          when /^(.+?):(\d+):(\d+): (?:fatal )?error: (.*)$/
-            filename = $1
-            #row = $2
-            #col = $3
-            #msg = $4
+          when /^(?:gmake|make)(?:\[\d+\])?: \*{3} \[(?:.+?:\d+: )?CMakeFiles\/ks_tests\.dir(\/.+?)\.o\] Error 1$/
+            cpp_filepath = $1
 
-            # .h files are not members of disposable_files per se,
-            # they are always included from some other .cpp
-            # files. Thus, we report error against original .cpp file,
-            # which we've memorized previously.
-
-            if !filename.end_with?('.cpp')
-              if !filename.end_with?('.h')
-                log "line #{line_no}: found error in #{filename.inspect} file, which has neither .cpp nor .h extension (this is unusual)"
+            filename =
+              # e.g. `cpp_filepath == "/test_process_coerce_switch.cpp"`
+              if cpp_filepath == "/#{File.basename(cpp_filepath)}"
+                File.join(File.absolute_path(@cpp_spec_dir), cpp_filepath)
+              # otherwise, expect an absolute path (observed empirically)
+              else
+                cpp_filepath
               end
-              raise "line #{line_no}: found error in #{filename.inspect} file, but no original .cpp file reference found before" if orig_cpp_filename.nil?
-              filename = orig_cpp_filename
-            end
 
             list << filename
-          # Linux ld, variant 1
-          when /^\/usr\/bin\/ld: ([^:]+?):(\d+): undefined reference/
+          # GNU ld
+          #
+          # Since GNU ld 2.41 (commit
+          # https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=02d2a36902c7b0fefe05e8d9bdbf11e846ac71fe),
+          # `filename:linenumber:` is followed by `(section+offset):` (e.g. `(.text+0x106f):`).
+          when /^(?:\/usr\/bin\/ld: )?([^:]+?):(\d+):(?:\((.*?)\):)? undefined reference to /
             filename = $1
             #row = $2
-            list << filename
-          # Linux ld, variant 2
-          when /^([^:]+?):(\d+): undefined reference/
-            filename = $1
-            #row = $2
+            #section = $3
             list << filename
           # Mac OS X ld
           when /, referenced from:$/
@@ -215,11 +198,6 @@ class CppBuilder < PartialBuilder
               filename = $2
               list << [:bare, filename]
             end
-          end
-
-          if block_included_from_continued && clear_block_included_from_continued
-            log "line #{line_no}: implicitly closing the active 'In file included from ...' block (this shouldn't be needed in a valid log file)"
-            block_included_from_continued = false
           end
         }
       }
@@ -286,7 +264,7 @@ class CppBuilder < PartialBuilder
 
   def file_to_test(filename)
     # Treat bare files as all others
-    if filename.respond_to?(:[]) and filename[0] == :bare
+    if is_bare?(filename)
       filename = filename[1]
     end
 
@@ -304,51 +282,99 @@ class CppBuilder < PartialBuilder
   end
 
   def run_tests
-    xml_log = "#{@abs_cpp_test_out_dir}/results.xml"
+    attempt = 1
+    excluded_tests = []
 
-    # Work around boost v1.62 bug: https://svn.boost.org/trac10/ticket/12507
-    # --log_sink is broken in boost v1.62, using workaround, as per
-    # https://stackoverflow.com/a/39999085/487064
-    #
-    # However, Travis has boost v1.54, which has problems with it, so we
-    # won't use the workaround on anything except exactly v1.62
+    loop {
+      attempt_str = @max_attempts ? "#{attempt}/#{@max_attempts}" : attempt
 
-    boost_log_option = "--log_sink=#{xml_log}"
+      xml_log = "#{@abs_cpp_test_out_dir}/results-#{attempt}.xml"
+      log "run attempt #{attempt_str} (log: #{xml_log})"
 
-    begin
-      if File.read('/usr/include/boost/version.hpp') =~ /BOOST_VERSION 106200/
-        # Boost v1.62 detected, enabling workaround
-        boost_log_option = "--logger=JUNIT,test_suite,#{xml_log}"
+      # Choose test executable
+      case @mode
+      when :msbuild_windows
+        # On Windows/MSVC, executable will be nested in Debug/
+        ks_tests_bin = "#{@obj_dir}/Debug/ks_tests"
+      when :make_posix
+        # On POSIX systems, it will be directly in obj dir
+        ks_tests_bin = "#{@obj_dir}/ks_tests"
+      else
+        raise "Unknown mode=#{@mode}"
       end
-    rescue Errno::ENOENT => e
-      # ignore
-    end
 
-    # Choose test executable
-    case @mode
-    when :msbuild_windows
-      # On Windows/MSVC, executable will be nested in Debug/
-      ks_tests_bin = "#{@obj_dir}/Debug/ks_tests"
-    when :make_posix
-      # On POSIX systems, it will be directly in obj dir
-      ks_tests_bin = "#{@obj_dir}/ks_tests"
-    else
-      raise "Unknown mode=#{@mode}"
-    end
+      tests_cli = %W[
+        #{ks_tests_bin}
+        --log_format=XML
+        --log_sink=#{xml_log}
+        --log_level=all
+        --report_level=detailed
+      ]
+      excluded_tests.each { |test| tests_cli << "--run_test=!#{test}" }
 
-    tests_cli = [
-      ks_tests_bin,
-      '--log_format=XML',
-      boost_log_option,
-      '--log_level=all',
-      '--report_level=detailed',
-    ]
+      # Actually run the tests
+      run_and_tee({}, tests_cli, "#{@abs_cpp_test_out_dir}/test_run-#{attempt}.stdout")
 
-    # Actually run the tests
-    Dir.chdir(@test_dir)
-    run_and_tee({}, tests_cli, "#{@abs_cpp_test_out_dir}/test_run.stdout")
+      # Pretty-print the XML log (the original from Boost.Test is one super long
+      # line, which is ugly)
+      doc_xml_log = File.open(xml_log, 'r') { |f| REXML::Document.new(f) }
+      formatter = REXML::Formatters::Pretty.new
+      formatter.compact = true
+      # Disable hard line wrapping. This is necessary for our Ruby scripts to
+      # parse the XML correctly. If we don't do this, then `rexml` produces XML
+      # like this (https://github.com/kaitai-io/ci_artifacts/blob/cfafd1769740159e8f946546a45b3bd6eddffb27/test_out/cpp_stl_11/results-1.xml#L2326-L2328):
+      #
+      # ```xml
+      #       <Error file='/tests/spec/cpp_stl_11/test_valid_fail_contents_inst.cpp' line='17'>
+      #         <![CDATA[exception kaitai::validation_not_equal_error<std::string> expected but not raised]]>
+      #       </Error>
+      # ```
+      #
+      # ... which gets parsed by our BoostTestParser like this
+      # (https://github.com/kaitai-io/ci_artifacts/blob/cfafd1769740159e8f946546a45b3bd6eddffb27/test_out/cpp_stl_11/ci.json#L1198-L1203)
+      #
+      # ```json
+      # "failure": {
+      #   "file_name": "/tests/spec/cpp_stl_11/test_valid_fail_contents_inst.cpp",
+      #   "line_num": "17",
+      #   "message": "\n        ",
+      #   "trace": null
+      # },
+      # ```
+      #
+      # With the following line, the resulting XML looks as follows:
+      #
+      # ```xml
+      #       <Error file='/tests/spec/cpp_stl_11/test_valid_fail_contents_inst.cpp' line='17'><![CDATA[exception kaitai::validation_not_equal_error<std::string> expected but not raised]]></Error>
+      # ```
+      #
+      # This is parsed correctly by BoostTestParser. It's true that it makes the
+      # lines longer, but on the other hand it makes the XML log look more
+      # consistent, because the text content of each node is treated the same
+      # regardless of its length.
+      formatter.width = Float::INFINITY
+      File.open(xml_log, 'w') do |f|
+        formatter.write(doc_xml_log, f)
+        f.write("\n")
+      end
 
-    File.exist?(xml_log)
+      parser = BoostTestParser.new(xml_log)
+      aborted_tests = parser.aborted_tests
+      File.write("#{@abs_cpp_test_out_dir}/aborted_tests-#{attempt}.txt", aborted_tests.map { |test| "#{test}\n" }.join)
+      if aborted_tests.empty?
+        log "success on run attempt #{attempt_str} (#{excluded_tests.size} tests excluded)"
+        return true
+      end
+      log "run attempt #{attempt_str} aborted (#{aborted_tests.size} tests aborted)"
+      aborted_tests.each { |test| excluded_tests << test }
+
+      attempt += 1
+
+      if @max_attempts and attempt >= @max_attempts
+        log "maximum number of run attempts reached, bailing out"
+        return false
+      end
+    }
   end
 
   private

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ./config
+. "$(dirname "$0")/config"
 
 mkdir -p "$TEST_OUT_DIR/php"
 

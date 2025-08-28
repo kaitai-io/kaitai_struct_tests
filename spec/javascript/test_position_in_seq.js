@@ -3,6 +3,6 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('PositionInSeq', 'src/position_in_seq.bin', function(r, PositionInSeq) {
+testHelper('PositionInSeq', 'src/position_in_seq.bin', function(r, PositionInSeq_) {
   assert.deepStrictEqual(r.numbers, [(0 + 1), 2, 3]);
 });

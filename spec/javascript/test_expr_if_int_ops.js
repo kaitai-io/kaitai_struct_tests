@@ -3,8 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ExprIfIntOps', 'src/process_coerce_switch.bin', function(r, ExprIfIntOps) {
-
+testHelper('ExprIfIntOps', 'src/process_coerce_switch.bin', function(r, ExprIfIntOps_) {
   assert.strictEqual(r.isEqPrim, true);
   assert.strictEqual(r.isEqBoxed, true);
 });

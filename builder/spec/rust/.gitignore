@@ -1,0 +1,3 @@
+## Cargo lockfile and build cache
+*/spec/rust/Cargo.lock
+*/spec/rust/target/

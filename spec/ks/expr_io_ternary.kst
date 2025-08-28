@@ -1,0 +1,9 @@
+id: expr_io_ternary
+data: if_struct.bin
+asserts:
+  - actual: one_or_two_io_size1
+    expected: 8
+  - actual: one_or_two_io_size2
+    expected: 8
+  - actual: one_or_two_io_size_add_3
+    expected: 11

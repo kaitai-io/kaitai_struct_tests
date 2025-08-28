@@ -3,8 +3,8 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('BitsEnum', 'src/fixed_struct.bin', function(r, BitsEnum) {
-  assert.strictEqual(r.one, BitsEnum.Animal.PLATYPUS);
-  assert.strictEqual(r.two, BitsEnum.Animal.HORSE);
-  assert.strictEqual(r.three, BitsEnum.Animal.CAT);
+testHelper('BitsEnum', 'src/fixed_struct.bin', function(r, BitsEnum_) {
+  assert.strictEqual(r.one, BitsEnum_.BitsEnum.Animal.PLATYPUS);
+  assert.strictEqual(r.two, BitsEnum_.BitsEnum.Animal.HORSE);
+  assert.strictEqual(r.three, BitsEnum_.BitsEnum.Animal.CAT);
 });

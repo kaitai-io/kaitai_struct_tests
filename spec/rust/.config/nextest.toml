@@ -1,0 +1,11 @@
+# See https://nexte.st/docs/configuration/#profiles
+[profile.default]
+# Print stdout and stderr of failed tests only at the end of the run.
+failure-output = "final"
+# Do not cancel the test run on the first failure.
+fail-fast = false
+
+# See https://nexte.st/docs/machine-readable/junit/
+[profile.default.junit]
+# a JUnit report will be written out to spec/rust/target/nextest/default/junit.xml
+path = "junit.xml"

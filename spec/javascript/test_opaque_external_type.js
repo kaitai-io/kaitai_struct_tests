@@ -3,7 +3,6 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('OpaqueExternalType', 'src/term_strz.bin', function(r, OpaqueExternalType) {
-
+testHelper('OpaqueExternalType', 'src/term_strz.bin', function(r, OpaqueExternalType_) {
   assert.strictEqual(r.hw.one, 102);
 });

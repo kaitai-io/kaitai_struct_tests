@@ -3,6 +3,5 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ValidLong', 'src/fixed_struct.bin', function(r, ValidLong) {
-
+testHelper('ValidLong', 'src/fixed_struct.bin', function(r, ValidLong_) {
 });

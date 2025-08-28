@@ -6,7 +6,7 @@ import _root_.io.kaitai.struct.datatype.{EndOfStreamError, KSError, UndecidedEnd
 import _root_.io.kaitai.struct.datatype.DataType._
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.LuaCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec, ExpectedException}
 import _root_.io.kaitai.struct.translators.LuaTranslator
 
 class LuaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
@@ -33,7 +33,8 @@ class LuaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     out.puts(s"""local r = $className:from_file("src/${spec.data}")""")
   }
 
-  override def runParseExpectError(exception: KSError): Unit = {
+  override def runParseExpectError(expException: ExpectedException): Unit = {
+    val exception = expException.exception
     val msg = exception match {
       case _: ValidationNotEqualError => "not equal, expected .*, but got .*"
       case UndecidedEndiannessError => "unable to decide endianness"
@@ -56,7 +57,7 @@ class LuaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
 
   override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
-    val expStr = translator.translate(check.expected)
+    val expStr = translateExp(check.expected)
     out.puts(s"luaunit.assertAlmostEquals($actStr, $expStr, 0.000001)")
   }
 

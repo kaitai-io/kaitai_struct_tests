@@ -1,4 +1,4 @@
-# switch_cases_array.ksy: /seq/0/cases:
+# switch_cases_array.ksy: /seq/0/type/cases:
 # 	error: expected string, got [1, 2, 3] (class java.util.ArrayList)
 #
 meta:

@@ -1,6 +1,6 @@
 #!/bin/sh -ef
 
-. ./config
+. "$(dirname "$0")/config"
 
 if [ "$#" -ne 3 ]; then
 	echo "$0 <src_dir> <spec_dir> <test_out_dir>"
@@ -17,17 +17,11 @@ CPP_TEST_OUT_DIR="$3"
 echo 'Running Valgrind checks...'
 if valgrind --version; then
 	./valgrind-cpp_stl "$SRC_DIR" "$CPP_TEST_OUT_DIR" || :
-
-	# For some obscure reason, valgrind generates this file as 0600 (owner-readable only).
-	# This disrupts invocation from Docker pipeline, as after return back from the Docker container
-	# this will become root-owned and root-only-readable file. We fix it here.
-	chmod 644 "$CPP_TEST_OUT_DIR/valgrind.xml"
 else
 	echo 'Valgrind not found :-('
-
-	# Generate empty valgrind output - this is normal and it should not stop `ci.json` generation
-	echo '<?xml version="1.0"?><valgrindoutput></valgrindoutput>' >"$CPP_TEST_OUT_DIR/valgrind.xml"
+	# In this case, no `valgrind-*.xml` files are produced - this is normal and
+	# does not prevent the generation of `ci.json`.
 fi
 
-./kst-adoption-report $(basename "$SRC_DIR")
+./kst-adoption-report "$(basename "$SRC_DIR")"
 aggregate/convert_to_json cpp_stl "$CPP_TEST_OUT_DIR" "$CPP_TEST_OUT_DIR/ci.json"

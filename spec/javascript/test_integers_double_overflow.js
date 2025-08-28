@@ -3,8 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('IntegersDoubleOverflow', 'src/integers_double_overflow.bin', function(r, IntegersDoubleOverflow) {
-
+testHelper('IntegersDoubleOverflow', 'src/integers_double_overflow.bin', function(r, IntegersDoubleOverflow_) {
   assert.strictEqual(r.signedSafeMinBe, -9007199254740991);
   assert.strictEqual(r.signedSafeMinLe, -9007199254740991);
   assert.strictEqual(r.signedSafeMaxBe, 9007199254740991);

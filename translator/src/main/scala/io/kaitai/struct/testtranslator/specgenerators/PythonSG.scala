@@ -1,25 +1,30 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
-import _root_.io.kaitai.struct.ClassTypeProvider
-import _root_.io.kaitai.struct.datatype.{DataType, KSError, EndOfStreamError}
+import io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
+import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.PythonCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec, ExpectedException}
 import _root_.io.kaitai.struct.translators.PythonTranslator
 
 class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   importList.add("import unittest")
 
-  val translator = new PythonTranslator(provider, importList)
+  val config = RuntimeConfig(pythonPackage = "testformats")
+  val translator = new PythonTranslator(provider, importList, config)
   val className = PythonCompiler.type2class(spec.id)
+
+  importList.add(s"from testformats.${spec.id} import $className")
+  // NOTE: some other languages use `spec.extraImports` here, but since we pass
+  // `importList` to PythonTranslator above, which will insert necessary imports
+  // when translating external enum literals itself, we don't need to use it
+  // here. It would only generate redundant imports.
 
   override def fileName(name: String): String = s"spec/test_$name.py"
 
   override def indentStr: String = "    "
 
   override def header(): Unit = {
-    out.puts
-    out.puts(s"from testformats.${spec.id} import $className")
     out.puts
     out.puts(s"class Test$className(unittest.TestCase):")
     out.inc
@@ -32,21 +37,26 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
     out.inc
   }
 
-  override def runParseExpectError(exception: KSError): Unit = {
+  override def runParseExpectError(expException: ExpectedException): Unit = {
+    val exception = expException.exception
     importList.add("import kaitaistruct")
-    val msgRegex = exception match {
-      case EndOfStreamError => Some("^requested \\d+ bytes, but only \\d+ bytes available$")
-      case _ => None
-    }
-    msgRegex match {
-      case Some(msg) =>
-        out.puts(s"with self.assertRaisesRegexp(${PythonCompiler.ksErrorName(exception)}, ${translator.translate(Ast.expr.Str(msg))}):")
+    expException.message match {
+      case Some(_) =>
+        out.puts(s"with self.assertRaises(${PythonCompiler.ksErrorName(exception)}) as cm:")
       case None =>
         out.puts(s"with self.assertRaises(${PythonCompiler.ksErrorName(exception)}):")
     }
     out.inc
     runParse()
     out.puts("pass")
+    out.dec
+    out.dec
+    expException.message match {
+      case Some(msg) =>
+        val expStr = translator.translate(Ast.expr.Str(msg))
+        out.puts(s"self.assertEqual(str(cm.exception), $expStr)")
+      case None =>
+    }
   }
 
   override def footer(): Unit = {}
@@ -59,7 +69,7 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
 
   override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
-    val expStr = translator.translate(check.expected)
+    val expStr = translateExp(check.expected)
     out.puts(s"self.assertAlmostEqual($actStr, $expStr, 6)")
   }
 

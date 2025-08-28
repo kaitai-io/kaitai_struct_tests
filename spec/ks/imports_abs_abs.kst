@@ -1,0 +1,9 @@
+id: imports_abs_abs
+data: fixed_struct.bin
+asserts:
+  - actual: one
+    expected: 80
+  - actual: two.one
+    expected: 65
+  - actual: two.two.one
+    expected: 67

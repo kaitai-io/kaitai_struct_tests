@@ -1,0 +1,9 @@
+id: term_strz_utf16_v4
+data: term_strz_utf16.bin
+asserts:
+  - actual: s1.value
+    expected: '"aȀb"'
+  - actual: s2.value
+    expected: '"cȀd"'
+  - actual: s3.value
+    expected: '"eȀf"'

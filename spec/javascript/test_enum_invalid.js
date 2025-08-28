@@ -3,8 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('EnumInvalid', 'src/term_strz.bin', function(r, EnumInvalid) {
-
-  assert.strictEqual(r.pet1, EnumInvalid.Animal.DOG);
+testHelper('EnumInvalid', 'src/term_strz.bin', function(r, EnumInvalid_) {
+  assert.strictEqual(r.pet1, EnumInvalid_.EnumInvalid.Animal.DOG);
   assert.strictEqual(r.pet2, 111);
 });

@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ParamsEnum', 'src/enum_0.bin', function(r, ParamsEnum) {
-  assert.strictEqual(r.one, ParamsEnum.Animal.CAT);
+testHelper('ParamsEnum', 'src/enum_0.bin', function(r, ParamsEnum_) {
+  assert.strictEqual(r.one, ParamsEnum_.ParamsEnum.Animal.CAT);
   assert.strictEqual(r.invokeWithParam.isCat, true);
 });

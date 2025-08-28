@@ -1,0 +1,214 @@
+#!/bin/bash -fu
+
+# Must be /bin/bash, because we use `export -f` with `parallel`
+
+DOCKER_ARGS="--network none --rm"
+DOCKER_REPO=ghcr.io/kaitai-io/
+
+ALL_TARGETS="
+	cpp
+	go
+	java
+	javascript
+	lua
+	nim
+	perl
+	php
+	python
+	ruby
+"
+
+print_usage()
+{
+	cat <<EOF
+Usage: $0 [OPTIONS] EXPRESSION"
+
+Interpretes EXPRESSION in various programming languages using Docker images
+and prints the result.
+
+Options:
+  --target, -t    Comma-separated list of targets to run (default: all)
+  --parallel, -p  Run all targets in parallel
+  --help, -h      Show this help message
+
+Available targets: $ALL_TARGETS
+EOF
+}
+
+expr_cpp()
+{
+	cat > "$WORKDIR/expr_run.cpp" <<EOF
+#include <iostream>
+int main() {
+	std::cout << ($EXPRESSION) << std::endl;
+	return 0;
+}
+EOF
+
+	IMG_COORD=kaitai-cpp_stl-gcc11-linux-x86_64
+	echo -n "* C++ (gcc11): "
+	docker run $DOCKER_ARGS \
+		-v "$WORKDIR:/work" \
+		--workdir /work \
+		"$DOCKER_REPO$IMG_COORD" \
+		sh -c "g++ -Wall -o expr_run_gcc11 expr_run.cpp && ./expr_run_gcc11"
+
+	IMG_COORD=kaitai-cpp_stl-clang11-linux-x86_64
+	echo -n "* C++ (clang11): "
+	docker run $DOCKER_ARGS \
+		-v "$WORKDIR:/work" \
+		--workdir /work \
+		"$DOCKER_REPO$IMG_COORD" \
+		sh -c "clang++ -Wall -o expr_run_clang14 expr_run.cpp && ./expr_run_clang14"
+}
+
+expr_go()
+{
+	cat > "$WORKDIR/expr_run.go" <<EOF
+package main
+import "fmt"
+func main() {
+	fmt.Println($EXPRESSION)
+}
+EOF
+
+	IMG_COORD=kaitai-go-1.21-linux-x86_64
+	echo -n "* Go: "
+	docker run $DOCKER_ARGS \
+		-v "$WORKDIR:/work" \
+		--workdir /work \
+		"$DOCKER_REPO$IMG_COORD" \
+		sh -c "go run expr_run.go"
+}
+
+expr_java()
+{
+	cat > "$WORKDIR/ExprRun.java" <<EOF
+public class ExprRun {
+	public static void main(String[] args) {
+		System.out.println($EXPRESSION);
+	}
+}
+EOF
+
+	IMG_COORD=kaitai-java-temurin8-linux-x86_64
+	echo -n "* Java: "
+	docker run $DOCKER_ARGS \
+		-v "$WORKDIR:/work" \
+		--workdir /work \
+		"$DOCKER_REPO$IMG_COORD" \
+		sh -c "javac ExprRun.java && java ExprRun"
+}
+
+expr_javascript()
+{
+	IMG_COORD=kaitai-javascript-nodejs20-linux-x86_64
+	echo -n "* JavaScript: "
+	docker run $DOCKER_ARGS "$DOCKER_REPO$IMG_COORD" \
+		nodejs -e "console.log($EXPRESSION)"
+}
+
+expr_lua()
+{
+	IMG_COORD=kaitai-lua-5.3-linux-x86_64
+	echo -n "* Lua: "
+	docker run $DOCKER_ARGS "$DOCKER_REPO$IMG_COORD" \
+		lua -e "print(string.format('%q', $EXPRESSION))"
+}
+
+expr_nim()
+{
+	cat > "$WORKDIR/expr_run.nim" <<EOF
+echo $EXPRESSION
+EOF
+
+	IMG_COORD=kaitai-nim-1.6.0-linux-x86_64
+	echo -n "* Nim: "
+	docker run $DOCKER_ARGS \
+		-v "$WORKDIR:/work" \
+		--workdir /work \
+		"$DOCKER_REPO$IMG_COORD" \
+		sh -c 'nim c -r --hints:off expr_run.nim'
+}
+
+expr_perl()
+{
+	IMG_COORD=kaitai-perl-5.38-linux-x86_64
+	echo -n "* Perl: "
+	docker run $DOCKER_ARGS "$DOCKER_REPO$IMG_COORD" \
+		perl -MData::Dumper -e "print(Dumper($EXPRESSION));"
+}
+
+expr_php()
+{
+	IMG_COORD=kaitai-php-8.3-linux-x86_64
+	echo -n "* PHP: "
+	docker run $DOCKER_ARGS "$DOCKER_REPO$IMG_COORD" \
+		php -r "var_dump($EXPRESSION);"
+}
+
+expr_python()
+{
+	IMG_COORD=kaitai-python-3.11-linux-x86_64
+	echo -n "* Python: "
+	docker run $DOCKER_ARGS "$DOCKER_REPO$IMG_COORD" \
+		python -c "print(repr($EXPRESSION))"
+}
+
+expr_ruby()
+{
+	IMG_COORD=kaitai-ruby-3.3-linux-x86_64
+	echo -n "* Ruby: "
+	docker run $DOCKER_ARGS "$DOCKER_REPO$IMG_COORD" \
+		ruby -e "p($EXPRESSION)"
+}
+
+# Parse command line
+TARGETS="$ALL_TARGETS"
+PARALLEL_FLAG=0
+while [ $# -gt 1 ]; do
+	key="$1"
+
+	case "$key" in
+	--parallel|-p)
+		PARALLEL_FLAG=1
+		shift
+		;;
+	--help|-h)
+		print_usage
+		exit 0
+		;;
+	--target|-t)
+		TARGETS=$(echo "$2" | tr ',' ' ')
+		shift 2
+		;;
+	*)
+		echo "Unknown option: $1"
+		print_usage
+		exit 1
+		;;
+	esac
+done
+
+if [ $# -ne 1 ]; then
+	echo "Error: missing EXPRESSION"
+	print_usage
+	exit 1
+fi
+
+EXPRESSION="$1"
+
+# Create temporary directory
+WORKDIR=$(mktemp -d)
+
+if [ "$PARALLEL_FLAG" = 1 ]; then
+	for TARGET in $TARGETS; do
+		export -f "expr_$TARGET"
+	done
+	export EXPRESSION WORKDIR DOCKER_ARGS DOCKER_REPO
+	parallel expr_{} ::: $ALL_TARGETS
+else
+	for TARGET in $TARGETS; do
+		"expr_$TARGET"
+	done
+fi

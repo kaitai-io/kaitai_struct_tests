@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-. ./config
+. "$(dirname "$0")/config"
 
 ./run-cpp_stl \
 	"$(pwd)/compiled/cpp_stl_98" \

@@ -3,8 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ImportsCircularA', 'src/fixed_struct.bin', function(r, ImportsCircularA) {
-
+testHelper('ImportsCircularA', 'src/fixed_struct.bin', function(r, ImportsCircularA_) {
   assert.strictEqual(r.code, 80);
   assert.strictEqual(r.two.initial, 65);
   assert.strictEqual(r.two.backRef.code, 67);

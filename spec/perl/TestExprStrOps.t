@@ -8,7 +8,7 @@ use base qw(Test::Class);
 use Test::More;
 use ExprStrOps;
 
-sub test_expr_str_ops: Test(17) {
+sub test_expr_str_ops: Test(18) {
     my $r = ExprStrOps->from_file('src/term_strz.bin');
 
     is($r->one(), "foo|b", 'Equals');
@@ -17,6 +17,7 @@ sub test_expr_str_ops: Test(17) {
     is($r->one_substr_0_to_3(), "foo", 'Equals');
     is($r->one_substr_2_to_5(), "o|b", 'Equals');
     is($r->one_substr_3_to_3(), "", 'Equals');
+    is($r->one_substr_0_to_0(), "", 'Equals');
     is($r->two(), "0123456789", 'Equals');
     is($r->two_len(), 10, 'Equals');
     is($r->two_rev(), "9876543210", 'Equals');

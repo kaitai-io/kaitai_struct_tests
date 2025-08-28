@@ -1,0 +1,11 @@
+#!/bin/sh
+
+. "$(dirname "$0")/config"
+
+rm -rf "$TEST_OUT_DIR/julia"
+mkdir -p "$TEST_OUT_DIR/julia"
+
+JULIA_LOAD_PATH="$JULIA_LOAD_PATH:$JULIA_RUNTIME_DIR:compiled/julia:spec/julia/extra" julia -e 'using Pkg; Pkg.activate("/env"); include("spec/julia/runtests.jl")' "$TEST_OUT_DIR/julia/report.xml"
+
+./kst-adoption-report julia
+aggregate/convert_to_json julia "$TEST_OUT_DIR/julia" "$TEST_OUT_DIR/julia/ci.json"

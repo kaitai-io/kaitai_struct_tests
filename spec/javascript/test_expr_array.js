@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ExprArray', 'src/expr_array.bin', function(r, ExprArray) {
+testHelper('ExprArray', 'src/expr_array.bin', function(r, ExprArray_) {
   assert.strictEqual(r.aintSize, 4);
   assert.strictEqual(r.aintFirst, 7657765);
   assert.strictEqual(r.aintLast, 16272640);

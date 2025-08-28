@@ -1,3 +1,4 @@
+# https://github.com/kaitai-io/kaitai_struct/issues/200
 meta:
   id: nav_parent_switch_cast
 seq:
@@ -20,12 +21,12 @@ types:
     types:
       zero:
         seq:
-        - id: branch
-          type: common
+          - id: branch
+            type: common
       one:
         seq:
-        - id: branch
-          type: common
+          - id: branch
+            type: common
       common:
         instances:
           flag:

@@ -16,6 +16,8 @@ instances:
     value: one.substring(2, 5)
   one_substr_3_to_3:
     value: one.substring(3, 3)
+  one_substr_0_to_0:
+    value: one.substring(0, 0)
 
   two:
     value: '"0123456789"'

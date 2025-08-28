@@ -1,5 +1,4 @@
 import unittest
-
 from testformats.debug_array_user import DebugArrayUser
 
 class TestDebugArrayUser(unittest.TestCase):
@@ -8,7 +7,8 @@ class TestDebugArrayUser(unittest.TestCase):
             # --debug implies --no-auto-read
             r._read()
 
-            self.assertEqual(r.one_cat.meow, 0x50)
-            self.assertEqual(r.array_of_cats[0].meow, 0x41)
-            self.assertEqual(r.array_of_cats[1].meow, 0x43)
-            self.assertEqual(r.array_of_cats[2].meow, 0x4b)
+            self.assertEqual(r.one_cat.meow, 80)
+            self.assertEqual(len(r.array_of_cats), 3)
+            self.assertEqual(r.array_of_cats[0].meow, 65)
+            self.assertEqual(r.array_of_cats[1].meow, 67)
+            self.assertEqual(r.array_of_cats[2].meow, 75)

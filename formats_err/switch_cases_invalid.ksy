@@ -1,4 +1,4 @@
-# switch_cases_invalid.ksy: /seq/0/cases:
+# switch_cases_invalid.ksy: /seq/0/type/cases:
 # 	error: expected map, got foo (class java.lang.String)
 #
 meta:

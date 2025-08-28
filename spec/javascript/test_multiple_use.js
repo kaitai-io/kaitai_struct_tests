@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('MultipleUse', 'src/position_abs.bin', function(r, MultipleUse) {
+testHelper('MultipleUse', 'src/position_abs.bin', function(r, MultipleUse_) {
   assert.strictEqual(r.t1.firstUse.value, 32);
   assert.strictEqual(r.t2.secondUse.value, 32);
 });

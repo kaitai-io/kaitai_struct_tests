@@ -8,6 +8,7 @@ import (
 	"testing"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	. "test_formats"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestValidFailAnyofInt(t *testing.T) {
@@ -24,10 +25,7 @@ func TestValidFailAnyofInt(t *testing.T) {
 	s := kaitai.NewStream(f)
 	var r ValidFailAnyofInt
 	err = r.Read(s, &r, &r)
-	switch v := err.(type) {
-	case kaitai.ValidationNotAnyOfError:
-		break
-	default:
-		t.Fatalf("expected kaitai.ValidationNotAnyOfError, got %T", v)
-	}
+	assert.Error(t, err)
+	var wantErr kaitai.ValidationNotAnyOfError
+	assert.ErrorAs(t, err, &wantErr)
 }

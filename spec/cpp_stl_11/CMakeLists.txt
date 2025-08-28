@@ -1,8 +1,6 @@
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.11)
 
 project(KS_TEST_CPP_STL)
-
-set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 find_package(ZLIB REQUIRED)
@@ -53,6 +51,23 @@ target_link_libraries(ks_tests
 )
 
 target_compile_definitions(ks_tests PRIVATE -DKS_ZLIB -DKS_STR_ENCODING_ICONV)
+
+# Maximum warnings emission
+#
+# See https://github.com/kaitai-io/kaitai_struct_cpp_stl_runtime/blob/dbe1ca1c946794324d0d409fe53d56a397fe8874/Common.cmake#L11-L26
+target_compile_options(ks_tests PRIVATE
+	$<$<CXX_COMPILER_ID:MSVC>:/W4>
+	$<$<NOT:$<CXX_COMPILER_ID:MSVC>>:
+		-Wall -Wextra -Wpedantic
+		# See <https://gcc.gnu.org/onlinedocs/gcc-13.3.0/gcc/Warning-Options.html#index-Wstrict-aliasing_003dn>:
+		#
+		# > Level 1: (...) it has very few false negatives. However, it has many false positives.
+		#
+		# If we run into false positives in the future, we can increase the level, but let's
+		# start with the most aggressive option to make sure we don't miss anything.
+		-fstrict-aliasing -Wstrict-aliasing=1
+	>
+)
 
 add_test(ks_tests ks_tests)
 

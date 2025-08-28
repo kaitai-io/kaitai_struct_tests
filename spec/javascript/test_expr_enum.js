@@ -3,8 +3,8 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ExprEnum', 'src/term_strz.bin', function(r, ExprEnum) {
-  assert.strictEqual(r.constDog, ExprEnum.Animal.DOG);
-  assert.strictEqual(r.derivedBoom, ExprEnum.Animal.BOOM);
-  assert.strictEqual(r.derivedDog, ExprEnum.Animal.DOG);
+testHelper('ExprEnum', 'src/term_strz.bin', function(r, ExprEnum_) {
+  assert.strictEqual(r.constDog, ExprEnum_.ExprEnum.Animal.DOG);
+  assert.strictEqual(r.derivedBoom, ExprEnum_.ExprEnum.Animal.BOOM);
+  assert.strictEqual(r.derivedDog, ExprEnum_.ExprEnum.Animal.DOG);
 });

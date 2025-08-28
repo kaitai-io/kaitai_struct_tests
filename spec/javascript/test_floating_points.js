@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('FloatingPoints', 'src/floating_points.bin', function(r, FloatingPoints) {
+testHelper('FloatingPoints', 'src/floating_points.bin', function(r, FloatingPoints_) {
   assert(Math.abs(r.singleValue - 0.5) < 1e-6);
   assert(Math.abs(r.singleValueBe - 0.5) < 1e-6);
   assert(Math.abs(r.doubleValue - 0.25) < 1e-6);

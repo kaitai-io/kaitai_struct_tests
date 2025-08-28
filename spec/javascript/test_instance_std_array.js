@@ -2,14 +2,13 @@
 
 var assert = require('assert');
 var testHelper = require('testHelper');
-var hexString = require('hexString');
 
-testHelper('InstanceStdArray', 'src/instance_std_array.bin', function(r, InstanceStdArray) {
+testHelper('InstanceStdArray', 'src/instance_std_array.bin', function(r, InstanceStdArray_) {
   assert.strictEqual(r.ofs, 16);
   assert.strictEqual(r.qtyEntries, 3);
   assert.strictEqual(r.entrySize, 4);
   assert.strictEqual(r.entries.length, 3);
-  assert.strictEqual(hexString(r.entries[0]), hexString([17, 17, 17, 17]));
-  assert.strictEqual(hexString(r.entries[1]), hexString([34, 34, 34, 34]));
-  assert.strictEqual(hexString(r.entries[2]), hexString([51, 51, 51, 51]));
+  assert.deepStrictEqual(r.entries[0], new Uint8Array([17, 17, 17, 17]));
+  assert.deepStrictEqual(r.entries[1], new Uint8Array([34, 34, 34, 34]));
+  assert.deepStrictEqual(r.entries[2], new Uint8Array([51, 51, 51, 51]));
 });

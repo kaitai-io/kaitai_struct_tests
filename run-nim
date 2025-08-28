@@ -2,6 +2,6 @@
 
 # Only runs one test (the argument) and prints result on console
 
-. ./config
+. "$(dirname "$0")/config"
 
 nim c -r -w:off --hints:off --outdir:"spec/nim/bin" "spec/nim/t$1"

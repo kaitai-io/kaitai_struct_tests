@@ -1,8 +1,9 @@
-cmake_minimum_required(VERSION 2.6)
+# We require CMake 3.15 because we want to use `$<CXX_COMPILER_ID:compiler_ids>`
+# with multiple `compiler_ids`:
+# https://cmake.org/cmake/help/v3.31/manual/cmake-generator-expressions.7.html#genex:CXX_COMPILER_ID
+cmake_minimum_required(VERSION 3.15)
 
 project(KS_TEST_CPP_STL)
-
-set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 find_package(ZLIB REQUIRED)
@@ -53,6 +54,52 @@ target_link_libraries(ks_tests
 )
 
 target_compile_definitions(ks_tests PRIVATE -DKS_ZLIB -DKS_STR_ENCODING_ICONV)
+
+# Maximum warnings emission
+#
+# See https://github.com/kaitai-io/kaitai_struct_cpp_stl_runtime/blob/dbe1ca1c946794324d0d409fe53d56a397fe8874/Common.cmake#L11-L26
+target_compile_options(ks_tests PRIVATE
+	$<$<CXX_COMPILER_ID:MSVC>:/W4>
+	$<$<NOT:$<CXX_COMPILER_ID:MSVC>>:
+		-Wall -Wextra -Wpedantic
+
+		# See https://github.com/kaitai-io/kaitai_struct_cpp_stl_runtime/blob/839e7a0752950751ad129ce96d337be4045eafee/Common.cmake#L19-L23
+		-Wno-long-long
+
+		# Clang's `-Wpedantic` under `-std=c++98` enables a Clang-specific flag
+		# [`-Wc99-extensions`](https://releases.llvm.org/18.1.4/tools/clang/docs/DiagnosticsReference.html#wc99-extensions).
+		# This includes `warning: empty macro arguments are a C99 feature`,
+		# which was reported in every single `spec/cpp_stl_98/test_*.cpp` file
+		# (except those that fail to compile with `fatal error:
+		# '{format_name}.h' file not found`), always followed by one of the
+		# following notes:
+		#
+		# 1. `/usr/local/include/boost/test/unit_test_suite.hpp:211:5: note: expanded from macro 'BOOST_AUTO_TEST_CASE'` (258 times)
+		# 2. `/usr/local/include/boost/test/tools/old/interface.hpp:154:45: note: expanded from macro 'BOOST_CHECK_EQUAL'` (3165 times)
+		# 3. `/usr/local/include/boost/test/tools/old/interface.hpp:208:45: note: expanded from macro 'BOOST_CHECK_CLOSE'` (64 times)
+		# 4. `/tests/spec/cpp_stl_98/helpers.h:14:9: note: expanded from macro 'COMPARE_ARRAY'` (75 times)
+		#
+		#    Followed by:
+		#
+		#    `/usr/local/include/boost/test/tools/old/interface.hpp:247:5: note: expanded from macro 'BOOST_CHECK_EQUAL_COLLECTIONS'`
+		#
+		# The above locations correspond to Boost 1.81 that we build from source
+		# in the `cpp_stl/clang3.4-linux-x86_64` Docker image like this:
+		# https://github.com/kaitai-io/kaitai_struct_docker_images/blob/4dfdee62a8909555264c0aefabcc87ad1a4eed0b/src/cpp_stl/clang3.4-linux-x86_64/Dockerfile#L53-L60
+		#
+		# Since warnings of this particular type clutter the output a lot and
+		# do not come from our own code, we turn them off.
+		$<$<CXX_COMPILER_ID:AppleClang,Clang>:-Wno-c99-extensions>
+
+		# See <https://gcc.gnu.org/onlinedocs/gcc-13.3.0/gcc/Warning-Options.html#index-Wstrict-aliasing_003dn>:
+		#
+		# > Level 1: (...) it has very few false negatives. However, it has many false positives.
+		#
+		# If we run into false positives in the future, we can increase the level, but let's
+		# start with the most aggressive option to make sure we don't miss anything.
+		-fstrict-aliasing -Wstrict-aliasing=1
+	>
+)
 
 add_test(ks_tests ks_tests)
 

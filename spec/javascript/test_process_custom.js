@@ -2,10 +2,9 @@
 
 var assert = require('assert');
 var testHelper = require('testHelper');
-var hexString = require('hexString');
 
-testHelper('ProcessCustom', 'src/process_rotate.bin', function(r, ProcessCustom) {
-  assert.strictEqual(hexString(r.buf1), hexString([16, 179, 148, 148, 244]));
-  assert.strictEqual(hexString(r.buf2), hexString([95, 186, 123, 147, 99, 35, 95]));
-  assert.strictEqual(hexString(r.buf3), hexString([41, 51, 177, 56, 177]));
+testHelper('ProcessCustom', 'src/process_rotate.bin', function(r, ProcessCustom_) {
+  assert.deepStrictEqual(r.buf1, new Uint8Array([16, 179, 148, 148, 244]));
+  assert.deepStrictEqual(r.buf2, new Uint8Array([95, 186, 123, 147, 99, 35, 95]));
+  assert.deepStrictEqual(r.buf3, new Uint8Array([41, 51, 177, 56, 177]));
 });

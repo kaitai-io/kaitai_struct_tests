@@ -4,8 +4,8 @@
 namespace Kaitai\Struct\Tests;
 
 class ValidFailRangeFloatTest extends TestCase {
-    /** @expectedException \Kaitai\Struct\Error\ValidationGreaterThanError */
     public function testValidFailRangeFloat() {
+        $this->expectException(\Kaitai\Struct\Error\ValidationGreaterThanError::class);
         $r = ValidFailRangeFloat::fromFile(self::SRC_DIR_PATH . '/floating_points.bin');
     }
 }

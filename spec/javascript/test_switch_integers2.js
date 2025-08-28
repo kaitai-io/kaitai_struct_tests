@@ -2,12 +2,11 @@
 
 var assert = require('assert');
 var testHelper = require('testHelper');
-var hexString = require('hexString');
 
-testHelper('SwitchIntegers2', 'src/switch_integers.bin', function(r, SwitchIntegers2) {
+testHelper('SwitchIntegers2', 'src/switch_integers.bin', function(r, SwitchIntegers2_) {
   assert.strictEqual(r.code, 1);
   assert.strictEqual(r.len, 7);
-  assert.strictEqual(hexString(r.ham), hexString([2, 64, 64, 4, 55, 19, 0]));
+  assert.deepStrictEqual(r.ham, new Uint8Array([2, 64, 64, 4, 55, 19, 0]));
   assert.strictEqual(r.padding, 0);
   assert.strictEqual(r.lenModStr, "13");
 });

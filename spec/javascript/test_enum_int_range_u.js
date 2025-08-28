@@ -3,8 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('EnumIntRangeU', 'src/enum_int_range_u.bin', function(r, EnumIntRangeU) {
-
-  assert.strictEqual(r.f1, EnumIntRangeU.Constants.ZERO);
-  assert.strictEqual(r.f2, EnumIntRangeU.Constants.INT_MAX);
+testHelper('EnumIntRangeU', 'src/enum_int_range_u.bin', function(r, EnumIntRangeU_) {
+  assert.strictEqual(r.f1, EnumIntRangeU_.EnumIntRangeU.Constants.ZERO);
+  assert.strictEqual(r.f2, EnumIntRangeU_.EnumIntRangeU.Constants.INT_MAX);
 });

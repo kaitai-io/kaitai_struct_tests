@@ -1,3 +1,5 @@
 id: eof_exception_bytes
 data: term_strz.bin
-exception: EndOfStreamError
+exception:
+  type: EndOfStreamError
+  message: requested 13 bytes, but only 12 bytes available

@@ -3,7 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('RecursiveOne', 'src/fixed_struct.bin', function(r, RecursiveOne) {
+testHelper('RecursiveOne', 'src/fixed_struct.bin', function(r, RecursiveOne_) {
   assert.strictEqual(r.one, 80);
   assert.strictEqual(r.next.one, 65);
   assert.strictEqual(r.next.next.one, 67);

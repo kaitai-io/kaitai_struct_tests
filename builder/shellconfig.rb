@@ -1,6 +1,12 @@
 class ShellConfig
-  def initialize(filename = 'config')
+  def initialize(filename = nil)
     @entries = {}
+
+    if filename.nil?
+      script_dir = File.dirname(File.dirname(__FILE__))
+      filename = File.join(script_dir, 'config')
+    end
+
     File.open(filename, 'r') { |f|
       f.each_line { |l|
         l.chomp!

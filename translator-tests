@@ -1,7 +1,0 @@
-#!/bin/sh
-
-. ./config
-TEST_DIR=$(pwd)
-
-cd "$COMPILER_DIR"
-"$TEST_DIR/travis-fold" 'translator-tests' sbt test

@@ -2,20 +2,19 @@
 
 var assert = require('assert');
 var testHelper = require('testHelper');
-var hexString = require('hexString');
 
-testHelper('DefaultEndianExprInherited', 'src/endian_expr.bin', function(r, DefaultEndianExprInherited) {
-  assert.strictEqual(hexString(r.docs[0].indicator), hexString([73, 73]));
+testHelper('DefaultEndianExprInherited', 'src/endian_expr.bin', function(r, DefaultEndianExprInherited_) {
+  assert.deepStrictEqual(r.docs[0].indicator, new Uint8Array([73, 73]));
   assert.strictEqual(r.docs[0].main.insides.someInt, 66);
   assert.strictEqual(r.docs[0].main.insides.more.someInt1, 16896);
   assert.strictEqual(r.docs[0].main.insides.more.someInt2, 66);
   assert.strictEqual(r.docs[0].main.insides.more.someInst, 66);
-  assert.strictEqual(hexString(r.docs[1].indicator), hexString([77, 77]));
+  assert.deepStrictEqual(r.docs[1].indicator, new Uint8Array([77, 77]));
   assert.strictEqual(r.docs[1].main.insides.someInt, 66);
   assert.strictEqual(r.docs[1].main.insides.more.someInt1, 66);
   assert.strictEqual(r.docs[1].main.insides.more.someInt2, 16896);
   assert.strictEqual(r.docs[1].main.insides.more.someInst, 1107296256);
-  assert.strictEqual(hexString(r.docs[2].indicator), hexString([88, 88]));
+  assert.deepStrictEqual(r.docs[2].indicator, new Uint8Array([88, 88]));
   assert.strictEqual(r.docs[2].main.insides.someInt, 66);
   assert.strictEqual(r.docs[2].main.insides.more.someInt1, 66);
   assert.strictEqual(r.docs[2].main.insides.more.someInt2, 16896);

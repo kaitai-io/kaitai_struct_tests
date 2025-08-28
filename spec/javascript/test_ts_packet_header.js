@@ -3,12 +3,12 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('TsPacketHeader', 'src/ts_packet.bin', function(r, TsPacketHeader) {
+testHelper('TsPacketHeader', 'src/ts_packet.bin', function(r, TsPacketHeader_) {
   assert.strictEqual(r.syncByte, 71);
   assert.strictEqual(r.transportErrorIndicator, false);
   assert.strictEqual(r.payloadUnitStartIndicator, false);
   assert.strictEqual(r.transportPriority, true);
   assert.strictEqual(r.pid, 33);
   assert.strictEqual(r.transportScramblingControl, 0);
-  assert.strictEqual(r.adaptationFieldControl, TsPacketHeader.AdaptationFieldControlEnum.PAYLOAD_ONLY);
+  assert.strictEqual(r.adaptationFieldControl, TsPacketHeader_.TsPacketHeader.AdaptationFieldControlEnum.PAYLOAD_ONLY);
 });

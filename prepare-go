@@ -1,0 +1,6 @@
+#!/bin/sh -ef
+
+. "$(dirname "$0")/config"
+
+mkdir -p "$FORMATS_COMPILED_DIR/go/src/test_formats"
+cp -u -t "$FORMATS_COMPILED_DIR/go/src/test_formats" helpers/go/go.mod helpers/go/go.sum

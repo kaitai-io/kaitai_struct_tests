@@ -1,8 +1,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('TypeTernary2ndFalsy', 'src/switch_integers.bin', function(r, TypeTernary2ndFalsy) {
-
+testHelper('TypeTernary2ndFalsy', 'src/switch_integers.bin', function(r, TypeTernary2ndFalsy_) {
   assert.strictEqual(r.vFalse, false);
   assert.strictEqual(r.vIntZero, 0);
   assert.strictEqual(r.vIntNegZero, 0);

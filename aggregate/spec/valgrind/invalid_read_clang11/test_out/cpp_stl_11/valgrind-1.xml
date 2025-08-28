@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+
+<valgrindoutput>
+
+<protocolversion>4</protocolversion>
+<protocoltool>memcheck</protocoltool>
+
+<preamble>
+  <line>Memcheck, a memory error detector</line>
+  <line>Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.</line>
+  <line>Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info</line>
+  <line>Command: /tests/compiled/cpp_stl_11/bin/ks_tests</line>
+</preamble>
+
+<pid>1563</pid>
+<ppid>1562</ppid>
+<tool>memcheck</tool>
+
+<args>
+  <vargv>
+    <exe>/usr/bin/valgrind.bin</exe>
+    <arg>--leak-check=full</arg>
+    <arg>--xml=yes</arg>
+    <arg>--xml-file=test_out/cpp_stl_11/valgrind-1.xml</arg>
+  </vargv>
+  <argv>
+    <exe>/tests/compiled/cpp_stl_11/bin/ks_tests</exe>
+  </argv>
+</args>
+
+<status>
+  <state>RUNNING</state>
+  <time>00:00:00:00.258 </time>
+</status>
+
+<error>
+  <unique>0x0</unique>
+  <tid>1</tid>
+  <kind>InvalidRead</kind>
+  <what>Invalid read of size 8</what>
+  <stack>
+    <frame>
+      <ip>0x7CE990</ip>
+      <obj>/tests/compiled/cpp_stl_11/bin/ks_tests</obj>
+      <fn>debug_array_user_t::cat_t::_read()</fn>
+      <dir>/tests/compiled/cpp_stl_11</dir>
+      <file>debug_array_user.cpp</file>
+      <line>37</line>
+    </frame>
+    <frame>
+      <ip>0x7CE908</ip>
+      <obj>/tests/compiled/cpp_stl_11/bin/ks_tests</obj>
+      <fn>debug_array_user_t::_read()</fn>
+      <dir>/tests/compiled/cpp_stl_11</dir>
+      <file>debug_array_user.cpp</file>
+      <line>20</line>
+    </frame>
+    <frame>
+      <ip>0x6C14EE</ip>
+      <obj>/tests/compiled/cpp_stl_11/bin/ks_tests</obj>
+      <fn>test_debug_array_user::test_method()</fn>
+      <dir>/tests</dir>
+      <file>spec/cpp_stl_11/test_debug_array_user.cpp</file>
+      <line>13</line>
+    </frame>
+    <frame>
+      <ip>0x6C1123</ip>
+      <obj>/tests/compiled/cpp_stl_11/bin/ks_tests</obj>
+      <fn>test_debug_array_user_invoker()</fn>
+      <dir>/tests</dir>
+      <file>spec/cpp_stl_11/test_debug_array_user.cpp</file>
+      <line>7</line>
+    </frame>
+    <frame>
+      <ip>0x69FB89</ip>
+      <obj>/tests/compiled/cpp_stl_11/bin/ks_tests</obj>
+      <fn>boost::detail::function::void_function_invoker0&lt;void (*)(), void&gt;::invoke(boost::detail::function::function_buffer&amp;)</fn>
+      <dir>/usr/include/boost/function</dir>
+      <file>function_template.hpp</file>
+      <line>117</line>
+    </frame>
+    <frame>
+      <ip>0x4885531</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so.1.74.0</obj>
+    </frame>
+    <frame>
+      <ip>0x488B5B0</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so.1.74.0</obj>
+      <fn>boost::execution_monitor::catch_signals(boost::function&lt;int ()&gt; const&amp;)</fn>
+    </frame>
+    <frame>
+      <ip>0x488BAA0</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so.1.74.0</obj>
+      <fn>boost::execution_monitor::execute(boost::function&lt;int ()&gt; const&amp;)</fn>
+    </frame>
+    <frame>
+      <ip>0x488BB5B</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so.1.74.0</obj>
+      <fn>boost::execution_monitor::vexecute(boost::function&lt;void ()&gt; const&amp;)</fn>
+    </frame>
+    <frame>
+      <ip>0x48AFB36</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so.1.74.0</obj>
+      <fn>boost::unit_test::unit_test_monitor_t::execute_and_translate(boost::function&lt;void ()&gt; const&amp;, unsigned long)</fn>
+    </frame>
+    <frame>
+      <ip>0x48CE966</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so.1.74.0</obj>
+    </frame>
+    <frame>
+      <ip>0x48CECEE</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so.1.74.0</obj>
+    </frame>
+  </stack>
+  <auxwhat>Address 0x8 is not stack'd, malloc'd or (recently) free'd</auxwhat>
+</error>
+
+
+<status>
+  <state>FINISHED</state>
+  <time>00:00:00:01.790 </time>
+</status>
+
+<error>
+  <unique>0x7</unique>
+  <tid>1</tid>
+  <kind>Leak_DefinitelyLost</kind>
+  <xwhat>
+    <text>8,192 bytes in 1 blocks are definitely lost in loss record 7 of 7</text>
+    <leakedbytes>8192</leakedbytes>
+    <leakedblocks>1</leakedblocks>
+  </xwhat>
+  <stack>
+    <frame>
+      <ip>0x484A2F3</ip>
+      <obj>/usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so</obj>
+      <fn>operator new[](unsigned long)</fn>
+    </frame>
+    <frame>
+      <ip>0x4C50023</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30</obj>
+      <fn>std::basic_filebuf&lt;char, std::char_traits&lt;char&gt; &gt;::_M_allocate_internal_buffer()</fn>
+    </frame>
+    <frame>
+      <ip>0x4C54015</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30</obj>
+      <fn>std::basic_filebuf&lt;char, std::char_traits&lt;char&gt; &gt;::open(char const*, std::_Ios_Openmode)</fn>
+    </frame>
+    <frame>
+      <ip>0x4C54E05</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30</obj>
+      <fn>std::basic_ifstream&lt;char, std::char_traits&lt;char&gt; &gt;::basic_ifstream(char const*, std::_Ios_Openmode)</fn>
+    </frame>
+    <frame>
+      <ip>0x6C146E</ip>
+      <obj>/tests/compiled/cpp_stl_11/bin/ks_tests</obj>
+      <fn>test_debug_array_user::test_method()</fn>
+      <dir>/tests</dir>
+      <file>spec/cpp_stl_11/test_debug_array_user.cpp</file>
+      <line>8</line>
+    </frame>
+    <frame>
+      <ip>0x6C1123</ip>
+      <obj>/tests/compiled/cpp_stl_11/bin/ks_tests</obj>
+      <fn>test_debug_array_user_invoker()</fn>
+      <dir>/tests</dir>
+      <file>spec/cpp_stl_11/test_debug_array_user.cpp</file>
+      <line>7</line>
+    </frame>
+    <frame>
+      <ip>0x69FB89</ip>
+      <obj>/tests/compiled/cpp_stl_11/bin/ks_tests</obj>
+      <fn>boost::detail::function::void_function_invoker0&lt;void (*)(), void&gt;::invoke(boost::detail::function::function_buffer&amp;)</fn>
+      <dir>/usr/include/boost/function</dir>
+      <file>function_template.hpp</file>
+      <line>117</line>
+    </frame>
+    <frame>
+      <ip>0x4885531</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so.1.74.0</obj>
+    </frame>
+    <frame>
+      <ip>0x488B5B0</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so.1.74.0</obj>
+      <fn>boost::execution_monitor::catch_signals(boost::function&lt;int ()&gt; const&amp;)</fn>
+    </frame>
+    <frame>
+      <ip>0x488BAA0</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so.1.74.0</obj>
+      <fn>boost::execution_monitor::execute(boost::function&lt;int ()&gt; const&amp;)</fn>
+    </frame>
+    <frame>
+      <ip>0x488BB5B</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so.1.74.0</obj>
+      <fn>boost::execution_monitor::vexecute(boost::function&lt;void ()&gt; const&amp;)</fn>
+    </frame>
+    <frame>
+      <ip>0x48AFB36</ip>
+      <obj>/usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so.1.74.0</obj>
+      <fn>boost::unit_test::unit_test_monitor_t::execute_and_translate(boost::function&lt;void ()&gt; const&amp;, unsigned long)</fn>
+    </frame>
+  </stack>
+</error>
+
+<errorcounts>
+  <pair>
+    <count>1</count>
+    <unique>0x0</unique>
+  </pair>
+</errorcounts>
+
+<suppcounts>
+</suppcounts>
+
+</valgrindoutput>

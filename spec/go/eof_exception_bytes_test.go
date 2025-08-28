@@ -8,6 +8,8 @@ import (
 	"testing"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	. "test_formats"
+	"github.com/stretchr/testify/assert"
+	"io"
 )
 
 func TestEofExceptionBytes(t *testing.T) {
@@ -24,10 +26,6 @@ func TestEofExceptionBytes(t *testing.T) {
 	s := kaitai.NewStream(f)
 	var r EofExceptionBytes
 	err = r.Read(s, &r, &r)
-	switch v := err.(type) {
-	case kaitai.EndOfStreamError:
-		break
-	default:
-		t.Fatalf("expected kaitai.EndOfStreamError, got %T", v)
-	}
+	assert.Error(t, err)
+	assert.ErrorIs(t, err, io.ErrUnexpectedEOF)
 }

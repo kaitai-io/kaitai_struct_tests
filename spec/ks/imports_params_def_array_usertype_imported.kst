@@ -1,0 +1,14 @@
+id: imports_params_def_array_usertype_imported
+data: process_xor_4.bin
+asserts:
+  - actual: hws.size
+    expected: 2
+  - actual: hws[0].one
+    expected: 0xec
+  - actual: hws[1].one
+    expected: 0xbb
+
+  - actual: two.hw0_one
+    expected: 0xec
+  - actual: two.hw1_one
+    expected: 0xbb

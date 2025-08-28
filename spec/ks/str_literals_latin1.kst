@@ -1,0 +1,5 @@
+id: str_literals_latin1
+data: str_literals_latin1.bin
+asserts:
+  - actual: parsed_eq_literal
+    expected: true

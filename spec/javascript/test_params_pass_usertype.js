@@ -2,9 +2,8 @@
 
 var assert = require('assert');
 var testHelper = require('testHelper');
-var hexString = require('hexString');
 
-testHelper('ParamsPassUsertype', 'src/position_in_seq.bin', function(r, ParamsPassUsertype) {
+testHelper('ParamsPassUsertype', 'src/position_in_seq.bin', function(r, ParamsPassUsertype_) {
   assert.strictEqual(r.first.foo, 1);
-  assert.strictEqual(hexString(r.one.buf), hexString([2]));
+  assert.deepStrictEqual(r.one.buf, new Uint8Array([2]));
 });

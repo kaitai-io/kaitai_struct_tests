@@ -3,8 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('NavParentSwitchCast', 'src/switch_integers.bin', function(r, NavParentSwitchCast) {
-
+testHelper('NavParentSwitchCast', 'src/switch_integers.bin', function(r, NavParentSwitchCast_) {
   assert.strictEqual(r.main.bufType, 1);
   assert.strictEqual(r.main.flag, 7);
   assert.strictEqual(r.main.buf.branch.flag, 7);

@@ -5,7 +5,7 @@ import io.kaitai.struct.datatype.DataType._
 import io.kaitai.struct.datatype.{DataType, KSError, EndOfStreamError}
 import io.kaitai.struct.exprlang.Ast
 import io.kaitai.struct.languages.JavaCompiler
-import io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestException, TestSpec}
+import io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestException, TestSpec, ExpectedException}
 import io.kaitai.struct.translators.JavaTranslator
 
 class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
@@ -34,7 +34,8 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     runParseCommon()
   }
 
-  override def runParseExpectError(exception: KSError): Unit = {
+  override def runParseExpectError(expException: ExpectedException): Unit = {
+    val exception = expException.exception
     if (exception == EndOfStreamError) {
       out.puts("@Test")
       out.puts(s"public void test$className() throws Exception {")

@@ -3,6 +3,6 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('IfInstances', 'src/fixed_struct.bin', function(r, IfInstances) {
+testHelper('IfInstances', 'src/fixed_struct.bin', function(r, IfInstances_) {
   assert.strictEqual(r.neverHappens, undefined);
 });

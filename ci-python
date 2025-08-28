@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ./config
+. "$(dirname "$0")/config"
 
 rm -rf "$TEST_OUT_DIR/python" "$TEST_OUT_DIR/python-write"
 mkdir -p "$TEST_OUT_DIR/python" "$TEST_OUT_DIR/python-write"

@@ -1,0 +1,13 @@
+id: nav_root_recursive
+data: enum_negative.bin
+asserts:
+  - actual: value
+    expected: 0xff
+
+  - actual: next.value
+    expected: 1
+  - actual: next.root_value
+    expected: 0xff
+
+  - actual: next.next
+    expected: 'null'

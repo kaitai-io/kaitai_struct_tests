@@ -30,11 +30,12 @@ class PartialBuilder
     if arg == []
       exit run
     elsif arg == ['--project']
-      l1 = list_mandatory_files
-      l2 = list_disposable_files
-      log "creating project with #{(l1 + l2).size} files"
-      fn = create_project(l1, l2)
-      log "project file created: #{fn.inspect}"
+      files1 = list_mandatory_files
+      files2 = list_disposable_files
+      files_all = files1 + files2
+      log "creating project with #{files_all.size} files"
+      fns = create_project(files_all)
+      log "project files created: #{fns.inspect}"
     elsif arg == ['--once']
       @max_attempts = 1
       exit run
@@ -73,13 +74,18 @@ class PartialBuilder
     FileUtils.rm_f(@build_failed_files)
     FileUtils.rm_f(@build_failed_tests)
 
-    attempt = 1
-    loop {
+    # In Ruby 2.6, this could be just `(1..).each { ... }` without the need for
+    # `Float::INFINITY`, but at the time of writing, some of our targets are
+    # still using older versions of Ruby, such as Ruby 1.9.
+    (1..Float::INFINITY).each { |attempt|
       attempt_str = @max_attempts ? "#{attempt}/#{@max_attempts}" : attempt
 
       log "creating project with #{disp_files.size}/#{orig_size} files"
-      fn = create_project(mand_files, disp_files)
-      log "project file created: #{fn.inspect}"
+      files1 = mand_files.to_a
+      files2 = disp_files.to_a
+      files_all = files1 + files2
+      fns = create_project(files_all)
+      log "project files created: #{fns.inspect}"
 
       build_log = "#{@test_out_dir}/build-#{attempt}.log"
       log "build attempt #{attempt_str} (log: #{build_log})"
@@ -88,7 +94,7 @@ class PartialBuilder
       t2 = Time.now
       log "build attempt #{attempt_str}: elapsed: #{(t2 - t1).to_i}s"
       if result == 0
-        log attempt == 1 ? "perfect build succeeded" : "success on attempt \##{attempt_str}, #{disp_files.size}/#{orig_size} files survived"
+        log attempt == 1 ? "perfect build succeeded" : "success on build attempt #{attempt_str}, #{disp_files.size}/#{orig_size} files survived"
         return true
       else
         log "build failed"
@@ -101,10 +107,8 @@ class PartialBuilder
 
         register_bad_files(bad_files)
 
-        attempt += 1
-
         if @max_attempts and attempt >= @max_attempts
-          log "maximum number of attempts reached, bailing out"
+          log "maximum number of build attempts reached, bailing out"
           return false
         end
       end
@@ -114,9 +118,9 @@ class PartialBuilder
   # Adjusts list of disposable files by disposing of "bad" files, as
   # per a log file of failed build.
   # @param build_log [String] path to build log file
-  # @param mand_files [Set] set of mandatory files
-  # @param disp_files [Set] set of disposable files (to be modified!)
-  # @return [Set, FalseClass] set of bad files if disposal of bad
+  # @param mand_files [Set<String>] set of mandatory files
+  # @param disp_files [Set<String>] set of disposable files (to be modified!)
+  # @return [Set<String>, FalseClass] set of bad files if disposal of bad
   #   files was succesful (and we can do another build attempt), false
   #   if we've encountered some unrecoverrable error and thus it's
   #   pointless to retry.
@@ -194,7 +198,7 @@ class PartialBuilder
   # log files "build_failes_files.txt" with a plain list of rejected
   # files and "build_failed_tests" with two tab-separated columns:
   # type of file and name of relevant test.
-  # @param bad_files [Set] set of "bad" (rejected) files
+  # @param bad_files [Set<String>] set of "bad" (rejected) files
   def register_bad_files(bad_files)
     File.open(@build_failed_files, 'a') { |f|
       bad_files.each { |fn| f.puts fn }
@@ -205,18 +209,21 @@ class PartialBuilder
     }
   end
 
+  # @return [Array<String>]
   def list_mandatory_files
     raise NotImplementedError
   end
 
+  # @return [Array<String>]
   def list_disposable_files
     raise NotImplementedError
   end
 
-  # Creates a project file, given a list of disposable and mandatory
-  # files to include in it.
-  # @return [String] project file name created
-  def create_project(mand_files, disp_files)
+  # Creates usually one project file (or more, depending on the needs
+  # of the language), given a list of source files to include in it.
+  # @param files [Array<String>] collection of source files
+  # @return [Array<String>] project files created
+  def create_project(files)
     raise NotImplementedError
   end
 

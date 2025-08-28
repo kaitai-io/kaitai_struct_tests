@@ -1,14 +1,14 @@
-// This is a generated file! Please edit source .ksy file and use kaitai-struct-compiler to rebuild
+'use strict';
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['kaitai-struct/KaitaiStream'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory(require('kaitai-struct/KaitaiStream'));
+    define(['exports', 'kaitai-struct/KaitaiStream'], factory);
+  } else if (typeof exports === 'object' && exports !== null && typeof exports.nodeType !== 'number') {
+    factory(exports, require('kaitai-struct/KaitaiStream'));
   } else {
-    root.CustomFx = factory(root.KaitaiStream);
+    factory(root.CustomFx || (root.CustomFx = {}), root.KaitaiStream);
   }
-}(this, function (KaitaiStream) {
+})(typeof self !== 'undefined' ? self : this, function (CustomFx_, KaitaiStream) {
 var CustomFx = (function() {
   function CustomFx(key) {
     this.key = key;
@@ -26,5 +26,5 @@ var CustomFx = (function() {
 
   return CustomFx;
 })();
-return CustomFx;
-}));
+CustomFx_.CustomFx = CustomFx;
+});

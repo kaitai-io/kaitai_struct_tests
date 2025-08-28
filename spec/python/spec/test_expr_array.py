@@ -1,11 +1,9 @@
 import unittest
-
 from testformats.expr_array import ExprArray
 
 class TestExprArray(unittest.TestCase):
     def test_expr_array(self):
         with ExprArray.from_file('src/expr_array.bin') as r:
-
             self.assertEqual(r.aint_size, 4)
             self.assertEqual(r.aint_first, 7657765)
             self.assertEqual(r.aint_last, 16272640)

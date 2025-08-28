@@ -1,0 +1,32 @@
+# Same asserts as in "nested_types3"
+id: nested_types_import
+data: fixed_struct.bin
+asserts:
+  - actual: a_cc.value_cc
+    expected: 80
+  - actual: a_c_d.value_d
+    expected: 65
+
+  - actual: b.value_b
+    expected: 67
+  - actual: b.a_cc.value_cc
+    expected: 75
+  - actual: b.a_c_d.value_d
+    expected: 45
+
+  # All `_parent` and `_root` fields should be `null` because they should only
+  # be passed between local types of a single .ksy spec, never between types in
+  # different .ksy specs (see
+  # https://github.com/kaitai-io/kaitai_struct/issues/963#issuecomment-1995142738)
+  - actual: a_cc._parent
+    expected: 'null'
+  - actual: a_cc._root
+    expected: 'null'
+  - actual: a_c_d._parent
+    expected: 'null'
+  - actual: a_c_d._root
+    expected: 'null'
+  - actual: b._parent
+    expected: 'null'
+  - actual: b._root
+    expected: 'null'

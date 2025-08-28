@@ -3,7 +3,7 @@ package io.kaitai.struct.testtranslator.specgenerators
 import io.kaitai.struct.datatype.{DataType, KSError}
 import io.kaitai.struct.exprlang.Ast
 import io.kaitai.struct.languages.CppCompiler
-import io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
+import io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec, ExpectedException}
 import io.kaitai.struct.translators.CppTranslator
 import io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig, RuntimeConfig}
 import io.kaitai.struct.languages.components.CppImportList
@@ -35,7 +35,8 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
     out.puts(s"$className* r = new $className(&ks);")
   }
 
-  override def runParseExpectError(exception: KSError): Unit = {
+  override def runParseExpectError(expException: ExpectedException): Unit = {
+    val exception = expException.exception
     cppImportList.addKaitai("kaitai/exceptions.h")
 
     runParseCommon1()

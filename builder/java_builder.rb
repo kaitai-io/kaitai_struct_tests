@@ -49,11 +49,11 @@ class JavaBuilder < PartialBuilder
     suite_files + Dir.glob(File.join("#{@spec_dir}", 'nested', '**/*.java'))
   end
 
-  def create_project(mand_files, disp_files)
+  def create_project(files)
     File.open(@project_file, 'w') { |f|
-      (mand_files + disp_files).each { |l| f.puts "\"#{l}\"" }
+      files.each { |l| f.puts "\"#{l}\"" }
     }
-    @project_file
+    [@project_file]
   end
 
   def build_project(log_file)
@@ -98,7 +98,6 @@ class JavaBuilder < PartialBuilder
   end
 
   def run_tests
-    orig_dir = Dir.pwd
     FileUtils.mkdir_p(@test_out_dir)
     FileUtils.rm_rf(File.join("#{@test_out_dir}", 'junitreports'))
 
@@ -114,9 +113,9 @@ class JavaBuilder < PartialBuilder
 
     # Java uses "../../src" to locate binary input files, so we change
     # working directory prior to running tests to match that
-    Dir.chdir(File.join('spec', 'java'))
-    run_and_tee({}, cli, out_log)
-    Dir.chdir(orig_dir)
+    Dir.chdir(File.join('spec', 'java')) do
+      run_and_tee({}, cli, out_log)
+    end
 
     File.exist?(File.join(@test_out_dir, 'junitreports'))
   end

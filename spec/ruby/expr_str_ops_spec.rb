@@ -11,6 +11,7 @@ RSpec.describe 'ExprStrOps' do
     expect(r.one_substr_0_to_3).to eq "foo"
     expect(r.one_substr_2_to_5).to eq "o|b"
     expect(r.one_substr_3_to_3).to eq ""
+    expect(r.one_substr_0_to_0).to eq ""
     expect(r.two).to eq "0123456789"
     expect(r.two_len).to eq 10
     expect(r.two_rev).to eq "9876543210"

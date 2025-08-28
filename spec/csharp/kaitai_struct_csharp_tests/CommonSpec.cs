@@ -1,10 +1,21 @@
 using System;
 using System.IO;
+using System.Text;
 
 namespace Kaitai
 {
-    public class CommonSpec
+    public abstract class CommonSpec
     {
+#if NET6_0_OR_GREATER
+        static CommonSpec()
+        {
+            // Use the `System.Text.Encoding.CodePages` package, which is required in .NET 6.0+ for
+            // almost all but a few basic encodings to work - see
+            // https://learn.microsoft.com/en-us/dotnet/api/system.text.encodingprovider?view=net-8.0#remarks
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        }
+#endif
+
         private string _testPrefix;
 
         /// <summary>

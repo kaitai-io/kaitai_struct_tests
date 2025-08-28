@@ -3,8 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('BitsUnalignedB32Be', 'src/process_xor_4.bin', function(r, BitsUnalignedB32Be) {
-
+testHelper('BitsUnalignedB32Be', 'src/process_xor_4.bin', function(r, BitsUnalignedB32Be_) {
   assert.strictEqual(r.a, true);
   assert.strictEqual(r.b, 3648472617);
   assert.strictEqual(r.c, 10);

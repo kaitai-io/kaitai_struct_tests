@@ -1,3 +1,5 @@
 id: eos_exception_u4
 data: term_strz.bin
-exception: EndOfStreamError
+exception:
+  type: EndOfStreamError
+  message: requested 4 bytes, but only 3 bytes available

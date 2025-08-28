@@ -1,0 +1,5 @@
+id: eos_exception_sized
+data: term_strz.bin
+exception:
+  type: EndOfStreamError
+  message: requested 7 bytes, but only 6 bytes available

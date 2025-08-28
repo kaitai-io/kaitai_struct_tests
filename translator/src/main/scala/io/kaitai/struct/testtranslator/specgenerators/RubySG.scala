@@ -2,7 +2,7 @@ package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.exprlang.Ast
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec, ExpectedException}
 import _root_.io.kaitai.struct.translators.RubyTranslator
 import _root_.io.kaitai.struct.{ClassTypeProvider, Utils}
 import io.kaitai.struct.languages.RubyCompiler
@@ -29,7 +29,8 @@ class RubySG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     out.puts(s"r = $className.from_file('src/${spec.data}')")
   }
 
-  override def runParseExpectError(exception: KSError): Unit = {
+  override def runParseExpectError(expException: ExpectedException): Unit = {
+    val exception = expException.exception
     out.puts("expect {")
     out.inc
     runParse()

@@ -77,12 +77,12 @@ class CSharpBuilder < PartialBuilder
     convert_slashes(abs_files)
   end
 
-  def create_project(mand_files, disp_files)
+  def create_project(files)
     tmpl = File.read(@project_template)
-    files_xml = (mand_files + disp_files).map { |x| "    <Compile Include=\"#{x}\" />" }.join("\n")
+    files_xml = files.map { |x| "    <Compile Include=\"#{x}\" />" }.join("\n")
     project = tmpl.gsub(/%%%FILES%%%/, files_xml)
     File.write(@project_file, project)
-    @project_file
+    [@project_file]
   end
 
   def build_project(log_file)
@@ -135,15 +135,15 @@ class CSharpBuilder < PartialBuilder
   # Detect where the runner is and blow up if it's not found
   def detect_runner
     candidates = [
-      ENV['HOME'] + "/.nuget/packages/nunit.consolerunner/3.4.1/tools/nunit3-console.exe",
-      "spec/csharp/packages/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe",
+      ENV['HOME'] + "/.nuget/packages/nunit.consolerunner/3.19.0/tools/nunit3-console.exe",
+      "spec/csharp/packages/NUnit.ConsoleRunner.3.19.0/tools/nunit3-console.exe",
     ]
 
     candidates.each { |c|
       return c if File.exist?(c)
     }
 
-    raise "Unable to find NUnit.ConsoleRunner.3.4.1 exe file anywhere, tried: #{candidates.inspect}"
+    raise "Unable to find NUnit.ConsoleRunner.3.19.0 exe file anywhere, tried: #{candidates.inspect}"
   end
 
   def run_tests

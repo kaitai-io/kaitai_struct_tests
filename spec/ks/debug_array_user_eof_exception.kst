@@ -1,0 +1,20 @@
+id: debug_array_user_eof_exception
+data: nav_parent_codes.bin
+# exception: EndOfStreamError
+asserts:
+  - actual: one_cat.meow
+    expected: 0x03
+  - actual: one_cat.chirp
+    expected: 0x49
+  - actual: array_of_cats.size
+    expected: 3
+  - actual: array_of_cats[0].meow
+    expected: 0x31
+  - actual: array_of_cats[0].chirp
+    expected: 0x32
+  - actual: array_of_cats[1].meow
+    expected: 0x33
+  - actual: array_of_cats[1].chirp
+    expected: 0x42
+  - actual: array_of_cats[2].meow
+    expected: 0x62

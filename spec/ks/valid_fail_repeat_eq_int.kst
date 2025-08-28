@@ -1,0 +1,3 @@
+id: valid_fail_repeat_eq_int
+data: bcd_user_type_be.bin
+exception: ValidationNotEqualError<u4>

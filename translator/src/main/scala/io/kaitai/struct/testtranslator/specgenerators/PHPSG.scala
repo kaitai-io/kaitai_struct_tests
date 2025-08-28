@@ -5,7 +5,7 @@ import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.datatype.DataType.BytesType
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.PHPCompiler
-import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec, ExpectedException}
 import _root_.io.kaitai.struct.translators.PHPTranslator
 
 class PHPSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
@@ -20,21 +20,18 @@ class PHPSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     out.puts
     out.puts(s"class ${className}Test extends TestCase {")
     out.inc
+    out.puts(s"public function test$className() {")
+    out.inc
   }
 
   override def runParse(): Unit = {
-    runParseCommon()
-  }
-
-  override def runParseExpectError(exception: KSError): Unit = {
-    out.puts(s"/** @expectedException ${PHPCompiler.ksErrorName(exception)} */")
-    runParseCommon()
-  }
-
-  def runParseCommon(): Unit = {
-    out.puts(s"public function test$className() {")
-    out.inc
     out.puts(s"$$r = $className::fromFile(self::SRC_DIR_PATH . '/${spec.data}');")
+  }
+
+  override def runParseExpectError(expException: ExpectedException): Unit = {
+    val exception = expException.exception
+    out.puts(s"$$this->expectException(${PHPCompiler.ksErrorName(exception)}::class);")
+    runParse()
   }
 
   override def footer(): Unit = {

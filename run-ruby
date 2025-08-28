@@ -1,6 +1,6 @@
 #!/bin/sh -ef
 
-. ./config
+. "$(dirname "$0")/config"
 
 # rspec is available with and without extension in Windows and the file without extension doesn't
 # work if Ruby is installed in a path with spaces, but is used by default in environments like Git

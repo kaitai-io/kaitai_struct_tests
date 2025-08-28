@@ -2,18 +2,16 @@
 
 var assert = require('assert');
 var testHelper = require('testHelper');
-var hexString = require('hexString');
 
-testHelper('ExprBits', 'src/switch_opcodes.bin', function(r, ExprBits) {
-
+testHelper('ExprBits', 'src/switch_opcodes.bin', function(r, ExprBits_) {
   assert.strictEqual(r.a, 2);
-  assert.strictEqual(r.enumSeq, ExprBits.Items.FOO);
-  assert.strictEqual(hexString(r.byteSize), hexString([102, 111]));
+  assert.strictEqual(r.enumSeq, ExprBits_.ExprBits.Items.FOO);
+  assert.deepStrictEqual(r.byteSize, new Uint8Array([102, 111]));
   assert.strictEqual(r.repeatExpr.length, 2);
   assert.strictEqual(r.repeatExpr[0], 111);
   assert.strictEqual(r.repeatExpr[1], 98);
   assert.strictEqual(r.switchOnType, 97);
   assert.strictEqual(r.switchOnEndian.foo, 29184);
-  assert.strictEqual(r.enumInst, ExprBits.Items.BAR);
+  assert.strictEqual(r.enumInst, ExprBits_.ExprBits.Items.BAR);
   assert.strictEqual(r.instPos, 111);
 });

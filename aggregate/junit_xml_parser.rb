@@ -34,6 +34,12 @@ class JUnitXMLParser < TestParser
         elsif name =~ /^t(?!est)(.*?)$/
           # Nim output
           name = underscore_to_ucamelcase($1)
+        elsif name =~ /^test_.*::test_(.*?)$/
+          # Rust output
+          name = underscore_to_ucamelcase($1)
+        elsif tc.attribute('classname') and tc.attribute('classname').value =~ /^\/(.*?) test$/
+          # Julia output
+          name = $1
         else
           raise "Unable to parse name: \"#{name}\"" unless name =~ /^[Tt]est(.*?)$/
           name = $1
@@ -101,7 +107,16 @@ class JUnitXMLParser < TestParser
         if ts.children.size == 0
           name = ts.attribute('name').value.gsub(/^.*\\/, '').gsub(/Test$/, '')
 
-          tr = TestResult.new(name, :skipped, 0, nil)
+          tr = TestResult.new(name, :skipped, nil)
+          yield tr
+        elsif ts.attribute('errors') && ts.attribute('errors').value.to_f != 0 && ts.attribute('name').value =~ /^\/(.*?) test$/
+          # Pick up Julia errored tests
+          name = $1
+          error_element = ts.elements['error']
+          error_message = error_element.attribute('message').value if error_element
+          error_trace = error_element.text.strip if error_element
+
+          tr = TestResult.new(name, :error, 0, TestResult::Failure.new(nil, nil, error_message, error_trace))
           yield tr
         end
       }

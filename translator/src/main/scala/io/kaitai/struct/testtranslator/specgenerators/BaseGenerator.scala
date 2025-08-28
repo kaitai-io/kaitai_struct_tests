@@ -3,7 +3,7 @@ package io.kaitai.struct.testtranslator.specgenerators
 import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.datatype.DataType.{ArrayType, BytesType, FloatType}
 import _root_.io.kaitai.struct.exprlang.Ast
-import _root_.io.kaitai.struct.testtranslator.{TestAssert, TestEquals, TestException, TestSpec}
+import _root_.io.kaitai.struct.testtranslator.{TestAssert, TestEquals, TestException, TestSpec, ExpectedException}
 import _root_.io.kaitai.struct.translators.{AbstractTranslator, TypeDetector}
 
 abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
@@ -15,7 +15,7 @@ abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
 
   def runParse(): Unit = {}
 
-  def runParseExpectError(exception: KSError): Unit = ???
+  def runParseExpectError(expException: ExpectedException): Unit = ???
 
   def footer(): Unit
 
@@ -37,10 +37,9 @@ abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
     spec.exception match {
       case None =>
         runParse()
-        out.puts
         runAsserts()
-      case Some(ex) =>
-        runParseExpectError(ex)
+      case Some(expException) =>
+        runParseExpectError(expException)
     }
 
     footer()

@@ -3,8 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ExprIntDiv', 'src/fixed_struct.bin', function(r, ExprIntDiv) {
-
+testHelper('ExprIntDiv', 'src/fixed_struct.bin', function(r, ExprIntDiv_) {
   assert.strictEqual(r.intU, 1262698832);
   assert.strictEqual(r.intS, -52947);
   assert.strictEqual(r.divPosConst, 756);

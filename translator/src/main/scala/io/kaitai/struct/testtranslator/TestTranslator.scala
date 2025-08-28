@@ -10,6 +10,8 @@ import io.kaitai.struct.testtranslator.Main.CLIOptions
 import io.kaitai.struct.testtranslator.specgenerators._
 import io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig}
 
+import scala.collection.immutable.SortedMap
+
 class TestTranslator(options: CLIOptions) {
   import Main._
 
@@ -30,9 +32,9 @@ class TestTranslator(options: CLIOptions) {
     langs.foreach(langName => {
       val sg = getSG(langName, testSpec, provider)
       try {
-        sg.run()
         val outFile = s"$outDir/$langName/${sg.fileName(testName)}"
         Console.println(s"... generating $outFile")
+        sg.run()
         writeFile(outFile, sg.results)
       } catch {
         case e: Throwable => e.printStackTrace(Console.err)
@@ -56,7 +58,7 @@ class TestTranslator(options: CLIOptions) {
     TestSpec.fromFile(s"$specKsDir/$testName.kst")
 
   def loadClassSpecs(testName: String): ClassSpecs = {
-    val cliConfig = CLIConfig(importPaths = Seq(importsDir))
+    val cliConfig = CLIConfig(importPaths = importDirs)
     val (origSpecsOpt, errors) = JavaKSYParser.localFileToSpecs(s"$formatsDir/$testName.ksy", cliConfig)
 
     errors.foreach(problem => Console.err.println(problem.message))
@@ -95,9 +97,9 @@ class TestTranslator(options: CLIOptions) {
           dataType = userType
         )
       ),
-      types = Map(),
-      instances = Map(),
-      enums = Map()
+      types = SortedMap(),
+      instances = SortedMap(),
+      enums = SortedMap()
     )
 
     initObj.name = List(INIT_OBJ_TYPE)
@@ -119,6 +121,7 @@ class TestTranslator(options: CLIOptions) {
       new JavaSG(testSpec, provider)
     }
     case "javascript" => new JavaScriptSG(testSpec, provider)
+    // case "julia" => new JuliaSG(testSpec, provider)
     case "lua" => new LuaSG(testSpec, provider)
     case "nim" => new NimSG(testSpec, provider)
     case "perl" => new PerlSG(testSpec, provider)

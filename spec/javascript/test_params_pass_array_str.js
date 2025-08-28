@@ -3,8 +3,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('ParamsPassArrayStr', 'src/term_strz.bin', function(r, ParamsPassArrayStr) {
-
+testHelper('ParamsPassArrayStr', 'src/term_strz.bin', function(r, ParamsPassArrayStr_) {
   assert.strictEqual(r.passStrArray.strs.length, 3);
   assert.strictEqual(r.passStrArray.strs[0], "fo");
   assert.strictEqual(r.passStrArray.strs[1], "o|");

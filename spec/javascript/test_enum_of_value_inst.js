@@ -3,9 +3,9 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('EnumOfValueInst', 'src/enum_0.bin', function(r, EnumOfValueInst) {
-  assert.strictEqual(r.pet1, EnumOfValueInst.Animal.CAT);
-  assert.strictEqual(r.pet2, EnumOfValueInst.Animal.CHICKEN);
-  assert.strictEqual(r.pet3, EnumOfValueInst.Animal.DOG);
-  assert.strictEqual(r.pet4, EnumOfValueInst.Animal.DOG);
+testHelper('EnumOfValueInst', 'src/enum_0.bin', function(r, EnumOfValueInst_) {
+  assert.strictEqual(r.pet1, EnumOfValueInst_.EnumOfValueInst.Animal.CAT);
+  assert.strictEqual(r.pet2, EnumOfValueInst_.EnumOfValueInst.Animal.CHICKEN);
+  assert.strictEqual(r.pet3, EnumOfValueInst_.EnumOfValueInst.Animal.DOG);
+  assert.strictEqual(r.pet4, EnumOfValueInst_.EnumOfValueInst.Animal.DOG);
 });

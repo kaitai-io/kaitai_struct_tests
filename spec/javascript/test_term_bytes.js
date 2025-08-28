@@ -2,10 +2,9 @@
 
 var assert = require('assert');
 var testHelper = require('testHelper');
-var hexString = require('hexString');
 
-testHelper('TermBytes', 'src/term_strz.bin', function(r, TermBytes) {
-  assert.strictEqual(hexString(r.s1), hexString([102, 111, 111]));
-  assert.strictEqual(hexString(r.s2), hexString([98, 97, 114]));
-  assert.strictEqual(hexString(r.s3), hexString([124, 98, 97, 122, 64]));
+testHelper('TermBytes', 'src/term_strz.bin', function(r, TermBytes_) {
+  assert.deepStrictEqual(r.s1, new Uint8Array([102, 111, 111]));
+  assert.deepStrictEqual(r.s2, new Uint8Array([98, 97, 114]));
+  assert.deepStrictEqual(r.s3, new Uint8Array([124, 98, 97, 122, 64]));
 });

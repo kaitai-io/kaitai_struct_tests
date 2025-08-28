@@ -1,7 +1,7 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('StrLiterals', 'src/fixed_struct.bin', function(r, StrLiterals) {
+testHelper('StrLiterals', 'src/fixed_struct.bin', function(r, StrLiterals_) {
   function strToArr(s) {
     var r = [];
     for (var i = 0; i < s.length; i++)

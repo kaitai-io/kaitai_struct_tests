@@ -8,6 +8,7 @@ import (
 	"testing"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	. "test_formats"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestValidFailEqStr(t *testing.T) {
@@ -24,10 +25,7 @@ func TestValidFailEqStr(t *testing.T) {
 	s := kaitai.NewStream(f)
 	var r ValidFailEqStr
 	err = r.Read(s, &r, &r)
-	switch v := err.(type) {
-	case kaitai.ValidationNotEqualError:
-		break
-	default:
-		t.Fatalf("expected kaitai.ValidationNotEqualError, got %T", v)
-	}
+	assert.Error(t, err)
+	var wantErr kaitai.ValidationNotEqualError
+	assert.ErrorAs(t, err, &wantErr)
 }

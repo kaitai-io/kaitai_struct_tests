@@ -8,6 +8,7 @@ import (
 	"testing"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	. "test_formats"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestValidFailMinInt(t *testing.T) {
@@ -24,10 +25,7 @@ func TestValidFailMinInt(t *testing.T) {
 	s := kaitai.NewStream(f)
 	var r ValidFailMinInt
 	err = r.Read(s, &r, &r)
-	switch v := err.(type) {
-	case kaitai.ValidationLessThanError:
-		break
-	default:
-		t.Fatalf("expected kaitai.ValidationLessThanError, got %T", v)
-	}
+	assert.Error(t, err)
+	var wantErr kaitai.ValidationLessThanError
+	assert.ErrorAs(t, err, &wantErr)
 }

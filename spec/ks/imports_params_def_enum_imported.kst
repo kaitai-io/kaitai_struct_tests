@@ -1,0 +1,15 @@
+id: imports_params_def_enum_imported
+data: enum_0.bin
+imports:
+  - enum_0
+  - enum_deep
+asserts:
+  - actual: one.pet_1
+    expected: enum_0::animal::cat
+  - actual: one.pet_2
+    expected: enum_deep::container1::container2::animal::hare
+
+  - actual: two.pet_1_param
+    expected: enum_0::animal::cat
+  - actual: two.pet_2_param
+    expected: enum_deep::container1::container2::animal::hare
