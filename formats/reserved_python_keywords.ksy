@@ -112,9 +112,10 @@ types:
     enums:
       # Enum with keyword name in keyword-named type
       try:
-        1: except
+        1: nonlocal
         2: finally
         3: raise
+        40: except
   # Default capitalization of class names will result in "False" as class name without escaping
   false:
     seq:
@@ -126,8 +127,8 @@ enums:
     0: 'false'
     1: 'true'
     2: none
-    3: and
     4: or
     5: not
     6: if
     7: else
+    39: and

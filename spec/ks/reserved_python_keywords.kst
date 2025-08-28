@@ -3,85 +3,85 @@ data: full256.bin
 asserts:
   # Test basic keyword field access
   - actual: and
-    expected: 1
+    expected: 0
   - actual: as
-    expected: 2
+    expected: 1
   - actual: assert
-    expected: 3
+    expected: 2
   - actual: async
-    expected: 4
+    expected: 3
   - actual: await
-    expected: 5
+    expected: 4
   - actual: break
-    expected: 6
+    expected: 5
   - actual: class
-    expected: 7
+    expected: 6
   - actual: continue
-    expected: 8
+    expected: 7
   - actual: def
-    expected: 9
+    expected: 8
   - actual: del
-    expected: 10
+    expected: 9
   - actual: elif
-    expected: 11
+    expected: 10
   - actual: else
-    expected: 12
+    expected: 11
   - actual: except
-    expected: 13
+    expected: 12
   - actual: false
-    expected: 14
+    expected: 13
   - actual: finally
-    expected: 15
+    expected: 14
   - actual: for
-    expected: 16
+    expected: 15
   - actual: from
-    expected: 17
+    expected: 16
   - actual: global
-    expected: 18
+    expected: 17
   - actual: if
-    expected: 19
+    expected: 18
   - actual: import
-    expected: 20
+    expected: 19
   - actual: in
-    expected: 21
+    expected: 20
   - actual: is
-    expected: 22
+    expected: 21
   - actual: lambda
-    expected: 23
+    expected: 22
   - actual: none
-    expected: 24
+    expected: 23
   - actual: nonlocal
-    expected: 25
+    expected: 24
   - actual: not
-    expected: 26
+    expected: 25
   - actual: or
-    expected: 27
+    expected: 26
   - actual: pass
-    expected: 28
+    expected: 27
   - actual: raise
-    expected: 29
+    expected: 28
   - actual: return
-    expected: 30
+    expected: 29
   - actual: true
-    expected: 31
+    expected: 30
   - actual: try
-    expected: 32
+    expected: 31
   - actual: while
-    expected: 33
+    expected: 32
   - actual: with
-    expected: 34
+    expected: 33
   - actual: yield
-    expected: 35
+    expected: 34
   # Test accessing keyword-named struct fields in keyword-named type 'def'
   - actual: keyword_struct_def.while
-    expected: 36
+    expected: 35
   - actual: keyword_struct_def.for
-    expected: 37
+    expected: 36
   - actual: keyword_struct_def.with
-    expected: 38
+    expected: 37
   # Test accessing keyword-named struct fields in keyword-named type 'false'
   - actual: keyword_struct_false.pass
-    expected: 39
+    expected: 38
   # Test enum with keyword names
   - actual: keyword_enum
     expected: reserved_python_keywords::true::and
@@ -89,11 +89,11 @@ asserts:
     expected: reserved_python_keywords::def::try::except
   # Test instances with keyword names
   - actual: inst_keyword_seq
-    expected: 3  # and (1) + as (2)
+    expected: 1  # and (0) + as (1)
   - actual: inst_keyword_enum
     expected: reserved_python_keywords::true::if
   - actual: inst_keyword_enum_to_i
     expected: 6
   # Test instance in keyword-named type
   - actual: keyword_struct_def.return
-    expected: 73  # while (36) + for (37)
+    expected: 71  # while (35) + for (36)
