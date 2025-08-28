@@ -1,5 +1,5 @@
 # expr_field_unknown_params_call.ksy: /seq/0/type:
-# 	error: unable to access 'bar' in expr_field_unknown_params_call context
+# 	error: unable to access 'bar' in 'expr_field_unknown_params_call' context
 #
 meta:
   id: expr_field_unknown_params_call
