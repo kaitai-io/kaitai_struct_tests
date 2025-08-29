@@ -1,6 +1,8 @@
 id: eof_exception_bits_le
 data: nav_parent_switch.bin
-exception: EndOfStreamError
+exception:
+  type: EndOfStreamError
+  message: requested 3 bytes, but only 2 bytes available
 # asserts:
 #   - actual: _io.pos
 #     expected: 1

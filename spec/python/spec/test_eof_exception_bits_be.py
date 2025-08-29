@@ -1,13 +1,13 @@
 import unittest
-import kaitaistruct
-
 from testformats.eof_exception_bits_be import EofExceptionBitsBe
+import kaitaistruct
 
 class TestEofExceptionBitsBe(unittest.TestCase):
     def test_eof_exception_bits_be(self):
         with EofExceptionBitsBe.from_file('src/nav_parent_switch.bin') as r:
-            with self.assertRaisesRegexp(EOFError, u"^requested 3 bytes, but only 2 bytes available$"):
+            with self.assertRaises(EOFError) as cm:
                 r._read()
+            self.assertEqual(str(cm.exception), u"requested 3 bytes, but only 2 bytes available")
 
             self.assertEqual(r._io.pos(), 1)
 
