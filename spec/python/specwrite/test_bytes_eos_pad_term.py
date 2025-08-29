@@ -30,7 +30,7 @@ class TestBytesEosPadTerm(CommonSpec.Base):
     def test_check_longer_str_pad(self):
         r = BytesEosPadTerm()
         set_str_pad(r, b"123456789012345678901")
-        with self.assertRaisesRegexp(EOFError, u"^requested to write \\d+ bytes, but only \\d+ bytes left in the stream$"):
+        with self.assertRaisesRegex(EOFError, u"^requested to write \\d+ bytes, but only \\d+ bytes left in the stream$"):
             check(r)
 
     def test_check_good_last_byte_str_pad(self):
@@ -44,28 +44,28 @@ class TestBytesEosPadTerm(CommonSpec.Base):
     def test_check_bad_last_byte_str_pad(self):
         r = BytesEosPadTerm()
         set_str_pad(r, b"123456789012345678@")
-        with self.assertRaisesRegexp(ConsistencyError, u"^Check failed: str_pad,"):
+        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_pad,"):
             check(r)
 
     def test_check_longer_str_term(self):
         r = BytesEosPadTerm()
         set_str_pad(r, b"12345678901234567890")
         set_str_term(r, b"123456789012345678901")
-        with self.assertRaisesRegexp(EOFError, u"^requested to write \\d+ bytes, but only \\d+ bytes left in the stream$"):
+        with self.assertRaisesRegex(EOFError, u"^requested to write \\d+ bytes, but only \\d+ bytes left in the stream$"):
             check(r)
 
     def test_check_bad_has_terminator1_str_term(self):
         r = BytesEosPadTerm()
         set_str_pad(r, b"12345678901234567890")
         set_str_term(r, b"123456789012@4567890")
-        with self.assertRaisesRegexp(ConsistencyError, u"^Check failed: str_term,"):
+        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term,"):
             check(r)
 
     def test_check_bad_has_terminator2_str_term(self):
         r = BytesEosPadTerm()
         set_str_pad(r, b"12345678901234567890")
         set_str_term(r, b"1234567890123456789@")
-        with self.assertRaisesRegexp(ConsistencyError, u"^Check failed: str_term,"):
+        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term,"):
             check(r)
 
     def test_check_longer_str_term_and_pad(self):
@@ -73,7 +73,7 @@ class TestBytesEosPadTerm(CommonSpec.Base):
         set_str_pad(r, b"12345678901234567890")
         set_str_term(r, b"12345678901234567890")
         set_str_term_and_pad(r, b"123456789012345678901")
-        with self.assertRaisesRegexp(EOFError, u"^requested to write \\d+ bytes, but only \\d+ bytes left in the stream$"):
+        with self.assertRaisesRegex(EOFError, u"^requested to write \\d+ bytes, but only \\d+ bytes left in the stream$"):
             check(r)
 
     def test_check_bad_has_terminator_str_term_and_pad(self):
@@ -81,7 +81,7 @@ class TestBytesEosPadTerm(CommonSpec.Base):
         set_str_pad(r, b"12345678901234567890")
         set_str_term(r, b"12345678901234567890")
         set_str_term_and_pad(r, b"@2345678901234567890")
-        with self.assertRaisesRegexp(ConsistencyError, u"^Check failed: str_term_and_pad,"):
+        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term_and_pad,"):
             check(r)
 
     def test_check_good_last_byte1_str_term_and_pad(self):
@@ -105,7 +105,7 @@ class TestBytesEosPadTerm(CommonSpec.Base):
         set_str_pad(r, b"12345678901234567890")
         set_str_term(r, b"12345678901234567890")
         set_str_term_and_pad(r, b"1234567890123456789+")
-        with self.assertRaisesRegexp(ConsistencyError, u"^Check failed: str_term_and_pad,"):
+        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term_and_pad,"):
             check(r)
 
     def test_check_longer_str_term_include(self):
@@ -114,7 +114,7 @@ class TestBytesEosPadTerm(CommonSpec.Base):
         set_str_term(r, b"12345678901234567890")
         set_str_term_and_pad(r, b"12345678901234567890")
         set_str_term_include(r, b"123456789012345678901")
-        with self.assertRaisesRegexp(EOFError, u"^requested to write \\d+ bytes, but only \\d+ bytes left in the stream$"):
+        with self.assertRaisesRegex(EOFError, u"^requested to write \\d+ bytes, but only \\d+ bytes left in the stream$"):
             check(r)
 
     def test_check_empty_str_term_include(self):
@@ -123,7 +123,7 @@ class TestBytesEosPadTerm(CommonSpec.Base):
         set_str_term(r, b"12345678901234567890")
         set_str_term_and_pad(r, b"12345678901234567890")
         set_str_term_include(r, b"")
-        with self.assertRaisesRegexp(ConsistencyError, u"^Check failed: str_term_include,"):
+        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term_include,"):
             check(r)
 
     def test_check_bad_no_terminator_str_term_include(self):
@@ -132,7 +132,7 @@ class TestBytesEosPadTerm(CommonSpec.Base):
         set_str_term(r, b"12345678901234567890")
         set_str_term_and_pad(r, b"12345678901234567890")
         set_str_term_include(r, b"123")
-        with self.assertRaisesRegexp(ConsistencyError, u"^Check failed: str_term_include,"):
+        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term_include,"):
             check(r)
 
     def test_check_good_terminator1_str_term_include(self):
@@ -149,7 +149,7 @@ class TestBytesEosPadTerm(CommonSpec.Base):
         set_str_term(r, b"12345678901234567890")
         set_str_term_and_pad(r, b"12345678901234567890")
         set_str_term_include(r, b"1@@")
-        with self.assertRaisesRegexp(ConsistencyError, u"^Check failed: str_term_include,"):
+        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term_include,"):
             check(r)
 
     def test_check_good_terminator2_str_term_include(self):
@@ -166,7 +166,7 @@ class TestBytesEosPadTerm(CommonSpec.Base):
         set_str_term(r, b"12345678901234567890")
         set_str_term_and_pad(r, b"12345678901234567890")
         set_str_term_include(r, b"123456789012345678@@")
-        with self.assertRaisesRegexp(ConsistencyError, u"^Check failed: str_term_include,"):
+        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term_include,"):
             check(r)
 
 

@@ -18,5 +18,5 @@ class TestStrEos(CommonSpec.Base):
 
         r._check()
 
-        with self.assertRaisesRegexp(ConsistencyError, u"^Check failed: str, expected: 0, actual: 2$"):
+        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str, expected: 0, actual: 2$"):
             r._write(KaitaiStream(io.BytesIO(bytearray(5 + 2))))

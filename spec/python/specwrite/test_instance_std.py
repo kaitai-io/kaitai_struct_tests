@@ -15,20 +15,20 @@ class TestInstanceStd(CommonSpec.Base):
         r = InstanceStd()
         r._check()
         r.header = "1234"
-        with self.assertRaisesRegexp(ConsistencyError, u"^Check failed: header,"):
+        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: header,"):
             r._check_header()
 
     def test_check_longer_header(self):
         r = InstanceStd()
         r._check()
         r.header = "123456"
-        with self.assertRaisesRegexp(ConsistencyError, u"^Check failed: header,"):
+        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: header,"):
             r._check_header()
 
     def test_check_empty_header_via_dump(self):
         r = InstanceStd()
         r.header = ""
-        with self.assertRaisesRegexp(ConsistencyError, u"^Check failed: header,"):
+        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: header,"):
             # calls all _check*() methods
             CommonSpec.Base.dump_struct(r)
 

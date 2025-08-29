@@ -21,6 +21,6 @@ class TestEofExceptionBitsLe(CommonSpec.Base):
         r._check()
 
         with KaitaiStream(io.BytesIO(bytearray(3))) as out_io:
-            with self.assertRaisesRegexp(EOFError, u"^requested to write 3 bytes, but only 2 bytes left in the stream$"):
+            with self.assertRaisesRegex(EOFError, u"^requested to write 3 bytes, but only 2 bytes left in the stream$"):
                 r._write__seq(out_io)
             self.assertEqual(out_io.pos(), 1)

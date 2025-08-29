@@ -30,7 +30,7 @@ class TestProcessRotate(CommonSpec.Base):
         r.buf1 = b"Hello"
         r.buf2 = b"Way too long"
 
-        with self.assertRaisesRegexp(ConsistencyError, u"^Check failed: buf2,"):
+        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: buf2,"):
             r._check()
 
     def test_check_size_mismatch_check_or_write(self):
@@ -49,7 +49,7 @@ class TestProcessRotate(CommonSpec.Base):
         )
         ks_io = KaitaiStream(io.BytesIO(bytearray(len_io)))
 
-        with self.assertRaisesRegexp(ConsistencyError, u"^Check failed: buf2,"):
+        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: buf2,"):
             r._check()
 
             # It would be more user-friendly if the size mismatch of `buf2` was caught already in

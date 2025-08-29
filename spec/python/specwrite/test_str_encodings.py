@@ -19,7 +19,7 @@ class TestStrEncodings(CommonSpec.Base):
 
         r.len_of_2 = 15
 
-        with self.assertRaisesRegexp(AttributeError, u"\\bstr2\\b"):
+        with self.assertRaisesRegex(AttributeError, u"\\bstr2\\b"):
             r._check()
 
     def test_check_mismatch(self):
@@ -36,5 +36,5 @@ class TestStrEncodings(CommonSpec.Base):
         r.len_of_3 = 10
         r.len_of_4 = 3
 
-        with self.assertRaisesRegexp(ConsistencyError, u"^Check failed: str2,"):
+        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str2,"):
             r._check()

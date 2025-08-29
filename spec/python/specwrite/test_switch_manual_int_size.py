@@ -17,5 +17,5 @@ class TestSwitchManualIntSize(CommonSpec.Base):
         # should cause the consistency check to fail because it's 2 bytes, not 3
         chunk.body = b"\x10\x20"
 
-        with self.assertRaisesRegexp(ConsistencyError, u"^Check failed: body, expected: 3, actual: 2$"):
+        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: body, expected: 3, actual: 2$"):
             chunk._check()

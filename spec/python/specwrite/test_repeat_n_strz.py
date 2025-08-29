@@ -16,12 +16,12 @@ class TestRepeatNStrz(CommonSpec.Base):
         r.qty = 7
         r.lines = ["foo", "bar"]
 
-        with self.assertRaisesRegexp(ConsistencyError, u"^Check failed: lines,"):
+        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: lines,"):
             r._check()
 
     def test_check_null(self):
         r = RepeatNStrz()
         r.qty = 0
 
-        with self.assertRaisesRegexp(AttributeError, u"\\blines\\b"):
+        with self.assertRaisesRegex(AttributeError, u"\\blines\\b"):
             r._check()
