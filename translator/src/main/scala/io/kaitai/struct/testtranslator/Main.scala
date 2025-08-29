@@ -20,6 +20,7 @@ object Main extends App {
     "csharp",
     "go",
     "java",
+    "java-write",
     "javascript",
     // "julia",
     "lua",
@@ -27,6 +28,7 @@ object Main extends App {
     "perl",
     "php",
     "python",
+    "python-write",
     "ruby",
     "rust"
   )
@@ -37,7 +39,6 @@ object Main extends App {
   case class CLIOptions(
     srcFiles: Seq[String] = Seq(),
     targets: Seq[String] = Seq(),
-    readWrite: Boolean = false,
     outDir: String = defaultOutDir
   )
 
@@ -72,10 +73,6 @@ object Main extends App {
         failure(s"'$x' is not a valid target language; valid ones are: ${ALL_LANGS.mkString(", ")}")
       }
     }
-
-    opt[Unit]('w', "read-write") action { (_, c) =>
-      c.copy(readWrite = true)
-    } text("read-write mode")
 
     opt[Unit]("all-specs") action { (_, c) =>
       val dir = new File(specKsDir)
