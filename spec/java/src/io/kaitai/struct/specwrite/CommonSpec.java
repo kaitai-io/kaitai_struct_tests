@@ -107,15 +107,19 @@ public abstract class CommonSpec extends io.kaitai.struct.spec.CommonSpec {
                 }
             }
             parentStructs.put(struct, currentPath);
+            List<Method> checkMethods = new ArrayList<>();
             for (final Method m : struct.getClass().getDeclaredMethods()) {
                 if (!Modifier.isPublic(m.getModifiers())) continue;
                 if (Modifier.isStatic(m.getModifiers())) continue; // ignore static methods, i.e. "fromFile"
 
                 final String methodName = m.getName();
                 if (methodName.startsWith("_")) {
-                    // call all _check*() methods
+                    // Save `_check*()` methods to call them all after dumping the object.
+                    // This prevents attempts to check parse instances that haven't been
+                    // invoked yet (meaning that their storage fields are `null`, so these
+                    // attempts would fail).
                     if (methodName.startsWith("_check")) {
-                        m.invoke(struct);
+                        checkMethods.add(m);
                         continue;
                     }
                     if (
@@ -143,6 +147,10 @@ public abstract class CommonSpec extends io.kaitai.struct.spec.CommonSpec {
                     o, parentStructs, recursionDepthLimit - 1,
                     currentPath + (currentPath.equals("/") ? "" : "/") + methodName
                 ));
+            }
+            // Call all `_check*()` methods
+            for (final Method checkMethod : checkMethods) {
+                checkMethod.invoke(struct);
             }
             parentStructs.remove(struct);
             value = dump;
