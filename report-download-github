@@ -41,8 +41,12 @@ if [ -z "$ARCH" ]; then
 	exit 1
 fi
 
-FULL_TARGET_NAME=${TARGET}${SUBTARGET}/${IMPLEMENTATION}-${OS}-${ARCH}
-PREV_CI_FILE="ci_results/${FULL_TARGET_NAME}/ci.json"
+FULL_TARGET_NAME=${TARGET%-write}${SUBTARGET}/${IMPLEMENTATION}-${OS}-${ARCH}
+CI_FILE_BASENAME=ci.json
+if [ "${TARGET%-write}" != "$TARGET" ]; then
+	CI_FILE_BASENAME=ci-write.json
+fi
+PREV_CI_FILE="ci_results/${FULL_TARGET_NAME}/${CI_FILE_BASENAME}"
 if [ -r "$PREV_CI_FILE" ]; then
 	exit 0
 fi
