@@ -31,8 +31,9 @@ class TestTranslator(options: CLIOptions) {
 
     langs.foreach(langName => {
       val sg = getSG(langName, testSpec, provider)
+      val langDir = langName.stripSuffix("-write")
       try {
-        val outFile = s"$outDir/$langName/${sg.fileName(testName)}"
+        val outFile = s"$outDir/$langDir/${sg.fileName(testName)}"
         Console.println(s"... generating $outFile")
         sg.run()
         writeFile(outFile, sg.results)
