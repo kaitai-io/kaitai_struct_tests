@@ -241,8 +241,9 @@ MSYS2_ARG_CONV_EXCL='*' "$DOCKER_BIN" run $EXTRA_OPTS \
 
 if [ "$DO_COMPARE_FLAG" = 1 ]; then
 	READONLY_APPENDIX=
-	# Check if the `PREV_REPORT_WRITE` variable is set
-	if [ -n ${PREV_REPORT_WRITE+x} ]; then
+	# Check if the `PREV_REPORT_WRITE` variable is set (method from
+	# https://stackoverflow.com/a/13864829)
+	if ! [ -z ${PREV_REPORT_WRITE+x} ]; then
 		READONLY_APPENDIX=' (read-only test suite)'
 	fi
 	echo "# Comparison with previous$READONLY_APPENDIX"
@@ -251,7 +252,7 @@ if [ "$DO_COMPARE_FLAG" = 1 ]; then
 		"$PREV_REPORT" \
 		"test_out/$TARGET$SUBTARGET/ci.json"
 
-	if [ -n ${PREV_REPORT_WRITE+x} ]; then
+	if ! [ -z ${PREV_REPORT_WRITE+x} ]; then
 		echo
 		echo "# Comparison with previous (read-write test suite)"
 		echo
