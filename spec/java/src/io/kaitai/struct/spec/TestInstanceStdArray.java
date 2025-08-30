@@ -14,8 +14,8 @@ public class TestInstanceStdArray extends CommonSpec {
         assertIntEquals(r.qtyEntries(), 3);
         assertIntEquals(r.entrySize(), 4);
         assertIntEquals(r.entries().size(), 3);
-        assertEquals(r.entries().get((int) 0), new byte[] { 17, 17, 17, 17 });
-        assertEquals(r.entries().get((int) 1), new byte[] { 34, 34, 34, 34 });
-        assertEquals(r.entries().get((int) 2), new byte[] { 51, 51, 51, 51 });
+        assertEquals(r.entries().get(((int) 0)), new byte[] { 17, 17, 17, 17 });
+        assertEquals(r.entries().get(((int) 1)), new byte[] { 34, 34, 34, 34 });
+        assertEquals(r.entries().get(((int) 2)), new byte[] { 51, 51, 51, 51 });
     }
 }

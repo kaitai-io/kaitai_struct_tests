@@ -2,7 +2,11 @@
 
 . "$(dirname "$0")/config"
 
-./run-java
+rm -rf "$TEST_OUT_DIR/java" "$TEST_OUT_DIR/java-write"
+./run-java spec "$TEST_OUT_DIR/java"
+./run-java specwrite "$TEST_OUT_DIR/java-write"
 
 ./kst-adoption-report java
+./kst-adoption-report java-write
 aggregate/convert_to_json java "$TEST_OUT_DIR/java" "$TEST_OUT_DIR/java/ci.json"
+aggregate/convert_to_json java-write "$TEST_OUT_DIR/java-write" "$TEST_OUT_DIR/java-write/ci.json"

@@ -3,7 +3,8 @@ require_relative 'test_parser'
 require 'rexml/document'
 
 class JUnitXMLParser < TestParser
-  def initialize(fn)
+  def initialize(fn, include_classname = false)
+    @include_classname = include_classname
     @docs = if not File.exist?(fn)
       []
     elsif File.directory?(fn)
@@ -41,20 +42,51 @@ class JUnitXMLParser < TestParser
           name = $1
         else
           raise "Unable to parse name: \"#{name}\"" unless name =~ /^[Tt]est(.*?)$/
-          if $1[0] == '_'
-            name = underscore_to_ucamelcase($1)
-          else
-            name = $1
+          name = $1
+          if name[0] == '_'
+            name = underscore_to_ucamelcase(name[1..-1])
+          end
+
+          if @include_classname
+            classname = tc.attribute('classname').value
+            if classname =~ /\.Test([^.]*)$/
+              classname = $1
+              name = "#{classname}.#{name}"
+            else
+              warn "Unable to parse classname #{classname.inspect} at #{tc.xpath}"
+            end
           end
         end
 
         failure_xml = tc.elements['failure'] || tc.elements['error']
 
         if failure_xml.nil?
-          status = :passed
-          failure = nil
+          skipped_xml = tc.elements['skipped']
+
+          if skipped_xml.nil?
+            status = :passed
+            failure = nil
+          else
+            status = :skipped
+            failure_msg = skipped_xml.attribute('message')
+            failure = TestResult::Failure.new(
+              nil,
+              nil,
+              failure_msg,
+              nil
+            )
+          end
         else
-          status = :failed
+          # Until TestNG 7.4.0, throwing a SkipException is reported as an error
+          # (not as a skip, as it should be) in the JUnit XML report by TestNG -
+          # see <https://github.com/testng-team/testng/issues/1632>. Since we
+          # are using an older version of TestNG for compatibility with Java 7
+          # and Java 8, we have to fix the reported status ourselves.
+          if failure_xml.attribute('type') && failure_xml.attribute('type').value == 'org.testng.SkipException'
+            status = :skipped
+          else
+            status = :failed
+          end
           failure_msg = failure_xml.attribute('message') || failure_xml.attribute('type')
           failure_msg = failure_msg.value if failure_msg
           failure_trace = (failure_xml.texts.map {|t| t.value }).join('').strip

@@ -1,0 +1,11 @@
+id: bytes_pad_term_zero_size
+data: enum_negative.bin
+asserts:
+  - actual: str_pad
+    expected: '[].as<bytes>'
+  - actual: str_term
+    expected: '[].as<bytes>'
+  - actual: str_term_and_pad
+    expected: '[].as<bytes>'
+  - actual: str_term_include
+    expected: '[].as<bytes>'

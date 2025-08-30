@@ -31,15 +31,5 @@ func TestTypeTernaryOpaque(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, "foo", tmp1.S1)
-	tmp2, err := r.Dif()
-	if err != nil {
-		t.Fatal(err)
-	}
-	assert.EqualValues(t, "bar", tmp2.S2)
-	tmp3, err := r.Dif()
-	if err != nil {
-		t.Fatal(err)
-	}
-	assert.EqualValues(t, "|baz@", tmp3.S3)
+	assert.EqualValues(t, 102, tmp1.One)
 }

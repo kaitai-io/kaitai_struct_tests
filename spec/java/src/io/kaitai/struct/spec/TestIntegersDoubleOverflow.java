@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.IntegersDoubleOverflow;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestIntegersDoubleOverflow extends CommonSpec {
-
     @Test
     public void testIntegersDoubleOverflow() throws Exception {
         IntegersDoubleOverflow r = IntegersDoubleOverflow.fromFile(SRC_DIR + "integers_double_overflow.bin");

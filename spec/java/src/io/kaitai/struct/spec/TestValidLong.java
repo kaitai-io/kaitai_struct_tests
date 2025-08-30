@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ValidLong;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestValidLong extends CommonSpec {
-
     @Test
     public void testValidLong() throws Exception {
         ValidLong r = ValidLong.fromFile(SRC_DIR + "fixed_struct.bin");

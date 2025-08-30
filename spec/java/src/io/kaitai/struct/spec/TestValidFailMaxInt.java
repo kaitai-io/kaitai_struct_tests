@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import io.kaitai.struct.KaitaiStream;
 public class TestValidFailMaxInt extends CommonSpec {
-
     @Test(expectedExceptions = KaitaiStream.ValidationGreaterThanError.class)
     public void testValidFailMaxInt() throws Exception {
         ValidFailMaxInt r = ValidFailMaxInt.fromFile(SRC_DIR + "fixed_struct.bin");

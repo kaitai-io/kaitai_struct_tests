@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ExprIntDiv;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestExprIntDiv extends CommonSpec {
-
     @Test
     public void testExprIntDiv() throws Exception {
         ExprIntDiv r = ExprIntDiv.fromFile(SRC_DIR + "fixed_struct.bin");

@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ProcessCustomNoArgs;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestProcessCustomNoArgs extends CommonSpec {
-
     @Test
     public void testProcessCustomNoArgs() throws Exception {
         ProcessCustomNoArgs r = ProcessCustomNoArgs.fromFile(SRC_DIR + "process_rotate.bin");

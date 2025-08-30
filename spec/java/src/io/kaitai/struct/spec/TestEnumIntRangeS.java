@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.EnumIntRangeS;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestEnumIntRangeS extends CommonSpec {
-
     @Test
     public void testEnumIntRangeS() throws Exception {
         EnumIntRangeS r = EnumIntRangeS.fromFile(SRC_DIR + "enum_int_range_s.bin");

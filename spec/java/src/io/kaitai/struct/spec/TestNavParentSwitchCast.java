@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.NavParentSwitchCast;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestNavParentSwitchCast extends CommonSpec {
-
     @Test
     public void testNavParentSwitchCast() throws Exception {
         NavParentSwitchCast r = NavParentSwitchCast.fromFile(SRC_DIR + "switch_integers.bin");

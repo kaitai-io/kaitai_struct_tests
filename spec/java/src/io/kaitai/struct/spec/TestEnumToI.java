@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.EnumToI;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestEnumToI extends CommonSpec {
-
     @Test
     public void testEnumToI() throws Exception {
         EnumToI r = EnumToI.fromFile(SRC_DIR + "enum_0.bin");

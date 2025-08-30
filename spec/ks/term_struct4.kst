@@ -1,0 +1,9 @@
+id: term_struct4
+data: term_strz.bin
+asserts:
+  - actual: s1.value.value
+    expected: '[0x66, 0x6f, 0x6f]'
+  - actual: s2.value.value
+    expected: '[0x62, 0x61, 0x72]'
+  - actual: s3.value.value
+    expected: '[0x62, 0x61, 0x7a]'

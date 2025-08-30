@@ -11,13 +11,13 @@ public class TestSwitchManualEnum extends CommonSpec {
         SwitchManualEnum r = SwitchManualEnum.fromFile(SRC_DIR + "switch_opcodes.bin");
 
         assertIntEquals(r.opcodes().size(), 4);
-        assertEquals(r.opcodes().get((int) 0).code(), SwitchManualEnum.Opcode.CodeEnum.STRVAL);
-        assertEquals(((SwitchManualEnum.Opcode.Strval) (r.opcodes().get((int) 0).body())).value(), "foobar");
-        assertEquals(r.opcodes().get((int) 1).code(), SwitchManualEnum.Opcode.CodeEnum.INTVAL);
-        assertIntEquals(((SwitchManualEnum.Opcode.Intval) (r.opcodes().get((int) 1).body())).value(), 66);
-        assertEquals(r.opcodes().get((int) 2).code(), SwitchManualEnum.Opcode.CodeEnum.INTVAL);
-        assertIntEquals(((SwitchManualEnum.Opcode.Intval) (r.opcodes().get((int) 2).body())).value(), 55);
-        assertEquals(r.opcodes().get((int) 3).code(), SwitchManualEnum.Opcode.CodeEnum.STRVAL);
-        assertEquals(((SwitchManualEnum.Opcode.Strval) (r.opcodes().get((int) 3).body())).value(), "");
+        assertEquals(r.opcodes().get(((int) 0)).code(), SwitchManualEnum.Opcode.CodeEnum.STRVAL);
+        assertEquals(((SwitchManualEnum.Opcode.Strval) (r.opcodes().get(((int) 0)).body())).value(), "foobar");
+        assertEquals(r.opcodes().get(((int) 1)).code(), SwitchManualEnum.Opcode.CodeEnum.INTVAL);
+        assertIntEquals(((SwitchManualEnum.Opcode.Intval) (r.opcodes().get(((int) 1)).body())).value(), 66);
+        assertEquals(r.opcodes().get(((int) 2)).code(), SwitchManualEnum.Opcode.CodeEnum.INTVAL);
+        assertIntEquals(((SwitchManualEnum.Opcode.Intval) (r.opcodes().get(((int) 2)).body())).value(), 55);
+        assertEquals(r.opcodes().get(((int) 3)).code(), SwitchManualEnum.Opcode.CodeEnum.STRVAL);
+        assertEquals(((SwitchManualEnum.Opcode.Strval) (r.opcodes().get(((int) 3)).body())).value(), "");
     }
 }

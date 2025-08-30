@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ExprBits;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestExprBits extends CommonSpec {
-
     @Test
     public void testExprBits() throws Exception {
         ExprBits r = ExprBits.fromFile(SRC_DIR + "switch_opcodes.bin");
@@ -15,8 +14,8 @@ public class TestExprBits extends CommonSpec {
         assertEquals(r.enumSeq(), ExprBits.Items.FOO);
         assertEquals(r.byteSize(), new byte[] { 102, 111 });
         assertIntEquals(r.repeatExpr().size(), 2);
-        assertIntEquals(r.repeatExpr().get((int) 0), 111);
-        assertIntEquals(r.repeatExpr().get((int) 1), 98);
+        assertIntEquals(r.repeatExpr().get(((int) 0)), 111);
+        assertIntEquals(r.repeatExpr().get(((int) 1)), 98);
         assertIntEquals(r.switchOnType(), 97);
         assertIntEquals(r.switchOnEndian().foo(), 29184);
         assertEquals(r.enumInst(), ExprBits.Items.BAR);

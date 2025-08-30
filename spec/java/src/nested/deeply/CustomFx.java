@@ -1,8 +1,8 @@
 package nested.deeply;
 
-import io.kaitai.struct.CustomDecoder;
+import io.kaitai.struct.CustomProcessor;
 
-public class CustomFx implements CustomDecoder {
+public class CustomFx implements CustomProcessor {
     public CustomFx(int x) {
     }
 
@@ -13,5 +13,18 @@ public class CustomFx implements CustomDecoder {
         dst[src.length + 1] = '_';
         System.arraycopy(src, 0, dst, 1, src.length);
         return dst;
+    }
+
+    @Override
+    public byte[] encode(byte[] src) {
+        if (src.length >= 2 && src[0] == '_' && src[src.length - 1] == '_') {
+            byte[] dst = new byte[src.length - 2];
+            System.arraycopy(src, 1, dst, 0, dst.length);
+            return dst;
+        } else {
+            // usually it's decode(byte[]) that puts restrictions on the input data, but
+            // hey - this class is just for testing purposes anyway :-P
+            throw new UnsupportedOperationException("CustomFx can only encode data like '_(.*)_'");
+        }
     }
 }

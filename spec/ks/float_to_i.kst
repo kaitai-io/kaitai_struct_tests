@@ -5,10 +5,18 @@ asserts:
     expected: 0.5
   - actual: double_value
     expected: 0.25
+  - actual: single_value_if
+    expected: 0.5
+  - actual: double_value_if
+    expected: 0.25
 
   - actual: single_i
     expected: 0
   - actual: double_i
+    expected: 0
+  - actual: single_if_i
+    expected: 0
+  - actual: double_if_i
     expected: 0
   - actual: float1_i
     expected: 1
@@ -18,3 +26,5 @@ asserts:
     expected: 1
   - actual: float4_i
     expected: -2
+  - actual: calc_if_i
+    expected: 13

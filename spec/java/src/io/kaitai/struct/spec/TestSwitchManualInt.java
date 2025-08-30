@@ -11,13 +11,13 @@ public class TestSwitchManualInt extends CommonSpec {
         SwitchManualInt r = SwitchManualInt.fromFile(SRC_DIR + "switch_opcodes.bin");
 
         assertIntEquals(r.opcodes().size(), 4);
-        assertIntEquals(r.opcodes().get((int) 0).code(), 83);
-        assertEquals(((SwitchManualInt.Opcode.Strval) (r.opcodes().get((int) 0).body())).value(), "foobar");
-        assertIntEquals(r.opcodes().get((int) 1).code(), 73);
-        assertIntEquals(((SwitchManualInt.Opcode.Intval) (r.opcodes().get((int) 1).body())).value(), 66);
-        assertIntEquals(r.opcodes().get((int) 2).code(), 73);
-        assertIntEquals(((SwitchManualInt.Opcode.Intval) (r.opcodes().get((int) 2).body())).value(), 55);
-        assertIntEquals(r.opcodes().get((int) 3).code(), 83);
-        assertEquals(((SwitchManualInt.Opcode.Strval) (r.opcodes().get((int) 3).body())).value(), "");
+        assertIntEquals(r.opcodes().get(((int) 0)).code(), 83);
+        assertEquals(((SwitchManualInt.Opcode.Strval) (r.opcodes().get(((int) 0)).body())).value(), "foobar");
+        assertIntEquals(r.opcodes().get(((int) 1)).code(), 73);
+        assertIntEquals(((SwitchManualInt.Opcode.Intval) (r.opcodes().get(((int) 1)).body())).value(), 66);
+        assertIntEquals(r.opcodes().get(((int) 2)).code(), 73);
+        assertIntEquals(((SwitchManualInt.Opcode.Intval) (r.opcodes().get(((int) 2)).body())).value(), 55);
+        assertIntEquals(r.opcodes().get(((int) 3)).code(), 83);
+        assertEquals(((SwitchManualInt.Opcode.Strval) (r.opcodes().get(((int) 3)).body())).value(), "");
     }
 }

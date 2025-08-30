@@ -10,6 +10,7 @@ __pycache__/
 
 # Nim
 _*
+!_*.py
 spec/nim/bin
 
 # Rust

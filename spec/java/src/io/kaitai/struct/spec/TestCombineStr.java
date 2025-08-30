@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.CombineStr;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestCombineStr extends CommonSpec {
-
     @Test
     public void testCombineStr() throws Exception {
         CombineStr r = CombineStr.fromFile(SRC_DIR + "term_strz.bin");

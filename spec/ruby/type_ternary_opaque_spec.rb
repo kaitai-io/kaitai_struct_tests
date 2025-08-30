@@ -1,10 +1,9 @@
 RSpec.describe 'TypeTernaryOpaque' do
   it 'parses test properly' do
     require 'type_ternary_opaque'
+    require 'hello_world' # the opaque type
     r = TypeTernaryOpaque.from_file('src/term_strz.bin')
 
-    expect(r.dif.s1).to eq('foo')
-    expect(r.dif.s2).to eq('bar')
-    expect(r.dif.s3).to eq('|baz@')
+    expect(r.dif.one).to eq 102
   end
 end

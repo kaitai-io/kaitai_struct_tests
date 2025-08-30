@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 . "$(dirname "$0")/config"
 
@@ -12,13 +12,48 @@ fi
 
 rm -rf "$OUTPUT_DIR"
 mkdir -p "$OUTPUT_DIR"
+
+# 	--java-from-file-class io.kaitai.struct.RandomAccessFileKaitaiStream \
+
 "$COMPILER_DIR/jvm/target/universal/stage/bin/kaitai-struct-compiler" -- \
 	--verbose file -t "$TARGET" -d "$OUTPUT_DIR" \
 	--import-path "$FORMATS_REPO_DIR" \
 	--import-path "$FORMATS_KSY_DIR/ks_path" \
 	--java-package io.kaitai.struct.testformats \
 	--php-namespace 'Kaitai\Struct\Tests' \
+	--python-package testformats \
 	--go-package test_formats \
 	--nim-module "kaitai_struct_nim_runtime" \
 	--nim-opaque "../../tests/spec/nim/opaque/" \
 	"$FORMATS_KSY_DIR"/*.ksy || :
+
+if [ "$TARGET" = java ] || [ "$TARGET" = all ]; then
+	"$COMPILER_DIR/jvm/target/universal/stage/bin/kaitai-struct-compiler" -- \
+		--verbose file -t java -d "$FORMATS_COMPILED_DIR/java/src" \
+		--no-auto-read \
+		--read-write \
+		--import-path "$FORMATS_REPO_DIR" \
+		--import-path "$FORMATS_KSY_DIR/ks_path" \
+		--java-package io.kaitai.struct.testwrite \
+		"$FORMATS_KSY_DIR"/*.ksy || :
+fi
+
+if [ "$TARGET" = python ] || [ "$TARGET" = all ]; then
+	mv -n "$FORMATS_COMPILED_DIR/python" "$FORMATS_COMPILED_DIR/python-tmp"
+	mkdir "$FORMATS_COMPILED_DIR/python"
+	mv -n "$FORMATS_COMPILED_DIR/python-tmp" "$FORMATS_COMPILED_DIR/python/testformats"
+	# __init__.py is needed in Python 2
+	touch "$FORMATS_COMPILED_DIR/python/testformats/__init__.py"
+
+	"$COMPILER_DIR/jvm/target/universal/stage/bin/kaitai-struct-compiler" -- \
+		--verbose file -t python -d "$FORMATS_COMPILED_DIR/python/testwrite" \
+		--no-auto-read \
+		--read-write \
+		--import-path "$FORMATS_REPO_DIR" \
+		--import-path "$FORMATS_KSY_DIR/ks_path" \
+		--python-package testwrite \
+		"$FORMATS_KSY_DIR"/*.ksy || :
+
+	# __init__.py is needed in Python 2
+	touch "$FORMATS_COMPILED_DIR/python/testwrite/__init__.py"
+fi

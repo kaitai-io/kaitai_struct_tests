@@ -1,7 +1,12 @@
 id: expr_if_int_ops
-data: process_coerce_switch.bin
+data: instance_io.bin
 asserts:
-  - actual: is_eq_prim
-    expected: true
-  - actual: is_eq_boxed
-    expected: true
+  - actual: key
+    expected: 3
+  - actual: bytes
+    expected: '[0xfc, 0xfc, 0xfc, 0xfd, 0x09, 0x03, 0x03, 0x03]'
+
+  - actual: bytes_sub_key
+    expected: 0xfd
+  - actual: items_sub_key
+    expected: -3

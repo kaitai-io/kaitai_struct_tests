@@ -20,6 +20,7 @@ object Main extends App {
     "csharp",
     "go",
     "java",
+    "java-write",
     "javascript",
     // "julia",
     "lua",
@@ -27,6 +28,7 @@ object Main extends App {
     "perl",
     "php",
     "python",
+    "python-write",
     "ruby",
     "rust"
   )

@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.EnumLongRangeS;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestEnumLongRangeS extends CommonSpec {
-
     @Test
     public void testEnumLongRangeS() throws Exception {
         EnumLongRangeS r = EnumLongRangeS.fromFile(SRC_DIR + "enum_long_range_s.bin");

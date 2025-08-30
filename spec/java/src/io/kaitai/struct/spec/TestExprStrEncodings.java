@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ExprStrEncodings;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestExprStrEncodings extends CommonSpec {
-
     @Test
     public void testExprStrEncodings() throws Exception {
         ExprStrEncodings r = ExprStrEncodings.fromFile(SRC_DIR + "str_encodings.bin");

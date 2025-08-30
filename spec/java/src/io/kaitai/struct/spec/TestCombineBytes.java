@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.CombineBytes;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestCombineBytes extends CommonSpec {
-
     @Test
     public void testCombineBytes() throws Exception {
         CombineBytes r = CombineBytes.fromFile(SRC_DIR + "term_strz.bin");

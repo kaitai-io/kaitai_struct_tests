@@ -11,8 +11,8 @@ public class TestInstanceIoUser extends CommonSpec {
         InstanceIoUser r = InstanceIoUser.fromFile(SRC_DIR + "instance_io.bin");
 
         assertIntEquals(r.qtyEntries(), 3);
-        assertEquals(r.entries().get((int) 0).name(), "the");
-        assertEquals(r.entries().get((int) 1).name(), "rainy");
-        assertEquals(r.entries().get((int) 2).name(), "day it is");
+        assertEquals(r.entries().get(((int) 0)).name(), "the");
+        assertEquals(r.entries().get(((int) 1)).name(), "rainy");
+        assertEquals(r.entries().get(((int) 2)).name(), "day it is");
     }
 }
