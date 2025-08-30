@@ -67,6 +67,8 @@ class CommonSpec:
 
                 parent_structs.append((value, current_path))
 
+                check_methods = []
+
                 for prop_name in dir(value):
                     if prop_name.startswith('__'):
                         continue
@@ -75,9 +77,12 @@ class CommonSpec:
                     if isinstance(prop_value, type):
                         continue
 
-                    # call all _check*() methods
+                    # Save `_check*()` methods to call them all after dumping the object.
+                    # This prevents attempts to check parse instances that haven't been
+                    # invoked yet (meaning that their `_m_*` attributes are not defined,
+                    # so these attempts would fail).
                     if prop_name.startswith('_check'):
-                        prop_value()
+                        check_methods.append(prop_value)
                         continue
 
                     if callable(prop_value):
@@ -104,6 +109,10 @@ class CommonSpec:
                         prop_value, parent_structs, recursion_depth_limit - 1,
                         current_path + ('' if current_path == '/' else '/') + prop_name
                     )
+
+                # Call all `_check*()` methods
+                for check_method in check_methods:
+                    check_method()
 
                 assert parent_structs.pop()[0] is value
 
