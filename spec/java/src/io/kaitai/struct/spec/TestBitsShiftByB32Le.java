@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.BitsShiftByB32Le;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestBitsShiftByB32Le extends CommonSpec {
-
     @Test
     public void testBitsShiftByB32Le() throws Exception {
         BitsShiftByB32Le r = BitsShiftByB32Le.fromFile(SRC_DIR + "bits_shift_by_b32_le.bin");

@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.TermU1Val;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestTermU1Val extends CommonSpec {
-
     @Test
     public void testTermU1Val() throws Exception {
         TermU1Val r = TermU1Val.fromFile(SRC_DIR + "str_encodings.bin");

@@ -1,0 +1,14 @@
+id: process_repeat_usertype_dynarg_xor
+data: process_xor_4.bin
+asserts:
+  - actual: blocks[0].a  # key: 0x9b ^ (0x00 | 0x05) = 0x9e
+    expected: 0x8a3d_2572
+  - actual: blocks[1].a  # key: 0x9b ^ (0x10 | 0x0a) = 0x81
+    expected: 0x0fb5_4d55
+  - actual: blocks_b.dummy
+    expected: 0xd1
+
+  - actual: blocks_b.blocks_0_b
+    expected: 0x14  # 0x8a ^ 0x9e
+  - actual: blocks_b.blocks_1_b
+    expected: 0x5b  # 0xda ^ 0x81

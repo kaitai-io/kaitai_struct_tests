@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.StrEncodingsUtf16;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestStrEncodingsUtf16 extends CommonSpec {
-
     @Test
     public void testStrEncodingsUtf16() throws Exception {
         StrEncodingsUtf16 r = StrEncodingsUtf16.fromFile(SRC_DIR + "str_encodings_utf16.bin");

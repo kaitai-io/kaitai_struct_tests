@@ -1,5 +1,6 @@
 id: debug_0
 data: fixed_struct.bin
+# NOTE: debug mode is enabled, so don't forget to add the `r._read()` call
 asserts:
   - actual: one
     expected: 0x50
@@ -13,3 +14,5 @@ asserts:
     expected: 0x4b
   # - actual: _unnamed2
   #   expected: 0x2d
+
+  # NOTE: `_debug` asserts must be added manually to the generated unit test

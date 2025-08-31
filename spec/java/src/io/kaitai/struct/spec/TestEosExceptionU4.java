@@ -5,11 +5,14 @@ package io.kaitai.struct.spec;
 import io.kaitai.struct.testformats.EosExceptionU4;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
-import io.kaitai.struct.KaitaiStream;
 public class TestEosExceptionU4 extends CommonSpec {
-
-    @Test(expectedExceptions = java.nio.BufferUnderflowException.class)
+    @Test
     public void testEosExceptionU4() throws Exception {
-        EosExceptionU4 r = EosExceptionU4.fromFile(SRC_DIR + "term_strz.bin");
+        assertThrowsEofError(new ThrowingRunnable() {
+            @Override
+            public void run() throws Throwable {
+                EosExceptionU4 r = EosExceptionU4.fromFile(SRC_DIR + "term_strz.bin");
+            }
+        });
     }
 }

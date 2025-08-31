@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import io.kaitai.struct.KaitaiStream;
 public class TestValidFailEqInt extends CommonSpec {
-
     @Test(expectedExceptions = KaitaiStream.ValidationNotEqualError.class)
     public void testValidFailEqInt() throws Exception {
         ValidFailEqInt r = ValidFailEqInt.fromFile(SRC_DIR + "fixed_struct.bin");

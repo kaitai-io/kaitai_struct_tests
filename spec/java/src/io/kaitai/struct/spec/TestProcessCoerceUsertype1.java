@@ -10,9 +10,9 @@ public class TestProcessCoerceUsertype1 extends CommonSpec {
     public void testProcessCoerceUsertype1() throws Exception {
         ProcessCoerceUsertype1 r = ProcessCoerceUsertype1.fromFile(SRC_DIR + "process_coerce_bytes.bin");
 
-        assertIntEquals(r.records().get((int) 0).flag(), 0);
-        assertIntEquals(r.records().get((int) 0).buf().value(), 1094795585);
-        assertIntEquals(r.records().get((int) 1).flag(), 1);
-        assertIntEquals(r.records().get((int) 1).buf().value(), 1111638594);
+        assertIntEquals(r.records().get(((int) 0)).flag(), 0);
+        assertIntEquals(r.records().get(((int) 0)).buf().value(), 1094795585);
+        assertIntEquals(r.records().get(((int) 1)).flag(), 1);
+        assertIntEquals(r.records().get(((int) 1)).buf().value(), 1111638594);
     }
 }

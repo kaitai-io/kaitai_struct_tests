@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ExprOpsParens;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestExprOpsParens extends CommonSpec {
-
     @Test
     public void testExprOpsParens() throws Exception {
         ExprOpsParens r = ExprOpsParens.fromFile(SRC_DIR + "enum_negative.bin");

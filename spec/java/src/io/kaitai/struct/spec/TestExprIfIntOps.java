@@ -6,12 +6,12 @@ import io.kaitai.struct.testformats.ExprIfIntOps;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestExprIfIntOps extends CommonSpec {
-
     @Test
     public void testExprIfIntOps() throws Exception {
-        ExprIfIntOps r = ExprIfIntOps.fromFile(SRC_DIR + "process_coerce_switch.bin");
-
-        assertIntEquals(r.isEqPrim(), true);
-        assertIntEquals(r.isEqBoxed(), true);
+        ExprIfIntOps r = ExprIfIntOps.fromFile(SRC_DIR + "instance_io.bin");
+        assertIntEquals(r.key(), 3);
+        assertEquals(r.bytes(), new byte[] { -4, -4, -4, -3, 9, 3, 3, 3 });
+        assertIntEquals(r.bytesSubKey(), 253);
+        assertIntEquals(r.itemsSubKey(), -3);
     }
 }

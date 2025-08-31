@@ -10,8 +10,8 @@ public class TestFloatingPoints extends CommonSpec {
     public void testFloatingPoints() throws Exception {
         FloatingPoints r = FloatingPoints.fromFile(SRC_DIR + "floating_points.bin");
 
-        assertEquals(r.singleValue(), ((float) (0.5)), 1e-6);
-        assertEquals(r.singleValueBe(), ((float) (0.5)), 1e-6);
+        assertEquals(r.singleValue(), ((float) 0.5), 1e-6);
+        assertEquals(r.singleValueBe(), ((float) 0.5), 1e-6);
         assertEquals(r.doubleValue(), 0.25, 1e-6);
         assertEquals(r.doubleValueBe(), 0.25, 1e-6);
         assertEquals(r.approximateValue(), 1.2345, 1e-6);

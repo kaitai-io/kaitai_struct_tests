@@ -27,7 +27,5 @@ func TestOpaqueExternalType(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	assert.EqualValues(t, "foo", r.One.S1)
-	assert.EqualValues(t, "bar", r.One.S2)
-	assert.EqualValues(t, "|baz@", r.One.S3)
+	assert.EqualValues(t, 102, r.Hw.One)
 }

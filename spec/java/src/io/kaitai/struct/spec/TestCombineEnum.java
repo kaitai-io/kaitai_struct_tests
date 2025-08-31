@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.CombineEnum;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestCombineEnum extends CommonSpec {
-
     @Test
     public void testCombineEnum() throws Exception {
         CombineEnum r = CombineEnum.fromFile(SRC_DIR + "enum_0.bin");

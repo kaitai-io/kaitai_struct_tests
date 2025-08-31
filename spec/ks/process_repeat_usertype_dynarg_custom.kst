@@ -1,0 +1,14 @@
+id: process_repeat_usertype_dynarg_custom
+data: process_rotate.bin
+asserts:
+  - actual: blocks[0].a  # key: 5 + 13 * 0 = 5, flag: false
+    expected: 0x8888_a704
+  - actual: blocks[1].a  # key: 10 + 13 * 1 = 23, flag: true
+    expected: 0x7aaa_92d1
+  - actual: blocks_b.dummy
+    expected: 0x01
+
+  - actual: blocks_b.blocks_0_b
+    expected: 0xe8  # 0xed - 0x05
+  - actual: blocks_b.blocks_1_b
+    expected: 0x3a  # 0x23 + 0x17

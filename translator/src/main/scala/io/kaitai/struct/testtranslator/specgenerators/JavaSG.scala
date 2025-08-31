@@ -2,7 +2,7 @@ package io.kaitai.struct.testtranslator.specgenerators
 
 import io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
 import io.kaitai.struct.datatype.DataType._
-import io.kaitai.struct.datatype.{DataType, KSError}
+import io.kaitai.struct.datatype.{DataType, KSError, EndOfStreamError}
 import io.kaitai.struct.exprlang.Ast
 import io.kaitai.struct.languages.JavaCompiler
 import io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestException, TestSpec, ExpectedException}
@@ -11,7 +11,7 @@ import io.kaitai.struct.translators.JavaTranslator
 class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   val config = RuntimeConfig()
   val className = JavaCompiler.type2class(spec.id)
-  val translator = new JavaTranslator(provider, importList)
+  val translator = new JavaTranslator(provider, importList, config)
   val compiler = new JavaCompiler(provider, config)
 
   importList.add(s"io.kaitai.struct.testformats.$className")
@@ -27,7 +27,6 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
   override def header(): Unit = {
     out.puts(s"public class Test$className extends CommonSpec {")
     out.inc
-    out.puts
   }
 
   override def runParse(): Unit = {
@@ -37,9 +36,28 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
   override def runParseExpectError(expException: ExpectedException): Unit = {
     val exception = expException.exception
-    importList.add("io.kaitai.struct.KaitaiStream")
-    out.puts(s"@Test(expectedExceptions = ${compiler.ksErrorName(exception)}.class)")
-    runParseCommon()
+    if (exception == EndOfStreamError) {
+      out.puts("@Test")
+      out.puts(s"public void test$className() throws Exception {")
+      out.inc
+
+      out.puts("assertThrowsEofError(new ThrowingRunnable() {")
+      out.inc
+
+      out.puts("@Override")
+      out.puts("public void run() throws Throwable {")
+      out.inc
+      out.puts(s"$className r = $className.fromFile(SRC_DIR + " + "\"" + spec.data + "\");")
+      out.dec
+      out.puts("}")
+
+      out.dec
+      out.puts("});")
+    } else {
+      importList.add("io.kaitai.struct.KaitaiStream")
+      out.puts(s"@Test(expectedExceptions = ${compiler.ksErrorName(exception)}.class)")
+      runParseCommon()
+    }
   }
 
   def runParseCommon(): Unit = {

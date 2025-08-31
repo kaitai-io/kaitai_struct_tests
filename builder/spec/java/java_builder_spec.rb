@@ -10,7 +10,7 @@ RSpec.describe JavaBuilder do
   context '1' do
     before :context do
       Dir.chdir("#{@spec_dir}/1")
-      @builder = JavaBuilder.new
+      @builder = JavaBuilder.new('spec')
     end
 
     describe '#parse_failed_build' do

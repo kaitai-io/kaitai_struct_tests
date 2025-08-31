@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.IntegersMinMax;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestIntegersMinMax extends CommonSpec {
-
     @Test
     public void testIntegersMinMax() throws Exception {
         IntegersMinMax r = IntegersMinMax.fromFile(SRC_DIR + "integers_min_max.bin");

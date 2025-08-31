@@ -1,0 +1,15 @@
+id: instance_in_repeat_until
+data: repeat_until_s4.bin
+asserts:
+  - actual: entries.size
+    expected: 5
+  - actual: entries[0]
+    expected: 0x42
+  - actual: entries[1]
+    expected: 0x00
+  - actual: entries[2]
+    expected: 0x1337
+  - actual: entries[3]
+    expected: 0x00
+  - actual: entries[4]
+    expected: -1

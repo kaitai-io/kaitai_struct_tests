@@ -1,0 +1,13 @@
+id: expr_io_eof_bits
+data: nav_parent_switch.bin
+asserts:
+  - actual: foo
+    expected: 0x01_42_f
+  - actual: bar
+    expected: 0xf
+  - actual: baz
+    expected: 'null'
+  - actual: align
+    expected: '[].as<bytes>'
+  - actual: qux
+    expected: 'null'

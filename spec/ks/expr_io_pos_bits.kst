@@ -1,0 +1,11 @@
+id: expr_io_pos_bits
+data: process_xor_4.bin
+asserts:
+  - actual: foo
+    expected: 0b111
+  - actual: bar
+    expected: 0b0_1100
+  - actual: baz
+    expected: true
+  - actual: qux
+    expected: 0b011_1011

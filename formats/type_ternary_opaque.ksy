@@ -3,12 +3,12 @@ meta:
   ks-opaque-types: true
 seq:
   - id: dif_wo_hack
-    size: 12
-    type: term_strz
+    size: 1
+    type: hello_world
     if: not is_hack
   - id: dif_with_hack
-    size: 12
-    type: term_strz
+    size: 1
+    type: hello_world
     process: xor(0b00000011)
     if: is_hack
 instances:

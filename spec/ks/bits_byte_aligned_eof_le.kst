@@ -1,0 +1,7 @@
+id: bits_byte_aligned_eof_le
+data: bcd_user_type_be.bin
+asserts:
+  - actual: prebuf
+    expected: '[0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78]'
+  - actual: bits
+    expected: 0b101_0110_0011_0100_0001_0010_0000_0000

@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.EnumToIInvalid;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestEnumToIInvalid extends CommonSpec {
-
     @Test
     public void testEnumToIInvalid() throws Exception {
         EnumToIInvalid r = EnumToIInvalid.fromFile(SRC_DIR + "term_strz.bin");

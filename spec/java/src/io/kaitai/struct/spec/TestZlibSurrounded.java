@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ZlibSurrounded;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestZlibSurrounded extends CommonSpec {
-
     @Test
     public void testZlibSurrounded() throws Exception {
         ZlibSurrounded r = ZlibSurrounded.fromFile(SRC_DIR + "zlib_surrounded.bin");

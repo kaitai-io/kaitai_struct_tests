@@ -6,12 +6,11 @@ import io.kaitai.struct.testformats.ProcessRepeatBytes;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestProcessRepeatBytes extends CommonSpec {
-
     @Test
     public void testProcessRepeatBytes() throws Exception {
         ProcessRepeatBytes r = ProcessRepeatBytes.fromFile(SRC_DIR + "process_xor_4.bin");
 
-        assertEquals(r.bufs().get((int) 0), new byte[] { 114, 37, 61, -118, 20 });
-        assertEquals(r.bufs().get((int) 1), new byte[] { 74, 82, -86, 16, 68 });
+        assertEquals(r.bufs().get(((int) 0)), new byte[] { 114, 37, 61, -118, 20 });
+        assertEquals(r.bufs().get(((int) 1)), new byte[] { 74, 82, -86, 16, 68 });
     }
 }

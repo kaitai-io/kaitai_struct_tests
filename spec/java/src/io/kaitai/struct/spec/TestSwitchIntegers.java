@@ -11,13 +11,13 @@ public class TestSwitchIntegers extends CommonSpec {
         SwitchIntegers r = SwitchIntegers.fromFile(SRC_DIR + "switch_integers.bin");
 
         assertIntEquals(r.opcodes().size(), 4);
-        assertIntEquals(r.opcodes().get((int) 0).code(), 1);
-        assertIntEquals(r.opcodes().get((int) 0).body(), 7);
-        assertIntEquals(r.opcodes().get((int) 1).code(), 2);
-        assertIntEquals(r.opcodes().get((int) 1).body(), 16448);
-        assertIntEquals(r.opcodes().get((int) 2).code(), 4);
-        assertIntEquals(r.opcodes().get((int) 2).body(), 4919);
-        assertIntEquals(r.opcodes().get((int) 3).code(), 8);
-        assertIntEquals(r.opcodes().get((int) 3).body(), 4919);
+        assertIntEquals(r.opcodes().get(((int) 0)).code(), 1);
+        assertIntEquals(r.opcodes().get(((int) 0)).body(), 7);
+        assertIntEquals(r.opcodes().get(((int) 1)).code(), 2);
+        assertIntEquals(r.opcodes().get(((int) 1)).body(), 16448);
+        assertIntEquals(r.opcodes().get(((int) 2)).code(), 4);
+        assertIntEquals(r.opcodes().get(((int) 2)).body(), 4919);
+        assertIntEquals(r.opcodes().get(((int) 3)).code(), 8);
+        assertIntEquals(r.opcodes().get(((int) 3)).body(), 4919);
     }
 }

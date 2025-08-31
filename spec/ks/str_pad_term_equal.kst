@@ -1,0 +1,11 @@
+id: str_pad_term_equal
+data: str_pad_term.bin
+asserts:
+  - actual: s1
+    expected: '"str1"'
+  - actual: s2
+    expected: '"str2foo@"'
+  - actual: s3
+    expected: '"str"'
+  - actual: s4
+    expected: '"str4baz@."'

@@ -8,11 +8,12 @@ use base qw(Test::Class);
 use Test::More;
 use ExprIfIntOps;
 
-sub test_expr_if_int_ops: Test(2) {
-    my $r = ExprIfIntOps->from_file('src/process_coerce_switch.bin');
-
-    cmp_ok($r->is_eq_prim(), '==', 1, 'Equals');
-    cmp_ok($r->is_eq_boxed(), '==', 1, 'Equals');
+sub test_expr_if_int_ops: Test(4) {
+    my $r = ExprIfIntOps->from_file('src/instance_io.bin');
+    is($r->key(), 3, 'Equals');
+    is($r->bytes(), pack('C*', (252, 252, 252, 253, 9, 3, 3, 3)), 'Equals');
+    is($r->bytes_sub_key(), 253, 'Equals');
+    is($r->items_sub_key(), -3, 'Equals');
 }
 
 Test::Class->runtests;

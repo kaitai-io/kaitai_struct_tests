@@ -31,8 +31,9 @@ class TestTranslator(options: CLIOptions) {
 
     langs.foreach(langName => {
       val sg = getSG(langName, testSpec, provider)
+      val langDir = langName.stripSuffix("-write")
       try {
-        val outFile = s"$outDir/$langName/${sg.fileName(testName)}"
+        val outFile = s"$outDir/$langDir/${sg.fileName(testName)}"
         Console.println(s"... generating $outFile")
         sg.run()
         writeFile(outFile, sg.results)
@@ -109,13 +110,14 @@ class TestTranslator(options: CLIOptions) {
     origSpecs
   }
 
-  def getSG(lang: String, testSpec: TestSpec, provider: ClassTypeProvider): BaseGenerator = lang match {
+  def getSG(lang: String, testSpec: TestSpec, provider: ClassTypeProvider): SpecGenerator = lang match {
     case "construct" => new ConstructSG(testSpec, provider)
     case "cpp_stl_98" => new CppStlSG(testSpec, provider, CppRuntimeConfig().copyAsCpp98())
     case "cpp_stl_11" => new CppStlSG(testSpec, provider, CppRuntimeConfig().copyAsCpp11())
     case "csharp" => new CSharpSG(testSpec, provider)
     case "go" => new GoSG(testSpec, provider)
     case "java" => new JavaSG(testSpec, provider)
+    case "java-write" => new JavaWriteSG(testSpec, provider)
     case "javascript" => new JavaScriptSG(testSpec, provider)
     // case "julia" => new JuliaSG(testSpec, provider)
     case "lua" => new LuaSG(testSpec, provider)
@@ -123,6 +125,7 @@ class TestTranslator(options: CLIOptions) {
     case "perl" => new PerlSG(testSpec, provider)
     case "php" => new PHPSG(testSpec, provider)
     case "python" => new PythonSG(testSpec, provider)
+    case "python-write" => new PythonWriteSG(testSpec, provider)
     case "ruby" => new RubySG(testSpec, provider)
     case "rust" => new RustSG(testSpec, provider)
   }

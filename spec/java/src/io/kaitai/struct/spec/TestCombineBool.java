@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.CombineBool;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestCombineBool extends CommonSpec {
-
     @Test
     public void testCombineBool() throws Exception {
         CombineBool r = CombineBool.fromFile(SRC_DIR + "enum_negative.bin");
