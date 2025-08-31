@@ -5,9 +5,10 @@ namespace Kaitai\Struct\Tests;
 
 class ExprIfIntOpsTest extends TestCase {
     public function testExprIfIntOps() {
-        $r = ExprIfIntOps::fromFile(self::SRC_DIR_PATH . '/process_coerce_switch.bin');
-
-        $this->assertSame(true, $r->isEqPrim());
-        $this->assertSame(true, $r->isEqBoxed());
+        $r = ExprIfIntOps::fromFile(self::SRC_DIR_PATH . '/instance_io.bin');
+        $this->assertSame(3, $r->key());
+        $this->assertSame("\xFC\xFC\xFC\xFD\x09\x03\x03\x03", $r->bytes());
+        $this->assertSame(253, $r->bytesSubKey());
+        $this->assertSame(-3, $r->itemsSubKey());
     }
 }

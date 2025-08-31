@@ -3,9 +3,10 @@
 RSpec.describe 'ExprIfIntOps' do
   it 'parses test properly' do
     require 'expr_if_int_ops'
-    r = ExprIfIntOps.from_file('src/process_coerce_switch.bin')
-
-    expect(r.is_eq_prim).to eq true
-    expect(r.is_eq_boxed).to eq true
+    r = ExprIfIntOps.from_file('src/instance_io.bin')
+    expect(r.key).to eq 3
+    expect(r.bytes).to eq [252, 252, 252, 253, 9, 3, 3, 3].pack('C*')
+    expect(r.bytes_sub_key).to eq 253
+    expect(r.items_sub_key).to eq -3
   end
 end

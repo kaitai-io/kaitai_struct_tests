@@ -10,10 +10,11 @@ namespace Kaitai
         [Test]
         public void TestExprIfIntOps()
         {
-            var r = ExprIfIntOps.FromFile(SourceFile("process_coerce_switch.bin"));
-
-            Assert.AreEqual(r.IsEqPrim, true);
-            Assert.AreEqual(r.IsEqBoxed, true);
+            var r = ExprIfIntOps.FromFile(SourceFile("instance_io.bin"));
+            Assert.AreEqual(r.Key, 3);
+            Assert.AreEqual(r.Bytes, new byte[] { 252, 252, 252, 253, 9, 3, 3, 3 });
+            Assert.AreEqual(r.BytesSubKey, 253);
+            Assert.AreEqual(r.ItemsSubKey, -3);
         }
     }
 }

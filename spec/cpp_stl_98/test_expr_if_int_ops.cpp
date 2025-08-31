@@ -7,12 +7,13 @@
 #include <vector>
 
 BOOST_AUTO_TEST_CASE(test_expr_if_int_ops) {
-    std::ifstream ifs("src/process_coerce_switch.bin", std::ifstream::binary);
+    std::ifstream ifs("src/instance_io.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     expr_if_int_ops_t* r = new expr_if_int_ops_t(&ks);
-
-    BOOST_CHECK_EQUAL(r->is_eq_prim(), true);
-    BOOST_CHECK_EQUAL(r->is_eq_boxed(), true);
+    BOOST_CHECK_EQUAL(r->key(), 3);
+    BOOST_CHECK_EQUAL(r->bytes(), std::string("\xFC\xFC\xFC\xFD\x09\x03\x03\x03", 8));
+    BOOST_CHECK_EQUAL(r->bytes_sub_key(), 253);
+    BOOST_CHECK_EQUAL(r->items_sub_key(), -3);
 
     delete r;
 }

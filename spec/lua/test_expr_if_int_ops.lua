@@ -7,8 +7,9 @@ require("expr_if_int_ops")
 TestExprIfIntOps = {}
 
 function TestExprIfIntOps:test_expr_if_int_ops()
-    local r = ExprIfIntOps:from_file("src/process_coerce_switch.bin")
-
-    luaunit.assertEquals(r.is_eq_prim, true)
-    luaunit.assertEquals(r.is_eq_boxed, true)
+    local r = ExprIfIntOps:from_file("src/instance_io.bin")
+    luaunit.assertEquals(r.key, 3)
+    luaunit.assertEquals(r.bytes, "\252\252\252\253\009\003\003\003")
+    luaunit.assertEquals(r.bytes_sub_key, 253)
+    luaunit.assertEquals(r.items_sub_key, -3)
 end

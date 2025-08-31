@@ -18,7 +18,7 @@ func TestExprIfIntOps(t *testing.T) {
 			t.Fatal("unexpected panic:", r)
 		}
 	}()
-	f, err := os.Open("../../src/process_coerce_switch.bin")
+	f, err := os.Open("../../src/instance_io.bin")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -28,15 +28,16 @@ func TestExprIfIntOps(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-
-	tmp1, err := r.IsEqPrim()
+	assert.EqualValues(t, 3, r.Key)
+	assert.EqualValues(t, []uint8{252, 252, 252, 253, 9, 3, 3, 3}, r.Bytes)
+	tmp1, err := r.BytesSubKey()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, true, tmp1)
-	tmp2, err := r.IsEqBoxed()
+	assert.EqualValues(t, 253, tmp1)
+	tmp2, err := r.ItemsSubKey()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, true, tmp2)
+	assert.EqualValues(t, -3, tmp2)
 }

@@ -9,7 +9,6 @@ public class TestExprIfIntOps extends CommonSpec {
     @Test
     public void testExprIfIntOps() throws Exception {
         ExprIfIntOps r = ExprIfIntOps.fromFile(SRC_DIR + "instance_io.bin");
-
         assertIntEquals(r.key(), 3);
         assertEquals(r.bytes(), new byte[] { -4, -4, -4, -3, 9, 3, 3, 3 });
         assertIntEquals(r.bytesSubKey(), 253);
