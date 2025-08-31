@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require 'json'
+require 'tmpdir'
+require 'pp'
 
 unless ARGV.length == 2
   $stderr.puts "Usage: #{$PROGRAM_NAME} (<prev_ci_json> | '') <now_ci_json>"
@@ -77,27 +80,45 @@ class CIComparison
   def dump_test_list(icon, status, list)
     return if list.empty?
 
-    puts "* #{icon} #{list.length} tests #{status}:"
-    list.each { |t|
-      if t.length == 2
-        puts "  * #{t[0]} -> #{t[1].inspect}"
-      else
-        prev_test = t[1]
-        now_test = t[2]
-
-        if prev_test['is_kst'] == now_test['is_kst']
-          prev_test.delete('is_kst')
-          now_test.delete('is_kst')
-        end
-
-        # Remove "elapsed", as fluctuation is expected and ultimately not interesting
-        prev_test.delete('elapsed')
-        now_test.delete('elapsed')
-
-        puts "  * #{t[0]}: #{t[1].inspect} -> #{t[2].inspect}"
-      end
-    }
     @no_changes = false
+
+    puts "* #{icon} #{list.length} tests #{status}:"
+    Dir.mktmpdir do |temp_dir|
+      list.each { |t|
+        if t.length == 2
+          puts "  * #{t[0]}:"
+          puts dump_test_result(t[1])
+        else
+          prev_test = t[1]
+          now_test = t[2]
+
+          if prev_test['is_kst'] == now_test['is_kst']
+            prev_test.delete('is_kst')
+            now_test.delete('is_kst')
+          end
+
+          # Remove "elapsed", as fluctuation is expected and ultimately not interesting
+          prev_test.delete('elapsed')
+          now_test.delete('elapsed')
+
+          puts "  * #{t[0]}:"
+          prev_out = dump_test_result(t[1])
+          now_out = dump_test_result(t[2])
+          Dir.chdir(temp_dir) do
+            File.write('prev', prev_out, binmode: true)
+            File.write('now', now_out, binmode: true)
+            ret = system('git', 'diff', '--no-index', '--', 'prev', 'now', { close_others: true })
+            raise "unable to find and execute 'git' in your PATH" if ret.nil?
+
+            warn "'git diff' found no differences, which makes no sense (we probably have a bug in the code)" if ret
+          end
+        end
+      }
+    end
+  end
+
+  def dump_test_result(res)
+    res.pretty_inspect.gsub(/^/, ' ' * 4)
   end
 end
 
