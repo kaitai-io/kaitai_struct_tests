@@ -27,8 +27,7 @@ class TestValidFailInst(CommonSpec.Base):
 
     def assert_check_valid_fail(self, r):
         with self.assertRaises(kaitaistruct.ValidationNotEqualError) as cm:
-            r._check_inst()
-        r._check()
+            r._check()
 
         # NB: the error message must not contain the "at pos X: " part because
         # _check() is not supposed to access `_io` at all (even if it happens

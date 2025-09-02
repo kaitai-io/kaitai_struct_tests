@@ -13,23 +13,21 @@ class TestInstanceStd(CommonSpec.Base):
 
     def test_check_shorter_header(self):
         r = InstanceStd()
-        r._check()
         r.header = "1234"
         with self.assertRaisesRegex(ConsistencyError, u"^Check failed: header,"):
-            r._check_header()
+            r._check()
 
     def test_check_longer_header(self):
         r = InstanceStd()
-        r._check()
         r.header = "123456"
         with self.assertRaisesRegex(ConsistencyError, u"^Check failed: header,"):
-            r._check_header()
+            r._check()
 
     def test_check_empty_header_via_dump(self):
         r = InstanceStd()
         r.header = ""
         with self.assertRaisesRegex(ConsistencyError, u"^Check failed: header,"):
-            # calls all _check*() methods
+            # calls all _check() methods
             CommonSpec.Base.dump_struct(r)
 
     def test_write(self):
