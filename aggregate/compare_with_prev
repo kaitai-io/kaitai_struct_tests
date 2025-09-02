@@ -107,7 +107,16 @@ class CIComparison
           Dir.chdir(temp_dir) do
             File.write('prev', prev_out, binmode: true)
             File.write('now', now_out, binmode: true)
-            ret = system('git', 'diff', '--no-index', '--', 'prev', 'now', { close_others: true })
+            # GitHub Actions supports ANSI color output, but its stdout not a terminal
+            # (tty), so with `--color=auto` (which is default), Git doesn't color the
+            # output. Therefore, we pass `--color=always` if we're in CI.
+            color_arg =
+              if ENV.fetch('CI', '') != ''
+                'always'
+              else
+                'auto'
+              end
+            ret = system('git', 'diff', "--color=#{color_arg}", '--no-index', '--', 'prev', 'now', { close_others: true })
             raise "unable to find and execute 'git' in your PATH" if ret.nil?
 
             warn "'git diff' found no differences, which makes no sense (we probably have a bug in the code)" if ret
