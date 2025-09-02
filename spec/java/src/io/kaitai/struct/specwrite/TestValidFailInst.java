@@ -48,10 +48,9 @@ public class TestValidFailInst extends CommonSpec {
         Throwable thr = expectThrows(KaitaiStream.ValidationNotEqualError.class, new ThrowingRunnable() {
             @Override
             public void run() throws Throwable {
-                r._checkInst();
+                r._check();
             }
         });
-        r._check();
 
         // NB: the error message must not contain the "at pos X: " part because
         // _check() is not supposed to access `_io` at all (even if it happens

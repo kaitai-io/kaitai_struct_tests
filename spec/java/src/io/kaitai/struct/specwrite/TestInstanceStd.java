@@ -23,17 +23,15 @@ public class TestInstanceStd extends CommonSpec {
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: header,.*")
     public void testCheckShorterHeader() throws Exception {
         InstanceStd r = new InstanceStd();
-        r._check();
         r.setHeader("1234");
-        r._checkHeader();
+        r._check();
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: header,.*")
     public void testCheckLongerHeader() throws Exception {
         InstanceStd r = new InstanceStd();
-        r._check();
         r.setHeader("123456");
-        r._checkHeader();
+        r._check();
     }
 
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: header,.*")
@@ -41,7 +39,7 @@ public class TestInstanceStd extends CommonSpec {
         InstanceStd r = new InstanceStd();
         r.setHeader("");
         try {
-            // calls all _check*() methods
+            // calls all _check() methods
             dumpStruct(r);
         } catch (InvocationTargetException e) {
             if (e.getCause() instanceof Exception) {

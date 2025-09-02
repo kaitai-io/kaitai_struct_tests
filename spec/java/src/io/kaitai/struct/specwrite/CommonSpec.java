@@ -107,21 +107,12 @@ public abstract class CommonSpec extends io.kaitai.struct.spec.CommonSpec {
                 }
             }
             parentStructs.put(struct, currentPath);
-            List<Method> checkMethods = new ArrayList<>();
             for (final Method m : struct.getClass().getDeclaredMethods()) {
                 if (!Modifier.isPublic(m.getModifiers())) continue;
                 if (Modifier.isStatic(m.getModifiers())) continue; // ignore static methods, i.e. "fromFile"
 
                 final String methodName = m.getName();
                 if (methodName.startsWith("_")) {
-                    // Save `_check*()` methods to call them all after dumping the object.
-                    // This prevents attempts to check parse instances that haven't been
-                    // invoked yet (meaning that their storage fields are `null`, so these
-                    // attempts would fail).
-                    if (methodName.startsWith("_check")) {
-                        checkMethods.add(m);
-                        continue;
-                    }
                     if (
                         methodName.startsWith("_read") ||
                         methodName.startsWith("_check") ||
@@ -148,10 +139,10 @@ public abstract class CommonSpec extends io.kaitai.struct.spec.CommonSpec {
                     currentPath + (currentPath.equals("/") ? "" : "/") + methodName
                 ));
             }
-            // Call all `_check*()` methods
-            for (final Method checkMethod : checkMethods) {
-                checkMethod.invoke(struct);
-            }
+            // We call the `_check()` method after dumping the object. This is necessary: if we did
+            // this before the object is fully dumped, some parse instances might not have been
+            // invoked yet (meaning that their storage fields would be `null`, so it would fail).
+            struct._check();
             parentStructs.remove(struct);
             value = dump;
         } else if (value instanceof List<?>) {
