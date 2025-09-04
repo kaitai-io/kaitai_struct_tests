@@ -91,7 +91,7 @@ class CommonSpec:
                         prop_name.startswith('_should_write') or \
                         prop_name.endswith('__outer_size') or \
                         prop_name.endswith('__inner_size') or \
-                        prop_name.endswith('__to_write')
+                        prop_name.endswith('__enabled')
                     ):
                         continue
 
