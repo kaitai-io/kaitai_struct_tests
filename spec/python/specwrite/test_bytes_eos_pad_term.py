@@ -173,24 +173,32 @@ class TestBytesEosPadTerm(CommonSpec.Base):
 def set_str_pad(r, value):
     s = BytesEosPadTerm.StrPadType(None, r, r._root)
     s.value = value
+    s._check()
+
     r.str_pad = s
 
 
 def set_str_term(r, value):
     s = BytesEosPadTerm.StrTermType(None, r, r._root)
     s.value = value
+    s._check()
+
     r.str_term = s
 
 
 def set_str_term_and_pad(r, value):
     s = BytesEosPadTerm.StrTermAndPadType(None, r, r._root)
     s.value = value
+    s._check()
+
     r.str_term_and_pad = s
 
 
 def set_str_term_include(r, value):
     s = BytesEosPadTerm.StrTermIncludeType(None, r, r._root)
     s.value = value
+    s._check()
+
     r.str_term_include = s
 
 

@@ -195,24 +195,32 @@ public class TestBytesEosPadTerm extends CommonSpec {
     private static void setStrPad(BytesEosPadTerm r, byte[] value) {
         BytesEosPadTerm.StrPadType s = new BytesEosPadTerm.StrPadType(null, r, r._root());
         s.setValue(value);
+        s._check();
+
         r.setStrPad(s);
     }
 
     private static void setStrTerm(BytesEosPadTerm r, byte[] value) {
         BytesEosPadTerm.StrTermType s = new BytesEosPadTerm.StrTermType(null, r, r._root());
         s.setValue(value);
+        s._check();
+
         r.setStrTerm(s);
     }
 
     private static void setStrTermAndPad(BytesEosPadTerm r, byte[] value) {
         BytesEosPadTerm.StrTermAndPadType s = new BytesEosPadTerm.StrTermAndPadType(null, r, r._root());
         s.setValue(value);
+        s._check();
+
         r.setStrTermAndPad(s);
     }
 
     private static void setStrTermInclude(BytesEosPadTerm r, byte[] value) {
         BytesEosPadTerm.StrTermIncludeType s = new BytesEosPadTerm.StrTermIncludeType(null, r, r._root());
         s.setValue(value);
+        s._check();
+
         r.setStrTermInclude(s);
     }
 

@@ -81,6 +81,7 @@ class CommonSpec:
                     if (
                         prop_name == '_io' or \
                         prop_name == '_debug' or \
+                        prop_name == '_dirty' or \
                         prop_name == 'SEQ_FIELDS' or \
                         prop_name.startswith('_raw_') or \
                         prop_name.startswith('_m_')
