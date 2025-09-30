@@ -1,0 +1,5 @@
+### From https://github.com/github/gitignore/blob/10b26ce43da9337f75fb3d4e8d034c4a30ea6f96/Zig.gitignore
+
+.zig-cache/
+zig-out/
+*.o
