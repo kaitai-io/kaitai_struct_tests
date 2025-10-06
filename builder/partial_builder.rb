@@ -313,4 +313,31 @@ class PartialBuilder
       aa <=> bb
     }
   end
+
+  protected
+
+  # Returns +true+ if +path+ is directly contained in the +dir_abs_path+
+  # directory, and +false+ otherwise.
+  #
+  # The +dir_abs_path+ argument is expected to be normalized as if returned by
+  # the +File.absolute_path+ method, i.e. directory parts in path separated only
+  # by +File::SEPARATOR+ (forward slash +/+ on all platforms) and never
+  # +File::ALT_SEPARATOR+ (backslash +\+ on Windows), multiple consecutive
+  # slashes collapsed into one, no useless dots (+./+ or +../+ parts), no
+  # trailing slash, etc.
+  # @param path [String] relative (to the current directory) or absolute path
+  # @param dir_abs_path [String] normalized absolute path of the directory
+  def path_directly_in_dir?(path, dir_abs_path)
+    abs_path = File.absolute_path(path)
+    dir_abs_path += File::SEPARATOR
+    return false unless abs_path.start_with?(dir_abs_path)
+
+    path_rel_to_dir = abs_path.delete_prefix(dir_abs_path)
+    path_basename = File.basename(abs_path)
+    path_rel_to_dir == path_basename
+  end
+
+  def underscore_to_ucamelcase(s)
+    s.split(/_/).map { |x| x.capitalize }.join
+  end
 end
