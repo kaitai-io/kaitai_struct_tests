@@ -1,0 +1,7 @@
+.{
+    .name = .spec,
+    .version = "0.0.0",
+    .fingerprint = 0xc00e173e4acc2843,
+    .minimum_zig_version = "0.15.1",
+    .paths = .{""},
+}

@@ -1,0 +1,19 @@
+test
++- compile test Debug native 1 errors
+tests/spec_type_mismatch_format_param_test.zig:6:76: error: expected type 'void', found 'comptime_int'
+    _ = spec_type_mismatch_format_param.SpecTypeMismatchFormatParam.create(5);
+                                                                           ^
+formats/spec_type_mismatch_format_param.zig:2:24: note: parameter type declared here
+    pub fn create(_io: void) !*SpecTypeMismatchFormatParam {
+                       ^~~~
+referenced by:
+    comptime: tests.zig:2:17
+error: the following command failed with 1 compilation errors:
+/home/pp/zig-x86_64-linux-0.15.1/zig test -freference-trace=256 -ODebug -Mroot=/home/pp/kaitai_struct_tests/builder/spec/zig/spec_type_mismatch_format_param/spec/zig/tests.zig --cache-dir .zig-cache --global-cache-dir /home/pp/.cache/zig --name test --zig-lib-dir /home/pp/zig-x86_64-linux-0.15.1/lib/ --listen=-
+
+Build Summary: 0/2 steps succeeded; 1 failed
+test transitive failure
++- compile test Debug native 1 errors
+
+error: the following build command failed with exit code 1:
+.zig-cache/o/cb9090b6a187a6fec70a38779b39aaf9/build /home/pp/zig-x86_64-linux-0.15.1/zig /home/pp/zig-x86_64-linux-0.15.1/lib /home/pp/kaitai_struct_tests/builder/spec/zig/spec_type_mismatch_format_param/spec/zig .zig-cache /home/pp/.cache/zig --seed 0x14327ef -Zb54b88691cab55e8 test --summary all -freference-trace -Dno-bin

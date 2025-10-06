@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require_relative 'builder/zig_builder'
+ZigBuilder.new.command_line(ARGV)
