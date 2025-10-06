@@ -15,6 +15,7 @@ require_relative 'valgrind_xml_parser'
 require_relative 'build_failed_parser'
 require_relative 'text_list_parser'
 require_relative 'trx_xml_parser'
+require_relative 'zig_json_parser'
 
 raise 'Needs exactly 3 arguments' unless ARGV.size == 3
 
@@ -149,6 +150,11 @@ when 'php'
 when 'ruby'
   add_kst_adoption(
     reports_to_h(RSpecJSONParser.new("#{infile}/test-output-ruby.json")),
+    infile
+  )
+when 'zig'
+  add_kst_adoption(
+    reports_to_h(ZigJSONParser.new("#{infile}/report.json", "#{infile}/stderr.log")),
     infile
   )
 when 'csharp'
