@@ -1,0 +1,8 @@
+#!/bin/sh -ef
+
+. "$(dirname "$0")/config"
+
+./run-zig
+
+./kst-adoption-report zig
+aggregate/convert_to_json zig "$TEST_OUT_DIR/zig" "$TEST_OUT_DIR/zig/ci.json"
