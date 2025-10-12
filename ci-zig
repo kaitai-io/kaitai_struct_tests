@@ -2,6 +2,7 @@
 
 . "$(dirname "$0")/config"
 
+rm -rf "$TEST_OUT_DIR/zig"
 ./run-zig
 
 ./kst-adoption-report zig
