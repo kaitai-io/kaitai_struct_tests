@@ -18,6 +18,13 @@ class ZigBuilder < PartialBuilder
 
     test_out_dir = File.join(@config['TEST_OUT_DIR'], 'zig')
     @test_out_dir = File.absolute_path(test_out_dir)
+
+    Kernel.at_exit do
+      Dir.glob('*.DISABLED', base: @formats_dir).each do |fn|
+        path = File.join(@formats_dir, fn)
+        File.rename(path, path.delete_suffix('.DISABLED'))
+      end
+    end
   end
 
   def list_mandatory_files
@@ -33,14 +40,29 @@ class ZigBuilder < PartialBuilder
   end
 
   def create_project(files)
+    grouped_files = files.group_by { |fn| file_to_kind(fn) }
+    if grouped_files.key?(nil)
+      raise "unexpected files that are neither ':spec' or ':format': #{grouped_files[nil].inspect}"
+    end
+
     spec_list_file_dir = File.dirname(@spec_list_file)
     File.open(@spec_list_file, 'w') do |f|
       f.puts 'comptime {'
-      files
-        .select { |path| path_directly_in_dir?(path, @spec_dir) }
-        .each { |path| f.puts "    _ = @import(\"#{Pathname.new(path).relative_path_from(spec_list_file_dir)}\");" }
+      grouped_files[:spec].each do |path|
+        f.puts "    _ = @import(\"#{Pathname.new(path).relative_path_from(spec_list_file_dir)}\");"
+      end
       f.puts '}'
     end
+
+    current_format_basenames = Dir.glob('*.zig', base: @formats_dir)
+    current_formats = current_format_basenames.map { |fn| File.join(@formats_dir, fn) }
+    included_formats = grouped_files[:format]
+
+    extra_formats = Set.new(current_formats).subtract(included_formats)
+    extra_formats.each do |fn|
+      File.rename(fn, "#{fn}.DISABLED")
+    end
+
     [@spec_list_file]
   end
 
