@@ -12,6 +12,14 @@ RSpec.describe ZigBuilder do
     @spec_dir = File.dirname(__FILE__)
   end
 
+  # This scenario shows that the Zig compiler only reports the file where the
+  # syntax error is found, without indicating where the file was imported from,
+  # as is the case with type mismatch errors in the "referenced by:" trace - see
+  # the test case "format_imports_with_type_mismatch". This forces us to
+  # physically remove the format *.zig files with these errors (we do this by
+  # renaming them to *.zig.DISABLED), which causes "unable to load 'format.zig':
+  # FileNotFound" errors in the files importing such faulty formats in the next
+  # build attempt.
   context 'format_imports_with_syntax_error' do
     before :context do
       Dir.chdir("#{@spec_dir}/format_imports_with_syntax_error")
