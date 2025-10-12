@@ -12,6 +12,21 @@ RSpec.describe ZigBuilder do
     @spec_dir = File.dirname(__FILE__)
   end
 
+  context 'format_imports_with_syntax_error' do
+    before :context do
+      Dir.chdir("#{@spec_dir}/format_imports_with_syntax_error")
+      @builder = ZigBuilder.new
+    end
+
+    describe '#parse_failed_build' do
+      it 'identifies the imported format with syntax error' do
+        expect(@builder.parse_failed_build('test_out/zig/build-1.log')).to eq [
+          File.absolute_path('spec/zig/formats/imported_with_syntax_error.zig'),
+        ]
+      end
+    end
+  end
+
   context 'format_imports_with_type_mismatch' do
     before :context do
       Dir.chdir("#{@spec_dir}/format_imports_with_type_mismatch")
