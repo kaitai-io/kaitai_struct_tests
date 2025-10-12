@@ -1,0 +1,14 @@
+test
++- compile test Debug native 1 errors
+formats/imported_with_syntax_error.zig:9:17: error: expected ';' after statement
+        _ = new byte[] { 80, 65, 67, 75, 45, 49 };
+                ^~~~
+error: the following command failed with 1 compilation errors:
+/home/pp/zig-x86_64-linux-0.15.1/zig test -freference-trace=256 -ODebug -Mroot=/home/pp/kaitai_struct_tests/builder/spec/zig/format_imports_with_syntax_error/spec/zig/tests.zig --cache-dir .zig-cache --global-cache-dir /home/pp/.cache/zig --name test --zig-lib-dir /home/pp/zig-x86_64-linux-0.15.1/lib/ --listen=-
+
+Build Summary: 0/2 steps succeeded; 1 failed
+test transitive failure
++- compile test Debug native 1 errors
+
+error: the following build command failed with exit code 1:
+.zig-cache/o/cb9090b6a187a6fec70a38779b39aaf9/build /home/pp/zig-x86_64-linux-0.15.1/zig /home/pp/zig-x86_64-linux-0.15.1/lib /home/pp/kaitai_struct_tests/builder/spec/zig/format_imports_with_syntax_error/spec/zig .zig-cache /home/pp/.cache/zig --seed 0x6f4d41a8 -Zde5b501cb797b4ad test --summary all -freference-trace -Dno-bin
