@@ -77,7 +77,11 @@ class ZigJSONParser < TestParser
           message << l
         end
       }
-      test_message_pairs << [test_name, message]
+      if test_name.nil?
+        warn "[ZigJSONParser] warning: found #{message.inspect} on stderr and no test start marker" unless message.empty?
+      else
+        test_message_pairs << [test_name, message]
+      end
     end
     test_message_pairs
   end
