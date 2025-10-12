@@ -12,20 +12,20 @@ RSpec.describe ZigBuilder do
     @spec_dir = File.dirname(__FILE__)
   end
 
-  context 'format_imports_with_error' do
+  context 'format_imports_with_type_mismatch' do
     before :context do
-      Dir.chdir("#{@spec_dir}/format_imports_with_error")
+      Dir.chdir("#{@spec_dir}/format_imports_with_type_mismatch")
       @builder = ZigBuilder.new
     end
 
     describe '#parse_failed_build' do
-      it 'identifies the imported format with a compile error + the test spec that references it' do
+      it 'identifies the imported format with type mismatch + the test spec that references it' do
         expect(@builder.parse_failed_build('test_out/zig/build-1.log')).to eq [
-          File.absolute_path('spec/zig/formats/imported_with_error.zig'),
-          File.absolute_path('spec/zig/formats/imported_with_error.zig'),
-          File.absolute_path('spec/zig/formats/format_imports_with_error.zig'),
-          File.absolute_path('spec/zig/formats/format_imports_with_error.zig'),
-          File.absolute_path('spec/zig/tests/format_imports_with_error_test.zig'),
+          File.absolute_path('spec/zig/formats/imported_with_type_mismatch.zig'),
+          File.absolute_path('spec/zig/formats/imported_with_type_mismatch.zig'),
+          File.absolute_path('spec/zig/formats/format_imports_with_type_mismatch.zig'),
+          File.absolute_path('spec/zig/formats/format_imports_with_type_mismatch.zig'),
+          File.absolute_path('spec/zig/tests/format_imports_with_type_mismatch_test.zig'),
         ]
       end
     end
