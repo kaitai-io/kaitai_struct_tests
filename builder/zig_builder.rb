@@ -44,6 +44,8 @@ class ZigBuilder < PartialBuilder
     if grouped_files.key?(nil)
       raise "unexpected files that are neither ':spec' or ':format': #{grouped_files[nil].inspect}"
     end
+    grouped_files[:spec] = [] unless grouped_files.key?(:spec)
+    grouped_files[:format] = [] unless grouped_files.key?(:format)
 
     spec_list_file_dir = File.dirname(@spec_list_file)
     File.open(@spec_list_file, 'w') do |f|
