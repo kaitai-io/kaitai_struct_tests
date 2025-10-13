@@ -128,5 +128,6 @@ class TestTranslator(options: CLIOptions) {
     case "python-write" => new PythonWriteSG(testSpec, provider)
     case "ruby" => new RubySG(testSpec, provider)
     case "rust" => new RustSG(testSpec, provider)
+    case "zig" => new ZigSG(testSpec, provider)
   }
 }

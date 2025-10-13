@@ -30,7 +30,8 @@ object Main extends App {
     "python",
     "python-write",
     "ruby",
-    "rust"
+    "rust",
+    "zig"
   )
 
   val INIT_OBJ_TYPE = "unique_top_level_container"
