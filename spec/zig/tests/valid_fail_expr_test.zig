@@ -2,10 +2,10 @@
 
 const std = @import("std");
 const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("../formats/hello_world.zig");
+const valid_fail_expr = @import("../formats/valid_fail_expr.zig");
 
-test "HelloWorld" {
-    const file = try std.fs.cwd().openFile("../../src/fixed_struct.bin", .{});
+test "ValidFailExpr" {
+    const file = try std.fs.cwd().openFile("../../src/nav_parent_switch.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
     var reader = file.reader(&buffer);
@@ -13,6 +13,5 @@ test "HelloWorld" {
     var arena = std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
     var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try hello_world.HelloWorld.create(&arena, &_io, null, null);
-    try std.testing.expectEqual(80, r.one);
+    try std.testing.expectError(error.ValidationExprError, valid_fail_expr.ValidFailExpr.create(&arena, &_io, null, null));
 }

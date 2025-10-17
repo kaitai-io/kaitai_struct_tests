@@ -2,9 +2,9 @@
 
 const std = @import("std");
 const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("../formats/hello_world.zig");
+const valid_fail_max_int = @import("../formats/valid_fail_max_int.zig");
 
-test "HelloWorld" {
+test "ValidFailMaxInt" {
     const file = try std.fs.cwd().openFile("../../src/fixed_struct.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
@@ -13,6 +13,5 @@ test "HelloWorld" {
     var arena = std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
     var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try hello_world.HelloWorld.create(&arena, &_io, null, null);
-    try std.testing.expectEqual(80, r.one);
+    try std.testing.expectError(error.ValidationGreaterThanError, valid_fail_max_int.ValidFailMaxInt.create(&arena, &_io, null, null));
 }

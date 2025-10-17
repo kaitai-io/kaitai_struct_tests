@@ -2,10 +2,10 @@
 
 const std = @import("std");
 const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("../formats/hello_world.zig");
+const str_literals_latin1 = @import("../formats/str_literals_latin1.zig");
 
-test "HelloWorld" {
-    const file = try std.fs.cwd().openFile("../../src/fixed_struct.bin", .{});
+test "StrLiteralsLatin1" {
+    const file = try std.fs.cwd().openFile("../../src/str_literals_latin1.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
     var reader = file.reader(&buffer);
@@ -13,6 +13,6 @@ test "HelloWorld" {
     var arena = std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
     var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try hello_world.HelloWorld.create(&arena, &_io, null, null);
-    try std.testing.expectEqual(80, r.one);
+    const r = try str_literals_latin1.StrLiteralsLatin1.create(&arena, &_io, null, null);
+    try std.testing.expectEqual(true, (try r.parsedEqLiteral()));
 }

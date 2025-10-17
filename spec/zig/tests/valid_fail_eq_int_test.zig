@@ -2,9 +2,9 @@
 
 const std = @import("std");
 const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("../formats/hello_world.zig");
+const valid_fail_eq_int = @import("../formats/valid_fail_eq_int.zig");
 
-test "HelloWorld" {
+test "ValidFailEqInt" {
     const file = try std.fs.cwd().openFile("../../src/fixed_struct.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
@@ -13,6 +13,5 @@ test "HelloWorld" {
     var arena = std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
     var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try hello_world.HelloWorld.create(&arena, &_io, null, null);
-    try std.testing.expectEqual(80, r.one);
+    try std.testing.expectError(error.ValidationNotEqualError, valid_fail_eq_int.ValidFailEqInt.create(&arena, &_io, null, null));
 }

@@ -2,10 +2,10 @@
 
 const std = @import("std");
 const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("../formats/hello_world.zig");
+const term_strz = @import("../formats/term_strz.zig");
 
-test "HelloWorld" {
-    const file = try std.fs.cwd().openFile("../../src/fixed_struct.bin", .{});
+test "TermStrz" {
+    const file = try std.fs.cwd().openFile("../../src/term_strz.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
     var reader = file.reader(&buffer);
@@ -13,6 +13,8 @@ test "HelloWorld" {
     var arena = std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
     var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try hello_world.HelloWorld.create(&arena, &_io, null, null);
-    try std.testing.expectEqual(80, r.one);
+    const r = try term_strz.TermStrz.create(&arena, &_io, null, null);
+    try std.testing.expectEqualStrings("foo", r.s1);
+    try std.testing.expectEqualStrings("bar", r.s2);
+    try std.testing.expectEqualStrings("|baz@", r.s3);
 }

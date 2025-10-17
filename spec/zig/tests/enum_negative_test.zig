@@ -2,10 +2,10 @@
 
 const std = @import("std");
 const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("../formats/hello_world.zig");
+const enum_negative = @import("../formats/enum_negative.zig");
 
-test "HelloWorld" {
-    const file = try std.fs.cwd().openFile("../../src/fixed_struct.bin", .{});
+test "EnumNegative" {
+    const file = try std.fs.cwd().openFile("../../src/enum_negative.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
     var reader = file.reader(&buffer);
@@ -13,6 +13,7 @@ test "HelloWorld" {
     var arena = std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
     var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try hello_world.HelloWorld.create(&arena, &_io, null, null);
-    try std.testing.expectEqual(80, r.one);
+    const r = try enum_negative.EnumNegative.create(&arena, &_io, null, null);
+    try std.testing.expectEqual(enum_negative.EnumNegative.Constants.negative_one, r.f1);
+    try std.testing.expectEqual(enum_negative.EnumNegative.Constants.positive_one, r.f2);
 }

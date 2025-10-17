@@ -2,10 +2,10 @@
 
 const std = @import("std");
 const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("../formats/hello_world.zig");
+const valid_fail_repeat_inst = @import("../formats/valid_fail_repeat_inst.zig");
 
-test "HelloWorld" {
-    const file = try std.fs.cwd().openFile("../../src/fixed_struct.bin", .{});
+test "ValidFailRepeatInst" {
+    const file = try std.fs.cwd().openFile("../../src/bcd_user_type_be.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
     var reader = file.reader(&buffer);
@@ -13,6 +13,5 @@ test "HelloWorld" {
     var arena = std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
     var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try hello_world.HelloWorld.create(&arena, &_io, null, null);
-    try std.testing.expectEqual(80, r.one);
+    try std.testing.expectError(error.ValidationNotEqualError, valid_fail_repeat_inst.ValidFailRepeatInst.create(&arena, &_io, null, null));
 }

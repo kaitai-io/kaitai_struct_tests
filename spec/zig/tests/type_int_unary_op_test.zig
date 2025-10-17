@@ -2,9 +2,9 @@
 
 const std = @import("std");
 const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("../formats/hello_world.zig");
+const type_int_unary_op = @import("../formats/type_int_unary_op.zig");
 
-test "HelloWorld" {
+test "TypeIntUnaryOp" {
     const file = try std.fs.cwd().openFile("../../src/fixed_struct.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
@@ -13,6 +13,9 @@ test "HelloWorld" {
     var arena = std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
     var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try hello_world.HelloWorld.create(&arena, &_io, null, null);
-    try std.testing.expectEqual(80, r.one);
+    const r = try type_int_unary_op.TypeIntUnaryOp.create(&arena, &_io, null, null);
+    try std.testing.expectEqual(16720, r.value_s2);
+    try std.testing.expectEqual(4706543082108963651, r.value_s8);
+    try std.testing.expectEqual(-16720, (try r.unaryS2()));
+    try std.testing.expectEqual(-4706543082108963651, (try r.unaryS8()));
 }

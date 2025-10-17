@@ -2,9 +2,9 @@
 
 const std = @import("std");
 const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("../formats/hello_world.zig");
+const expr_sizeof_type_1 = @import("../formats/expr_sizeof_type_1.zig");
 
-test "HelloWorld" {
+test "ExprSizeofType1" {
     const file = try std.fs.cwd().openFile("../../src/fixed_struct.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
@@ -13,6 +13,7 @@ test "HelloWorld" {
     var arena = std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
     var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try hello_world.HelloWorld.create(&arena, &_io, null, null);
-    try std.testing.expectEqual(80, r.one);
+    const r = try expr_sizeof_type_1.ExprSizeofType1.create(&arena, &_io, null, null);
+    try std.testing.expectEqual(((1 + 4) + 2) + 4, (try r.sizeofBlock()));
+    try std.testing.expectEqual(4, (try r.sizeofSubblock()));
 }

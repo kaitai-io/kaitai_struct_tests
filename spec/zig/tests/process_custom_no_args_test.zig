@@ -2,10 +2,10 @@
 
 const std = @import("std");
 const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("../formats/hello_world.zig");
+const process_custom_no_args = @import("../formats/process_custom_no_args.zig");
 
-test "HelloWorld" {
-    const file = try std.fs.cwd().openFile("../../src/fixed_struct.bin", .{});
+test "ProcessCustomNoArgs" {
+    const file = try std.fs.cwd().openFile("../../src/process_rotate.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
     var reader = file.reader(&buffer);
@@ -13,6 +13,6 @@ test "HelloWorld" {
     var arena = std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
     var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try hello_world.HelloWorld.create(&arena, &_io, null, null);
-    try std.testing.expectEqual(80, r.one);
+    const r = try process_custom_no_args.ProcessCustomNoArgs.create(&arena, &_io, null, null);
+    try std.testing.expectEqualSlices(u8, &[_]u8{ 95, 9, 172, 141, 141, 237, 95 }, r.buf);
 }

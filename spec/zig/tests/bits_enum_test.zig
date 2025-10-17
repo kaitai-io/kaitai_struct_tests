@@ -2,9 +2,9 @@
 
 const std = @import("std");
 const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("../formats/hello_world.zig");
+const bits_enum = @import("../formats/bits_enum.zig");
 
-test "HelloWorld" {
+test "BitsEnum" {
     const file = try std.fs.cwd().openFile("../../src/fixed_struct.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
@@ -13,6 +13,8 @@ test "HelloWorld" {
     var arena = std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
     var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try hello_world.HelloWorld.create(&arena, &_io, null, null);
-    try std.testing.expectEqual(80, r.one);
+    const r = try bits_enum.BitsEnum.create(&arena, &_io, null, null);
+    try std.testing.expectEqual(bits_enum.BitsEnum.Animal.platypus, r.one);
+    try std.testing.expectEqual(bits_enum.BitsEnum.Animal.horse, r.two);
+    try std.testing.expectEqual(bits_enum.BitsEnum.Animal.cat, r.three);
 }

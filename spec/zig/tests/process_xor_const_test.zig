@@ -2,10 +2,10 @@
 
 const std = @import("std");
 const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("../formats/hello_world.zig");
+const process_xor_const = @import("../formats/process_xor_const.zig");
 
-test "HelloWorld" {
-    const file = try std.fs.cwd().openFile("../../src/fixed_struct.bin", .{});
+test "ProcessXorConst" {
+    const file = try std.fs.cwd().openFile("../../src/process_xor_1.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
     var reader = file.reader(&buffer);
@@ -13,6 +13,7 @@ test "HelloWorld" {
     var arena = std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
     var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try hello_world.HelloWorld.create(&arena, &_io, null, null);
-    try std.testing.expectEqual(80, r.one);
+    const r = try process_xor_const.ProcessXorConst.create(&arena, &_io, null, null);
+    try std.testing.expectEqual(255, r.key);
+    try std.testing.expectEqualSlices(u8, &[_]u8{ 102, 111, 111, 32, 98, 97, 114 }, r.buf);
 }

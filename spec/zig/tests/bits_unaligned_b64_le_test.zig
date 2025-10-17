@@ -2,10 +2,10 @@
 
 const std = @import("std");
 const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("../formats/hello_world.zig");
+const bits_unaligned_b64_le = @import("../formats/bits_unaligned_b64_le.zig");
 
-test "HelloWorld" {
-    const file = try std.fs.cwd().openFile("../../src/fixed_struct.bin", .{});
+test "BitsUnalignedB64Le" {
+    const file = try std.fs.cwd().openFile("../../src/process_xor_4.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
     var reader = file.reader(&buffer);
@@ -13,6 +13,8 @@ test "HelloWorld" {
     var arena = std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
     var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try hello_world.HelloWorld.create(&arena, &_io, null, null);
-    try std.testing.expectEqual(80, r.one);
+    const r = try bits_unaligned_b64_le.BitsUnalignedB64Le.create(&arena, &_io, null, null);
+    try std.testing.expectEqual(false, r.a);
+    try std.testing.expectEqual(1902324737369038326, r.b);
+    try std.testing.expectEqual(71, r.c);
 }

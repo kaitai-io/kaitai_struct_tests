@@ -2,10 +2,10 @@
 
 const std = @import("std");
 const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("../formats/hello_world.zig");
+const bits_signed_shift_b32_le = @import("../formats/bits_signed_shift_b32_le.zig");
 
-test "HelloWorld" {
-    const file = try std.fs.cwd().openFile("../../src/fixed_struct.bin", .{});
+test "BitsSignedShiftB32Le" {
+    const file = try std.fs.cwd().openFile("../../src/bits_signed_shift_b32_le.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
     var reader = file.reader(&buffer);
@@ -13,6 +13,7 @@ test "HelloWorld" {
     var arena = std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
     var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try hello_world.HelloWorld.create(&arena, &_io, null, null);
-    try std.testing.expectEqual(80, r.one);
+    const r = try bits_signed_shift_b32_le.BitsSignedShiftB32Le.create(&arena, &_io, null, null);
+    try std.testing.expectEqual(0, r.a);
+    try std.testing.expectEqual(255, r.b);
 }

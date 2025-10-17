@@ -2,9 +2,9 @@
 
 const std = @import("std");
 const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("../formats/hello_world.zig");
+const nested_types3 = @import("../formats/nested_types3.zig");
 
-test "HelloWorld" {
+test "NestedTypes3" {
     const file = try std.fs.cwd().openFile("../../src/fixed_struct.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
@@ -13,6 +13,10 @@ test "HelloWorld" {
     var arena = std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
     var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try hello_world.HelloWorld.create(&arena, &_io, null, null);
-    try std.testing.expectEqual(80, r.one);
+    const r = try nested_types3.NestedTypes3.create(&arena, &_io, null, null);
+    try std.testing.expectEqual(80, r.a_cc.value_cc);
+    try std.testing.expectEqual(65, r.a_c_d.value_d);
+    try std.testing.expectEqual(67, r.b.value_b);
+    try std.testing.expectEqual(75, r.b.a_cc.value_cc);
+    try std.testing.expectEqual(45, r.b.a_c_d.value_d);
 }

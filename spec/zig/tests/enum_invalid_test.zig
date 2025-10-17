@@ -2,10 +2,10 @@
 
 const std = @import("std");
 const kaitai_struct = @import("kaitai_struct");
-const hello_world = @import("../formats/hello_world.zig");
+const enum_invalid = @import("../formats/enum_invalid.zig");
 
-test "HelloWorld" {
-    const file = try std.fs.cwd().openFile("../../src/fixed_struct.bin", .{});
+test "EnumInvalid" {
+    const file = try std.fs.cwd().openFile("../../src/term_strz.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
     var reader = file.reader(&buffer);
@@ -13,6 +13,7 @@ test "HelloWorld" {
     var arena = std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
     var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try hello_world.HelloWorld.create(&arena, &_io, null, null);
-    try std.testing.expectEqual(80, r.one);
+    const r = try enum_invalid.EnumInvalid.create(&arena, &_io, null, null);
+    try std.testing.expectEqual(enum_invalid.EnumInvalid.Animal.dog, r.pet_1);
+    try std.testing.expectEqual(111, r.pet_2);
 }
