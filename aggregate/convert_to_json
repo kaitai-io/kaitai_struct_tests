@@ -127,6 +127,14 @@ when 'rust'
     ),
     infile
   )
+when 'zig'
+  add_kst_adoption(
+    reports_to_h(
+      ZigJSONParser.new("#{infile}/report.json", "#{infile}/stderr.log"),
+      BuildFailedParser.new("#{infile}/build_failed_tests.txt")
+    ),
+    infile
+  )
 when 'lua', 'nim'
   add_kst_adoption(
     reports_to_h(JUnitXMLParser.new("#{infile}/report.xml")),
@@ -150,11 +158,6 @@ when 'php'
 when 'ruby'
   add_kst_adoption(
     reports_to_h(RSpecJSONParser.new("#{infile}/test-output-ruby.json")),
-    infile
-  )
-when 'zig'
-  add_kst_adoption(
-    reports_to_h(ZigJSONParser.new("#{infile}/report.json", "#{infile}/stderr.log")),
     infile
   )
 when 'csharp'
