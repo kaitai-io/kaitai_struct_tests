@@ -4,80 +4,60 @@ import io.kaitai.struct.{ClassTypeProvider, RuntimeConfig}
 import io.kaitai.struct.datatype.DataType._
 import io.kaitai.struct.datatype.{DataType, KSError, EndOfStreamError}
 import io.kaitai.struct.exprlang.Ast
-import io.kaitai.struct.languages.JavaCompiler
+import io.kaitai.struct.languages.ZigCompiler
 import io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestException, TestSpec, ExpectedException}
-import io.kaitai.struct.translators.JavaTranslator
+import io.kaitai.struct.translators.ZigTranslator
 
 class ZigSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   val config = RuntimeConfig()
-  val className = JavaCompiler.type2class(spec.id)
-  val translator = new JavaTranslator(provider, importList, config)
-  val compiler = new JavaCompiler(provider, config)
+  val className = ZigCompiler.type2class(spec.id)
+  val translator = new ZigTranslator(provider, importList, config)
+  val compiler = new ZigCompiler(provider, config)
 
-  importList.add(s"io.kaitai.struct.testformats.$className")
-  spec.extraImports.foreach(entry =>
-    importList.add(s"io.kaitai.struct.testformats.${JavaCompiler.type2class(entry)}")
-  )
+  importList.add("""const std = @import("std");""")
+  importList.add("""const kaitai_struct = @import("kaitai_struct");""")
+  // NOTE: this is not the correct final path, that would be
+  // `@import("../formats/${spec.id}.zig")`. However, since we also pass
+  // `importList` to ZigTranslator, which will generate
+  // `@import("${spec.id}.zig")` anyway, we might as well embrace that
+  // convention and fix the paths when printing the `importList` to the
+  // resulting test spec file.
+  importList.add(s"""const ${spec.id} = @import("${spec.id}.zig");""")
+  // NOTE: some other languages use `spec.extraImports` here, but since we pass
+  // `importList` to ZigTranslator above, which will insert necessary imports
+  // when translating external enum literals itself, we don't need to use it
+  // here. It would only generate redundant imports.
 
-  importList.add("org.testng.annotations.Test")
-  importList.add("static org.testng.Assert.*")
-
-  override def fileName(name: String): String = s"src/io/kaitai/struct/spec/Test$className.java"
+  override def fileName(name: String): String = s"tests/${name}_test.zig"
 
   override def header(): Unit = {
-    out.puts(s"public class Test$className extends CommonSpec {")
+    out.puts(s"""test "$className" {""")
     out.inc
   }
 
   override def runParse(): Unit = {
-    out.puts("@Test")
     runParseCommon()
+    out.puts(s"const r = try ${spec.id}.$className.create(&arena, &_io, null, null);")
   }
 
   override def runParseExpectError(expException: ExpectedException): Unit = {
     val exception = expException.exception
-    if (exception == EndOfStreamError) {
-      out.puts("@Test")
-      out.puts(s"public void test$className() throws Exception {")
-      out.inc
-
-      out.puts("assertThrowsEofError(new ThrowingRunnable() {")
-      out.inc
-
-      out.puts("@Override")
-      out.puts("public void run() throws Throwable {")
-      out.inc
-      out.puts(s"$className r = $className.fromFile(SRC_DIR + " + "\"" + spec.data + "\");")
-      out.dec
-      out.puts("}")
-
-      out.dec
-      out.puts("});")
-    } else {
-      importList.add("io.kaitai.struct.KaitaiStream")
-      out.puts(s"@Test(expectedExceptions = ${compiler.ksErrorName(exception)}.class)")
-      runParseCommon()
-    }
+    runParseCommon()
+    out.puts(s"try std.testing.expectError(${compiler.ksErrorName(exception)}, ${spec.id}.$className.create(&arena, &_io, null, null));")
   }
 
   def runParseCommon(): Unit = {
-    out.puts(s"public void test$className() throws Exception {")
-    out.inc
-    /** If [[testException]] will be called, we have to add the `final` keyword
-     * when declaring `r` for Java 7 compatibility, otherwise "error: local
-     * variable r is accessed from within inner class; needs to be declared
-     * final" will occur. This is not needed since Java 8 - I suppose this is
-     * because Java 8 introduces the concept of "effectively final", so it's no
-     * longer required to specify `final` explicitly, as it is inferred
-     * automatically. */
-    val needsFinal = spec.asserts.exists(assert => assert.isInstanceOf[TestException])
-    val finalKeyword = if (needsFinal) "final " else ""
-    out.puts(s"${finalKeyword}$className r = $className.fromFile(SRC_DIR + " + "\"" + spec.data + "\");")
+    out.puts(s"""const file = try std.fs.cwd().openFile("../../src/${spec.data}", .{});""")
+    out.puts("defer file.close();")
+    out.puts("var buffer: [8]u8 = undefined;")
+    out.puts("var reader = file.reader(&buffer);")
+    out.puts("const allocator = std.testing.allocator;")
+    out.puts("var arena = std.heap.ArenaAllocator.init(allocator);")
+    out.puts("defer arena.deinit();")
+    out.puts("var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);")
   }
 
   override def footer(): Unit = {
-    out.dec
-    out.puts("}")
     out.dec
     out.puts("}")
   }
@@ -87,31 +67,29 @@ class ZigSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
     actType match {
-      case _: IntType | _: BooleanType =>
-        out.puts(s"assertIntEquals($actStr, $expStr);")
+      case _: BytesType =>
+        out.puts(s"try std.testing.expectEqualSlices(u8, $expStr, $actStr);")
+      case _: StrType =>
+        out.puts(s"try std.testing.expectEqualStrings($expStr, $actStr);")
       case _ =>
-        out.puts(s"assertEquals($actStr, $expStr);")
+        out.puts(s"try std.testing.expectEqual($expStr, $actStr);")
     }
-  }
-
-  override def floatEquality(check: TestEquals): Unit = {
-    val actStr = translateAct(check.actual)
-    val expStr = translator.translate(check.expected)
-    out.puts(s"assertEquals($actStr, $expStr, $FLOAT_DELTA);")
   }
 
   override def nullAssert(actual: Ast.expr): Unit = {
     val actStr = translateAct(actual)
-    out.puts(s"assertNull($actStr);")
+    val actStrWithoutUnwrap = actStr.stripSuffix(".?")
+    out.puts(s"try std.testing.expectEqual(null, $actStrWithoutUnwrap);")
   }
 
   override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit = {
-    simpleEquality(check) // FIXME
+    val elTypeName = ZigCompiler.kaitaiType2NativeType(elType, importList, provider.nowClass)
+    val actStr = translateAct(check.actual)
+    val eltsStr = elts.map((x) => translator.translate(x)).mkString(", ")
+    out.puts(s"try std.testing.expectEqualSlices($elTypeName, &.{ $eltsStr }, $actStr.items);")
   }
 
   override def testException(actual: Ast.expr, exception: KSError): Unit = {
-    importList.add("io.kaitai.struct.KaitaiStream")
-
     out.puts(s"assertThrows(${compiler.ksErrorName(exception)}.class, new ThrowingRunnable() {")
     out.inc
 
@@ -126,15 +104,29 @@ class ZigSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     out.puts("});")
   }
 
+  override def noAsserts() =
+    out.puts("_ = r;")
+
   override def indentStr: String = "    "
 
   override def results: String = {
+    import scala.util.matching.Regex
+
+    val formatImportPattern: Regex = """^const (.*?) = @import\("\1\.zig"\);$""".r
+
     "// " + AUTOGEN_COMMENT + "\n\n" +
-      "package io.kaitai.struct.spec;\n\n" +
-      importList.toList.map((x) => s"import $x;").mkString("", "\n", "\n") +
+      importList.toList.map { x =>
+        x match {
+          case formatImportPattern(format) =>
+            s"""const $format = @import("../formats/$format.zig");"""
+          case _ => x
+        }
+      }.mkString("\n") + "\n\n" +
       out.result
   }
 
   def translateAct(x: Ast.expr) =
-    translator.translate(x).replace(Main.INIT_OBJ_NAME + "()", "r")
+    translator.translate(x)
+      .replace("self." + Main.INIT_OBJ_NAME + ".", "r.")
+      .replaceAll("\\bself\\._allocator\\(\\)", "allocator")
 }
