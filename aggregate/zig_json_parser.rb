@@ -64,6 +64,17 @@ class ZigJSONParser < TestParser
       message = +''
       test_name = nil
       f.each_line { |l|
+        # Since the `std.testing.expectEqualStrings` function prints the actual
+        # and expected strings verbatim to stderr, and "strings" in Zig are just
+        # byte arrays with no guarantee of valid UTF-8 content, the string `l`
+        # may contain invalid UTF-8 byte sequences. In this case, we would get
+        # an error `in 'Regexp#===': invalid byte sequence in UTF-8
+        # (ArgumentError)`, which would prevent the ci.json file from being
+        # generated.
+        #
+        # To prevent this, we use the `String#scrub!` method to replace invalid
+        # UTF-8 byte sequences with the replacement character U+FFFD.
+        l.scrub!
         case l
         when /^=@= ZIG_TEST_START (.*) ~#~\n$/
           if test_name.nil?
