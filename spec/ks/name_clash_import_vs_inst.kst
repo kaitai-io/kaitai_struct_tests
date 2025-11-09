@@ -1,0 +1,7 @@
+id: name_clash_import_vs_inst
+data: fixed_struct.bin
+asserts:
+  - actual: integers.uint8
+    expected: 255
+  - actual: std
+    expected: 3
