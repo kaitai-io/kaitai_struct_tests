@@ -15,6 +15,6 @@ test "RepeatNStrzDouble" {
     var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try repeat_n_strz_double.RepeatNStrzDouble.create(&arena, &_io, null, null);
     try std.testing.expectEqual(2, r.qty);
-    try std.testing.expectEqualSlices([]u8, &.{ "foo" }, r.lines1.items);
-    try std.testing.expectEqualSlices([]u8, &.{ "bar" }, r.lines2.items);
+    try std.testing.expectEqualSlices([]const u8, &.{ "foo" }, r.lines1.items);
+    try std.testing.expectEqualSlices([]const u8, &.{ "bar" }, r.lines2.items);
 }

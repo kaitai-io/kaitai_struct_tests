@@ -19,7 +19,7 @@ test "SwitchManualIntSizeElse" {
     try std.testing.expectEqualStrings("Stuff", @as(*switch_manual_int_size_else.SwitchManualIntSizeElse.Chunk.ChunkMeta, r.chunks.items[0].body).title);
     try std.testing.expectEqualStrings("Me", @as(*switch_manual_int_size_else.SwitchManualIntSizeElse.Chunk.ChunkMeta, r.chunks.items[0].body).author);
     try std.testing.expectEqual(34, r.chunks.items[1].code);
-    try std.testing.expectEqualSlices([]u8, &.{ "AAAA", "BBBB", "CCCC" }, @as(*switch_manual_int_size_else.SwitchManualIntSizeElse.Chunk.ChunkDir, r.chunks.items[1].body).entries.items);
+    try std.testing.expectEqualSlices([]const u8, &.{ "AAAA", "BBBB", "CCCC" }, @as(*switch_manual_int_size_else.SwitchManualIntSizeElse.Chunk.ChunkDir, r.chunks.items[1].body).entries.items);
     try std.testing.expectEqual(51, r.chunks.items[2].code);
     try std.testing.expectEqualSlices(u8, &[_]u8{ 16, 32, 48, 64, 80, 96, 112, 128 }, @as(*switch_manual_int_size_else.SwitchManualIntSizeElse.Chunk.Dummy, r.chunks.items[2].body).rest);
     try std.testing.expectEqual(255, r.chunks.items[3].code);

@@ -19,9 +19,9 @@ test "SwitchManualIntSizeEos" {
     try std.testing.expectEqualStrings("Stuff", @as(*switch_manual_int_size_eos.SwitchManualIntSizeEos.ChunkBody.ChunkMeta, r.chunks.items[0].body.body).title);
     try std.testing.expectEqualStrings("Me", @as(*switch_manual_int_size_eos.SwitchManualIntSizeEos.ChunkBody.ChunkMeta, r.chunks.items[0].body.body).author);
     try std.testing.expectEqual(34, r.chunks.items[1].code);
-    try std.testing.expectEqualSlices([]u8, &.{ "AAAA", "BBBB", "CCCC" }, @as(*switch_manual_int_size_eos.SwitchManualIntSizeEos.ChunkBody.ChunkDir, r.chunks.items[1].body.body).entries.items);
+    try std.testing.expectEqualSlices([]const u8, &.{ "AAAA", "BBBB", "CCCC" }, @as(*switch_manual_int_size_eos.SwitchManualIntSizeEos.ChunkBody.ChunkDir, r.chunks.items[1].body.body).entries.items);
     try std.testing.expectEqual(51, r.chunks.items[2].code);
-    try std.testing.expectEqualSlices(u8, &[_]u8{ 16, 32, 48, 64, 80, 96, 112, 128 }, @as([]u8, r.chunks.items[2].body.body));
+    try std.testing.expectEqualSlices(u8, &[_]u8{ 16, 32, 48, 64, 80, 96, 112, 128 }, @as([]const u8, r.chunks.items[2].body.body));
     try std.testing.expectEqual(255, r.chunks.items[3].code);
-    try std.testing.expectEqualSlices(u8, &[_]u8{  }, @as([]u8, r.chunks.items[3].body.body));
+    try std.testing.expectEqualSlices(u8, &[_]u8{  }, @as([]const u8, r.chunks.items[3].body.body));
 }
