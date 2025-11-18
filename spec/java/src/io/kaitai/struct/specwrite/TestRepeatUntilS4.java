@@ -23,9 +23,7 @@ public class TestRepeatUntilS4 extends CommonSpec {
     @Test(expectedExceptions = ConsistencyError.class, expectedExceptionsMessageRegExp = "Check failed: entries,.*")
     public void testCheckBadNoEntries() {
         RepeatUntilS4 r = new RepeatUntilS4();
-        // In this case, an explicit `Integer` type argument is needed for Java 7
-        // compatibility; since Java 8, `new ArrayList<>()` also works.
-        r.setEntries(new ArrayList<Integer>(0));
+        r.setEntries(new ArrayList<>(0));
         r._check();
     }
 

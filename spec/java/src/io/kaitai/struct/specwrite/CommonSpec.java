@@ -72,9 +72,7 @@ public abstract class CommonSpec extends io.kaitai.struct.spec.CommonSpec {
     }
 
     protected static Object dumpStruct(KaitaiStruct.ReadWrite struct) throws Exception {
-        // In this case, explicit type arguments are needed for Java 7
-        // compatibility; since Java 8, `new IdentityHashMap<>()` also works.
-        return dumpStructValue(struct, new IdentityHashMap<KaitaiStruct.ReadWrite, String>(), 50, "/");
+        return dumpStructValue(struct, new IdentityHashMap<>(), 50, "/");
     }
 
     protected static Object dumpStructValue(
