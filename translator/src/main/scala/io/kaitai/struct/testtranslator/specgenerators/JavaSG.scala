@@ -102,19 +102,7 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
   override def testException(actual: Ast.expr, exception: KSError): Unit = {
     importList.add("io.kaitai.struct.KaitaiStream")
-
-    out.puts(s"assertThrows(${compiler.ksErrorName(exception)}.class, new ThrowingRunnable() {")
-    out.inc
-
-    out.puts("@Override")
-    out.puts("public void run() throws Throwable {")
-    out.inc
-    out.puts(s"${translateAct(actual)};")
-    out.dec
-    out.puts("}")
-
-    out.dec
-    out.puts("});")
+    out.puts(s"assertThrows(${compiler.ksErrorName(exception)}.class, () -> ${translateAct(actual)});")
   }
 
   override def indentStr: String = "    "
