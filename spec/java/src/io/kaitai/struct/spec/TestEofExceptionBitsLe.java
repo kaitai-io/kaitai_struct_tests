@@ -8,7 +8,7 @@ import org.testng.Assert.ThrowingRunnable;
 public class TestEofExceptionBitsLe extends CommonSpec {
     @Test
     public void testEofExceptionBitsLe() throws Exception {
-        final EofExceptionBitsLe r = EofExceptionBitsLe.fromFile(SRC_DIR + "nav_parent_switch.bin");
+        EofExceptionBitsLe r = EofExceptionBitsLe.fromFile(SRC_DIR + "nav_parent_switch.bin");
         assertThrowsEofError(new ThrowingRunnable() {
             @Override
             public void run() throws Throwable {

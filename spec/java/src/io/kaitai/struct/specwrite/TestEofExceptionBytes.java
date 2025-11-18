@@ -33,7 +33,7 @@ public class TestEofExceptionBytes extends CommonSpec {
 
     @Test
     public void testEofExceptionBytesBB() throws Exception {
-        final EofExceptionBytes r = getEofExceptionBytes();
+        EofExceptionBytes r = getEofExceptionBytes();
 
         try (KaitaiStream io = new ByteBufferKaitaiStream(12)) {
             assertThrowsEofError(new ThrowingRunnable() {
@@ -47,7 +47,7 @@ public class TestEofExceptionBytes extends CommonSpec {
 
     @Test
     public void testEofExceptionBytesRAF() throws Exception {
-        final EofExceptionBytes r = getEofExceptionBytes();
+        EofExceptionBytes r = getEofExceptionBytes();
 
         File file = new File(SCRATCH_DIR + "specwrite_TestEofExceptionBytes.bin");
         RandomAccessFile raf = new RandomAccessFile(file, "rw");
