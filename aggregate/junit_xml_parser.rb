@@ -80,8 +80,8 @@ class JUnitXMLParser < TestParser
           # Until TestNG 7.4.0, throwing a SkipException is reported as an error
           # (not as a skip, as it should be) in the JUnit XML report by TestNG -
           # see <https://github.com/testng-team/testng/issues/1632>. Since we
-          # are using an older version of TestNG for compatibility with Java 7
-          # and Java 8, we have to fix the reported status ourselves.
+          # are using an older version of TestNG for compatibility with Java 8,
+          # we have to fix the reported status ourselves.
           if failure_xml.attribute('type') && failure_xml.attribute('type').value == 'org.testng.SkipException'
             status = :skipped
           else
