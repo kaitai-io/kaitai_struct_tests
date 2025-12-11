@@ -2,7 +2,7 @@ name := "translator"
 
 version := "0.12-SNAPSHOT"
 
-scalaVersion := "2.13.13"
+scalaVersion := "2.13.18"
 
 libraryDependencies ++= Seq(
   "io.kaitai" %% "kaitai-struct-compiler" % "0.12-SNAPSHOT",
