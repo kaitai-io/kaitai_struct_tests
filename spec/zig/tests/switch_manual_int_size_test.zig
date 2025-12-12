@@ -16,12 +16,12 @@ test "SwitchManualIntSize" {
     const r = try _imp_switch_manual_int_size.SwitchManualIntSize.create(&arena, &_io, null, null);
     try _imp_std.testing.expectEqual(4, r.chunks.items.len);
     try _imp_std.testing.expectEqual(17, r.chunks.items[0].code);
-    try _imp_std.testing.expectEqualStrings("Stuff", @as(*_imp_switch_manual_int_size.SwitchManualIntSize.Chunk.ChunkMeta, r.chunks.items[0].body).title);
-    try _imp_std.testing.expectEqualStrings("Me", @as(*_imp_switch_manual_int_size.SwitchManualIntSize.Chunk.ChunkMeta, r.chunks.items[0].body).author);
+    try _imp_std.testing.expectEqualStrings("Stuff", r.chunks.items[0].body.chunk_meta.title);
+    try _imp_std.testing.expectEqualStrings("Me", r.chunks.items[0].body.chunk_meta.author);
     try _imp_std.testing.expectEqual(34, r.chunks.items[1].code);
-    try _imp_std.testing.expectEqualSlices([]const u8, &.{ "AAAA", "BBBB", "CCCC" }, @as(*_imp_switch_manual_int_size.SwitchManualIntSize.Chunk.ChunkDir, r.chunks.items[1].body).entries.items);
+    try _imp_std.testing.expectEqualSlices([]const u8, &.{ "AAAA", "BBBB", "CCCC" }, r.chunks.items[1].body.chunk_dir.entries.items);
     try _imp_std.testing.expectEqual(51, r.chunks.items[2].code);
-    try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 16, 32, 48, 64, 80, 96, 112, 128 }, @as([]const u8, r.chunks.items[2].body));
+    try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 16, 32, 48, 64, 80, 96, 112, 128 }, r.chunks.items[2].body.bytes);
     try _imp_std.testing.expectEqual(255, r.chunks.items[3].code);
-    try _imp_std.testing.expectEqualSlices(u8, &[_]u8{  }, @as([]const u8, r.chunks.items[3].body));
+    try _imp_std.testing.expectEqualSlices(u8, &[_]u8{  }, r.chunks.items[3].body.bytes);
 }

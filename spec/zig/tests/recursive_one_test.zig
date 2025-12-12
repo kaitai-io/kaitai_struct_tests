@@ -15,7 +15,7 @@ test "RecursiveOne" {
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_recursive_one.RecursiveOne.create(&arena, &_io, null, null);
     try _imp_std.testing.expectEqual(80, r.one);
-    try _imp_std.testing.expectEqual(65, @as(*_imp_recursive_one.RecursiveOne, r.next).one);
-    try _imp_std.testing.expectEqual(67, @as(*_imp_recursive_one.RecursiveOne, @as(*_imp_recursive_one.RecursiveOne, r.next).next).one);
-    try _imp_std.testing.expectEqual(11595, @as(*_imp_recursive_one.RecursiveOne.Fini, @as(*_imp_recursive_one.RecursiveOne, @as(*_imp_recursive_one.RecursiveOne, r.next).next).next).finisher);
+    try _imp_std.testing.expectEqual(65, r.next.recursive_one.one);
+    try _imp_std.testing.expectEqual(67, r.next.recursive_one.next.recursive_one.one);
+    try _imp_std.testing.expectEqual(11595, r.next.recursive_one.next.recursive_one.next.fini.finisher);
 }

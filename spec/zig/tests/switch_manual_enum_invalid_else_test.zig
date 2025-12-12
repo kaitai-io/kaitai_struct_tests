@@ -16,7 +16,7 @@ test "SwitchManualEnumInvalidElse" {
     const r = try _imp_switch_manual_enum_invalid_else.SwitchManualEnumInvalidElse.create(&arena, &_io, null, null);
     try _imp_std.testing.expectEqual(2, r.opcodes.items.len);
     try _imp_std.testing.expectEqual(255, r.opcodes.items[0].code);
-    try _imp_std.testing.expectEqual(123, (try @as(*_imp_switch_manual_enum_invalid_else.SwitchManualEnumInvalidElse.Opcode.Defval, r.opcodes.items[0].body).value()));
+    try _imp_std.testing.expectEqual(123, (try r.opcodes.items[0].body.defval.value()));
     try _imp_std.testing.expectEqual(1, r.opcodes.items[1].code);
-    try _imp_std.testing.expectEqual(123, (try @as(*_imp_switch_manual_enum_invalid_else.SwitchManualEnumInvalidElse.Opcode.Defval, r.opcodes.items[1].body).value()));
+    try _imp_std.testing.expectEqual(123, (try r.opcodes.items[1].body.defval.value()));
 }

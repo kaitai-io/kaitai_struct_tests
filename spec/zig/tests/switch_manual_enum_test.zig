@@ -16,11 +16,11 @@ test "SwitchManualEnum" {
     const r = try _imp_switch_manual_enum.SwitchManualEnum.create(&arena, &_io, null, null);
     try _imp_std.testing.expectEqual(4, r.opcodes.items.len);
     try _imp_std.testing.expectEqual(_imp_switch_manual_enum.SwitchManualEnum.Opcode.CodeEnum.strval, r.opcodes.items[0].code);
-    try _imp_std.testing.expectEqualStrings("foobar", @as(*_imp_switch_manual_enum.SwitchManualEnum.Opcode.Strval, r.opcodes.items[0].body).value);
+    try _imp_std.testing.expectEqualStrings("foobar", r.opcodes.items[0].body.strval.value);
     try _imp_std.testing.expectEqual(_imp_switch_manual_enum.SwitchManualEnum.Opcode.CodeEnum.intval, r.opcodes.items[1].code);
-    try _imp_std.testing.expectEqual(66, @as(*_imp_switch_manual_enum.SwitchManualEnum.Opcode.Intval, r.opcodes.items[1].body).value);
+    try _imp_std.testing.expectEqual(66, r.opcodes.items[1].body.intval.value);
     try _imp_std.testing.expectEqual(_imp_switch_manual_enum.SwitchManualEnum.Opcode.CodeEnum.intval, r.opcodes.items[2].code);
-    try _imp_std.testing.expectEqual(55, @as(*_imp_switch_manual_enum.SwitchManualEnum.Opcode.Intval, r.opcodes.items[2].body).value);
+    try _imp_std.testing.expectEqual(55, r.opcodes.items[2].body.intval.value);
     try _imp_std.testing.expectEqual(_imp_switch_manual_enum.SwitchManualEnum.Opcode.CodeEnum.strval, r.opcodes.items[3].code);
-    try _imp_std.testing.expectEqualStrings("", @as(*_imp_switch_manual_enum.SwitchManualEnum.Opcode.Strval, r.opcodes.items[3].body).value);
+    try _imp_std.testing.expectEqualStrings("", r.opcodes.items[3].body.strval.value);
 }

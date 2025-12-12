@@ -16,11 +16,11 @@ test "SwitchBytearray" {
     const r = try _imp_switch_bytearray.SwitchBytearray.create(&arena, &_io, null, null);
     try _imp_std.testing.expectEqual(4, r.opcodes.items.len);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 83 }, r.opcodes.items[0].code);
-    try _imp_std.testing.expectEqualStrings("foobar", @as(*_imp_switch_bytearray.SwitchBytearray.Opcode.Strval, r.opcodes.items[0].body).value);
+    try _imp_std.testing.expectEqualStrings("foobar", r.opcodes.items[0].body.strval.value);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 73 }, r.opcodes.items[1].code);
-    try _imp_std.testing.expectEqual(66, @as(*_imp_switch_bytearray.SwitchBytearray.Opcode.Intval, r.opcodes.items[1].body).value);
+    try _imp_std.testing.expectEqual(66, r.opcodes.items[1].body.intval.value);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 73 }, r.opcodes.items[2].code);
-    try _imp_std.testing.expectEqual(55, @as(*_imp_switch_bytearray.SwitchBytearray.Opcode.Intval, r.opcodes.items[2].body).value);
+    try _imp_std.testing.expectEqual(55, r.opcodes.items[2].body.intval.value);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 83 }, r.opcodes.items[3].code);
-    try _imp_std.testing.expectEqualStrings("", @as(*_imp_switch_bytearray.SwitchBytearray.Opcode.Strval, r.opcodes.items[3].body).value);
+    try _imp_std.testing.expectEqualStrings("", r.opcodes.items[3].body.strval.value);
 }

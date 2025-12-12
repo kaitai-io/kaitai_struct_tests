@@ -16,11 +16,11 @@ test "SwitchManualIntElse" {
     const r = try _imp_switch_manual_int_else.SwitchManualIntElse.create(&arena, &_io, null, null);
     try _imp_std.testing.expectEqual(4, r.opcodes.items.len);
     try _imp_std.testing.expectEqual(83, r.opcodes.items[0].code);
-    try _imp_std.testing.expectEqualStrings("foo", @as(*_imp_switch_manual_int_else.SwitchManualIntElse.Opcode.Strval, r.opcodes.items[0].body).value);
+    try _imp_std.testing.expectEqualStrings("foo", r.opcodes.items[0].body.strval.value);
     try _imp_std.testing.expectEqual(88, r.opcodes.items[1].code);
-    try _imp_std.testing.expectEqual(66, @as(*_imp_switch_manual_int_else.SwitchManualIntElse.Opcode.Noneval, r.opcodes.items[1].body).filler);
+    try _imp_std.testing.expectEqual(66, r.opcodes.items[1].body.noneval.filler);
     try _imp_std.testing.expectEqual(89, r.opcodes.items[2].code);
-    try _imp_std.testing.expectEqual(51966, @as(*_imp_switch_manual_int_else.SwitchManualIntElse.Opcode.Noneval, r.opcodes.items[2].body).filler);
+    try _imp_std.testing.expectEqual(51966, r.opcodes.items[2].body.noneval.filler);
     try _imp_std.testing.expectEqual(73, r.opcodes.items[3].code);
-    try _imp_std.testing.expectEqual(7, @as(*_imp_switch_manual_int_else.SwitchManualIntElse.Opcode.Intval, r.opcodes.items[3].body).value);
+    try _imp_std.testing.expectEqual(7, r.opcodes.items[3].body.intval.value);
 }

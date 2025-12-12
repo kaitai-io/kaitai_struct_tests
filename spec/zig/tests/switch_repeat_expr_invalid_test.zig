@@ -16,5 +16,5 @@ test "SwitchRepeatExprInvalid" {
     const r = try _imp_switch_repeat_expr_invalid.SwitchRepeatExprInvalid.create(&arena, &_io, null, null);
     try _imp_std.testing.expectEqual(17, r.code);
     try _imp_std.testing.expectEqual(9, r.size);
-    try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 83, 116, 117, 102, 102, 0, 77, 101, 0 }, @as([]const u8, r.body.items[0]));
+    try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 83, 116, 117, 102, 102, 0, 77, 101, 0 }, r.body.items[0].bytes);
 }

@@ -16,5 +16,5 @@ test "NavParentSwitchCast" {
     const r = try _imp_nav_parent_switch_cast.NavParentSwitchCast.create(&arena, &_io, null, null);
     try _imp_std.testing.expectEqual(1, r.main.buf_type);
     try _imp_std.testing.expectEqual(7, r.main.flag);
-    try _imp_std.testing.expectEqual(7, (try @as(*_imp_nav_parent_switch_cast.NavParentSwitchCast.Foo.One, r.main.buf).branch.flag()));
+    try _imp_std.testing.expectEqual(7, (try r.main.buf.one.branch.flag()));
 }
