@@ -1,17 +1,17 @@
-const std = @import("std");
-const kaitai_struct = @import("kaitai_struct");
-const repeat_n_strz = @import("../formats/repeat_n_strz.zig");
+const _imp_std = @import("std");
+const _imp_kaitai_struct = @import("kaitai_struct");
+const _imp_repeat_n_strz = @import("../formats/repeat_n_strz.zig");
 
 test "RepeatNStrz" {
-    const file = try std.fs.cwd().openFile("../../src/repeat_n_strz.bin", .{});
+    const file = try _imp_std.fs.cwd().openFile("../../src/repeat_n_strz.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
     var reader = file.reader(&buffer);
-    const allocator = std.testing.allocator;
-    var arena = std.heap.ArenaAllocator.init(allocator);
+    const allocator = _imp_std.testing.allocator;
+    var arena = _imp_std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
-    var _io = kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try repeat_n_strz.RepeatNStrz.create(&arena, &_io, null, null);
-    try std.testing.expectEqual(2, r.qty);
-    try std.testing.expectEqualDeep(@as([]const []const u8, &.{ "foo", "bar" }), r.lines.items);
+    var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
+    const r = try _imp_repeat_n_strz.RepeatNStrz.create(&arena, &_io, null, null);
+    try _imp_std.testing.expectEqual(2, r.qty);
+    try _imp_std.testing.expectEqualDeep(@as([]const []const u8, &.{ "foo", "bar" }), r.lines.items);
 }
