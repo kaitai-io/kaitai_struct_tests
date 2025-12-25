@@ -1,5 +1,5 @@
 # params_call_malformed.ksy: /seq/0/type:
-# 	error: parsing expression '2 + 3, ' failed on 1:6, expected CharsWhile(Set( , n)) | "\\\n" | End
+# 	error: parameter count mismatch: 2 declared, but 1 used
 #
 meta:
   id: params_call_malformed
