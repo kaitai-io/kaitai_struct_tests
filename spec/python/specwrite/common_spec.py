@@ -1,6 +1,6 @@
 import unittest
 import io
-from kaitaistruct import KaitaiStream, KaitaiStruct, PY2
+from kaitaistruct import KaitaiStream, KaitaiStruct
 
 # A little hack from https://stackoverflow.com/a/25695512 to trick 'unittest'
 # into thinking that CommonSpec.Base is not a test by itself.
@@ -132,7 +132,4 @@ class CommonSpec:
 
         @staticmethod
         def byte_array_to_hex(arr):
-            if PY2 and isinstance(arr, bytes):
-                arr = bytearray(arr)
-
-            return ' '.join('%02x' % b for b in arr)
+            return arr.hex(' ')
