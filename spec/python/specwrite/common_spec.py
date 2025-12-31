@@ -136,11 +136,3 @@ class CommonSpec:
                 arr = bytearray(arr)
 
             return ' '.join('%02x' % b for b in arr)
-
-# In Python 2, the method is called `assertRaisesRegexp`, see
-# https://github.com/kaitai-io/kaitai_struct_tests/pull/115#issue-2231549324
-#
-# Once we end support for Python 2, we can remove this code
-# (`assertRaisesRegex` is available since Python 3.2).
-if not hasattr(CommonSpec.Base, 'assertRaisesRegex'):
-    CommonSpec.Base.assertRaisesRegex = CommonSpec.Base.assertRaisesRegexp
