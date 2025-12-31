@@ -4,8 +4,8 @@
 
 rm -rf "$TEST_OUT_DIR/python" "$TEST_OUT_DIR/python-write"
 mkdir -p "$TEST_OUT_DIR/python" "$TEST_OUT_DIR/python-write"
-PYTHONPATH="$PYTHON_RUNTIME_DIR:compiled/python:spec/python/extra" PYTHONDONTWRITEBYTECODE=1 PYTHONDEVMODE=1 python ./run-python-xml.py "$TEST_OUT_DIR/python/report.xml" discover -s spec/python/spec
-PYTHONPATH="$PYTHON_RUNTIME_DIR:compiled/python:spec/python:spec/python/extra" PYTHONDONTWRITEBYTECODE=1 PYTHONDEVMODE=1 python ./run-python-xml.py "$TEST_OUT_DIR/python-write/report.xml" discover -s spec/python/specwrite
+PYTHONPATH="$PYTHON_RUNTIME_DIR:compiled/python:spec/python/extra" PYTHONDONTWRITEBYTECODE=1 PYTHONDEVMODE=1 python -m xmlrunner --output-file "$TEST_OUT_DIR/python/report.xml" --outsuffix '' discover -s spec/python/spec
+PYTHONPATH="$PYTHON_RUNTIME_DIR:compiled/python:spec/python:spec/python/extra" PYTHONDONTWRITEBYTECODE=1 PYTHONDEVMODE=1 python -m xmlrunner --output-file "$TEST_OUT_DIR/python-write/report.xml" --outsuffix '' discover -s spec/python/specwrite
 
 ./kst-adoption-report python
 ./kst-adoption-report python-write

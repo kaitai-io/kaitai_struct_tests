@@ -4,7 +4,7 @@
 
 rm -rf "$TEST_OUT_DIR/construct"
 mkdir -p "$TEST_OUT_DIR/construct"
-PYTHONPATH="compiled/construct" PYTHONDONTWRITEBYTECODE=1 PYTHONDEVMODE=1 python ./run-python-xml.py "$TEST_OUT_DIR/construct/report.xml" discover -s spec/construct
+PYTHONPATH="compiled/construct" PYTHONDONTWRITEBYTECODE=1 PYTHONDEVMODE=1 python -m xmlrunner --output-file "$TEST_OUT_DIR/construct/report.xml" --outsuffix '' discover -s spec/construct
 
 ./kst-adoption-report construct
 aggregate/convert_to_json construct "$TEST_OUT_DIR/construct" "$TEST_OUT_DIR/construct/ci.json"
