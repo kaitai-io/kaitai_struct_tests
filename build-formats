@@ -42,7 +42,9 @@ if [ "$TARGET" = python ] || [ "$TARGET" = all ]; then
 	mv -n "$FORMATS_COMPILED_DIR/python" "$FORMATS_COMPILED_DIR/python-tmp"
 	mkdir "$FORMATS_COMPILED_DIR/python"
 	mv -n "$FORMATS_COMPILED_DIR/python-tmp" "$FORMATS_COMPILED_DIR/python/testformats"
-	# __init__.py is needed in Python 2
+	# Although Python 3 doesn't require empty `__init__.py` files, omitting them will create
+	# a [namespace package](https://docs.python.org/3/glossary.html#term-namespace-package).
+	# This is a relatively advanced feature and is recommended to be avoided unless needed.
 	touch "$FORMATS_COMPILED_DIR/python/testformats/__init__.py"
 
 	"$COMPILER_DIR/jvm/target/universal/stage/bin/kaitai-struct-compiler" -- \
@@ -54,6 +56,6 @@ if [ "$TARGET" = python ] || [ "$TARGET" = all ]; then
 		--python-package testwrite \
 		"$FORMATS_KSY_DIR"/*.ksy || :
 
-	# __init__.py is needed in Python 2
+	# See the comment above about why we are creating this empty `__init__.py` file.
 	touch "$FORMATS_COMPILED_DIR/python/testwrite/__init__.py"
 fi
