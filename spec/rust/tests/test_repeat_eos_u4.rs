@@ -10,7 +10,10 @@ fn test_repeat_eos_u4() -> KResult<()> {
     let bytes = fs::read("../../src/repeat_eos_struct.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<RepeatEosU4> = RepeatEosU4::read_into(&_io, None, None)?;
-
-    assert_eq!(*r.numbers(), vec![0, 66, 66, 2069]);
+    assert_eq!(r.numbers().len(), 4);
+    assert_eq!(r.numbers()[0 as usize], 0);
+    assert_eq!(r.numbers()[1 as usize], 66);
+    assert_eq!(r.numbers()[2 as usize], 66);
+    assert_eq!(r.numbers()[3 as usize], 2069);
     Ok(())
 }

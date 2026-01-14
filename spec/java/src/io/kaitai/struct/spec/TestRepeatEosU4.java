@@ -9,7 +9,6 @@ public class TestRepeatEosU4 extends CommonSpec {
     @Test
     public void testRepeatEosU4() throws Exception {
         RepeatEosU4 r = RepeatEosU4.fromFile(SRC_DIR + "repeat_eos_struct.bin");
-
         assertIntEquals(r.numbers().size(), 4);
         assertIntEquals(r.numbers().get(((int) 0)), 0);
         assertIntEquals(r.numbers().get(((int) 1)), 66);

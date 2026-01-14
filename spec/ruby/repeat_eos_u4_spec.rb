@@ -4,7 +4,10 @@ RSpec.describe 'RepeatEosU4' do
   it 'parses test properly' do
     require 'repeat_eos_u4'
     r = RepeatEosU4.from_file('src/repeat_eos_struct.bin')
-
-    expect(r.numbers).to eq [0, 66, 66, 2069]
+    expect(r.numbers.length).to eq 4
+    expect(r.numbers[0]).to eq 0
+    expect(r.numbers[1]).to eq 66
+    expect(r.numbers[2]).to eq 66
+    expect(r.numbers[3]).to eq 2069
   end
 end

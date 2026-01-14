@@ -8,10 +8,13 @@ use base qw(Test::Class);
 use Test::More;
 use RepeatEosU4;
 
-sub test_repeat_eos_u4: Test(1) {
+sub test_repeat_eos_u4: Test(5) {
     my $r = RepeatEosU4->from_file('src/repeat_eos_struct.bin');
-
-    is_deeply($r->numbers(), [0, 66, 66, 2069], 'Equals');
+    is(scalar(@{$r->numbers()}), 4, 'Equals');
+    is(@{$r->numbers()}[0], 0, 'Equals');
+    is(@{$r->numbers()}[1], 66, 'Equals');
+    is(@{$r->numbers()}[2], 66, 'Equals');
+    is(@{$r->numbers()}[3], 2069, 'Equals');
 }
 
 Test::Class->runtests;

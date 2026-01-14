@@ -5,5 +5,8 @@ import ../../compiled/nim/repeat_eos_u4
 import auxiliary/test_utils
 
 let r = RepeatEosU4.fromFile("../../src/repeat_eos_struct.bin")
-
-assert r.numbers == @[uint32(0), 66, 66, 2069]
+assert len(r.numbers) == 4
+assert r.numbers[0] == 0
+assert r.numbers[1] == 66
+assert r.numbers[2] == 66
+assert r.numbers[3] == 2069

@@ -8,6 +8,9 @@ TestRepeatEosU4 = {}
 
 function TestRepeatEosU4:test_repeat_eos_u4()
     local r = RepeatEosU4:from_file("src/repeat_eos_struct.bin")
-
-    luaunit.assertEquals(r.numbers, {0, 66, 66, 2069})
+    luaunit.assertEquals(#r.numbers, 4)
+    luaunit.assertEquals(r.numbers[0 + 1], 0)
+    luaunit.assertEquals(r.numbers[1 + 1], 66)
+    luaunit.assertEquals(r.numbers[2 + 1], 66)
+    luaunit.assertEquals(r.numbers[3 + 1], 2069)
 end

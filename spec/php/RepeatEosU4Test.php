@@ -6,7 +6,10 @@ namespace Kaitai\Struct\Tests;
 class RepeatEosU4Test extends TestCase {
     public function testRepeatEosU4() {
         $r = RepeatEosU4::fromFile(self::SRC_DIR_PATH . '/repeat_eos_struct.bin');
-
-        $this->assertSame([0, 66, 66, 2069], $r->numbers());
+        $this->assertSame(4, count($r->numbers()));
+        $this->assertSame(0, $r->numbers()[0]);
+        $this->assertSame(66, $r->numbers()[1]);
+        $this->assertSame(66, $r->numbers()[2]);
+        $this->assertSame(2069, $r->numbers()[3]);
     }
 }
