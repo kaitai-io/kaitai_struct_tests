@@ -7,4 +7,4 @@ class TestRepeatUntilS4(unittest.TestCase):
     def test_repeat_until_s4(self):
         with RepeatUntilS4.from_file('src/repeat_until_s4.bin') as r:
             self.assertEqual(r.entries, [66, 4919, -251658241, -1])
-            self.assertEqual(r.afterall, u"foobar")
+            self.assertEqual(r.afterall, "foobar")

@@ -8,7 +8,7 @@ class TestStrEncodingsUtf16(unittest.TestCase):
         with StrEncodingsUtf16.from_file('src/str_encodings_utf16.bin') as r:
             self.assertEqual(r.len_be, 12)
             self.assertEqual(r.be_bom_removed.bom, 65279)
-            self.assertEqual(r.be_bom_removed.str, u"\u3053\u3093\u306b\u3061\u306f")
+            self.assertEqual(r.be_bom_removed.str, "\u3053\u3093\u306b\u3061\u306f")
             self.assertEqual(r.len_le, 12)
             self.assertEqual(r.le_bom_removed.bom, 65279)
-            self.assertEqual(r.le_bom_removed.str, u"\u3053\u3093\u306b\u3061\u306f")
+            self.assertEqual(r.le_bom_removed.str, "\u3053\u3093\u306b\u3061\u306f")

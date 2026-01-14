@@ -8,10 +8,10 @@ class TestSwitchManualIntSize(unittest.TestCase):
         with SwitchManualIntSize.from_file('src/switch_tlv.bin') as r:
             self.assertEqual(len(r.chunks), 4)
             self.assertEqual(r.chunks[0].code, 17)
-            self.assertEqual(r.chunks[0].body.title, u"Stuff")
-            self.assertEqual(r.chunks[0].body.author, u"Me")
+            self.assertEqual(r.chunks[0].body.title, "Stuff")
+            self.assertEqual(r.chunks[0].body.author, "Me")
             self.assertEqual(r.chunks[1].code, 34)
-            self.assertEqual(r.chunks[1].body.entries, [u"AAAA", u"BBBB", u"CCCC"])
+            self.assertEqual(r.chunks[1].body.entries, ["AAAA", "BBBB", "CCCC"])
             self.assertEqual(r.chunks[2].code, 51)
             self.assertEqual(r.chunks[2].body, b"\x10\x20\x30\x40\x50\x60\x70\x80")
             self.assertEqual(r.chunks[3].code, 255)

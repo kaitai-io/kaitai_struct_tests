@@ -6,7 +6,7 @@ from testformats.str_eos_pad_term_empty import StrEosPadTermEmpty
 class TestStrEosPadTermEmpty(unittest.TestCase):
     def test_str_eos_pad_term_empty(self):
         with StrEosPadTermEmpty.from_file('src/str_pad_term_empty.bin') as r:
-            self.assertEqual(r.str_pad.value, u"")
-            self.assertEqual(r.str_term.value, u"")
-            self.assertEqual(r.str_term_and_pad.value, u"")
-            self.assertEqual(r.str_term_include.value, u"@")
+            self.assertEqual(r.str_pad.value, "")
+            self.assertEqual(r.str_term.value, "")
+            self.assertEqual(r.str_term_and_pad.value, "")
+            self.assertEqual(r.str_term_include.value, "@")

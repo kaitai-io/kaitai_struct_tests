@@ -6,6 +6,6 @@ from testformats.params_call import ParamsCall
 class TestParamsCall(unittest.TestCase):
     def test_params_call(self):
         with ParamsCall.from_file('src/term_strz.bin') as r:
-            self.assertEqual(r.buf1.body, u"foo|b")
-            self.assertEqual(r.buf2.body, u"ar|ba")
+            self.assertEqual(r.buf1.body, "foo|b")
+            self.assertEqual(r.buf2.body, "ar|ba")
             self.assertEqual(r.buf2.trailer, 122)

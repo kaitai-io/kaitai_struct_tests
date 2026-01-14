@@ -9,4 +9,4 @@ class TestEofExceptionBytes(unittest.TestCase):
         with self.assertRaises(EOFError) as cm:
             with EofExceptionBytes.from_file('src/term_strz.bin') as r:
                 pass
-        self.assertEqual(str(cm.exception), u"requested 13 bytes, but only 12 bytes available")
+        self.assertEqual(str(cm.exception), "requested 13 bytes, but only 12 bytes available")

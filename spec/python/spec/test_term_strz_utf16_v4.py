@@ -6,6 +6,6 @@ from testformats.term_strz_utf16_v4 import TermStrzUtf16V4
 class TestTermStrzUtf16V4(unittest.TestCase):
     def test_term_strz_utf16_v4(self):
         with TermStrzUtf16V4.from_file('src/term_strz_utf16.bin') as r:
-            self.assertEqual(r.s1.value, u"a\u0200b")
-            self.assertEqual(r.s2.value, u"c\u0200d")
-            self.assertEqual(r.s3.value, u"e\u0200f")
+            self.assertEqual(r.s1.value, "a\u0200b")
+            self.assertEqual(r.s2.value, "c\u0200d")
+            self.assertEqual(r.s3.value, "e\u0200f")

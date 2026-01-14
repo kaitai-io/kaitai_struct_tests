@@ -7,4 +7,4 @@ class TestPositionAbs(unittest.TestCase):
     def test_position_abs(self):
         with PositionAbs.from_file('src/position_abs.bin') as r:
             self.assertEqual(r.index_offset, 32)
-            self.assertEqual(r.index.entry, u"foo")
+            self.assertEqual(r.index.entry, "foo")

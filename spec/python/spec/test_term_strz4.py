@@ -6,6 +6,6 @@ from testformats.term_strz4 import TermStrz4
 class TestTermStrz4(unittest.TestCase):
     def test_term_strz4(self):
         with TermStrz4.from_file('src/term_strz.bin') as r:
-            self.assertEqual(r.s1.value, u"foo")
-            self.assertEqual(r.s2.value, u"bar")
-            self.assertEqual(r.s3.value, u"baz")
+            self.assertEqual(r.s1.value, "foo")
+            self.assertEqual(r.s2.value, "bar")
+            self.assertEqual(r.s3.value, "baz")

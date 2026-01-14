@@ -6,7 +6,7 @@ from testformats.str_pad_term import StrPadTerm
 class TestStrPadTerm(unittest.TestCase):
     def test_str_pad_term(self):
         with StrPadTerm.from_file('src/str_pad_term.bin') as r:
-            self.assertEqual(r.str_pad, u"str1")
-            self.assertEqual(r.str_term, u"str2foo")
-            self.assertEqual(r.str_term_and_pad, u"str+++3bar+++")
-            self.assertEqual(r.str_term_include, u"str4baz@")
+            self.assertEqual(r.str_pad, "str1")
+            self.assertEqual(r.str_term, "str2foo")
+            self.assertEqual(r.str_term_and_pad, "str+++3bar+++")
+            self.assertEqual(r.str_term_include, "str4baz@")

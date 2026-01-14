@@ -10,7 +10,7 @@ class TestEnumToI(unittest.TestCase):
             self.assertEqual(r.pet_1, enum_to_i.EnumToI.Animal.cat)
             self.assertEqual(r.pet_2, enum_to_i.EnumToI.Animal.chicken)
             self.assertEqual(r.pet_1_i, 7)
-            self.assertEqual(r.pet_1_i_to_s, u"7")
+            self.assertEqual(r.pet_1_i_to_s, "7")
             self.assertEqual(r.pet_1_mod, 32775)
             self.assertEqual(r.one_lt_two, True)
             self.assertEqual(r.pet_1_eq_int, True)

@@ -10,4 +10,4 @@ class TestSwitchIntegers2(unittest.TestCase):
             self.assertEqual(r.len, 7)
             self.assertEqual(r.ham, b"\x02\x40\x40\x04\x37\x13\x00")
             self.assertEqual(r.padding, 0)
-            self.assertEqual(r.len_mod_str, u"13")
+            self.assertEqual(r.len_mod_str, "13")

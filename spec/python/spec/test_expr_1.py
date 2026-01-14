@@ -8,5 +8,5 @@ class TestExpr1(unittest.TestCase):
         with Expr1.from_file('src/str_encodings.bin') as r:
             self.assertEqual(r.len_of_1, 10)
             self.assertEqual(r.len_of_1_mod, 8)
-            self.assertEqual(r.str1, u"Some ASC")
+            self.assertEqual(r.str1, "Some ASC")
             self.assertEqual(r.str1_len, 8)

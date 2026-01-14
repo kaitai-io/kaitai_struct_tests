@@ -6,7 +6,7 @@ from testformats.str_pad_term_zero_size import StrPadTermZeroSize
 class TestStrPadTermZeroSize(unittest.TestCase):
     def test_str_pad_term_zero_size(self):
         with StrPadTermZeroSize.from_file('src/enum_negative.bin') as r:
-            self.assertEqual(r.str_pad, u"")
-            self.assertEqual(r.str_term, u"")
-            self.assertEqual(r.str_term_and_pad, u"")
-            self.assertEqual(r.str_term_include, u"")
+            self.assertEqual(r.str_pad, "")
+            self.assertEqual(r.str_term, "")
+            self.assertEqual(r.str_term_and_pad, "")
+            self.assertEqual(r.str_term_include, "")
