@@ -7,7 +7,7 @@ class TestEofExceptionBitsBe(unittest.TestCase):
         with EofExceptionBitsBe.from_file('src/nav_parent_switch.bin') as r:
             with self.assertRaises(EOFError) as cm:
                 r._read()
-            self.assertEqual(str(cm.exception), u"requested 3 bytes, but only 2 bytes available")
+            self.assertEqual(str(cm.exception), "requested 3 bytes, but only 2 bytes available")
 
             self.assertEqual(r._io.pos(), 1)
 
