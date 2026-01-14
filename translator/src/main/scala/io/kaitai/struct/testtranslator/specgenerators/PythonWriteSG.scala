@@ -29,7 +29,7 @@ class PythonWriteSG(spec: TestSpec, provider: ClassTypeProvider) extends SpecGen
 
     out.puts("def __init__(self, *args, **kwargs):")
     out.inc
-    out.puts(s"super($testClassName, self).__init__(*args, **kwargs)")
+    out.puts(s"super().__init__(*args, **kwargs)")
     out.puts(s"self.struct_class = $className")
     out.puts(s"self.src_filename = 'src/${spec.data}'")
     out.dec
