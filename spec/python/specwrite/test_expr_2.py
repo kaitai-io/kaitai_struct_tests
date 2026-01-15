@@ -19,10 +19,10 @@ class TestExpr2(CommonSpec.Base):
         old_len_mod = r.str2.len_mod
         old_str2_rest_avg = r.str2.rest.avg
 
-        r.str2.str = u"Kaitai Struct カ"
+        r.str2.str = "Kaitai Struct カ"
         r.str2._invalidate_len_mod()
 
-        str2_size = len(r.str2.str.encode(u"UTF-8"))
+        str2_size = len(r.str2.str.encode("UTF-8"))
         r.str2.len_orig = str2_size + 3
         self.assertNotEqual(r.str2.len_mod, old_len_mod)
         self.assertEqual(r.str2.len_mod, str2_size)

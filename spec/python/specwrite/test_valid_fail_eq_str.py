@@ -15,7 +15,7 @@ class TestValidFailEqStr(CommonSpec.Base):
 
     def test_check_bad_valid_no_io(self):
         r = ValidFailEqStr()
-        r.foo = u"PACK"
+        r.foo = "PACK"
         self.assert_check_valid_fail(r)
 
     def test_check_bad_valid_old_io(self):

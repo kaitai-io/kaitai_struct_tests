@@ -46,5 +46,5 @@ class TestTermBytes4(CommonSpec.Base):
         )
         out_io = KaitaiStream(io.BytesIO(bytearray(len_io)))
 
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: value, expected: 0, actual: 1$"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: value, expected: 0, actual: 1$"):
             r._write(out_io)  # should throw a ConsistencyError

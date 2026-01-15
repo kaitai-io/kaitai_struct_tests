@@ -29,26 +29,26 @@ class TestBytesPadTermEqual(CommonSpec.Base):
     def test_check_longer_s1(self):
         r = BytesPadTermEqual()
         r.s1 = b"123456789012345678901"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: s1,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: s1,"):
             r._check()
 
     def test_check_bad_has_terminator1_s1(self):
         r = BytesPadTermEqual()
         r.s1 = b"123456789012@4567890"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: s1,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: s1,"):
             r._check()
 
     def test_check_bad_has_terminator2_s1(self):
         r = BytesPadTermEqual()
         r.s1 = b"1234567890123456789@"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: s1,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: s1,"):
             r._check()
 
     def test_check_longer_s2(self):
         r = BytesPadTermEqual()
         r.s1 = b"12345678901234567890"
         r.s2 = b"123456789012345678901"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: s2,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: s2,"):
             r._check()
 
     def test_check_good_terminator1_s2(self):
@@ -63,7 +63,7 @@ class TestBytesPadTermEqual(CommonSpec.Base):
         r = BytesPadTermEqual()
         r.s1 = b"12345678901234567890"
         r.s2 = b"1234567890123456@8@"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: s2,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: s2,"):
             r._check()
 
     def test_check_good_last_byte_s2(self):
@@ -78,7 +78,7 @@ class TestBytesPadTermEqual(CommonSpec.Base):
         r = BytesPadTermEqual()
         r.s1 = b"12345678901234567890"
         r.s2 = b"123456789012345678+"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: s2,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: s2,"):
             r._check()
 
     def test_check_longer_s3(self):
@@ -86,7 +86,7 @@ class TestBytesPadTermEqual(CommonSpec.Base):
         r.s1 = b"12345678901234567890"
         r.s2 = b"12345678901234567890"
         r.s3 = b"123456789012345678901"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: s3,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: s3,"):
             r._check()
 
     def test_check_bad_has_terminator1_s3(self):
@@ -94,7 +94,7 @@ class TestBytesPadTermEqual(CommonSpec.Base):
         r.s1 = b"12345678901234567890"
         r.s2 = b"12345678901234567890"
         r.s3 = b"1234567890123456789+"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: s3,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: s3,"):
             r._check()
 
     def test_check_bad_has_terminator2_s3(self):
@@ -102,7 +102,7 @@ class TestBytesPadTermEqual(CommonSpec.Base):
         r.s1 = b"12345678901234567890"
         r.s2 = b"12345678901234567890"
         r.s3 = b"12345678901234567+9"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: s3,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: s3,"):
             r._check()
 
     def test_check_longer_s4(self):
@@ -111,7 +111,7 @@ class TestBytesPadTermEqual(CommonSpec.Base):
         r.s2 = b"12345678901234567890"
         r.s3 = b"12345678901234567890"
         r.s4 = b"123456789012345678901"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: s4,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: s4,"):
             r._check()
 
     def test_check_empty_s4(self):
@@ -120,7 +120,7 @@ class TestBytesPadTermEqual(CommonSpec.Base):
         r.s2 = b"12345678901234567890"
         r.s3 = b"12345678901234567890"
         r.s4 = b""
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: s4,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: s4,"):
             r._check()
 
     def test_check_bad_no_terminator_s4(self):
@@ -129,7 +129,7 @@ class TestBytesPadTermEqual(CommonSpec.Base):
         r.s2 = b"12345678901234567890"
         r.s3 = b"12345678901234567890"
         r.s4 = b"1234567890123456789"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: s4,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: s4,"):
             r._check()
 
     def test_check_good_terminator1_s4(self):
@@ -146,7 +146,7 @@ class TestBytesPadTermEqual(CommonSpec.Base):
         r.s2 = b"12345678901234567890"
         r.s3 = b"12345678901234567890"
         r.s4 = b".23456789012345678."
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: s4,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: s4,"):
             r._check()
 
     def test_check_good_terminator2_s4(self):
@@ -163,5 +163,5 @@ class TestBytesPadTermEqual(CommonSpec.Base):
         r.s2 = b"12345678901234567890"
         r.s3 = b"12345678901234567890"
         r.s4 = b"123456789012345678.."
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: s4,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: s4,"):
             r._check()

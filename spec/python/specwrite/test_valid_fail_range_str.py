@@ -15,7 +15,7 @@ class TestValidFailRangeStr(CommonSpec.Base):
 
     def test_check_bad_valid_no_io(self):
         r = ValidFailRangeStr()
-        r.foo = u"PA"
+        r.foo = "PA"
         self.assert_check_valid_fail(r)
 
     def test_check_bad_valid_old_io(self):

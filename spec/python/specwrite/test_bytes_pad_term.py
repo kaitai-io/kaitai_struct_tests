@@ -29,7 +29,7 @@ class TestBytesPadTerm(CommonSpec.Base):
     def test_check_longer_str_pad(self):
         r = BytesPadTerm()
         r.str_pad = b"123456789012345678901"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_pad,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: str_pad,"):
             r._check()
 
     def test_check_good_last_byte_str_pad(self):
@@ -43,28 +43,28 @@ class TestBytesPadTerm(CommonSpec.Base):
     def test_check_bad_last_byte_str_pad(self):
         r = BytesPadTerm()
         r.str_pad = b"123456789012345678@"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_pad,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: str_pad,"):
             r._check()
 
     def test_check_longer_str_term(self):
         r = BytesPadTerm()
         r.str_pad = b"12345678901234567890"
         r.str_term = b"123456789012345678901"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: str_term,"):
             r._check()
 
     def test_check_bad_has_terminator1_str_term(self):
         r = BytesPadTerm()
         r.str_pad = b"12345678901234567890"
         r.str_term = b"123456789012@4567890"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: str_term,"):
             r._check()
 
     def test_check_bad_has_terminator2_str_term(self):
         r = BytesPadTerm()
         r.str_pad = b"12345678901234567890"
         r.str_term = b"1234567890123456789@"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: str_term,"):
             r._check()
 
     def test_check_longer_str_term_and_pad(self):
@@ -72,7 +72,7 @@ class TestBytesPadTerm(CommonSpec.Base):
         r.str_pad = b"12345678901234567890"
         r.str_term = b"12345678901234567890"
         r.str_term_and_pad = b"123456789012345678901"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term_and_pad,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: str_term_and_pad,"):
             r._check()
 
     def test_check_bad_has_terminator_str_term_and_pad(self):
@@ -80,7 +80,7 @@ class TestBytesPadTerm(CommonSpec.Base):
         r.str_pad = b"12345678901234567890"
         r.str_term = b"12345678901234567890"
         r.str_term_and_pad = b"@2345678901234567890"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term_and_pad,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: str_term_and_pad,"):
             r._check()
 
     def test_check_good_last_byte1_str_term_and_pad(self):
@@ -104,7 +104,7 @@ class TestBytesPadTerm(CommonSpec.Base):
         r.str_pad = b"12345678901234567890"
         r.str_term = b"12345678901234567890"
         r.str_term_and_pad = b"1234567890123456789+"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term_and_pad,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: str_term_and_pad,"):
             r._check()
 
     def test_check_longer_str_term_include(self):
@@ -113,7 +113,7 @@ class TestBytesPadTerm(CommonSpec.Base):
         r.str_term = b"12345678901234567890"
         r.str_term_and_pad = b"12345678901234567890"
         r.str_term_include = b"123456789012345678901"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term_include,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: str_term_include,"):
             r._check()
 
     def test_check_empty_str_term_include(self):
@@ -122,7 +122,7 @@ class TestBytesPadTerm(CommonSpec.Base):
         r.str_term = b"12345678901234567890"
         r.str_term_and_pad = b"12345678901234567890"
         r.str_term_include = b""
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term_include,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: str_term_include,"):
             r._check()
 
     def test_check_bad_no_terminator_str_term_include(self):
@@ -131,7 +131,7 @@ class TestBytesPadTerm(CommonSpec.Base):
         r.str_term = b"12345678901234567890"
         r.str_term_and_pad = b"12345678901234567890"
         r.str_term_include = b"123"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term_include,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: str_term_include,"):
             r._check()
 
     def test_check_good_terminator1_str_term_include(self):
@@ -148,7 +148,7 @@ class TestBytesPadTerm(CommonSpec.Base):
         r.str_term = b"12345678901234567890"
         r.str_term_and_pad = b"12345678901234567890"
         r.str_term_include = b"1@@"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term_include,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: str_term_include,"):
             r._check()
 
     def test_check_good_terminator2_str_term_include(self):
@@ -165,5 +165,5 @@ class TestBytesPadTerm(CommonSpec.Base):
         r.str_term = b"12345678901234567890"
         r.str_term_and_pad = b"12345678901234567890"
         r.str_term_include = b"123456789012345678@@"
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str_term_include,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: str_term_include,"):
             r._check()

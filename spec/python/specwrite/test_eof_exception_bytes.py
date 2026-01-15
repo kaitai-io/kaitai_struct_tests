@@ -20,5 +20,5 @@ class TestEofExceptionBytes(CommonSpec.Base):
         r._check()
 
         with KaitaiStream(io.BytesIO(bytearray(12))) as out_io:
-            with self.assertRaisesRegex(EOFError, u"^requested to write 13 bytes, but only 12 bytes left in the stream$"):
+            with self.assertRaisesRegex(EOFError, "^requested to write 13 bytes, but only 12 bytes left in the stream$"):
                 r._write(out_io)

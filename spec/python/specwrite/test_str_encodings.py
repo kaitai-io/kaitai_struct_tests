@@ -19,16 +19,16 @@ class TestStrEncodings(CommonSpec.Base):
 
         r.len_of_2 = 15
 
-        with self.assertRaisesRegex(AttributeError, u"\\bstr2\\b"):
+        with self.assertRaisesRegex(AttributeError, "\\bstr2\\b"):
             r._check()
 
     def test_check_mismatch(self):
         r = StrEncodings()
 
-        r.str1 = u"Some ASCII"
-        r.str2 = u"こんにちは"
-        r.str3 = u"こんにちは"
-        r.str4 = u"░▒▓"
+        r.str1 = "Some ASCII"
+        r.str2 = "こんにちは"
+        r.str3 = "こんにちは"
+        r.str4 = "░▒▓"
 
         # To be auto-derived
         r.len_of_1 = 10
@@ -36,5 +36,5 @@ class TestStrEncodings(CommonSpec.Base):
         r.len_of_3 = 10
         r.len_of_4 = 3
 
-        with self.assertRaisesRegex(ConsistencyError, u"^Check failed: str2,"):
+        with self.assertRaisesRegex(ConsistencyError, "^Check failed: str2,"):
             r._check()
