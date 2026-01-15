@@ -4,8 +4,8 @@ class MyCustomFx:
 
     def decode(self, data):
         r = bytearray(data)
-        for i in range(len(r)):
-            r[i] = (r[i] + self.key) % 0x100
+        for i, byte in enumerate(r):
+            r[i] = (byte + self.key) % 0x100
         return bytes(r)
 
     def encode(self, data):
