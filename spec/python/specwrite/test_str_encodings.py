@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import unittest
 from kaitaistruct import ConsistencyError
 from specwrite.common_spec import CommonSpec

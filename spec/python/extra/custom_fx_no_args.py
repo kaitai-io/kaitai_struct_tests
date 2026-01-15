@@ -1,4 +1,4 @@
-class CustomFxNoArgs(object):
+class CustomFxNoArgs:
     def __init__(self):
         pass
 

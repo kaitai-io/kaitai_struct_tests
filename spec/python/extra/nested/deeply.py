@@ -1,4 +1,4 @@
-class CustomFx(object):
+class CustomFx:
     def __init__(self, foo):
         pass
 

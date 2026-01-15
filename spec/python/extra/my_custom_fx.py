@@ -1,4 +1,4 @@
-class MyCustomFx(object):
+class MyCustomFx:
     def __init__(self, key, flag, some_bytes):
         self.key = key if flag else -key
 
