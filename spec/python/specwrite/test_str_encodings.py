@@ -7,7 +7,7 @@ from testwrite.str_encodings import StrEncodings
 
 class TestStrEncodings(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestStrEncodings, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = StrEncodings
         self.src_filename = 'src/str_encodings.bin'
 

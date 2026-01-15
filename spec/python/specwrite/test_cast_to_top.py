@@ -7,7 +7,7 @@ from testwrite.cast_to_top import CastToTop
 
 class TestCastToTop(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestCastToTop, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = CastToTop
         self.src_filename = 'src/fixed_struct.bin'
 

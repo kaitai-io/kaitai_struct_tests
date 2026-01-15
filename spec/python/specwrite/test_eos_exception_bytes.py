@@ -7,7 +7,7 @@ from testwrite.eos_exception_bytes import EosExceptionBytes
 
 class TestEosExceptionBytes(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestEosExceptionBytes, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = EosExceptionBytes
         self.src_filename = 'src/term_strz.bin'
 

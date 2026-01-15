@@ -6,7 +6,7 @@ from testwrite.valid_fail_range_bytes import ValidFailRangeBytes
 
 class TestValidFailRangeBytes(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestValidFailRangeBytes, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ValidFailRangeBytes
         self.src_filename = 'src/fixed_struct.bin'
 

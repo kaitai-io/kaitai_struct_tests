@@ -7,7 +7,7 @@ from testwrite.eof_exception_u4 import EofExceptionU4
 
 class TestEofExceptionU4(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestEofExceptionU4, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = EofExceptionU4
         self.src_filename = 'src/term_strz.bin'
 

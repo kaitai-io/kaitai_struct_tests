@@ -5,7 +5,7 @@ from testwrite.str_pad_term_roundtrip import StrPadTermRoundtrip
 
 class TestStrPadTermRoundtrip(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestStrPadTermRoundtrip, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = StrPadTermRoundtrip
         self.src_filename = 'src/str_pad_term.bin'
 

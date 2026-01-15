@@ -6,7 +6,7 @@ from testwrite.valid_fail_anyof_int import ValidFailAnyofInt
 
 class TestValidFailAnyofInt(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestValidFailAnyofInt, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ValidFailAnyofInt
         self.src_filename = 'src/fixed_struct.bin'
 

@@ -7,7 +7,7 @@ from testwrite.bytes_eos_pad_term import BytesEosPadTerm
 
 class TestBytesEosPadTerm(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestBytesEosPadTerm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = BytesEosPadTerm
         self.src_filename = 'src/str_pad_term.bin'
 

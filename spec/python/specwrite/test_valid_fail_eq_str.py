@@ -6,7 +6,7 @@ from testwrite.valid_fail_eq_str import ValidFailEqStr
 
 class TestValidFailEqStr(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestValidFailEqStr, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ValidFailEqStr
         self.src_filename = 'src/fixed_struct.bin'
 

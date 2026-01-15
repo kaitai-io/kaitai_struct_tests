@@ -7,7 +7,7 @@ from testwrite.eof_exception_bits_be2 import EofExceptionBitsBe2
 
 class TestEofExceptionBitsBe2(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestEofExceptionBitsBe2, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = EofExceptionBitsBe2
         self.src_filename = 'src/nav_parent_switch.bin'
 

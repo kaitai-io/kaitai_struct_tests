@@ -7,7 +7,7 @@ from testwrite.instance_std import InstanceStd
 
 class TestInstanceStd(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestInstanceStd, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = InstanceStd
         self.src_filename = 'src/str_encodings.bin'
 

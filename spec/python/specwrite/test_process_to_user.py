@@ -7,7 +7,7 @@ from testwrite.process_to_user import ProcessToUser
 
 class TestProcessToUser(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestProcessToUser, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ProcessToUser
         self.src_filename = 'src/process_rotate.bin'
 

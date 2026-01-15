@@ -6,7 +6,7 @@ from testwrite.valid_fail_eq_bytes import ValidFailEqBytes
 
 class TestValidFailEqBytes(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestValidFailEqBytes, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ValidFailEqBytes
         self.src_filename = 'src/fixed_struct.bin'
 

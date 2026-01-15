@@ -7,7 +7,7 @@ from testwrite.repeat_eos_bytes import RepeatEosBytes
 
 class TestRepeatEosBytes(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestRepeatEosBytes, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = RepeatEosBytes
         self.src_filename = 'src/repeat_until_process.bin'
 

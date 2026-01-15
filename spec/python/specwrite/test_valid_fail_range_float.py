@@ -6,7 +6,7 @@ from testwrite.valid_fail_range_float import ValidFailRangeFloat
 
 class TestValidFailRangeFloat(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestValidFailRangeFloat, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ValidFailRangeFloat
         self.src_filename = 'src/floating_points.bin'
 

@@ -6,7 +6,7 @@ from testwrite.bytes_pad_term import BytesPadTerm
 
 class TestBytesPadTerm(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestBytesPadTerm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = BytesPadTerm
         self.src_filename = 'src/str_pad_term.bin'
 

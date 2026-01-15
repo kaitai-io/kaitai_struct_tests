@@ -6,7 +6,7 @@ from testwrite.repeat_n_strz import RepeatNStrz
 
 class TestRepeatNStrz(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestRepeatNStrz, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = RepeatNStrz
         self.src_filename = 'src/repeat_n_strz.bin'
 

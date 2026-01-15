@@ -6,7 +6,7 @@ from testwrite.valid_fail_contents import ValidFailContents
 
 class TestValidFailContents(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestValidFailContents, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ValidFailContents
         self.src_filename = 'src/fixed_struct.bin'
 

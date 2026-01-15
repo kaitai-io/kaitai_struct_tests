@@ -7,7 +7,7 @@ from testwrite.process_rotate import ProcessRotate
 
 class TestProcessRotate(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestProcessRotate, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ProcessRotate
         self.src_filename = 'src/process_rotate.bin'
 

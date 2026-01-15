@@ -6,7 +6,7 @@ from testwrite.valid_fail_min_int import ValidFailMinInt
 
 class TestValidFailMinInt(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestValidFailMinInt, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ValidFailMinInt
         self.src_filename = 'src/fixed_struct.bin'
 

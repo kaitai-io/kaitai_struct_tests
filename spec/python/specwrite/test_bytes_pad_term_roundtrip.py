@@ -5,7 +5,7 @@ from testwrite.bytes_pad_term_roundtrip import BytesPadTermRoundtrip
 
 class TestBytesPadTermRoundtrip(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestBytesPadTermRoundtrip, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = BytesPadTermRoundtrip
         self.src_filename = 'src/str_pad_term.bin'
 

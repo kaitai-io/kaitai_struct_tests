@@ -7,7 +7,7 @@ from testwrite.str_eos import StrEos
 
 class TestStrEos(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestStrEos, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = StrEos
         self.src_filename = 'src/term_strz.bin'
 

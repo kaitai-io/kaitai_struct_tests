@@ -6,7 +6,7 @@ from testwrite.valid_fail_expr import ValidFailExpr
 
 class TestValidFailExpr(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestValidFailExpr, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ValidFailExpr
         self.src_filename = 'src/nav_parent_switch.bin'
 

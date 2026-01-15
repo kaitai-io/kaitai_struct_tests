@@ -7,7 +7,7 @@ from testwrite.eof_exception_bytes import EofExceptionBytes
 
 class TestEofExceptionBytes(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestEofExceptionBytes, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = EofExceptionBytes
         self.src_filename = 'src/term_strz.bin'
 

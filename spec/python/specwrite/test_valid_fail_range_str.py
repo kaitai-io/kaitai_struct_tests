@@ -6,7 +6,7 @@ from testwrite.valid_fail_range_str import ValidFailRangeStr
 
 class TestValidFailRangeStr(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestValidFailRangeStr, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ValidFailRangeStr
         self.src_filename = 'src/fixed_struct.bin'
 

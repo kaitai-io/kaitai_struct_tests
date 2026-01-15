@@ -8,7 +8,7 @@ from testwrite.expr_2 import Expr2
 
 class TestExpr2(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestExpr2, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = Expr2
         self.src_filename = 'src/str_encodings.bin'
 
