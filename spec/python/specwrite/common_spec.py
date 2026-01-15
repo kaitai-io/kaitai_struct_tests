@@ -8,7 +8,7 @@ class CommonSpec:
 
     class Base(unittest.TestCase):
         def __init__(self, *args, **kwargs):
-            super(CommonSpec.Base, self).__init__(*args, **kwargs)
+            super().__init__(*args, **kwargs)
             self.maxDiff = None
 
         def test_read_write_roundtrip(self):
