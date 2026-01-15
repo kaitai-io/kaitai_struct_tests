@@ -7,6 +7,6 @@ from testwrite.repeat_until_calc_array_type import RepeatUntilCalcArrayType
 
 class TestRepeatUntilCalcArrayType(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestRepeatUntilCalcArrayType, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = RepeatUntilCalcArrayType
         self.src_filename = 'src/repeat_until_process.bin'

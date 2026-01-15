@@ -7,6 +7,6 @@ from testwrite.str_literals2 import StrLiterals2
 
 class TestStrLiterals2(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestStrLiterals2, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = StrLiterals2
         self.src_filename = 'src/fixed_struct.bin'

@@ -7,6 +7,6 @@ from testwrite.switch_manual_enum_invalid_else import SwitchManualEnumInvalidEls
 
 class TestSwitchManualEnumInvalidElse(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestSwitchManualEnumInvalidElse, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = SwitchManualEnumInvalidElse
         self.src_filename = 'src/enum_negative.bin'

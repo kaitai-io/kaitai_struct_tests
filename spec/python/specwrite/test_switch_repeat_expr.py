@@ -7,6 +7,6 @@ from testwrite.switch_repeat_expr import SwitchRepeatExpr
 
 class TestSwitchRepeatExpr(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestSwitchRepeatExpr, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = SwitchRepeatExpr
         self.src_filename = 'src/switch_tlv.bin'

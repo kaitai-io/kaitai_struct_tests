@@ -7,6 +7,6 @@ from testwrite.repeat_eos_term_struct import RepeatEosTermStruct
 
 class TestRepeatEosTermStruct(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestRepeatEosTermStruct, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = RepeatEosTermStruct
         self.src_filename = 'src/process_rotate.bin'

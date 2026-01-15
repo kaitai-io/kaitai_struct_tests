@@ -7,6 +7,6 @@ from testwrite.expr_bits import ExprBits
 
 class TestExprBits(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestExprBits, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ExprBits
         self.src_filename = 'src/switch_opcodes.bin'

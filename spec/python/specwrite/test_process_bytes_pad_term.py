@@ -7,6 +7,6 @@ from testwrite.process_bytes_pad_term import ProcessBytesPadTerm
 
 class TestProcessBytesPadTerm(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestProcessBytesPadTerm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ProcessBytesPadTerm
         self.src_filename = 'src/str_pad_term.bin'

@@ -7,6 +7,6 @@ from testwrite.enum_if import EnumIf
 
 class TestEnumIf(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestEnumIf, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = EnumIf
         self.src_filename = 'src/if_struct.bin'

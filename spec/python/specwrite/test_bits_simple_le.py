@@ -7,6 +7,6 @@ from testwrite.bits_simple_le import BitsSimpleLe
 
 class TestBitsSimpleLe(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestBitsSimpleLe, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = BitsSimpleLe
         self.src_filename = 'src/fixed_struct.bin'

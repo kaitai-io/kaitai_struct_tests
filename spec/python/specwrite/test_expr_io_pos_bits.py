@@ -7,6 +7,6 @@ from testwrite.expr_io_pos_bits import ExprIoPosBits
 
 class TestExprIoPosBits(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestExprIoPosBits, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ExprIoPosBits
         self.src_filename = 'src/process_xor_4.bin'

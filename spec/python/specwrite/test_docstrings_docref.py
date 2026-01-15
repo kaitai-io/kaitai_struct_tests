@@ -7,6 +7,6 @@ from testwrite.docstrings_docref import DocstringsDocref
 
 class TestDocstringsDocref(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestDocstringsDocref, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = DocstringsDocref
         self.src_filename = 'src/fixed_struct.bin'

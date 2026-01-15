@@ -7,6 +7,6 @@ from testwrite.switch_manual_int import SwitchManualInt
 
 class TestSwitchManualInt(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestSwitchManualInt, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = SwitchManualInt
         self.src_filename = 'src/switch_opcodes.bin'

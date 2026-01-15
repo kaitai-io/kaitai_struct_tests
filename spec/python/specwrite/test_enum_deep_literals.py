@@ -7,6 +7,6 @@ from testwrite.enum_deep_literals import EnumDeepLiterals
 
 class TestEnumDeepLiterals(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestEnumDeepLiterals, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = EnumDeepLiterals
         self.src_filename = 'src/enum_0.bin'

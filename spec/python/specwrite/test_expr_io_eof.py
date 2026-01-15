@@ -7,6 +7,6 @@ from testwrite.expr_io_eof import ExprIoEof
 
 class TestExprIoEof(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestExprIoEof, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ExprIoEof
         self.src_filename = 'src/fixed_struct.bin'

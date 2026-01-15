@@ -7,6 +7,6 @@ from testwrite.default_endian_expr_is_be import DefaultEndianExprIsBe
 
 class TestDefaultEndianExprIsBe(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestDefaultEndianExprIsBe, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = DefaultEndianExprIsBe
         self.src_filename = 'src/endian_expr.bin'

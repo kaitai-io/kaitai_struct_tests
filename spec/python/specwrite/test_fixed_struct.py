@@ -7,6 +7,6 @@ from testwrite.fixed_struct import FixedStruct
 
 class TestFixedStruct(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestFixedStruct, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = FixedStruct
         self.src_filename = 'src/fixed_struct.bin'

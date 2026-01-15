@@ -7,6 +7,6 @@ from testwrite.meta_xref import MetaXref
 
 class TestMetaXref(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestMetaXref, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = MetaXref
         self.src_filename = 'src/fixed_struct.bin'

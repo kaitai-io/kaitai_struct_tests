@@ -7,6 +7,6 @@ from testwrite.instance_in_repeat_expr import InstanceInRepeatExpr
 
 class TestInstanceInRepeatExpr(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestInstanceInRepeatExpr, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = InstanceInRepeatExpr
         self.src_filename = 'src/instance_in_repeat_expr.bin'

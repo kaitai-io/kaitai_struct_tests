@@ -7,6 +7,6 @@ from testwrite.expr_str_ops import ExprStrOps
 
 class TestExprStrOps(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestExprStrOps, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ExprStrOps
         self.src_filename = 'src/term_strz.bin'

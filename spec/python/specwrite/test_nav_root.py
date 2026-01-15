@@ -7,6 +7,6 @@ from testwrite.nav_root import NavRoot
 
 class TestNavRoot(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestNavRoot, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = NavRoot
         self.src_filename = 'src/nav.bin'

@@ -7,6 +7,6 @@ from testwrite.bits_signed_res_b32_le import BitsSignedResB32Le
 
 class TestBitsSignedResB32Le(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestBitsSignedResB32Le, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = BitsSignedResB32Le
         self.src_filename = 'src/bits_shift_by_b32_le.bin'

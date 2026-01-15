@@ -7,6 +7,6 @@ from testwrite.valid_optional_id import ValidOptionalId
 
 class TestValidOptionalId(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestValidOptionalId, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ValidOptionalId
         self.src_filename = 'src/fixed_struct.bin'

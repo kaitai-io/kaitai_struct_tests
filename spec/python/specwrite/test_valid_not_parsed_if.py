@@ -7,6 +7,6 @@ from testwrite.valid_not_parsed_if import ValidNotParsedIf
 
 class TestValidNotParsedIf(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestValidNotParsedIf, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ValidNotParsedIf
         self.src_filename = 'src/fixed_struct.bin'

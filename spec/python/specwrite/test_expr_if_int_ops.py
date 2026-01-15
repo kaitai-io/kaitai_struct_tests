@@ -7,6 +7,6 @@ from testwrite.expr_if_int_ops import ExprIfIntOps
 
 class TestExprIfIntOps(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestExprIfIntOps, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ExprIfIntOps
         self.src_filename = 'src/instance_io.bin'

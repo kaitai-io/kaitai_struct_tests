@@ -7,6 +7,6 @@ from testwrite.instance_user_array import InstanceUserArray
 
 class TestInstanceUserArray(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestInstanceUserArray, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = InstanceUserArray
         self.src_filename = 'src/instance_std_array.bin'

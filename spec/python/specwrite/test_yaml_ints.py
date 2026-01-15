@@ -7,6 +7,6 @@ from testwrite.yaml_ints import YamlInts
 
 class TestYamlInts(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestYamlInts, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = YamlInts
         self.src_filename = 'src/fixed_struct.bin'

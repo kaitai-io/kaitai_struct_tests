@@ -7,6 +7,6 @@ from testwrite.switch_manual_int_size_eos import SwitchManualIntSizeEos
 
 class TestSwitchManualIntSizeEos(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestSwitchManualIntSizeEos, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = SwitchManualIntSizeEos
         self.src_filename = 'src/switch_tlv.bin'

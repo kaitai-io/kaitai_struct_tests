@@ -7,6 +7,6 @@ from testwrite.recursive_one import RecursiveOne
 
 class TestRecursiveOne(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestRecursiveOne, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = RecursiveOne
         self.src_filename = 'src/fixed_struct.bin'

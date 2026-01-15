@@ -7,6 +7,6 @@ from testwrite.repeat_n_term_struct import RepeatNTermStruct
 
 class TestRepeatNTermStruct(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestRepeatNTermStruct, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = RepeatNTermStruct
         self.src_filename = 'src/repeat_until_process.bin'

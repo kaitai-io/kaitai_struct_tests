@@ -7,6 +7,6 @@ from testwrite.switch_integers import SwitchIntegers
 
 class TestSwitchIntegers(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestSwitchIntegers, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = SwitchIntegers
         self.src_filename = 'src/switch_integers.bin'

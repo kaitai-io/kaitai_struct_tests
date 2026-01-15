@@ -7,6 +7,6 @@ from testwrite.switch_else_only import SwitchElseOnly
 
 class TestSwitchElseOnly(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestSwitchElseOnly, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = SwitchElseOnly
         self.src_filename = 'src/switch_opcodes.bin'

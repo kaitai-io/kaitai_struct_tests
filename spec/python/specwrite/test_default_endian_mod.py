@@ -7,6 +7,6 @@ from testwrite.default_endian_mod import DefaultEndianMod
 
 class TestDefaultEndianMod(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestDefaultEndianMod, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = DefaultEndianMod
         self.src_filename = 'src/fixed_struct.bin'

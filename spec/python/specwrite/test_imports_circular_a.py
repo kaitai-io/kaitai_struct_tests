@@ -7,6 +7,6 @@ from testwrite.imports_circular_a import ImportsCircularA
 
 class TestImportsCircularA(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestImportsCircularA, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ImportsCircularA
         self.src_filename = 'src/fixed_struct.bin'

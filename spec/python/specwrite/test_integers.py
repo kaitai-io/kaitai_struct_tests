@@ -7,6 +7,6 @@ from testwrite.integers import Integers
 
 class TestIntegers(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestIntegers, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = Integers
         self.src_filename = 'src/fixed_struct.bin'

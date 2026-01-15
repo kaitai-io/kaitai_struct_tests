@@ -7,6 +7,6 @@ from testwrite.instance_in_sized import InstanceInSized
 
 class TestInstanceInSized(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestInstanceInSized, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = InstanceInSized
         self.src_filename = 'src/process_rotate.bin'

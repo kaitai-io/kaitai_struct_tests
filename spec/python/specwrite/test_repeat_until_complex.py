@@ -7,6 +7,6 @@ from testwrite.repeat_until_complex import RepeatUntilComplex
 
 class TestRepeatUntilComplex(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestRepeatUntilComplex, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = RepeatUntilComplex
         self.src_filename = 'src/repeat_until_complex.bin'

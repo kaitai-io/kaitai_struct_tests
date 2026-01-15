@@ -7,6 +7,6 @@ from testwrite.process_xor_value import ProcessXorValue
 
 class TestProcessXorValue(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestProcessXorValue, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ProcessXorValue
         self.src_filename = 'src/process_xor_1.bin'

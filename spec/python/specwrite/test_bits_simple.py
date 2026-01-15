@@ -7,6 +7,6 @@ from testwrite.bits_simple import BitsSimple
 
 class TestBitsSimple(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestBitsSimple, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = BitsSimple
         self.src_filename = 'src/fixed_struct.bin'

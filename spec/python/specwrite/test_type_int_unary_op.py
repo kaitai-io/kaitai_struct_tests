@@ -7,6 +7,6 @@ from testwrite.type_int_unary_op import TypeIntUnaryOp
 
 class TestTypeIntUnaryOp(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestTypeIntUnaryOp, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = TypeIntUnaryOp
         self.src_filename = 'src/fixed_struct.bin'

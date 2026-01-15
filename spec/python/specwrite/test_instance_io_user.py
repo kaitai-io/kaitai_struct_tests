@@ -7,6 +7,6 @@ from testwrite.instance_io_user import InstanceIoUser
 
 class TestInstanceIoUser(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestInstanceIoUser, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = InstanceIoUser
         self.src_filename = 'src/instance_io.bin'

@@ -7,6 +7,6 @@ from testwrite.process_custom_no_args import ProcessCustomNoArgs
 
 class TestProcessCustomNoArgs(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestProcessCustomNoArgs, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ProcessCustomNoArgs
         self.src_filename = 'src/process_rotate.bin'

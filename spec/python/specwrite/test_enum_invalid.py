@@ -7,6 +7,6 @@ from testwrite.enum_invalid import EnumInvalid
 
 class TestEnumInvalid(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestEnumInvalid, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = EnumInvalid
         self.src_filename = 'src/term_strz.bin'

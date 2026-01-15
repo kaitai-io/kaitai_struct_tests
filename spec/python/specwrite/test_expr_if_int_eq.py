@@ -7,6 +7,6 @@ from testwrite.expr_if_int_eq import ExprIfIntEq
 
 class TestExprIfIntEq(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestExprIfIntEq, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ExprIfIntEq
         self.src_filename = 'src/process_coerce_switch.bin'

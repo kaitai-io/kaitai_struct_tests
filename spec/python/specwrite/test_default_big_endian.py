@@ -7,6 +7,6 @@ from testwrite.default_big_endian import DefaultBigEndian
 
 class TestDefaultBigEndian(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestDefaultBigEndian, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = DefaultBigEndian
         self.src_filename = 'src/enum_0.bin'

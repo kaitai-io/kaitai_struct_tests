@@ -7,6 +7,6 @@ from testwrite.term_u1_val import TermU1Val
 
 class TestTermU1Val(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestTermU1Val, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = TermU1Val
         self.src_filename = 'src/str_encodings.bin'

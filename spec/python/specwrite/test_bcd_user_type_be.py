@@ -7,6 +7,6 @@ from testwrite.bcd_user_type_be import BcdUserTypeBe
 
 class TestBcdUserTypeBe(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestBcdUserTypeBe, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = BcdUserTypeBe
         self.src_filename = 'src/bcd_user_type_be.bin'

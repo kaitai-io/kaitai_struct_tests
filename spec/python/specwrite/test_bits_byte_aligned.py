@@ -7,6 +7,6 @@ from testwrite.bits_byte_aligned import BitsByteAligned
 
 class TestBitsByteAligned(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestBitsByteAligned, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = BitsByteAligned
         self.src_filename = 'src/fixed_struct.bin'

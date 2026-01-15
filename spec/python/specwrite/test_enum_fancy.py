@@ -7,6 +7,6 @@ from testwrite.enum_fancy import EnumFancy
 
 class TestEnumFancy(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestEnumFancy, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = EnumFancy
         self.src_filename = 'src/enum_0.bin'

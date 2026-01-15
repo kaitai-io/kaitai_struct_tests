@@ -7,6 +7,6 @@ from testwrite.params_pass_array_usertype import ParamsPassArrayUsertype
 
 class TestParamsPassArrayUsertype(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestParamsPassArrayUsertype, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ParamsPassArrayUsertype
         self.src_filename = 'src/position_to_end.bin'

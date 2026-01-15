@@ -7,6 +7,6 @@ from testwrite.index_sizes import IndexSizes
 
 class TestIndexSizes(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestIndexSizes, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = IndexSizes
         self.src_filename = 'src/index_sizes.bin'

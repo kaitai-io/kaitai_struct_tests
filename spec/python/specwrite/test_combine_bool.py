@@ -7,6 +7,6 @@ from testwrite.combine_bool import CombineBool
 
 class TestCombineBool(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestCombineBool, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = CombineBool
         self.src_filename = 'src/enum_negative.bin'

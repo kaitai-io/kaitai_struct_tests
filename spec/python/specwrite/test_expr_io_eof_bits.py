@@ -7,6 +7,6 @@ from testwrite.expr_io_eof_bits import ExprIoEofBits
 
 class TestExprIoEofBits(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestExprIoEofBits, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ExprIoEofBits
         self.src_filename = 'src/nav_parent_switch.bin'

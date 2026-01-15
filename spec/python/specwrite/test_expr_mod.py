@@ -7,6 +7,6 @@ from testwrite.expr_mod import ExprMod
 
 class TestExprMod(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestExprMod, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ExprMod
         self.src_filename = 'src/fixed_struct.bin'

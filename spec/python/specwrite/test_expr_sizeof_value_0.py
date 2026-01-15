@@ -7,6 +7,6 @@ from testwrite.expr_sizeof_value_0 import ExprSizeofValue0
 
 class TestExprSizeofValue0(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestExprSizeofValue0, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ExprSizeofValue0
         self.src_filename = 'src/fixed_struct.bin'

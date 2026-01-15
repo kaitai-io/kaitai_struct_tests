@@ -7,6 +7,6 @@ from testwrite.floating_points import FloatingPoints
 
 class TestFloatingPoints(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestFloatingPoints, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = FloatingPoints
         self.src_filename = 'src/floating_points.bin'

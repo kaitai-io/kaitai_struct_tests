@@ -7,6 +7,6 @@ from testwrite.str_encodings_utf16 import StrEncodingsUtf16
 
 class TestStrEncodingsUtf16(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestStrEncodingsUtf16, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = StrEncodingsUtf16
         self.src_filename = 'src/str_encodings_utf16.bin'

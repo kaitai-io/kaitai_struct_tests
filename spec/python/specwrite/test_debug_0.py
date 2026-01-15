@@ -7,6 +7,6 @@ from testwrite.debug_0 import Debug0
 
 class TestDebug0(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestDebug0, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = Debug0
         self.src_filename = 'src/fixed_struct.bin'

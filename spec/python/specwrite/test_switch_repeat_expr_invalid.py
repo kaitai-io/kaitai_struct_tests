@@ -7,6 +7,6 @@ from testwrite.switch_repeat_expr_invalid import SwitchRepeatExprInvalid
 
 class TestSwitchRepeatExprInvalid(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestSwitchRepeatExprInvalid, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = SwitchRepeatExprInvalid
         self.src_filename = 'src/switch_tlv.bin'

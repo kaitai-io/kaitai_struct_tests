@@ -7,6 +7,6 @@ from testwrite.combine_bytes import CombineBytes
 
 class TestCombineBytes(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestCombineBytes, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = CombineBytes
         self.src_filename = 'src/term_strz.bin'

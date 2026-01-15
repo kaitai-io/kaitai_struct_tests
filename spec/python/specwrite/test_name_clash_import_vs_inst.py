@@ -7,6 +7,6 @@ from testwrite.name_clash_import_vs_inst import NameClashImportVsInst
 
 class TestNameClashImportVsInst(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestNameClashImportVsInst, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = NameClashImportVsInst
         self.src_filename = 'src/fixed_struct.bin'

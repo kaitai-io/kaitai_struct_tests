@@ -7,6 +7,6 @@ from testwrite.expr_enum import ExprEnum
 
 class TestExprEnum(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestExprEnum, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ExprEnum
         self.src_filename = 'src/term_strz.bin'

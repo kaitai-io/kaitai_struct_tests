@@ -7,6 +7,6 @@ from testwrite.params_pass_bool import ParamsPassBool
 
 class TestParamsPassBool(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestParamsPassBool, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ParamsPassBool
         self.src_filename = 'src/term_strz.bin'

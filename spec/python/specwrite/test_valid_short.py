@@ -7,6 +7,6 @@ from testwrite.valid_short import ValidShort
 
 class TestValidShort(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestValidShort, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ValidShort
         self.src_filename = 'src/fixed_struct.bin'

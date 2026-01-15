@@ -7,6 +7,6 @@ from testwrite.index_to_param_until import IndexToParamUntil
 
 class TestIndexToParamUntil(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestIndexToParamUntil, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = IndexToParamUntil
         self.src_filename = 'src/index_sizes.bin'

@@ -7,6 +7,6 @@ from testwrite.nav_parent_vs_value_inst import NavParentVsValueInst
 
 class TestNavParentVsValueInst(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestNavParentVsValueInst, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = NavParentVsValueInst
         self.src_filename = 'src/term_strz.bin'

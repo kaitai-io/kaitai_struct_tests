@@ -7,6 +7,6 @@ from testwrite.valid_eq_str_encodings import ValidEqStrEncodings
 
 class TestValidEqStrEncodings(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestValidEqStrEncodings, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ValidEqStrEncodings
         self.src_filename = 'src/str_encodings.bin'

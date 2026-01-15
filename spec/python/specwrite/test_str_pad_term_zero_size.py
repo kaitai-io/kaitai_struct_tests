@@ -7,6 +7,6 @@ from testwrite.str_pad_term_zero_size import StrPadTermZeroSize
 
 class TestStrPadTermZeroSize(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestStrPadTermZeroSize, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = StrPadTermZeroSize
         self.src_filename = 'src/enum_negative.bin'

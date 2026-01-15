@@ -7,6 +7,6 @@ from testwrite.switch_bytearray import SwitchBytearray
 
 class TestSwitchBytearray(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestSwitchBytearray, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = SwitchBytearray
         self.src_filename = 'src/switch_opcodes.bin'

@@ -7,6 +7,6 @@ from testwrite.enum_of_value_inst import EnumOfValueInst
 
 class TestEnumOfValueInst(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestEnumOfValueInst, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = EnumOfValueInst
         self.src_filename = 'src/enum_0.bin'

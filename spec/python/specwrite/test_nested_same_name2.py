@@ -7,6 +7,6 @@ from testwrite.nested_same_name2 import NestedSameName2
 
 class TestNestedSameName2(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestNestedSameName2, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = NestedSameName2
         self.src_filename = 'src/nested_same_name2.bin'

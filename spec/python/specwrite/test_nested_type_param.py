@@ -7,6 +7,6 @@ from testwrite.nested_type_param import NestedTypeParam
 
 class TestNestedTypeParam(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestNestedTypeParam, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = NestedTypeParam
         self.src_filename = 'src/term_strz.bin'

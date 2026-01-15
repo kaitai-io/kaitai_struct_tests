@@ -7,6 +7,6 @@ from testwrite.repeat_eos_bytes_pad import RepeatEosBytesPad
 
 class TestRepeatEosBytesPad(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestRepeatEosBytesPad, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = RepeatEosBytesPad
         self.src_filename = 'src/repeat_until_process.bin'

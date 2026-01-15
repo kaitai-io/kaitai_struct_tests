@@ -7,6 +7,6 @@ from testwrite.struct_pad_term import StructPadTerm
 
 class TestStructPadTerm(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestStructPadTerm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = StructPadTerm
         self.src_filename = 'src/str_pad_term.bin'

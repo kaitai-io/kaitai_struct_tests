@@ -7,6 +7,6 @@ from testwrite.repeat_n_struct import RepeatNStruct
 
 class TestRepeatNStruct(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestRepeatNStruct, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = RepeatNStruct
         self.src_filename = 'src/repeat_n_struct.bin'

@@ -7,6 +7,6 @@ from testwrite.expr_bytes_cmp import ExprBytesCmp
 
 class TestExprBytesCmp(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestExprBytesCmp, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ExprBytesCmp
         self.src_filename = 'src/fixed_struct.bin'

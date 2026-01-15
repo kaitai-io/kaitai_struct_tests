@@ -7,6 +7,6 @@ from testwrite.process_repeat_usertype import ProcessRepeatUsertype
 
 class TestProcessRepeatUsertype(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestProcessRepeatUsertype, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ProcessRepeatUsertype
         self.src_filename = 'src/process_xor_4.bin'

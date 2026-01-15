@@ -7,6 +7,6 @@ from testwrite.process_repeat_usertype_dynarg_xor import ProcessRepeatUsertypeDy
 
 class TestProcessRepeatUsertypeDynargXor(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestProcessRepeatUsertypeDynargXor, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ProcessRepeatUsertypeDynargXor
         self.src_filename = 'src/process_xor_4.bin'

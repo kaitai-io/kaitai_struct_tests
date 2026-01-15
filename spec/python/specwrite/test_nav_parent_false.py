@@ -7,6 +7,6 @@ from testwrite.nav_parent_false import NavParentFalse
 
 class TestNavParentFalse(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestNavParentFalse, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = NavParentFalse
         self.src_filename = 'src/nav_parent_codes.bin'

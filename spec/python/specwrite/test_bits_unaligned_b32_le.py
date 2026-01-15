@@ -7,6 +7,6 @@ from testwrite.bits_unaligned_b32_le import BitsUnalignedB32Le
 
 class TestBitsUnalignedB32Le(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestBitsUnalignedB32Le, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = BitsUnalignedB32Le
         self.src_filename = 'src/process_xor_4.bin'

@@ -7,6 +7,6 @@ from testwrite.expr_io_pos import ExprIoPos
 
 class TestExprIoPos(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestExprIoPos, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ExprIoPos
         self.src_filename = 'src/expr_io_pos.bin'

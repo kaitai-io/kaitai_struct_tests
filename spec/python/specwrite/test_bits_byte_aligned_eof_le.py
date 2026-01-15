@@ -7,6 +7,6 @@ from testwrite.bits_byte_aligned_eof_le import BitsByteAlignedEofLe
 
 class TestBitsByteAlignedEofLe(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestBitsByteAlignedEofLe, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = BitsByteAlignedEofLe
         self.src_filename = 'src/bcd_user_type_be.bin'

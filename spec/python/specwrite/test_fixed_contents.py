@@ -7,6 +7,6 @@ from testwrite.fixed_contents import FixedContents
 
 class TestFixedContents(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestFixedContents, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = FixedContents
         self.src_filename = 'src/fixed_struct.bin'

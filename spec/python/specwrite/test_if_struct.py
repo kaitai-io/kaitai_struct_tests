@@ -7,6 +7,6 @@ from testwrite.if_struct import IfStruct
 
 class TestIfStruct(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestIfStruct, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = IfStruct
         self.src_filename = 'src/if_struct.bin'

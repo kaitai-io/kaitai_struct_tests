@@ -7,6 +7,6 @@ from testwrite.expr_calc_array_ops import ExprCalcArrayOps
 
 class TestExprCalcArrayOps(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestExprCalcArrayOps, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ExprCalcArrayOps
         self.src_filename = 'src/fixed_struct.bin'

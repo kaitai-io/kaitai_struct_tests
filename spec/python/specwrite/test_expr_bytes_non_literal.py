@@ -7,6 +7,6 @@ from testwrite.expr_bytes_non_literal import ExprBytesNonLiteral
 
 class TestExprBytesNonLiteral(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestExprBytesNonLiteral, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ExprBytesNonLiteral
         self.src_filename = 'src/enum_negative.bin'

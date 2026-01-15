@@ -7,6 +7,6 @@ from testwrite.cast_nested import CastNested
 
 class TestCastNested(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestCastNested, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = CastNested
         self.src_filename = 'src/switch_opcodes.bin'

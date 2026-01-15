@@ -7,6 +7,6 @@ from testwrite.type_ternary_2nd_falsy import TypeTernary2ndFalsy
 
 class TestTypeTernary2ndFalsy(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestTypeTernary2ndFalsy, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = TypeTernary2ndFalsy
         self.src_filename = 'src/switch_integers.bin'

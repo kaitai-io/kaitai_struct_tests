@@ -7,6 +7,6 @@ from testwrite.instance_in_repeat_until import InstanceInRepeatUntil
 
 class TestInstanceInRepeatUntil(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestInstanceInRepeatUntil, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = InstanceInRepeatUntil
         self.src_filename = 'src/repeat_until_s4.bin'

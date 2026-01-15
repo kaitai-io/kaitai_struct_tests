@@ -7,6 +7,6 @@ from testwrite.repeat_n_bytes_pad import RepeatNBytesPad
 
 class TestRepeatNBytesPad(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestRepeatNBytesPad, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = RepeatNBytesPad
         self.src_filename = 'src/repeat_until_process.bin'

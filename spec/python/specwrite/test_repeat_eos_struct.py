@@ -7,6 +7,6 @@ from testwrite.repeat_eos_struct import RepeatEosStruct
 
 class TestRepeatEosStruct(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestRepeatEosStruct, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = RepeatEosStruct
         self.src_filename = 'src/repeat_eos_struct.bin'

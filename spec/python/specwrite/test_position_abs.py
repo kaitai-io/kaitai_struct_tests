@@ -7,6 +7,6 @@ from testwrite.position_abs import PositionAbs
 
 class TestPositionAbs(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestPositionAbs, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = PositionAbs
         self.src_filename = 'src/position_abs.bin'

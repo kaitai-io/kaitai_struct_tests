@@ -7,6 +7,6 @@ from testwrite.bits_seq_endian_combo import BitsSeqEndianCombo
 
 class TestBitsSeqEndianCombo(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestBitsSeqEndianCombo, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = BitsSeqEndianCombo
         self.src_filename = 'src/process_xor_4.bin'

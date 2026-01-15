@@ -7,6 +7,6 @@ from testwrite.meta_tags import MetaTags
 
 class TestMetaTags(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestMetaTags, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = MetaTags
         self.src_filename = 'src/fixed_struct.bin'

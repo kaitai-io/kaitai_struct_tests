@@ -7,6 +7,6 @@ from testwrite.valid_long import ValidLong
 
 class TestValidLong(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestValidLong, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ValidLong
         self.src_filename = 'src/fixed_struct.bin'

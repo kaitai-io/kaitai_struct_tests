@@ -7,6 +7,6 @@ from testwrite.buffered_struct import BufferedStruct
 
 class TestBufferedStruct(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestBufferedStruct, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = BufferedStruct
         self.src_filename = 'src/buffered_struct.bin'

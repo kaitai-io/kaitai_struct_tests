@@ -7,6 +7,6 @@ from testwrite.switch_manual_int_size_else import SwitchManualIntSizeElse
 
 class TestSwitchManualIntSizeElse(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestSwitchManualIntSizeElse, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = SwitchManualIntSizeElse
         self.src_filename = 'src/switch_tlv.bin'

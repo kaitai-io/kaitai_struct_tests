@@ -7,6 +7,6 @@ from testwrite.repeat_until_sized import RepeatUntilSized
 
 class TestRepeatUntilSized(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestRepeatUntilSized, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = RepeatUntilSized
         self.src_filename = 'src/repeat_until_process.bin'

@@ -7,6 +7,6 @@ from testwrite.nested_types import NestedTypes
 
 class TestNestedTypes(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestNestedTypes, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = NestedTypes
         self.src_filename = 'src/fixed_struct.bin'

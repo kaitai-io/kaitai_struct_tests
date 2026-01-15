@@ -7,6 +7,6 @@ from testwrite.valid_switch import ValidSwitch
 
 class TestValidSwitch(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestValidSwitch, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ValidSwitch
         self.src_filename = 'src/fixed_struct.bin'

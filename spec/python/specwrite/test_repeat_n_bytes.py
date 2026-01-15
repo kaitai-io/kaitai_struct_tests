@@ -7,6 +7,6 @@ from testwrite.repeat_n_bytes import RepeatNBytes
 
 class TestRepeatNBytes(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestRepeatNBytes, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = RepeatNBytes
         self.src_filename = 'src/repeat_until_process.bin'

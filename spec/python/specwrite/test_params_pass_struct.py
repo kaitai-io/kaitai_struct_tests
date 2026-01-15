@@ -7,6 +7,6 @@ from testwrite.params_pass_struct import ParamsPassStruct
 
 class TestParamsPassStruct(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestParamsPassStruct, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ParamsPassStruct
         self.src_filename = 'src/enum_negative.bin'

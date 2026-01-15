@@ -7,6 +7,6 @@ from testwrite.type_ternary import TypeTernary
 
 class TestTypeTernary(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestTypeTernary, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = TypeTernary
         self.src_filename = 'src/term_strz.bin'

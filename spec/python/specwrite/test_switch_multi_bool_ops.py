@@ -7,6 +7,6 @@ from testwrite.switch_multi_bool_ops import SwitchMultiBoolOps
 
 class TestSwitchMultiBoolOps(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestSwitchMultiBoolOps, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = SwitchMultiBoolOps
         self.src_filename = 'src/switch_integers.bin'

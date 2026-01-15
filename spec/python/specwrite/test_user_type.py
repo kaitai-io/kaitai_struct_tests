@@ -7,6 +7,6 @@ from testwrite.user_type import UserType
 
 class TestUserType(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestUserType, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = UserType
         self.src_filename = 'src/repeat_until_s4.bin'

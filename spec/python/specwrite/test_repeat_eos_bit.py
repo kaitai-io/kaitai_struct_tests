@@ -7,6 +7,6 @@ from testwrite.repeat_eos_bit import RepeatEosBit
 
 class TestRepeatEosBit(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestRepeatEosBit, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = RepeatEosBit
         self.src_filename = 'src/enum_0.bin'

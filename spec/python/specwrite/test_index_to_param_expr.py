@@ -7,6 +7,6 @@ from testwrite.index_to_param_expr import IndexToParamExpr
 
 class TestIndexToParamExpr(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestIndexToParamExpr, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = IndexToParamExpr
         self.src_filename = 'src/index_sizes.bin'

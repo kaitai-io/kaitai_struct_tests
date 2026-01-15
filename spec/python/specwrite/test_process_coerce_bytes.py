@@ -7,6 +7,6 @@ from testwrite.process_coerce_bytes import ProcessCoerceBytes
 
 class TestProcessCoerceBytes(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestProcessCoerceBytes, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ProcessCoerceBytes
         self.src_filename = 'src/process_coerce_bytes.bin'

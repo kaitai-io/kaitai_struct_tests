@@ -7,6 +7,6 @@ from testwrite.process_repeat_bytes import ProcessRepeatBytes
 
 class TestProcessRepeatBytes(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestProcessRepeatBytes, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ProcessRepeatBytes
         self.src_filename = 'src/process_xor_4.bin'

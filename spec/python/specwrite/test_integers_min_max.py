@@ -7,6 +7,6 @@ from testwrite.integers_min_max import IntegersMinMax
 
 class TestIntegersMinMax(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestIntegersMinMax, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = IntegersMinMax
         self.src_filename = 'src/integers_min_max.bin'

@@ -7,6 +7,6 @@ from testwrite.params_call import ParamsCall
 
 class TestParamsCall(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestParamsCall, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ParamsCall
         self.src_filename = 'src/term_strz.bin'

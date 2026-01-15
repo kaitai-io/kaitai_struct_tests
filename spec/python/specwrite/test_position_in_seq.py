@@ -7,6 +7,6 @@ from testwrite.position_in_seq import PositionInSeq
 
 class TestPositionInSeq(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestPositionInSeq, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = PositionInSeq
         self.src_filename = 'src/position_in_seq.bin'

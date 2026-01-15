@@ -7,6 +7,6 @@ from testwrite.params_pass_array_str import ParamsPassArrayStr
 
 class TestParamsPassArrayStr(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestParamsPassArrayStr, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ParamsPassArrayStr
         self.src_filename = 'src/term_strz.bin'

@@ -7,6 +7,6 @@ from testwrite.if_values import IfValues
 
 class TestIfValues(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestIfValues, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = IfValues
         self.src_filename = 'src/fixed_struct.bin'

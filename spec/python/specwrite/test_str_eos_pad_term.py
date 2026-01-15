@@ -7,6 +7,6 @@ from testwrite.str_eos_pad_term import StrEosPadTerm
 
 class TestStrEosPadTerm(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestStrEosPadTerm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = StrEosPadTerm
         self.src_filename = 'src/str_pad_term.bin'

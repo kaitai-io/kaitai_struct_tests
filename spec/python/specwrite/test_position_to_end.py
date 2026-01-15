@@ -7,6 +7,6 @@ from testwrite.position_to_end import PositionToEnd
 
 class TestPositionToEnd(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestPositionToEnd, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = PositionToEnd
         self.src_filename = 'src/position_to_end.bin'

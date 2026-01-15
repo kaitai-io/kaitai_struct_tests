@@ -7,6 +7,6 @@ from testwrite.imports0 import Imports0
 
 class TestImports0(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestImports0, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = Imports0
         self.src_filename = 'src/fixed_struct.bin'

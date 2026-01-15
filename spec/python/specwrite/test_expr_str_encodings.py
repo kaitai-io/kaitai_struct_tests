@@ -7,6 +7,6 @@ from testwrite.expr_str_encodings import ExprStrEncodings
 
 class TestExprStrEncodings(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestExprStrEncodings, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ExprStrEncodings
         self.src_filename = 'src/str_encodings.bin'

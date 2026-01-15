@@ -7,6 +7,6 @@ from testwrite.nav_parent_switch_cast import NavParentSwitchCast
 
 class TestNavParentSwitchCast(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestNavParentSwitchCast, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = NavParentSwitchCast
         self.src_filename = 'src/switch_integers.bin'

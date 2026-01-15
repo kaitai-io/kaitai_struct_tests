@@ -7,6 +7,6 @@ from testwrite.expr_3 import Expr3
 
 class TestExpr3(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestExpr3, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = Expr3
         self.src_filename = 'src/fixed_struct.bin'

@@ -7,6 +7,6 @@ from testwrite.str_encodings_default import StrEncodingsDefault
 
 class TestStrEncodingsDefault(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestStrEncodingsDefault, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = StrEncodingsDefault
         self.src_filename = 'src/str_encodings.bin'

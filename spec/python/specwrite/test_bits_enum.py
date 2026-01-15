@@ -7,6 +7,6 @@ from testwrite.bits_enum import BitsEnum
 
 class TestBitsEnum(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestBitsEnum, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = BitsEnum
         self.src_filename = 'src/fixed_struct.bin'

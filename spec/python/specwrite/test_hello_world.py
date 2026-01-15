@@ -7,6 +7,6 @@ from testwrite.hello_world import HelloWorld
 
 class TestHelloWorld(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestHelloWorld, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = HelloWorld
         self.src_filename = 'src/fixed_struct.bin'

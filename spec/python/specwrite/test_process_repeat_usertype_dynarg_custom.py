@@ -7,6 +7,6 @@ from testwrite.process_repeat_usertype_dynarg_custom import ProcessRepeatUsertyp
 
 class TestProcessRepeatUsertypeDynargCustom(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestProcessRepeatUsertypeDynargCustom, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ProcessRepeatUsertypeDynargCustom
         self.src_filename = 'src/process_rotate.bin'

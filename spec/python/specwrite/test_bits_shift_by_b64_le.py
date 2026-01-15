@@ -7,6 +7,6 @@ from testwrite.bits_shift_by_b64_le import BitsShiftByB64Le
 
 class TestBitsShiftByB64Le(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestBitsShiftByB64Le, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = BitsShiftByB64Le
         self.src_filename = 'src/bits_shift_by_b64_le.bin'

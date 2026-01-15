@@ -7,6 +7,6 @@ from testwrite.zlib_surrounded import ZlibSurrounded
 
 class TestZlibSurrounded(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestZlibSurrounded, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ZlibSurrounded
         self.src_filename = 'src/zlib_surrounded.bin'

@@ -7,7 +7,7 @@ from testwrite.default_endian_expr_exception import DefaultEndianExprException
 
 class TestDefaultEndianExprException(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestDefaultEndianExprException, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = DefaultEndianExprException
         self.src_filename = 'src/endian_expr.bin'
 

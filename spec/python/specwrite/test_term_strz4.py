@@ -7,6 +7,6 @@ from testwrite.term_strz4 import TermStrz4
 
 class TestTermStrz4(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestTermStrz4, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = TermStrz4
         self.src_filename = 'src/term_strz.bin'

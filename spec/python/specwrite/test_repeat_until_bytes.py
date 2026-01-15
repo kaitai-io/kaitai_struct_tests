@@ -7,6 +7,6 @@ from testwrite.repeat_until_bytes import RepeatUntilBytes
 
 class TestRepeatUntilBytes(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestRepeatUntilBytes, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = RepeatUntilBytes
         self.src_filename = 'src/repeat_until_process.bin'

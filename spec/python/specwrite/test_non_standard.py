@@ -7,6 +7,6 @@ from testwrite.non_standard import NonStandard
 
 class TestNonStandard(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestNonStandard, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = NonStandard
         self.src_filename = 'src/fixed_struct.bin'

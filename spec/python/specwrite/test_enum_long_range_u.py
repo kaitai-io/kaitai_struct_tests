@@ -7,6 +7,6 @@ from testwrite.enum_long_range_u import EnumLongRangeU
 
 class TestEnumLongRangeU(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestEnumLongRangeU, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = EnumLongRangeU
         self.src_filename = 'src/enum_long_range_u.bin'

@@ -7,6 +7,6 @@ from testwrite.params_pass_array_int import ParamsPassArrayInt
 
 class TestParamsPassArrayInt(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestParamsPassArrayInt, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ParamsPassArrayInt
         self.src_filename = 'src/position_to_end.bin'

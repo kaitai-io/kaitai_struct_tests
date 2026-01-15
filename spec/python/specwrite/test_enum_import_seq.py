@@ -7,6 +7,6 @@ from testwrite.enum_import_seq import EnumImportSeq
 
 class TestEnumImportSeq(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestEnumImportSeq, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = EnumImportSeq
         self.src_filename = 'src/enum_0.bin'

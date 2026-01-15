@@ -7,6 +7,6 @@ from testwrite.process_custom import ProcessCustom
 
 class TestProcessCustom(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestProcessCustom, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = ProcessCustom
         self.src_filename = 'src/process_rotate.bin'

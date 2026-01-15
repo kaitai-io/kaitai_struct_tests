@@ -7,6 +7,6 @@ from testwrite.debug_enum_name import DebugEnumName
 
 class TestDebugEnumName(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestDebugEnumName, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = DebugEnumName
         self.src_filename = 'src/fixed_struct.bin'

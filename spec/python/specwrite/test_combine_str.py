@@ -7,6 +7,6 @@ from testwrite.combine_str import CombineStr
 
 class TestCombineStr(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestCombineStr, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = CombineStr
         self.src_filename = 'src/term_strz.bin'

@@ -7,6 +7,6 @@ from testwrite.ts_packet_header import TsPacketHeader
 
 class TestTsPacketHeader(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
-        super(TestTsPacketHeader, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.struct_class = TsPacketHeader
         self.src_filename = 'src/ts_packet.bin'
