@@ -85,7 +85,7 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
     importList.add("import kaitaistruct")
     out.puts(s"with self.assertRaises(${PythonCompiler.ksErrorName(exception)}):")
     out.inc
-    out.puts(translateAct(actual))
+    out.puts(s"_ = ${translateAct(actual)}")
     out.dec
   }
 
