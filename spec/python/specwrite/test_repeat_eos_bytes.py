@@ -22,6 +22,6 @@ class TestRepeatEosBytes(CommonSpec.Base):
 
         r._check()
 
-        ks_io = KaitaiStream(io.BytesIO(bytearray(15 + 3)))
+        ks_io = KaitaiStream(io.BytesIO(bytes(15 + 3)))
         with self.assertRaisesRegex(ConsistencyError, "^Check failed: records, expected: 0, actual: 3$"):
             r._write(ks_io)

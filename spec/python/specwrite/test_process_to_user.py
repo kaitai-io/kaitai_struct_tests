@@ -28,7 +28,7 @@ class TestProcessToUser(CommonSpec.Base):
             expected = f.read(5)
         self.assertEqual(len(expected), 5)
 
-        ks_io = KaitaiStream(io.BytesIO(bytearray(len(expected))))
+        ks_io = KaitaiStream(io.BytesIO(bytes(len(expected))))
         r._write(ks_io)
 
         actual = ks_io.to_byte_array()

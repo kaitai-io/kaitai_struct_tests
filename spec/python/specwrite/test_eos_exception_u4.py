@@ -25,6 +25,6 @@ class TestEosExceptionU4(CommonSpec.Base):
         r.envelope = data
         r._check()
 
-        with KaitaiStream(io.BytesIO(bytearray(12))) as out_io:
+        with KaitaiStream(io.BytesIO(bytes(12))) as out_io:
             with self.assertRaisesRegex(EOFError, "^requested to write 4 bytes, but only 3 bytes left in the stream$"):
                 r._write(out_io)

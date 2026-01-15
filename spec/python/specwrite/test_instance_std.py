@@ -37,7 +37,7 @@ class TestInstanceStd(CommonSpec.Base):
         # see <CommonSpec.Base>.test_read_write_roundtrip
         orig_dump = CommonSpec.Base.dump_struct(r)
 
-        ks_io = KaitaiStream(io.BytesIO(bytearray(2 + 5)))
+        ks_io = KaitaiStream(io.BytesIO(bytes(2 + 5)))
         r._write(ks_io)
         ks_io.seek(0)
 

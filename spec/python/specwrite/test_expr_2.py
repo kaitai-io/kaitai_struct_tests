@@ -35,7 +35,7 @@ class TestExpr2(CommonSpec.Base):
         # see <CommonSpec.Base>.test_read_write_roundtrip
         orig_dump = CommonSpec.Base.dump_struct(r)
 
-        new_io = KaitaiStream(io.BytesIO(bytearray(
+        new_io = KaitaiStream(io.BytesIO(bytes(
             2 +  # str1.len_orig
             r.str1.len_mod +  # str1.str
             3 +  # str1.rest

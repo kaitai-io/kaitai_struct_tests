@@ -25,7 +25,7 @@ class TestCastToTop(CommonSpec.Base):
         r.header = s
         r._check()
 
-        ks_io = KaitaiStream(io.BytesIO(bytearray(2)))
+        ks_io = KaitaiStream(io.BytesIO(bytes(2)))
         r._write(ks_io)
 
         actual = ks_io.to_byte_array()

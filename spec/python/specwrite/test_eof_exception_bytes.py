@@ -19,6 +19,6 @@ class TestEofExceptionBytes(CommonSpec.Base):
         r.buf = b"\x78\x79\x7A\x7B\x7C\x7D\x7E\x7F\xFF\xFE\xFD\xFC\xFB"
         r._check()
 
-        with KaitaiStream(io.BytesIO(bytearray(12))) as out_io:
+        with KaitaiStream(io.BytesIO(bytes(12))) as out_io:
             with self.assertRaisesRegex(EOFError, "^requested to write 13 bytes, but only 12 bytes left in the stream$"):
                 r._write(out_io)

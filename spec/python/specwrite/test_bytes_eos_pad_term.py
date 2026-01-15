@@ -214,5 +214,5 @@ def check(r):
         set_str_term_include(r, buf)
 
     r._check()
-    ks_io = KaitaiStream(io.BytesIO(bytearray(80)))
+    ks_io = KaitaiStream(io.BytesIO(bytes(80)))
     r._write(ks_io)

@@ -47,7 +47,7 @@ class TestProcessRotate(CommonSpec.Base):
             1 +  # key
             5  # buf3
         )
-        ks_io = KaitaiStream(io.BytesIO(bytearray(len_io)))
+        ks_io = KaitaiStream(io.BytesIO(bytes(len_io)))
 
         with self.assertRaisesRegex(ConsistencyError, "^Check failed: buf2,"):
             r._check()

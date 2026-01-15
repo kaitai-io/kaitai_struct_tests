@@ -24,7 +24,7 @@ class CommonSpec:
             finally:
                 orig_f.close()
 
-            with KaitaiStream(io.BytesIO(bytearray(orig_io_size))) as new_io:
+            with KaitaiStream(io.BytesIO(bytes(orig_io_size))) as new_io:
                 orig_ks._write(new_io)
                 new_io.seek(0)
 
@@ -39,7 +39,7 @@ class CommonSpec:
             with open(file_name, 'rb') as f:
                 expected_bytes = f.read()
             struct_obj._check()
-            with KaitaiStream(io.BytesIO(bytearray(len(expected_bytes)))) as out_io:
+            with KaitaiStream(io.BytesIO(bytes(len(expected_bytes)))) as out_io:
                 struct_obj._write(out_io)
                 self.assert_byte_array_equal(out_io.to_byte_array(), expected_bytes)
 
