@@ -12,7 +12,7 @@ class CommonSpec:
             self.maxDiff = None
 
         def test_read_write_roundtrip(self):
-            orig_f = io.open(self.src_filename, 'rb')
+            orig_f = open(self.src_filename, 'rb')
 
             try:
                 orig_ks = self.struct_class.from_io(orig_f)
@@ -36,7 +36,7 @@ class CommonSpec:
             self.assertEqual(orig_dump, new_dump)
 
         def assert_equal_to_full_file(self, struct_obj, file_name):
-            with io.open(file_name, 'rb') as f:
+            with open(file_name, 'rb') as f:
                 expected_bytes = f.read()
             struct_obj._check()
             with KaitaiStream(io.BytesIO(bytearray(len(expected_bytes)))) as out_io:

@@ -24,7 +24,7 @@ class TestProcessToUser(CommonSpec.Base):
 
         r._check()
 
-        with io.open('src/process_rotate.bin', 'rb') as f:
+        with open('src/process_rotate.bin', 'rb') as f:
             expected = f.read(5)
         self.assertEqual(len(expected), 5)
 
