@@ -8,9 +8,9 @@ class TestExpr3(unittest.TestCase):
     def test_expr_3(self):
         r = _schema.parse_file('src/fixed_struct.bin')
         self.assertEqual(r.one, 80)
-        self.assertEqual(r.two, u"ACK")
-        self.assertEqual(r.three, u"@ACK")
-        self.assertEqual(r.four, u"_ACK_")
+        self.assertEqual(r.two, "ACK")
+        self.assertEqual(r.three, "@ACK")
+        self.assertEqual(r.four, "_ACK_")
         self.assertEqual(r.is_str_eq, True)
         self.assertEqual(r.is_str_ne, False)
         self.assertEqual(r.is_str_lt, True)

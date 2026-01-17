@@ -8,4 +8,4 @@ class TestPositionAbs(unittest.TestCase):
     def test_position_abs(self):
         r = _schema.parse_file('src/position_abs.bin')
         self.assertEqual(r.index_offset, 32)
-        self.assertEqual(r.index.entry, u"foo")
+        self.assertEqual(r.index.entry, "foo")

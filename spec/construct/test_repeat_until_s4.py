@@ -8,4 +8,4 @@ class TestRepeatUntilS4(unittest.TestCase):
     def test_repeat_until_s4(self):
         r = _schema.parse_file('src/repeat_until_s4.bin')
         self.assertEqual(r.entries, [66, 4919, -251658241, -1])
-        self.assertEqual(r.afterall, u"foobar")
+        self.assertEqual(r.afterall, "foobar")

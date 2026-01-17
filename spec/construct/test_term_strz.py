@@ -7,6 +7,6 @@ from term_strz import _schema
 class TestTermStrz(unittest.TestCase):
     def test_term_strz(self):
         r = _schema.parse_file('src/term_strz.bin')
-        self.assertEqual(r.s1, u"foo")
-        self.assertEqual(r.s2, u"bar")
-        self.assertEqual(r.s3, u"|baz@")
+        self.assertEqual(r.s1, "foo")
+        self.assertEqual(r.s2, "bar")
+        self.assertEqual(r.s3, "|baz@")

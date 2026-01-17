@@ -7,7 +7,7 @@ from cast_nested import _schema
 class TestCastNested(unittest.TestCase):
     def test_cast_nested(self):
         r = _schema.parse_file('src/switch_opcodes.bin')
-        self.assertEqual(r.opcodes_0_str.value, u"foobar")
-        self.assertEqual(r.opcodes_0_str_value, u"foobar")
+        self.assertEqual(r.opcodes_0_str.value, "foobar")
+        self.assertEqual(r.opcodes_0_str_value, "foobar")
         self.assertEqual(r.opcodes_1_int.value, 66)
         self.assertEqual(r.opcodes_1_int_value, 66)

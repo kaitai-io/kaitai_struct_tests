@@ -8,9 +8,9 @@ class TestEnumIf(unittest.TestCase):
     def test_enum_if(self):
         r = _schema.parse_file('src/if_struct.bin')
         self.assertEqual(r.op1.opcode, 'a_string')
-        self.assertEqual(r.op1.arg_str.str, u"foo")
+        self.assertEqual(r.op1.arg_str.str, "foo")
         self.assertEqual(r.op2.opcode, 'a_tuple')
         self.assertEqual(r.op2.arg_tuple.num1, 66)
         self.assertEqual(r.op2.arg_tuple.num2, 67)
         self.assertEqual(r.op3.opcode, 'a_string')
-        self.assertEqual(r.op3.arg_str.str, u"bar")
+        self.assertEqual(r.op3.arg_str.str, "bar")

@@ -10,5 +10,5 @@ class TestNavRoot(unittest.TestCase):
         self.assertEqual(r.header.qty_entries, 2)
         self.assertEqual(r.header.filename_len, 8)
         self.assertEqual(len(r.index.entries), 2)
-        self.assertEqual(r.index.entries[0].filename, u"FIRST___")
-        self.assertEqual(r.index.entries[1].filename, u"SECOND__")
+        self.assertEqual(r.index.entries[0].filename, "FIRST___")
+        self.assertEqual(r.index.entries[1].filename, "SECOND__")

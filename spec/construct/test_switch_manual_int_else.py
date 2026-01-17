@@ -9,7 +9,7 @@ class TestSwitchManualIntElse(unittest.TestCase):
         r = _schema.parse_file('src/switch_opcodes2.bin')
         self.assertEqual(len(r.opcodes), 4)
         self.assertEqual(r.opcodes[0].code, 83)
-        self.assertEqual(r.opcodes[0].body.value, u"foo")
+        self.assertEqual(r.opcodes[0].body.value, "foo")
         self.assertEqual(r.opcodes[1].code, 88)
         self.assertEqual(r.opcodes[1].body.filler, 66)
         self.assertEqual(r.opcodes[2].code, 89)

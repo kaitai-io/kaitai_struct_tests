@@ -7,4 +7,4 @@ from nav_parent_vs_value_inst import _schema
 class TestNavParentVsValueInst(unittest.TestCase):
     def test_nav_parent_vs_value_inst(self):
         r = _schema.parse_file('src/term_strz.bin')
-        self.assertEqual(r.s1, u"foo")
+        self.assertEqual(r.s1, "foo")

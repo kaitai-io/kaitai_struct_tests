@@ -8,4 +8,4 @@ class TestExpr0(unittest.TestCase):
     def test_expr_0(self):
         r = _schema.parse_file('src/str_encodings.bin')
         self.assertEqual(r.must_be_f7, 247)
-        self.assertEqual(r.must_be_abc123, u"abc123")
+        self.assertEqual(r.must_be_abc123, "abc123")
