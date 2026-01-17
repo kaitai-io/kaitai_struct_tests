@@ -7,12 +7,11 @@ from type_ternary_2nd_falsy import _schema
 class TestTypeTernary2ndFalsy(unittest.TestCase):
     def test_type_ternary_2nd_falsy(self):
         r = _schema.parse_file('src/switch_integers.bin')
-
         self.assertEqual(r.v_false, False)
         self.assertEqual(r.v_int_zero, 0)
-        self.assertEqual(r.v_int_neg_zero, -0)
-        self.assertEqual(r.v_float_zero, 0.0)
-        self.assertEqual(r.v_float_neg_zero, -0.0)
+        self.assertEqual(r.v_int_neg_zero, 0)
+        self.assertAlmostEqual(r.v_float_zero, 0.0, 6)
+        self.assertAlmostEqual(r.v_float_neg_zero, -0.0, 6)
         self.assertEqual(r.v_str_w_zero, u"0")
         self.assertEqual(len(r.v_str_w_zero), 1)
         self.assertEqual(r.ut.m, 7)
