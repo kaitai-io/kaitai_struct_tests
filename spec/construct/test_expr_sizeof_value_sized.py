@@ -7,7 +7,7 @@ from expr_sizeof_value_sized import _schema
 class TestExprSizeofValueSized(unittest.TestCase):
     def test_expr_sizeof_value_sized(self):
         r = _schema.parse_file('src/fixed_struct.bin')
-        self.assertEqual(r.self_sizeof, (12 + 2))
+        self.assertEqual(r.self_sizeof, 12 + 2)
         self.assertEqual(r.sizeof_block, 12)
         self.assertEqual(r.sizeof_block_a, 1)
         self.assertEqual(r.sizeof_block_b, 4)
