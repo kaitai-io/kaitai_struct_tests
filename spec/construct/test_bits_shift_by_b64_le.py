@@ -7,6 +7,5 @@ from bits_shift_by_b64_le import _schema
 class TestBitsShiftByB64Le(unittest.TestCase):
     def test_bits_shift_by_b64_le(self):
         r = _schema.parse_file('src/bits_shift_by_b64_le.bin')
-
         self.assertEqual(r.a, 18446744073709551615)
         self.assertEqual(r.b, 0)

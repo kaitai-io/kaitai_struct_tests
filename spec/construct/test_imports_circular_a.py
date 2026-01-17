@@ -7,7 +7,6 @@ from imports_circular_a import _schema
 class TestImportsCircularA(unittest.TestCase):
     def test_imports_circular_a(self):
         r = _schema.parse_file('src/fixed_struct.bin')
-
         self.assertEqual(r.code, 80)
         self.assertEqual(r.two.initial, 65)
         self.assertEqual(r.two.back_ref.code, 67)

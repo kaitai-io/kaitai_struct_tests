@@ -7,7 +7,6 @@ from imports_rel_1 import _schema
 class TestImportsRel1(unittest.TestCase):
     def test_imports_rel_1(self):
         r = _schema.parse_file('src/fixed_struct.bin')
-
         self.assertEqual(r.one, 80)
         self.assertEqual(r.two.one, 65)
         self.assertEqual(r.two.two.one, 67)

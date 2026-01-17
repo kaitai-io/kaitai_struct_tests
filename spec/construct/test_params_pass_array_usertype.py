@@ -7,7 +7,6 @@ from params_pass_array_usertype import _schema
 class TestParamsPassArrayUsertype(unittest.TestCase):
     def test_params_pass_array_usertype(self):
         r = _schema.parse_file('src/position_to_end.bin')
-
         self.assertEqual(len(r.pass_blocks.bar), 2)
         self.assertEqual(r.pass_blocks.bar[0].foo, 1)
         self.assertEqual(r.pass_blocks.bar[1].foo, 2)

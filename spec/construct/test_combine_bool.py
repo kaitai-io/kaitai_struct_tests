@@ -7,6 +7,5 @@ from combine_bool import _schema
 class TestCombineBool(unittest.TestCase):
     def test_combine_bool(self):
         r = _schema.parse_file('src/enum_negative.bin')
-
         self.assertEqual(r.bool_bit, True)
         self.assertEqual(r.bool_calc_bit, False)

@@ -7,7 +7,6 @@ from expr_fstring_0 import _schema
 class TestExprFstring0(unittest.TestCase):
     def test_expr_fstring_0(self):
         r = _schema.parse_file('src/term_strz.bin')
-
         self.assertEqual(r.seq_str, u"foo|b")
         self.assertEqual(r.seq_int, 97)
         self.assertEqual(r.empty, u"")

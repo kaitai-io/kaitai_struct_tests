@@ -7,7 +7,6 @@ from switch_manual_int_size import _schema
 class TestSwitchManualIntSize(unittest.TestCase):
     def test_switch_manual_int_size(self):
         r = _schema.parse_file('src/switch_tlv.bin')
-
         self.assertEqual(len(r.chunks), 4)
         self.assertEqual(r.chunks[0].code, 17)
         self.assertEqual(r.chunks[0].body.title, u"Stuff")

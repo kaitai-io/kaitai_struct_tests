@@ -7,7 +7,6 @@ from expr_int_div import _schema
 class TestExprIntDiv(unittest.TestCase):
     def test_expr_int_div(self):
         r = _schema.parse_file('src/fixed_struct.bin')
-
         self.assertEqual(r.int_u, 1262698832)
         self.assertEqual(r.int_s, -52947)
         self.assertEqual(r.div_pos_const, 756)

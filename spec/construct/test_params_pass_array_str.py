@@ -7,7 +7,6 @@ from params_pass_array_str import _schema
 class TestParamsPassArrayStr(unittest.TestCase):
     def test_params_pass_array_str(self):
         r = _schema.parse_file('src/term_strz.bin')
-
         self.assertEqual(len(r.pass_str_array.strs), 3)
         self.assertEqual(r.pass_str_array.strs[0], u"fo")
         self.assertEqual(r.pass_str_array.strs[1], u"o|")

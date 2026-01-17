@@ -7,7 +7,6 @@ from params_pass_array_int import _schema
 class TestParamsPassArrayInt(unittest.TestCase):
     def test_params_pass_array_int(self):
         r = _schema.parse_file('src/position_to_end.bin')
-
         self.assertEqual(len(r.pass_ints.nums), 3)
         self.assertEqual(r.pass_ints.nums[0], 513)
         self.assertEqual(r.pass_ints.nums[1], 1027)

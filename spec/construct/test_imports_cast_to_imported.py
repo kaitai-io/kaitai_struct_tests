@@ -7,6 +7,5 @@ from imports_cast_to_imported import _schema
 class TestImportsCastToImported(unittest.TestCase):
     def test_imports_cast_to_imported(self):
         r = _schema.parse_file('src/process_xor_4.bin')
-
         self.assertEqual(r.hw.one, 236)
         self.assertEqual(r.two.hw_one, 236)

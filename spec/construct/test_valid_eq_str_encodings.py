@@ -7,4 +7,3 @@ from valid_eq_str_encodings import _schema
 class TestValidEqStrEncodings(unittest.TestCase):
     def test_valid_eq_str_encodings(self):
         r = _schema.parse_file('src/str_encodings.bin')
-

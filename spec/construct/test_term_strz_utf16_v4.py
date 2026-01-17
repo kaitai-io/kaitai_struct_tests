@@ -7,7 +7,6 @@ from term_strz_utf16_v4 import _schema
 class TestTermStrzUtf16V4(unittest.TestCase):
     def test_term_strz_utf16_v4(self):
         r = _schema.parse_file('src/term_strz_utf16.bin')
-
         self.assertEqual(r.s1.value, u"a\u0200b")
         self.assertEqual(r.s2.value, u"c\u0200d")
         self.assertEqual(r.s3.value, u"e\u0200f")

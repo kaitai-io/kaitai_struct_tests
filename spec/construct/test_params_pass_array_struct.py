@@ -7,7 +7,6 @@ from params_pass_array_struct import _schema
 class TestParamsPassArrayStruct(unittest.TestCase):
     def test_params_pass_array_struct(self):
         r = _schema.parse_file('src/position_to_end.bin')
-
         self.assertEqual(len(r.pass_structs.structs), 2)
         self.assertEqual(r.pass_structs.structs[0].f, 1)
         self.assertEqual(r.pass_structs.structs[1].b, 2)

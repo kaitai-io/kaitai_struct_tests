@@ -7,7 +7,6 @@ from expr_ops_parens import _schema
 class TestExprOpsParens(unittest.TestCase):
     def test_expr_ops_parens(self):
         r = _schema.parse_file('src/enum_negative.bin')
-
         self.assertEqual(r.i_sum_to_str, u"29")
         self.assertEqual(r.f_sum_to_int, 9)
         self.assertEqual(r.str_concat_len, 10)

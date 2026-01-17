@@ -7,7 +7,6 @@ from expr_str_encodings import _schema
 class TestExprStrEncodings(unittest.TestCase):
     def test_expr_str_encodings(self):
         r = _schema.parse_file('src/str_encodings.bin')
-
         self.assertEqual(r.str1_eq, True)
         self.assertEqual(r.str2_eq, True)
         self.assertEqual(r.str3_eq, True)

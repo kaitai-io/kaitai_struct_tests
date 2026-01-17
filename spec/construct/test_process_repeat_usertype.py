@@ -7,7 +7,6 @@ from process_repeat_usertype import _schema
 class TestProcessRepeatUsertype(unittest.TestCase):
     def test_process_repeat_usertype(self):
         r = _schema.parse_file('src/process_xor_4.bin')
-
         self.assertEqual(r.blocks[0].a, -1975704206)
         self.assertEqual(r.blocks[0].b, 20)
         self.assertEqual(r.blocks[1].a, 279597642)

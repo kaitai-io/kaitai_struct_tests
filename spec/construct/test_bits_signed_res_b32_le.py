@@ -7,5 +7,4 @@ from bits_signed_res_b32_le import _schema
 class TestBitsSignedResB32Le(unittest.TestCase):
     def test_bits_signed_res_b32_le(self):
         r = _schema.parse_file('src/bits_shift_by_b32_le.bin')
-
         self.assertEqual(r.a, 4294967295)

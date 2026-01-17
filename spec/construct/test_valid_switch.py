@@ -7,4 +7,3 @@ from valid_switch import _schema
 class TestValidSwitch(unittest.TestCase):
     def test_valid_switch(self):
         r = _schema.parse_file('src/fixed_struct.bin')
-

@@ -7,7 +7,6 @@ from switch_multi_bool_ops import _schema
 class TestSwitchMultiBoolOps(unittest.TestCase):
     def test_switch_multi_bool_ops(self):
         r = _schema.parse_file('src/switch_integers.bin')
-
         self.assertEqual(len(r.opcodes), 4)
         self.assertEqual(r.opcodes[0].code, 1)
         self.assertEqual(r.opcodes[0].body, 7)

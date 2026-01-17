@@ -7,5 +7,4 @@ from process_custom_no_args import _schema
 class TestProcessCustomNoArgs(unittest.TestCase):
     def test_process_custom_no_args(self):
         r = _schema.parse_file('src/process_rotate.bin')
-
         self.assertEqual(r.buf, b"\x5F\x09\xAC\x8D\x8D\xED\x5F")

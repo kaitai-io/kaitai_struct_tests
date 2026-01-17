@@ -7,6 +7,5 @@ from bits_signed_shift_b32_le import _schema
 class TestBitsSignedShiftB32Le(unittest.TestCase):
     def test_bits_signed_shift_b32_le(self):
         r = _schema.parse_file('src/bits_signed_shift_b32_le.bin')
-
         self.assertEqual(r.a, 0)
         self.assertEqual(r.b, 255)

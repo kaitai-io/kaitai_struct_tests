@@ -7,7 +7,6 @@ from params_pass_bool import _schema
 class TestParamsPassBool(unittest.TestCase):
     def test_params_pass_bool(self):
         r = _schema.parse_file('src/term_strz.bin')
-
         self.assertEqual(r.s_false, False)
         self.assertEqual(r.s_true, True)
         self.assertEqual(r.seq_b1.arg, True)

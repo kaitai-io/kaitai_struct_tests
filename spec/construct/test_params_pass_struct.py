@@ -7,7 +7,6 @@ from params_pass_struct import _schema
 class TestParamsPassStruct(unittest.TestCase):
     def test_params_pass_struct(self):
         r = _schema.parse_file('src/enum_negative.bin')
-
         self.assertEqual(r.first.foo, 255)
         self.assertEqual(r.one.bar.qux, 1)
         self.assertEqual(r.one.foo.foo, 255)

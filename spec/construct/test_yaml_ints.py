@@ -7,7 +7,6 @@ from yaml_ints import _schema
 class TestYamlInts(unittest.TestCase):
     def test_yaml_ints(self):
         r = _schema.parse_file('src/fixed_struct.bin')
-
         self.assertEqual(r.test_u4_dec, 4294967295)
         self.assertEqual(r.test_u4_hex, 4294967295)
         self.assertEqual(r.test_u8_dec, 18446744073709551615)

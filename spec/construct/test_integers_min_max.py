@@ -7,7 +7,6 @@ from integers_min_max import _schema
 class TestIntegersMinMax(unittest.TestCase):
     def test_integers_min_max(self):
         r = _schema.parse_file('src/integers_min_max.bin')
-
         self.assertEqual(r.unsigned_min.u1, 0)
         self.assertEqual(r.unsigned_min.u2le, 0)
         self.assertEqual(r.unsigned_min.u4le, 0)

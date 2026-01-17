@@ -7,7 +7,6 @@ from expr_bytes_ops import _schema
 class TestExprBytesOps(unittest.TestCase):
     def test_expr_bytes_ops(self):
         r = _schema.parse_file('src/nav_parent_switch.bin')
-
         self.assertEqual(r.one_size, 3)
         self.assertEqual(r.one_first, 1)
         self.assertEqual(r.one_mid, 66)

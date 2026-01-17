@@ -7,7 +7,6 @@ from switch_else_only import _schema
 class TestSwitchElseOnly(unittest.TestCase):
     def test_switch_else_only(self):
         r = _schema.parse_file('src/switch_opcodes.bin')
-
         self.assertEqual(r.opcode, 83)
         self.assertEqual(r.prim_byte, 102)
         self.assertEqual(r.ut.value, b"\x72\x00\x49\x42")

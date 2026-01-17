@@ -7,6 +7,5 @@ from nested_type_param import _schema
 class TestNestedTypeParam(unittest.TestCase):
     def test_nested_type_param(self):
         r = _schema.parse_file('src/term_strz.bin')
-
         self.assertEqual(r.main_seq.my_len, 5)
         self.assertEqual(r.main_seq.body, u"foo|b")

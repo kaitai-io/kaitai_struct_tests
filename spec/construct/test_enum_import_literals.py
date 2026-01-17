@@ -7,7 +7,6 @@ from enum_import_literals import _schema
 class TestEnumImportLiterals(unittest.TestCase):
     def test_enum_import_literals(self):
         r = _schema.parse_file('src/enum_0.bin')
-
         self.assertEqual(r.pet_1_to_i, 7)
         self.assertEqual(r.pet_1_eq, True)
         self.assertEqual(r.pet_2, 'hare')

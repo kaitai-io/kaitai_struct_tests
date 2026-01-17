@@ -7,4 +7,3 @@ from valid_long import _schema
 class TestValidLong(unittest.TestCase):
     def test_valid_long(self):
         r = _schema.parse_file('src/fixed_struct.bin')
-

@@ -7,7 +7,6 @@ from enum_to_i import _schema
 class TestEnumToI(unittest.TestCase):
     def test_enum_to_i(self):
         r = _schema.parse_file('src/enum_0.bin')
-
         self.assertEqual(r.pet_1, 'cat')
         self.assertEqual(r.pet_2, 'chicken')
         self.assertEqual(r.pet_1_i, 7)

@@ -7,7 +7,6 @@ from combine_bytes import _schema
 class TestCombineBytes(unittest.TestCase):
     def test_combine_bytes(self):
         r = _schema.parse_file('src/term_strz.bin')
-
         self.assertEqual(r.bytes_term, b"\x66\x6F\x6F")
         self.assertEqual(r.bytes_limit, b"\x62\x61\x72\x7C")
         self.assertEqual(r.bytes_eos, b"\x62\x61\x7A\x40")

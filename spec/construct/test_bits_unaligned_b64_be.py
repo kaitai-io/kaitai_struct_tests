@@ -7,7 +7,6 @@ from bits_unaligned_b64_be import _schema
 class TestBitsUnalignedB64Be(unittest.TestCase):
     def test_bits_unaligned_b64_be(self):
         r = _schema.parse_file('src/process_xor_4.bin')
-
         self.assertEqual(r.a, True)
         self.assertEqual(r.b, 15670070570729969769)
         self.assertEqual(r.c, 14)

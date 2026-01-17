@@ -7,7 +7,6 @@ from nav_root_recursive import _schema
 class TestNavRootRecursive(unittest.TestCase):
     def test_nav_root_recursive(self):
         r = _schema.parse_file('src/enum_negative.bin')
-
         self.assertEqual(r.value, 255)
         self.assertEqual(r.next.value, 1)
         self.assertEqual(r.next.root_value, 255)

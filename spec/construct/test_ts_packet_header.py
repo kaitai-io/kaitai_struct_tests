@@ -7,7 +7,6 @@ from ts_packet_header import _schema
 class TestTsPacketHeader(unittest.TestCase):
     def test_ts_packet_header(self):
         r = _schema.parse_file('src/ts_packet.bin')
-
         self.assertEqual(r.sync_byte, 71)
         self.assertEqual(r.transport_error_indicator, False)
         self.assertEqual(r.payload_unit_start_indicator, False)

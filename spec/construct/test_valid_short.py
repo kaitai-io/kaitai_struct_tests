@@ -7,4 +7,3 @@ from valid_short import _schema
 class TestValidShort(unittest.TestCase):
     def test_valid_short(self):
         r = _schema.parse_file('src/fixed_struct.bin')
-

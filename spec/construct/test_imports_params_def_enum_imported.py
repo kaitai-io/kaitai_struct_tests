@@ -7,7 +7,6 @@ from imports_params_def_enum_imported import _schema
 class TestImportsParamsDefEnumImported(unittest.TestCase):
     def test_imports_params_def_enum_imported(self):
         r = _schema.parse_file('src/enum_0.bin')
-
         self.assertEqual(r.one.pet_1, 'cat')
         self.assertEqual(r.one.pet_2, 'hare')
         self.assertEqual(r.two.pet_1_param, 'cat')
