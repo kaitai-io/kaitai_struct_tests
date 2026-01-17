@@ -10,14 +10,18 @@ fn test_float_to_i() -> KResult<()> {
     let bytes = fs::read("../../src/floating_points.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<FloatToI> = FloatToI::read_into(&_io, None, None)?;
-
     assert_eq!(*r.single_value(), 0.5);
     assert_eq!(*r.double_value(), 0.25);
+    assert_eq!(*r.single_value_if(), 0.5);
+    assert_eq!(*r.double_value_if(), 0.25);
     assert_eq!(*r.single_i()?, 0);
     assert_eq!(*r.double_i()?, 0);
+    assert_eq!(*r.single_if_i()?, 0);
+    assert_eq!(*r.double_if_i()?, 0);
     assert_eq!(*r.float1_i()?, 1);
     assert_eq!(*r.float2_i()?, 1);
     assert_eq!(*r.float3_i()?, 1);
     assert_eq!(*r.float4_i()?, -2);
+    assert_eq!(*r.calc_if_i()?, 13);
     Ok(())
 }

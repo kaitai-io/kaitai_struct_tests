@@ -8,17 +8,21 @@ use base qw(Test::Class);
 use Test::More;
 use FloatToI;
 
-sub test_float_to_i: Test(8) {
+sub test_float_to_i: Test(13) {
     my $r = FloatToI->from_file('src/floating_points.bin');
-
     ok(abs($r->single_value() - 0.5) < 1e-6, 'Approx equals');
     ok(abs($r->double_value() - 0.25) < 1e-6, 'Approx equals');
+    ok(abs($r->single_value_if() - 0.5) < 1e-6, 'Approx equals');
+    ok(abs($r->double_value_if() - 0.25) < 1e-6, 'Approx equals');
     is($r->single_i(), 0, 'Equals');
     is($r->double_i(), 0, 'Equals');
+    is($r->single_if_i(), 0, 'Equals');
+    is($r->double_if_i(), 0, 'Equals');
     is($r->float1_i(), 1, 'Equals');
     is($r->float2_i(), 1, 'Equals');
     is($r->float3_i(), 1, 'Equals');
     is($r->float4_i(), -2, 'Equals');
+    is($r->calc_if_i(), 13, 'Equals');
 }
 
 Test::Class->runtests;

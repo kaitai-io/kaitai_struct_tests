@@ -4,12 +4,17 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('FloatToI', 'src/floating_points.bin', function(r, FloatToI_) {
-  assert.strictEqual(r.singleValue, 0.5);
-  assert.strictEqual(r.doubleValue, 0.25);
+  assert(Math.abs(r.singleValue - 0.5) < 1e-6);
+  assert(Math.abs(r.doubleValue - 0.25) < 1e-6);
+  assert(Math.abs(r.singleValueIf - 0.5) < 1e-6);
+  assert(Math.abs(r.doubleValueIf - 0.25) < 1e-6);
   assert.strictEqual(r.singleI, 0);
   assert.strictEqual(r.doubleI, 0);
+  assert.strictEqual(r.singleIfI, 0);
+  assert.strictEqual(r.doubleIfI, 0);
   assert.strictEqual(r.float1I, 1);
   assert.strictEqual(r.float2I, 1);
   assert.strictEqual(r.float3I, 1);
   assert.strictEqual(r.float4I, -2);
+  assert.strictEqual(r.calcIfI, 13);
 });

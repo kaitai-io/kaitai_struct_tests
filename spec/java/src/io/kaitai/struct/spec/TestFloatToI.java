@@ -9,7 +9,6 @@ public class TestFloatToI extends CommonSpec {
     @Test
     public void testFloatToI() throws Exception {
         FloatToI r = FloatToI.fromFile(SRC_DIR + "floating_points.bin");
-
         assertEquals(r.singleValue(), 0.5, 1e-6);
         assertEquals(r.doubleValue(), 0.25, 1e-6);
         assertEquals(r.singleValueIf(), 0.5, 1e-6);

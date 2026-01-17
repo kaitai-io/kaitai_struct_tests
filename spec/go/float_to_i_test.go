@@ -28,9 +28,10 @@ func TestFloatToI(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-
 	assert.InDelta(t, 0.5, r.SingleValue, 1e-6)
 	assert.InDelta(t, 0.25, r.DoubleValue, 1e-6)
+	assert.InDelta(t, 0.5, r.SingleValueIf, 1e-6)
+	assert.InDelta(t, 0.25, r.DoubleValueIf, 1e-6)
 	tmp1, err := r.SingleI()
 	if err != nil {
 		t.Fatal(err)
@@ -41,24 +42,39 @@ func TestFloatToI(t *testing.T) {
 		t.Fatal(err)
 	}
 	assert.EqualValues(t, 0, tmp2)
-	tmp3, err := r.Float1I()
+	tmp3, err := r.SingleIfI()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 1, tmp3)
-	tmp4, err := r.Float2I()
+	assert.EqualValues(t, 0, tmp3)
+	tmp4, err := r.DoubleIfI()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 1, tmp4)
-	tmp5, err := r.Float3I()
+	assert.EqualValues(t, 0, tmp4)
+	tmp5, err := r.Float1I()
 	if err != nil {
 		t.Fatal(err)
 	}
 	assert.EqualValues(t, 1, tmp5)
-	tmp6, err := r.Float4I()
+	tmp6, err := r.Float2I()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, -2, tmp6)
+	assert.EqualValues(t, 1, tmp6)
+	tmp7, err := r.Float3I()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, 1, tmp7)
+	tmp8, err := r.Float4I()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, -2, tmp8)
+	tmp9, err := r.CalcIfI()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, 13, tmp9)
 }

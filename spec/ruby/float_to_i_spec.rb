@@ -4,14 +4,18 @@ RSpec.describe 'FloatToI' do
   it 'parses test properly' do
     require 'float_to_i'
     r = FloatToI.from_file('src/floating_points.bin')
-
     expect(r.single_value).to be_within(1e-6).of 0.5
     expect(r.double_value).to be_within(1e-6).of 0.25
+    expect(r.single_value_if).to be_within(1e-6).of 0.5
+    expect(r.double_value_if).to be_within(1e-6).of 0.25
     expect(r.single_i).to eq 0
     expect(r.double_i).to eq 0
+    expect(r.single_if_i).to eq 0
+    expect(r.double_if_i).to eq 0
     expect(r.float1_i).to eq 1
     expect(r.float2_i).to eq 1
     expect(r.float3_i).to eq 1
     expect(r.float4_i).to eq -2
+    expect(r.calc_if_i).to eq 13
   end
 end
