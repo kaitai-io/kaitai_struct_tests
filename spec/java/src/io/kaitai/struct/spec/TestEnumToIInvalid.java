@@ -11,7 +11,8 @@ public class TestEnumToIInvalid extends CommonSpec {
         EnumToIInvalid r = EnumToIInvalid.fromFile(SRC_DIR + "term_strz.bin");
 
         assertEquals(r.pet1(), EnumToIInvalid.Animal.DOG);
-        assertEquals(r.pet2(), 111);
+        assertEquals(r.pet2(), EnumToIInvalid.Animal.byId(111));
+        assertTrue(EnumToIInvalid.Animal.byId(111) instanceof EnumToIInvalid.Animal.Unknown);
         assertIntEquals(r.pet2I(), 111);
         assertEquals(r.pet2IToS(), "111");
         assertIntEquals(r.pet2Mod(), 32879);
