@@ -1,8 +1,9 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.{ClassTypeProvider, Utils}
-import _root_.io.kaitai.struct.datatype.DataType
+import _root_.io.kaitai.struct.datatype.{DataType, KSError}
 import _root_.io.kaitai.struct.exprlang.Ast
+import _root_.io.kaitai.struct.languages.PythonCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec}
 import _root_.io.kaitai.struct.translators.ConstructTranslator
 
@@ -28,6 +29,13 @@ class ConstructSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGener
   override def runParse(): Unit =
     out.puts(s"r = _schema.parse_file('src/${spec.data}')")
 
+  override def runParseExpectError(exception: KSError): Unit = {
+    importList.add("import kaitaistruct")
+    out.puts(s"with self.assertRaises(${PythonCompiler.ksErrorName(exception)}):")
+    out.inc
+    runParse()
+  }
+
   override def footer(): Unit = {}
 
   override def simpleEquality(check: TestEquals): Unit = {
@@ -49,6 +57,14 @@ class ConstructSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGener
 
   override def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit =
     simpleEquality(check)
+
+  override def testException(actual: Ast.expr, exception: KSError): Unit = {
+    importList.add("import kaitaistruct")
+    out.puts(s"with self.assertRaises(${PythonCompiler.ksErrorName(exception)}):")
+    out.inc
+    out.puts(translateAct(actual))
+    out.dec
+  }
 
   def translateAct(x: Ast.expr) =
     translator.translate(x).replace("this." + Main.INIT_OBJ_NAME, "r")
