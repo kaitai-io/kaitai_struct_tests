@@ -14,6 +14,7 @@ object Main extends App {
   val importDirs = List(s"$baseDir/../formats", s"$formatsDir/ks_path")
 
   val ALL_LANGS = List(
+    "c",
     "construct",
     "cpp_stl_98",
     "cpp_stl_11",
