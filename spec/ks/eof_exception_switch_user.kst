@@ -1,0 +1,5 @@
+id: eof_exception_switch_user
+data: enum_negative.bin
+exception:
+  type: EndOfStreamError
+  message: requested 2 bytes, but only 0 bytes available
