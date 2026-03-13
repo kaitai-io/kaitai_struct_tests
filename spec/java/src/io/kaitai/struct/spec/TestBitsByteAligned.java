@@ -9,15 +9,17 @@ public class TestBitsByteAligned extends CommonSpec {
     @Test
     public void testBitsByteAligned() throws Exception {
         BitsByteAligned r = BitsByteAligned.fromFile(SRC_DIR + "fixed_struct.bin");
-
         assertIntEquals(r.one(), 20);
         assertIntEquals(r.byte1(), 65);
         assertIntEquals(r.two(), 2);
         assertIntEquals(r.three(), false);
-        assertIntEquals(r.byte2(), 75);
+        assertEquals(r.byte2(), new byte[] { 75 });
         assertIntEquals(r.four(), 2892);
-        assertEquals(r.byte3(), new byte[] { -1 });
-        assertIntEquals(r.fullByte(), 255);
-        assertIntEquals(r.byte4(), 80);
+        assertIntEquals(r.byte3().inner(), 524282);
+        assertIntEquals(r.fullByte(), 65);
+        assertIntEquals(r.byte4(), 67);
+        assertIntEquals(r.five(), 1231701);
+        assertEquals(r.bytesTerm(), new byte[] { 45, 68, 69 });
+        assertIntEquals(r.six(), 70);
     }
 }

@@ -5,13 +5,15 @@ import ../../compiled/nim/bits_byte_aligned
 import auxiliary/test_utils
 
 let r = BitsByteAligned.fromFile("../../src/fixed_struct.bin")
-
 assert r.one == 20
 assert r.byte1 == 65
 assert r.two == 2
 assert r.three == false
-assert r.byte2 == 75
+assert r.byte2 == @[75'u8]
 assert r.four == 2892
-assert r.byte3 == @[255'u8]
-assert r.fullByte == 255
-assert r.byte4 == 80
+assert r.byte3.inner == 524282
+assert r.fullByte == 65
+assert r.byte4 == 67
+assert r.five == 1231701
+assert r.bytesTerm == @[45'u8, 68'u8, 69'u8]
+assert r.six == 70

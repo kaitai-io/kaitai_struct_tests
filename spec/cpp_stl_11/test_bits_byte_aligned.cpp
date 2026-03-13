@@ -10,16 +10,18 @@ BOOST_AUTO_TEST_CASE(test_bits_byte_aligned) {
     std::ifstream ifs("src/fixed_struct.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     bits_byte_aligned_t* r = new bits_byte_aligned_t(&ks);
-
     BOOST_CHECK_EQUAL(r->one(), 20);
     BOOST_CHECK_EQUAL(r->byte_1(), 65);
     BOOST_CHECK_EQUAL(r->two(), 2);
     BOOST_CHECK_EQUAL(r->three(), false);
-    BOOST_CHECK_EQUAL(r->byte_2(), 75);
+    BOOST_CHECK_EQUAL(r->byte_2(), std::string("\x4B", 1));
     BOOST_CHECK_EQUAL(r->four(), 2892);
-    BOOST_CHECK_EQUAL(r->byte_3(), std::string("\xFF", 1));
-    BOOST_CHECK_EQUAL(r->full_byte(), 255);
-    BOOST_CHECK_EQUAL(r->byte_4(), 80);
+    BOOST_CHECK_EQUAL(r->byte_3()->inner(), 524282);
+    BOOST_CHECK_EQUAL(r->full_byte(), 65);
+    BOOST_CHECK_EQUAL(r->byte_4(), 67);
+    BOOST_CHECK_EQUAL(r->five(), 1231701);
+    BOOST_CHECK_EQUAL(r->bytes_term(), std::string("\x2D\x44\x45", 3));
+    BOOST_CHECK_EQUAL(r->six(), 70);
 
     delete r;
 }

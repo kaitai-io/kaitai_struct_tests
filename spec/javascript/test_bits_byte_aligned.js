@@ -8,9 +8,12 @@ testHelper('BitsByteAligned', 'src/fixed_struct.bin', function(r, BitsByteAligne
   assert.strictEqual(r.byte1, 65);
   assert.strictEqual(r.two, 2);
   assert.strictEqual(r.three, false);
-  assert.strictEqual(r.byte2, 75);
+  assert.deepStrictEqual(r.byte2, new Uint8Array([75]));
   assert.strictEqual(r.four, 2892);
-  assert.deepStrictEqual(r.byte3, new Uint8Array([255]));
-  assert.strictEqual(r.fullByte, 255);
-  assert.strictEqual(r.byte4, 80);
+  assert.strictEqual(r.byte3.inner, 524282);
+  assert.strictEqual(r.fullByte, 65);
+  assert.strictEqual(r.byte4, 67);
+  assert.strictEqual(r.five, 1231701);
+  assert.deepStrictEqual(r.bytesTerm, new Uint8Array([45, 68, 69]));
+  assert.strictEqual(r.six, 70);
 });

@@ -18,9 +18,12 @@ test "BitsByteAligned" {
     try _imp_std.testing.expectEqual(65, r.byte_1);
     try _imp_std.testing.expectEqual(2, r.two);
     try _imp_std.testing.expectEqual(false, r.three);
-    try _imp_std.testing.expectEqual(75, r.byte_2);
+    try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 75 }, r.byte_2);
     try _imp_std.testing.expectEqual(2892, r.four);
-    try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 255 }, r.byte_3);
-    try _imp_std.testing.expectEqual(255, r.full_byte);
-    try _imp_std.testing.expectEqual(80, r.byte_4);
+    try _imp_std.testing.expectEqual(524282, r.byte_3.inner);
+    try _imp_std.testing.expectEqual(65, r.full_byte);
+    try _imp_std.testing.expectEqual(67, r.byte_4);
+    try _imp_std.testing.expectEqual(1231701, r.five);
+    try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 45, 68, 69 }, r.bytes_term);
+    try _imp_std.testing.expectEqual(70, r.six);
 }

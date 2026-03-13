@@ -10,15 +10,17 @@ fn test_bits_byte_aligned() -> KResult<()> {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<BitsByteAligned> = BitsByteAligned::read_into(&_io, None, None)?;
-
     assert_eq!(*r.one(), 20);
     assert_eq!(*r.byte_1(), 65);
     assert_eq!(*r.two(), 2);
     assert_eq!(*r.three(), false);
-    assert_eq!(*r.byte_2(), 75);
+    assert_eq!(*r.byte_2(), vec![0x4bu8]);
     assert_eq!(*r.four(), 2892);
-    assert_eq!(*r.byte_3(), vec![0xffu8]);
-    assert_eq!(*r.full_byte(), 255);
-    assert_eq!(*r.byte_4(), 80);
+    assert_eq!(*r.byte_3().inner(), 524282);
+    assert_eq!(*r.full_byte(), 65);
+    assert_eq!(*r.byte_4(), 67);
+    assert_eq!(*r.five(), 1231701);
+    assert_eq!(*r.bytes_term(), vec![0x2du8, 0x44u8, 0x45u8]);
+    assert_eq!(*r.six(), 70);
     Ok(())
 }

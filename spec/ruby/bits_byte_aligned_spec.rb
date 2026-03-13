@@ -4,15 +4,17 @@ RSpec.describe 'BitsByteAligned' do
   it 'parses test properly' do
     require 'bits_byte_aligned'
     r = BitsByteAligned.from_file('src/fixed_struct.bin')
-
     expect(r.one).to eq 20
     expect(r.byte_1).to eq 65
     expect(r.two).to eq 2
     expect(r.three).to eq false
-    expect(r.byte_2).to eq 75
+    expect(r.byte_2).to eq [75].pack('C*')
     expect(r.four).to eq 2892
-    expect(r.byte_3).to eq [255].pack('C*')
-    expect(r.full_byte).to eq 255
-    expect(r.byte_4).to eq 80
+    expect(r.byte_3.inner).to eq 524282
+    expect(r.full_byte).to eq 65
+    expect(r.byte_4).to eq 67
+    expect(r.five).to eq 1231701
+    expect(r.bytes_term).to eq [45, 68, 69].pack('C*')
+    expect(r.six).to eq 70
   end
 end

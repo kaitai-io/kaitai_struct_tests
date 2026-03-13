@@ -8,14 +8,16 @@ TestBitsByteAligned = {}
 
 function TestBitsByteAligned:test_bits_byte_aligned()
     local r = BitsByteAligned:from_file("src/fixed_struct.bin")
-
     luaunit.assertEquals(r.one, 20)
     luaunit.assertEquals(r.byte_1, 65)
     luaunit.assertEquals(r.two, 2)
     luaunit.assertEquals(r.three, false)
-    luaunit.assertEquals(r.byte_2, 75)
+    luaunit.assertEquals(r.byte_2, "\075")
     luaunit.assertEquals(r.four, 2892)
-    luaunit.assertEquals(r.byte_3, "\255")
-    luaunit.assertEquals(r.full_byte, 255)
-    luaunit.assertEquals(r.byte_4, 80)
+    luaunit.assertEquals(r.byte_3.inner, 524282)
+    luaunit.assertEquals(r.full_byte, 65)
+    luaunit.assertEquals(r.byte_4, 67)
+    luaunit.assertEquals(r.five, 1231701)
+    luaunit.assertEquals(r.bytes_term, "\045\068\069")
+    luaunit.assertEquals(r.six, 70)
 end
