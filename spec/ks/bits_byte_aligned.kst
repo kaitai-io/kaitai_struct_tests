@@ -12,18 +12,26 @@ asserts:
     expected: 0b010
   - actual: three
     expected: false
-  # 4B
+  # 4b
   - actual: byte_2
-    expected: 0x4b
-  # 2D 31 (14 + 2) = 00101101 001100|01
+    expected: '[0x4b]'
+  # 2d 31 (14 + 2) = 00101101 001100|01
   - actual: four
     expected: 0b00101101_001100
-  # FF
-  - actual: byte_3
-    expected: '[0xff]'
-  # FF
+  # ff ff 50 (19 + 5) = 11111111 11111111 010|10000
+  - actual: byte_3.inner
+    expected: 0b11111111_11111111_010
+  # 41
   - actual: full_byte
-    expected: 0xff
-  # 50
+    expected: 0x41
+  # 43
   - actual: byte_4
-    expected: 0x50
+    expected: 0x43
+  # 4b 2d 55 (22 + 2) = 01001011 00101101 010101|01
+  - actual: five
+    expected: 0b01001011_00101101_010101
+  - actual: bytes_term
+    expected: '[0x2d, 0x44, 0x45]'
+  # 46
+  - actual: six
+    expected: 0x46
