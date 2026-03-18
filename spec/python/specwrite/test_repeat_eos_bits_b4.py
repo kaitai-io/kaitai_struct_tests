@@ -9,4 +9,4 @@ class TestRepeatEosBitsB4(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.struct_class = RepeatEosBitsB4
-        self.src_filename = 'src/enum_0.bin'
+        self.src_filename = 'src/enum_negative.bin'

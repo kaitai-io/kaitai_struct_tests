@@ -7,10 +7,14 @@
 #include <vector>
 
 BOOST_AUTO_TEST_CASE(test_repeat_eos_bits_b4) {
-    std::ifstream ifs("src/enum_0.bin", std::ifstream::binary);
+    std::ifstream ifs("src/enum_negative.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     repeat_eos_bits_b4_t* r = new repeat_eos_bits_b4_t(&ks);
-    BOOST_CHECK_EQUAL(r->nibbles()->size(), 16);
+    BOOST_CHECK_EQUAL(r->nibbles()->size(), 4);
+    BOOST_CHECK_EQUAL(r->nibbles()->at(0), 15);
+    BOOST_CHECK_EQUAL(r->nibbles()->at(1), 15);
+    BOOST_CHECK_EQUAL(r->nibbles()->at(2), 0);
+    BOOST_CHECK_EQUAL(r->nibbles()->at(3), 1);
 
     delete r;
 }

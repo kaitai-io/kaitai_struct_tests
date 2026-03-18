@@ -7,9 +7,13 @@ use rust::formats::repeat_eos_bits_b4::*;
 
 #[test]
 fn test_repeat_eos_bits_b4() -> KResult<()> {
-    let bytes = fs::read("../../src/enum_0.bin").unwrap();
+    let bytes = fs::read("../../src/enum_negative.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<RepeatEosBitsB4> = RepeatEosBitsB4::read_into(&_io, None, None)?;
-    assert_eq!(r.nibbles().len(), 16);
+    assert_eq!(r.nibbles().len(), 4);
+    assert_eq!(r.nibbles()[0 as usize], 15);
+    assert_eq!(r.nibbles()[1 as usize], 15);
+    assert_eq!(r.nibbles()[2 as usize], 0);
+    assert_eq!(r.nibbles()[3 as usize], 1);
     Ok(())
 }

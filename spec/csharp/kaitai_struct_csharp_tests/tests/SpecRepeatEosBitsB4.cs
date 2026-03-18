@@ -10,8 +10,12 @@ namespace Kaitai
         [Test]
         public void TestRepeatEosBitsB4()
         {
-            var r = RepeatEosBitsB4.FromFile(SourceFile("enum_0.bin"));
-            Assert.AreEqual(r.Nibbles.Count, 16);
+            var r = RepeatEosBitsB4.FromFile(SourceFile("enum_negative.bin"));
+            Assert.AreEqual(r.Nibbles.Count, 4);
+            Assert.AreEqual(r.Nibbles[0], 15);
+            Assert.AreEqual(r.Nibbles[1], 15);
+            Assert.AreEqual(r.Nibbles[2], 0);
+            Assert.AreEqual(r.Nibbles[3], 1);
         }
     }
 }

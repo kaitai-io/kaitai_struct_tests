@@ -8,7 +8,11 @@ import static org.testng.Assert.*;
 public class TestRepeatEosBitsB4 extends CommonSpec {
     @Test
     public void testRepeatEosBitsB4() throws Exception {
-        RepeatEosBitsB4 r = RepeatEosBitsB4.fromFile(SRC_DIR + "enum_0.bin");
-        assertIntEquals(r.nibbles().size(), 16);
+        RepeatEosBitsB4 r = RepeatEosBitsB4.fromFile(SRC_DIR + "enum_negative.bin");
+        assertIntEquals(r.nibbles().size(), 4);
+        assertIntEquals(r.nibbles().get(((int) 0)), 15);
+        assertIntEquals(r.nibbles().get(((int) 1)), 15);
+        assertIntEquals(r.nibbles().get(((int) 2)), 0);
+        assertIntEquals(r.nibbles().get(((int) 3)), 1);
     }
 }

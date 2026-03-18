@@ -18,7 +18,7 @@ func TestRepeatEosBitsB4(t *testing.T) {
 			t.Fatal("unexpected panic:", r)
 		}
 	}()
-	f, err := os.Open("../../src/enum_0.bin")
+	f, err := os.Open("../../src/enum_negative.bin")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -28,5 +28,9 @@ func TestRepeatEosBitsB4(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 16, len(r.Nibbles))
+	assert.EqualValues(t, 4, len(r.Nibbles))
+	assert.EqualValues(t, 15, r.Nibbles[0])
+	assert.EqualValues(t, 15, r.Nibbles[1])
+	assert.EqualValues(t, 0, r.Nibbles[2])
+	assert.EqualValues(t, 1, r.Nibbles[3])
 }

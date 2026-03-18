@@ -8,9 +8,13 @@ use base qw(Test::Class);
 use Test::More;
 use RepeatEosBitsB4;
 
-sub test_repeat_eos_bits_b4: Test(1) {
-    my $r = RepeatEosBitsB4->from_file('src/enum_0.bin');
-    is(scalar(@{$r->nibbles()}), 16, 'Equals');
+sub test_repeat_eos_bits_b4: Test(5) {
+    my $r = RepeatEosBitsB4->from_file('src/enum_negative.bin');
+    is(scalar(@{$r->nibbles()}), 4, 'Equals');
+    is(@{$r->nibbles()}[0], 15, 'Equals');
+    is(@{$r->nibbles()}[1], 15, 'Equals');
+    is(@{$r->nibbles()}[2], 0, 'Equals');
+    is(@{$r->nibbles()}[3], 1, 'Equals');
 }
 
 Test::Class->runtests;

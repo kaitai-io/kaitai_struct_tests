@@ -5,7 +5,7 @@ const _imp_kaitai_struct = @import("kaitai_struct");
 const _imp_repeat_eos_bits_b4 = @import("../formats/repeat_eos_bits_b4.zig");
 
 test "RepeatEosBitsB4" {
-    const file = try _imp_std.fs.cwd().openFile("../../src/enum_0.bin", .{});
+    const file = try _imp_std.fs.cwd().openFile("../../src/enum_negative.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
     var reader = file.reader(&buffer);
@@ -14,5 +14,9 @@ test "RepeatEosBitsB4" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_repeat_eos_bits_b4.RepeatEosBitsB4.create(&arena, &_io, null, null);
-    try _imp_std.testing.expectEqual(16, r.nibbles.items.len);
+    try _imp_std.testing.expectEqual(4, r.nibbles.items.len);
+    try _imp_std.testing.expectEqual(15, r.nibbles.items[0]);
+    try _imp_std.testing.expectEqual(15, r.nibbles.items[1]);
+    try _imp_std.testing.expectEqual(0, r.nibbles.items[2]);
+    try _imp_std.testing.expectEqual(1, r.nibbles.items[3]);
 }

@@ -14,6 +14,6 @@ public class TestRepeatEosBitsB4 extends CommonSpec {
 
     @Override
     protected String getSrcFilename() {
-        return "enum_0.bin";
+        return "enum_negative.bin";
     }
 }
