@@ -1,6 +1,17 @@
 id: repeat_eos_bits_b4
-data: enum_0.bin
+data: enum_negative.bin
 asserts:
-  # File contains 8 bytes, so there should be exactly 16 4-bit reads
   - actual: nibbles.size
-    expected: 16
+    expected: 4
+
+  # ff
+  - actual: nibbles[0]
+    expected: 0xf
+  - actual: nibbles[1]
+    expected: 0xf
+
+  # 01
+  - actual: nibbles[2]
+    expected: 0x0
+  - actual: nibbles[3]
+    expected: 0x1
