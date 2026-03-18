@@ -1,0 +1,43 @@
+id: repeat_eos_bits_b1
+data: enum_negative.bin
+asserts:
+  - actual: bits.size
+    expected: 16
+
+  # ff = 1111|1111
+  - actual: bits[0]
+    expected: true
+  - actual: bits[1]
+    expected: true
+  - actual: bits[2]
+    expected: true
+  - actual: bits[3]
+    expected: true
+
+  - actual: bits[4]
+    expected: true
+  - actual: bits[5]
+    expected: true
+  - actual: bits[6]
+    expected: true
+  - actual: bits[7]
+    expected: true
+
+  # 01 = 0000|0001
+  - actual: bits[8]
+    expected: false
+  - actual: bits[9]
+    expected: false
+  - actual: bits[10]
+    expected: false
+  - actual: bits[11]
+    expected: false
+
+  - actual: bits[12]
+    expected: false
+  - actual: bits[13]
+    expected: false
+  - actual: bits[14]
+    expected: false
+  - actual: bits[15]
+    expected: true
