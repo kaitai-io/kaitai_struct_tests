@@ -2,9 +2,9 @@
 
 import unittest
 
-from repeat_eos_bit import _schema
+from repeat_eos_bits_b4 import _schema
 
-class TestRepeatEosBit(unittest.TestCase):
-    def test_repeat_eos_bit(self):
+class TestRepeatEosBitsB4(unittest.TestCase):
+    def test_repeat_eos_bits_b4(self):
         r = _schema.parse_file('src/enum_0.bin')
         self.assertEqual(len(r.nibbles), 16)

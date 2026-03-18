@@ -2,14 +2,13 @@
 
 package io.kaitai.struct.spec;
 
-import io.kaitai.struct.testformats.RepeatEosBit;
+import io.kaitai.struct.testformats.RepeatEosBitsB4;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
-public class TestRepeatEosBit extends CommonSpec {
+public class TestRepeatEosBitsB4 extends CommonSpec {
     @Test
-    public void testRepeatEosBit() throws Exception {
-        RepeatEosBit r = RepeatEosBit.fromFile(SRC_DIR + "enum_0.bin");
-
+    public void testRepeatEosBitsB4() throws Exception {
+        RepeatEosBitsB4 r = RepeatEosBitsB4.fromFile(SRC_DIR + "enum_0.bin");
         assertIntEquals(r.nibbles().size(), 16);
     }
 }

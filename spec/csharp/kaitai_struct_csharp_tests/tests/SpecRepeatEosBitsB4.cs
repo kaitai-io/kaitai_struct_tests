@@ -5,13 +5,12 @@ using NUnit.Framework;
 namespace Kaitai
 {
     [TestFixture]
-    public class SpecRepeatEosBit : CommonSpec
+    public class SpecRepeatEosBitsB4 : CommonSpec
     {
         [Test]
-        public void TestRepeatEosBit()
+        public void TestRepeatEosBitsB4()
         {
-            var r = RepeatEosBit.FromFile(SourceFile("enum_0.bin"));
-
+            var r = RepeatEosBitsB4.FromFile(SourceFile("enum_0.bin"));
             Assert.AreEqual(r.Nibbles.Count, 16);
         }
     }

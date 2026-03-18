@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestRepeatEosBit(t *testing.T) {
+func TestRepeatEosBitsB4(t *testing.T) {
 	defer func() {
 		if r := recover(); r != nil {
 			debug.PrintStack()
@@ -23,11 +23,10 @@ func TestRepeatEosBit(t *testing.T) {
 		t.Fatal(err)
 	}
 	s := kaitai.NewStream(f)
-	var r RepeatEosBit
+	var r RepeatEosBitsB4
 	err = r.Read(s, &r, &r)
 	if err != nil {
 		t.Fatal(err)
 	}
-
 	assert.EqualValues(t, 16, len(r.Nibbles))
 }

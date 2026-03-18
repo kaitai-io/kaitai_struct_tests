@@ -3,10 +3,9 @@
 
 namespace Kaitai\Struct\Tests;
 
-class RepeatEosBitTest extends TestCase {
-    public function testRepeatEosBit() {
-        $r = RepeatEosBit::fromFile(self::SRC_DIR_PATH . '/enum_0.bin');
-
+class RepeatEosBitsB4Test extends TestCase {
+    public function testRepeatEosBitsB4() {
+        $r = RepeatEosBitsB4::fromFile(self::SRC_DIR_PATH . '/enum_0.bin');
         $this->assertSame(16, count($r->nibbles()));
     }
 }

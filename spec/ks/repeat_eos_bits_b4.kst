@@ -1,4 +1,4 @@
-id: repeat_eos_bit
+id: repeat_eos_bits_b4
 data: enum_0.bin
 asserts:
   # File contains 8 bytes, so there should be exactly 16 4-bit reads

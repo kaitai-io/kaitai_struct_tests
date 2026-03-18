@@ -3,6 +3,6 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('RepeatEosBit', 'src/enum_0.bin', function(r, RepeatEosBit_) {
+testHelper('RepeatEosBitsB4', 'src/enum_0.bin', function(r, RepeatEosBitsB4_) {
   assert.strictEqual(r.nibbles.length, 16);
 });

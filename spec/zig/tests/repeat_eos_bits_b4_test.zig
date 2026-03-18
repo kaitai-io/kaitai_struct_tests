@@ -2,9 +2,9 @@
 
 const _imp_std = @import("std");
 const _imp_kaitai_struct = @import("kaitai_struct");
-const _imp_repeat_eos_bit = @import("../formats/repeat_eos_bit.zig");
+const _imp_repeat_eos_bits_b4 = @import("../formats/repeat_eos_bits_b4.zig");
 
-test "RepeatEosBit" {
+test "RepeatEosBitsB4" {
     const file = try _imp_std.fs.cwd().openFile("../../src/enum_0.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
@@ -13,6 +13,6 @@ test "RepeatEosBit" {
     var arena = _imp_std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try _imp_repeat_eos_bit.RepeatEosBit.create(&arena, &_io, null, null);
+    const r = try _imp_repeat_eos_bits_b4.RepeatEosBitsB4.create(&arena, &_io, null, null);
     try _imp_std.testing.expectEqual(16, r.nibbles.items.len);
 }

@@ -3,14 +3,13 @@
 use std::fs;
 extern crate kaitai;
 use self::kaitai::*;
-use rust::formats::repeat_eos_bit::*;
+use rust::formats::repeat_eos_bits_b4::*;
 
 #[test]
-fn test_repeat_eos_bit() -> KResult<()> {
+fn test_repeat_eos_bits_b4() -> KResult<()> {
     let bytes = fs::read("../../src/enum_0.bin").unwrap();
     let _io = BytesReader::from(bytes);
-    let r: OptRc<RepeatEosBit> = RepeatEosBit::read_into(&_io, None, None)?;
-
+    let r: OptRc<RepeatEosBitsB4> = RepeatEosBitsB4::read_into(&_io, None, None)?;
     assert_eq!(r.nibbles().len(), 16);
     Ok(())
 }

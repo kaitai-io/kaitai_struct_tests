@@ -3,10 +3,10 @@
 import unittest
 from specwrite.common_spec import CommonSpec
 
-from testwrite.repeat_eos_bit import RepeatEosBit
+from testwrite.repeat_eos_bits_b4 import RepeatEosBitsB4
 
-class TestRepeatEosBit(CommonSpec.Base):
+class TestRepeatEosBitsB4(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.struct_class = RepeatEosBit
+        self.struct_class = RepeatEosBitsB4
         self.src_filename = 'src/enum_0.bin'

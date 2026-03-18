@@ -3,13 +3,13 @@
 package io.kaitai.struct.specwrite;
 
 import io.kaitai.struct.KaitaiStruct.ReadWrite;
-import io.kaitai.struct.testwrite.RepeatEosBit;
+import io.kaitai.struct.testwrite.RepeatEosBitsB4;
 import org.testng.annotations.Test;
 
-public class TestRepeatEosBit extends CommonSpec {
+public class TestRepeatEosBitsB4 extends CommonSpec {
     @Override
     protected Class<? extends ReadWrite> getStructClass() {
-        return RepeatEosBit.class;
+        return RepeatEosBitsB4.class;
     }
 
     @Override
