@@ -7,12 +7,15 @@ use rust::formats::switch_repeat_expr_invalid::*;
 
 #[test]
 fn test_switch_repeat_expr_invalid() -> KResult<()> {
-    let bytes = fs::read("../../src/switch_tlv.bin").unwrap();
+    let bytes = fs::read("../../src/switch_integers.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<SwitchRepeatExprInvalid> = SwitchRepeatExprInvalid::read_into(&_io, None, None)?;
-
-    assert_eq!(*r.code(), 17);
-    assert_eq!(*r.size(), 9);
-    assert_eq!(Into::<Vec<u8>>::into(&r.body()[0 as usize]), vec![0x53u8, 0x74u8, 0x75u8, 0x66u8, 0x66u8, 0x0u8, 0x4du8, 0x65u8, 0x0u8]);
+    assert_eq!(r.codes().len(), 3);
+    assert_eq!(r.codes()[0 as usize], 1);
+    assert_eq!(r.codes()[1 as usize], 7);
+    assert_eq!(r.codes()[2 as usize], 2);
+    assert_eq!(*Into::<OptRc<SwitchRepeatExprInvalid_One>>::into(&r.body()[0 as usize]).first(), vec![0x40u8, 0x40u8, 0x4u8, 0x37u8]);
+    assert_eq!(Into::<Vec<u8>>::into(&r.body()[1 as usize]), vec![0x13u8, 0x0u8, 0x0u8, 0x8u8]);
+    assert_eq!(*Into::<OptRc<SwitchRepeatExprInvalid_Two>>::into(&r.body()[2 as usize]).second(), vec![0x37u8, 0x13u8, 0x0u8, 0x0u8]);
     Ok(())
 }

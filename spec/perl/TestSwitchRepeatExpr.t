@@ -8,12 +8,15 @@ use base qw(Test::Class);
 use Test::More;
 use SwitchRepeatExpr;
 
-sub test_switch_repeat_expr: Test(3) {
-    my $r = SwitchRepeatExpr->from_file('src/switch_tlv.bin');
-
-    is($r->code(), 17, 'Equals');
-    is($r->size(), 9, 'Equals');
-    is(@{$r->body()}[0]->first(), pack('C*', (83, 116, 117, 102, 102, 0, 77, 101, 0)), 'Equals');
+sub test_switch_repeat_expr: Test(7) {
+    my $r = SwitchRepeatExpr->from_file('src/switch_integers.bin');
+    is(scalar(@{$r->codes()}), 3, 'Equals');
+    is(@{$r->codes()}[0], 1, 'Equals');
+    is(@{$r->codes()}[1], 7, 'Equals');
+    is(@{$r->codes()}[2], 2, 'Equals');
+    is(@{$r->body()}[0]->first(), pack('C*', (64, 64, 4, 55)), 'Equals');
+    is(@{$r->body()}[1]->second(), pack('C*', (19, 0, 0, 8)), 'Equals');
+    is(@{$r->body()}[2]->first(), pack('C*', (55, 19, 0, 0)), 'Equals');
 }
 
 Test::Class->runtests;

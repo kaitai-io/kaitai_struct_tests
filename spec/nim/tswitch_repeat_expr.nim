@@ -4,8 +4,11 @@ import os, streams, options, sequtils
 import ../../compiled/nim/switch_repeat_expr
 import auxiliary/test_utils
 
-let r = SwitchRepeatExpr.fromFile("../../src/switch_tlv.bin")
-
-assert r.code == 17
-assert r.size == 9
-assert (SwitchRepeatExpr_One(r.body[0])).first == @[83'u8, 116'u8, 117'u8, 102'u8, 102'u8, 0'u8, 77'u8, 101'u8, 0'u8]
+let r = SwitchRepeatExpr.fromFile("../../src/switch_integers.bin")
+assert len(r.codes) == 3
+assert r.codes[0] == 1
+assert r.codes[1] == 7
+assert r.codes[2] == 2
+assert (SwitchRepeatExpr_One(r.body[0])).first == @[64'u8, 64'u8, 4'u8, 55'u8]
+assert (SwitchRepeatExpr_Two(r.body[1])).second == @[19'u8, 0'u8, 0'u8, 8'u8]
+assert (SwitchRepeatExpr_One(r.body[2])).first == @[55'u8, 19'u8, 0'u8, 0'u8]

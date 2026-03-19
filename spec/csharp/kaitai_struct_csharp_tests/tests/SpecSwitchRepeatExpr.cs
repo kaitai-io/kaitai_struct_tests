@@ -10,11 +10,14 @@ namespace Kaitai
         [Test]
         public void TestSwitchRepeatExpr()
         {
-            var r = SwitchRepeatExpr.FromFile(SourceFile("switch_tlv.bin"));
-
-            Assert.AreEqual(r.Code, 17);
-            Assert.AreEqual(r.Size, 9);
-            Assert.AreEqual(((SwitchRepeatExpr.One) (r.Body[0])).First, new byte[] { 83, 116, 117, 102, 102, 0, 77, 101, 0 });
+            var r = SwitchRepeatExpr.FromFile(SourceFile("switch_integers.bin"));
+            Assert.AreEqual(r.Codes.Count, 3);
+            Assert.AreEqual(r.Codes[0], 1);
+            Assert.AreEqual(r.Codes[1], 7);
+            Assert.AreEqual(r.Codes[2], 2);
+            Assert.AreEqual(((SwitchRepeatExpr.One) (r.Body[0])).First, new byte[] { 64, 64, 4, 55 });
+            Assert.AreEqual(((SwitchRepeatExpr.Two) (r.Body[1])).Second, new byte[] { 19, 0, 0, 8 });
+            Assert.AreEqual(((SwitchRepeatExpr.One) (r.Body[2])).First, new byte[] { 55, 19, 0, 0 });
         }
     }
 }

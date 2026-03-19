@@ -8,10 +8,13 @@ import static org.testng.Assert.*;
 public class TestSwitchRepeatExpr extends CommonSpec {
     @Test
     public void testSwitchRepeatExpr() throws Exception {
-        SwitchRepeatExpr r = SwitchRepeatExpr.fromFile(SRC_DIR + "switch_tlv.bin");
-
-        assertIntEquals(r.code(), 17);
-        assertIntEquals(r.size(), 9);
-        assertEquals(((SwitchRepeatExpr.One) (r.body().get(((int) 0)))).first(), new byte[] { 83, 116, 117, 102, 102, 0, 77, 101, 0 });
+        SwitchRepeatExpr r = SwitchRepeatExpr.fromFile(SRC_DIR + "switch_integers.bin");
+        assertIntEquals(r.codes().size(), 3);
+        assertIntEquals(r.codes().get(((int) 0)), 1);
+        assertIntEquals(r.codes().get(((int) 1)), 7);
+        assertIntEquals(r.codes().get(((int) 2)), 2);
+        assertEquals(((SwitchRepeatExpr.One) (r.body().get(((int) 0)))).first(), new byte[] { 64, 64, 4, 55 });
+        assertEquals(((SwitchRepeatExpr.Two) (r.body().get(((int) 1)))).second(), new byte[] { 19, 0, 0, 8 });
+        assertEquals(((SwitchRepeatExpr.One) (r.body().get(((int) 2)))).first(), new byte[] { 55, 19, 0, 0 });
     }
 }

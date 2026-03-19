@@ -3,10 +3,13 @@
 RSpec.describe 'SwitchRepeatExprInvalid' do
   it 'parses test properly' do
     require 'switch_repeat_expr_invalid'
-    r = SwitchRepeatExprInvalid.from_file('src/switch_tlv.bin')
-
-    expect(r.code).to eq 17
-    expect(r.size).to eq 9
-    expect(r.body[0]).to eq [83, 116, 117, 102, 102, 0, 77, 101, 0].pack('C*')
+    r = SwitchRepeatExprInvalid.from_file('src/switch_integers.bin')
+    expect(r.codes.length).to eq 3
+    expect(r.codes[0]).to eq 1
+    expect(r.codes[1]).to eq 7
+    expect(r.codes[2]).to eq 2
+    expect(r.body[0].first).to eq [64, 64, 4, 55].pack('C*')
+    expect(r.body[1]).to eq [19, 0, 0, 8].pack('C*')
+    expect(r.body[2].second).to eq [55, 19, 0, 0].pack('C*')
   end
 end

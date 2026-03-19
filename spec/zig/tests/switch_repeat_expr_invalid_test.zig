@@ -5,7 +5,7 @@ const _imp_kaitai_struct = @import("kaitai_struct");
 const _imp_switch_repeat_expr_invalid = @import("../formats/switch_repeat_expr_invalid.zig");
 
 test "SwitchRepeatExprInvalid" {
-    const file = try _imp_std.fs.cwd().openFile("../../src/switch_tlv.bin", .{});
+    const file = try _imp_std.fs.cwd().openFile("../../src/switch_integers.bin", .{});
     defer file.close();
     var buffer: [8]u8 = undefined;
     var reader = file.reader(&buffer);
@@ -14,7 +14,11 @@ test "SwitchRepeatExprInvalid" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_switch_repeat_expr_invalid.SwitchRepeatExprInvalid.create(&arena, &_io, null, null);
-    try _imp_std.testing.expectEqual(17, r.code);
-    try _imp_std.testing.expectEqual(9, r.size);
-    try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 83, 116, 117, 102, 102, 0, 77, 101, 0 }, r.body.items[0].bytes);
+    try _imp_std.testing.expectEqual(3, r.codes.items.len);
+    try _imp_std.testing.expectEqual(1, r.codes.items[0]);
+    try _imp_std.testing.expectEqual(7, r.codes.items[1]);
+    try _imp_std.testing.expectEqual(2, r.codes.items[2]);
+    try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 64, 64, 4, 55 }, r.body.items[0].one.first);
+    try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 19, 0, 0, 8 }, r.body.items[1].bytes);
+    try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 55, 19, 0, 0 }, r.body.items[2].two.second);
 }

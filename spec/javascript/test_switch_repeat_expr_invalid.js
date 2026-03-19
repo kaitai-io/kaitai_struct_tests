@@ -3,8 +3,12 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('SwitchRepeatExprInvalid', 'src/switch_tlv.bin', function(r, SwitchRepeatExprInvalid_) {
-  assert.strictEqual(r.code, 17);
-  assert.strictEqual(r.size, 9);
-  assert.deepStrictEqual(r.body[0], new Uint8Array([83, 116, 117, 102, 102, 0, 77, 101, 0]));
+testHelper('SwitchRepeatExprInvalid', 'src/switch_integers.bin', function(r, SwitchRepeatExprInvalid_) {
+  assert.strictEqual(r.codes.length, 3);
+  assert.strictEqual(r.codes[0], 1);
+  assert.strictEqual(r.codes[1], 7);
+  assert.strictEqual(r.codes[2], 2);
+  assert.deepStrictEqual(r.body[0].first, new Uint8Array([64, 64, 4, 55]));
+  assert.deepStrictEqual(r.body[1], new Uint8Array([19, 0, 0, 8]));
+  assert.deepStrictEqual(r.body[2].second, new Uint8Array([55, 19, 0, 0]));
 });

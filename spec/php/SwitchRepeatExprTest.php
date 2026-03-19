@@ -5,10 +5,13 @@ namespace Kaitai\Struct\Tests;
 
 class SwitchRepeatExprTest extends TestCase {
     public function testSwitchRepeatExpr() {
-        $r = SwitchRepeatExpr::fromFile(self::SRC_DIR_PATH . '/switch_tlv.bin');
-
-        $this->assertSame(17, $r->code());
-        $this->assertSame(9, $r->size());
-        $this->assertSame("\x53\x74\x75\x66\x66\x00\x4D\x65\x00", $r->body()[0]->first());
+        $r = SwitchRepeatExpr::fromFile(self::SRC_DIR_PATH . '/switch_integers.bin');
+        $this->assertSame(3, count($r->codes()));
+        $this->assertSame(1, $r->codes()[0]);
+        $this->assertSame(7, $r->codes()[1]);
+        $this->assertSame(2, $r->codes()[2]);
+        $this->assertSame("\x40\x40\x04\x37", $r->body()[0]->first());
+        $this->assertSame("\x13\x00\x00\x08", $r->body()[1]->second());
+        $this->assertSame("\x37\x13\x00\x00", $r->body()[2]->first());
     }
 }

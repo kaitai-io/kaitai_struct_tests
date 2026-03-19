@@ -14,6 +14,6 @@ public class TestSwitchRepeatExprInvalid extends CommonSpec {
 
     @Override
     protected String getSrcFilename() {
-        return "switch_tlv.bin";
+        return "switch_integers.bin";
     }
 }

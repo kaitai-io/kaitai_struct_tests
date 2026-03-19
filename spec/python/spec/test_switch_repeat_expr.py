@@ -5,7 +5,11 @@ from testformats.switch_repeat_expr import SwitchRepeatExpr
 
 class TestSwitchRepeatExpr(unittest.TestCase):
     def test_switch_repeat_expr(self):
-        with SwitchRepeatExpr.from_file('src/switch_tlv.bin') as r:
-            self.assertEqual(r.code, 17)
-            self.assertEqual(r.size, 9)
-            self.assertEqual(r.body[0].first, b"\x53\x74\x75\x66\x66\x00\x4D\x65\x00")
+        with SwitchRepeatExpr.from_file('src/switch_integers.bin') as r:
+            self.assertEqual(len(r.codes), 3)
+            self.assertEqual(r.codes[0], 1)
+            self.assertEqual(r.codes[1], 7)
+            self.assertEqual(r.codes[2], 2)
+            self.assertEqual(r.body[0].first, b"\x40\x40\x04\x37")
+            self.assertEqual(r.body[1].second, b"\x13\x00\x00\x08")
+            self.assertEqual(r.body[2].first, b"\x37\x13\x00\x00")

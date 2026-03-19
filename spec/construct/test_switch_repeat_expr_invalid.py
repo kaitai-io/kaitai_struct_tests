@@ -6,7 +6,11 @@ from switch_repeat_expr_invalid import _schema
 
 class TestSwitchRepeatExprInvalid(unittest.TestCase):
     def test_switch_repeat_expr_invalid(self):
-        r = _schema.parse_file('src/switch_tlv.bin')
-        self.assertEqual(r.code, 17)
-        self.assertEqual(r.size, 9)
-        self.assertEqual(r.body[0], b"\x53\x74\x75\x66\x66\x00\x4D\x65\x00")
+        r = _schema.parse_file('src/switch_integers.bin')
+        self.assertEqual(len(r.codes), 3)
+        self.assertEqual(r.codes[0], 1)
+        self.assertEqual(r.codes[1], 7)
+        self.assertEqual(r.codes[2], 2)
+        self.assertEqual(r.body[0].first, b"\x40\x40\x04\x37")
+        self.assertEqual(r.body[1], b"\x13\x00\x00\x08")
+        self.assertEqual(r.body[2].second, b"\x37\x13\x00\x00")

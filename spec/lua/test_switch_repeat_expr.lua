@@ -7,9 +7,12 @@ require("switch_repeat_expr")
 TestSwitchRepeatExpr = {}
 
 function TestSwitchRepeatExpr:test_switch_repeat_expr()
-    local r = SwitchRepeatExpr:from_file("src/switch_tlv.bin")
-
-    luaunit.assertEquals(r.code, 17)
-    luaunit.assertEquals(r.size, 9)
-    luaunit.assertEquals(r.body[0 + 1].first, "\083\116\117\102\102\000\077\101\000")
+    local r = SwitchRepeatExpr:from_file("src/switch_integers.bin")
+    luaunit.assertEquals(#r.codes, 3)
+    luaunit.assertEquals(r.codes[0 + 1], 1)
+    luaunit.assertEquals(r.codes[1 + 1], 7)
+    luaunit.assertEquals(r.codes[2 + 1], 2)
+    luaunit.assertEquals(r.body[0 + 1].first, "\064\064\004\055")
+    luaunit.assertEquals(r.body[1 + 1].second, "\019\000\000\008")
+    luaunit.assertEquals(r.body[2 + 1].first, "\055\019\000\000")
 end

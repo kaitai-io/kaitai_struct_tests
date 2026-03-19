@@ -18,7 +18,7 @@ func TestSwitchRepeatExpr(t *testing.T) {
 			t.Fatal("unexpected panic:", r)
 		}
 	}()
-	f, err := os.Open("../../src/switch_tlv.bin")
+	f, err := os.Open("../../src/switch_integers.bin")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -28,7 +28,11 @@ func TestSwitchRepeatExpr(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 17, r.Code)
-	assert.EqualValues(t, 9, r.Size)
-	assert.EqualValues(t, []uint8{83, 116, 117, 102, 102, 0, 77, 101, 0}, r.Body[0].(*SwitchRepeatExpr_One).First)
+	assert.EqualValues(t, 3, len(r.Codes))
+	assert.EqualValues(t, 1, r.Codes[0])
+	assert.EqualValues(t, 7, r.Codes[1])
+	assert.EqualValues(t, 2, r.Codes[2])
+	assert.EqualValues(t, []uint8{64, 64, 4, 55}, r.Body[0].(*SwitchRepeatExpr_One).First)
+	assert.EqualValues(t, []uint8{19, 0, 0, 8}, r.Body[1].(*SwitchRepeatExpr_Two).Second)
+	assert.EqualValues(t, []uint8{55, 19, 0, 0}, r.Body[2].(*SwitchRepeatExpr_One).First)
 }
