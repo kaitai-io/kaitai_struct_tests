@@ -1,10 +1,19 @@
 id: switch_repeat_expr_invalid
-data: switch_tlv.bin
+data: switch_integers.bin
 asserts:
-  - actual: code
-    expected: 0x11
-  - actual: size
-    expected: 9
-  - actual: 'body[0].as<bytes>' # 'raw_body[0]' for C++ (temporarily add 'raw_body' of 'type: bytes[]' to .ksy),
-                                # then rename it to '_raw_body' in the generated test
-    expected: '[0x53, 0x74, 0x75, 0x66, 0x66, 0x00, 0x4d, 0x65, 0x00]' # "Stuff\0Me\0" as string
+  - actual: codes.size
+    expected: 3
+  - actual: codes[0]
+    expected: 0x01
+  - actual: codes[1]
+    expected: 0x07
+  - actual: codes[2]
+    expected: 0x02
+
+  - actual: 'body[0].as<switch_repeat_expr_invalid::one>.first'
+    expected: '[0x40, 0x40, 0x04, 0x37]'
+  - actual: 'body[1].as<bytes>' # `raw_body[1]` for C++ (temporarily add `raw_body` of `type: bytes[]` to .ksy),
+                                # then rename it to `_raw_body` in the generated test
+    expected: '[0x13, 0x00, 0x00, 0x08]'
+  - actual: 'body[2].as<switch_repeat_expr_invalid::two>.second'
+    expected: '[0x37, 0x13, 0x00, 0x00]'

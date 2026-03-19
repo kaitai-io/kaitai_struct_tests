@@ -2,19 +2,20 @@ meta:
   id: switch_repeat_expr
   endian: le
 seq:
-  - id: code
+  - id: codes
     type: u1
-  - id: size
-    type: u4
-  - id: body
     repeat: expr
-    repeat-expr: 1
-    size: size
+    repeat-expr: 3
+  - id: body
+    size: 4
+    repeat: expr
+    repeat-expr: 3
     type:
-      switch-on: code
+      switch-on: codes[_index]
       cases:
-        0x11: one
-        0x22: two
+        0x01: one
+        0x02: one
+        0x07: two
 types:
   one:
     seq:
