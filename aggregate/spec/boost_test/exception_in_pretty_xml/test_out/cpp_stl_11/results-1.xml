@@ -1,0 +1,13 @@
+<TestLog>
+  <TestSuite name='C++/STL test units for Kaitai Struct'>
+    <TestCase name='test_hello_world' file='/tests/spec/cpp_stl_11/test_hello_world.cpp' line='7'>
+      <Info file='/tests/spec/cpp_stl_11/test_hello_world.cpp' line='12'><![CDATA[check r.one() == 80 has passed]]></Info>
+      <Exception file='unknown location' line='0'>
+        <![CDATA[std::runtime_error: special sequence ]]]]>
+        <![CDATA[> in a CDATA section]]>
+        <LastCheckpoint file='/tests/spec/cpp_stl_11/test_hello_world.cpp' line='12'><![CDATA[]]></LastCheckpoint>
+      </Exception>
+      <TestingTime>134</TestingTime>
+    </TestCase>
+  </TestSuite>
+</TestLog>

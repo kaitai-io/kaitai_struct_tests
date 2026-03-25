@@ -320,9 +320,13 @@ class CppBuilder < PartialBuilder
       doc_xml_log = File.open(xml_log, 'r') { |f| REXML::Document.new(f) }
       formatter = REXML::Formatters::Pretty.new
       formatter.compact = true
-      # Disable hard line wrapping. This is necessary for our Ruby scripts to
-      # parse the XML correctly. If we don't do this, then `rexml` produces XML
-      # like this (https://github.com/kaitai-io/ci_artifacts/blob/cfafd1769740159e8f946546a45b3bd6eddffb27/test_out/cpp_stl_11/results-1.xml#L2326-L2328):
+      # Disable the default hard line wrapping after 80 characters. This used to
+      # be necessary for BoostTestParser to parse the XML log correctly, but now
+      # it's just a matter of preference, as BoostTestParser has since been
+      # updated and should be able to handle line-wrapped XML just fine.
+      #
+      # Without this setting, `rexml` produces XML like this
+      # (https://github.com/kaitai-io/ci_artifacts/blob/cfafd1769740159e8f946546a45b3bd6eddffb27/test_out/cpp_stl_11/results-1.xml#L2326-L2328):
       #
       # ```xml
       #       <Error file='/tests/spec/cpp_stl_11/test_valid_fail_contents_inst.cpp' line='17'>
@@ -330,28 +334,15 @@ class CppBuilder < PartialBuilder
       #       </Error>
       # ```
       #
-      # ... which gets parsed by our BoostTestParser like this
-      # (https://github.com/kaitai-io/ci_artifacts/blob/cfafd1769740159e8f946546a45b3bd6eddffb27/test_out/cpp_stl_11/ci.json#L1198-L1203)
-      #
-      # ```json
-      # "failure": {
-      #   "file_name": "/tests/spec/cpp_stl_11/test_valid_fail_contents_inst.cpp",
-      #   "line_num": "17",
-      #   "message": "\n        ",
-      #   "trace": null
-      # },
-      # ```
-      #
-      # With the following line, the resulting XML looks as follows:
+      # With this setting, the resulting XML looks as follows:
       #
       # ```xml
       #       <Error file='/tests/spec/cpp_stl_11/test_valid_fail_contents_inst.cpp' line='17'><![CDATA[exception kaitai::validation_not_equal_error<std::string> expected but not raised]]></Error>
       # ```
       #
-      # This is parsed correctly by BoostTestParser. It's true that it makes the
-      # lines longer, but on the other hand it makes the XML log look more
-      # consistent, because the text content of each node is treated the same
-      # regardless of its length.
+      # Although it results in longer lines (as you can see), it makes the XML
+      # log look more consistent, because the text content of each node is
+      # formatted the same way regardless of its length.
       formatter.width = Float::INFINITY
       File.open(xml_log, 'w') do |f|
         formatter.write(doc_xml_log, f)

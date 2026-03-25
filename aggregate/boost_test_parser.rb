@@ -25,17 +25,17 @@ class BoostTestParser < TestParser
           failures = []
           tc.elements.each('Error') { |err|
             failures << TestResult::Failure.new(
-              err.attribute('file'),
-              err.attribute('line'),
-              err.text,
+              err.attribute('file').value,
+              err.attribute('line').value,
+              err.cdatas.join,
               nil
             )
           }
           tc.elements.each('Exception') { |err|
             failures << TestResult::Failure.new(
-              err.attribute('file'),
-              err.attribute('line'),
-              err.text,
+              err.attribute('file').value,
+              err.attribute('line').value,
+              err.cdatas.join,
               nil
             )
           }
@@ -101,7 +101,7 @@ class BoostTestParser < TestParser
         aborted = false
 
         tc.elements.each('Message') { |msg|
-          next unless msg.text == 'Test is aborted'
+          next unless msg.cdatas.join == 'Test is aborted'
 
           file_attr = msg.attribute('file')
           next if file_attr.nil?

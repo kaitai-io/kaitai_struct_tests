@@ -41,4 +41,42 @@ RSpec.describe BoostTestParser do
       end
     end
   end
+
+  # This test covers a tricky case where the XML log is pretty-printed by
+  # CppBuilder (see
+  # https://github.com/kaitai-io/kaitai_struct_tests/commit/7b4e9d60700a27f25239fb0b3149728a04bd160b)
+  # and the exception message is split into two CDATA sections (this is forced
+  # by the presence of the sequence `]]>`, which cannot be represented in a
+  # single CDATA section, see https://en.wikipedia.org/wiki/CDATA#Nesting).
+  #
+  # For BoostTestParser to pass this test, it must concatenate all CDATA
+  # sections to form the complete message, while ignoring regular text nodes
+  # containing only whitespace that were inserted during pretty-printing.
+  context 'exception_in_pretty_xml' do
+    before :context do
+      Dir.chdir("#{@spec_dir}/exception_in_pretty_xml")
+    end
+
+    describe '#each_test' do
+      it 'parses the message from <Exception> correctly' do
+        infile = 'test_out/cpp_stl_11'
+        p = BoostTestParser.new("#{infile}/results-1.xml")
+        expect(p.to_enum(:each_test).map { |t| [t.name, t.to_h] }).to eq [
+          [
+            'HelloWorld',
+            {
+              'status' => :failed,
+              'elapsed' => 0.0,
+              'failure' => {
+                'file_name' => 'unknown location',
+                'line_num' => '0',
+                'message' => 'std::runtime_error: special sequence ]]> in a CDATA section',
+                'trace' => nil
+              }
+            }
+          ],
+        ]
+      end
+    end
+  end
 end
