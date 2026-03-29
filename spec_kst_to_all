@@ -1,7 +1,0 @@
-#!/bin/sh
-
-. "$(dirname "$0")/config"
-
-cd translator
-arg="run $@"
-sbt "$arg"
