@@ -1,5 +1,5 @@
 # expr_enum_unknown.ksy: /seq/1/if:
-# 	error: unable to find enum 'unknown_enum', searching from expr_enum_unknown
+# 	error: unable to find enum 'unknown_enum', searching from 'expr_enum_unknown'
 #
 meta:
   id: expr_enum_unknown
