@@ -61,7 +61,7 @@ class LuaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     out.puts(s"luaunit.assertAlmostEquals($actStr, $expStr, 0.000001)")
   }
 
-  override def nullAssert(actual: Ast.expr): Unit = {
+  override def nullAssert(actual: Ast.expr, actType: DataType): Unit = {
     val actStr = translateAct(actual)
     out.puts(s"luaunit.assertNil($actStr)")
   }

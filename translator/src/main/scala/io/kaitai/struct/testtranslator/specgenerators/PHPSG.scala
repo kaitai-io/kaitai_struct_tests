@@ -53,7 +53,7 @@ class PHPSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     out.puts(s"$$this->assertEquals($actStr, $expStr, '', $FLOAT_DELTA);")
   }
 
-  override def nullAssert(actual: Ast.expr): Unit = {
+  override def nullAssert(actual: Ast.expr, actType: DataType): Unit = {
     val actStr = translateAct(actual)
     out.puts(s"$$this->assertNull($actStr);")
   }

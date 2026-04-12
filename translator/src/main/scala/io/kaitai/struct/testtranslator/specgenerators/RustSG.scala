@@ -59,7 +59,7 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     out.puts(s"assert_eq!($actStr, $expStr);")
   }
 
-  override def nullAssert(actual: Ast.expr): Unit = {
+  override def nullAssert(actual: Ast.expr, actType: DataType): Unit = {
     val actStr = translator.remove_deref(translateAct(actual))
     out.puts(s"assert!($actStr.is_none());")
   }
