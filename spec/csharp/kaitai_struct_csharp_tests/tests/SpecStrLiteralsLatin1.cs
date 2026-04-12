@@ -12,7 +12,7 @@ namespace Kaitai
         {
             var r = StrLiteralsLatin1.FromFile(SourceFile("str_literals_latin1.bin"));
 
-            Assert.AreEqual(r.ParsedEqLiteral, true);
+            Assert.AreEqual(true, r.ParsedEqLiteral);
         }
     }
 }

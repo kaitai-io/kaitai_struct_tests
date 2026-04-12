@@ -11,23 +11,23 @@ namespace Kaitai
         public void TestRepeatEosBitsB1()
         {
             var r = RepeatEosBitsB1.FromFile(SourceFile("enum_negative.bin"));
-            Assert.AreEqual(r.Bits.Count, 16);
-            Assert.AreEqual(r.Bits[0], true);
-            Assert.AreEqual(r.Bits[1], true);
-            Assert.AreEqual(r.Bits[2], true);
-            Assert.AreEqual(r.Bits[3], true);
-            Assert.AreEqual(r.Bits[4], true);
-            Assert.AreEqual(r.Bits[5], true);
-            Assert.AreEqual(r.Bits[6], true);
-            Assert.AreEqual(r.Bits[7], true);
-            Assert.AreEqual(r.Bits[8], false);
-            Assert.AreEqual(r.Bits[9], false);
-            Assert.AreEqual(r.Bits[10], false);
-            Assert.AreEqual(r.Bits[11], false);
-            Assert.AreEqual(r.Bits[12], false);
-            Assert.AreEqual(r.Bits[13], false);
-            Assert.AreEqual(r.Bits[14], false);
-            Assert.AreEqual(r.Bits[15], true);
+            Assert.AreEqual(16, r.Bits.Count);
+            Assert.AreEqual(true, r.Bits[0]);
+            Assert.AreEqual(true, r.Bits[1]);
+            Assert.AreEqual(true, r.Bits[2]);
+            Assert.AreEqual(true, r.Bits[3]);
+            Assert.AreEqual(true, r.Bits[4]);
+            Assert.AreEqual(true, r.Bits[5]);
+            Assert.AreEqual(true, r.Bits[6]);
+            Assert.AreEqual(true, r.Bits[7]);
+            Assert.AreEqual(false, r.Bits[8]);
+            Assert.AreEqual(false, r.Bits[9]);
+            Assert.AreEqual(false, r.Bits[10]);
+            Assert.AreEqual(false, r.Bits[11]);
+            Assert.AreEqual(false, r.Bits[12]);
+            Assert.AreEqual(false, r.Bits[13]);
+            Assert.AreEqual(false, r.Bits[14]);
+            Assert.AreEqual(true, r.Bits[15]);
         }
     }
 }

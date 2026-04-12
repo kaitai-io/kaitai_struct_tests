@@ -13,10 +13,10 @@ namespace Kaitai
             // --debug implies --no-auto-read
             r._read();
 
-            Assert.AreEqual(r.One, DebugEnumName.TestEnum1.EnumValue80);
-            Assert.AreEqual(r.ArrayOfInts[0], DebugEnumName.TestEnum2.EnumValue65);
-            Assert.AreEqual(r.TestType.Field1, DebugEnumName.TestSubtype.InnerEnum1.EnumValue67);
-            Assert.AreEqual(r.TestType.InstanceField, DebugEnumName.TestSubtype.InnerEnum2.EnumValue11);
+            Assert.AreEqual(DebugEnumName.TestEnum1.EnumValue80, r.One);
+            Assert.AreEqual(DebugEnumName.TestEnum2.EnumValue65, r.ArrayOfInts[0]);
+            Assert.AreEqual(DebugEnumName.TestSubtype.InnerEnum1.EnumValue67, r.TestType.Field1);
+            Assert.AreEqual(DebugEnumName.TestSubtype.InnerEnum2.EnumValue11, r.TestType.InstanceField);
         }
     }
 }

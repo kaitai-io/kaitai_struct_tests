@@ -12,11 +12,11 @@ namespace Kaitai
         {
             var r = IfValues.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.Codes[0].Opcode, 80);
-            Assert.AreEqual(r.Codes[0].HalfOpcode, 40);
-            Assert.AreEqual(r.Codes[1].Opcode, 65);
+            Assert.AreEqual(80, r.Codes[0].Opcode);
+            Assert.AreEqual(40, r.Codes[0].HalfOpcode);
+            Assert.AreEqual(65, r.Codes[1].Opcode);
             Assert.IsNull(r.Codes[1].HalfOpcode);
-            Assert.AreEqual(r.Codes[2].Opcode, 67);
+            Assert.AreEqual(67, r.Codes[2].Opcode);
             Assert.IsNull(r.Codes[2].HalfOpcode);
         }
     }

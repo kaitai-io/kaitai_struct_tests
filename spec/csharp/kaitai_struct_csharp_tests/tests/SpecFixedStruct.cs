@@ -12,26 +12,26 @@ namespace Kaitai
         {
             var r = FixedStruct.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.Hdr.Uint8, 255);
-            Assert.AreEqual(r.Hdr.Uint16, 65535);
-            Assert.AreEqual(r.Hdr.Uint32, 4294967295);
-            Assert.AreEqual(r.Hdr.Uint64, 18446744073709551615);
-            Assert.AreEqual(r.Hdr.Sint8, -1);
-            Assert.AreEqual(r.Hdr.Sint16, -1);
-            Assert.AreEqual(r.Hdr.Sint32, -1);
-            Assert.AreEqual(r.Hdr.Sint64, -1);
-            Assert.AreEqual(r.Hdr.Uint16le, 66);
-            Assert.AreEqual(r.Hdr.Uint32le, 66);
-            Assert.AreEqual(r.Hdr.Uint64le, 66);
-            Assert.AreEqual(r.Hdr.Sint16le, -66);
-            Assert.AreEqual(r.Hdr.Sint32le, -66);
-            Assert.AreEqual(r.Hdr.Sint64le, -66);
-            Assert.AreEqual(r.Hdr.Uint16be, 66);
-            Assert.AreEqual(r.Hdr.Uint32be, 66);
-            Assert.AreEqual(r.Hdr.Uint64be, 66);
-            Assert.AreEqual(r.Hdr.Sint16be, -66);
-            Assert.AreEqual(r.Hdr.Sint32be, -66);
-            Assert.AreEqual(r.Hdr.Sint64be, -66);
+            Assert.AreEqual(255, r.Hdr.Uint8);
+            Assert.AreEqual(65535, r.Hdr.Uint16);
+            Assert.AreEqual(4294967295, r.Hdr.Uint32);
+            Assert.AreEqual(18446744073709551615, r.Hdr.Uint64);
+            Assert.AreEqual(-1, r.Hdr.Sint8);
+            Assert.AreEqual(-1, r.Hdr.Sint16);
+            Assert.AreEqual(-1, r.Hdr.Sint32);
+            Assert.AreEqual(-1, r.Hdr.Sint64);
+            Assert.AreEqual(66, r.Hdr.Uint16le);
+            Assert.AreEqual(66, r.Hdr.Uint32le);
+            Assert.AreEqual(66, r.Hdr.Uint64le);
+            Assert.AreEqual(-66, r.Hdr.Sint16le);
+            Assert.AreEqual(-66, r.Hdr.Sint32le);
+            Assert.AreEqual(-66, r.Hdr.Sint64le);
+            Assert.AreEqual(66, r.Hdr.Uint16be);
+            Assert.AreEqual(66, r.Hdr.Uint32be);
+            Assert.AreEqual(66, r.Hdr.Uint64be);
+            Assert.AreEqual(-66, r.Hdr.Sint16be);
+            Assert.AreEqual(-66, r.Hdr.Sint32be);
+            Assert.AreEqual(-66, r.Hdr.Sint64be);
         }
     }
 }

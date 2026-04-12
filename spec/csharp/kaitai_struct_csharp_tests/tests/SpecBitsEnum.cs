@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = BitsEnum.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.One, BitsEnum.Animal.Platypus);
-            Assert.AreEqual(r.Two, BitsEnum.Animal.Horse);
-            Assert.AreEqual(r.Three, BitsEnum.Animal.Cat);
+            Assert.AreEqual(BitsEnum.Animal.Platypus, r.One);
+            Assert.AreEqual(BitsEnum.Animal.Horse, r.Two);
+            Assert.AreEqual(BitsEnum.Animal.Cat, r.Three);
         }
     }
 }

@@ -12,15 +12,15 @@ namespace Kaitai
         {
             var r = SwitchManualStr.FromFile(SourceFile("switch_opcodes.bin"));
 
-            Assert.AreEqual(r.Opcodes.Count, 4);
-            Assert.AreEqual(r.Opcodes[0].Code, "S");
-            Assert.AreEqual(((SwitchManualStr.Opcode.Strval) (r.Opcodes[0].Body)).Value, "foobar");
-            Assert.AreEqual(r.Opcodes[1].Code, "I");
-            Assert.AreEqual(((SwitchManualStr.Opcode.Intval) (r.Opcodes[1].Body)).Value, 66);
-            Assert.AreEqual(r.Opcodes[2].Code, "I");
-            Assert.AreEqual(((SwitchManualStr.Opcode.Intval) (r.Opcodes[2].Body)).Value, 55);
-            Assert.AreEqual(r.Opcodes[3].Code, "S");
-            Assert.AreEqual(((SwitchManualStr.Opcode.Strval) (r.Opcodes[3].Body)).Value, "");
+            Assert.AreEqual(4, r.Opcodes.Count);
+            Assert.AreEqual("S", r.Opcodes[0].Code);
+            Assert.AreEqual("foobar", ((SwitchManualStr.Opcode.Strval) (r.Opcodes[0].Body)).Value);
+            Assert.AreEqual("I", r.Opcodes[1].Code);
+            Assert.AreEqual(66, ((SwitchManualStr.Opcode.Intval) (r.Opcodes[1].Body)).Value);
+            Assert.AreEqual("I", r.Opcodes[2].Code);
+            Assert.AreEqual(55, ((SwitchManualStr.Opcode.Intval) (r.Opcodes[2].Body)).Value);
+            Assert.AreEqual("S", r.Opcodes[3].Code);
+            Assert.AreEqual("", ((SwitchManualStr.Opcode.Strval) (r.Opcodes[3].Body)).Value);
         }
     }
 }

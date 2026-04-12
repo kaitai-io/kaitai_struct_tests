@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = EnumDeep.FromFile(SourceFile("enum_0.bin"));
 
-            Assert.AreEqual(r.Pet1, EnumDeep.Container1.Animal.Cat);
-            Assert.AreEqual(r.Pet2, EnumDeep.Container1.Container2.Animal.Hare);
+            Assert.AreEqual(EnumDeep.Container1.Animal.Cat, r.Pet1);
+            Assert.AreEqual(EnumDeep.Container1.Container2.Animal.Hare, r.Pet2);
         }
     }
 }

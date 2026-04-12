@@ -12,21 +12,21 @@ namespace Kaitai
         {
             var r = ExprArray.FromFile(SourceFile("expr_array.bin"));
 
-            Assert.AreEqual(r.AintSize, 4);
-            Assert.AreEqual(r.AintFirst, 7657765);
-            Assert.AreEqual(r.AintLast, 16272640);
-            Assert.AreEqual(r.AintMin, 49185);
-            Assert.AreEqual(r.AintMax, 1123362332);
-            Assert.AreEqual(r.AfloatSize, 3);
-            Assert.AreEqual(r.AfloatFirst, -2.6839530254859364E-121, 1e-6);
-            Assert.AreEqual(r.AfloatLast, -1.1103359815095273E-175, 1e-6);
-            Assert.AreEqual(r.AfloatMin, -8.754689149998834E+288, 1e-6);
-            Assert.AreEqual(r.AfloatMax, -1.1103359815095273E-175, 1e-6);
-            Assert.AreEqual(r.AstrSize, 3);
-            Assert.AreEqual(r.AstrFirst, "foo");
-            Assert.AreEqual(r.AstrLast, "baz");
-            Assert.AreEqual(r.AstrMin, "bar");
-            Assert.AreEqual(r.AstrMax, "foo");
+            Assert.AreEqual(4, r.AintSize);
+            Assert.AreEqual(7657765, r.AintFirst);
+            Assert.AreEqual(16272640, r.AintLast);
+            Assert.AreEqual(49185, r.AintMin);
+            Assert.AreEqual(1123362332, r.AintMax);
+            Assert.AreEqual(3, r.AfloatSize);
+            Assert.AreEqual(-2.6839530254859364E-121, r.AfloatFirst, 1e-6);
+            Assert.AreEqual(-1.1103359815095273E-175, r.AfloatLast, 1e-6);
+            Assert.AreEqual(-8.754689149998834E+288, r.AfloatMin, 1e-6);
+            Assert.AreEqual(-1.1103359815095273E-175, r.AfloatMax, 1e-6);
+            Assert.AreEqual(3, r.AstrSize);
+            Assert.AreEqual("foo", r.AstrFirst);
+            Assert.AreEqual("baz", r.AstrLast);
+            Assert.AreEqual("bar", r.AstrMin);
+            Assert.AreEqual("foo", r.AstrMax);
         }
     }
 }

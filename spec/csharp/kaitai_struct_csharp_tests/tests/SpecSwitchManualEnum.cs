@@ -12,15 +12,15 @@ namespace Kaitai
         {
             var r = SwitchManualEnum.FromFile(SourceFile("switch_opcodes.bin"));
 
-            Assert.AreEqual(r.Opcodes.Count, 4);
-            Assert.AreEqual(r.Opcodes[0].Code, SwitchManualEnum.Opcode.CodeEnum.Strval);
-            Assert.AreEqual(((SwitchManualEnum.Opcode.Strval) (r.Opcodes[0].Body)).Value, "foobar");
-            Assert.AreEqual(r.Opcodes[1].Code, SwitchManualEnum.Opcode.CodeEnum.Intval);
-            Assert.AreEqual(((SwitchManualEnum.Opcode.Intval) (r.Opcodes[1].Body)).Value, 66);
-            Assert.AreEqual(r.Opcodes[2].Code, SwitchManualEnum.Opcode.CodeEnum.Intval);
-            Assert.AreEqual(((SwitchManualEnum.Opcode.Intval) (r.Opcodes[2].Body)).Value, 55);
-            Assert.AreEqual(r.Opcodes[3].Code, SwitchManualEnum.Opcode.CodeEnum.Strval);
-            Assert.AreEqual(((SwitchManualEnum.Opcode.Strval) (r.Opcodes[3].Body)).Value, "");
+            Assert.AreEqual(4, r.Opcodes.Count);
+            Assert.AreEqual(SwitchManualEnum.Opcode.CodeEnum.Strval, r.Opcodes[0].Code);
+            Assert.AreEqual("foobar", ((SwitchManualEnum.Opcode.Strval) (r.Opcodes[0].Body)).Value);
+            Assert.AreEqual(SwitchManualEnum.Opcode.CodeEnum.Intval, r.Opcodes[1].Code);
+            Assert.AreEqual(66, ((SwitchManualEnum.Opcode.Intval) (r.Opcodes[1].Body)).Value);
+            Assert.AreEqual(SwitchManualEnum.Opcode.CodeEnum.Intval, r.Opcodes[2].Code);
+            Assert.AreEqual(55, ((SwitchManualEnum.Opcode.Intval) (r.Opcodes[2].Body)).Value);
+            Assert.AreEqual(SwitchManualEnum.Opcode.CodeEnum.Strval, r.Opcodes[3].Code);
+            Assert.AreEqual("", ((SwitchManualEnum.Opcode.Strval) (r.Opcodes[3].Body)).Value);
         }
     }
 }
