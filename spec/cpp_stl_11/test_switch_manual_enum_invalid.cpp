@@ -14,10 +14,10 @@ BOOST_AUTO_TEST_CASE(test_switch_manual_enum_invalid) {
     BOOST_CHECK_EQUAL(r->opcodes()->size(), 2);
     BOOST_CHECK_EQUAL(r->opcodes()->at(0)->code(), 255);
     BOOST_CHECK(r->opcodes()->at(0)->_is_null_body());
-    BOOST_CHECK_EQUAL(r->opcodes()->at(0)->body(), nullptr); // added manually
+    BOOST_CHECK_EQUAL(r->opcodes()->at(0)->body(), nullptr);
     BOOST_CHECK_EQUAL(r->opcodes()->at(1)->code(), 1);
     BOOST_CHECK(r->opcodes()->at(1)->_is_null_body());
-    BOOST_CHECK_EQUAL(r->opcodes()->at(1)->body(), nullptr); // added manually
+    BOOST_CHECK_EQUAL(r->opcodes()->at(1)->body(), nullptr);
 
     delete r;
 }
