@@ -7,6 +7,8 @@ from debug_array_user import _schema
 class TestDebugArrayUser(unittest.TestCase):
     def test_debug_array_user(self):
         r = _schema.parse_file('src/fixed_struct.bin')
+        r._read()
+
         self.assertEqual(r.one_cat.meow, 80)
         self.assertEqual(len(r.array_of_cats), 3)
         self.assertEqual(r.array_of_cats[0].meow, 65)
