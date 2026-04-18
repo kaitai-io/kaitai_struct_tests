@@ -9,5 +9,7 @@ instances:
     enum: animal
 enums:
   animal:
-    1: cat
-    2: dog
+    type: u1
+    values:
+      1: cat
+      2: dog
