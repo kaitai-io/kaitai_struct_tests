@@ -20,8 +20,10 @@ types:
             _: defval
     enums:
       code_enum:
-        73: intval # 'I'
-        83: strval # 'S'
+        type: u1
+        values:
+          73: intval # 'I'
+          83: strval # 'S'
     types:
       intval:
         seq:

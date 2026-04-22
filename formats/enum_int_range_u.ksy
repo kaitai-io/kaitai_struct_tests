@@ -5,8 +5,10 @@ meta:
 
 enums:
   constants:
-    0: zero
-    4294967295: int_max
+    type: u4
+    values:
+      0: zero
+      4294967295: int_max
 
 seq:
   - id: f1

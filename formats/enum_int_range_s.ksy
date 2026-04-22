@@ -5,9 +5,11 @@ meta:
 
 enums:
   constants:
-    -2147483648: int_min
-    0: zero
-    2147483647: int_max
+    type: s4
+    values:
+      -2147483648: int_min
+      0: zero
+      2147483647: int_max
 
 seq:
   - id: f1

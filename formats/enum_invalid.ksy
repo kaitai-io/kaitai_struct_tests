@@ -9,5 +9,7 @@ seq:
     enum: animal
 enums:
   animal:
-    0x66: dog
-    0x7c: cat
+    type: u1
+    values:
+      0x66: dog
+      0x7c: cat
