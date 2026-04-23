@@ -11,10 +11,10 @@ namespace Kaitai
         public void TestExprIfIntOps()
         {
             var r = ExprIfIntOps.FromFile(SourceFile("instance_io.bin"));
-            Assert.AreEqual(r.Key, 3);
-            Assert.AreEqual(r.Bytes, new byte[] { 252, 252, 252, 253, 9, 3, 3, 3 });
-            Assert.AreEqual(r.BytesSubKey, 253);
-            Assert.AreEqual(r.ItemsSubKey, -3);
+            Assert.AreEqual(3, r.Key);
+            Assert.AreEqual(new byte[] { 252, 252, 252, 253, 9, 3, 3, 3 }, r.Bytes);
+            Assert.AreEqual(253, r.BytesSubKey);
+            Assert.AreEqual(-3, r.ItemsSubKey);
         }
     }
 }

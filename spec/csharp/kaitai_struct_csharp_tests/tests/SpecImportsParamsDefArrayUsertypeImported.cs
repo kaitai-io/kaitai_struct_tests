@@ -12,11 +12,11 @@ namespace Kaitai
         {
             var r = ImportsParamsDefArrayUsertypeImported.FromFile(SourceFile("process_xor_4.bin"));
 
-            Assert.AreEqual(r.Hws.Count, 2);
-            Assert.AreEqual(r.Hws[0].One, 236);
-            Assert.AreEqual(r.Hws[1].One, 187);
-            Assert.AreEqual(r.Two.Hw0One, 236);
-            Assert.AreEqual(r.Two.Hw1One, 187);
+            Assert.AreEqual(2, r.Hws.Count);
+            Assert.AreEqual(236, r.Hws[0].One);
+            Assert.AreEqual(187, r.Hws[1].One);
+            Assert.AreEqual(236, r.Two.Hw0One);
+            Assert.AreEqual(187, r.Two.Hw1One);
         }
     }
 }

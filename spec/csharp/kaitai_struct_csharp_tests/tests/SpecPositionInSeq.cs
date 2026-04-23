@@ -13,7 +13,7 @@ namespace Kaitai
         {
             var r = PositionInSeq.FromFile(SourceFile("position_in_seq.bin"));
 
-            Assert.AreEqual(r.Numbers, new List<int> { (0 + 1), 2, 3 });
+            Assert.AreEqual(new List<int> { 0 + 1, 2, 3 }, r.Numbers);
         }
     }
 }

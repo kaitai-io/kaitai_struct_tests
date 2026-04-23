@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = DefaultBitEndianMod.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.Main.One, 336);
-            Assert.AreEqual(r.Main.Two, 8608);
-            Assert.AreEqual(r.Main.Nest.Two, 11595);
-            Assert.AreEqual(r.Main.NestBe.Two, 12799);
+            Assert.AreEqual(336, r.Main.One);
+            Assert.AreEqual(8608, r.Main.Two);
+            Assert.AreEqual(11595, r.Main.Nest.Two);
+            Assert.AreEqual(12799, r.Main.NestBe.Two);
         }
     }
 }

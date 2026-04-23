@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = NestedSameName.FromFile(SourceFile("repeat_n_struct.bin"));
 
-            Assert.AreEqual(r.MainData.MainSize, 2);
-            Assert.AreEqual(r.MainData.Foo.Data, new byte[] { 16, 0, 0, 0 });
+            Assert.AreEqual(2, r.MainData.MainSize);
+            Assert.AreEqual(new byte[] { 16, 0, 0, 0 }, r.MainData.Foo.Data);
         }
     }
 }

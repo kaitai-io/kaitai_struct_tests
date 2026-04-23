@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = TypeIntUnaryOp.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.ValueS2, 16720);
-            Assert.AreEqual(r.ValueS8, 4706543082108963651);
-            Assert.AreEqual(r.UnaryS2, -16720);
-            Assert.AreEqual(r.UnaryS8, -4706543082108963651);
+            Assert.AreEqual(16720, r.ValueS2);
+            Assert.AreEqual(4706543082108963651, r.ValueS8);
+            Assert.AreEqual(-16720, r.UnaryS2);
+            Assert.AreEqual(-4706543082108963651, r.UnaryS8);
         }
     }
 }

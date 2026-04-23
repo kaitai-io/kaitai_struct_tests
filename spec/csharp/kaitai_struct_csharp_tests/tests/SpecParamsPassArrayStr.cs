@@ -12,13 +12,13 @@ namespace Kaitai
         {
             var r = ParamsPassArrayStr.FromFile(SourceFile("term_strz.bin"));
 
-            Assert.AreEqual(r.PassStrArray.Strs.Count, 3);
-            Assert.AreEqual(r.PassStrArray.Strs[0], "fo");
-            Assert.AreEqual(r.PassStrArray.Strs[1], "o|");
-            Assert.AreEqual(r.PassStrArray.Strs[2], "ba");
-            Assert.AreEqual(r.PassStrArrayCalc.Strs.Count, 2);
-            Assert.AreEqual(r.PassStrArrayCalc.Strs[0], "aB");
-            Assert.AreEqual(r.PassStrArrayCalc.Strs[1], "Cd");
+            Assert.AreEqual(3, r.PassStrArray.Strs.Count);
+            Assert.AreEqual("fo", r.PassStrArray.Strs[0]);
+            Assert.AreEqual("o|", r.PassStrArray.Strs[1]);
+            Assert.AreEqual("ba", r.PassStrArray.Strs[2]);
+            Assert.AreEqual(2, r.PassStrArrayCalc.Strs.Count);
+            Assert.AreEqual("aB", r.PassStrArrayCalc.Strs[0]);
+            Assert.AreEqual("Cd", r.PassStrArrayCalc.Strs[1]);
         }
     }
 }
