@@ -16,6 +16,7 @@ BOOST_AUTO_TEST_CASE(test_imports_circular_a) {
     BOOST_CHECK_EQUAL(r->two()->back_ref()->code(), 67);
     BOOST_CHECK_EQUAL(r->two()->back_ref()->two()->initial(), 75);
     BOOST_CHECK(r->two()->back_ref()->two()->_is_null_back_ref());
+    BOOST_CHECK_EQUAL(r->two()->back_ref()->two()->back_ref(), nullptr);
 
     delete r;
 }
