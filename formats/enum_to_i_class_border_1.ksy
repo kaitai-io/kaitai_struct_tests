@@ -15,9 +15,11 @@ seq:
 
 enums:
   animal:
-    4:  dog
-    7:  cat
-    12: chicken
+    type: u4
+    values:
+      4:  dog
+      7:  cat
+      12: chicken
 
 instances:
   some_dog:

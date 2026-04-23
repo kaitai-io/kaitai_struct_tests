@@ -5,13 +5,15 @@ meta:
 
 enums:
   constants:
-    -9223372036854775808: long_min
-    -2147483649: int_below_min
-    -2147483648: int_min
-    0: zero
-    2147483647: int_max
-    2147483648: int_over_max
-    9223372036854775807: long_max
+    type: s8
+    values:
+      -9223372036854775808: long_min
+      -2147483649: int_below_min
+      -2147483648: int_min
+      0: zero
+      2147483647: int_max
+      2147483648: int_over_max
+      9223372036854775807: long_max
 
 seq:
   - id: f1

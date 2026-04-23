@@ -10,8 +10,10 @@ seq:
     enum: animal
 enums:
   animal:
-    7: pig
-    12: horse
+    type: u4
+    values:
+      7: pig
+      12: horse
 instances:
   enum_u4_u2:
     value: 'false ? enum_u4 : enum_u2'

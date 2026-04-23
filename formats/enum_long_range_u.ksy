@@ -5,10 +5,12 @@ meta:
 
 enums:
   constants:
-    0: zero
-    4294967295: int_max
-    4294967296: int_over_max
-    18446744073709551615: long_max
+    type: u8
+    values:
+      0: zero
+      4294967295: int_max
+      4294967296: int_over_max
+      18446744073709551615: long_max
 
 seq:
   - id: f1
