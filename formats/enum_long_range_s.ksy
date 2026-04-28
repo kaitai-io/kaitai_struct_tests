@@ -37,3 +37,19 @@ seq:
   - id: f7
     type: s8
     enum: constants
+
+instances:
+  f1_to_i:
+    value: f1.to_i
+  f2_to_i:
+    value: f2.to_i
+  f3_to_i:
+    value: f3.to_i
+  f4_to_i:
+    value: f4.to_i
+  f5_to_i:
+    value: f5.to_i
+  f6_to_i:
+    value: f6.to_i
+  f7_to_i:
+    value: f7.to_i

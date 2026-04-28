@@ -25,3 +25,13 @@ seq:
   - id: f4
     type: u8
     enum: constants
+
+instances:
+  f1_to_i:
+    value: f1.to_i
+  f2_to_i:
+    value: f2.to_i
+  f3_to_i:
+    value: f3.to_i
+  f4_to_i:
+    value: f4.to_i
