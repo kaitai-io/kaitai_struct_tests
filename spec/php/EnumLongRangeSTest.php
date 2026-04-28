@@ -6,13 +6,26 @@ namespace Kaitai\Struct\Tests;
 class EnumLongRangeSTest extends TestCase {
     public function testEnumLongRangeS() {
         $r = EnumLongRangeS::fromFile(self::SRC_DIR_PATH . '/enum_long_range_s.bin');
-
         $this->assertSame(\Kaitai\Struct\Tests\EnumLongRangeS\Constants::LONG_MIN, $r->f1());
+        $this->assertSame((-9223372036854775807 - 1), $r->f1());
+        $this->assertSame((-9223372036854775807 - 1), $r->f1ToI());
         $this->assertSame(\Kaitai\Struct\Tests\EnumLongRangeS\Constants::INT_BELOW_MIN, $r->f2());
+        $this->assertSame(-2147483649, $r->f2());
+        $this->assertSame(-2147483649, $r->f2ToI());
         $this->assertSame(\Kaitai\Struct\Tests\EnumLongRangeS\Constants::INT_MIN, $r->f3());
+        $this->assertSame((-2147483647 - 1), $r->f3());
+        $this->assertSame((-2147483647 - 1), $r->f3ToI());
         $this->assertSame(\Kaitai\Struct\Tests\EnumLongRangeS\Constants::ZERO, $r->f4());
+        $this->assertSame(0, $r->f4());
+        $this->assertSame(0, $r->f4ToI());
         $this->assertSame(\Kaitai\Struct\Tests\EnumLongRangeS\Constants::INT_MAX, $r->f5());
+        $this->assertSame(2147483647, $r->f5());
+        $this->assertSame(2147483647, $r->f5ToI());
         $this->assertSame(\Kaitai\Struct\Tests\EnumLongRangeS\Constants::INT_OVER_MAX, $r->f6());
+        $this->assertSame(2147483648, $r->f6());
+        $this->assertSame(2147483648, $r->f6ToI());
         $this->assertSame(\Kaitai\Struct\Tests\EnumLongRangeS\Constants::LONG_MAX, $r->f7());
+        $this->assertSame(9223372036854775807, $r->f7());
+        $this->assertSame(9223372036854775807, $r->f7ToI());
     }
 }

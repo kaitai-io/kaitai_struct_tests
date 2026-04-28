@@ -8,5 +8,11 @@ class TestEnumIntRangeS(unittest.TestCase):
     def test_enum_int_range_s(self):
         with EnumIntRangeS.from_file('src/enum_int_range_s.bin') as r:
             self.assertEqual(r.f1, enum_int_range_s.EnumIntRangeS.Constants.int_min)
+            self.assertEqual(int(r.f1), -2147483648)
+            self.assertEqual(r.f1_to_i, -2147483648)
             self.assertEqual(r.f2, enum_int_range_s.EnumIntRangeS.Constants.zero)
+            self.assertEqual(int(r.f2), 0)
+            self.assertEqual(r.f2_to_i, 0)
             self.assertEqual(r.f3, enum_int_range_s.EnumIntRangeS.Constants.int_max)
+            self.assertEqual(int(r.f3), 2147483647)
+            self.assertEqual(r.f3_to_i, 2147483647)

@@ -5,7 +5,15 @@ var testHelper = require('testHelper');
 
 testHelper('EnumLongRangeU', 'src/enum_long_range_u.bin', function(r, EnumLongRangeU_) {
   assert.strictEqual(r.f1, EnumLongRangeU_.EnumLongRangeU.Constants.ZERO);
+  assert.strictEqual(r.f1, 0);
+  assert.strictEqual(r.f1ToI, 0);
   assert.strictEqual(r.f2, EnumLongRangeU_.EnumLongRangeU.Constants.INT_MAX);
+  assert.strictEqual(r.f2, 4294967295);
+  assert.strictEqual(r.f2ToI, 4294967295);
   assert.strictEqual(r.f3, EnumLongRangeU_.EnumLongRangeU.Constants.INT_OVER_MAX);
+  assert.strictEqual(r.f3, 4294967296);
+  assert.strictEqual(r.f3ToI, 4294967296);
   assert.strictEqual(r.f4, EnumLongRangeU_.EnumLongRangeU.Constants.LONG_MAX);
+  assert.strictEqual(r.f4, 18446744073709551615);
+  assert.strictEqual(r.f4ToI, 18446744073709551615);
 });

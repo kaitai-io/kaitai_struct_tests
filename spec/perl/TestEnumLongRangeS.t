@@ -8,16 +8,29 @@ use base qw(Test::Class);
 use Test::More;
 use EnumLongRangeS;
 
-sub test_enum_long_range_s: Test(7) {
+sub test_enum_long_range_s: Test(21) {
     my $r = EnumLongRangeS->from_file('src/enum_long_range_s.bin');
-
     is($r->f1(), $EnumLongRangeS::CONSTANTS_LONG_MIN, 'Equals');
+    is($r->f1(), -9223372036854775808, 'Equals');
+    is($r->f1_to_i(), -9223372036854775808, 'Equals');
     is($r->f2(), $EnumLongRangeS::CONSTANTS_INT_BELOW_MIN, 'Equals');
+    is($r->f2(), -2147483649, 'Equals');
+    is($r->f2_to_i(), -2147483649, 'Equals');
     is($r->f3(), $EnumLongRangeS::CONSTANTS_INT_MIN, 'Equals');
+    is($r->f3(), -2147483648, 'Equals');
+    is($r->f3_to_i(), -2147483648, 'Equals');
     is($r->f4(), $EnumLongRangeS::CONSTANTS_ZERO, 'Equals');
+    is($r->f4(), 0, 'Equals');
+    is($r->f4_to_i(), 0, 'Equals');
     is($r->f5(), $EnumLongRangeS::CONSTANTS_INT_MAX, 'Equals');
+    is($r->f5(), 2147483647, 'Equals');
+    is($r->f5_to_i(), 2147483647, 'Equals');
     is($r->f6(), $EnumLongRangeS::CONSTANTS_INT_OVER_MAX, 'Equals');
+    is($r->f6(), 2147483648, 'Equals');
+    is($r->f6_to_i(), 2147483648, 'Equals');
     is($r->f7(), $EnumLongRangeS::CONSTANTS_LONG_MAX, 'Equals');
+    is($r->f7(), 9223372036854775807, 'Equals');
+    is($r->f7_to_i(), 9223372036854775807, 'Equals');
 }
 
 Test::Class->runtests;

@@ -11,9 +11,12 @@ namespace Kaitai
         public void TestEnumIntRangeU()
         {
             var r = EnumIntRangeU.FromFile(SourceFile("enum_int_range_u.bin"));
-
             Assert.AreEqual(r.F1, EnumIntRangeU.Constants.Zero);
+            Assert.AreEqual(((uint) r.F1), 0);
+            Assert.AreEqual(r.F1ToI, 0);
             Assert.AreEqual(r.F2, EnumIntRangeU.Constants.IntMax);
+            Assert.AreEqual(((uint) r.F2), 4294967295);
+            Assert.AreEqual(r.F2ToI, 4294967295);
         }
     }
 }
