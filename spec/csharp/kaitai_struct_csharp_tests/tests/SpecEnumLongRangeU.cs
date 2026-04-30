@@ -11,11 +11,18 @@ namespace Kaitai
         public void TestEnumLongRangeU()
         {
             var r = EnumLongRangeU.FromFile(SourceFile("enum_long_range_u.bin"));
-
             Assert.AreEqual(r.F1, EnumLongRangeU.Constants.Zero);
+            Assert.AreEqual(((ulong) r.F1), 0);
+            Assert.AreEqual(r.F1ToI, 0);
             Assert.AreEqual(r.F2, EnumLongRangeU.Constants.IntMax);
+            Assert.AreEqual(((ulong) r.F2), 4294967295);
+            Assert.AreEqual(r.F2ToI, 4294967295);
             Assert.AreEqual(r.F3, EnumLongRangeU.Constants.IntOverMax);
+            Assert.AreEqual(((ulong) r.F3), 4294967296);
+            Assert.AreEqual(r.F3ToI, 4294967296);
             Assert.AreEqual(r.F4, EnumLongRangeU.Constants.LongMax);
+            Assert.AreEqual(((ulong) r.F4), 18446744073709551615);
+            Assert.AreEqual(r.F4ToI, 18446744073709551615);
         }
     }
 }

@@ -10,14 +10,27 @@ BOOST_AUTO_TEST_CASE(test_enum_long_range_s) {
     std::ifstream ifs("src/enum_long_range_s.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     enum_long_range_s_t* r = new enum_long_range_s_t(&ks);
-
     BOOST_CHECK_EQUAL(r->f1(), enum_long_range_s_t::CONSTANTS_LONG_MIN);
+    BOOST_CHECK_EQUAL(r->f1(), (-9223372036854775807LL - 1));
+    BOOST_CHECK_EQUAL(r->f1_to_i(), (-9223372036854775807LL - 1));
     BOOST_CHECK_EQUAL(r->f2(), enum_long_range_s_t::CONSTANTS_INT_BELOW_MIN);
+    BOOST_CHECK_EQUAL(r->f2(), -2147483649LL);
+    BOOST_CHECK_EQUAL(r->f2_to_i(), -2147483649LL);
     BOOST_CHECK_EQUAL(r->f3(), enum_long_range_s_t::CONSTANTS_INT_MIN);
+    BOOST_CHECK_EQUAL(r->f3(), (-2147483647 - 1));
+    BOOST_CHECK_EQUAL(r->f3_to_i(), (-2147483647 - 1));
     BOOST_CHECK_EQUAL(r->f4(), enum_long_range_s_t::CONSTANTS_ZERO);
+    BOOST_CHECK_EQUAL(r->f4(), 0);
+    BOOST_CHECK_EQUAL(r->f4_to_i(), 0);
     BOOST_CHECK_EQUAL(r->f5(), enum_long_range_s_t::CONSTANTS_INT_MAX);
+    BOOST_CHECK_EQUAL(r->f5(), 2147483647);
+    BOOST_CHECK_EQUAL(r->f5_to_i(), 2147483647);
     BOOST_CHECK_EQUAL(r->f6(), enum_long_range_s_t::CONSTANTS_INT_OVER_MAX);
+    BOOST_CHECK_EQUAL(r->f6(), 2147483648UL);
+    BOOST_CHECK_EQUAL(r->f6_to_i(), 2147483648UL);
     BOOST_CHECK_EQUAL(r->f7(), enum_long_range_s_t::CONSTANTS_LONG_MAX);
+    BOOST_CHECK_EQUAL(r->f7(), 9223372036854775807LL);
+    BOOST_CHECK_EQUAL(r->f7_to_i(), 9223372036854775807LL);
 
     delete r;
 }

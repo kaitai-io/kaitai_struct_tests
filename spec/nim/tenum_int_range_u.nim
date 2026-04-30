@@ -5,6 +5,9 @@ import ../../compiled/nim/enum_int_range_u
 import auxiliary/test_utils
 
 let r = EnumIntRangeU.fromFile("../../src/enum_int_range_u.bin")
-
 assert r.f1 == enum_int_range_u.zero
+assert ord(r.f1) == 0
+assert r.f1ToI == 0
 assert r.f2 == enum_int_range_u.int_max
+assert ord(r.f2) == 4294967295'i64
+assert r.f2ToI == 4294967295'i64

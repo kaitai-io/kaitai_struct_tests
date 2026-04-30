@@ -24,3 +24,9 @@ instances:
       Now this is a really
       long document ref that
       spans multiple lines.
+enums:
+  sample_enum:
+    doc-ref: https://example.com/sample-enum Sample enum reference
+    type: u1
+    values:
+      0: zero

@@ -8,13 +8,20 @@ use base qw(Test::Class);
 use Test::More;
 use EnumLongRangeU;
 
-sub test_enum_long_range_u: Test(4) {
+sub test_enum_long_range_u: Test(12) {
     my $r = EnumLongRangeU->from_file('src/enum_long_range_u.bin');
-
     is($r->f1(), $EnumLongRangeU::CONSTANTS_ZERO, 'Equals');
+    is($r->f1(), 0, 'Equals');
+    is($r->f1_to_i(), 0, 'Equals');
     is($r->f2(), $EnumLongRangeU::CONSTANTS_INT_MAX, 'Equals');
+    is($r->f2(), 4294967295, 'Equals');
+    is($r->f2_to_i(), 4294967295, 'Equals');
     is($r->f3(), $EnumLongRangeU::CONSTANTS_INT_OVER_MAX, 'Equals');
+    is($r->f3(), 4294967296, 'Equals');
+    is($r->f3_to_i(), 4294967296, 'Equals');
     is($r->f4(), $EnumLongRangeU::CONSTANTS_LONG_MAX, 'Equals');
+    is($r->f4(), 18446744073709551615, 'Equals');
+    is($r->f4_to_i(), 18446744073709551615, 'Equals');
 }
 
 Test::Class->runtests;

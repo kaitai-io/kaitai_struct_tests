@@ -9,10 +9,17 @@ public class TestEnumLongRangeU extends CommonSpec {
     @Test
     public void testEnumLongRangeU() throws Exception {
         EnumLongRangeU r = EnumLongRangeU.fromFile(SRC_DIR + "enum_long_range_u.bin");
-
         assertEquals(r.f1(), EnumLongRangeU.Constants.ZERO);
+        assertIntEquals(r.f1().id(), 0);
+        assertIntEquals(r.f1ToI(), 0);
         assertEquals(r.f2(), EnumLongRangeU.Constants.INT_MAX);
+        assertIntEquals(r.f2().id(), 4294967295L);
+        assertIntEquals(r.f2ToI(), 4294967295L);
         assertEquals(r.f3(), EnumLongRangeU.Constants.INT_OVER_MAX);
+        assertIntEquals(r.f3().id(), 4294967296L);
+        assertIntEquals(r.f3ToI(), 4294967296L);
         assertEquals(r.f4(), EnumLongRangeU.Constants.LONG_MAX);
+        assertIntEquals(r.f4().id(), 0xffffffffffffffffL);
+        assertIntEquals(r.f4ToI(), 0xffffffffffffffffL);
     }
 }

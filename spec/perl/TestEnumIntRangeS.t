@@ -8,12 +8,17 @@ use base qw(Test::Class);
 use Test::More;
 use EnumIntRangeS;
 
-sub test_enum_int_range_s: Test(3) {
+sub test_enum_int_range_s: Test(9) {
     my $r = EnumIntRangeS->from_file('src/enum_int_range_s.bin');
-
     is($r->f1(), $EnumIntRangeS::CONSTANTS_INT_MIN, 'Equals');
+    is($r->f1(), -2147483648, 'Equals');
+    is($r->f1_to_i(), -2147483648, 'Equals');
     is($r->f2(), $EnumIntRangeS::CONSTANTS_ZERO, 'Equals');
+    is($r->f2(), 0, 'Equals');
+    is($r->f2_to_i(), 0, 'Equals');
     is($r->f3(), $EnumIntRangeS::CONSTANTS_INT_MAX, 'Equals');
+    is($r->f3(), 2147483647, 'Equals');
+    is($r->f3_to_i(), 2147483647, 'Equals');
 }
 
 Test::Class->runtests;

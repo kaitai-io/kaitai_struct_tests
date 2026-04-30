@@ -4,10 +4,17 @@ RSpec.describe 'EnumLongRangeU' do
   it 'parses test properly' do
     require 'enum_long_range_u'
     r = EnumLongRangeU.from_file('src/enum_long_range_u.bin')
-
     expect(r.f1).to eq :constants_zero
+    expect((EnumLongRangeU::I__CONSTANTS[r.f1] || r.f1)).to eq 0
+    expect(r.f1_to_i).to eq 0
     expect(r.f2).to eq :constants_int_max
+    expect((EnumLongRangeU::I__CONSTANTS[r.f2] || r.f2)).to eq 4294967295
+    expect(r.f2_to_i).to eq 4294967295
     expect(r.f3).to eq :constants_int_over_max
+    expect((EnumLongRangeU::I__CONSTANTS[r.f3] || r.f3)).to eq 4294967296
+    expect(r.f3_to_i).to eq 4294967296
     expect(r.f4).to eq :constants_long_max
+    expect((EnumLongRangeU::I__CONSTANTS[r.f4] || r.f4)).to eq 18446744073709551615
+    expect(r.f4_to_i).to eq 18446744073709551615
   end
 end
