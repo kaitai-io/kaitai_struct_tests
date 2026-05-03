@@ -10,6 +10,6 @@ asserts:
     expected: 123
 
   - actual: opcodes[1].code
-    expected: 1
+    expected: switch_manual_enum_invalid_else::opcode::code_enum::foo
   - actual: opcodes[1].body.as<switch_manual_enum_invalid_else::opcode::defval>.value
     expected: 123

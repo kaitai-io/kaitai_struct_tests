@@ -10,6 +10,6 @@ asserts:
     expected: 'null'
 
   - actual: opcodes[1].code
-    expected: 1
+    expected: switch_manual_enum_invalid::opcode::code_enum::foo
   - actual: opcodes[1].body
     expected: 'null'
