@@ -10,11 +10,10 @@ use SwitchManualEnumInvalid;
 
 sub test_switch_manual_enum_invalid: Test(5) {
     my $r = SwitchManualEnumInvalid->from_file('src/enum_negative.bin');
-
     is(scalar(@{$r->opcodes()}), 2, 'Equals');
     is(@{$r->opcodes()}[0]->code(), 255, 'Equals');
     ok(!defined(@{$r->opcodes()}[0]->body()), 'nil');
-    is(@{$r->opcodes()}[1]->code(), 1, 'Equals');
+    is(@{$r->opcodes()}[1]->code(), $SwitchManualEnumInvalid::Opcode::CODE_ENUM_FOO, 'Equals');
     ok(!defined(@{$r->opcodes()}[1]->body()), 'nil');
 }
 

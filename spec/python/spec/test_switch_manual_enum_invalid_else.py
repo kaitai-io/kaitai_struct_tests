@@ -2,6 +2,7 @@
 
 import unittest
 from testformats.switch_manual_enum_invalid_else import SwitchManualEnumInvalidElse
+from testformats import switch_manual_enum_invalid_else
 
 class TestSwitchManualEnumInvalidElse(unittest.TestCase):
     def test_switch_manual_enum_invalid_else(self):
@@ -9,5 +10,5 @@ class TestSwitchManualEnumInvalidElse(unittest.TestCase):
             self.assertEqual(len(r.opcodes), 2)
             self.assertEqual(r.opcodes[0].code, 255)
             self.assertEqual(r.opcodes[0].body.value, 123)
-            self.assertEqual(r.opcodes[1].code, 1)
+            self.assertEqual(r.opcodes[1].code, switch_manual_enum_invalid_else.SwitchManualEnumInvalidElse.Opcode.CodeEnum.foo)
             self.assertEqual(r.opcodes[1].body.value, 123)

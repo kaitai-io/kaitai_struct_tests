@@ -10,5 +10,5 @@ class TestSwitchManualEnumInvalidElse(unittest.TestCase):
         self.assertEqual(len(r.opcodes), 2)
         self.assertEqual(r.opcodes[0].code, 255)
         self.assertEqual(r.opcodes[0].body.value, 123)
-        self.assertEqual(r.opcodes[1].code, 1)
+        self.assertEqual(r.opcodes[1].code, 'foo')
         self.assertEqual(r.opcodes[1].body.value, 123)

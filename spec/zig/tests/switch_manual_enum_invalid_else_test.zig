@@ -17,6 +17,6 @@ test "SwitchManualEnumInvalidElse" {
     try _imp_std.testing.expectEqual(2, r.opcodes.items.len);
     try _imp_std.testing.expectEqual(255, r.opcodes.items[0].code);
     try _imp_std.testing.expectEqual(123, (try r.opcodes.items[0].body.defval.value()));
-    try _imp_std.testing.expectEqual(1, r.opcodes.items[1].code);
+    try _imp_std.testing.expectEqual(_imp_switch_manual_enum_invalid_else.SwitchManualEnumInvalidElse.Opcode.CodeEnum.foo, r.opcodes.items[1].code);
     try _imp_std.testing.expectEqual(123, (try r.opcodes.items[1].body.defval.value()));
 }

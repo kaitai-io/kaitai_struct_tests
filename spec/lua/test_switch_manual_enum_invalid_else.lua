@@ -8,10 +8,9 @@ TestSwitchManualEnumInvalidElse = {}
 
 function TestSwitchManualEnumInvalidElse:test_switch_manual_enum_invalid_else()
     local r = SwitchManualEnumInvalidElse:from_file("src/enum_negative.bin")
-
     luaunit.assertEquals(#r.opcodes, 2)
     luaunit.assertEquals(r.opcodes[0 + 1].code, 255)
     luaunit.assertEquals(r.opcodes[0 + 1].body.value, 123)
-    luaunit.assertEquals(r.opcodes[1 + 1].code, 1)
+    luaunit.assertEquals(r.opcodes[1 + 1].code, SwitchManualEnumInvalidElse.Opcode.CodeEnum.foo)
     luaunit.assertEquals(r.opcodes[1 + 1].body.value, 123)
 end

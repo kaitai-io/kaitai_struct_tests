@@ -35,7 +35,7 @@ func TestSwitchManualEnumInvalidElse(t *testing.T) {
 		t.Fatal(err)
 	}
 	assert.EqualValues(t, 123, tmp1)
-	assert.EqualValues(t, 1, r.Opcodes[1].Code)
+	assert.EqualValues(t, SwitchManualEnumInvalidElse_Opcode_CodeEnum__Foo, r.Opcodes[1].Code)
 	tmp2, err := r.Opcodes[1].Body.(*SwitchManualEnumInvalidElse_Opcode_Defval).Value()
 	if err != nil {
 		t.Fatal(err)

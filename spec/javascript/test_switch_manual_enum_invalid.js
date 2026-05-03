@@ -7,6 +7,6 @@ testHelper('SwitchManualEnumInvalid', 'src/enum_negative.bin', function(r, Switc
   assert.strictEqual(r.opcodes.length, 2);
   assert.strictEqual(r.opcodes[0].code, 255);
   assert.strictEqual(r.opcodes[0].body, undefined);
-  assert.strictEqual(r.opcodes[1].code, 1);
+  assert.strictEqual(r.opcodes[1].code, SwitchManualEnumInvalid_.SwitchManualEnumInvalid.Opcode.CodeEnum.FOO);
   assert.strictEqual(r.opcodes[1].body, undefined);
 });
