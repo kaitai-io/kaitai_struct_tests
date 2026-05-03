@@ -93,7 +93,7 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
         val enumName = translator.enumClass(enumSpec.name)
 
         out.puts(s"assertEquals($actStr, $expEnum);")
-        out.puts(s"assertTrue($expEnum instanceof $enumName.Unknown);")
+        out.puts(s"assertTrue($actStr instanceof $enumName.Unknown);")
       }
       case _ =>
         out.puts(s"assertEquals($actStr, $expStr);")
