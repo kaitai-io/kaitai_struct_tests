@@ -84,8 +84,10 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
       case (_: IntType | _: BooleanType, _) =>
         out.puts(s"assertIntEquals($actStr, $expStr);")
       case (et: EnumType, _: IntType) => {
-        // When we expect unknown value of enumeration, in KST we uses just it integer value
-        // That expression would be translated to number. Wh should wrap it to enum
+        // When an unknown enum value is expected, the KST specs specify only an
+        // integer value in the `expected` key. In dynamically typed languages,
+        // this works without any special handling, but in Java, we have to wrap
+        // this integer in the enum class.
         val enumSpec = et.enumSpec.get
         val expEnum = translator.doEnumById(enumSpec, expStr)
         val enumName = translator.enumClass(enumSpec.name)
