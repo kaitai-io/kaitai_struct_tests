@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require_relative 'builder/c_builder'
+CBuilder.new(ARGV[0], ARGV[1], ARGV[2]).command_line(ARGV[3..-1])
