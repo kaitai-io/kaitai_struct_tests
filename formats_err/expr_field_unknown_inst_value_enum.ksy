@@ -1,5 +1,5 @@
 # expr_field_unknown_inst_value_enum.ksy: /instances/foo/value:
-# 	error: unable to access 'bar' in expr_field_unknown_inst_value_enum context
+# 	error: unable to access 'bar' in 'expr_field_unknown_inst_value_enum' context
 #
 meta:
   id: expr_field_unknown_inst_value_enum
