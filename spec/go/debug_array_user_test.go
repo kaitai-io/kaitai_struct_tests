@@ -28,6 +28,7 @@ func TestDebugArrayUser(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, 80, r.OneCat.Meow)
 	assert.EqualValues(t, 3, len(r.ArrayOfCats))
 	assert.EqualValues(t, 65, r.ArrayOfCats[0].Meow)

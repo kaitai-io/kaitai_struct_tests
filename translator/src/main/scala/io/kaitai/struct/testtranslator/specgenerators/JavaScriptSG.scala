@@ -45,6 +45,9 @@ class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGene
       val entryClass = JavaScriptCompiler.type2class(entry)
       out.puts(s"var ${entryClass}_ = require('$entryClass');")
     }
+    if (spec.debug) {
+      out.puts("r._read();")
+    }
   }
 
   override def runParseExpectError(expException: ExpectedException): Unit = {
@@ -53,6 +56,9 @@ class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGene
     importList.add("KaitaiStream")
 
     out.puts(s"testHelperThrows('$className', 'src/${spec.data}', ${JavaScriptCompiler.ksErrorName(exception)});")
+    if (spec.debug) {
+      out.puts("r._read();")
+    }
   }
 
   override def footer(): Unit = if (spec.exception.isEmpty) {

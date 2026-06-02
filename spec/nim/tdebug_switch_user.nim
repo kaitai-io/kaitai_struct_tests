@@ -5,6 +5,7 @@ import ../../compiled/nim/debug_switch_user
 import auxiliary/test_utils
 
 let r = DebugSwitchUser.fromFile("../../src/nav_parent_switch.bin")
+r._read()
 
 assert r.code == 1
 assert (DebugSwitchUser_One(r.data)).val == -190

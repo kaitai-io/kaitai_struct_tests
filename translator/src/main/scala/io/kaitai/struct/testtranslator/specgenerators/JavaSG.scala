@@ -64,6 +64,9 @@ class JavaSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     out.puts(s"public void test$className() throws Exception {")
     out.inc
     out.puts(s"$className r = $className.fromFile(SRC_DIR + " + "\"" + spec.data + "\");")
+    if (spec.debug) {
+      out.puts("r._read();")
+    }
   }
 
   override def footer(): Unit = {
