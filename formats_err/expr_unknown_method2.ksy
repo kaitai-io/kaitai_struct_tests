@@ -1,5 +1,5 @@
 # expr_unknown_method2.ksy: /instances/foo/value:
-# 	error: don't know how to call method 'frobnicate' of object type 'CalcBytesType'
+# 	error: don't know how to call method 'frobnicate' of object type 'byte array'
 #
 meta:
   id: expr_unknown_method2
