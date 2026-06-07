@@ -23,7 +23,7 @@ abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
 
   def floatEquality(check: TestEquals): Unit = simpleEquality(check)
 
-  def nullAssert(actual: Ast.expr): Unit
+  def nullAssert(actual: Ast.expr, actType: DataType): Unit
 
   def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit
 
@@ -49,12 +49,12 @@ abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
     spec.asserts.foreach { assert =>
       assert match {
         case check: TestEquals =>
+          val actType = translator.detectType(check.actual)
           check.expected match {
             case Ast.expr.Name(Ast.identifier("null")) =>
-              nullAssert(check.actual)
+              nullAssert(check.actual, actType)
             case Ast.expr.List(elts) =>
               // array assert
-              val actType = translator.detectType(check.actual)
               actType match {
                 case bt: BytesType =>
                   // byte array => simple assert
@@ -64,7 +64,6 @@ abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
                   trueArrayEquality(check, at.elType, elts)
               }
             case _ =>
-              val actType = translator.detectType(check.actual)
               actType match {
                 case _: FloatType =>
                   floatEquality(check)

@@ -101,7 +101,7 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
     out.puts(s"assert.InDelta(t, $expStr, $actStr, $FLOAT_DELTA)")
   }
 
-  def nullAssert(actual: Ast.expr): Unit = {
+  def nullAssert(actual: Ast.expr, actType: DataType): Unit = {
     importList.add("\"github.com/stretchr/testify/assert\"")
     val actStr = translateAct(actual)
     out.puts(s"assert.Nil(t, $actStr)")

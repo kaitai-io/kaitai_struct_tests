@@ -73,7 +73,7 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
     out.puts(s"BOOST_CHECK_CLOSE($actStr, $expStr, 1e-4);")
   }
 
-  override def nullAssert(actual: Ast.expr): Unit = {
+  override def nullAssert(actual: Ast.expr, actType: DataType): Unit = {
     val nullCheckStr = actual match {
       case Ast.expr.Attribute(x, Ast.identifier(attrName)) =>
         translateAct(x) + s"->_is_null_$attrName()"
