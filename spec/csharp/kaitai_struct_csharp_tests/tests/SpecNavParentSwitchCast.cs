@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = NavParentSwitchCast.FromFile(SourceFile("switch_integers.bin"));
 
-            Assert.AreEqual(r.Main.BufType, 1);
-            Assert.AreEqual(r.Main.Flag, 7);
-            Assert.AreEqual(((NavParentSwitchCast.Foo.One) (r.Main.Buf)).Branch.Flag, 7);
+            Assert.AreEqual(1, r.Main.BufType);
+            Assert.AreEqual(7, r.Main.Flag);
+            Assert.AreEqual(7, ((NavParentSwitchCast.Foo.One) (r.Main.Buf)).Branch.Flag);
         }
     }
 }

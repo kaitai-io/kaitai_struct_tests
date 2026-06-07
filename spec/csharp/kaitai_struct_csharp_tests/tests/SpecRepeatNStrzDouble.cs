@@ -13,9 +13,9 @@ namespace Kaitai
         {
             var r = RepeatNStrzDouble.FromFile(SourceFile("repeat_n_strz.bin"));
 
-            Assert.AreEqual(r.Qty, 2);
-            Assert.AreEqual(r.Lines1, new List<string> { "foo" });
-            Assert.AreEqual(r.Lines2, new List<string> { "bar" });
+            Assert.AreEqual(2, r.Qty);
+            Assert.AreEqual(new List<string> { "foo" }, r.Lines1);
+            Assert.AreEqual(new List<string> { "bar" }, r.Lines2);
         }
     }
 }

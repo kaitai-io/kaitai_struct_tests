@@ -10,7 +10,7 @@ namespace Kaitai
         {
             var r = OpaqueExternalType.FromFile(SourceFile("term_strz.bin"));
 
-            Assert.AreEqual(r.Hw.One, 102);
+            Assert.AreEqual(102, r.Hw.One);
         }
     }
 }

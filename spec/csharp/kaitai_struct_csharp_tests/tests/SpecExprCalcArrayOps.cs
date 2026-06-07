@@ -12,24 +12,24 @@ namespace Kaitai
         {
             var r = ExprCalcArrayOps.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.IntArraySize, 7);
-            Assert.AreEqual(r.IntArrayFirst, 10);
-            Assert.AreEqual(r.IntArrayMid, 25);
-            Assert.AreEqual(r.IntArrayLast, 1000);
-            Assert.AreEqual(r.IntArrayMin, 10);
-            Assert.AreEqual(r.IntArrayMax, 1000);
-            Assert.AreEqual(r.DoubleArraySize, 5);
-            Assert.AreEqual(r.DoubleArrayFirst, 10.0, 1e-6);
-            Assert.AreEqual(r.DoubleArrayMid, 25.0, 1e-6);
-            Assert.AreEqual(r.DoubleArrayLast, 3.14159, 1e-6);
-            Assert.AreEqual(r.DoubleArrayMin, 3.14159, 1e-6);
-            Assert.AreEqual(r.DoubleArrayMax, 100.0, 1e-6);
-            Assert.AreEqual(r.StrArraySize, 4);
-            Assert.AreEqual(r.StrArrayFirst, "un");
-            Assert.AreEqual(r.StrArrayMid, "deux");
-            Assert.AreEqual(r.StrArrayLast, "quatre");
-            Assert.AreEqual(r.StrArrayMin, "deux");
-            Assert.AreEqual(r.StrArrayMax, "un");
+            Assert.AreEqual(7, r.IntArraySize);
+            Assert.AreEqual(10, r.IntArrayFirst);
+            Assert.AreEqual(25, r.IntArrayMid);
+            Assert.AreEqual(1000, r.IntArrayLast);
+            Assert.AreEqual(10, r.IntArrayMin);
+            Assert.AreEqual(1000, r.IntArrayMax);
+            Assert.AreEqual(5, r.DoubleArraySize);
+            Assert.AreEqual(10.0, r.DoubleArrayFirst, 1e-6);
+            Assert.AreEqual(25.0, r.DoubleArrayMid, 1e-6);
+            Assert.AreEqual(3.14159, r.DoubleArrayLast, 1e-6);
+            Assert.AreEqual(3.14159, r.DoubleArrayMin, 1e-6);
+            Assert.AreEqual(100.0, r.DoubleArrayMax, 1e-6);
+            Assert.AreEqual(4, r.StrArraySize);
+            Assert.AreEqual("un", r.StrArrayFirst);
+            Assert.AreEqual("deux", r.StrArrayMid);
+            Assert.AreEqual("quatre", r.StrArrayLast);
+            Assert.AreEqual("deux", r.StrArrayMin);
+            Assert.AreEqual("un", r.StrArrayMax);
         }
     }
 }

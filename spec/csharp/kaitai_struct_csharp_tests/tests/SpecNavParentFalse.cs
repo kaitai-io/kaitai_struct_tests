@@ -12,11 +12,11 @@ namespace Kaitai
         {
             var r = NavParentFalse.FromFile(SourceFile("nav_parent_codes.bin"));
 
-            Assert.AreEqual(r.ChildSize, 3);
-            Assert.AreEqual(r.ElementA.Foo.Code, 73);
-            Assert.AreEqual(r.ElementA.Foo.More, new byte[] { 49, 50, 51 });
-            Assert.AreEqual(r.ElementA.Bar.Foo.Code, 66);
-            Assert.AreEqual(r.ElementB.Foo.Code, 98);
+            Assert.AreEqual(3, r.ChildSize);
+            Assert.AreEqual(73, r.ElementA.Foo.Code);
+            Assert.AreEqual(new byte[] { 49, 50, 51 }, r.ElementA.Foo.More);
+            Assert.AreEqual(66, r.ElementA.Bar.Foo.Code);
+            Assert.AreEqual(98, r.ElementB.Foo.Code);
         }
     }
 }

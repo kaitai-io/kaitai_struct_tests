@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = CombineEnum.FromFile(SourceFile("enum_0.bin"));
 
-            Assert.AreEqual(r.EnumU4, CombineEnum.Animal.Pig);
-            Assert.AreEqual(r.EnumU2, CombineEnum.Animal.Horse);
-            Assert.AreEqual(r.EnumU4U2, CombineEnum.Animal.Horse);
+            Assert.AreEqual(CombineEnum.Animal.Pig, r.EnumU4);
+            Assert.AreEqual(CombineEnum.Animal.Horse, r.EnumU2);
+            Assert.AreEqual(CombineEnum.Animal.Horse, r.EnumU4U2);
         }
     }
 }

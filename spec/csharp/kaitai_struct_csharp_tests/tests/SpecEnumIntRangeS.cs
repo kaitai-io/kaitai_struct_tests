@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = EnumIntRangeS.FromFile(SourceFile("enum_int_range_s.bin"));
 
-            Assert.AreEqual(r.F1, EnumIntRangeS.Constants.IntMin);
-            Assert.AreEqual(r.F2, EnumIntRangeS.Constants.Zero);
-            Assert.AreEqual(r.F3, EnumIntRangeS.Constants.IntMax);
+            Assert.AreEqual(EnumIntRangeS.Constants.IntMin, r.F1);
+            Assert.AreEqual(EnumIntRangeS.Constants.Zero, r.F2);
+            Assert.AreEqual(EnumIntRangeS.Constants.IntMax, r.F3);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Kaitai
             var r = ProcessCustomNoArgs.FromFile(SourceFile("process_rotate.bin"));
 
 
-            Assert.AreEqual(r.Buf, new byte[] { 95, 9, 172, 141, 141, 237, 95 });
+            Assert.AreEqual(new byte[] { 95, 9, 172, 141, 141, 237, 95 }, r.Buf);
         }
     }
 }

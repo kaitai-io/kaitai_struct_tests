@@ -12,13 +12,13 @@ namespace Kaitai
         {
             var r = TsPacketHeader.FromFile(SourceFile("ts_packet.bin"));
 
-            Assert.AreEqual(r.SyncByte, 71);
-            Assert.AreEqual(r.TransportErrorIndicator, false);
-            Assert.AreEqual(r.PayloadUnitStartIndicator, false);
-            Assert.AreEqual(r.TransportPriority, true);
-            Assert.AreEqual(r.Pid, 33);
-            Assert.AreEqual(r.TransportScramblingControl, 0);
-            Assert.AreEqual(r.AdaptationFieldControl, TsPacketHeader.AdaptationFieldControlEnum.PayloadOnly);
+            Assert.AreEqual(71, r.SyncByte);
+            Assert.AreEqual(false, r.TransportErrorIndicator);
+            Assert.AreEqual(false, r.PayloadUnitStartIndicator);
+            Assert.AreEqual(true, r.TransportPriority);
+            Assert.AreEqual(33, r.Pid);
+            Assert.AreEqual(0, r.TransportScramblingControl);
+            Assert.AreEqual(TsPacketHeader.AdaptationFieldControlEnum.PayloadOnly, r.AdaptationFieldControl);
         }
     }
 }

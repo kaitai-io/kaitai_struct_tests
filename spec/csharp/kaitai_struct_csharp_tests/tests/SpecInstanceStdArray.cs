@@ -12,13 +12,13 @@ namespace Kaitai
         {
             var r = InstanceStdArray.FromFile(SourceFile("instance_std_array.bin"));
 
-            Assert.AreEqual(r.Ofs, 16);
-            Assert.AreEqual(r.QtyEntries, 3);
-            Assert.AreEqual(r.EntrySize, 4);
-            Assert.AreEqual(r.Entries.Count, 3);
-            Assert.AreEqual(r.Entries[0], new byte[] { 17, 17, 17, 17 });
-            Assert.AreEqual(r.Entries[1], new byte[] { 34, 34, 34, 34 });
-            Assert.AreEqual(r.Entries[2], new byte[] { 51, 51, 51, 51 });
+            Assert.AreEqual(16, r.Ofs);
+            Assert.AreEqual(3, r.QtyEntries);
+            Assert.AreEqual(4, r.EntrySize);
+            Assert.AreEqual(3, r.Entries.Count);
+            Assert.AreEqual(new byte[] { 17, 17, 17, 17 }, r.Entries[0]);
+            Assert.AreEqual(new byte[] { 34, 34, 34, 34 }, r.Entries[1]);
+            Assert.AreEqual(new byte[] { 51, 51, 51, 51 }, r.Entries[2]);
         }
     }
 }

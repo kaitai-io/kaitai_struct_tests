@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = ExprEnum.FromFile(SourceFile("term_strz.bin"));
 
-            Assert.AreEqual(r.ConstDog, ExprEnum.Animal.Dog);
-            Assert.AreEqual(r.DerivedBoom, ExprEnum.Animal.Boom);
-            Assert.AreEqual(r.DerivedDog, ExprEnum.Animal.Dog);
+            Assert.AreEqual(ExprEnum.Animal.Dog, r.ConstDog);
+            Assert.AreEqual(ExprEnum.Animal.Boom, r.DerivedBoom);
+            Assert.AreEqual(ExprEnum.Animal.Dog, r.DerivedDog);
         }
     }
 }

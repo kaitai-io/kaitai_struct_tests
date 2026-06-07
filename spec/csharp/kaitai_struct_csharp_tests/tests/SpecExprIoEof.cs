@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = ExprIoEof.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.Substream1.One, 1262698832);
+            Assert.AreEqual(1262698832, r.Substream1.One);
             Assert.IsNull(r.Substream1.Two);
-            Assert.AreEqual(r.Substream2.One, 4294914349);
-            Assert.AreEqual(r.Substream2.Two, 1262698832);
+            Assert.AreEqual(4294914349, r.Substream2.One);
+            Assert.AreEqual(1262698832, r.Substream2.Two);
         }
     }
 }

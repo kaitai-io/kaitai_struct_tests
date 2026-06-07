@@ -12,7 +12,7 @@ namespace Kaitai
         {
             var r = ProcessToUser.FromFile(SourceFile("process_rotate.bin"));
 
-            Assert.AreEqual(r.Buf1.Str, "Hello");
+            Assert.AreEqual("Hello", r.Buf1.Str);
         }
     }
 }

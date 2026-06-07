@@ -12,26 +12,26 @@ namespace Kaitai
         {
             var r = Integers.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.Uint8, 255);
-            Assert.AreEqual(r.Uint16, 65535);
-            Assert.AreEqual(r.Uint32, 4294967295);
-            Assert.AreEqual(r.Uint64, 18446744073709551615);
-            Assert.AreEqual(r.Sint8, -1);
-            Assert.AreEqual(r.Sint16, -1);
-            Assert.AreEqual(r.Sint32, -1);
-            Assert.AreEqual(r.Sint64, -1);
-            Assert.AreEqual(r.Uint16le, 66);
-            Assert.AreEqual(r.Uint32le, 66);
-            Assert.AreEqual(r.Uint64le, 66);
-            Assert.AreEqual(r.Sint16le, -66);
-            Assert.AreEqual(r.Sint32le, -66);
-            Assert.AreEqual(r.Sint64le, -66);
-            Assert.AreEqual(r.Uint16be, 66);
-            Assert.AreEqual(r.Uint32be, 66);
-            Assert.AreEqual(r.Uint64be, 66);
-            Assert.AreEqual(r.Sint16be, -66);
-            Assert.AreEqual(r.Sint32be, -66);
-            Assert.AreEqual(r.Sint64be, -66);
+            Assert.AreEqual(255, r.Uint8);
+            Assert.AreEqual(65535, r.Uint16);
+            Assert.AreEqual(4294967295, r.Uint32);
+            Assert.AreEqual(18446744073709551615, r.Uint64);
+            Assert.AreEqual(-1, r.Sint8);
+            Assert.AreEqual(-1, r.Sint16);
+            Assert.AreEqual(-1, r.Sint32);
+            Assert.AreEqual(-1, r.Sint64);
+            Assert.AreEqual(66, r.Uint16le);
+            Assert.AreEqual(66, r.Uint32le);
+            Assert.AreEqual(66, r.Uint64le);
+            Assert.AreEqual(-66, r.Sint16le);
+            Assert.AreEqual(-66, r.Sint32le);
+            Assert.AreEqual(-66, r.Sint64le);
+            Assert.AreEqual(66, r.Uint16be);
+            Assert.AreEqual(66, r.Uint32be);
+            Assert.AreEqual(66, r.Uint64be);
+            Assert.AreEqual(-66, r.Sint16be);
+            Assert.AreEqual(-66, r.Sint32be);
+            Assert.AreEqual(-66, r.Sint64be);
         }
     }
 }

@@ -19,14 +19,14 @@ namespace Kaitai
                 }
             );
 
-            Assert.AreEqual(r.OneCat.Meow, 3);
-            Assert.AreEqual(r.OneCat.Chirp, 73);
-            Assert.AreEqual(r.ArrayOfCats.Count, 3);
-            Assert.AreEqual(r.ArrayOfCats[0].Meow, 49);
-            Assert.AreEqual(r.ArrayOfCats[0].Chirp, 50);
-            Assert.AreEqual(r.ArrayOfCats[1].Meow, 51);
-            Assert.AreEqual(r.ArrayOfCats[1].Chirp, 66);
-            Assert.AreEqual(r.ArrayOfCats[2].Meow, 98);
+            Assert.AreEqual(3, r.OneCat.Meow);
+            Assert.AreEqual(73, r.OneCat.Chirp);
+            Assert.AreEqual(3, r.ArrayOfCats.Count);
+            Assert.AreEqual(49, r.ArrayOfCats[0].Meow);
+            Assert.AreEqual(50, r.ArrayOfCats[0].Chirp);
+            Assert.AreEqual(51, r.ArrayOfCats[1].Meow);
+            Assert.AreEqual(66, r.ArrayOfCats[1].Chirp);
+            Assert.AreEqual(98, r.ArrayOfCats[2].Meow);
         }
     }
 }

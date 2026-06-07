@@ -11,8 +11,8 @@ namespace Kaitai
         public void TestNameClashImportVsInst()
         {
             var r = NameClashImportVsInst.FromFile(SourceFile("fixed_struct.bin"));
-            Assert.AreEqual(r.Integers.Uint8, 255);
-            Assert.AreEqual(r.Std, 3);
+            Assert.AreEqual(255, r.Integers.Uint8);
+            Assert.AreEqual(3, r.Std);
         }
     }
 }

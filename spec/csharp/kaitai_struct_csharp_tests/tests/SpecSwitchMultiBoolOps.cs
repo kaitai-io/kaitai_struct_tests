@@ -12,15 +12,15 @@ namespace Kaitai
         {
             var r = SwitchMultiBoolOps.FromFile(SourceFile("switch_integers.bin"));
 
-            Assert.AreEqual(r.Opcodes.Count, 4);
-            Assert.AreEqual(r.Opcodes[0].Code, 1);
-            Assert.AreEqual(r.Opcodes[0].Body, 7);
-            Assert.AreEqual(r.Opcodes[1].Code, 2);
-            Assert.AreEqual(r.Opcodes[1].Body, 16448);
-            Assert.AreEqual(r.Opcodes[2].Code, 4);
-            Assert.AreEqual(r.Opcodes[2].Body, 4919);
-            Assert.AreEqual(r.Opcodes[3].Code, 8);
-            Assert.AreEqual(r.Opcodes[3].Body, 4919);
+            Assert.AreEqual(4, r.Opcodes.Count);
+            Assert.AreEqual(1, r.Opcodes[0].Code);
+            Assert.AreEqual(7, r.Opcodes[0].Body);
+            Assert.AreEqual(2, r.Opcodes[1].Code);
+            Assert.AreEqual(16448, r.Opcodes[1].Body);
+            Assert.AreEqual(4, r.Opcodes[2].Code);
+            Assert.AreEqual(4919, r.Opcodes[2].Body);
+            Assert.AreEqual(8, r.Opcodes[3].Code);
+            Assert.AreEqual(4919, r.Opcodes[3].Body);
         }
     }
 }

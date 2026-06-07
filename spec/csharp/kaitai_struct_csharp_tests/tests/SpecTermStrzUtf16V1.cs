@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = TermStrzUtf16V1.FromFile(SourceFile("term_strz_utf16.bin"));
 
-            Assert.AreEqual(r.S1, "a\u0200b");
-            Assert.AreEqual(r.S2, "c\u0200d");
-            Assert.AreEqual(r.Term, 0);
-            Assert.AreEqual(r.S3, "e\u0200f\0");
+            Assert.AreEqual("a\u0200b", r.S1);
+            Assert.AreEqual("c\u0200d", r.S2);
+            Assert.AreEqual(0, r.Term);
+            Assert.AreEqual("e\u0200f\0", r.S3);
         }
     }
 }

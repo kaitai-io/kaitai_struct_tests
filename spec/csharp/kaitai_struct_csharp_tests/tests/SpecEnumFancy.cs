@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = EnumFancy.FromFile(SourceFile("enum_0.bin"));
 
-            Assert.AreEqual(r.Pet1, EnumFancy.Animal.Cat);
-            Assert.AreEqual(r.Pet2, EnumFancy.Animal.Chicken);
+            Assert.AreEqual(EnumFancy.Animal.Cat, r.Pet1);
+            Assert.AreEqual(EnumFancy.Animal.Chicken, r.Pet2);
         }
     }
 }

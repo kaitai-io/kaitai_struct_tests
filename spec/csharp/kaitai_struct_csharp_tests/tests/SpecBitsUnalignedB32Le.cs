@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = BitsUnalignedB32Le.FromFile(SourceFile("process_xor_4.bin"));
 
-            Assert.AreEqual(r.A, false);
-            Assert.AreEqual(r.B, 173137398);
-            Assert.AreEqual(r.C, 69);
+            Assert.AreEqual(false, r.A);
+            Assert.AreEqual(173137398, r.B);
+            Assert.AreEqual(69, r.C);
         }
     }
 }

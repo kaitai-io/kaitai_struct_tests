@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = BytesPadTerm.FromFile(SourceFile("str_pad_term.bin"));
 
-            Assert.AreEqual(r.StrPad, new byte[] { 115, 116, 114, 49 });
-            Assert.AreEqual(r.StrTerm, new byte[] { 115, 116, 114, 50, 102, 111, 111 });
-            Assert.AreEqual(r.StrTermAndPad, new byte[] { 115, 116, 114, 43, 43, 43, 51, 98, 97, 114, 43, 43, 43 });
-            Assert.AreEqual(r.StrTermInclude, new byte[] { 115, 116, 114, 52, 98, 97, 122, 64 });
+            Assert.AreEqual(new byte[] { 115, 116, 114, 49 }, r.StrPad);
+            Assert.AreEqual(new byte[] { 115, 116, 114, 50, 102, 111, 111 }, r.StrTerm);
+            Assert.AreEqual(new byte[] { 115, 116, 114, 43, 43, 43, 51, 98, 97, 114, 43, 43, 43 }, r.StrTermAndPad);
+            Assert.AreEqual(new byte[] { 115, 116, 114, 52, 98, 97, 122, 64 }, r.StrTermInclude);
         }
     }
 }

@@ -13,12 +13,12 @@ namespace Kaitai
             // --debug implies --no-auto-read
             r._read();
 
-            Assert.AreEqual(r.One, 80);
-            Assert.AreEqual(r.ArrayOfInts.Count, 3);
-            Assert.AreEqual(r.ArrayOfInts[0], 65);
-            Assert.AreEqual(r.ArrayOfInts[1], 67);
-            Assert.AreEqual(r.ArrayOfInts[2], 75);
-            Assert.AreEqual(r.Unnamed_2, 45);
+            Assert.AreEqual(80, r.One);
+            Assert.AreEqual(3, r.ArrayOfInts.Count);
+            Assert.AreEqual(65, r.ArrayOfInts[0]);
+            Assert.AreEqual(67, r.ArrayOfInts[1]);
+            Assert.AreEqual(75, r.ArrayOfInts[2]);
+            Assert.AreEqual(45, r.Unnamed_2);
 
             // FIXME: also test --read-pos once it is implemented
         }

@@ -12,16 +12,16 @@ namespace Kaitai
         {
             var r = ExprBytesCmp.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.One, new byte[] { 80 });
-            Assert.AreEqual(r.Two, new byte[] { 65, 67, 75 });
-            Assert.AreEqual(r.IsEq, true);
-            Assert.AreEqual(r.IsNe, false);
-            Assert.AreEqual(r.IsLt, true);
-            Assert.AreEqual(r.IsGt, false);
-            Assert.AreEqual(r.IsLe, true);
-            Assert.AreEqual(r.IsGe, false);
-            Assert.AreEqual(r.IsLt2, false);
-            Assert.AreEqual(r.IsGt2, true);
+            Assert.AreEqual(new byte[] { 80 }, r.One);
+            Assert.AreEqual(new byte[] { 65, 67, 75 }, r.Two);
+            Assert.AreEqual(true, r.IsEq);
+            Assert.AreEqual(false, r.IsNe);
+            Assert.AreEqual(true, r.IsLt);
+            Assert.AreEqual(false, r.IsGt);
+            Assert.AreEqual(true, r.IsLe);
+            Assert.AreEqual(false, r.IsGe);
+            Assert.AreEqual(false, r.IsLt2);
+            Assert.AreEqual(true, r.IsGt2);
         }
     }
 }

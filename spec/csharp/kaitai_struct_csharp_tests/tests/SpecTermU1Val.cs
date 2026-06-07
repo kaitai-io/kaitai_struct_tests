@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = TermU1Val.FromFile(SourceFile("str_encodings.bin"));
 
-            Assert.AreEqual(r.Foo, new byte[] { 10, 0, 83, 111, 109, 101, 32, 65, 83, 67, 73, 73, 15, 0 });
-            Assert.AreEqual(r.Bar, "\u3053\u3093\u306b");
+            Assert.AreEqual(new byte[] { 10, 0, 83, 111, 109, 101, 32, 65, 83, 67, 73, 73, 15, 0 }, r.Foo);
+            Assert.AreEqual("\u3053\u3093\u306b", r.Bar);
         }
     }
 }
