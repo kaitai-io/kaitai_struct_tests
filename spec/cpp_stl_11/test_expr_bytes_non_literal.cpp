@@ -12,8 +12,8 @@ BOOST_AUTO_TEST_CASE(test_expr_bytes_non_literal) {
     expr_bytes_non_literal_t* r = new expr_bytes_non_literal_t(&ks);
 
     BOOST_CHECK_EQUAL(r->calc_bytes().length(), 2);
-    BOOST_CHECK_EQUAL(r->calc_bytes()[0], 255);
-    BOOST_CHECK_EQUAL(r->calc_bytes()[1], 1);
+    BOOST_CHECK_EQUAL(r->calc_bytes().at(0), 255);
+    BOOST_CHECK_EQUAL(r->calc_bytes().at(1), 1);
 
     delete r;
 }

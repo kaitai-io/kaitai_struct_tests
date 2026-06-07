@@ -23,7 +23,7 @@ class NimSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     out.puts(s"let r = ${className}.fromFile" + "(\"../../src/" + spec.data + "\")")
   }
   override def footer(): Unit = { }
-  override def nullAssert(actual: expr): Unit = {
+  override def nullAssert(actual: expr, actType: DataType): Unit = {
     val actStr = translateAct(actual)
     val td = new TypeDetector(provider)
     val expStr = td.detectType(actual) match {
