@@ -9,6 +9,5 @@ public class TestValidSwitch extends CommonSpec {
     @Test
     public void testValidSwitch() throws Exception {
         ValidSwitch r = ValidSwitch.fromFile(SRC_DIR + "fixed_struct.bin");
-
     }
 }

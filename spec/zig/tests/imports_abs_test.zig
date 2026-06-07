@@ -14,6 +14,7 @@ test "ImportsAbs" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_imports_abs.ImportsAbs.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(80, (try r.len.value()));
     try _imp_std.testing.expectEqual(80, r.body.len);
 }

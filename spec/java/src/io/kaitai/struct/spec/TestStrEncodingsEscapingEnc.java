@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import java.nio.charset.IllegalCharsetNameException;
 public class TestStrEncodingsEscapingEnc extends CommonSpec {
-
     @Test
     public void testStrEncodingsEscapingEnc() throws Exception {
         StrEncodingsEscapingEnc r = StrEncodingsEscapingEnc.fromFile(SRC_DIR + "str_encodings.bin");

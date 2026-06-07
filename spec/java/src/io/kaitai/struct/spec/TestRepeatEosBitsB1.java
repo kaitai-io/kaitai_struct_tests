@@ -9,6 +9,7 @@ public class TestRepeatEosBitsB1 extends CommonSpec {
     @Test
     public void testRepeatEosBitsB1() throws Exception {
         RepeatEosBitsB1 r = RepeatEosBitsB1.fromFile(SRC_DIR + "enum_negative.bin");
+
         assertIntEquals(r.bits().size(), 16);
         assertIntEquals(r.bits().get(((int) 0)), true);
         assertIntEquals(r.bits().get(((int) 1)), true);

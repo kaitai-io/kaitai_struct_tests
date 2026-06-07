@@ -14,6 +14,7 @@ test "StrEncodingsDefault" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_str_encodings_default.StrEncodingsDefault.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualStrings("Some ASCII", r.str1);
     try _imp_std.testing.expectEqualStrings("\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}", r.rest.str2);
     try _imp_std.testing.expectEqualStrings("\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}", r.rest.str3);

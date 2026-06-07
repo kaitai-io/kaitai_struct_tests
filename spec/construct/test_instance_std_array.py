@@ -7,6 +7,7 @@ from instance_std_array import _schema
 class TestInstanceStdArray(unittest.TestCase):
     def test_instance_std_array(self):
         r = _schema.parse_file('src/instance_std_array.bin')
+
         self.assertEqual(r.ofs, 16)
         self.assertEqual(r.qty_entries, 3)
         self.assertEqual(r.entry_size, 4)

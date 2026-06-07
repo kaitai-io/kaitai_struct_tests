@@ -14,6 +14,7 @@ test "StrPadTermUtf16" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_str_pad_term_utf16.StrPadTermUtf16.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualStrings("a\u{0200}b", r.str_term);
     try _imp_std.testing.expectEqualStrings("c\u{0200}d\u{0000}", r.str_term_include);
     try _imp_std.testing.expectEqualStrings("e\u{0200}f", r.str_term_and_pad);

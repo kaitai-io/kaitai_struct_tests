@@ -12,6 +12,7 @@ test "EnumIf" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_enum_if.EnumIf.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(_imp_enum_if.EnumIf.Opcodes.a_string, r.op1.opcode);
     try _imp_std.testing.expectEqualStrings("foo", r.op1.arg_str.?.str);
     try _imp_std.testing.expectEqual(_imp_enum_if.EnumIf.Opcodes.a_tuple, r.op2.opcode);

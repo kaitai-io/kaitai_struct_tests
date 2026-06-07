@@ -5,6 +5,7 @@ import ../../compiled/nim/switch_repeat_expr
 import auxiliary/test_utils
 
 let r = SwitchRepeatExpr.fromFile("../../src/switch_integers.bin")
+
 assert len(r.codes) == 3
 assert r.codes[0] == 1
 assert r.codes[1] == 7

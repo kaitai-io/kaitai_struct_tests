@@ -11,6 +11,5 @@ BOOST_AUTO_TEST_CASE(test_valid_long) {
     kaitai::kstream ks(&ifs);
     valid_long_t* r = new valid_long_t(&ks);
 
-
     delete r;
 }

@@ -14,6 +14,7 @@ test "TermStrzUtf16V1" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_term_strz_utf16_v1.TermStrzUtf16V1.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualStrings("a\u{0200}b", r.s1);
     try _imp_std.testing.expectEqualStrings("c\u{0200}d", r.s2);
     try _imp_std.testing.expectEqual(0, r.term);

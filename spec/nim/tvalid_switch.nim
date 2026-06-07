@@ -5,4 +5,3 @@ import ../../compiled/nim/valid_switch
 import auxiliary/test_utils
 
 let r = ValidSwitch.fromFile("../../src/fixed_struct.bin")
-

@@ -11,6 +11,5 @@ BOOST_AUTO_TEST_CASE(test_valid_not_parsed_if) {
     kaitai::kstream ks(&ifs);
     valid_not_parsed_if_t* r = new valid_not_parsed_if_t(&ks);
 
-
     delete r;
 }

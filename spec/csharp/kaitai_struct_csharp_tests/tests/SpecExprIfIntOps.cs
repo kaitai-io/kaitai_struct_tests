@@ -11,6 +11,7 @@ namespace Kaitai
         public void TestExprIfIntOps()
         {
             var r = ExprIfIntOps.FromFile(SourceFile("instance_io.bin"));
+
             Assert.AreEqual(r.Key, 3);
             Assert.AreEqual(r.Bytes, new byte[] { 252, 252, 252, 253, 9, 3, 3, 3 });
             Assert.AreEqual(r.BytesSubKey, 253);

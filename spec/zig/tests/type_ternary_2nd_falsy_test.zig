@@ -14,6 +14,7 @@ test "TypeTernary2ndFalsy" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_type_ternary_2nd_falsy.TypeTernary2ndFalsy.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(false, (try r.vFalse()));
     try _imp_std.testing.expectEqual(0, (try r.vIntZero()));
     try _imp_std.testing.expectEqual(0, (try r.vIntNegZero()));

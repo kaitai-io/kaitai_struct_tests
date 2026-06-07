@@ -14,6 +14,7 @@ test "RepeatEosU4" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_repeat_eos_u4.RepeatEosU4.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(4, r.numbers.items.len);
     try _imp_std.testing.expectEqual(0, r.numbers.items[0]);
     try _imp_std.testing.expectEqual(66, r.numbers.items[1]);

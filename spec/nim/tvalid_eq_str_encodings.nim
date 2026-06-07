@@ -5,4 +5,3 @@ import ../../compiled/nim/valid_eq_str_encodings
 import auxiliary/test_utils
 
 let r = ValidEqStrEncodings.fromFile("../../src/str_encodings.bin")
-

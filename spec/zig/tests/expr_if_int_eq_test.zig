@@ -14,6 +14,7 @@ test "ExprIfIntEq" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_if_int_eq.ExprIfIntEq.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(true, (try r.seqEqLit()));
     try _imp_std.testing.expectEqual(true, (try r.seqEqCalc()));
     try _imp_std.testing.expectEqual(true, (try r.seqEqCalcIf()));

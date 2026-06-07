@@ -28,6 +28,7 @@ func TestNavParentSwitch(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, 1, r.Category)
 	assert.EqualValues(t, 66, (*NavParentSwitch_Element1)(r.Content).Foo)
 	assert.EqualValues(t, 255, (*NavParentSwitch_Element1)(r.Content).Subelement.Bar)

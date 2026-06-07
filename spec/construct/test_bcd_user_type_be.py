@@ -7,6 +7,7 @@ from bcd_user_type_be import _schema
 class TestBcdUserTypeBe(unittest.TestCase):
     def test_bcd_user_type_be(self):
         r = _schema.parse_file('src/bcd_user_type_be.bin')
+
         self.assertEqual(r.ltr.as_int, 12345678)
         self.assertEqual(r.ltr.as_str, "12345678")
         self.assertEqual(r.rtl.as_int, 87654321)

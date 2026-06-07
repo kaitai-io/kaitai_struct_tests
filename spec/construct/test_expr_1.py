@@ -7,6 +7,7 @@ from expr_1 import _schema
 class TestExpr1(unittest.TestCase):
     def test_expr_1(self):
         r = _schema.parse_file('src/str_encodings.bin')
+
         self.assertEqual(r.len_of_1, 10)
         self.assertEqual(r.len_of_1_mod, 8)
         self.assertEqual(r.str1, "Some ASC")

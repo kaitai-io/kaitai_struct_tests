@@ -14,6 +14,7 @@ test "StrLiterals2" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_str_literals2.StrLiterals2.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualStrings("$foo", (try r.dollar1()));
     try _imp_std.testing.expectEqualStrings("${foo}", (try r.dollar2()));
     try _imp_std.testing.expectEqualStrings("#{foo}", (try r.hash()));

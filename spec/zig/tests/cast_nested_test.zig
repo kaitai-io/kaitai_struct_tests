@@ -14,6 +14,7 @@ test "CastNested" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_cast_nested.CastNested.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualStrings("foobar", (try r.opcodes0Str()).value);
     try _imp_std.testing.expectEqualStrings("foobar", (try r.opcodes0StrValue()));
     try _imp_std.testing.expectEqual(66, (try r.opcodes1Int()).value);

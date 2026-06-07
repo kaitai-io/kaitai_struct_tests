@@ -1,0 +1,42 @@
+id: oper_precedence_sum2
+data: fixed_struct.bin # not actually used
+asserts:
+  - actual: sum
+    expected: 6 # (1 + 2) + 3
+  - actual: sub
+    expected: 0 # (1 + 2) - 3
+  - actual: mul
+    expected: 9 # (1 + 2) * 3
+  - actual: div_int
+    expected: 1 # (1 + 2) / 3
+  - actual: div_float1
+    expected: 1.0000000 # (1 + 2.0) / 3
+  - actual: div_float2
+    expected: 1.0000000 # (1 + 2) / 3.0
+  - actual: rem
+    expected: 0 # (1 + 2) % 3
+
+  - actual: shl
+    expected: 24 # (1 + 2) << 3
+  - actual: shr
+    expected: 0 # (1 + 2) >> 3
+
+  - actual: bit_and
+    expected: 3 # (1 + 2) & 3
+  - actual: bit_or
+    expected: 3 # (1 + 2) | 3
+  - actual: bit_xor
+    expected: 0 # (1 + 2) ^ 3
+
+  - actual: eq
+    expected: true # (1 + 2) == 3
+  - actual: ne
+    expected: false # (1 + 2) != 3
+  - actual: le
+    expected: true # (1 + 2) <= 3
+  - actual: ge
+    expected: true # (1 + 2) >= 3
+  - actual: lt
+    expected: false # (1 + 2) < 3
+  - actual: gt
+    expected: false # (1 + 2) > 3

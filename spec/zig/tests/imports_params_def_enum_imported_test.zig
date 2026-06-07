@@ -16,6 +16,7 @@ test "ImportsParamsDefEnumImported" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_imports_params_def_enum_imported.ImportsParamsDefEnumImported.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(_imp_enum_0.Enum0.Animal.cat, r.one.pet_1);
     try _imp_std.testing.expectEqual(_imp_enum_deep.EnumDeep.Container1.Container2.Animal.hare, r.one.pet_2);
     try _imp_std.testing.expectEqual(_imp_enum_0.Enum0.Animal.cat, r.two.pet_1_param);

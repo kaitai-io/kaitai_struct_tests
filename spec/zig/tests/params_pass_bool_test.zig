@@ -14,6 +14,7 @@ test "ParamsPassBool" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_params_pass_bool.ParamsPassBool.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(false, r.s_false);
     try _imp_std.testing.expectEqual(true, r.s_true);
     try _imp_std.testing.expectEqual(true, r.seq_b1.arg);

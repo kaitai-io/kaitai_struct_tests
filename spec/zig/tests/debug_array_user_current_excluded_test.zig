@@ -14,6 +14,7 @@ test "DebugArrayUserCurrentExcluded" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_debug_array_user_current_excluded.DebugArrayUserCurrentExcluded.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 102, 111, 111 }, r.array_of_cats.items[0].meow);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 124, 98 }, r.array_of_cats.items[1].meow);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 97 }, r.array_of_cats.items[2].meow);

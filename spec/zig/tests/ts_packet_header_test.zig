@@ -14,6 +14,7 @@ test "TsPacketHeader" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_ts_packet_header.TsPacketHeader.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(71, r.sync_byte);
     try _imp_std.testing.expectEqual(false, r.transport_error_indicator);
     try _imp_std.testing.expectEqual(false, r.payload_unit_start_indicator);

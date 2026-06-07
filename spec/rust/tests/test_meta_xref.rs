@@ -10,6 +10,5 @@ fn test_meta_xref() -> KResult<()> {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<MetaXref> = MetaXref::read_into(&_io, None, None)?;
-
     Ok(())
 }

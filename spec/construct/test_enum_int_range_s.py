@@ -7,6 +7,7 @@ from enum_int_range_s import _schema
 class TestEnumIntRangeS(unittest.TestCase):
     def test_enum_int_range_s(self):
         r = _schema.parse_file('src/enum_int_range_s.bin')
+
         self.assertEqual(r.f1, 'int_min')
         self.assertEqual(r.f2, 'zero')
         self.assertEqual(r.f3, 'int_max')

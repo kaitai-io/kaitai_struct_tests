@@ -14,6 +14,7 @@ test "CombineBool" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_combine_bool.CombineBool.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(true, r.bool_bit);
     try _imp_std.testing.expectEqual(false, (try r.boolCalcBit()));
 }

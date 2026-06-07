@@ -8,5 +8,4 @@ TestValidOptionalId = {}
 
 function TestValidOptionalId:test_valid_optional_id()
     local r = ValidOptionalId:from_file("src/fixed_struct.bin")
-
 end

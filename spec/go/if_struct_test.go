@@ -28,6 +28,7 @@ func TestIfStruct(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, 83, r.Op1.Opcode)
 	assert.Nil(t, r.Op1.ArgTuple)
 	assert.EqualValues(t, "foo", r.Op1.ArgStr.Str)

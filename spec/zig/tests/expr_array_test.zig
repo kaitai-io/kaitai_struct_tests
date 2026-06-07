@@ -14,6 +14,7 @@ test "ExprArray" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_array.ExprArray.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(4, (try r.aintSize()));
     try _imp_std.testing.expectEqual(7657765, (try r.aintFirst()));
     try _imp_std.testing.expectEqual(16272640, (try r.aintLast()));

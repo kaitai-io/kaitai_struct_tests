@@ -8,6 +8,7 @@ TestIfStruct = {}
 
 function TestIfStruct:test_if_struct()
     local r = IfStruct:from_file("src/if_struct.bin")
+
     luaunit.assertEquals(r.op1.opcode, 83)
     luaunit.assertNil(r.op1.arg_tuple)
     luaunit.assertEquals(r.op1.arg_str.str, "foo")

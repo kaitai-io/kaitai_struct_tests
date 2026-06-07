@@ -14,6 +14,7 @@ test "NavRootRecursive" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_nav_root_recursive.NavRootRecursive.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(255, r.value);
     try _imp_std.testing.expectEqual(1, r.next.value);
     try _imp_std.testing.expectEqual(255, (try r.next.rootValue()));

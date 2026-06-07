@@ -6,6 +6,7 @@ namespace Kaitai\Struct\Tests;
 class RepeatEosBitsB4Test extends TestCase {
     public function testRepeatEosBitsB4() {
         $r = RepeatEosBitsB4::fromFile(self::SRC_DIR_PATH . '/enum_negative.bin');
+
         $this->assertSame(4, count($r->nibbles()));
         $this->assertSame(15, $r->nibbles()[0]);
         $this->assertSame(15, $r->nibbles()[1]);

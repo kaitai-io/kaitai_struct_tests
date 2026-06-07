@@ -14,6 +14,7 @@ test "ProcessCustom" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_process_custom.ProcessCustom.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 16, 179, 148, 148, 244 }, r.buf1);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 95, 186, 123, 147, 99, 35, 95 }, r.buf2);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 41, 51, 177, 56, 177 }, r.buf3);

@@ -8,5 +8,4 @@ TestValidNotParsedIf = {}
 
 function TestValidNotParsedIf:test_valid_not_parsed_if()
     local r = ValidNotParsedIf:from_file("src/fixed_struct.bin")
-
 end

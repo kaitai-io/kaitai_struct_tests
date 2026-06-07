@@ -11,6 +11,5 @@ BOOST_AUTO_TEST_CASE(test_valid_optional_id) {
     kaitai::kstream ks(&ifs);
     valid_optional_id_t* r = new valid_optional_id_t(&ks);
 
-
     delete r;
 }

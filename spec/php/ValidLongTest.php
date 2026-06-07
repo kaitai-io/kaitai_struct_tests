@@ -6,6 +6,5 @@ namespace Kaitai\Struct\Tests;
 class ValidLongTest extends TestCase {
     public function testValidLong() {
         $r = ValidLong::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
-
     }
 }

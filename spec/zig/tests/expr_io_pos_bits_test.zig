@@ -14,6 +14,7 @@ test "ExprIoPosBits" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_io_pos_bits.ExprIoPosBits.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(7, r.foo);
     try _imp_std.testing.expectEqual(12, r.bar);
     try _imp_std.testing.expectEqual(true, r.baz);

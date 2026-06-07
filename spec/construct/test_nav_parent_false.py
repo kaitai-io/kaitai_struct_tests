@@ -7,6 +7,7 @@ from nav_parent_false import _schema
 class TestNavParentFalse(unittest.TestCase):
     def test_nav_parent_false(self):
         r = _schema.parse_file('src/nav_parent_codes.bin')
+
         self.assertEqual(r.child_size, 3)
         self.assertEqual(r.element_a.foo.code, 73)
         self.assertEqual(r.element_a.foo.more, b"\x31\x32\x33")

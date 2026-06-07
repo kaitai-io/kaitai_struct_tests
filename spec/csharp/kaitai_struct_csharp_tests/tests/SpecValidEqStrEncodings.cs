@@ -11,7 +11,6 @@ namespace Kaitai
         public void TestValidEqStrEncodings()
         {
             var r = ValidEqStrEncodings.FromFile(SourceFile("str_encodings.bin"));
-
         }
     }
 }

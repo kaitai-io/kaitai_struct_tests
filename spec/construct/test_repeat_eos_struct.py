@@ -7,6 +7,7 @@ from repeat_eos_struct import _schema
 class TestRepeatEosStruct(unittest.TestCase):
     def test_repeat_eos_struct(self):
         r = _schema.parse_file('src/repeat_eos_struct.bin')
+
         self.assertEqual(len(r.chunks), 2)
         self.assertEqual(r.chunks[0].offset, 0)
         self.assertEqual(r.chunks[0].len, 66)

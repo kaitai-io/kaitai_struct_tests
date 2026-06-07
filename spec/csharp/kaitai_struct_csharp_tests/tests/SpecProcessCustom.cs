@@ -52,6 +52,7 @@ namespace Kaitai
         public void TestProcessCustom()
         {
             var r = ProcessCustom.FromFile(SourceFile("process_rotate.bin"));
+
             Assert.AreEqual(new byte[] { 0x10, 0xb3, 0x94, 0x94, 0xf4 }, r.Buf1);
             Assert.AreEqual(new byte[] { 0x5f, 0xba, 0x7b, 0x93, 0x63, 0x23, 0x5f }, r.Buf2);
             Assert.AreEqual(new byte[] { 0x29, 0x33, 0xb1, 0x38, 0xb1 }, r.Buf3);

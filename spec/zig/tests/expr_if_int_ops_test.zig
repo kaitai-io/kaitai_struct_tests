@@ -14,6 +14,7 @@ test "ExprIfIntOps" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_if_int_ops.ExprIfIntOps.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(3, r.key);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 252, 252, 252, 253, 9, 3, 3, 3 }, r.bytes);
     try _imp_std.testing.expectEqual(253, (try r.bytesSubKey()));

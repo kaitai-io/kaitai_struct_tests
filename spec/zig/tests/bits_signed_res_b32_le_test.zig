@@ -14,5 +14,6 @@ test "BitsSignedResB32Le" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_bits_signed_res_b32_le.BitsSignedResB32Le.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(4294967295, r.a);
 }

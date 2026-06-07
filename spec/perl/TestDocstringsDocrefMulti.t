@@ -10,7 +10,6 @@ use DocstringsDocrefMulti;
 
 sub test_docstrings_docref_multi: Test(0) {
     my $r = DocstringsDocrefMulti->from_file('src/fixed_struct.bin');
-
 }
 
 Test::Class->runtests;

@@ -7,5 +7,6 @@ from enum_negative import _schema
 class TestEnumNegative(unittest.TestCase):
     def test_enum_negative(self):
         r = _schema.parse_file('src/enum_negative.bin')
+
         self.assertEqual(r.f1, 'negative_one')
         self.assertEqual(r.f2, 'positive_one')

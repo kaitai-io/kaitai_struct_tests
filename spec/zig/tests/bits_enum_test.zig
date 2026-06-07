@@ -14,6 +14,7 @@ test "BitsEnum" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_bits_enum.BitsEnum.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(_imp_bits_enum.BitsEnum.Animal.platypus, r.one);
     try _imp_std.testing.expectEqual(_imp_bits_enum.BitsEnum.Animal.horse, r.two);
     try _imp_std.testing.expectEqual(_imp_bits_enum.BitsEnum.Animal.cat, r.three);

@@ -10,6 +10,7 @@ use RepeatEosBitsB4;
 
 sub test_repeat_eos_bits_b4: Test(5) {
     my $r = RepeatEosBitsB4->from_file('src/enum_negative.bin');
+
     is(scalar(@{$r->nibbles()}), 4, 'Equals');
     is(@{$r->nibbles()}[0], 15, 'Equals');
     is(@{$r->nibbles()}[1], 15, 'Equals');

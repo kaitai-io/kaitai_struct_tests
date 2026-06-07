@@ -28,6 +28,7 @@ func TestSwitchRepeatExprInvalid(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, 3, len(r.Codes))
 	assert.EqualValues(t, 1, r.Codes[0])
 	assert.EqualValues(t, 7, r.Codes[1])

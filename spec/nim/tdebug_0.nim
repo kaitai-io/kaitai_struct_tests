@@ -3,6 +3,7 @@ import ../../compiled/nim/debug_0
 import auxiliary/test_utils
 
 let r = Debug0.fromFile("../../src/fixed_struct.bin")
+
 assert r.one == 80
 assert len(r.arrayOfInts) == 3
 assert r.arrayOfInts[0] == 65

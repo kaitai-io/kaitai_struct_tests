@@ -8,5 +8,4 @@ TestDocstringsDocrefMulti = {}
 
 function TestDocstringsDocrefMulti:test_docstrings_docref_multi()
     local r = DocstringsDocrefMulti:from_file("src/fixed_struct.bin")
-
 end

@@ -6,6 +6,5 @@ namespace Kaitai\Struct\Tests;
 class ValidEqStrEncodingsTest extends TestCase {
     public function testValidEqStrEncodings() {
         $r = ValidEqStrEncodings::fromFile(self::SRC_DIR_PATH . '/str_encodings.bin');
-
     }
 }

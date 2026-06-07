@@ -11,7 +11,6 @@ namespace Kaitai
         public void TestFixedContents()
         {
             var r = FixedContents.FromFile(SourceFile("fixed_struct.bin"));
-
         }
     }
 }

@@ -10,7 +10,6 @@ use DocstringsDocref;
 
 sub test_docstrings_docref: Test(0) {
     my $r = DocstringsDocref->from_file('src/fixed_struct.bin');
-
 }
 
 Test::Class->runtests;

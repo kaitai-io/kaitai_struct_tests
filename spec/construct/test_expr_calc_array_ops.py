@@ -7,6 +7,7 @@ from expr_calc_array_ops import _schema
 class TestExprCalcArrayOps(unittest.TestCase):
     def test_expr_calc_array_ops(self):
         r = _schema.parse_file('src/fixed_struct.bin')
+
         self.assertEqual(r.int_array_size, 7)
         self.assertEqual(r.int_array_first, 10)
         self.assertEqual(r.int_array_mid, 25)

@@ -14,6 +14,7 @@ test "FloatingPoints" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_floating_points.FloatingPoints.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(@as(f32, 0.5), r.single_value);
     try _imp_std.testing.expectEqual(@as(f32, 0.5), r.single_value_be);
     try _imp_std.testing.expectEqual(0.25, r.double_value);

@@ -14,6 +14,7 @@ test "InstanceIoUserEarlier" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_instance_io_user_earlier.InstanceIoUserEarlier.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(83, r.sized_a.content);
     try _imp_std.testing.expectEqual(102, (try r.into_a.inst()).content);
     try _imp_std.testing.expectEqual(28527, (try r.aMid()));

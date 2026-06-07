@@ -14,6 +14,7 @@ test "ProcessRepeatUsertype" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_process_repeat_usertype.ProcessRepeatUsertype.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(-1975704206, r.blocks.items[0].a);
     try _imp_std.testing.expectEqual(20, r.blocks.items[0].b);
     try _imp_std.testing.expectEqual(279597642, r.blocks.items[1].a);

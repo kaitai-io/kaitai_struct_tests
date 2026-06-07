@@ -14,6 +14,7 @@ test "ExprSizeofValueSized" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_sizeof_value_sized.ExprSizeofValueSized.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(12 + 2, (try r.selfSizeof()));
     try _imp_std.testing.expectEqual(12, (try r.sizeofBlock()));
     try _imp_std.testing.expectEqual(1, (try r.sizeofBlockA()));

@@ -14,5 +14,6 @@ test "IfInstances" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_if_instances.IfInstances.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(null, (try r.neverHappens()));
 }

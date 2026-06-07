@@ -14,6 +14,7 @@ test "NestedSameName2" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_nested_same_name2.NestedSameName2.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(66, r.version);
     try _imp_std.testing.expectEqual(2, r.main_data.main_size);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 17, 17, 17, 17 }, r.main_data.foo.data1);

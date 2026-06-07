@@ -14,6 +14,7 @@ test "PositionToEnd" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_position_to_end.PositionToEnd.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(66, (try r.index()).foo);
     try _imp_std.testing.expectEqual(4660, (try r.index()).bar);
 }

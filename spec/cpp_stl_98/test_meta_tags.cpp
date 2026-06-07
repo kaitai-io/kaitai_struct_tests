@@ -11,6 +11,5 @@ BOOST_AUTO_TEST_CASE(test_meta_tags) {
     kaitai::kstream ks(&ifs);
     meta_tags_t* r = new meta_tags_t(&ks);
 
-
     delete r;
 }

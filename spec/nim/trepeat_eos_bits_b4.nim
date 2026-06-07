@@ -5,6 +5,7 @@ import ../../compiled/nim/repeat_eos_bits_b4
 import auxiliary/test_utils
 
 let r = RepeatEosBitsB4.fromFile("../../src/enum_negative.bin")
+
 assert len(r.nibbles) == 4
 assert r.nibbles[0] == 15
 assert r.nibbles[1] == 15

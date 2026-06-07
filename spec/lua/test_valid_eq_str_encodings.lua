@@ -8,5 +8,4 @@ TestValidEqStrEncodings = {}
 
 function TestValidEqStrEncodings:test_valid_eq_str_encodings()
     local r = ValidEqStrEncodings:from_file("src/str_encodings.bin")
-
 end

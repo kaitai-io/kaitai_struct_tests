@@ -7,6 +7,7 @@ from switch_manual_str_else import _schema
 class TestSwitchManualStrElse(unittest.TestCase):
     def test_switch_manual_str_else(self):
         r = _schema.parse_file('src/switch_opcodes2.bin')
+
         self.assertEqual(len(r.opcodes), 4)
         self.assertEqual(r.opcodes[0].code, "S")
         self.assertEqual(r.opcodes[0].body.value, "foo")

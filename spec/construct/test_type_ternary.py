@@ -7,4 +7,5 @@ from type_ternary import _schema
 class TestTypeTernary(unittest.TestCase):
     def test_type_ternary(self):
         r = _schema.parse_file('src/term_strz.bin')
+
         self.assertEqual(r.dif.value, 101)

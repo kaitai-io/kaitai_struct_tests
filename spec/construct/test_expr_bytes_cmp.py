@@ -7,6 +7,7 @@ from expr_bytes_cmp import _schema
 class TestExprBytesCmp(unittest.TestCase):
     def test_expr_bytes_cmp(self):
         r = _schema.parse_file('src/fixed_struct.bin')
+
         self.assertEqual(r.one, b"\x50")
         self.assertEqual(r.two, b"\x41\x43\x4B")
         self.assertEqual(r.is_eq, True)

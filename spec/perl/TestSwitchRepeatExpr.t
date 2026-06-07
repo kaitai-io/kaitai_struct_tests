@@ -10,6 +10,7 @@ use SwitchRepeatExpr;
 
 sub test_switch_repeat_expr: Test(7) {
     my $r = SwitchRepeatExpr->from_file('src/switch_integers.bin');
+
     is(scalar(@{$r->codes()}), 3, 'Equals');
     is(@{$r->codes()}[0], 1, 'Equals');
     is(@{$r->codes()}[1], 7, 'Equals');

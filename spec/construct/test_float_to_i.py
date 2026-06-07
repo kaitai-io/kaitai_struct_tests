@@ -7,6 +7,7 @@ from float_to_i import _schema
 class TestFloatToI(unittest.TestCase):
     def test_float_to_i(self):
         r = _schema.parse_file('src/floating_points.bin')
+
         self.assertAlmostEqual(r.single_value, 0.5, 6)
         self.assertAlmostEqual(r.double_value, 0.25, 6)
         self.assertAlmostEqual(r.single_value_if, 0.5, 6)

@@ -10,6 +10,7 @@ fn test_if_struct() -> KResult<()> {
     let bytes = fs::read("../../src/if_struct.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<IfStruct> = IfStruct::read_into(&_io, None, None)?;
+
     assert_eq!(*r.op1().opcode(), 83);
     assert!(r.op1().arg_tuple().is_none());
     assert_eq!(*r.op1().arg_str().str(), "foo");

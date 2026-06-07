@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ImportsCastToImported;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestImportsCastToImported extends CommonSpec {
-
     @Test
     public void testImportsCastToImported() throws Exception {
         ImportsCastToImported r = ImportsCastToImported.fromFile(SRC_DIR + "process_xor_4.bin");

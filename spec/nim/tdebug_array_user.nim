@@ -5,6 +5,7 @@ import ../../compiled/nim/debug_array_user
 import auxiliary/test_utils
 
 let r = DebugArrayUser.fromFile("../../src/fixed_struct.bin")
+
 assert r.oneCat.meow == 80
 assert len(r.arrayOfCats) == 3
 assert r.arrayOfCats[0].meow == 65

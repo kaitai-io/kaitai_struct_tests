@@ -14,6 +14,7 @@ test "BitsUnalignedB64Be" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_bits_unaligned_b64_be.BitsUnalignedB64Be.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(true, r.a);
     try _imp_std.testing.expectEqual(15670070570729969769, r.b);
     try _imp_std.testing.expectEqual(14, r.c);

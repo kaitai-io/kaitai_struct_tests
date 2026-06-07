@@ -14,6 +14,7 @@ test "Expr2" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_2.Expr2.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(10, r.str1.len_orig);
     try _imp_std.testing.expectEqual(7, (try r.str1.lenMod()));
     try _imp_std.testing.expectEqualStrings("Some AS", r.str1.str);

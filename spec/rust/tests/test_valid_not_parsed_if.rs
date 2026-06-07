@@ -10,6 +10,5 @@ fn test_valid_not_parsed_if() -> KResult<()> {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<ValidNotParsedIf> = ValidNotParsedIf::read_into(&_io, None, None)?;
-
     Ok(())
 }

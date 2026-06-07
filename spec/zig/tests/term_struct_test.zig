@@ -14,6 +14,7 @@ test "TermStruct" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_term_struct.TermStruct.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 102, 111, 111 }, r.s1.value);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 98, 97, 114 }, r.s2.value);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 124, 98, 97, 122, 64 }, r.s3.value);

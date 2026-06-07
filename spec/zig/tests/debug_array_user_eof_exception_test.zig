@@ -14,6 +14,7 @@ test "DebugArrayUserEofException" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_debug_array_user_eof_exception.DebugArrayUserEofException.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(3, r.one_cat.meow);
     try _imp_std.testing.expectEqual(73, r.one_cat.chirp);
     try _imp_std.testing.expectEqual(3, r.array_of_cats.items.len);

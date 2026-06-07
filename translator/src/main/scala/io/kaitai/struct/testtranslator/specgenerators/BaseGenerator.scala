@@ -6,7 +6,7 @@ import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.testtranslator.{TestAssert, TestEquals, TestException, TestSpec, ExpectedException}
 import _root_.io.kaitai.struct.translators.{AbstractTranslator, TypeDetector}
 
-abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
+abstract class BaseGenerator(spec: TestSpec, emptyLineBeforeAsserts: Boolean = true) extends SpecGenerator {
   val translator: AbstractTranslator with TypeDetector
 
   val FLOAT_DELTA = "1e-6"
@@ -37,6 +37,9 @@ abstract class BaseGenerator(spec: TestSpec) extends SpecGenerator {
     spec.exception match {
       case None =>
         runParse()
+        if (emptyLineBeforeAsserts && !spec.asserts.isEmpty) {
+          out.puts
+        }
         runAsserts()
       case Some(expException) =>
         runParseExpectError(expException)

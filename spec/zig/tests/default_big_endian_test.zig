@@ -14,5 +14,6 @@ test "DefaultBigEndian" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_default_big_endian.DefaultBigEndian.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(117440512, r.one);
 }

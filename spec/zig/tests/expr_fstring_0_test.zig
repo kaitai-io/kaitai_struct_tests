@@ -14,6 +14,7 @@ test "ExprFstring0" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_fstring_0.ExprFstring0.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualStrings("foo|b", r.seq_str);
     try _imp_std.testing.expectEqual(97, r.seq_int);
     try _imp_std.testing.expectEqualStrings("", (try r.empty()));

@@ -14,6 +14,7 @@ test "RepeatUntilTermBytes" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_repeat_until_term_bytes.RepeatUntilTermBytes.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(2, r.records1.items.len);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 232, 186 }, r.records1.items[0]);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{  }, r.records1.items[1]);
