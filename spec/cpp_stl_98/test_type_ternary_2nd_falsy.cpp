@@ -12,8 +12,8 @@ BOOST_AUTO_TEST_CASE(test_type_ternary_2nd_falsy) {
     BOOST_CHECK_EQUAL(r->v_false(), false);
     BOOST_CHECK_EQUAL(r->v_int_zero(), 0);
     BOOST_CHECK_EQUAL(r->v_int_neg_zero(), -0);
-    BOOST_CHECK_CLOSE(r->v_float_zero(), 0.0, 1e-4);
-    BOOST_CHECK_CLOSE(r->v_float_neg_zero(), -0.0, 1e-4);
+    BOOST_CHECK_CLOSE(r->v_float_zero(), 0.0, 1e-6);
+    BOOST_CHECK_CLOSE(r->v_float_neg_zero(), -0.0, 1e-6);
     BOOST_CHECK_EQUAL(r->v_str_w_zero(), std::string("0"));
     BOOST_CHECK_EQUAL(r->v_str_w_zero().length(), 1);
     BOOST_CHECK_EQUAL(r->ut()->m(), 7);
