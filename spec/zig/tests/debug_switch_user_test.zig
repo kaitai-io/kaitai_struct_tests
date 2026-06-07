@@ -14,6 +14,7 @@ test "DebugSwitchUser" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_debug_switch_user.DebugSwitchUser.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(1, r.code);
     try _imp_std.testing.expectEqual(-190, r.data.one.val);
 }

@@ -4,6 +4,7 @@ RSpec.describe 'SwitchRepeatExpr' do
   it 'parses test properly' do
     require 'switch_repeat_expr'
     r = SwitchRepeatExpr.from_file('src/switch_integers.bin')
+
     expect(r.codes.length).to eq 3
     expect(r.codes[0]).to eq 1
     expect(r.codes[1]).to eq 7

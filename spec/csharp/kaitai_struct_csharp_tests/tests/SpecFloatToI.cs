@@ -11,6 +11,7 @@ namespace Kaitai
         public void TestFloatToI()
         {
             var r = FloatToI.FromFile(SourceFile("floating_points.bin"));
+
             Assert.AreEqual(r.SingleValue, 0.5, 1e-6);
             Assert.AreEqual(r.DoubleValue, 0.25, 1e-6);
             Assert.AreEqual(r.SingleValueIf, 0.5, 1e-6);

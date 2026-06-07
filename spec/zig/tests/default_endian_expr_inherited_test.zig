@@ -14,6 +14,7 @@ test "DefaultEndianExprInherited" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_default_endian_expr_inherited.DefaultEndianExprInherited.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 73, 73 }, r.docs.items[0].indicator);
     try _imp_std.testing.expectEqual(66, r.docs.items[0].main.insides.some_int);
     try _imp_std.testing.expectEqual(16896, r.docs.items[0].main.insides.more.some_int1);

@@ -28,6 +28,7 @@ func TestRepeatEosBitsB4(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, 4, len(r.Nibbles))
 	assert.EqualValues(t, 15, r.Nibbles[0])
 	assert.EqualValues(t, 15, r.Nibbles[1])

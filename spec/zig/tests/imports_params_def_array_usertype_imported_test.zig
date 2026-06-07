@@ -14,6 +14,7 @@ test "ImportsParamsDefArrayUsertypeImported" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_imports_params_def_array_usertype_imported.ImportsParamsDefArrayUsertypeImported.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(2, r.hws.items.len);
     try _imp_std.testing.expectEqual(236, r.hws.items[0].one);
     try _imp_std.testing.expectEqual(187, r.hws.items[1].one);

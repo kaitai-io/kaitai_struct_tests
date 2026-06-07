@@ -14,6 +14,7 @@ test "EnumLongRangeS" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_enum_long_range_s.EnumLongRangeS.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(_imp_enum_long_range_s.EnumLongRangeS.Constants.long_min, r.f1);
     try _imp_std.testing.expectEqual(_imp_enum_long_range_s.EnumLongRangeS.Constants.int_below_min, r.f2);
     try _imp_std.testing.expectEqual(_imp_enum_long_range_s.EnumLongRangeS.Constants.int_min, r.f3);

@@ -4,7 +4,6 @@ import io.kaitai.struct.testformats.DebugArrayUserCurrentExcluded;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestDebugArrayUserCurrentExcluded extends CommonSpec {
-
     @Test
     public void testDebugArrayUserCurrentExcluded() throws Exception {
         DebugArrayUserCurrentExcluded r = DebugArrayUserCurrentExcluded.fromFile(SRC_DIR + "term_strz.bin");

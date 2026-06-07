@@ -14,6 +14,7 @@ test "Imports0" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_imports0.Imports0.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(80, r.two);
     try _imp_std.testing.expectEqual(65, r.hw.one);
     try _imp_std.testing.expectEqual(65, (try r.hwOne()));

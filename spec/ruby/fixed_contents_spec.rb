@@ -4,6 +4,5 @@ RSpec.describe 'FixedContents' do
   it 'parses test properly' do
     require 'fixed_contents'
     r = FixedContents.from_file('src/fixed_struct.bin')
-
   end
 end

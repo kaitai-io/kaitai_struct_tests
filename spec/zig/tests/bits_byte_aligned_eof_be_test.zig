@@ -14,6 +14,7 @@ test "BitsByteAlignedEofBe" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_bits_byte_aligned_eof_be.BitsByteAlignedEofBe.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 18, 52, 86, 120, 18, 52, 86, 120 }, r.prebuf);
     try _imp_std.testing.expectEqual(596523, r.bits);
 }

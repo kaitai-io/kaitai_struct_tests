@@ -14,6 +14,7 @@ test "ProcessRepeatUsertypeDynargXor" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_process_repeat_usertype_dynarg_xor.ProcessRepeatUsertypeDynargXor.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(2319263090, r.blocks.items[0].a);
     try _imp_std.testing.expectEqual(263540053, r.blocks.items[1].a);
     try _imp_std.testing.expectEqual(209, r.blocks_b.dummy);

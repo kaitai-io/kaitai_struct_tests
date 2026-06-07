@@ -14,5 +14,6 @@ test "ZlibWithHeader78" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_zlib_with_header_78.ZlibWithHeader78.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 97, 32, 113, 117, 105, 99, 107, 32, 98, 114, 111, 119, 110, 32, 102, 111, 120, 32, 106, 117, 109, 112, 115, 32, 111, 118, 101, 114 }, r.data);
 }

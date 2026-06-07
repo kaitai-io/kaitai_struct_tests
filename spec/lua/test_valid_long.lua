@@ -8,5 +8,4 @@ TestValidLong = {}
 
 function TestValidLong:test_valid_long()
     local r = ValidLong:from_file("src/fixed_struct.bin")
-
 end

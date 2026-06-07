@@ -10,6 +10,7 @@ use NameClashImportVsInst;
 
 sub test_name_clash_import_vs_inst: Test(2) {
     my $r = NameClashImportVsInst->from_file('src/fixed_struct.bin');
+
     is($r->integers()->uint8(), 255, 'Equals');
     is($r->std(), 3, 'Equals');
 }

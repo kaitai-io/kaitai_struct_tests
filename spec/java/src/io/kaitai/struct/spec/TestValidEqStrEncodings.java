@@ -9,6 +9,5 @@ public class TestValidEqStrEncodings extends CommonSpec {
     @Test
     public void testValidEqStrEncodings() throws Exception {
         ValidEqStrEncodings r = ValidEqStrEncodings.fromFile(SRC_DIR + "str_encodings.bin");
-
     }
 }

@@ -14,6 +14,7 @@ test "InstanceInRepeatUntil" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_instance_in_repeat_until.InstanceInRepeatUntil.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(5, r.entries.items.len);
     try _imp_std.testing.expectEqual(66, r.entries.items[0]);
     try _imp_std.testing.expectEqual(0, r.entries.items[1]);

@@ -28,6 +28,7 @@ func TestBitsByteAligned(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, 20, r.One)
 	assert.EqualValues(t, 65, r.Byte1)
 	assert.EqualValues(t, 2, r.Two)

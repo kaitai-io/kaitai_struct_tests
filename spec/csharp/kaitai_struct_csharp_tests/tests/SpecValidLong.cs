@@ -11,7 +11,6 @@ namespace Kaitai
         public void TestValidLong()
         {
             var r = ValidLong.FromFile(SourceFile("fixed_struct.bin"));
-
         }
     }
 }

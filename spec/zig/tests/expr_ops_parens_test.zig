@@ -14,6 +14,7 @@ test "ExprOpsParens" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_ops_parens.ExprOpsParens.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualStrings("29", (try r.iSumToStr()));
     try _imp_std.testing.expectEqual(9, (try r.fSumToInt()));
     try _imp_std.testing.expectEqual(10, (try r.strConcatLen()));

@@ -10,6 +10,5 @@ fn test_valid_switch() -> KResult<()> {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<ValidSwitch> = ValidSwitch::read_into(&_io, None, None)?;
-
     Ok(())
 }

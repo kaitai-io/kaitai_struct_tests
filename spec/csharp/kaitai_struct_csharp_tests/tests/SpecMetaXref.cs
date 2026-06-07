@@ -11,7 +11,6 @@ namespace Kaitai
         public void TestMetaXref()
         {
             var r = MetaXref.FromFile(SourceFile("fixed_struct.bin"));
-
         }
     }
 }

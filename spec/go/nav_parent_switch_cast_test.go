@@ -28,6 +28,7 @@ func TestNavParentSwitchCast(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, 1, r.Main.BufType)
 	assert.EqualValues(t, 7, r.Main.Flag)
 	tmp1, err := r.Main.Buf.(*NavParentSwitchCast_Foo_One).Branch.Flag()

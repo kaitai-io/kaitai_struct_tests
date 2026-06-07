@@ -14,6 +14,7 @@ test "ExprBytesNonLiteral" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_bytes_non_literal.ExprBytesNonLiteral.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(2, (try r.calcBytes()).len);
     try _imp_std.testing.expectEqual(255, (try r.calcBytes())[0]);
     try _imp_std.testing.expectEqual(1, (try r.calcBytes())[1]);

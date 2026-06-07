@@ -5,6 +5,7 @@ import ../../compiled/nim/bits_byte_aligned
 import auxiliary/test_utils
 
 let r = BitsByteAligned.fromFile("../../src/fixed_struct.bin")
+
 assert r.one == 20
 assert r.byte1 == 65
 assert r.two == 2

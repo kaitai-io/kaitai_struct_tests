@@ -14,6 +14,7 @@ test "ExprIoTernary" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_io_ternary.ExprIoTernary.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(8, (try r.oneOrTwoIoSize1()));
     try _imp_std.testing.expectEqual(8, (try r.oneOrTwoIoSize2()));
     try _imp_std.testing.expectEqual(11, (try r.oneOrTwoIoSizeAdd3()));

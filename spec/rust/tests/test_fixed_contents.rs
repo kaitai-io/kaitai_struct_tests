@@ -10,6 +10,5 @@ fn test_fixed_contents() -> KResult<()> {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<FixedContents> = FixedContents::read_into(&_io, None, None)?;
-
     Ok(())
 }

@@ -4,6 +4,5 @@ RSpec.describe 'ValidOptionalId' do
   it 'parses test properly' do
     require 'valid_optional_id'
     r = ValidOptionalId.from_file('src/fixed_struct.bin')
-
   end
 end

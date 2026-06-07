@@ -6,6 +6,5 @@ namespace Kaitai\Struct\Tests;
 class ValidShortTest extends TestCase {
     public function testValidShort() {
         $r = ValidShort::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
-
     }
 }

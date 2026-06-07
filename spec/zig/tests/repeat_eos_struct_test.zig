@@ -14,6 +14,7 @@ test "RepeatEosStruct" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_repeat_eos_struct.RepeatEosStruct.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(2, r.chunks.items.len);
     try _imp_std.testing.expectEqual(0, r.chunks.items[0].offset);
     try _imp_std.testing.expectEqual(66, r.chunks.items[0].len);

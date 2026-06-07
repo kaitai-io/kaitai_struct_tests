@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.NavRootRecursive;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestNavRootRecursive extends CommonSpec {
-
     @Test
     public void testNavRootRecursive() throws Exception {
         NavRootRecursive r = NavRootRecursive.fromFile(SRC_DIR + "enum_negative.bin");

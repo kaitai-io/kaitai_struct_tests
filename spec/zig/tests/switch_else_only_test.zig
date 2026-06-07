@@ -14,6 +14,7 @@ test "SwitchElseOnly" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_switch_else_only.SwitchElseOnly.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(83, r.opcode);
     try _imp_std.testing.expectEqual(102, r.prim_byte);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 114, 0, 73, 66 }, r.ut.value);

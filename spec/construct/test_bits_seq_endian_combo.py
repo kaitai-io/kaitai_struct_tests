@@ -7,6 +7,7 @@ from bits_seq_endian_combo import _schema
 class TestBitsSeqEndianCombo(unittest.TestCase):
     def test_bits_seq_endian_combo(self):
         r = _schema.parse_file('src/process_xor_4.bin')
+
         self.assertEqual(r.be1, 59)
         self.assertEqual(r.be2, 187)
         self.assertEqual(r.le3, 163)

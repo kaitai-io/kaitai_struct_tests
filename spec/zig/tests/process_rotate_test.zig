@@ -14,6 +14,7 @@ test "ProcessRotate" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_process_rotate.ProcessRotate.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 72, 101, 108, 108, 111 }, r.buf1);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 87, 111, 114, 108, 100 }, r.buf2);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 84, 104, 101, 114, 101 }, r.buf3);

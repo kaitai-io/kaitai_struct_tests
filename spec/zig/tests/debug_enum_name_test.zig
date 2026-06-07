@@ -14,6 +14,7 @@ test "DebugEnumName" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_debug_enum_name.DebugEnumName.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(_imp_debug_enum_name.DebugEnumName.TestEnum1.enum_value_80, r.one);
     try _imp_std.testing.expectEqual(_imp_debug_enum_name.DebugEnumName.TestEnum2.enum_value_65, r.array_of_ints.items[0]);
     try _imp_std.testing.expectEqual(_imp_debug_enum_name.DebugEnumName.TestSubtype.InnerEnum1.enum_value_67, r.test_type.field1);

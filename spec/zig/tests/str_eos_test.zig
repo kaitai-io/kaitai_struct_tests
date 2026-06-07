@@ -14,5 +14,6 @@ test "StrEos" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_str_eos.StrEos.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualStrings("foo|bar|baz@", r.str);
 }

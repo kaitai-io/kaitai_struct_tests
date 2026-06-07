@@ -14,6 +14,7 @@ test "DefaultBitEndianMod" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_default_bit_endian_mod.DefaultBitEndianMod.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(336, r.main.one);
     try _imp_std.testing.expectEqual(8608, r.main.two);
     try _imp_std.testing.expectEqual(11595, r.main.nest.two);

@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ImportsParamsDefArrayUsertypeImported;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestImportsParamsDefArrayUsertypeImported extends CommonSpec {
-
     @Test
     public void testImportsParamsDefArrayUsertypeImported() throws Exception {
         ImportsParamsDefArrayUsertypeImported r = ImportsParamsDefArrayUsertypeImported.fromFile(SRC_DIR + "process_xor_4.bin");

@@ -14,6 +14,7 @@ test "BitsSignedShiftB64Le" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_bits_signed_shift_b64_le.BitsSignedShiftB64Le.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(0, r.a);
     try _imp_std.testing.expectEqual(255, r.b);
 }

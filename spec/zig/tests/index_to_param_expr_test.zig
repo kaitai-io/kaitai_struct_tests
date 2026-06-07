@@ -14,6 +14,7 @@ test "IndexToParamExpr" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_index_to_param_expr.IndexToParamExpr.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(3, r.qty);
     try _imp_std.testing.expectEqual(1, r.sizes.items[0]);
     try _imp_std.testing.expectEqual(8, r.sizes.items[1]);

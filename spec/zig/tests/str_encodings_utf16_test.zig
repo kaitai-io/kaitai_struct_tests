@@ -14,6 +14,7 @@ test "StrEncodingsUtf16" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_str_encodings_utf16.StrEncodingsUtf16.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(12, r.len_be);
     try _imp_std.testing.expectEqual(65279, r.be_bom_removed.bom);
     try _imp_std.testing.expectEqualStrings("\u{3053}\u{3093}\u{306b}\u{3061}\u{306f}", r.be_bom_removed.str);

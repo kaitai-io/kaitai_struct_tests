@@ -14,6 +14,7 @@ test "IfValues" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_if_values.IfValues.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(80, r.codes.items[0].opcode);
     try _imp_std.testing.expectEqual(40, (try r.codes.items[0].halfOpcode()));
     try _imp_std.testing.expectEqual(65, r.codes.items[1].opcode);

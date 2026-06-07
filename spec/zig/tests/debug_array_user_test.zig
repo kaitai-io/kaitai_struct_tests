@@ -14,6 +14,7 @@ test "DebugArrayUser" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_debug_array_user.DebugArrayUser.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(80, r.one_cat.meow);
     try _imp_std.testing.expectEqual(3, r.array_of_cats.items.len);
     try _imp_std.testing.expectEqual(65, r.array_of_cats.items[0].meow);

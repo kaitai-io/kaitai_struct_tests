@@ -14,6 +14,7 @@ test "YamlInts" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_yaml_ints.YamlInts.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(4294967295, (try r.testU4Dec()));
     try _imp_std.testing.expectEqual(4294967295, (try r.testU4Hex()));
     try _imp_std.testing.expectEqual(18446744073709551615, (try r.testU8Dec()));

@@ -14,6 +14,7 @@ test "BcdUserTypeLe" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_bcd_user_type_le.BcdUserTypeLe.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(12345678, (try r.ltr.asInt()));
     try _imp_std.testing.expectEqualStrings("12345678", (try r.ltr.asStr()));
     try _imp_std.testing.expectEqual(87654321, (try r.rtl.asInt()));

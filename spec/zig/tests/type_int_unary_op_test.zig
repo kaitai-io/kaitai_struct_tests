@@ -14,6 +14,7 @@ test "TypeIntUnaryOp" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_type_int_unary_op.TypeIntUnaryOp.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(16720, r.value_s2);
     try _imp_std.testing.expectEqual(4706543082108963651, r.value_s8);
     try _imp_std.testing.expectEqual(-16720, (try r.unaryS2()));

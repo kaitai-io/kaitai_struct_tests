@@ -6,10 +6,10 @@ import io.kaitai.struct.testformats.IfStruct;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestIfStruct extends CommonSpec {
-
     @Test
     public void testIfStruct() throws Exception {
         IfStruct r = IfStruct.fromFile(SRC_DIR + "if_struct.bin");
+
         assertIntEquals(r.op1().opcode(), 83);
         assertNull(r.op1().argTuple());
         assertEquals(r.op1().argStr().str(), "foo");

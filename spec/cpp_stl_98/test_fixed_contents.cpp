@@ -11,6 +11,5 @@ BOOST_AUTO_TEST_CASE(test_fixed_contents) {
     kaitai::kstream ks(&ifs);
     fixed_contents_t* r = new fixed_contents_t(&ks);
 
-
     delete r;
 }

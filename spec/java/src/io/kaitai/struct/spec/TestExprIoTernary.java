@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ExprIoTernary;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestExprIoTernary extends CommonSpec {
-
     @Test
     public void testExprIoTernary() throws Exception {
         ExprIoTernary r = ExprIoTernary.fromFile(SRC_DIR + "if_struct.bin");

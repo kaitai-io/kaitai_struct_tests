@@ -14,6 +14,7 @@ test "RepeatEosTermBytes" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_repeat_eos_term_bytes.RepeatEosTermBytes.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(2, r.records.items.len);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 9, 172, 141, 141, 237, 186, 123, 147, 99, 35, 1, 42, 52, 178 }, r.records.items[0]);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 57, 178 }, r.records.items[1]);

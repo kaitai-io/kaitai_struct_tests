@@ -11,6 +11,7 @@ namespace Kaitai
         public void TestBitsByteAligned()
         {
             var r = BitsByteAligned.FromFile(SourceFile("fixed_struct.bin"));
+
             Assert.AreEqual(r.One, 20);
             Assert.AreEqual(r.Byte1, 65);
             Assert.AreEqual(r.Two, 2);

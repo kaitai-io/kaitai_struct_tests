@@ -11,7 +11,6 @@ namespace Kaitai
         public void TestDocstringsDocref()
         {
             var r = DocstringsDocref.FromFile(SourceFile("fixed_struct.bin"));
-
         }
     }
 }

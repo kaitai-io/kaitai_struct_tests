@@ -8,6 +8,7 @@ TestExprIfIntOps = {}
 
 function TestExprIfIntOps:test_expr_if_int_ops()
     local r = ExprIfIntOps:from_file("src/instance_io.bin")
+
     luaunit.assertEquals(r.key, 3)
     luaunit.assertEquals(r.bytes, "\252\252\252\253\009\003\003\003")
     luaunit.assertEquals(r.bytes_sub_key, 253)

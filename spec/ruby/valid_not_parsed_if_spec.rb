@@ -4,6 +4,5 @@ RSpec.describe 'ValidNotParsedIf' do
   it 'parses test properly' do
     require 'valid_not_parsed_if'
     r = ValidNotParsedIf.from_file('src/fixed_struct.bin')
-
   end
 end

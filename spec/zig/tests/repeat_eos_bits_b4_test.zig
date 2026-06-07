@@ -14,6 +14,7 @@ test "RepeatEosBitsB4" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_repeat_eos_bits_b4.RepeatEosBitsB4.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(4, r.nibbles.items.len);
     try _imp_std.testing.expectEqual(15, r.nibbles.items[0]);
     try _imp_std.testing.expectEqual(15, r.nibbles.items[1]);

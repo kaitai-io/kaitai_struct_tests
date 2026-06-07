@@ -7,6 +7,7 @@ from combine_enum import _schema
 class TestCombineEnum(unittest.TestCase):
     def test_combine_enum(self):
         r = _schema.parse_file('src/enum_0.bin')
+
         self.assertEqual(r.enum_u4, 'pig')
         self.assertEqual(r.enum_u2, 'horse')
         self.assertEqual(r.enum_u4_u2, 'horse')

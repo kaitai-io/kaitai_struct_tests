@@ -9,6 +9,5 @@ public class TestValidNotParsedIf extends CommonSpec {
     @Test
     public void testValidNotParsedIf() throws Exception {
         ValidNotParsedIf r = ValidNotParsedIf.fromFile(SRC_DIR + "fixed_struct.bin");
-
     }
 }

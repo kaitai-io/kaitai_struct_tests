@@ -14,6 +14,7 @@ test "ParamsPassArrayInt" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_params_pass_array_int.ParamsPassArrayInt.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(3, r.pass_ints.nums.items.len);
     try _imp_std.testing.expectEqual(513, r.pass_ints.nums.items[0]);
     try _imp_std.testing.expectEqual(1027, r.pass_ints.nums.items[1]);

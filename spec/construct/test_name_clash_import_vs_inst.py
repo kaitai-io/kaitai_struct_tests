@@ -7,5 +7,6 @@ from name_clash_import_vs_inst import _schema
 class TestNameClashImportVsInst(unittest.TestCase):
     def test_name_clash_import_vs_inst(self):
         r = _schema.parse_file('src/fixed_struct.bin')
+
         self.assertEqual(r.integers.uint8, 255)
         self.assertEqual(r.std, 3)

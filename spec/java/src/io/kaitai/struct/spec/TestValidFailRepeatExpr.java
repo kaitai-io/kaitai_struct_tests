@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import io.kaitai.struct.KaitaiStream;
 public class TestValidFailRepeatExpr extends CommonSpec {
-
     @Test(expectedExceptions = KaitaiStream.ValidationExprError.class)
     public void testValidFailRepeatExpr() throws Exception {
         ValidFailRepeatExpr r = ValidFailRepeatExpr.fromFile(SRC_DIR + "bcd_user_type_be.bin");

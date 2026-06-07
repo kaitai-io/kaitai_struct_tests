@@ -28,6 +28,7 @@ func TestSwitchManualIntSizeEos(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, 4, len(r.Chunks))
 	assert.EqualValues(t, 17, r.Chunks[0].Code)
 	assert.EqualValues(t, "Stuff", r.Chunks[0].Body.Body.(*SwitchManualIntSizeEos_ChunkBody_ChunkMeta).Title)

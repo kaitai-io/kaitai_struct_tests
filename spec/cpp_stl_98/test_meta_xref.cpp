@@ -11,6 +11,5 @@ BOOST_AUTO_TEST_CASE(test_meta_xref) {
     kaitai::kstream ks(&ifs);
     meta_xref_t* r = new meta_xref_t(&ks);
 
-
     delete r;
 }

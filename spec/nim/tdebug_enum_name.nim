@@ -5,6 +5,7 @@ import ../../compiled/nim/debug_enum_name
 import auxiliary/test_utils
 
 let r = DebugEnumName.fromFile("../../src/fixed_struct.bin")
+
 assert r.one == debug_enum_name.enum_value_80
 assert r.arrayOfInts[0] == debug_enum_name.enum_value_65
 assert r.testType.field1 == debug_enum_name.enum_value_67

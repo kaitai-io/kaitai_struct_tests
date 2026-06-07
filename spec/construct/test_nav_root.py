@@ -7,6 +7,7 @@ from nav_root import _schema
 class TestNavRoot(unittest.TestCase):
     def test_nav_root(self):
         r = _schema.parse_file('src/nav.bin')
+
         self.assertEqual(r.header.qty_entries, 2)
         self.assertEqual(r.header.filename_len, 8)
         self.assertEqual(len(r.index.entries), 2)

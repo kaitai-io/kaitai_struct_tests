@@ -9,6 +9,7 @@ public class TestEnumInvalid extends CommonSpec {
     @Test
     public void testEnumInvalid() throws Exception {
         EnumInvalid r = EnumInvalid.fromFile(SRC_DIR + "term_strz.bin");
+
         assertEquals(r.pet1(), EnumInvalid.Animal.DOG);
         assertEquals(r.pet2(), EnumInvalid.Animal.byId(111));
         assertTrue(r.pet2() instanceof EnumInvalid.Animal.Unknown);

@@ -14,6 +14,7 @@ test "ExprBytesOps" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_bytes_ops.ExprBytesOps.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(3, (try r.oneSize()));
     try _imp_std.testing.expectEqual(1, (try r.oneFirst()));
     try _imp_std.testing.expectEqual(66, (try r.oneMid()));

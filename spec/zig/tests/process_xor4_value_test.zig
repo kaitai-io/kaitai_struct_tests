@@ -14,6 +14,7 @@ test "ProcessXor4Value" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_process_xor4_value.ProcessXor4Value.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 236, 187, 163, 20 }, r.key);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 102, 111, 111, 32, 98, 97, 114 }, r.buf);
 }

@@ -8,7 +8,7 @@ import _root_.io.kaitai.struct.languages.JavaScriptCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec, ExpectedException}
 import _root_.io.kaitai.struct.translators.JavaScriptTranslator
 
-class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
+class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec, false) {
   val className = JavaScriptCompiler.type2class(spec.id)
   // JavaScriptTranslator accepts an ImportList so that if it translates an enum
   // literal referencing an external enum (e.g. `external_spec::enum::label`),

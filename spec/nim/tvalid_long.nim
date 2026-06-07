@@ -5,4 +5,3 @@ import ../../compiled/nim/valid_long
 import auxiliary/test_utils
 
 let r = ValidLong.fromFile("../../src/fixed_struct.bin")
-

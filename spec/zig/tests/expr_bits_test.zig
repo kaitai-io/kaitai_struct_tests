@@ -14,6 +14,7 @@ test "ExprBits" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_bits.ExprBits.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(2, r.a);
     try _imp_std.testing.expectEqual(_imp_expr_bits.ExprBits.Items.foo, r.enum_seq);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 102, 111 }, r.byte_size);

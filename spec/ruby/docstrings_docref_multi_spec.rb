@@ -4,6 +4,5 @@ RSpec.describe 'DocstringsDocrefMulti' do
   it 'parses test properly' do
     require 'docstrings_docref_multi'
     r = DocstringsDocrefMulti.from_file('src/fixed_struct.bin')
-
   end
 end

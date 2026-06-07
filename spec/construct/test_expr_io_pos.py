@@ -7,6 +7,7 @@ from expr_io_pos import _schema
 class TestExprIoPos(unittest.TestCase):
     def test_expr_io_pos(self):
         r = _schema.parse_file('src/expr_io_pos.bin')
+
         self.assertEqual(r.substream1.my_str, "CURIOSITY")
         self.assertEqual(r.substream1.body, b"\x11\x22\x33\x44")
         self.assertEqual(r.substream1.number, 66)

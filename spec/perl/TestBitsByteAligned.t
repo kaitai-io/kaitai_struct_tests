@@ -10,6 +10,7 @@ use BitsByteAligned;
 
 sub test_bits_byte_aligned: Test(12) {
     my $r = BitsByteAligned->from_file('src/fixed_struct.bin');
+
     is($r->one(), 20, 'Equals');
     is($r->byte_1(), 65, 'Equals');
     is($r->two(), 2, 'Equals');

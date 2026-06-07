@@ -8,6 +8,7 @@ BOOST_AUTO_TEST_CASE(test_if_struct) {
     std::ifstream ifs("src/if_struct.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     if_struct_t* r = new if_struct_t(&ks);
+
     BOOST_CHECK_EQUAL(r->op1()->opcode(), 83);
     BOOST_CHECK(r->op1()->_is_null_arg_tuple());
     BOOST_CHECK_EQUAL(r->op1()->arg_tuple(), nullptr); // added manually

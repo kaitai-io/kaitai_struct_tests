@@ -7,6 +7,7 @@ from expr_mod import _schema
 class TestExprMod(unittest.TestCase):
     def test_expr_mod(self):
         r = _schema.parse_file('src/fixed_struct.bin')
+
         self.assertEqual(r.int_u, 1262698832)
         self.assertEqual(r.int_s, -52947)
         self.assertEqual(r.mod_pos_const, 9)

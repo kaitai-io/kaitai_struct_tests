@@ -6,6 +6,7 @@ namespace Kaitai\Struct\Tests;
 class SwitchRepeatExprTest extends TestCase {
     public function testSwitchRepeatExpr() {
         $r = SwitchRepeatExpr::fromFile(self::SRC_DIR_PATH . '/switch_integers.bin');
+
         $this->assertSame(3, count($r->codes()));
         $this->assertSame(1, $r->codes()[0]);
         $this->assertSame(7, $r->codes()[1]);

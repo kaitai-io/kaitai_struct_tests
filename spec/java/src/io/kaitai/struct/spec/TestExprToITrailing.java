@@ -10,6 +10,7 @@ public class TestExprToITrailing extends CommonSpec {
     @Test
     public void testExprToITrailing() throws Exception {
         ExprToITrailing r = ExprToITrailing.fromFile(SRC_DIR + "term_strz.bin");
+
         assertThrows(NumberFormatException.class, () -> r.toIR10());
         assertIntEquals(r.toIR16(), 152517308);
         assertThrows(NumberFormatException.class, () -> r.toIGarbage());

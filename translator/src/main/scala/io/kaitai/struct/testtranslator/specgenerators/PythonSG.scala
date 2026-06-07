@@ -7,7 +7,7 @@ import _root_.io.kaitai.struct.languages.PythonCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec, ExpectedException}
 import _root_.io.kaitai.struct.translators.PythonTranslator
 
-class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
+class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec, false) {
   importList.add("import unittest")
 
   val config = RuntimeConfig(pythonPackage = "testformats")

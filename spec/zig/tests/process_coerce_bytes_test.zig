@@ -14,6 +14,7 @@ test "ProcessCoerceBytes" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_process_coerce_bytes.ProcessCoerceBytes.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(0, r.records.items[0].flag);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 65, 65, 65, 65 }, (try r.records.items[0].buf()));
     try _imp_std.testing.expectEqual(1, r.records.items[1].flag);

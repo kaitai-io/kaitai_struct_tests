@@ -14,5 +14,6 @@ test "NavParentVsValueInst" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_nav_parent_vs_value_inst.NavParentVsValueInst.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualStrings("foo", r.s1);
 }

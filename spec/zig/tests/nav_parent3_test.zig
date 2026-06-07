@@ -12,6 +12,7 @@ test "NavParent3" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_nav_parent3.NavParent3.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(8, r.ofs_tags);
     try _imp_std.testing.expectEqual(2, r.num_tags);
     try _imp_std.testing.expectEqualStrings("RAHC", (try r.tags()).items[0].name);

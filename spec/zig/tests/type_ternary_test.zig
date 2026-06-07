@@ -14,5 +14,6 @@ test "TypeTernary" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_type_ternary.TypeTernary.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(101, (try r.dif()).value);
 }

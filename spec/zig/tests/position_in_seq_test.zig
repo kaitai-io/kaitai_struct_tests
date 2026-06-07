@@ -14,5 +14,6 @@ test "PositionInSeq" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_position_in_seq.PositionInSeq.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualSlices(u8, &.{ 0 + 1, 2, 3 }, r.numbers.items);
 }

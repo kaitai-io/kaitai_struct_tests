@@ -28,6 +28,7 @@ func TestDebugArrayUserCurrentExcluded(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, []uint8{102, 111, 111}, r.ArrayOfCats[0].Meow)
 	assert.EqualValues(t, []uint8{124, 98}, r.ArrayOfCats[1].Meow)
 	assert.EqualValues(t, []uint8{97}, r.ArrayOfCats[2].Meow)

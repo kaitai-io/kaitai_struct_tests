@@ -12,6 +12,7 @@ test "IfStruct" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_if_struct.IfStruct.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(83, r.op1.opcode);
     try _imp_std.testing.expectEqual(null, r.op1.arg_tuple);
     try _imp_std.testing.expectEqualStrings("foo", r.op1.arg_str.?.str);

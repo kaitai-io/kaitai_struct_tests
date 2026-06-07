@@ -14,6 +14,7 @@ test "FloatToI" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_float_to_i.FloatToI.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(0.5, r.single_value);
     try _imp_std.testing.expectEqual(0.25, r.double_value);
     try _imp_std.testing.expectEqual(0.5, r.single_value_if);

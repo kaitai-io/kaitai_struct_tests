@@ -14,6 +14,7 @@ test "ProcessRepeatBytes" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_process_repeat_bytes.ProcessRepeatBytes.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 114, 37, 61, 138, 20 }, r.bufs.items[0]);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 74, 82, 170, 16, 68 }, r.bufs.items[1]);
 }
