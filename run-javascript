@@ -9,17 +9,19 @@ if [ "$OS" = "Windows_NT" ]; then
 	DIVIDER=";"
 fi
 
-# Symlinks fresh KS JavaScript runtime into node_modules dir
-mkdir -p "$JAVASCRIPT_MODULES_DIR"
-if [ ! -e "$JAVASCRIPT_MODULES_DIR/kaitai-struct" ]; then
-	ABS_JS_RUNTIME=$(pwd)/$JAVASCRIPT_RUNTIME_DIR
-	ln -s "$ABS_JS_RUNTIME" "$JAVASCRIPT_MODULES_DIR/kaitai-struct"
-fi
 # The `iconv-lite` package is assumed to be installed globally in the Docker
 # image, but in Node.js 10 and older, you can only `require()` local packages,
 # not global packages. `npm link` creates a symbolic link in the local
 # `node_modules/` directory pointing to the globally installed package.
 npm link iconv-lite
+
+# Symlinks fresh KS JavaScript runtime into node_modules dir
+# Symlink the folder after npm link, as npm might remove the folder
+mkdir -p "$JAVASCRIPT_MODULES_DIR"
+if [ ! -e "$JAVASCRIPT_MODULES_DIR/kaitai-struct" ]; then
+	ABS_JS_RUNTIME=$(pwd)/$JAVASCRIPT_RUNTIME_DIR
+	ln -s "$ABS_JS_RUNTIME" "$JAVASCRIPT_MODULES_DIR/kaitai-struct"
+fi
 
 NODE_PATH="compiled/javascript${DIVIDER}helpers/javascript${DIVIDER}$JAVASCRIPT_MODULES_DIR" \
 	mocha spec/javascript
