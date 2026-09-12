@@ -3,13 +3,13 @@
 package io.kaitai.struct.specwrite;
 
 import io.kaitai.struct.KaitaiStruct.ReadWrite;
-import io.kaitai.struct.testwrite.TypeIntUnaryOp;
+import io.kaitai.struct.testwrite.TypeIntUnaryNeg;
 import org.testng.annotations.Test;
 
-public class TestTypeIntUnaryOp extends CommonSpec {
+public class TestTypeIntUnaryNeg extends CommonSpec {
     @Override
     protected Class<? extends ReadWrite> getStructClass() {
-        return TypeIntUnaryOp.class;
+        return TypeIntUnaryNeg.class;
     }
 
     @Override

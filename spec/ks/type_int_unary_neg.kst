@@ -1,4 +1,4 @@
-id: type_int_unary_op
+id: type_int_unary_neg
 data: fixed_struct.bin
 asserts:
   - actual: value_s2

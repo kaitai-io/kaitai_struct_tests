@@ -1,5 +1,5 @@
 meta:
-  id: type_int_unary_op
+  id: type_int_unary_neg
   endian: le
 seq:
   - id: value_s2

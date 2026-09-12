@@ -3,10 +3,10 @@
 import unittest
 from specwrite.common_spec import CommonSpec
 
-from testwrite.type_int_unary_op import TypeIntUnaryOp
+from testwrite.type_int_unary_neg import TypeIntUnaryNeg
 
-class TestTypeIntUnaryOp(CommonSpec.Base):
+class TestTypeIntUnaryNeg(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.struct_class = TypeIntUnaryOp
+        self.struct_class = TypeIntUnaryNeg
         self.src_filename = 'src/fixed_struct.bin'

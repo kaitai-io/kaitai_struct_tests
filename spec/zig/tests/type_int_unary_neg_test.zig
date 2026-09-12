@@ -2,9 +2,9 @@
 
 const _imp_std = @import("std");
 const _imp_kaitai_struct = @import("kaitai_struct");
-const _imp_type_int_unary_op = @import("../formats/type_int_unary_op.zig");
+const _imp_type_int_unary_neg = @import("../formats/type_int_unary_neg.zig");
 
-test "TypeIntUnaryOp" {
+test "TypeIntUnaryNeg" {
     const file = try _imp_std.Io.Dir.cwd().openFile(_imp_std.testing.io, "../../src/fixed_struct.bin", .{});
     defer file.close(_imp_std.testing.io);
     var buffer: [8]u8 = undefined;
@@ -13,7 +13,7 @@ test "TypeIntUnaryOp" {
     var arena = _imp_std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
-    const r = try _imp_type_int_unary_op.TypeIntUnaryOp.create(&arena, &_io, null, null);
+    const r = try _imp_type_int_unary_neg.TypeIntUnaryNeg.create(&arena, &_io, null, null);
     try _imp_std.testing.expectEqual(16720, r.value_s2);
     try _imp_std.testing.expectEqual(4706543082108963651, r.value_s8);
     try _imp_std.testing.expectEqual(-16720, (try r.unaryS2()));

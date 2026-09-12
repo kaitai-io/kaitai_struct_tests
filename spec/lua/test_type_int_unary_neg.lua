@@ -2,13 +2,12 @@
 
 local luaunit = require("luaunit")
 
-require("type_int_unary_op")
+require("type_int_unary_neg")
 
-TestTypeIntUnaryOp = {}
+TestTypeIntUnaryNeg = {}
 
-function TestTypeIntUnaryOp:test_type_int_unary_op()
-    local r = TypeIntUnaryOp:from_file("src/fixed_struct.bin")
-
+function TestTypeIntUnaryNeg:test_type_int_unary_neg()
+    local r = TypeIntUnaryNeg:from_file("src/fixed_struct.bin")
     luaunit.assertEquals(r.value_s2, 16720)
     luaunit.assertEquals(r.value_s8, 4706543082108963651)
     luaunit.assertEquals(r.unary_s2, -16720)

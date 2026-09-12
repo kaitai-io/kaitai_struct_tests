@@ -5,13 +5,12 @@ using NUnit.Framework;
 namespace Kaitai
 {
     [TestFixture]
-    public class SpecTypeIntUnaryOp : CommonSpec
+    public class SpecTypeIntUnaryNeg : CommonSpec
     {
         [Test]
-        public void TestTypeIntUnaryOp()
+        public void TestTypeIntUnaryNeg()
         {
-            var r = TypeIntUnaryOp.FromFile(SourceFile("fixed_struct.bin"));
-
+            var r = TypeIntUnaryNeg.FromFile(SourceFile("fixed_struct.bin"));
             Assert.AreEqual(r.ValueS2, 16720);
             Assert.AreEqual(r.ValueS8, 4706543082108963651);
             Assert.AreEqual(r.UnaryS2, -16720);
