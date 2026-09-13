@@ -14,6 +14,6 @@ public class TestTypeIntUnaryNeg extends CommonSpec {
 
     @Override
     protected String getSrcFilename() {
-        return "fixed_struct.bin";
+        return "type_int_unary_neg.bin";
     }
 }

@@ -4,8 +4,34 @@ import os, streams, options, sequtils
 import ../../compiled/nim/type_int_unary_neg
 import auxiliary/test_utils
 
-let r = TypeIntUnaryNeg.fromFile("../../src/fixed_struct.bin")
-assert r.valueS2 == 16720
-assert r.valueS8 == 4706543082108963651'i64
-assert r.unaryS2 == -16720
-assert r.unaryS8 == -4706543082108963651'i64
+let r = TypeIntUnaryNeg.fromFile("../../src/type_int_unary_neg.bin")
+assert r.s1Val == -128
+assert r.s2Val == -32768
+assert r.s4Val == -2147483646
+assert r.s8Val == 9223372036854775806'i64
+assert r.u1Val == 253
+assert r.u2Val == 65534
+assert r.u4ValMsbSet == 4293844425'i64
+assert r.u4ValMsbClear == 2147483647
+assert r.u8Val == 9223372036854775805'i64
+assert r.b08Val == 253
+assert r.b16Val == 65534
+assert r.b32Val == 4293844425'i64
+assert r.b64Val == 9223372036854775805'i64
+assert r.b31Val == 2147483647
+assert r.b63Val == 9223372036854775804'i64
+assert r.negS1Val == 128
+assert r.negS2Val == 32768
+assert r.negS4Val == 2147483646
+assert r.negS8Val == -9223372036854775806'i64
+assert r.negU1Val == -253
+assert r.negU2Val == -65534
+assert r.negU4ValMsbSet == -4293844425'i64
+assert r.negU4ValMsbClear == -2147483647
+assert r.negU8Val == -9223372036854775805'i64
+assert r.negB08Val == -253
+assert r.negB16Val == -65534
+assert r.negB32Val == -4293844425'i64
+assert r.negB64Val == -9223372036854775805'i64
+assert r.negB31Val == -2147483647
+assert r.negB63Val == -9223372036854775804'i64

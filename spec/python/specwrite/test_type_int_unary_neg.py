@@ -9,4 +9,4 @@ class TestTypeIntUnaryNeg(CommonSpec.Base):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.struct_class = TypeIntUnaryNeg
-        self.src_filename = 'src/fixed_struct.bin'
+        self.src_filename = 'src/type_int_unary_neg.bin'

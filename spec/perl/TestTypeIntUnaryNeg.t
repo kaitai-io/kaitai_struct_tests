@@ -8,12 +8,38 @@ use base qw(Test::Class);
 use Test::More;
 use TypeIntUnaryNeg;
 
-sub test_type_int_unary_neg: Test(4) {
-    my $r = TypeIntUnaryNeg->from_file('src/fixed_struct.bin');
-    is($r->value_s2(), 16720, 'Equals');
-    is($r->value_s8(), 4706543082108963651, 'Equals');
-    is($r->unary_s2(), -16720, 'Equals');
-    is($r->unary_s8(), -4706543082108963651, 'Equals');
+sub test_type_int_unary_neg: Test(30) {
+    my $r = TypeIntUnaryNeg->from_file('src/type_int_unary_neg.bin');
+    is($r->s1_val(), -128, 'Equals');
+    is($r->s2_val(), -32768, 'Equals');
+    is($r->s4_val(), -2147483646, 'Equals');
+    is($r->s8_val(), 9223372036854775806, 'Equals');
+    is($r->u1_val(), 253, 'Equals');
+    is($r->u2_val(), 65534, 'Equals');
+    is($r->u4_val_msb_set(), 4293844425, 'Equals');
+    is($r->u4_val_msb_clear(), 2147483647, 'Equals');
+    is($r->u8_val(), 9223372036854775805, 'Equals');
+    is($r->b08_val(), 253, 'Equals');
+    is($r->b16_val(), 65534, 'Equals');
+    is($r->b32_val(), 4293844425, 'Equals');
+    is($r->b64_val(), 9223372036854775805, 'Equals');
+    is($r->b31_val(), 2147483647, 'Equals');
+    is($r->b63_val(), 9223372036854775804, 'Equals');
+    is($r->neg_s1_val(), 128, 'Equals');
+    is($r->neg_s2_val(), 32768, 'Equals');
+    is($r->neg_s4_val(), 2147483646, 'Equals');
+    is($r->neg_s8_val(), -9223372036854775806, 'Equals');
+    is($r->neg_u1_val(), -253, 'Equals');
+    is($r->neg_u2_val(), -65534, 'Equals');
+    is($r->neg_u4_val_msb_set(), -4293844425, 'Equals');
+    is($r->neg_u4_val_msb_clear(), -2147483647, 'Equals');
+    is($r->neg_u8_val(), -9223372036854775805, 'Equals');
+    is($r->neg_b08_val(), -253, 'Equals');
+    is($r->neg_b16_val(), -65534, 'Equals');
+    is($r->neg_b32_val(), -4293844425, 'Equals');
+    is($r->neg_b64_val(), -9223372036854775805, 'Equals');
+    is($r->neg_b31_val(), -2147483647, 'Equals');
+    is($r->neg_b63_val(), -9223372036854775804, 'Equals');
 }
 
 Test::Class->runtests;

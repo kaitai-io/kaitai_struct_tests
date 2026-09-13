@@ -3,9 +3,35 @@
 var assert = require('assert');
 var testHelper = require('testHelper');
 
-testHelper('TypeIntUnaryNeg', 'src/fixed_struct.bin', function(r, TypeIntUnaryNeg_) {
-  assert.strictEqual(r.valueS2, 16720);
-  assert.strictEqual(r.valueS8, 4706543082108963651);
-  assert.strictEqual(r.unaryS2, -16720);
-  assert.strictEqual(r.unaryS8, -4706543082108963651);
+testHelper('TypeIntUnaryNeg', 'src/type_int_unary_neg.bin', function(r, TypeIntUnaryNeg_) {
+  assert.strictEqual(r.s1Val, -128);
+  assert.strictEqual(r.s2Val, -32768);
+  assert.strictEqual(r.s4Val, -2147483646);
+  assert.strictEqual(r.s8Val, 9223372036854775806);
+  assert.strictEqual(r.u1Val, 253);
+  assert.strictEqual(r.u2Val, 65534);
+  assert.strictEqual(r.u4ValMsbSet, 4293844425);
+  assert.strictEqual(r.u4ValMsbClear, 2147483647);
+  assert.strictEqual(r.u8Val, 9223372036854775805);
+  assert.strictEqual(r.b08Val, 253);
+  assert.strictEqual(r.b16Val, 65534);
+  assert.strictEqual(r.b32Val, 4293844425);
+  assert.strictEqual(r.b64Val, 9223372036854775805);
+  assert.strictEqual(r.b31Val, 2147483647);
+  assert.strictEqual(r.b63Val, 9223372036854775804);
+  assert.strictEqual(r.negS1Val, 128);
+  assert.strictEqual(r.negS2Val, 32768);
+  assert.strictEqual(r.negS4Val, 2147483646);
+  assert.strictEqual(r.negS8Val, -9223372036854775806);
+  assert.strictEqual(r.negU1Val, -253);
+  assert.strictEqual(r.negU2Val, -65534);
+  assert.strictEqual(r.negU4ValMsbSet, -4293844425);
+  assert.strictEqual(r.negU4ValMsbClear, -2147483647);
+  assert.strictEqual(r.negU8Val, -9223372036854775805);
+  assert.strictEqual(r.negB08Val, -253);
+  assert.strictEqual(r.negB16Val, -65534);
+  assert.strictEqual(r.negB32Val, -4293844425);
+  assert.strictEqual(r.negB64Val, -9223372036854775805);
+  assert.strictEqual(r.negB31Val, -2147483647);
+  assert.strictEqual(r.negB63Val, -9223372036854775804);
 });

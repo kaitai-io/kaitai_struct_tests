@@ -18,7 +18,7 @@ func TestTypeIntUnaryNeg(t *testing.T) {
 			t.Fatal("unexpected panic:", r)
 		}
 	}()
-	f, err := os.Open("../../src/fixed_struct.bin")
+	f, err := os.Open("../../src/type_int_unary_neg.bin")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -28,16 +28,94 @@ func TestTypeIntUnaryNeg(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, 16720, r.ValueS2)
-	assert.EqualValues(t, int64(4706543082108963651), r.ValueS8)
-	tmp1, err := r.UnaryS2()
+	assert.EqualValues(t, -128, r.S1Val)
+	assert.EqualValues(t, -32768, r.S2Val)
+	assert.EqualValues(t, -2147483646, r.S4Val)
+	assert.EqualValues(t, int64(9223372036854775806), r.S8Val)
+	assert.EqualValues(t, 253, r.U1Val)
+	assert.EqualValues(t, 65534, r.U2Val)
+	assert.EqualValues(t, uint32(4293844425), r.U4ValMsbSet)
+	assert.EqualValues(t, 2147483647, r.U4ValMsbClear)
+	assert.EqualValues(t, int64(9223372036854775805), r.U8Val)
+	assert.EqualValues(t, 253, r.B08Val)
+	assert.EqualValues(t, 65534, r.B16Val)
+	assert.EqualValues(t, uint32(4293844425), r.B32Val)
+	assert.EqualValues(t, int64(9223372036854775805), r.B64Val)
+	assert.EqualValues(t, 2147483647, r.B31Val)
+	assert.EqualValues(t, int64(9223372036854775804), r.B63Val)
+	tmp1, err := r.NegS1Val()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, -16720, tmp1)
-	tmp2, err := r.UnaryS8()
+	assert.EqualValues(t, 128, tmp1)
+	tmp2, err := r.NegS2Val()
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.EqualValues(t, int64(-4706543082108963651), tmp2)
+	assert.EqualValues(t, 32768, tmp2)
+	tmp3, err := r.NegS4Val()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, 2147483646, tmp3)
+	tmp4, err := r.NegS8Val()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, int64(-9223372036854775806), tmp4)
+	tmp5, err := r.NegU1Val()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, -253, tmp5)
+	tmp6, err := r.NegU2Val()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, -65534, tmp6)
+	tmp7, err := r.NegU4ValMsbSet()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, int64(-4293844425), tmp7)
+	tmp8, err := r.NegU4ValMsbClear()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, -2147483647, tmp8)
+	tmp9, err := r.NegU8Val()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, int64(-9223372036854775805), tmp9)
+	tmp10, err := r.NegB08Val()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, -253, tmp10)
+	tmp11, err := r.NegB16Val()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, -65534, tmp11)
+	tmp12, err := r.NegB32Val()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, int64(-4293844425), tmp12)
+	tmp13, err := r.NegB64Val()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, int64(-9223372036854775805), tmp13)
+	tmp14, err := r.NegB31Val()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, -2147483647, tmp14)
+	tmp15, err := r.NegB63Val()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, int64(-9223372036854775804), tmp15)
 }

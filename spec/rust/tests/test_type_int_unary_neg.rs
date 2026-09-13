@@ -7,12 +7,38 @@ use rust::formats::type_int_unary_neg::*;
 
 #[test]
 fn test_type_int_unary_neg() -> KResult<()> {
-    let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
+    let bytes = fs::read("../../src/type_int_unary_neg.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<TypeIntUnaryNeg> = TypeIntUnaryNeg::read_into(&_io, None, None)?;
-    assert_eq!(*r.value_s2(), 16720);
-    assert_eq!(*r.value_s8(), 4706543082108963651);
-    assert_eq!(*r.unary_s2()?, -16720);
-    assert_eq!(*r.unary_s8()?, -4706543082108963651);
+    assert_eq!(*r.s1_val(), -128);
+    assert_eq!(*r.s2_val(), -32768);
+    assert_eq!(*r.s4_val(), -2147483646);
+    assert_eq!(*r.s8_val(), 9223372036854775806);
+    assert_eq!(*r.u1_val(), 253);
+    assert_eq!(*r.u2_val(), 65534);
+    assert_eq!(*r.u4_val_msb_set(), 4293844425);
+    assert_eq!(*r.u4_val_msb_clear(), 2147483647);
+    assert_eq!(*r.u8_val(), 9223372036854775805);
+    assert_eq!(*r.b08_val(), 253);
+    assert_eq!(*r.b16_val(), 65534);
+    assert_eq!(*r.b32_val(), 4293844425);
+    assert_eq!(*r.b64_val(), 9223372036854775805);
+    assert_eq!(*r.b31_val(), 2147483647);
+    assert_eq!(*r.b63_val(), 9223372036854775804);
+    assert_eq!(*r.neg_s1_val()?, 128);
+    assert_eq!(*r.neg_s2_val()?, 32768);
+    assert_eq!(*r.neg_s4_val()?, 2147483646);
+    assert_eq!(*r.neg_s8_val()?, -9223372036854775806);
+    assert_eq!(*r.neg_u1_val()?, -253);
+    assert_eq!(*r.neg_u2_val()?, -65534);
+    assert_eq!(*r.neg_u4_val_msb_set()?, -4293844425);
+    assert_eq!(*r.neg_u4_val_msb_clear()?, -2147483647);
+    assert_eq!(*r.neg_u8_val()?, -9223372036854775805);
+    assert_eq!(*r.neg_b08_val()?, -253);
+    assert_eq!(*r.neg_b16_val()?, -65534);
+    assert_eq!(*r.neg_b32_val()?, -4293844425);
+    assert_eq!(*r.neg_b64_val()?, -9223372036854775805);
+    assert_eq!(*r.neg_b31_val()?, -2147483647);
+    assert_eq!(*r.neg_b63_val()?, -9223372036854775804);
     Ok(())
 }

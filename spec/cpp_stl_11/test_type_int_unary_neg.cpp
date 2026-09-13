@@ -7,13 +7,39 @@
 #include <vector>
 
 BOOST_AUTO_TEST_CASE(test_type_int_unary_neg) {
-    std::ifstream ifs("src/fixed_struct.bin", std::ifstream::binary);
+    std::ifstream ifs("src/type_int_unary_neg.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     type_int_unary_neg_t* r = new type_int_unary_neg_t(&ks);
-    BOOST_CHECK_EQUAL(r->value_s2(), 16720);
-    BOOST_CHECK_EQUAL(r->value_s8(), 4706543082108963651LL);
-    BOOST_CHECK_EQUAL(r->unary_s2(), -16720);
-    BOOST_CHECK_EQUAL(r->unary_s8(), -4706543082108963651LL);
+    BOOST_CHECK_EQUAL(r->s1_val(), -128);
+    BOOST_CHECK_EQUAL(r->s2_val(), -32768);
+    BOOST_CHECK_EQUAL(r->s4_val(), -2147483646);
+    BOOST_CHECK_EQUAL(r->s8_val(), 9223372036854775806LL);
+    BOOST_CHECK_EQUAL(r->u1_val(), 253);
+    BOOST_CHECK_EQUAL(r->u2_val(), 65534);
+    BOOST_CHECK_EQUAL(r->u4_val_msb_set(), 4293844425UL);
+    BOOST_CHECK_EQUAL(r->u4_val_msb_clear(), 2147483647);
+    BOOST_CHECK_EQUAL(r->u8_val(), 9223372036854775805LL);
+    BOOST_CHECK_EQUAL(r->b08_val(), 253);
+    BOOST_CHECK_EQUAL(r->b16_val(), 65534);
+    BOOST_CHECK_EQUAL(r->b32_val(), 4293844425UL);
+    BOOST_CHECK_EQUAL(r->b64_val(), 9223372036854775805LL);
+    BOOST_CHECK_EQUAL(r->b31_val(), 2147483647);
+    BOOST_CHECK_EQUAL(r->b63_val(), 9223372036854775804LL);
+    BOOST_CHECK_EQUAL(r->neg_s1_val(), 128);
+    BOOST_CHECK_EQUAL(r->neg_s2_val(), 32768);
+    BOOST_CHECK_EQUAL(r->neg_s4_val(), 2147483646);
+    BOOST_CHECK_EQUAL(r->neg_s8_val(), -9223372036854775806LL);
+    BOOST_CHECK_EQUAL(r->neg_u1_val(), -253);
+    BOOST_CHECK_EQUAL(r->neg_u2_val(), -65534);
+    BOOST_CHECK_EQUAL(r->neg_u4_val_msb_set(), -4293844425LL);
+    BOOST_CHECK_EQUAL(r->neg_u4_val_msb_clear(), -2147483647);
+    BOOST_CHECK_EQUAL(r->neg_u8_val(), -9223372036854775805LL);
+    BOOST_CHECK_EQUAL(r->neg_b08_val(), -253);
+    BOOST_CHECK_EQUAL(r->neg_b16_val(), -65534);
+    BOOST_CHECK_EQUAL(r->neg_b32_val(), -4293844425LL);
+    BOOST_CHECK_EQUAL(r->neg_b64_val(), -9223372036854775805LL);
+    BOOST_CHECK_EQUAL(r->neg_b31_val(), -2147483647);
+    BOOST_CHECK_EQUAL(r->neg_b63_val(), -9223372036854775804LL);
 
     delete r;
 }

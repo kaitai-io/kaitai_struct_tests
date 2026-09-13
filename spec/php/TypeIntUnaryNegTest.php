@@ -5,10 +5,36 @@ namespace Kaitai\Struct\Tests;
 
 class TypeIntUnaryNegTest extends TestCase {
     public function testTypeIntUnaryNeg() {
-        $r = TypeIntUnaryNeg::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
-        $this->assertSame(16720, $r->valueS2());
-        $this->assertSame(4706543082108963651, $r->valueS8());
-        $this->assertSame(-16720, $r->unaryS2());
-        $this->assertSame(-4706543082108963651, $r->unaryS8());
+        $r = TypeIntUnaryNeg::fromFile(self::SRC_DIR_PATH . '/type_int_unary_neg.bin');
+        $this->assertSame(-128, $r->s1Val());
+        $this->assertSame(-32768, $r->s2Val());
+        $this->assertSame(-2147483646, $r->s4Val());
+        $this->assertSame(9223372036854775806, $r->s8Val());
+        $this->assertSame(253, $r->u1Val());
+        $this->assertSame(65534, $r->u2Val());
+        $this->assertSame(4293844425, $r->u4ValMsbSet());
+        $this->assertSame(2147483647, $r->u4ValMsbClear());
+        $this->assertSame(9223372036854775805, $r->u8Val());
+        $this->assertSame(253, $r->b08Val());
+        $this->assertSame(65534, $r->b16Val());
+        $this->assertSame(4293844425, $r->b32Val());
+        $this->assertSame(9223372036854775805, $r->b64Val());
+        $this->assertSame(2147483647, $r->b31Val());
+        $this->assertSame(9223372036854775804, $r->b63Val());
+        $this->assertSame(128, $r->negS1Val());
+        $this->assertSame(32768, $r->negS2Val());
+        $this->assertSame(2147483646, $r->negS4Val());
+        $this->assertSame(-9223372036854775806, $r->negS8Val());
+        $this->assertSame(-253, $r->negU1Val());
+        $this->assertSame(-65534, $r->negU2Val());
+        $this->assertSame(-4293844425, $r->negU4ValMsbSet());
+        $this->assertSame(-2147483647, $r->negU4ValMsbClear());
+        $this->assertSame(-9223372036854775805, $r->negU8Val());
+        $this->assertSame(-253, $r->negB08Val());
+        $this->assertSame(-65534, $r->negB16Val());
+        $this->assertSame(-4293844425, $r->negB32Val());
+        $this->assertSame(-9223372036854775805, $r->negB64Val());
+        $this->assertSame(-2147483647, $r->negB31Val());
+        $this->assertSame(-9223372036854775804, $r->negB63Val());
     }
 }
