@@ -1,11 +1,68 @@
 id: type_int_unary_neg
-data: fixed_struct.bin
+data: type_int_unary_neg.bin
 asserts:
-  - actual: value_s2
-    expected: 0x4150
-  - actual: value_s8
-    expected: 0x4150ffff312d4b43
-  - actual: unary_s2
-    expected: -0x4150
-  - actual: unary_s8
-    expected: -0x4150ffff312d4b43
+  - actual: s1_val
+    expected: -0x80
+  - actual: s2_val
+    expected: -0x8000
+  - actual: s4_val
+    expected: -0x7fff_fffe
+  - actual: s8_val
+    expected: 0x7fff_ffff_ffff_fffe
+
+  - actual: u1_val
+    expected: 0xfd
+  - actual: u2_val
+    expected: 0xfffe
+  - actual: u4_val_msb_set
+    expected: 0xffee_ddc9
+  - actual: u4_val_msb_clear
+    expected: 0x7fff_ffff
+  - actual: u8_val
+    expected: 0x7fff_ffff_ffff_fffd
+
+  - actual: b08_val
+    expected: 0xfd
+  - actual: b16_val
+    expected: 0xfffe
+  - actual: b32_val
+    expected: 0xffee_ddc9
+  - actual: b64_val
+    expected: 0x7fff_ffff_ffff_fffd
+  - actual: b31_val
+    expected: 0x7fff_ffff
+  - actual: b63_val
+    expected: 0x7fff_ffff_ffff_fffc
+
+  - actual: neg_s1_val
+    expected: 0x80
+  - actual: neg_s2_val
+    expected: 0x8000
+  - actual: neg_s4_val
+    expected: 0x7fff_fffe
+  - actual: neg_s8_val
+    expected: -0x7fff_ffff_ffff_fffe
+
+  - actual: neg_u1_val
+    expected: -0xfd
+  - actual: neg_u2_val
+    expected: -0xfffe
+  - actual: neg_u4_val_msb_set
+    expected: -0xffee_ddc9
+  - actual: neg_u4_val_msb_clear
+    expected: -0x7fff_ffff
+  - actual: neg_u8_val
+    expected: -0x7fff_ffff_ffff_fffd
+
+  - actual: neg_b08_val
+    expected: -0xfd
+  - actual: neg_b16_val
+    expected: -0xfffe
+  - actual: neg_b32_val
+    expected: -0xffee_ddc9
+  - actual: neg_b64_val
+    expected: -0x7fff_ffff_ffff_fffd
+  - actual: neg_b31_val
+    expected: -0x7fff_ffff
+  - actual: neg_b63_val
+    expected: -0x7fff_ffff_ffff_fffc
