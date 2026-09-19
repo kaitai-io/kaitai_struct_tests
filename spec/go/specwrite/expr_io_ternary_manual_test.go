@@ -49,14 +49,14 @@ func TestExprIoTernaryBoundary(t *testing.T) {
 	one := NewExprIoTernary_One()
 	one.SetParent_(fresh)
 	one.SetRoot_(fresh)
-	one.SetOne(0)
+	one.SetOne(1)
 	if err := one.Check(); err != nil {
 		t.Fatal(err)
 	}
 	two := NewExprIoTernary_Two()
 	two.SetParent_(fresh)
 	two.SetRoot_(fresh)
-	two.SetTwo(0)
+	two.SetTwo(2)
 	if err := two.Check(); err != nil {
 		t.Fatal(err)
 	}
@@ -69,7 +69,7 @@ func TestExprIoTernaryBoundary(t *testing.T) {
 	if err := fresh.Write(kaitai.NewWriter(freshOut)); err != nil {
 		t.Fatal(err)
 	}
-	wantFresh := make([]byte, 13)
+	wantFresh := []byte{0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0}
 	if !bytes.Equal(freshOut.Bytes(), wantFresh) {
 		t.Fatalf("fresh bytes = %x; want %x", freshOut.Bytes(), wantFresh)
 	}
@@ -77,7 +77,7 @@ func TestExprIoTernaryBoundary(t *testing.T) {
 	if err := reparsed.Read(kaitai.NewStream(bytes.NewReader(freshOut.Bytes())), nil, reparsed); err != nil {
 		t.Fatal(err)
 	}
-	if reparsed.GetFlag() != 0 || reparsed.GetObj1().GetOne() != 0 || reparsed.GetObj2().GetTwo() != 0 {
+	if reparsed.GetFlag() != 0 || reparsed.GetObj1().GetOne() != 1 || reparsed.GetObj2().GetTwo() != 2 {
 		t.Fatal("fresh canonical output did not reparse")
 	}
 }
