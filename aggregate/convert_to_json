@@ -8,6 +8,7 @@
 require 'time'
 
 require_relative 'junit_xml_parser'
+require_relative 'go_write_junit_xml_parser'
 require_relative 'rspec_json_parser'
 require_relative 'boost_test_parser'
 require_relative 'nunit_xml_parser'
@@ -138,6 +139,11 @@ when 'zig'
 when 'lua', 'nim'
   add_kst_adoption(
     reports_to_h(JUnitXMLParser.new("#{infile}/report.xml")),
+    infile
+  )
+when 'go-write'
+  add_kst_adoption(
+    reports_to_h(GoWriteJUnitXMLParser.new("#{infile}/report.xml")),
     infile
   )
 when 'go', 'perl', 'python', 'python-write', 'construct', 'julia'

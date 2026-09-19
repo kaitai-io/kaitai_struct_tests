@@ -2,6 +2,19 @@
 
 . "$(dirname "$0")/config"
 
+# Run both suites even when one fails, retaining separate logs and reports.
+case "${1:-all}" in
+	all)
+		status=0
+		./ci-go go || status=$?
+		./run-go-write || status=$?
+		exit "$status"
+		;;
+	go-write) exec ./run-go-write ;;
+	go) ;;
+	*) echo "Usage: $0 [go|go-write]" >&2; exit 2 ;;
+esac
+
 ./prepare-go
 
 ABS_TEST_OUT_DIR="$(pwd)/$TEST_OUT_DIR"

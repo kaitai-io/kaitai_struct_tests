@@ -4,13 +4,24 @@
 
 TARGET="${1:-all}"
 
+if [ "$TARGET" = go-write ]; then
+	shift
+	exec ./build-formats-go-write "$@"
+fi
+
 if [ "$TARGET" = all ]; then
     OUTPUT_DIR="$FORMATS_COMPILED_DIR"
+elif [ "$TARGET" = go ]; then
+    OUTPUT_DIR="$FORMATS_COMPILED_DIR/go/src"
 else
     OUTPUT_DIR="$FORMATS_COMPILED_DIR/$TARGET"
 fi
 
-rm -rf "$OUTPUT_DIR"
+if [ "$TARGET" = go ]; then
+    rm -rf "$OUTPUT_DIR/test_formats"
+else
+    rm -rf "$OUTPUT_DIR"
+fi
 mkdir -p "$OUTPUT_DIR"
 
 # 	--java-from-file-class io.kaitai.struct.RandomAccessFileKaitaiStream \
@@ -58,4 +69,8 @@ if [ "$TARGET" = python ] || [ "$TARGET" = all ]; then
 
 	# See the comment above about why we are creating this empty `__init__.py` file.
 	touch "$FORMATS_COMPILED_DIR/python/testwrite/__init__.py"
+fi
+
+if [ "$TARGET" = all ]; then
+	./build-formats-go-write
 fi

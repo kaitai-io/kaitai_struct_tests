@@ -1,0 +1,16 @@
+#!/bin/sh -e
+
+. "$(dirname "$0")/config"
+
+# Pass specific KSY paths for a focused run, or omit arguments for the corpus.
+if [ "$#" -eq 0 ]; then
+	set -- "$FORMATS_KSY_DIR"/*.ksy
+fi
+rm -rf "$FORMATS_COMPILED_DIR/go/src/test_formats_write"
+mkdir -p "$FORMATS_COMPILED_DIR/go/src/test_formats_write"
+"$COMPILER_DIR/jvm/target/universal/stage/bin/kaitai-struct-compiler" -- \
+	--verbose file -t go --read-write \
+	-d "$FORMATS_COMPILED_DIR/go/src" --go-package test_formats_write \
+	--import-path "$FORMATS_REPO_DIR" \
+	--import-path "$FORMATS_KSY_DIR/ks_path" "$@"
+./prepare-go
