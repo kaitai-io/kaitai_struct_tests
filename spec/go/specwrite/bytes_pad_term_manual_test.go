@@ -50,7 +50,7 @@ func TestBytesPadTermManual(t *testing.T) {
 		},
 		{name: "testCheckLongerStrPad", values: bytesPadTermValues{strPad: []byte("123456789012345678901")}, wantErrorID: "str_pad"},
 		{name: "testCheckGoodLastByteStrPad", values: bytesPadTermValues{strPad: []byte("@@@@@@@@@@@@@@@@@@@?")}, wantSegments: [4]string{"@@@@@@@@@@@@@@@@@@@?", digits, digits, digits}},
-		{name: "testCheckBadLastByteStrPad", values: bytesPadTermValues{strPad: []byte("1234567890123456789@")}, wantErrorID: "str_pad"},
+		{name: "testCheckBadLastByteStrPad", values: bytesPadTermValues{strPad: []byte("123456789012345678@")}, wantErrorID: "str_pad"},
 		{name: "testCheckLongerStrTerm", values: bytesPadTermValues{strTerm: []byte("123456789012345678901")}, wantErrorID: "str_term"},
 		{name: "testCheckBadHasTerminator1StrTerm", values: bytesPadTermValues{strTerm: []byte("123456789012@4567890")}, wantErrorID: "str_term"},
 		{name: "testCheckBadHasTerminator2StrTerm", values: bytesPadTermValues{strTerm: []byte("1234567890123456789@")}, wantErrorID: "str_term"},

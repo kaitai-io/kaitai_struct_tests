@@ -97,7 +97,7 @@ func TestBytesEosPadTermManual(t *testing.T) {
 		},
 		{name: "testCheckLongerStrPad", values: bytesEosPadTermValues{strPad: []byte("123456789012345678901")}, wantCapacity: true},
 		{name: "testCheckGoodLastByteStrPad", values: bytesEosPadTermValues{strPad: []byte("@@@@@@@@@@@@@@@@@@@?")}, wantSegments: [4]string{"@@@@@@@@@@@@@@@@@@@?", digits, digits, digits}},
-		{name: "testCheckBadLastByteStrPad", values: bytesEosPadTermValues{strPad: []byte("1234567890123456789@")}, wantConsistency: true},
+		{name: "testCheckBadLastByteStrPad", values: bytesEosPadTermValues{strPad: []byte("123456789012345678@")}, wantConsistency: true},
 		{name: "testCheckLongerStrTerm", values: bytesEosPadTermValues{strTerm: []byte("123456789012345678901")}, wantCapacity: true},
 		{name: "testCheckBadHasTerminator1StrTerm", values: bytesEosPadTermValues{strTerm: []byte("123456789012@4567890")}, wantConsistency: true},
 		{name: "testCheckBadHasTerminator2StrTerm", values: bytesEosPadTermValues{strTerm: []byte("1234567890123456789@")}, wantConsistency: true},
