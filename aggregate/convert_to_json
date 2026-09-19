@@ -9,6 +9,7 @@ require 'time'
 
 require_relative 'junit_xml_parser'
 require_relative 'go_write_junit_xml_parser'
+require_relative 'go_write_coverage'
 require_relative 'rspec_json_parser'
 require_relative 'boost_test_parser'
 require_relative 'nunit_xml_parser'
@@ -190,6 +191,8 @@ when 'graphviz'
 else
   raise "Unable to handle language #{lang.inspect}"
 end
+
+GoWriteCoverage.annotate(result, "#{infile}/report.xml") if lang == 'go-write'
 
 meta = {
   'lang' => lang,

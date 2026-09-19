@@ -4,7 +4,14 @@
 
 # Pass specific KSY paths for a focused run, or omit arguments for the corpus.
 if [ "$#" -eq 0 ]; then
-	set -- "$FORMATS_KSY_DIR"/*.ksy
+	for schema in "$FORMATS_KSY_DIR"/*.ksy; do
+		case "$schema" in
+			*/str_encodings_escaping_enc.ksy|*/str_encodings_escaping_to_s.ksy)
+				echo "negative_generation: $schema (source-declared manual template; tested by specwrite compiler diagnostics)" >&2
+				;;
+			*) set -- "$@" "$schema" ;;
+		esac
+	done
 fi
 rm -rf "$FORMATS_COMPILED_DIR/go/src/test_formats_write"
 mkdir -p "$FORMATS_COMPILED_DIR/go/src/test_formats_write"

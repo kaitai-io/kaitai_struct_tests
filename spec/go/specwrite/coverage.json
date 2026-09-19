@@ -1,0 +1,33 @@
+{
+  "CastToTop": {
+    "category": "manual_serialization_contract",
+    "reference_writer_parity": true,
+    "reason": "Bounded one-level instance graph, following the Java/Python manual writer tests; eager recursive dumping is unbounded."
+  },
+  "ExprToITrailing": {
+    "category": "manual_serialization_contract",
+    "reference_writer_parity": false,
+    "reason": "The KST requires two lazy conversion failures. The value-only schema emits zero bytes."
+  },
+  "DebugArrayUserEofException": {
+    "category": "manual_serialization_contract",
+    "reference_writer_parity": false,
+    "reason": "The seven-byte source intentionally ends inside the fourth child; preserve partial fields, reject unchecked writing, complete the child, then serialize eight bytes."
+  },
+  "DebugArrayUserCurrentExcluded": {
+    "category": "unsupported_serialization_semantics",
+    "reference_writer_parity": false,
+    "reason": "formats/debug_array_user_current_excluded.ksy uses child size 3 - _parent.array_of_cats.size: Read sees prefixes, independent Check sees the final array. This passing negative contract is not a successful roundtrip or expected parse skip.",
+    "removal_condition": "The unmodified schema checks and writes 66 6f 6f 7c 62 61, reparsing lengths [3,2,1], while preserving the debug read semantics. No serialization-specific issue is asserted here."
+  },
+  "StrEncodingsEscapingEnc": {
+    "category": "negative_generation",
+    "reference_writer_parity": false,
+    "reason": "spec/ks/str_encodings_escaping_enc.kst explicitly declares a manual negative template. Go statically rejects its four deliberately invalid encodings; both read and read-write diagnostics are tested."
+  },
+  "StrEncodingsEscapingToS": {
+    "category": "negative_generation",
+    "reference_writer_parity": false,
+    "reason": "spec/ks/str_encodings_escaping_to_s.kst explicitly declares a manual negative template. Go statically rejects its four deliberately invalid encodings; both read and read-write diagnostics are tested."
+  }
+}

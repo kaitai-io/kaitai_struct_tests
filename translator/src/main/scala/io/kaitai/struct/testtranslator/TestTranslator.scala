@@ -11,6 +11,7 @@ import io.kaitai.struct.testtranslator.specgenerators._
 import io.kaitai.struct.{ClassTypeProvider, CppRuntimeConfig}
 
 import scala.collection.immutable.SortedMap
+import scala.io.Source
 
 class TestTranslator(options: CLIOptions) {
   import Main._
@@ -35,8 +36,20 @@ class TestTranslator(options: CLIOptions) {
       try {
         val outFile = s"$outDir/$langDir/${sg.fileName(testName)}"
         Console.println(s"... generating $outFile")
-        sg.run()
-        writeFile(outFile, sg.results)
+        val manualFile = new File(s"$specDir/$langDir/${sg.fileName(testName)}")
+        val manualContents = if (langName == "go-write" && manualFile.isFile) {
+          val source = Source.fromFile(manualFile, "UTF-8")
+          try Some(source.mkString) finally source.close()
+        } else None
+        manualContents.filterNot(_.contains(sg.AUTOGEN_COMMENT)) match {
+          case Some(contents) =>
+            Console.println(s"... preserving handwritten contract: $manualFile")
+            if (manualFile.getCanonicalPath != new File(outFile).getCanonicalPath)
+              writeFile(outFile, contents)
+          case None =>
+            sg.run()
+            writeFile(outFile, sg.results)
+        }
       } catch {
         case e: Throwable => e.printStackTrace(Console.err)
       }
