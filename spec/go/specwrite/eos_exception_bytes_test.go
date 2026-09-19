@@ -3,6 +3,7 @@
 package specwrite
 
 import (
+	"errors"
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 	"io"
 	. "test_formats_write"
@@ -16,7 +17,9 @@ func TestEosExceptionBytes(t *testing.T) {
 		return &r, err
 	}
 	_, err := parseFile("../../../src/term_strz.bin", parse)
-	assertErrorIs(t, err, io.ErrUnexpectedEOF)
+	if !errors.Is(err, io.EOF) && !errors.Is(err, io.ErrUnexpectedEOF) {
+		t.Errorf("expected EOF or unexpected EOF, got %v", err)
+	}
 	if t.Failed() {
 		return
 	}

@@ -1,8 +1,35 @@
 require 'minitest/autorun'
 require 'tmpdir'
+require 'json'
+require 'open3'
 require_relative '../go_write_junit_xml_parser'
 
 class GoWriteJUnitXMLParserTest < Minitest::Test
+  def test_setup_failure_replaces_stale_success_json_with_package_diagnostic
+    Dir.mktmpdir do |dir|
+      File.write(File.join(dir, 'report.xml'), <<~XML)
+        <testsuites><testsuite name="kaitai/specwrite" tests="1" errors="1">
+          <testcase name="[setup failed]" classname="kaitai/specwrite" time="0">
+            <error message="Build error">process_custom.go:8:2: package nested/deeply is not in std</error>
+          </testcase>
+        </testsuite></testsuites>
+      XML
+      File.write(File.join(dir, 'kst_adoption.log'), '')
+      json_path = File.join(dir, 'ci.json')
+      File.write(json_path, '{"StaleSuccess":{"status":"passed"}}')
+      converter = File.expand_path('../convert_to_json', __dir__)
+      output, status = Open3.capture2e(converter, 'go-write', dir, json_path)
+      assert status.success?, output
+      result = JSON.parse(File.read(json_path))
+      refute result.key?('StaleSuccess')
+      package = result.fetch('GoWritePackage/kaitai/specwrite')
+      assert_equal 'failed', package.fetch('status')
+      assert_equal 'Build error', package.fetch('failure').fetch('message')
+      assert_equal 'process_custom.go:8:2: package nested/deeply is not in std', package.fetch('failure').fetch('trace')
+      assert_includes output, '"failed":1'
+    end
+  end
+
   def test_package_failure_is_explicit_and_read_parser_is_unchanged
     Dir.mktmpdir do |dir|
       path = File.join(dir, 'report.xml')

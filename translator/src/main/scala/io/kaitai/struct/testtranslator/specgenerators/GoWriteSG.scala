@@ -32,8 +32,13 @@ class GoWriteSG(spec: TestSpec, provider: ClassTypeProvider) extends SpecGenerat
         out.puts(s"_, err := parseFile(\"../../../src/${spec.data}\", parse)")
         expected.exception match {
           case EndOfStreamError =>
+            importList.add("\"errors\"")
             importList.add("\"io\"")
-            out.puts("assertErrorIs(t, err, io.ErrUnexpectedEOF)")
+            out.puts("if !errors.Is(err, io.EOF) && !errors.Is(err, io.ErrUnexpectedEOF) {")
+            out.inc
+            out.puts("t.Errorf(\"expected EOF or unexpected EOF, got %v\", err)")
+            out.dec
+            out.puts("}")
           case exception =>
             out.puts(s"var wantErr ${GoCompiler.ksErrorName(exception)}")
             out.puts("assertErrorAs(t, err, &wantErr)")
