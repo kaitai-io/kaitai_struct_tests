@@ -148,20 +148,27 @@ func dumpValue(v reflect.Value, ancestors map[dumpIdentity]string, depth int, pa
 	}
 	childPath := func(name string) string { return strings.TrimSuffix(path, "/") + "/" + name }
 	if stream, ok := v.Interface().(*kaitai.Stream); ok {
-		pos, err := stream.Pos()
+		// Stream's byte-oriented methods align its bit buffer. Inspect only the
+		// underlying reader so a pending bit field survives this observation.
+		raw := stream.ReadSeeker
+		pos, err := raw.Seek(0, io.SeekCurrent)
 		if err != nil {
-			return nil, fmt.Errorf("%s: %w", path, err)
+			return nil, fmt.Errorf("%s: get stream position: %w", path, err)
 		}
-		if _, err = stream.Seek(0, io.SeekStart); err != nil {
-			return nil, fmt.Errorf("%s: %w", path, err)
+		var data []byte
+		var dumpErr error
+		if _, err = raw.Seek(0, io.SeekStart); err != nil {
+			dumpErr = fmt.Errorf("%s: seek stream start: %w", path, err)
+		} else if data, err = io.ReadAll(raw); err != nil {
+			dumpErr = fmt.Errorf("%s: read stream: %w", path, err)
 		}
-		data, readErr := stream.ReadBytesFull()
-		_, seekErr := stream.Seek(pos, io.SeekStart)
-		if readErr != nil {
-			return nil, fmt.Errorf("%s: %w", path, readErr)
+		// A failed seek may have moved the reader too. Always attempt restoration
+		// once its original position is known, retaining both failures if needed.
+		if _, err = raw.Seek(pos, io.SeekStart); err != nil {
+			return nil, errors.Join(fmt.Errorf("%s: restore stream position: %w", path, err), dumpErr)
 		}
-		if seekErr != nil {
-			return nil, fmt.Errorf("%s: %w", path, seekErr)
+		if dumpErr != nil {
+			return nil, dumpErr
 		}
 		return hex.EncodeToString(data), nil
 	}

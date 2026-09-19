@@ -1,6 +1,7 @@
 package specwrite
 
 import (
+	"bytes"
 	"errors"
 	"fmt"
 	"io"
@@ -11,6 +12,111 @@ import (
 
 	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
 )
+
+func TestHarnessStreamDumpPreservesPendingBits(t *testing.T) {
+	for _, littleEndian := range []bool{false, true} {
+		t.Run(fmt.Sprintf("littleEndian=%v", littleEndian), func(t *testing.T) {
+			stream := kaitai.NewStream(bytes.NewReader([]byte{0xab, 0xcd}))
+			readBits := stream.ReadBitsIntBe
+			wantFirst, wantRemaining := uint64(5), uint64(11)
+			if littleEndian {
+				readBits = stream.ReadBitsIntLe
+				wantFirst, wantRemaining = 3, 21
+			}
+			if got, err := readBits(3); err != nil || got != wantFirst {
+				t.Fatalf("first bits: %d, %v", got, err)
+			}
+			for i := 0; i < 2; i++ {
+				dump, err := dumpStruct(stream)
+				if err != nil || dump != "abcd" {
+					t.Fatalf("full stream dump: %v, %v", dump, err)
+				}
+				if pos, err := stream.ReadSeeker.Seek(0, io.SeekCurrent); err != nil || pos != 1 {
+					t.Fatalf("raw position changed: %d, %v", pos, err)
+				}
+			}
+			if got, err := readBits(5); err != nil || got != wantRemaining {
+				t.Fatalf("remaining buffered bits: got %d, want %d, error %v", got, wantRemaining, err)
+			}
+			if got, err := stream.ReadU1(); err != nil || got != 0xcd {
+				t.Fatalf("next byte: %x, %v", got, err)
+			}
+		})
+	}
+}
+
+type dumpFaultReader struct {
+	io.ReadSeeker
+	seekCalls int
+	failSeek  map[int]error
+	readErr   error
+}
+
+func (r *dumpFaultReader) Seek(offset int64, whence int) (int64, error) {
+	r.seekCalls++
+	// Even a failed seek may have changed the underlying position.
+	pos, err := r.ReadSeeker.Seek(offset, whence)
+	if failure := r.failSeek[r.seekCalls]; failure != nil {
+		return pos, failure
+	}
+	return pos, err
+}
+
+func (r *dumpFaultReader) Read(p []byte) (int, error) {
+	if r.readErr != nil {
+		return 0, r.readErr
+	}
+	return r.ReadSeeker.Read(p)
+}
+
+func TestHarnessStreamDumpFailuresRestorePositionAndPreserveBits(t *testing.T) {
+	positionErr := errors.New("position failure")
+	seekErr := errors.New("initial seek failure")
+	readErr := errors.New("read failure")
+	restoreErr := errors.New("restore failure")
+	for _, tc := range []struct {
+		name       string
+		seekErrors map[int]error
+		readError  error
+		want       []error
+		seekCalls  int
+	}{
+		{"position", map[int]error{1: positionErr}, nil, []error{positionErr}, 1},
+		{"seek", map[int]error{2: seekErr}, nil, []error{seekErr}, 3},
+		{"read", nil, readErr, []error{readErr}, 3},
+		{"restore", map[int]error{3: restoreErr}, nil, []error{restoreErr}, 3},
+		{"read and restore", map[int]error{3: restoreErr}, readErr, []error{restoreErr, readErr}, 3},
+		{"seek and restore", map[int]error{2: seekErr, 3: restoreErr}, nil, []error{restoreErr, seekErr}, 3},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			raw := bytes.NewReader([]byte{0xab, 0xcd})
+			stream := kaitai.NewStream(raw)
+			if _, err := stream.ReadBitsIntBe(3); err != nil {
+				t.Fatal(err)
+			}
+			faults := &dumpFaultReader{ReadSeeker: raw, failSeek: tc.seekErrors, readErr: tc.readError}
+			stream.ReadSeeker = faults
+			_, err := dumpStruct(stream)
+			for _, want := range tc.want {
+				if !errors.Is(err, want) {
+					t.Fatalf("lost cause %v: %v", want, err)
+				}
+			}
+			if faults.seekCalls != tc.seekCalls {
+				t.Fatalf("seek count: got %d, want %d", faults.seekCalls, tc.seekCalls)
+			}
+			if pos, _ := raw.Seek(0, io.SeekCurrent); pos != 1 {
+				t.Fatalf("position was not restored: %d", pos)
+			}
+			if got, bitErr := stream.ReadBitsIntBe(5); bitErr != nil || got != 11 {
+				t.Fatalf("buffered bits changed on failure: %d, %v", got, bitErr)
+			}
+			if errors.Is(err, restoreErr) && !strings.HasPrefix(err.Error(), "/: restore stream position:") {
+				t.Fatalf("restoration failure must take priority: %v", err)
+			}
+		})
+	}
+}
 
 type harnessNode struct {
 	child    *harnessNode
