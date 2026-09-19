@@ -20,7 +20,7 @@ class GoWriteEOFTest < Minitest::Test
     end
     mod = File.read(File.join(ROOT, 'spec/go/specwrite/go.mod'))
       .sub('../../../../runtime/go', File.expand_path('../runtime/go', ROOT))
-      .sub('../../../compiled/go/src/test_formats_write', File.join(ROOT, 'compiled/go/src/test_formats_write'))
+      .gsub('../../../compiled/go/src/test_formats_write', File.join(ROOT, 'compiled/go/src/test_formats_write'))
     File.write(File.join(@module_dir, 'go.mod'), mod)
   end
 
