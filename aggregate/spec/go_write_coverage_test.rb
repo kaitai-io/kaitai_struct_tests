@@ -32,4 +32,29 @@ class GoWriteCoverageTest < Minitest::Test
       assert_equal 1, xml.get_elements('//testcase[@name="TestDebugArrayUserCurrentExcluded"]/properties/property[@name="coverage.category"]').size
     end
   end
+
+  def test_corpus_counts_fixtures_once_across_generated_and_manual_contracts
+    Dir.mktmpdir do |dir|
+      cases = [
+        '<testcase name="TestEofExceptionBytes" time="0"><skipped message="expected parse failure"/></testcase>',
+        '<testcase name="TestEofExceptionBytesWriteCapacity" time="0"/>',
+        '<testcase name="TestExprIoTernary" time="0"/>',
+        '<testcase name="TestExprIoTernaryBoundary" time="0"/>',
+        '<testcase name="TestOpaqueWithParam" time="0"/>',
+      ]
+      File.write(File.join(dir, 'report.xml'), "<testsuites><testsuite>#{cases.join}</testsuite></testsuites>")
+      File.write(File.join(dir, 'kst_adoption.log'), '')
+      converter = File.expand_path('../convert_to_json', __dir__)
+      output, status = Open3.capture2e(converter, 'go-write', dir, File.join(dir, 'ci.json'))
+      assert status.success?, output
+
+      result = JSON.parse(File.read(File.join(dir, 'ci.json')))
+      corpus = result.fetch('$go_write_corpus')
+      assert_equal({'missing' => 285, 'passed' => 1, 'skipped' => 1}, corpus.fetch('primary'))
+      assert_equal({'missing' => 3, 'passed' => 1}, corpus.fetch('additional').fetch('manual_boundary'))
+      assert_equal({'not_generated' => 5}, corpus.fetch('additional').fetch('shared_unsupported_generation'))
+      assert_includes output, '"skipped":1'
+      assert_includes output, '"manual_boundary":{"missing":3,"passed":1}'
+    end
+  end
 end

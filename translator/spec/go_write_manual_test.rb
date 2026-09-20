@@ -5,7 +5,7 @@ require 'open3'
 # the default output directory must retain them, including negative templates.
 class GoWriteManualTest < Minitest::Test
   ROOT = File.expand_path('../..', __dir__)
-  FIXTURES = %w[cast_to_top expr_to_i_trailing debug_array_user_eof_exception debug_array_user_current_excluded str_encodings_escaping_enc str_encodings_escaping_to_s].freeze
+  FIXTURES = %w[cast_to_top expr_io_ternary expr_to_i_trailing debug_array_user_eof_exception debug_array_user_current_excluded str_encodings_escaping_enc str_encodings_escaping_to_s].freeze
 
   def test_regeneration_preserves_handwritten_contracts
     output, status = Open3.capture2e(ENV.fetch('SBT', 'sbt'), "run -t go-write #{FIXTURES.join(' ')}", chdir: File.join(ROOT, 'translator'))
