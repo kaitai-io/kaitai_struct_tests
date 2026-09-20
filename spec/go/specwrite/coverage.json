@@ -289,6 +289,39 @@
       "ZlibSurrounded",
       "ZlibWithHeader78"
     ],
+    "primary_expected_parse_skip": [
+      "DefaultEndianExprException",
+      "EofExceptionBitsBe",
+      "EofExceptionBitsBe2",
+      "EofExceptionBitsLe",
+      "EofExceptionBitsLe2",
+      "EofExceptionBytes",
+      "EofExceptionSwitchUser",
+      "EofExceptionU4",
+      "EosExceptionBytes",
+      "EosExceptionU4",
+      "ValidFailAnyofInt",
+      "ValidFailContents",
+      "ValidFailEqBytes",
+      "ValidFailEqInt",
+      "ValidFailEqStr",
+      "ValidFailExpr",
+      "ValidFailInst",
+      "ValidFailMaxInt",
+      "ValidFailMinInt",
+      "ValidFailRangeBytes",
+      "ValidFailRangeFloat",
+      "ValidFailRangeInt",
+      "ValidFailRangeStr"
+    ],
+    "support_tests": [
+      "CustomProcessingExactBytes",
+      "HarnessDumpMaterializesChecksAndHandlesCycles",
+      "HarnessExactFile",
+      "HarnessFailuresRemainTyped",
+      "HarnessStreamDumpFailuresRestorePositionAndPreserveBits",
+      "HarnessStreamDumpPreservesPendingBits"
+    ],
     "additional": {
       "automatic_roundtrip": [
         "EnumImportLiterals",

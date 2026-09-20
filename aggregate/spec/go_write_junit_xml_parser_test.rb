@@ -18,7 +18,7 @@ class GoWriteJUnitXMLParserTest < Minitest::Test
       json_path = File.join(dir, 'ci.json')
       File.write(json_path, '{"StaleSuccess":{"status":"passed"}}')
       converter = File.expand_path('../convert_to_json', __dir__)
-      output, status = Open3.capture2e(converter, 'go-write', dir, json_path)
+      output, status = Open3.capture2e({'GO_WRITE_COVERAGE_MODE' => 'partial'}, converter, 'go-write', dir, json_path)
       assert status.success?, output
       result = JSON.parse(File.read(json_path))
       refute result.key?('StaleSuccess')

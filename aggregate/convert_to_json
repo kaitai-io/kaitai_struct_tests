@@ -192,7 +192,13 @@ else
   raise "Unable to handle language #{lang.inspect}"
 end
 
-GoWriteCoverage.annotate(result, "#{infile}/report.xml") if lang == 'go-write'
+if lang == 'go-write'
+  coverage_mode = ENV.fetch('GO_WRITE_COVERAGE_MODE', 'strict')
+  unless ['strict', 'partial'].include?(coverage_mode)
+    raise "Unknown GO_WRITE_COVERAGE_MODE #{coverage_mode.inspect}; expected strict or partial"
+  end
+  GoWriteCoverage.annotate(result, "#{infile}/report.xml", strict: coverage_mode == 'strict')
+end
 
 meta = {
   'lang' => lang,

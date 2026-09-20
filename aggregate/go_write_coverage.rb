@@ -4,6 +4,14 @@ require 'rexml/document'
 # These are test contracts, not blanket fixture exclusions. A passing negative
 # contract must not be interpreted as successful roundtrip coverage.
 module GoWriteCoverage
+  ADDITIONAL_EXPECTED_STATUS = {
+    'automatic_roundtrip' => 'passed',
+    'expected_parse_skip' => 'skipped',
+    'manual_boundary' => 'passed',
+    'negative_generation' => 'passed',
+    'shared_unsupported_generation' => 'not_generated',
+  }.freeze
+
   STATUS_PRIORITY = {
     'passed' => 0,
     'skipped' => 1,
@@ -28,7 +36,58 @@ module GoWriteCoverage
     end.sort.to_h
   end
 
-  def self.annotate(tests, report_path)
+  def self.expected_corpus_statuses(corpus)
+    primary = corpus.fetch('primary')
+    primary_skips = corpus.fetch('primary_expected_parse_skip')
+    unknown_primary_skips = primary_skips - primary
+    unless unknown_primary_skips.empty?
+      raise "primary_expected_parse_skip contains non-primary fixtures: #{unknown_primary_skips.sort.join(', ')}"
+    end
+
+    statuses = primary.each_with_object({}) { |fixture, result| result[fixture] = 'passed' }
+    primary_skips.each { |fixture| statuses[fixture] = 'skipped' }
+
+    additional = corpus.fetch('additional')
+    unexpected_categories = additional.keys - ADDITIONAL_EXPECTED_STATUS.keys
+    missing_categories = ADDITIONAL_EXPECTED_STATUS.keys - additional.keys
+    unless unexpected_categories.empty? && missing_categories.empty?
+      raise "invalid additional corpus categories: missing=#{missing_categories.sort.join(',')} unexpected=#{unexpected_categories.sort.join(',')}"
+    end
+    additional.each do |category, fixtures|
+      fixtures.each do |fixture|
+        raise "duplicate corpus fixture: #{fixture}" if statuses.key?(fixture)
+        statuses[fixture] = ADDITIONAL_EXPECTED_STATUS.fetch(category)
+      end
+    end
+    statuses
+  end
+
+  def self.validate_corpus!(corpus, fixture_statuses, corpus_summary)
+    expected_statuses = expected_corpus_statuses(corpus)
+    errors = expected_statuses.each_with_object([]) do |(fixture, expected), result|
+      actual = fixture_statuses.fetch(fixture, expected == 'not_generated' ? 'not_generated' : 'missing')
+      result << "#{fixture}: expected #{expected}, got #{actual}" unless actual == expected
+    end
+
+    allowed_non_corpus = corpus.fetch('support_tests')
+    unexpected_fixtures = fixture_statuses.keys - expected_statuses.keys - allowed_non_corpus
+    errors << "unexpected corpus fixtures: #{unexpected_fixtures.sort.join(', ')}" unless unexpected_fixtures.empty?
+
+    expected_summary = {
+      'primary' => count_fixtures(corpus.fetch('primary'), expected_statuses),
+      'additional' => {},
+    }
+    corpus.fetch('additional').each do |category, fixtures|
+      expected_summary['additional'][category] = count_fixtures(fixtures, expected_statuses)
+    end
+    unless corpus_summary == expected_summary
+      errors << "exact corpus counts differ: expected #{JSON.generate(expected_summary)}, got #{JSON.generate(corpus_summary)}"
+    end
+
+    raise "Go writer corpus validation failed:\n- #{errors.join("\n- ")}" unless errors.empty?
+  end
+
+  def self.annotate(tests, report_path, strict: true)
     manifest = JSON.parse(File.read(File.expand_path('../spec/go/specwrite/coverage.json', __dir__)))
     corpus = manifest.delete('$corpus')
     fixture_statuses = {}
@@ -65,6 +124,7 @@ module GoWriteCoverage
       corpus_summary['additional'][category] = count_fixtures(fixtures, fixture_statuses, missing_status)
     end
     tests['$go_write_corpus'] = corpus_summary
+    validate_corpus!(corpus, fixture_statuses, corpus_summary) if strict
 
     if File.exist?(report_path)
       doc = REXML::Document.new(File.read(report_path))

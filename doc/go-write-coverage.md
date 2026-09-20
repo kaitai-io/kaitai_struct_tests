@@ -24,6 +24,14 @@ The expected primary result is 264 passing fixtures and 23 expected-parse
 skips. Raw Go test and subtest totals remain visible in `SUMMARY`, but are not
 used as fixture parity counts.
 
+The converter defaults to a strict production mode. It validates the status of
+every named primary and additional fixture, the exact per-category counts, the
+five intentionally non-generated fixtures, and permits only the explicitly
+named non-corpus harness tests. A missing, unexpected, or incorrectly
+classified fixture makes `run-go-write` exit nonzero even when `go test` itself
+passed. Partial reporter unit tests must explicitly set
+`GO_WRITE_COVERAGE_MODE=partial`; that mode is not used by the production gate.
+
 - `manual_serialization_contract`: bounded recursive instances, intentional lazy
   conversion errors, or a deliberately partial read completed before writing.
 - `unsupported_serialization_semantics`: a passing negative contract which

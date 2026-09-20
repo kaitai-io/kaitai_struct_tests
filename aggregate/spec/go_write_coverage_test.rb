@@ -5,13 +5,61 @@ require 'open3'
 require 'rexml/document'
 
 class GoWriteCoverageTest < Minitest::Test
+  PRIMARY_EXPECTED_PARSE_SKIPS = %w[
+    DefaultEndianExprException
+    EofExceptionBitsBe
+    EofExceptionBitsBe2
+    EofExceptionBitsLe
+    EofExceptionBitsLe2
+    EofExceptionBytes
+    EofExceptionSwitchUser
+    EofExceptionU4
+    EosExceptionBytes
+    EosExceptionU4
+    ValidFailAnyofInt
+    ValidFailContents
+    ValidFailEqBytes
+    ValidFailEqInt
+    ValidFailEqStr
+    ValidFailExpr
+    ValidFailInst
+    ValidFailMaxInt
+    ValidFailMinInt
+    ValidFailRangeBytes
+    ValidFailRangeFloat
+    ValidFailRangeInt
+    ValidFailRangeStr
+  ].freeze
+
+  def write_complete_corpus_report(dir, omitted_fixture: nil)
+    manifest = JSON.parse(File.read(File.expand_path('../../spec/go/specwrite/coverage.json', __dir__)))
+    corpus = manifest.fetch('$corpus')
+    assert_equal PRIMARY_EXPECTED_PARSE_SKIPS, corpus.fetch('primary_expected_parse_skip')
+    statuses = {}
+    corpus.fetch('primary').each do |fixture|
+      statuses[fixture] = PRIMARY_EXPECTED_PARSE_SKIPS.include?(fixture) ? 'skipped' : 'passed'
+    end
+    corpus.fetch('additional').each do |category, fixtures|
+      next if category == 'shared_unsupported_generation'
+      status = category == 'expected_parse_skip' ? 'skipped' : 'passed'
+      fixtures.each { |fixture| statuses[fixture] = status }
+    end
+    statuses.delete(omitted_fixture)
+    cases = statuses.map do |fixture, status|
+      skipped = status == 'skipped' ? '<skipped message="expected parse failure"/>' : ''
+      "<testcase name=\"Test#{fixture}\" time=\"0\">#{skipped}</testcase>"
+    end
+    File.write(File.join(dir, 'report.xml'), "<testsuites><testsuite>#{cases.join}</testsuite></testsuites>")
+    File.write(File.join(dir, 'kst_adoption.log'), '')
+  end
+
   def test_manual_negative_categories_remain_visible_without_becoming_roundtrips_or_skips
     Dir.mktmpdir do |dir|
       names = %w[CastToTop DebugArrayUserCurrentExcluded StrEncodingsEscapingEnc StrEncodingsEscapingEnc/negative_generation/read/str1]
       File.write(File.join(dir, 'report.xml'), '<testsuites><testsuite>' + names.map { |n| "<testcase name=\"Test#{n}\" time=\"0\"/>" }.join + '</testsuite></testsuites>')
       File.write(File.join(dir, 'kst_adoption.log'), '')
       converter = File.expand_path('../convert_to_json', __dir__)
-      output, status = Open3.capture2e(converter, 'go-write', dir, File.join(dir, 'ci.json'))
+      output, status = Open3.capture2e({'GO_WRITE_COVERAGE_MODE' => 'partial'}, converter, 'go-write', dir, File.join(dir, 'ci.json'))
       assert status.success?, output
       result = JSON.parse(File.read(File.join(dir, 'ci.json')))
       negative = result.fetch('DebugArrayUserCurrentExcluded')
@@ -26,7 +74,7 @@ class GoWriteCoverageTest < Minitest::Test
       refute_nil property
       assert_equal 'unsupported_serialization_semantics', property.attributes['value']
       # Repeated conversion must not duplicate XML metadata or alter counts.
-      _, status = Open3.capture2e(converter, 'go-write', dir, File.join(dir, 'ci.json'))
+      _, status = Open3.capture2e({'GO_WRITE_COVERAGE_MODE' => 'partial'}, converter, 'go-write', dir, File.join(dir, 'ci.json'))
       assert status.success?
       xml = REXML::Document.new(File.read(File.join(dir, 'report.xml')))
       assert_equal 1, xml.get_elements('//testcase[@name="TestDebugArrayUserCurrentExcluded"]/properties/property[@name="coverage.category"]').size
@@ -45,7 +93,7 @@ class GoWriteCoverageTest < Minitest::Test
       File.write(File.join(dir, 'report.xml'), "<testsuites><testsuite>#{cases.join}</testsuite></testsuites>")
       File.write(File.join(dir, 'kst_adoption.log'), '')
       converter = File.expand_path('../convert_to_json', __dir__)
-      output, status = Open3.capture2e(converter, 'go-write', dir, File.join(dir, 'ci.json'))
+      output, status = Open3.capture2e({'GO_WRITE_COVERAGE_MODE' => 'partial'}, converter, 'go-write', dir, File.join(dir, 'ci.json'))
       assert status.success?, output
 
       result = JSON.parse(File.read(File.join(dir, 'ci.json')))
@@ -55,6 +103,19 @@ class GoWriteCoverageTest < Minitest::Test
       assert_equal({'not_generated' => 5}, corpus.fetch('additional').fetch('shared_unsupported_generation'))
       assert_includes output, '"skipped":1'
       assert_includes output, '"manual_boundary":{"missing":3,"passed":1}'
+    end
+  end
+
+  def test_production_mode_fails_closed_when_corpus_fixture_is_missing
+    Dir.mktmpdir do |dir|
+      write_complete_corpus_report(dir, omitted_fixture: 'BcdUserTypeBe')
+      converter = File.expand_path('../convert_to_json', __dir__)
+      output, status = Open3.capture2e(converter, 'go-write', dir, File.join(dir, 'ci.json'))
+
+      refute status.success?, output
+      assert_includes output, 'Go writer corpus validation failed'
+      assert_includes output, 'BcdUserTypeBe: expected passed, got missing'
+      assert_equal 1, output.scan(/: expected (?:passed|skipped), got missing/).size, output
     end
   end
 end
