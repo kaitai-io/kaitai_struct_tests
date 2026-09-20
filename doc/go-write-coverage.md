@@ -31,6 +31,8 @@ named non-corpus harness tests. A missing, unexpected, or incorrectly
 classified fixture makes `run-go-write` exit nonzero even when `go test` itself
 passed. Partial reporter unit tests must explicitly set
 `GO_WRITE_COVERAGE_MODE=partial`; that mode is not used by the production gate.
+The production wrapper pins the mode to `strict`, so an ambient partial-mode
+environment cannot weaken the gate.
 
 - `manual_serialization_contract`: bounded recursive instances, intentional lazy
   conversion errors, or a deliberately partial read completed before writing.

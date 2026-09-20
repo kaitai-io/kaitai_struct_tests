@@ -3,6 +3,7 @@ require 'tmpdir'
 require 'json'
 require 'open3'
 require 'rexml/document'
+require 'fileutils'
 
 class GoWriteCoverageTest < Minitest::Test
   PRIMARY_EXPECTED_PARSE_SKIPS = %w[
@@ -51,6 +52,11 @@ class GoWriteCoverageTest < Minitest::Test
     end
     File.write(File.join(dir, 'report.xml'), "<testsuites><testsuite>#{cases.join}</testsuite></testsuites>")
     File.write(File.join(dir, 'kst_adoption.log'), '')
+  end
+
+  def write_executable(path, contents)
+    File.write(path, contents)
+    File.chmod(0755, path)
   end
 
   def test_manual_negative_categories_remain_visible_without_becoming_roundtrips_or_skips
@@ -116,6 +122,40 @@ class GoWriteCoverageTest < Minitest::Test
       assert_includes output, 'Go writer corpus validation failed'
       assert_includes output, 'BcdUserTypeBe: expected passed, got missing'
       assert_equal 1, output.scan(/: expected (?:passed|skipped), got missing/).size, output
+    end
+  end
+
+  def test_production_wrapper_forces_strict_mode_over_ambient_partial
+    Dir.mktmpdir do |dir|
+      root = File.expand_path('../..', __dir__)
+      FileUtils.cp(File.join(root, 'run-go-write'), dir)
+      File.write(File.join(dir, 'config'), "TEST_OUT_DIR=test_out\ncd \"$(dirname \"$0\")\"\n")
+      write_executable(File.join(dir, 'prepare-go'), "#!/bin/sh\nexit 0\n")
+      write_executable(File.join(dir, 'kst-adoption-report'), "#!/bin/sh\n: > test_out/go-write/kst_adoption.log\n")
+
+      FileUtils.cp_r(File.join(root, 'aggregate'), dir)
+      spec_dir = File.join(dir, 'spec/go/specwrite')
+      FileUtils.mkdir_p(spec_dir)
+      FileUtils.cp(File.join(root, 'spec/go/specwrite/coverage.json'), spec_dir)
+
+      bin_dir = File.join(dir, 'bin')
+      FileUtils.mkdir_p(bin_dir)
+      write_executable(File.join(bin_dir, 'go'), "#!/bin/sh\nprintf 'PASS\\n'\n")
+      write_executable(File.join(bin_dir, 'go-junit-report'), <<~'RUBY')
+        #!/usr/bin/env ruby
+        output = ARGV.fetch(ARGV.index('-out') + 1)
+        File.write(output, '<testsuites><testsuite><testcase name="TestBcdUserTypeBe" time="0"/></testsuite></testsuites>')
+      RUBY
+
+      env = {
+        'GO_WRITE_COVERAGE_MODE' => 'partial',
+        'PATH' => "#{bin_dir}:#{ENV.fetch('PATH')}",
+      }
+      output, status = Open3.capture2e(env, File.join(dir, 'run-go-write'), chdir: dir)
+
+      refute status.success?, output
+      assert_includes output, 'Go writer corpus validation failed'
+      assert_includes output, 'BcdUserTypeLe: expected passed, got missing'
     end
   end
 end

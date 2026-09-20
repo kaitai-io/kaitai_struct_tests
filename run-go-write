@@ -26,7 +26,7 @@ cat "$ABS_TEST_OUT_DIR/build.log" "$ABS_TEST_OUT_DIR/test_run.stdout" >"$ABS_TES
 go-junit-report -in "$ABS_TEST_OUT_DIR/test_run.log" -out "$ABS_TEST_OUT_DIR/report.xml"
 ./kst-adoption-report go-write
 coverage_exit_code=0
-aggregate/convert_to_json go-write "$TEST_OUT_DIR/go-write" "$TEST_OUT_DIR/go-write/ci.json" || coverage_exit_code=$?
+GO_WRITE_COVERAGE_MODE=strict aggregate/convert_to_json go-write "$TEST_OUT_DIR/go-write" "$TEST_OUT_DIR/go-write/ci.json" || coverage_exit_code=$?
 if [ "$go_exit_code" -ne 0 ]; then
 	exit "$go_exit_code"
 fi
