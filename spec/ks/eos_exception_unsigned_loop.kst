@@ -1,0 +1,3 @@
+id: eos_exception_unsigned_loop
+data: high_bit_u4_loop_count.bin
+exception: EndOfStreamError
