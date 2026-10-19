@@ -7,10 +7,10 @@ const _imp_enum_0 = @import("../formats/enum_0.zig");
 const _imp_enum_deep = @import("../formats/enum_deep.zig");
 
 test "EnumImportSeq" {
-    const file = try _imp_std.fs.cwd().openFile("../../src/enum_0.bin", .{});
-    defer file.close();
+    const file = try _imp_std.Io.Dir.cwd().openFile(_imp_std.testing.io, "../../src/enum_0.bin", .{});
+    defer file.close(_imp_std.testing.io);
     var buffer: [8]u8 = undefined;
-    var reader = file.reader(&buffer);
+    var reader = file.reader(_imp_std.testing.io, &buffer);
     const allocator = _imp_std.testing.allocator;
     var arena = _imp_std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();
