@@ -8,12 +8,12 @@ formats/spec_type_mismatch_format_param.zig:2:24: note: parameter type declared 
                        ^~~~
 referenced by:
     comptime: tests.zig:2:17
-error: the following command failed with 1 compilation errors:
-/home/pp/zig-x86_64-linux-0.15.1/zig test -freference-trace=256 -ODebug -Mroot=/home/pp/kaitai_struct_tests/builder/spec/zig/spec_type_mismatch_format_param/spec/zig/tests.zig --cache-dir .zig-cache --global-cache-dir /home/pp/.cache/zig --name test --zig-lib-dir /home/pp/zig-x86_64-linux-0.15.1/lib/ --listen=-
+error: 1 compilation errors
+failed command: /usr/local/zig-x86_64-linux-0.16.0/zig test -freference-trace=256 -ODebug -Mroot=/zigspec/spec_type_mismatch_format_param/spec/zig/tests.zig --cache-dir .zig-cache --global-cache-dir /root/.cache/zig --name test --zig-lib-dir /usr/local/zig-x86_64-linux-0.16.0/lib/ --listen=-
 
-Build Summary: 0/2 steps succeeded; 1 failed
+Build Summary: 0/2 steps succeeded (1 failed)
 test transitive failure
 +- compile test Debug native 1 errors
 
 error: the following build command failed with exit code 1:
-.zig-cache/o/cb9090b6a187a6fec70a38779b39aaf9/build /home/pp/zig-x86_64-linux-0.15.1/zig /home/pp/zig-x86_64-linux-0.15.1/lib /home/pp/kaitai_struct_tests/builder/spec/zig/spec_type_mismatch_format_param/spec/zig .zig-cache /home/pp/.cache/zig --seed 0x14327ef -Zb54b88691cab55e8 test --summary all -freference-trace -Dno-bin
+.zig-cache/o/12dd3e92da7c123fe330d112137bb12c/build /usr/local/zig-x86_64-linux-0.16.0/zig /usr/local/zig-x86_64-linux-0.16.0/lib /zigspec/spec_type_mismatch_format_param/spec/zig .zig-cache /root/.cache/zig --seed 0xd791e4a5 -Z0b6ad2501e1a8755 test --summary all -freference-trace -Dno-bin
