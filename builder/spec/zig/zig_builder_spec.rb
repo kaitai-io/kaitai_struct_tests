@@ -12,6 +12,26 @@ RSpec.describe ZigBuilder do
     @spec_dir = File.dirname(__FILE__)
   end
 
+  # Functions with inferred error sets that call each other (as in recursive
+  # formats) cause a "dependency loop" error. This error has no source location
+  # of its own, only indented notes pointing to each function in the loop.
+  context 'format_dependency_loop' do
+    before :context do
+      Dir.chdir("#{@spec_dir}/format_dependency_loop")
+      @builder = ZigBuilder.new
+    end
+
+    describe '#parse_failed_build' do
+      it 'identifies the format with dependency loop + the test spec that references it' do
+        expect(@builder.parse_failed_build('test_out/zig/build-1.log')).to eq [
+          File.absolute_path('spec/zig/formats/format_dependency_loop.zig'),
+          File.absolute_path('spec/zig/tests/format_dependency_loop_test.zig'),
+          File.absolute_path('spec/zig/formats/format_dependency_loop.zig'),
+        ]
+      end
+    end
+  end
+
   # This scenario shows that the Zig compiler only reports the file where the
   # syntax error is found, without indicating where the file was imported from,
   # as is the case with type mismatch errors in the "referenced by:" trace - see

@@ -75,36 +75,51 @@ class ZigBuilder < PartialBuilder
     end
   end
 
-  # These messages were found in Zig 0.15.1 source code: https://github.com/ziglang/zig/tree/0.15.1
+  # These messages were found in Zig 0.16.0 source code: https://codeberg.org/ziglang/zig/src/commit/24fdd5b7a4c1c8b5deb5b56756b9dbc8e08c86a8
   ZIG_NOTE_MESSAGES_CALLED_HERE = [
-    # The following 1 message is from https://github.com/ziglang/zig/blob/3db960767d12b6214bcf43f1966a037c7a586a12/src/Sema.zig#L870
+    # The following 1 message is from https://codeberg.org/ziglang/zig/src/commit/24fdd5b7a4c1c8b5deb5b56756b9dbc8e08c86a8/src/Sema.zig#L880
     "called at comptime from here",
 
-    # The following 3 messages are from https://github.com/ziglang/zig/blob/3db960767d12b6214bcf43f1966a037c7a586a12/src/Sema.zig#L2641-L2643
+    # The following 3 messages are from https://codeberg.org/ziglang/zig/src/commit/24fdd5b7a4c1c8b5deb5b56756b9dbc8e08c86a8/src/Sema.zig#L2714-L2716
     "generic function instantiated here",
     "called at comptime here",
     "called inline here",
 
-    # The following 1 message is from https://github.com/ziglang/zig/blob/3db960767d12b6214bcf43f1966a037c7a586a12/src/Compilation.zig#L4541
+    # The following 1 message is from https://codeberg.org/ziglang/zig/src/commit/24fdd5b7a4c1c8b5deb5b56756b9dbc8e08c86a8/src/Compilation.zig#L4441
     "file imported here",
   ].freeze
   private_constant :ZIG_NOTE_MESSAGES_CALLED_HERE
 
+  # This error has no source location of its own
+  # (https://codeberg.org/ziglang/zig/src/commit/24fdd5b7a4c1c8b5deb5b56756b9dbc8e08c86a8/src/Zcu.zig#L4949-L4953),
+  # but each dependency in the loop has a note with a source location. Notes
+  # of such errors are indented by 4 spaces
+  # (https://codeberg.org/ziglang/zig/src/commit/24fdd5b7a4c1c8b5deb5b56756b9dbc8e08c86a8/lib/std/zig/ErrorBundle.zig#L318).
+  ZIG_DEPENDENCY_LOOP_ERROR = /^error: dependency loop with length \d+$/
+  private_constant :ZIG_DEPENDENCY_LOOP_ERROR
+
   def parse_failed_build(log_file)
     list = []
     in_reference_trace = false
+    in_dependency_loop = false
 
     File.open(log_file, 'r') { |f|
       f.each_line { |l|
         l.chomp!
         clear_in_reference_trace = true
+        # Notes of an error without a source location are indented, so
+        # anything at the start of a line ends the dependency loop error
+        in_dependency_loop = false unless l.start_with?(' ')
         case l
-        when /^(.+?\.zig):(\d+):(\d+): (error|note): (.*?)$/
-          filename = $1
-          # row = $2
-          # col = $3
-          severity = $4
-          msg = $5
+        when ZIG_DEPENDENCY_LOOP_ERROR
+          in_dependency_loop = true
+        when /^( *)(.+?\.zig):(\d+):(\d+): (error|note): (.*?)$/
+          indent = $1
+          filename = $2
+          # row = $3
+          # col = $4
+          severity = $5
+          msg = $6
           abs_path = File.absolute_path(filename, @base_spec_dir)
           kind = file_to_kind(abs_path)
           case severity
@@ -113,12 +128,16 @@ class ZigBuilder < PartialBuilder
               list << abs_path
             end
           when 'note'
-            list << abs_path if ZIG_NOTE_MESSAGES_CALLED_HERE.include?(msg)
+            if ZIG_NOTE_MESSAGES_CALLED_HERE.include?(msg)
+              list << abs_path
+            elsif in_dependency_loop && !indent.empty? && (kind == :spec || kind == :format)
+              list << abs_path
+            end
           end
-        when 'referenced by:'
+        when /^ *referenced by:$/
           clear_in_reference_trace = false
           in_reference_trace = true
-        when /^    (.*?): (.+?\.zig):(\d+):(\d+)$/
+        when /^ *    (.*?): (.+?\.zig):(\d+):(\d+)$/
           # decl_name = $1
           filename = $2
           # row = $3

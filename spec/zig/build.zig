@@ -31,7 +31,7 @@ pub fn build(b: *std.Build) void {
     // A run step that will run the test executable.
     const run_tests_exe = b.addRunArtifact(tests_exe);
     const tests_report = run_tests_exe.addPrefixedOutputFileArg("--output-file=", "report.json");
-    const tests_stderr = run_tests_exe.captureStdErr();
+    const tests_stderr = run_tests_exe.captureStdErr(.{});
 
     // Copy the test artifacts to the "installation prefix" directory, which is
     // called `zig-out` by default, but can be changed using the `--prefix` flag
