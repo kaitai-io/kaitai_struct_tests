@@ -1,0 +1,99 @@
+id: reserved_python_keywords
+data: full256.bin
+asserts:
+  # Test basic keyword field access
+  - actual: and
+    expected: 0
+  - actual: as
+    expected: 1
+  - actual: assert
+    expected: 2
+  - actual: async
+    expected: 3
+  - actual: await
+    expected: 4
+  - actual: break
+    expected: 5
+  - actual: class
+    expected: 6
+  - actual: continue
+    expected: 7
+  - actual: def
+    expected: 8
+  - actual: del
+    expected: 9
+  - actual: elif
+    expected: 10
+  - actual: else
+    expected: 11
+  - actual: except
+    expected: 12
+  - actual: false
+    expected: 13
+  - actual: finally
+    expected: 14
+  - actual: for
+    expected: 15
+  - actual: from
+    expected: 16
+  - actual: global
+    expected: 17
+  - actual: if
+    expected: 18
+  - actual: import
+    expected: 19
+  - actual: in
+    expected: 20
+  - actual: is
+    expected: 21
+  - actual: lambda
+    expected: 22
+  - actual: none
+    expected: 23
+  - actual: nonlocal
+    expected: 24
+  - actual: not
+    expected: 25
+  - actual: or
+    expected: 26
+  - actual: pass
+    expected: 27
+  - actual: raise
+    expected: 28
+  - actual: return
+    expected: 29
+  - actual: true
+    expected: 30
+  - actual: try
+    expected: 31
+  - actual: while
+    expected: 32
+  - actual: with
+    expected: 33
+  - actual: yield
+    expected: 34
+  # Test accessing keyword-named struct fields in keyword-named type 'def'
+  - actual: keyword_struct_def.while
+    expected: 35
+  - actual: keyword_struct_def.for
+    expected: 36
+  - actual: keyword_struct_def.with
+    expected: 37
+  # Test accessing keyword-named struct fields in keyword-named type 'false'
+  - actual: keyword_struct_false.pass
+    expected: 38
+  # Test enum with keyword names
+  - actual: keyword_enum
+    expected: reserved_python_keywords::true::and
+  - actual: keyword_nested_enum
+    expected: reserved_python_keywords::def::try::except
+  # Test instances with keyword names
+  - actual: inst_keyword_seq
+    expected: 1  # and (0) + as (1)
+  - actual: inst_keyword_enum
+    expected: reserved_python_keywords::true::if
+  - actual: inst_keyword_enum_to_i
+    expected: 6
+  # Test instance in keyword-named type
+  - actual: keyword_struct_def.return
+    expected: 71  # while (35) + for (36)
