@@ -5,10 +5,10 @@ const _imp_kaitai_struct = @import("kaitai_struct");
 const _imp_nav_parent_override = @import("../formats/nav_parent_override.zig");
 
 test "NavParentOverride" {
-    const file = try _imp_std.fs.cwd().openFile("../../src/nav_parent_codes.bin", .{});
-    defer file.close();
+    const file = try _imp_std.Io.Dir.cwd().openFile(_imp_std.testing.io, "../../src/nav_parent_codes.bin", .{});
+    defer file.close(_imp_std.testing.io);
     var buffer: [8]u8 = undefined;
-    var reader = file.reader(&buffer);
+    var reader = file.reader(_imp_std.testing.io, &buffer);
     const allocator = _imp_std.testing.allocator;
     var arena = _imp_std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();

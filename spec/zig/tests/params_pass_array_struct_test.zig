@@ -5,10 +5,10 @@ const _imp_kaitai_struct = @import("kaitai_struct");
 const _imp_params_pass_array_struct = @import("../formats/params_pass_array_struct.zig");
 
 test "ParamsPassArrayStruct" {
-    const file = try _imp_std.fs.cwd().openFile("../../src/position_to_end.bin", .{});
-    defer file.close();
+    const file = try _imp_std.Io.Dir.cwd().openFile(_imp_std.testing.io, "../../src/position_to_end.bin", .{});
+    defer file.close(_imp_std.testing.io);
     var buffer: [8]u8 = undefined;
-    var reader = file.reader(&buffer);
+    var reader = file.reader(_imp_std.testing.io, &buffer);
     const allocator = _imp_std.testing.allocator;
     var arena = _imp_std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();

@@ -19,13 +19,11 @@ const Error = struct {
     trace: []const u8,
 };
 
-pub fn main() !void {
-    var arena = std.heap.ArenaAllocator.init(std.heap.page_allocator);
-    defer arena.deinit();
+pub fn main(init: std.process.Init) !void {
+    const allocator = init.arena.allocator();
+    const io = init.io;
 
-    const allocator = arena.allocator();
-
-    var args = try std.process.argsWithAllocator(allocator);
+    var args = try init.minimal.args.iterateAllocator(allocator);
     defer args.deinit();
 
     // Skip the executable name
@@ -57,7 +55,7 @@ pub fn main() !void {
         // Use a unique prefix to prevent any other line printed to stderr from
         // being mistaken for this test start marker
         std.debug.print("=@= ZIG_TEST_START {s} ~#~\n", .{test_fn.name});
-        try tests.append(allocator, try runTest(allocator, test_fn, debug_info));
+        try tests.append(allocator, try runTest(allocator, init.minimal, test_fn, debug_info));
     }
 
     const report = Report{
@@ -65,11 +63,11 @@ pub fn main() !void {
         .tests = tests.items,
     };
 
-    const output_file = try std.fs.cwd().createFile(output_file_path, .{});
-    defer output_file.close();
+    const output_file = try std.Io.Dir.cwd().createFile(io, output_file_path, .{});
+    defer output_file.close(io);
 
     var output_buffer: [1024]u8 = undefined;
-    var output_file_writer = output_file.writer(&output_buffer);
+    var output_file_writer = output_file.writer(io, &output_buffer);
     const writer = &output_file_writer.interface;
 
     try std.json.fmt(report, .{ .whitespace = .indent_2 }).format(writer);
@@ -77,11 +75,21 @@ pub fn main() !void {
     try writer.flush();
 }
 
-fn runTest(allocator: std.mem.Allocator, test_fn: TestFn, debug_info: *std.debug.SelfInfo) !TestResult {
+fn runTest(allocator: std.mem.Allocator, minimal: std.process.Init.Minimal, test_fn: TestFn, debug_info: *std.debug.SelfInfo) !TestResult {
     const test_fn_addr = @intFromPtr(test_fn.func);
-    const module: *std.debug.SelfInfo.Module = try debug_info.getModuleForAddress(test_fn_addr);
-    const symbol_info = try module.getSymbolAtAddress(debug_info.allocator, test_fn_addr);
-    const src_loc = symbol_info.source_location orelse unreachable;
+    var symbols: std.ArrayList(std.debug.Symbol) = .empty;
+    try debug_info.getSymbols(std.Options.debug_io, allocator, allocator, test_fn_addr, false, &symbols);
+    const src_loc = symbols.items[0].source_location orelse unreachable;
+
+    // Like the default test runner in Zig 0.16.0
+    // (https://codeberg.org/ziglang/zig/src/commit/24fdd5b7a4c1c8b5deb5b56756b9dbc8e08c86a8/lib/compiler/test_runner.zig#L275-L278),
+    // provide a fresh `std.testing.io` for each test
+    std.testing.io_instance = .init(std.testing.allocator, .{
+        .argv0 = .init(minimal.args),
+        .environ = minimal.environ,
+    });
+    defer std.testing.io_instance.deinit();
+    std.testing.environ = minimal.environ;
 
     const result = test_fn.func();
 
@@ -91,7 +99,7 @@ fn runTest(allocator: std.mem.Allocator, test_fn: TestFn, debug_info: *std.debug
             var allocating_writer = std.Io.Writer.Allocating.init(allocator);
             defer allocating_writer.deinit();
             const writer = &allocating_writer.writer;
-            try std.debug.writeStackTrace(trace.*, writer, debug_info, .no_color);
+            try std.debug.writeErrorReturnTrace(trace, .{ .writer = writer, .mode = .no_color });
             break :trace_blk try allocating_writer.toOwnedSlice();
         } else unreachable;
         break :error_blk .{

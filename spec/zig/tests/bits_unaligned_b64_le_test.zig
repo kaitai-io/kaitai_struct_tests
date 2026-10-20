@@ -5,10 +5,10 @@ const _imp_kaitai_struct = @import("kaitai_struct");
 const _imp_bits_unaligned_b64_le = @import("../formats/bits_unaligned_b64_le.zig");
 
 test "BitsUnalignedB64Le" {
-    const file = try _imp_std.fs.cwd().openFile("../../src/process_xor_4.bin", .{});
-    defer file.close();
+    const file = try _imp_std.Io.Dir.cwd().openFile(_imp_std.testing.io, "../../src/process_xor_4.bin", .{});
+    defer file.close(_imp_std.testing.io);
     var buffer: [8]u8 = undefined;
-    var reader = file.reader(&buffer);
+    var reader = file.reader(_imp_std.testing.io, &buffer);
     const allocator = _imp_std.testing.allocator;
     var arena = _imp_std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();

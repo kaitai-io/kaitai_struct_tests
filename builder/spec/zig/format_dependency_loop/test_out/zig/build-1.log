@@ -1,0 +1,22 @@
+test
++- compile test Debug native 1 errors
+error: dependency loop with length 2
+    formats/format_dependency_loop.zig:4:23: note: function 'formats.format_dependency_loop.FormatDependencyLoop.create' uses inferred error set of function 'formats.format_dependency_loop.FormatDependencyLoop._read' here
+            try self._read();
+                ~~~~~~~~~~^~
+    referenced by:
+        test.FormatDependencyLoop: tests/format_dependency_loop_test.zig:6:63
+        comptime: tests.zig:2:17
+    formats/format_dependency_loop.zig:10:44: note: function 'formats.format_dependency_loop.FormatDependencyLoop._read' uses inferred error set of function 'formats.format_dependency_loop.FormatDependencyLoop.create' here
+            _ = try FormatDependencyLoop.create();
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+    note: eliminate any one of these dependencies to break the loop
+error: 1 compilation errors
+failed command: /usr/local/zig-x86_64-linux-0.16.0/zig test -freference-trace=256 -ODebug -Mroot=/zigspec/format_dependency_loop/spec/zig/tests.zig --cache-dir .zig-cache --global-cache-dir /root/.cache/zig --name test --zig-lib-dir /usr/local/zig-x86_64-linux-0.16.0/lib/ --listen=-
+
+Build Summary: 0/2 steps succeeded (1 failed)
+test transitive failure
++- compile test Debug native 1 errors
+
+error: the following build command failed with exit code 1:
+.zig-cache/o/12dd3e92da7c123fe330d112137bb12c/build /usr/local/zig-x86_64-linux-0.16.0/zig /usr/local/zig-x86_64-linux-0.16.0/lib /zigspec/format_dependency_loop/spec/zig .zig-cache /root/.cache/zig --seed 0x41583704 -Z95a81b97a0236d02 test --summary all -freference-trace -Dno-bin

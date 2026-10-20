@@ -5,10 +5,10 @@ const _imp_kaitai_struct = @import("kaitai_struct");
 const _imp_enum_long_range_u = @import("../formats/enum_long_range_u.zig");
 
 test "EnumLongRangeU" {
-    const file = try _imp_std.fs.cwd().openFile("../../src/enum_long_range_u.bin", .{});
-    defer file.close();
+    const file = try _imp_std.Io.Dir.cwd().openFile(_imp_std.testing.io, "../../src/enum_long_range_u.bin", .{});
+    defer file.close(_imp_std.testing.io);
     var buffer: [8]u8 = undefined;
-    var reader = file.reader(&buffer);
+    var reader = file.reader(_imp_std.testing.io, &buffer);
     const allocator = _imp_std.testing.allocator;
     var arena = _imp_std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();

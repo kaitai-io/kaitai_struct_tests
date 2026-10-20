@@ -5,10 +5,10 @@ const _imp_kaitai_struct = @import("kaitai_struct");
 const _imp_expr_fstring_0 = @import("../formats/expr_fstring_0.zig");
 
 test "ExprFstring0" {
-    const file = try _imp_std.fs.cwd().openFile("../../src/term_strz.bin", .{});
-    defer file.close();
+    const file = try _imp_std.Io.Dir.cwd().openFile(_imp_std.testing.io, "../../src/term_strz.bin", .{});
+    defer file.close(_imp_std.testing.io);
     var buffer: [8]u8 = undefined;
-    var reader = file.reader(&buffer);
+    var reader = file.reader(_imp_std.testing.io, &buffer);
     const allocator = _imp_std.testing.allocator;
     var arena = _imp_std.heap.ArenaAllocator.init(allocator);
     defer arena.deinit();

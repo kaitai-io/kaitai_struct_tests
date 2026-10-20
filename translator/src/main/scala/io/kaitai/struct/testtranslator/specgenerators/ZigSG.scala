@@ -47,10 +47,10 @@ class ZigSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
   }
 
   def runParseCommon(): Unit = {
-    out.puts(s"""const file = try _imp_std.fs.cwd().openFile("../../src/${spec.data}", .{});""")
-    out.puts("defer file.close();")
+    out.puts(s"""const file = try _imp_std.Io.Dir.cwd().openFile(_imp_std.testing.io, "../../src/${spec.data}", .{});""")
+    out.puts("defer file.close(_imp_std.testing.io);")
     out.puts("var buffer: [8]u8 = undefined;")
-    out.puts("var reader = file.reader(&buffer);")
+    out.puts("var reader = file.reader(_imp_std.testing.io, &buffer);")
     out.puts("const allocator = _imp_std.testing.allocator;")
     out.puts("var arena = _imp_std.heap.ArenaAllocator.init(allocator);")
     out.puts("defer arena.deinit();")
