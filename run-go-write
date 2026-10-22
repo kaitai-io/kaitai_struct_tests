@@ -1,0 +1,33 @@
+#!/bin/sh -ef
+
+. "$(dirname "$0")/config"
+
+# Serialization failures must remain visible; never disable generated files.
+export NO_RECOVER=1
+rm -rf "$TEST_OUT_DIR/go-write"
+mkdir -p "$TEST_OUT_DIR/go-write"
+ABS_TEST_OUT_DIR="$(pwd)/$TEST_OUT_DIR/go-write"
+./prepare-go
+
+if [ -z "$GOPATH" ]; then
+	export GOPATH=$HOME/go
+	export PATH=$PATH:$GOPATH/bin
+fi
+
+go_exit_code=0
+(
+	cd spec/go/specwrite
+	CGO_ENABLED=0 go test -count=1 -v .
+) >"$ABS_TEST_OUT_DIR/test_run.stdout" 2>"$ABS_TEST_OUT_DIR/build.log" || go_exit_code=$?
+cat "$ABS_TEST_OUT_DIR/build.log"
+cat "$ABS_TEST_OUT_DIR/test_run.stdout"
+
+cat "$ABS_TEST_OUT_DIR/build.log" "$ABS_TEST_OUT_DIR/test_run.stdout" >"$ABS_TEST_OUT_DIR/test_run.log"
+go-junit-report -in "$ABS_TEST_OUT_DIR/test_run.log" -out "$ABS_TEST_OUT_DIR/report.xml"
+./kst-adoption-report go-write
+coverage_exit_code=0
+GO_WRITE_COVERAGE_MODE=strict aggregate/convert_to_json go-write "$TEST_OUT_DIR/go-write" "$TEST_OUT_DIR/go-write/ci.json" || coverage_exit_code=$?
+if [ "$go_exit_code" -ne 0 ]; then
+	exit "$go_exit_code"
+fi
+exit "$coverage_exit_code"

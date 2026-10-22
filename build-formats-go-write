@@ -1,0 +1,23 @@
+#!/bin/sh -e
+
+. "$(dirname "$0")/config"
+
+# Pass specific KSY paths for a focused run, or omit arguments for the corpus.
+if [ "$#" -eq 0 ]; then
+	for schema in "$FORMATS_KSY_DIR"/*.ksy; do
+		case "$schema" in
+			*/str_encodings_escaping_enc.ksy|*/str_encodings_escaping_to_s.ksy)
+				echo "negative_generation: $schema (source-declared manual template; tested by specwrite compiler diagnostics)" >&2
+				;;
+			*) set -- "$@" "$schema" ;;
+		esac
+	done
+fi
+rm -rf "$FORMATS_COMPILED_DIR/go/src/test_formats_write"
+mkdir -p "$FORMATS_COMPILED_DIR/go/src/test_formats_write"
+"$COMPILER_DIR/jvm/target/universal/stage/bin/kaitai-struct-compiler" -- \
+	--verbose file -t go --read-write \
+	-d "$FORMATS_COMPILED_DIR/go/src" --go-package test_formats_write \
+	--import-path "$FORMATS_REPO_DIR" \
+	--import-path "$FORMATS_KSY_DIR/ks_path" "$@"
+./prepare-go
