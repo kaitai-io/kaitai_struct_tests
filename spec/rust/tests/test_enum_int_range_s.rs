@@ -10,9 +10,14 @@ fn test_enum_int_range_s() -> KResult<()> {
     let bytes = fs::read("../../src/enum_int_range_s.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<EnumIntRangeS> = EnumIntRangeS::read_into(&_io, None, None)?;
-
     assert_eq!(*r.f1(), EnumIntRangeS_Constants::IntMin);
+    assert_eq!(i64::from(&*r.f1()), -2147483648);
+    assert_eq!(*r.f1_to_i()?, -2147483648);
     assert_eq!(*r.f2(), EnumIntRangeS_Constants::Zero);
+    assert_eq!(i64::from(&*r.f2()), 0);
+    assert_eq!(*r.f2_to_i()?, 0);
     assert_eq!(*r.f3(), EnumIntRangeS_Constants::IntMax);
+    assert_eq!(i64::from(&*r.f3()), 2147483647);
+    assert_eq!(*r.f3_to_i()?, 2147483647);
     Ok(())
 }

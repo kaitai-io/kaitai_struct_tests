@@ -9,8 +9,10 @@ seq:
     enum: animal
 enums:
   animal:
-    0x66: dog
-    0x7c: cat
+    type: u1
+    values:
+      0x66: dog
+      0x7c: cat
 instances:
   pet_2_i:
     value: pet_2.to_i

@@ -10,11 +10,18 @@ BOOST_AUTO_TEST_CASE(test_enum_long_range_u) {
     std::ifstream ifs("src/enum_long_range_u.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     enum_long_range_u_t* r = new enum_long_range_u_t(&ks);
-
     BOOST_CHECK_EQUAL(r->f1(), enum_long_range_u_t::CONSTANTS_ZERO);
+    BOOST_CHECK_EQUAL(r->f1(), 0);
+    BOOST_CHECK_EQUAL(r->f1_to_i(), 0);
     BOOST_CHECK_EQUAL(r->f2(), enum_long_range_u_t::CONSTANTS_INT_MAX);
+    BOOST_CHECK_EQUAL(r->f2(), 4294967295UL);
+    BOOST_CHECK_EQUAL(r->f2_to_i(), 4294967295UL);
     BOOST_CHECK_EQUAL(r->f3(), enum_long_range_u_t::CONSTANTS_INT_OVER_MAX);
+    BOOST_CHECK_EQUAL(r->f3(), 4294967296LL);
+    BOOST_CHECK_EQUAL(r->f3_to_i(), 4294967296LL);
     BOOST_CHECK_EQUAL(r->f4(), enum_long_range_u_t::CONSTANTS_LONG_MAX);
+    BOOST_CHECK_EQUAL(r->f4(), 18446744073709551615ULL);
+    BOOST_CHECK_EQUAL(r->f4_to_i(), 18446744073709551615ULL);
 
     delete r;
 }

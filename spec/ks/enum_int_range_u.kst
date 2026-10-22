@@ -3,5 +3,13 @@ data: enum_int_range_u.bin
 asserts:
   - actual: f1
     expected: enum_int_range_u::constants::zero
+  - actual: f1.to_i
+    expected: 0
+  - actual: f1_to_i
+    expected: 0
   - actual: f2
     expected: enum_int_range_u::constants::int_max
+  - actual: f2.to_i
+    expected: 4294967295
+  - actual: f2_to_i
+    expected: 4294967295

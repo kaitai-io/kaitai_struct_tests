@@ -15,6 +15,12 @@ test "EnumIntRangeS" {
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_enum_int_range_s.EnumIntRangeS.create(&arena, &_io, null, null);
     try _imp_std.testing.expectEqual(_imp_enum_int_range_s.EnumIntRangeS.Constants.int_min, r.f1);
+    try _imp_std.testing.expectEqual(-2147483648, @intFromEnum(r.f1));
+    try _imp_std.testing.expectEqual(-2147483648, (try r.f1ToI()));
     try _imp_std.testing.expectEqual(_imp_enum_int_range_s.EnumIntRangeS.Constants.zero, r.f2);
+    try _imp_std.testing.expectEqual(0, @intFromEnum(r.f2));
+    try _imp_std.testing.expectEqual(0, (try r.f2ToI()));
     try _imp_std.testing.expectEqual(_imp_enum_int_range_s.EnumIntRangeS.Constants.int_max, r.f3);
+    try _imp_std.testing.expectEqual(2147483647, @intFromEnum(r.f3));
+    try _imp_std.testing.expectEqual(2147483647, (try r.f3ToI()));
 }

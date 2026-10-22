@@ -9,9 +9,14 @@ public class TestEnumIntRangeS extends CommonSpec {
     @Test
     public void testEnumIntRangeS() throws Exception {
         EnumIntRangeS r = EnumIntRangeS.fromFile(SRC_DIR + "enum_int_range_s.bin");
-
         assertEquals(r.f1(), EnumIntRangeS.Constants.INT_MIN);
+        assertIntEquals(r.f1().id(), -2147483648);
+        assertIntEquals(r.f1ToI(), -2147483648);
         assertEquals(r.f2(), EnumIntRangeS.Constants.ZERO);
+        assertIntEquals(r.f2().id(), 0);
+        assertIntEquals(r.f2ToI(), 0);
         assertEquals(r.f3(), EnumIntRangeS.Constants.INT_MAX);
+        assertIntEquals(r.f3().id(), 2147483647);
+        assertIntEquals(r.f3ToI(), 2147483647);
     }
 }

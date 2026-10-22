@@ -10,10 +10,15 @@ BOOST_AUTO_TEST_CASE(test_enum_int_range_s) {
     std::ifstream ifs("src/enum_int_range_s.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     enum_int_range_s_t* r = new enum_int_range_s_t(&ks);
-
     BOOST_CHECK_EQUAL(r->f1(), enum_int_range_s_t::CONSTANTS_INT_MIN);
+    BOOST_CHECK_EQUAL(r->f1(), (-2147483647 - 1));
+    BOOST_CHECK_EQUAL(r->f1_to_i(), (-2147483647 - 1));
     BOOST_CHECK_EQUAL(r->f2(), enum_int_range_s_t::CONSTANTS_ZERO);
+    BOOST_CHECK_EQUAL(r->f2(), 0);
+    BOOST_CHECK_EQUAL(r->f2_to_i(), 0);
     BOOST_CHECK_EQUAL(r->f3(), enum_int_range_s_t::CONSTANTS_INT_MAX);
+    BOOST_CHECK_EQUAL(r->f3(), 2147483647);
+    BOOST_CHECK_EQUAL(r->f3_to_i(), 2147483647);
 
     delete r;
 }

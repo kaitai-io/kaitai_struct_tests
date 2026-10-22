@@ -10,9 +10,11 @@ seq:
     enum: animal
 enums:
   animal:
-    4: dog
-    7: cat
-    12: chicken
+    type: u4
+    values:
+      4: dog
+      7: cat
+      12: chicken
 instances:
   pet_1_i:
     value: pet_1.to_i

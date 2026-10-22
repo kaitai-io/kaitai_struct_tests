@@ -8,9 +8,16 @@ TestEnumLongRangeU = {}
 
 function TestEnumLongRangeU:test_enum_long_range_u()
     local r = EnumLongRangeU:from_file("src/enum_long_range_u.bin")
-
     luaunit.assertEquals(r.f1, EnumLongRangeU.Constants.zero)
+    luaunit.assertEquals(r.f1.value, 0)
+    luaunit.assertEquals(r.f1_to_i, 0)
     luaunit.assertEquals(r.f2, EnumLongRangeU.Constants.int_max)
+    luaunit.assertEquals(r.f2.value, 4294967295)
+    luaunit.assertEquals(r.f2_to_i, 4294967295)
     luaunit.assertEquals(r.f3, EnumLongRangeU.Constants.int_over_max)
+    luaunit.assertEquals(r.f3.value, 4294967296)
+    luaunit.assertEquals(r.f3_to_i, 4294967296)
     luaunit.assertEquals(r.f4, EnumLongRangeU.Constants.long_max)
+    luaunit.assertEquals(r.f4.value, 0xffffffffffffffff)
+    luaunit.assertEquals(r.f4_to_i, 0xffffffffffffffff)
 end

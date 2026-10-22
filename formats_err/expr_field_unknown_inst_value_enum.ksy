@@ -9,5 +9,7 @@ instances:
     enum: fruit
 enums:
   fruit:
-    1: apple
-    2: banana
+    type: u1
+    values:
+      1: apple
+      2: banana

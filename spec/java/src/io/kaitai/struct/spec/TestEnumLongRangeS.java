@@ -9,13 +9,26 @@ public class TestEnumLongRangeS extends CommonSpec {
     @Test
     public void testEnumLongRangeS() throws Exception {
         EnumLongRangeS r = EnumLongRangeS.fromFile(SRC_DIR + "enum_long_range_s.bin");
-
         assertEquals(r.f1(), EnumLongRangeS.Constants.LONG_MIN);
+        assertIntEquals(r.f1().id(), -9223372036854775808L);
+        assertIntEquals(r.f1ToI(), -9223372036854775808L);
         assertEquals(r.f2(), EnumLongRangeS.Constants.INT_BELOW_MIN);
+        assertIntEquals(r.f2().id(), -2147483649L);
+        assertIntEquals(r.f2ToI(), -2147483649L);
         assertEquals(r.f3(), EnumLongRangeS.Constants.INT_MIN);
+        assertIntEquals(r.f3().id(), -2147483648);
+        assertIntEquals(r.f3ToI(), -2147483648);
         assertEquals(r.f4(), EnumLongRangeS.Constants.ZERO);
+        assertIntEquals(r.f4().id(), 0);
+        assertIntEquals(r.f4ToI(), 0);
         assertEquals(r.f5(), EnumLongRangeS.Constants.INT_MAX);
+        assertIntEquals(r.f5().id(), 2147483647);
+        assertIntEquals(r.f5ToI(), 2147483647);
         assertEquals(r.f6(), EnumLongRangeS.Constants.INT_OVER_MAX);
+        assertIntEquals(r.f6().id(), 2147483648L);
+        assertIntEquals(r.f6ToI(), 2147483648L);
         assertEquals(r.f7(), EnumLongRangeS.Constants.LONG_MAX);
+        assertIntEquals(r.f7().id(), 9223372036854775807L);
+        assertIntEquals(r.f7ToI(), 9223372036854775807L);
     }
 }

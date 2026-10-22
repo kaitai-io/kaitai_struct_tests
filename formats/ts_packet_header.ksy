@@ -32,7 +32,9 @@ seq:
     size: 184
 enums:
   adaptation_field_control_enum:
-    0x0: reserved
-    0x1: payload_only
-    0x2: adaptation_field_only
-    0x3: adaptation_field_and_payload
+    type: b2
+    values:
+      0x0: reserved
+      0x1: payload_only
+      0x2: adaptation_field_only
+      0x3: adaptation_field_and_payload

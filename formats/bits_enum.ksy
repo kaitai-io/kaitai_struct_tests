@@ -15,7 +15,9 @@ seq:
     enum: animal
 enums:
   animal:
-    0: cat
-    1: dog
-    4: horse
-    5: platypus
+    type: b8
+    values:
+      0: cat
+      1: dog
+      4: horse
+      5: platypus

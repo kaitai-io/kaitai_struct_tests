@@ -8,6 +8,14 @@ class TestEnumLongRangeU(unittest.TestCase):
     def test_enum_long_range_u(self):
         with EnumLongRangeU.from_file('src/enum_long_range_u.bin') as r:
             self.assertEqual(r.f1, enum_long_range_u.EnumLongRangeU.Constants.zero)
+            self.assertEqual(int(r.f1), 0)
+            self.assertEqual(r.f1_to_i, 0)
             self.assertEqual(r.f2, enum_long_range_u.EnumLongRangeU.Constants.int_max)
+            self.assertEqual(int(r.f2), 4294967295)
+            self.assertEqual(r.f2_to_i, 4294967295)
             self.assertEqual(r.f3, enum_long_range_u.EnumLongRangeU.Constants.int_over_max)
+            self.assertEqual(int(r.f3), 4294967296)
+            self.assertEqual(r.f3_to_i, 4294967296)
             self.assertEqual(r.f4, enum_long_range_u.EnumLongRangeU.Constants.long_max)
+            self.assertEqual(int(r.f4), 18446744073709551615)
+            self.assertEqual(r.f4_to_i, 18446744073709551615)

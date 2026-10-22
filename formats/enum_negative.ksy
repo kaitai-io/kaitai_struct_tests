@@ -2,8 +2,10 @@ meta:
   id: enum_negative
 enums:
   constants:
-    -1: negative_one
-    1: positive_one
+    type: s1
+    values:
+      -1: negative_one
+      1: positive_one
 seq:
   - id: f1
     type: s1

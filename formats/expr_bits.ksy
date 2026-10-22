@@ -39,5 +39,7 @@ types:
         type: s2
 enums:
   items:
-    1: foo
-    2: bar
+    type: b2
+    values:
+      1: foo
+      2: bar

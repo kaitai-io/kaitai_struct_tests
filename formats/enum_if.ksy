@@ -36,5 +36,7 @@ types:
         encoding: UTF-8
 enums:
   opcodes:
-    0x53: a_string
-    0x54: a_tuple
+    type: u1
+    values:
+      0x53: a_string
+      0x54: a_tuple
