@@ -3,17 +3,17 @@
 package io.kaitai.struct.specwrite;
 
 import io.kaitai.struct.KaitaiStruct.ReadWrite;
-import io.kaitai.struct.testwrite.TypeIntUnaryOp;
+import io.kaitai.struct.testwrite.TypeIntUnaryInv;
 import org.testng.annotations.Test;
 
-public class TestTypeIntUnaryOp extends CommonSpec {
+public class TestTypeIntUnaryInv extends CommonSpec {
     @Override
     protected Class<? extends ReadWrite> getStructClass() {
-        return TypeIntUnaryOp.class;
+        return TypeIntUnaryInv.class;
     }
 
     @Override
     protected String getSrcFilename() {
-        return "fixed_struct.bin";
+        return "type_int_unary_neg.bin";
     }
 }
