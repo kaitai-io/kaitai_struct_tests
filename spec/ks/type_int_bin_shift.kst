@@ -1,0 +1,85 @@
+id: type_int_bin_shift
+data: type_int_bin.bin
+asserts:
+  - actual: s1_val
+    expected: -0x80
+  - actual: s2_val
+    expected: -0x8000
+  - actual: s4_val
+    expected: -0x7fff_fffe
+  - actual: s8_val
+    expected: -0x0123_4567_89ab_cdef
+
+  - actual: u1_val
+    expected: 0xfd
+  - actual: u2_val
+    expected: 0xfffe
+  - actual: u4_val_msb_set
+    expected: 0xffee_ddc9
+  - actual: u4_val_msb_clear
+    expected: 0x7fff_ffff
+  - actual: u8_val_msb_set
+    expected: 0xfedc_ba98_7654_3210
+  - actual: u8_val_msb_clear
+    expected: 0x7fff_ffff_ffff_fffd
+
+  - actual: b08_val
+    expected: 0xfd
+  - actual: b16_val
+    expected: 0xfffe
+  - actual: b32_val
+    expected: 0xffee_ddc9
+  - actual: b64_val
+    expected: 0x7fff_ffff_ffff_fffd
+  - actual: b31_val
+    expected: 0x7fff_ffff
+  - actual: b63_val
+    expected: 0x7fff_ffff_ffff_fffc
+
+  - actual: shl_u1
+    expected: 0xfd00
+  - actual: shl_u4
+    expected: 0xfeed_dc90
+  - actual: shl_u8
+    expected: 0xffff_ffff_ffff_fffa
+  - actual: shl_s8
+    expected: -0x1234_5678_9abc_def0
+  - actual: shl_b32
+    expected: 0xfeed_dc90
+  - actual: shl_u1_as_u8
+    expected: 0xfd00_0000_0000
+
+  - actual: shr_u4
+    expected: 0x0ffe_eddc
+  - actual: shr_u8
+    expected: 0xf
+  - actual: shr_s4
+    expected: -0x0800_0000
+  - actual: shr_s8
+    expected: -0x0012_3456_789a_bcdf
+  - actual: shr_s1
+    expected: -0x8
+  - actual: shr_u2
+    expected: 0xfff
+  - actual: shr_b63
+    expected: 0x3fff_ffff_ffff_fffe
+
+  - actual: shl_u4_by_31
+    expected: 0x8000_0000
+  - actual: shl_u8_by_63
+    expected: 0x8000_0000_0000_0000
+  - actual: shr_u4_by_31
+    expected: 0x1
+  - actual: shr_s4_by_31
+    expected: -0x1
+  - actual: shr_u8_by_63
+    expected: 0x1
+  - actual: shr_s8_by_63
+    expected: -0x1
+
+  - actual: shl_u4_var
+    expected: 0xfddb_b920
+  - actual: shr_u8_var
+    expected: 0x07f6_e5d4_c3b2_a190
+  - actual: shr_s8_var
+    expected: -0x0009_1a2b_3c4d_5e70
