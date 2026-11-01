@@ -1,0 +1,71 @@
+id: type_int_bin_bitwise
+data: type_int_bin.bin
+asserts:
+  - actual: s1_val
+    expected: -0x80
+  - actual: s2_val
+    expected: -0x8000
+  - actual: s4_val
+    expected: -0x7fff_fffe
+  - actual: s8_val
+    expected: -0x0123_4567_89ab_cdef
+
+  - actual: u1_val
+    expected: 0xfd
+  - actual: u2_val
+    expected: 0xfffe
+  - actual: u4_val_msb_set
+    expected: 0xffee_ddc9
+  - actual: u4_val_msb_clear
+    expected: 0x7fff_ffff
+  - actual: u8_val_msb_set
+    expected: 0xfedc_ba98_7654_3210
+  - actual: u8_val_msb_clear
+    expected: 0x7fff_ffff_ffff_fffd
+
+  - actual: b08_val
+    expected: 0xfd
+  - actual: b16_val
+    expected: 0xfffe
+  - actual: b32_val
+    expected: 0xffee_ddc9
+  - actual: b64_val
+    expected: 0x7fff_ffff_ffff_fffd
+  - actual: b31_val
+    expected: 0x7fff_ffff
+  - actual: b63_val
+    expected: 0x7fff_ffff_ffff_fffc
+
+  - actual: and_u8_lit
+    expected: 0xfedc_ba98_0000_0000
+  - actual: or_u4_lit
+    expected: 0xffff_ffff
+  - actual: and_lit_u4
+    expected: 0xffee_0000
+  - actual: xor_u4_u4
+    expected: 0x8011_2236
+  - actual: xor_u8_u8
+    expected: 0x8123_4567_89ab_cded
+
+  - actual: or_u8_u4
+    expected: 0xfedc_ba98_fffe_ffd9
+  - actual: xor_u8_lit
+    expected: 0x7fff_ffff_0000_0002
+  - actual: or_s8_s4
+    expected: -0x09ab_cded
+  - actual: xor_u2_u1
+    expected: 0xff03
+
+  - actual: and_s8_u4
+    expected: 0x7644_1001
+  - actual: or_s4_u1
+    expected: -0x7fff_ff01
+  - actual: xor_s8_lit
+    expected: 0x0123_4567_89ab_cdee
+
+  - actual: and_b64_u8
+    expected: 0x7edc_ba98_7654_3210
+  - actual: and_u8_b16
+    expected: 0x3210
+  - actual: or_b31_u4
+    expected: 0xffff_ffff
