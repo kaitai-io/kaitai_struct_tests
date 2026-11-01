@@ -1,0 +1,69 @@
+id: type_int_bin_arith
+data: type_int_bin.bin
+asserts:
+  - actual: s1_val
+    expected: -0x80
+  - actual: s2_val
+    expected: -0x8000
+  - actual: s4_val
+    expected: -0x7fff_fffe
+  - actual: s8_val
+    expected: -0x0123_4567_89ab_cdef
+
+  - actual: u1_val
+    expected: 0xfd
+  - actual: u2_val
+    expected: 0xfffe
+  - actual: u4_val_msb_set
+    expected: 0xffee_ddc9
+  - actual: u4_val_msb_clear
+    expected: 0x7fff_ffff
+  - actual: u8_val_msb_set
+    expected: 0xfedc_ba98_7654_3210
+  - actual: u8_val_msb_clear
+    expected: 0x7fff_ffff_ffff_fffd
+
+  - actual: b08_val
+    expected: 0xfd
+  - actual: b16_val
+    expected: 0xfffe
+  - actual: b32_val
+    expected: 0xffee_ddc9
+  - actual: b64_val
+    expected: 0x7fff_ffff_ffff_fffd
+  - actual: b31_val
+    expected: 0x7fff_ffff
+  - actual: b63_val
+    expected: 0x7fff_ffff_ffff_fffc
+
+  - actual: add_u4_u4
+    expected: 0xffff_fffe
+  - actual: sub_u4_u1
+    expected: 0xffee_dccc
+  - actual: add_u8_u8
+    expected: 0xffff_ffff_ffff_fffa
+  - actual: add_u1_u1
+    expected: 0x1fa
+  - actual: mul_s1_s2
+    expected: 0x0040_0000
+
+  - actual: mul_u4_lit
+    expected: 0xffff_fffe
+  - actual: mul_u8_lit
+    expected: 0xffff_ffff_ffff_fffa
+  - actual: mul_s8_lit
+    expected: -0x0369_d036_9d03_69cd
+  - actual: div_u4_lit
+    expected: 0x248f_d68a
+  - actual: div_u8_msb_set_lit
+    expected: 0x2468_acf1_3579_be02
+  - actual: div_u8_msb_clear_lit
+    expected: 0x1249_2492_4924_9248
+  - actual: mod_u4_lit
+    expected: 0x5
+  - actual: mod_u8_msb_set_lit
+    expected: 0x2
+  - actual: mod_u8_msb_clear_lit
+    expected: 0x5
+  - actual: mod_s8_lit
+    expected: 0x69
