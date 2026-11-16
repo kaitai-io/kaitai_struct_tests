@@ -37,3 +37,5 @@ class TestTypeIntBinArith(unittest.TestCase):
             self.assertEqual(r.mod_u8_msb_set_lit, 2)
             self.assertEqual(r.mod_u8_msb_clear_lit, 5)
             self.assertEqual(r.mod_s8_lit, 105)
+            self.assertEqual(r.mod_s8_u1, 45)
+            self.assertEqual(r.mod_s8_lit_u4, 783513105)

@@ -35,4 +35,6 @@ testHelper('TypeIntBinArith', 'src/type_int_bin.bin', function(r, TypeIntBinArit
   assert.strictEqual(r.modU8MsbSetLit, 2);
   assert.strictEqual(r.modU8MsbClearLit, 5);
   assert.strictEqual(r.modS8Lit, 105);
+  assert.strictEqual(r.modS8U1, 45);
+  assert.strictEqual(r.modS8LitU4, 783513105);
 });

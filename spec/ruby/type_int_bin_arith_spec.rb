@@ -35,5 +35,7 @@ RSpec.describe 'TypeIntBinArith' do
     expect(r.mod_u8_msb_set_lit).to eq 2
     expect(r.mod_u8_msb_clear_lit).to eq 5
     expect(r.mod_s8_lit).to eq 105
+    expect(r.mod_s8_u1).to eq 45
+    expect(r.mod_s8_lit_u4).to eq 783513105
   end
 end

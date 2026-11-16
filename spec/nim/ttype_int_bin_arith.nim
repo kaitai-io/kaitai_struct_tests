@@ -36,3 +36,5 @@ assert r.modU4Lit == 5
 assert r.modU8MsbSetLit == 2
 assert r.modU8MsbClearLit == 5
 assert r.modS8Lit == 105
+assert r.modS8U1 == 45
+assert r.modS8LitU4 == 783513105

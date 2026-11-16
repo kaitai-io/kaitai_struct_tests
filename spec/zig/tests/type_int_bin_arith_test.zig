@@ -45,4 +45,6 @@ test "TypeIntBinArith" {
     try _imp_std.testing.expectEqual(2, (try r.modU8MsbSetLit()));
     try _imp_std.testing.expectEqual(5, (try r.modU8MsbClearLit()));
     try _imp_std.testing.expectEqual(105, (try r.modS8Lit()));
+    try _imp_std.testing.expectEqual(45, (try r.modS8U1()));
+    try _imp_std.testing.expectEqual(783513105, (try r.modS8LitU4()));
 }

@@ -37,5 +37,7 @@ class TypeIntBinArithTest extends TestCase {
         $this->assertSame(2, $r->modU8MsbSetLit());
         $this->assertSame(5, $r->modU8MsbClearLit());
         $this->assertSame(105, $r->modS8Lit());
+        $this->assertSame(45, $r->modS8U1());
+        $this->assertSame(783513105, $r->modS8LitU4());
     }
 }

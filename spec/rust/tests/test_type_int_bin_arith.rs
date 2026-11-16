@@ -41,5 +41,7 @@ fn test_type_int_bin_arith() -> KResult<()> {
     assert_eq!(*r.mod_u8_msb_set_lit()?, 2);
     assert_eq!(*r.mod_u8_msb_clear_lit()?, 5);
     assert_eq!(*r.mod_s8_lit()?, 105);
+    assert_eq!(*r.mod_s8_u1()?, 45);
+    assert_eq!(*r.mod_s8_lit_u4()?, 783513105);
     Ok(())
 }

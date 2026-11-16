@@ -40,5 +40,7 @@ public class TestTypeIntBinArith extends CommonSpec {
         assertIntEquals(r.modU8MsbSetLit(), 2);
         assertIntEquals(r.modU8MsbClearLit(), 5);
         assertIntEquals(r.modS8Lit(), 105);
+        assertIntEquals(r.modS8U1(), 45);
+        assertIntEquals(r.modS8LitU4(), 783513105);
     }
 }

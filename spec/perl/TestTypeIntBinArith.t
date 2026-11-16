@@ -8,7 +8,7 @@ use base qw(Test::Class);
 use Test::More;
 use TypeIntBinArith;
 
-sub test_type_int_bin_arith: Test(31) {
+sub test_type_int_bin_arith: Test(33) {
     my $r = TypeIntBinArith->from_file('src/type_int_bin.bin');
     is($r->s1_val(), -128, 'Equals');
     is($r->s2_val(), -32768, 'Equals');
@@ -41,6 +41,8 @@ sub test_type_int_bin_arith: Test(31) {
     is($r->mod_u8_msb_set_lit(), 2, 'Equals');
     is($r->mod_u8_msb_clear_lit(), 5, 'Equals');
     is($r->mod_s8_lit(), 105, 'Equals');
+    is($r->mod_s8_u1(), 45, 'Equals');
+    is($r->mod_s8_lit_u4(), 783513105, 'Equals');
 }
 
 Test::Class->runtests;

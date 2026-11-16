@@ -41,6 +41,8 @@ BOOST_AUTO_TEST_CASE(test_type_int_bin_arith) {
     BOOST_CHECK_EQUAL(r->mod_u8_msb_set_lit(), 2);
     BOOST_CHECK_EQUAL(r->mod_u8_msb_clear_lit(), 5);
     BOOST_CHECK_EQUAL(r->mod_s8_lit(), 105);
+    BOOST_CHECK_EQUAL(r->mod_s8_u1(), 45);
+    BOOST_CHECK_EQUAL(r->mod_s8_lit_u4(), 783513105);
 
     delete r;
 }

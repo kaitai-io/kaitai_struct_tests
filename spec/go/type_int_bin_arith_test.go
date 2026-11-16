@@ -119,4 +119,14 @@ func TestTypeIntBinArith(t *testing.T) {
 		t.Fatal(err)
 	}
 	assert.EqualValues(t, 105, tmp15)
+	tmp16, err := r.ModS8U1()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, 45, tmp16)
+	tmp17, err := r.ModS8LitU4()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, 783513105, tmp17)
 }

@@ -42,6 +42,8 @@ namespace Kaitai
             Assert.AreEqual(r.ModU8MsbSetLit, 2);
             Assert.AreEqual(r.ModU8MsbClearLit, 5);
             Assert.AreEqual(r.ModS8Lit, 105);
+            Assert.AreEqual(r.ModS8U1, 45);
+            Assert.AreEqual(r.ModS8LitU4, 783513105);
         }
     }
 }

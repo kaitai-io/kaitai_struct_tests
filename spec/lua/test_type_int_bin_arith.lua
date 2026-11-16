@@ -39,4 +39,6 @@ function TestTypeIntBinArith:test_type_int_bin_arith()
     luaunit.assertEquals(r.mod_u8_msb_set_lit, 2)
     luaunit.assertEquals(r.mod_u8_msb_clear_lit, 5)
     luaunit.assertEquals(r.mod_s8_lit, 105)
+    luaunit.assertEquals(r.mod_s8_u1, 45)
+    luaunit.assertEquals(r.mod_s8_lit_u4, 783513105)
 end
