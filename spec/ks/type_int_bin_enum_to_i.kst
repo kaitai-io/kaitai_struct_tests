@@ -1,0 +1,22 @@
+id: type_int_bin_enum_to_i
+data: type_int_bin_enum_to_i.bin
+asserts:
+  - actual: u4_enum_val
+    expected: type_int_bin_enum_to_i::u4_enum::msb_set
+  - actual: u8_enum_val
+    expected: type_int_bin_enum_to_i::u8_enum::over_32_bits
+  - actual: s4_enum_val
+    expected: type_int_bin_enum_to_i::s4_enum::minus_two
+  - actual: u4_val
+    expected: 0x10
+  - actual: u1_val
+    expected: 0xfd
+  - actual: s1_val
+    expected: -3
+
+  - actual: add_u4_enum_u4
+    expected: 0x8000_0010
+  - actual: add_u8_enum_u1
+    expected: 0x1_0000_00fd
+  - actual: add_s4_enum_s1
+    expected: -5
