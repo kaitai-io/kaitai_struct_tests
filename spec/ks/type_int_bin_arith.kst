@@ -67,3 +67,7 @@ asserts:
     expected: 0x5
   - actual: mod_s8_lit
     expected: 0x69
+  - actual: mod_s8_u1
+    expected: 0x2d
+  - actual: mod_s8_lit_u4
+    expected: 0x2eb3_7611

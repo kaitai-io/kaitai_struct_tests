@@ -101,3 +101,11 @@ instances:
     # The dividend is negative, but the result is non-negative (in `0..999`),
     # unlike `%` in C
     value: s8_val % 1000
+  mod_s8_u1:
+    # `u1_val` is promoted to `s8`. As in `mod_s8_lit`, the dividend is
+    # negative, but the result is non-negative.
+    value: s8_val % u1_val
+  mod_s8_lit_u4:
+    # The literal's own type is `u4`, but it takes the type of the other
+    # operand (`s8`)
+    value: s8_val % 3_000_000_000
