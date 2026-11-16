@@ -109,3 +109,7 @@ instances:
     value: u8_val_msb_set >> (u1_val & 7)
   shr_s8_var:
     value: s8_val >> (u1_val & 7)
+  shr_lit_var_as_u1:
+    # The shift is done in `s4`, not in `u1` (the type of the cast), which
+    # can't hold the literal
+    value: (0x16b3 >> (u1_val & 7)).as<u1>
