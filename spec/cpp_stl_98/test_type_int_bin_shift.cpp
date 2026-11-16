@@ -48,6 +48,7 @@ BOOST_AUTO_TEST_CASE(test_type_int_bin_shift) {
     BOOST_CHECK_EQUAL(r->shl_u4_var(), 4259035424UL);
     BOOST_CHECK_EQUAL(r->shr_u8_var(), 573898704515408272LL);
     BOOST_CHECK_EQUAL(r->shr_s8_var(), -2562047788015216LL);
+    BOOST_CHECK_EQUAL(r->shr_lit_var_as_u1(), 181);
 
     delete r;
 }

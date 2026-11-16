@@ -45,3 +45,4 @@ class TestTypeIntBinShift(unittest.TestCase):
         self.assertEqual(r.shl_u4_var, 4259035424)
         self.assertEqual(r.shr_u8_var, 573898704515408272)
         self.assertEqual(r.shr_s8_var, -2562047788015216)
+        self.assertEqual(r.shr_lit_var_as_u1, 181)

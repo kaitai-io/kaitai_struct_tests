@@ -43,3 +43,4 @@ assert r.shrS8By63 == -1
 assert r.shlU4Var == 4259035424'i64
 assert r.shrU8Var == 573898704515408272'i64
 assert r.shrS8Var == -2562047788015216'i64
+assert r.shrLitVarAsU1 == 181
