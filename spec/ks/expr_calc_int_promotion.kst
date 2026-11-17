@@ -17,3 +17,5 @@ asserts:
     expected: 0x1_0000_0020
   - actual: io_size_minus_s8
     expected: 0x1_0000_001b
+  - actual: io_size_and_u4_lit
+    expected: 16

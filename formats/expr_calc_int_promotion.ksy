@@ -36,3 +36,8 @@ instances:
     # into 32 bits, because `s8_val` is `-0x1_0000_0000`. `_io.size` is the
     # left-hand operand here, so that both operand orders are covered.
     value: _io.size - s8_val
+  io_size_and_u4_lit:
+    # Unlike the other operands, this one is a literal. Its value doesn't fit
+    # into `s4`, but its type `u4` has at most 32 bits, so the result type is
+    # `CalcIntType` (see above). The mask only clears the lowest 4 bits.
+    value: _io.size & 0xffff_fff0
