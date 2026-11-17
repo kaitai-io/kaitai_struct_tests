@@ -16,4 +16,5 @@ function TestExprCalcIntPromotion:test_expr_calc_int_promotion()
     luaunit.assertEquals(r.io_size_minus_u4, 24)
     luaunit.assertEquals(r.u8_plus_io_size, 4294967328)
     luaunit.assertEquals(r.io_size_minus_s8, 4294967323)
+    luaunit.assertEquals(r.io_size_and_u4_lit, 16)
 end

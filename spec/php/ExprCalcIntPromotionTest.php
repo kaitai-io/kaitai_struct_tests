@@ -14,5 +14,6 @@ class ExprCalcIntPromotionTest extends TestCase {
         $this->assertSame(24, $r->ioSizeMinusU4());
         $this->assertSame(4294967328, $r->u8PlusIoSize());
         $this->assertSame(4294967323, $r->ioSizeMinusS8());
+        $this->assertSame(16, $r->ioSizeAndU4Lit());
     }
 }

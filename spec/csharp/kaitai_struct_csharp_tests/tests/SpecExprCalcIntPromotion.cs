@@ -19,6 +19,7 @@ namespace Kaitai
             Assert.AreEqual(r.IoSizeMinusU4, 24);
             Assert.AreEqual(r.U8PlusIoSize, 4294967328);
             Assert.AreEqual(r.IoSizeMinusS8, 4294967323);
+            Assert.AreEqual(r.IoSizeAndU4Lit, 16);
         }
     }
 }

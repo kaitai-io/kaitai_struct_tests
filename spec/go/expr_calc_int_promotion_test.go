@@ -48,4 +48,9 @@ func TestExprCalcIntPromotion(t *testing.T) {
 		t.Fatal(err)
 	}
 	assert.EqualValues(t, int64(4294967323), tmp3)
+	tmp4, err := r.IoSizeAndU4Lit()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, 16, tmp4)
 }

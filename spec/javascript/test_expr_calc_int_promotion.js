@@ -12,4 +12,5 @@ testHelper('ExprCalcIntPromotion', 'src/expr_calc_int_promotion.bin', function(r
   assert.strictEqual(r.ioSizeMinusU4, 24);
   assert.strictEqual(r.u8PlusIoSize, 4294967328);
   assert.strictEqual(r.ioSizeMinusS8, 4294967323);
+  assert.strictEqual(r.ioSizeAndU4Lit, 16);
 });

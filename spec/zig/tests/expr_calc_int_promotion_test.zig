@@ -22,4 +22,5 @@ test "ExprCalcIntPromotion" {
     try _imp_std.testing.expectEqual(24, (try r.ioSizeMinusU4()));
     try _imp_std.testing.expectEqual(4294967328, (try r.u8PlusIoSize()));
     try _imp_std.testing.expectEqual(4294967323, (try r.ioSizeMinusS8()));
+    try _imp_std.testing.expectEqual(16, (try r.ioSizeAndU4Lit()));
 }

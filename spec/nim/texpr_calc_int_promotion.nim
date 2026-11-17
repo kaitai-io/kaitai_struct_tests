@@ -13,3 +13,4 @@ assert r.items[1] == "DEFG"
 assert r.ioSizeMinusU4 == 24
 assert r.u8PlusIoSize == 4294967328'i64
 assert r.ioSizeMinusS8 == 4294967323'i64
+assert r.ioSizeAndU4Lit == 16

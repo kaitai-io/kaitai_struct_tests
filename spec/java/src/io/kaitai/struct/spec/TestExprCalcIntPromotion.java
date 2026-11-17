@@ -17,5 +17,6 @@ public class TestExprCalcIntPromotion extends CommonSpec {
         assertIntEquals(r.ioSizeMinusU4(), 24);
         assertIntEquals(r.u8PlusIoSize(), 4294967328L);
         assertIntEquals(r.ioSizeMinusS8(), 4294967323L);
+        assertIntEquals(r.ioSizeAndU4Lit(), 16);
     }
 }

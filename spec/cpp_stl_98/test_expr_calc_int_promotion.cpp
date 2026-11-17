@@ -18,6 +18,7 @@ BOOST_AUTO_TEST_CASE(test_expr_calc_int_promotion) {
     BOOST_CHECK_EQUAL(r->io_size_minus_u4(), 24);
     BOOST_CHECK_EQUAL(r->u8_plus_io_size(), 4294967328LL);
     BOOST_CHECK_EQUAL(r->io_size_minus_s8(), 4294967323LL);
+    BOOST_CHECK_EQUAL(r->io_size_and_u4_lit(), 16);
 
     delete r;
 }

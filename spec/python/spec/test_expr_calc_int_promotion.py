@@ -14,3 +14,4 @@ class TestExprCalcIntPromotion(unittest.TestCase):
             self.assertEqual(r.io_size_minus_u4, 24)
             self.assertEqual(r.u8_plus_io_size, 4294967328)
             self.assertEqual(r.io_size_minus_s8, 4294967323)
+            self.assertEqual(r.io_size_and_u4_lit, 16)

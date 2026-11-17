@@ -8,7 +8,7 @@ use base qw(Test::Class);
 use Test::More;
 use ExprCalcIntPromotion;
 
-sub test_expr_calc_int_promotion: Test(8) {
+sub test_expr_calc_int_promotion: Test(9) {
     my $r = ExprCalcIntPromotion->from_file('src/expr_calc_int_promotion.bin');
     is($r->u4_val(), 3, 'Equals');
     is($r->u8_val(), 4294967301, 'Equals');
@@ -18,6 +18,7 @@ sub test_expr_calc_int_promotion: Test(8) {
     is($r->io_size_minus_u4(), 24, 'Equals');
     is($r->u8_plus_io_size(), 4294967328, 'Equals');
     is($r->io_size_minus_s8(), 4294967323, 'Equals');
+    is($r->io_size_and_u4_lit(), 16, 'Equals');
 }
 
 Test::Class->runtests;

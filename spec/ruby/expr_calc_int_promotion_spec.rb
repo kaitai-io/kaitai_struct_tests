@@ -12,5 +12,6 @@ RSpec.describe 'ExprCalcIntPromotion' do
     expect(r.io_size_minus_u4).to eq 24
     expect(r.u8_plus_io_size).to eq 4294967328
     expect(r.io_size_minus_s8).to eq 4294967323
+    expect(r.io_size_and_u4_lit).to eq 16
   end
 end
