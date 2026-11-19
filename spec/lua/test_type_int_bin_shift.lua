@@ -47,4 +47,6 @@ function TestTypeIntBinShift:test_type_int_bin_shift()
     luaunit.assertEquals(r.shr_u8_var, 573898704515408272)
     luaunit.assertEquals(r.shr_s8_var, -2562047788015216)
     luaunit.assertEquals(r.shr_lit_var_as_u1, 181)
+    luaunit.assertEquals(r.shl_u4_in_add, 4294967295)
+    luaunit.assertEquals(r.shl_u8_in_add, 4294967295)
 end

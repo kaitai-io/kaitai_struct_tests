@@ -45,5 +45,7 @@ class TypeIntBinShiftTest extends TestCase {
         $this->assertSame(573898704515408272, $r->shrU8Var());
         $this->assertSame(-2562047788015216, $r->shrS8Var());
         $this->assertSame(181, $r->shrLitVarAsU1());
+        $this->assertSame(4294967295, $r->shlU4InAdd());
+        $this->assertSame(4294967295, $r->shlU8InAdd());
     }
 }

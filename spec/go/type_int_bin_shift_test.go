@@ -159,4 +159,14 @@ func TestTypeIntBinShift(t *testing.T) {
 		t.Fatal(err)
 	}
 	assert.EqualValues(t, 181, tmp23)
+	tmp24, err := r.ShlU4InAdd()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, uint32(4294967295), tmp24)
+	tmp25, err := r.ShlU8InAdd()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, uint32(4294967295), tmp25)
 }

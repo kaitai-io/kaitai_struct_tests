@@ -50,6 +50,8 @@ namespace Kaitai
             Assert.AreEqual(r.ShrU8Var, 573898704515408272);
             Assert.AreEqual(r.ShrS8Var, -2562047788015216);
             Assert.AreEqual(r.ShrLitVarAsU1, 181);
+            Assert.AreEqual(r.ShlU4InAdd, 4294967295);
+            Assert.AreEqual(r.ShlU8InAdd, 4294967295);
         }
     }
 }

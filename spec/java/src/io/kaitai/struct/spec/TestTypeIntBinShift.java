@@ -48,5 +48,7 @@ public class TestTypeIntBinShift extends CommonSpec {
         assertIntEquals(r.shrU8Var(), 573898704515408272L);
         assertIntEquals(r.shrS8Var(), -2562047788015216L);
         assertIntEquals(r.shrLitVarAsU1(), 181);
+        assertIntEquals(r.shlU4InAdd(), 4294967295L);
+        assertIntEquals(r.shlU8InAdd(), 4294967295L);
     }
 }

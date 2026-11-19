@@ -53,4 +53,6 @@ test "TypeIntBinShift" {
     try _imp_std.testing.expectEqual(573898704515408272, (try r.shrU8Var()));
     try _imp_std.testing.expectEqual(-2562047788015216, (try r.shrS8Var()));
     try _imp_std.testing.expectEqual(181, (try r.shrLitVarAsU1()));
+    try _imp_std.testing.expectEqual(4294967295, (try r.shlU4InAdd()));
+    try _imp_std.testing.expectEqual(4294967295, (try r.shlU8InAdd()));
 }

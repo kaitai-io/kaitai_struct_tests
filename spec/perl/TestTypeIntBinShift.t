@@ -8,7 +8,7 @@ use base qw(Test::Class);
 use Test::More;
 use TypeIntBinShift;
 
-sub test_type_int_bin_shift: Test(39) {
+sub test_type_int_bin_shift: Test(41) {
     my $r = TypeIntBinShift->from_file('src/type_int_bin.bin');
     is($r->s1_val(), -128, 'Equals');
     is($r->s2_val(), -32768, 'Equals');
@@ -49,6 +49,8 @@ sub test_type_int_bin_shift: Test(39) {
     is($r->shr_u8_var(), 573898704515408272, 'Equals');
     is($r->shr_s8_var(), -2562047788015216, 'Equals');
     is($r->shr_lit_var_as_u1(), 181, 'Equals');
+    is($r->shl_u4_in_add(), 4294967295, 'Equals');
+    is($r->shl_u8_in_add(), 4294967295, 'Equals');
 }
 
 Test::Class->runtests;

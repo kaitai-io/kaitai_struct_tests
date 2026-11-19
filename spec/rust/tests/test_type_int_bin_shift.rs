@@ -49,5 +49,7 @@ fn test_type_int_bin_shift() -> KResult<()> {
     assert_eq!(*r.shr_u8_var()?, 573898704515408272);
     assert_eq!(*r.shr_s8_var()?, -2562047788015216);
     assert_eq!(*r.shr_lit_var_as_u1()?, 181);
+    assert_eq!(*r.shl_u4_in_add()?, 4294967295);
+    assert_eq!(*r.shl_u8_in_add()?, 4294967295);
     Ok(())
 }

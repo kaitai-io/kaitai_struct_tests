@@ -43,5 +43,7 @@ RSpec.describe 'TypeIntBinShift' do
     expect(r.shr_u8_var).to eq 573898704515408272
     expect(r.shr_s8_var).to eq -2562047788015216
     expect(r.shr_lit_var_as_u1).to eq 181
+    expect(r.shl_u4_in_add).to eq 4294967295
+    expect(r.shl_u8_in_add).to eq 4294967295
   end
 end

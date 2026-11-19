@@ -43,4 +43,6 @@ testHelper('TypeIntBinShift', 'src/type_int_bin.bin', function(r, TypeIntBinShif
   assert.strictEqual(r.shrU8Var, 573898704515408272);
   assert.strictEqual(r.shrS8Var, -2562047788015216);
   assert.strictEqual(r.shrLitVarAsU1, 181);
+  assert.strictEqual(r.shlU4InAdd, 4294967295);
+  assert.strictEqual(r.shlU8InAdd, 4294967295);
 });
