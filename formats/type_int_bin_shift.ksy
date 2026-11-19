@@ -113,3 +113,12 @@ instances:
     # The shift is done in `s4`, not in `u1` (the type of the cast), which
     # can't hold the literal
     value: (0x16b3 >> (u1_val & 7)).as<u1>
+
+  # A left shift as an operand of `+`. Most targets give `+` a higher
+  # precedence than `<<`, so without the parentheses, the distance would be
+  # `1 + 1`.
+  shl_u4_in_add:
+    value: (u4_val_msb_clear << 1) + 1
+  shl_u8_in_add:
+    # The cast makes the result type `u8`
+    value: (u4_val_msb_clear.as<u8> << 1) + 1

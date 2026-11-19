@@ -85,3 +85,8 @@ asserts:
     expected: -0x0009_1a2b_3c4d_5e70
   - actual: shr_lit_var_as_u1
     expected: 0xb5
+
+  - actual: shl_u4_in_add
+    expected: 0xffff_ffff
+  - actual: shl_u8_in_add
+    expected: 0xffff_ffff
