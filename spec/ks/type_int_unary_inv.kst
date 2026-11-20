@@ -1,0 +1,68 @@
+id: type_int_unary_inv
+data: type_int_unary_neg.bin
+asserts:
+  - actual: s1_val
+    expected: -0x80
+  - actual: s2_val
+    expected: -0x8000
+  - actual: s4_val
+    expected: -0x7fff_fffe
+  - actual: s8_val
+    expected: 0x7fff_ffff_ffff_fffe
+
+  - actual: u1_val
+    expected: 0xfd
+  - actual: u2_val
+    expected: 0xfffe
+  - actual: u4_val_msb_set
+    expected: 0xffee_ddc9
+  - actual: u4_val_msb_clear
+    expected: 0x7fff_ffff
+  - actual: u8_val
+    expected: 0x7fff_ffff_ffff_fffd
+
+  - actual: b08_val
+    expected: 0xfd
+  - actual: b16_val
+    expected: 0xfffe
+  - actual: b32_val
+    expected: 0xffee_ddc9
+  - actual: b64_val
+    expected: 0x7fff_ffff_ffff_fffd
+  - actual: b31_val
+    expected: 0x7fff_ffff
+  - actual: b63_val
+    expected: 0x7fff_ffff_ffff_fffc
+
+  - actual: inv_s1_val
+    expected: 0x7f
+  - actual: inv_s2_val
+    expected: 0x7fff
+  - actual: inv_s4_val
+    expected: 0x7fff_fffd
+  - actual: inv_s8_val
+    expected: -0x7fff_ffff_ffff_ffff
+
+  - actual: inv_u1_val
+    expected: -0xfe
+  - actual: inv_u2_val
+    expected: -0xffff
+  - actual: inv_u4_val_msb_set
+    expected: 0x0011_2236
+  - actual: inv_u4_val_msb_clear
+    expected: 0x8000_0000
+  - actual: inv_u8_val
+    expected: 0x8000_0000_0000_0002
+
+  - actual: inv_b08_val
+    expected: -0xfe
+  - actual: inv_b16_val
+    expected: -0xffff
+  - actual: inv_b32_val
+    expected: 0x0011_2236
+  - actual: inv_b64_val
+    expected: 0x8000_0000_0000_0002
+  - actual: inv_b31_val
+    expected: -0x8000_0000
+  - actual: inv_b63_val
+    expected: 0x8000_0000_0000_0003
