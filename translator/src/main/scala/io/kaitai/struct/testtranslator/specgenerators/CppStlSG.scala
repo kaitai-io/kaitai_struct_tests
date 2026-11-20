@@ -70,7 +70,7 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
   override def floatEquality(check: TestEquals): Unit = {
     val actStr = translateAct(check.actual)
     val expStr = translator.translate(check.expected)
-    out.puts(s"BOOST_CHECK_CLOSE($actStr, $expStr, 1e-4);")
+    out.puts(s"BOOST_CHECK_CLOSE($actStr, $expStr, 1e-6);")
   }
 
   override def nullAssert(actual: Ast.expr): Unit = {
