@@ -1,0 +1,33 @@
+id: expr_int64_contexts
+data: expr_int64_contexts.bin
+asserts:
+  - actual: ofs_end
+    expected: 0x1_0000_0020
+  - actual: ofs_start
+    expected: 0x1_0000_0000
+  - actual: len_str
+    expected: 5
+  - actual: num_items
+    expected: 3
+  - actual: idx
+    expected: 1
+  - actual: items.size
+    expected: 3
+  - actual: str_val
+    expected: '"hello"'
+  - actual: child.val
+    expected: 0x11
+  - actual: child.val_plus_one
+    expected: 0x12
+  - actual: byte_at_ofs
+    expected: 0x7f
+  - actual: item_at_idx
+    expected: 0x22
+  - actual: substr
+    expected: '"el"'
+  - actual: mul_float
+    expected: 7.5
+  - actual: mul_float_cast
+    expected: 2.5
+  - actual: mul_float_ternary
+    expected: 10.0
