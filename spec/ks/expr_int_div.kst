@@ -5,6 +5,8 @@ asserts:
     expected: 1262698832
   - actual: int_s
     expected: -52947
+  - actual: int_s8
+    expected: 0x442d_552d_4b43_4150
   - actual: div_pos_const
     expected: 756
   - actual: div_neg_const
@@ -13,3 +15,7 @@ asserts:
     expected: 97130679
   - actual: div_neg_seq
     expected: -4073
+  - actual: div_pos_s8_seq
+    expected: 377898186273512867
+  - actual: div_neg_s8_seq
+    expected: -377898186273512868
