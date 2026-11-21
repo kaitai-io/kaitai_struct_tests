@@ -4,10 +4,10 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('IntegersDoubleOverflow', 'src/integers_double_overflow.bin', function(r, IntegersDoubleOverflow_) {
-  assert.strictEqual(r.signedSafeMinBe, -9007199254740991);
-  assert.strictEqual(r.signedSafeMinLe, -9007199254740991);
-  assert.strictEqual(r.signedSafeMaxBe, 9007199254740991);
-  assert.strictEqual(r.signedSafeMaxLe, 9007199254740991);
+  assert.strictEqual(r.signedSafeMinBe, -9007199254740991n);
+  assert.strictEqual(r.signedSafeMinLe, -9007199254740991n);
+  assert.strictEqual(r.signedSafeMaxBe, 9007199254740991n);
+  assert.strictEqual(r.signedSafeMaxLe, 9007199254740991n);
   assert.strictEqual((r.signedUnsafeNegBe).toString(10), "-9007199254740993");
   assert.strictEqual((r.signedUnsafeNegLe).toString(10), "-9007199254740993");
   assert.strictEqual((r.signedUnsafePosBe).toString(10), "9007199254740993");

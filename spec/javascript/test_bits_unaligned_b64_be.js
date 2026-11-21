@@ -5,6 +5,6 @@ var testHelper = require('testHelper');
 
 testHelper('BitsUnalignedB64Be', 'src/process_xor_4.bin', function(r, BitsUnalignedB64Be_) {
   assert.strictEqual(r.a, true);
-  assert.strictEqual(r.b, 15670070570729969769);
+  assert.strictEqual(r.b, 15670070570729969769n);
   assert.strictEqual(r.c, 14);
 });

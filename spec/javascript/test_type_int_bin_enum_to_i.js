@@ -11,6 +11,6 @@ testHelper('TypeIntBinEnumToI', 'src/type_int_bin_enum_to_i.bin', function(r, Ty
   assert.strictEqual(r.u1Val, 253);
   assert.strictEqual(r.s1Val, -3);
   assert.strictEqual(r.addU4EnumU4, 2147483664);
-  assert.strictEqual(r.addU8EnumU1, 4294967549);
+  assert.strictEqual(r.addU8EnumU1, 4294967549n);
   assert.strictEqual(r.addS4EnumS1, -5);
 });
