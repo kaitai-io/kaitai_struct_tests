@@ -1,0 +1,17 @@
+id: expr_calc_int_ternary
+data: expr_calc_int_ternary.bin
+asserts:
+  - actual: u4_val
+    expected: 3
+  - actual: u8_val
+    expected: 0x1_0000_0005
+  - actual: s8_val
+    expected: -0x2_0000_0000
+  - actual: u8_io_size
+    expected: 0x1_0000_0005
+  - actual: io_size_u8
+    expected: 0x1_0000_0005
+  - actual: div_s8_io_size
+    expected: -0x1_0000_0000
+  - actual: io_size_u4
+    expected: 3
