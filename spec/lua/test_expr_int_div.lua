@@ -11,8 +11,11 @@ function TestExprIntDiv:test_expr_int_div()
 
     luaunit.assertEquals(r.int_u, 1262698832)
     luaunit.assertEquals(r.int_s, -52947)
+    luaunit.assertEquals(r.int_s8, 4912676421555667280)
     luaunit.assertEquals(r.div_pos_const, 756)
     luaunit.assertEquals(r.div_neg_const, -757)
     luaunit.assertEquals(r.div_pos_seq, 97130679)
     luaunit.assertEquals(r.div_neg_seq, -4073)
+    luaunit.assertEquals(r.div_pos_s8_seq, 377898186273512867)
+    luaunit.assertEquals(r.div_neg_s8_seq, -377898186273512868)
 end

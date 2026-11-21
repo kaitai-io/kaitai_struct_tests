@@ -13,10 +13,13 @@ BOOST_AUTO_TEST_CASE(test_expr_int_div) {
 
     BOOST_CHECK_EQUAL(r->int_u(), 1262698832);
     BOOST_CHECK_EQUAL(r->int_s(), -52947);
+    BOOST_CHECK_EQUAL(r->int_s8(), 4912676421555667280LL);
     BOOST_CHECK_EQUAL(r->div_pos_const(), 756);
     BOOST_CHECK_EQUAL(r->div_neg_const(), -757);
     BOOST_CHECK_EQUAL(r->div_pos_seq(), 97130679);
     BOOST_CHECK_EQUAL(r->div_neg_seq(), -4073);
+    BOOST_CHECK_EQUAL(r->div_pos_s8_seq(), 377898186273512867LL);
+    BOOST_CHECK_EQUAL(r->div_neg_s8_seq(), -377898186273512868LL);
 
     delete r;
 }

@@ -8,7 +8,10 @@ let r = ExprIntDiv.fromFile("../../src/fixed_struct.bin")
 
 assert r.intU == 1262698832
 assert r.intS == -52947
+assert r.intS8 == 4912676421555667280'i64
 assert r.divPosConst == 756
 assert r.divNegConst == -757
 assert r.divPosSeq == 97130679
 assert r.divNegSeq == -4073
+assert r.divPosS8Seq == 377898186273512867'i64
+assert r.divNegS8Seq == -377898186273512868'i64

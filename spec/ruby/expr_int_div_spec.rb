@@ -7,9 +7,12 @@ RSpec.describe 'ExprIntDiv' do
 
     expect(r.int_u).to eq 1262698832
     expect(r.int_s).to eq -52947
+    expect(r.int_s8).to eq 4912676421555667280
     expect(r.div_pos_const).to eq 756
     expect(r.div_neg_const).to eq -757
     expect(r.div_pos_seq).to eq 97130679
     expect(r.div_neg_seq).to eq -4073
+    expect(r.div_pos_s8_seq).to eq 377898186273512867
+    expect(r.div_neg_s8_seq).to eq -377898186273512868
   end
 end

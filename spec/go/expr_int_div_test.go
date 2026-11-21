@@ -31,6 +31,7 @@ func TestExprIntDiv(t *testing.T) {
 
 	assert.EqualValues(t, 1262698832, r.IntU)
 	assert.EqualValues(t, -52947, r.IntS)
+	assert.EqualValues(t, int64(4912676421555667280), r.IntS8)
 	tmp1, err := r.DivPosConst()
 	if err != nil {
 		t.Fatal(err)
@@ -51,4 +52,14 @@ func TestExprIntDiv(t *testing.T) {
 		t.Fatal(err)
 	}
 	assert.EqualValues(t, -4073, tmp4)
+	tmp5, err := r.DivPosS8Seq()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, int64(377898186273512867), tmp5)
+	tmp6, err := r.DivNegS8Seq()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, int64(-377898186273512868), tmp6)
 }

@@ -16,8 +16,11 @@ test "ExprIntDiv" {
     const r = try _imp_expr_int_div.ExprIntDiv.create(&arena, &_io, null, null);
     try _imp_std.testing.expectEqual(1262698832, r.int_u);
     try _imp_std.testing.expectEqual(-52947, r.int_s);
+    try _imp_std.testing.expectEqual(4912676421555667280, r.int_s8);
     try _imp_std.testing.expectEqual(756, (try r.divPosConst()));
     try _imp_std.testing.expectEqual(-757, (try r.divNegConst()));
     try _imp_std.testing.expectEqual(97130679, (try r.divPosSeq()));
     try _imp_std.testing.expectEqual(-4073, (try r.divNegSeq()));
+    try _imp_std.testing.expectEqual(377898186273512867, (try r.divPosS8Seq()));
+    try _imp_std.testing.expectEqual(-377898186273512868, (try r.divNegS8Seq()));
 }
