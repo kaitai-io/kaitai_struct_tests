@@ -1,19 +1,29 @@
 # Kaitai Struct: specs and tests
 
-This repository contains specifications and tests for 
+This repository contains specifications and tests for
 [Kaitai Struct](https://github.com/kaitai-io/kaitai_struct) project.
 
 ## What's inside
 
 The repository is laid out like that:
 
-* `src/` - binary input files that would be parsed during the tests
+* `aggregate` - scripts that converts result of tests into unified `ci.json` output,
+  which is used by https://ci.kaitai.io/ as source of data.
+* `builder` - the same as above
 * `formats/` - file formats description is Kaitai Struct YAML format
   for the files in `src/`
+* `formats_err/` - file formats description is Kaitai Struct YAML format which
+  is expected to generate compiler error. The `ksc` output is located in the comment
+  at the beginning of the file
 * `spec/` - specifications (i.e. test code) that uses format
   descriptions to parse binary input files and ensures that they're
   parsed properly.
-  * `$LANGUAGE/` - one subdirectory per every supported target language
+  * `ks/` - subdirectory containing language agnostic tests in KST format
+  * `$LANGUAGE/` - one subdirectory per every supported target language.
+    Most of tests are generated from `spec/ks/` files using Kaitai Struct Test Translator
+* `src/` - binary input files that would be parsed during the tests
+* `translator/` - source code of the Kaitai Struct Test Translator utility which
+  is used to generate language specific tests from language agnostic KSY descriptions.
 
 During the testing the following is expected to be created:
 
@@ -40,7 +50,15 @@ There are a few scripts that automate steps specified above:
 
 * `build-compiler` builds compiler using special "stage" mode,
   i.e. without system-wide deployment, ready to be run from a build
-  directory
+  directory. It also publish it to the local repository, where in can be
+  found be dependent projects, especially by the Kaitai Struct Test Translator
+  (located in the `translator/` subdirectory)
+* `build-tests` generates test files for the selected languages from language
+  agnostic test description in KST format into corresponding test files in target
+  language. It depends on the latest features of the compiler, so it is necessary
+  to build compiler first using `build-compiler` script. The important part here
+  that the compiler should be published to the local repository which the mentioned
+  script do
 * `build-formats` compiles all format descriptions in `formats/` with
   this compiler for every supported language, placing results in
   `compiled/$LANGUAGE`
