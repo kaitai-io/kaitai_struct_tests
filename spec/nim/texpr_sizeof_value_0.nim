@@ -6,8 +6,8 @@ import auxiliary/test_utils
 
 let r = ExprSizeofValue0.fromFile("../../src/fixed_struct.bin")
 
-assert r.selfSizeof == (((1 + 4) + 2) + 2)
-assert r.sizeofBlock == ((1 + 4) + 2)
+assert r.selfSizeof == ((1 + 4) + 2) + 2
+assert r.sizeofBlock == (1 + 4) + 2
 assert r.sizeofBlockA == 1
 assert r.sizeofBlockB == 4
 assert r.sizeofBlockC == 2

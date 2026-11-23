@@ -78,7 +78,7 @@ class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGene
     out.puts(s"assert(Math.abs($actStr - $expStr) < $FLOAT_DELTA);")
   }
 
-  override def nullAssert(actual: Ast.expr): Unit = {
+  override def nullAssert(actual: Ast.expr, actType: DataType): Unit = {
     val actStr = translateAct(actual)
     out.puts(s"assert.strictEqual($actStr, undefined);")
   }

@@ -6,4 +6,4 @@ import auxiliary/test_utils
 
 let r = PositionInSeq.fromFile("../../src/position_in_seq.bin")
 
-assert r.numbers == @[uint8((0 + 1)), 2, 3]
+assert r.numbers == @[uint8(0 + 1), 2, 3]

@@ -67,7 +67,7 @@ class PerlSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
     out.puts(s"ok(abs($actStr - $expStr) < $FLOAT_DELTA, 'Approx equals');")
   }
 
-  override def nullAssert(actual: Ast.expr): Unit = {
+  override def nullAssert(actual: Ast.expr, actType: DataType): Unit = {
     val actStr = translateAct(actual)
     out.puts(s"ok(!defined($actStr), 'nil');")
   }

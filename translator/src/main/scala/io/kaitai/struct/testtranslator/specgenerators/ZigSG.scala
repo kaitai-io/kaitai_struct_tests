@@ -76,7 +76,7 @@ class ZigSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(s
     }
   }
 
-  override def nullAssert(actual: Ast.expr): Unit = {
+  override def nullAssert(actual: Ast.expr, actType: DataType): Unit = {
     val actStr = translateAct(actual)
     val actStrWithoutUnwrap = actStr.stripSuffix(".?")
     out.puts(s"try _imp_std.testing.expectEqual(null, $actStrWithoutUnwrap);")
