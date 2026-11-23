@@ -10,6 +10,7 @@ BOOST_AUTO_TEST_CASE(test_repeat_eos_bits_b1) {
     std::ifstream ifs("src/enum_negative.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     repeat_eos_bits_b1_t* r = new repeat_eos_bits_b1_t(&ks);
+
     BOOST_CHECK_EQUAL(r->bits()->size(), 16);
     BOOST_CHECK_EQUAL(r->bits()->at(0), true);
     BOOST_CHECK_EQUAL(r->bits()->at(1), true);

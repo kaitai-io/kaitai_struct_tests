@@ -14,6 +14,7 @@ test "ExprEnum" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_enum.ExprEnum.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(_imp_expr_enum.ExprEnum.Animal.dog, (try r.constDog()));
     try _imp_std.testing.expectEqual(_imp_expr_enum.ExprEnum.Animal.boom, (try r.derivedBoom()));
     try _imp_std.testing.expectEqual(_imp_expr_enum.ExprEnum.Animal.dog, (try r.derivedDog()));

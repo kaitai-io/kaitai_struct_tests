@@ -5,6 +5,7 @@ import ../../compiled/nim/debug_array_user_current_excluded
 import auxiliary/test_utils
 
 let r = DebugArrayUserCurrentExcluded.fromFile("../../src/term_strz.bin")
+
 assert r.arrayOfCats[0].meow == @[102'u8, 111'u8, 111'u8]
 assert r.arrayOfCats[1].meow == @[124'u8, 98'u8]
 assert r.arrayOfCats[2].meow == @[97'u8]

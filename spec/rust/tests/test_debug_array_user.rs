@@ -10,6 +10,7 @@ fn test_debug_array_user() -> KResult<()> {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<DebugArrayUser> = DebugArrayUser::read_into(&_io, None, None)?;
+
     assert_eq!(*r.one_cat().meow(), 80);
     assert_eq!(r.array_of_cats().len(), 3);
     assert_eq!(*r.array_of_cats()[0 as usize].meow(), 65);

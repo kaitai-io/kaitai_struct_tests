@@ -28,6 +28,7 @@ func TestSwitchManualStrElse(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, 4, len(r.Opcodes))
 	assert.EqualValues(t, "S", r.Opcodes[0].Code)
 	assert.EqualValues(t, "foo", r.Opcodes[0].Body.(*SwitchManualStrElse_Opcode_Strval).Value)

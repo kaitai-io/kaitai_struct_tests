@@ -4,6 +4,7 @@ RSpec.describe 'IfStruct' do
   it 'parses test properly' do
     require 'if_struct'
     r = IfStruct.from_file('src/if_struct.bin')
+
     expect(r.op1.opcode).to eq 83
     expect(r.op1.arg_tuple).to be_nil
     expect(r.op1.arg_str.str).to eq "foo"

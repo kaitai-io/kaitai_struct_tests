@@ -7,6 +7,7 @@ from repeat_eos_u4 import _schema
 class TestRepeatEosU4(unittest.TestCase):
     def test_repeat_eos_u4(self):
         r = _schema.parse_file('src/repeat_eos_struct.bin')
+
         self.assertEqual(len(r.numbers), 4)
         self.assertEqual(r.numbers[0], 0)
         self.assertEqual(r.numbers[1], 66)

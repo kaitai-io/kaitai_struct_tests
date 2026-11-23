@@ -14,6 +14,7 @@ test "MultipleUse" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_multiple_use.MultipleUse.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(32, r.t1.first_use.value);
     try _imp_std.testing.expectEqual(32, (try r.t2.secondUse()).value);
 }

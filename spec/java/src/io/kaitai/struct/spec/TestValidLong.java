@@ -9,6 +9,5 @@ public class TestValidLong extends CommonSpec {
     @Test
     public void testValidLong() throws Exception {
         ValidLong r = ValidLong.fromFile(SRC_DIR + "fixed_struct.bin");
-
     }
 }

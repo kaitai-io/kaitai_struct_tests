@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.StrPadTermUtf16;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestStrPadTermUtf16 extends CommonSpec {
-
     @Test
     public void testStrPadTermUtf16() throws Exception {
         StrPadTermUtf16 r = StrPadTermUtf16.fromFile(SRC_DIR + "str_pad_term_utf16.bin");

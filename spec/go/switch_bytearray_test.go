@@ -28,6 +28,7 @@ func TestSwitchBytearray(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, 4, len(r.Opcodes))
 	assert.EqualValues(t, []uint8{83}, r.Opcodes[0].Code)
 	assert.EqualValues(t, "foobar", r.Opcodes[0].Body.(*SwitchBytearray_Opcode_Strval).Value)

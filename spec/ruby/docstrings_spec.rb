@@ -4,6 +4,5 @@ RSpec.describe 'Docstrings' do
   it 'parses test properly' do
     require 'docstrings'
     r = Docstrings.from_file('src/fixed_struct.bin')
-
   end
 end

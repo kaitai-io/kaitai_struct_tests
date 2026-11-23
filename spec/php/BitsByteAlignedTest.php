@@ -6,6 +6,7 @@ namespace Kaitai\Struct\Tests;
 class BitsByteAlignedTest extends TestCase {
     public function testBitsByteAligned() {
         $r = BitsByteAligned::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
+
         $this->assertSame(20, $r->one());
         $this->assertSame(65, $r->byte1());
         $this->assertSame(2, $r->two());

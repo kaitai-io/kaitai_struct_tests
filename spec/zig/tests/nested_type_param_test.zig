@@ -14,6 +14,7 @@ test "NestedTypeParam" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_nested_type_param.NestedTypeParam.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(5, r.main_seq.my_len);
     try _imp_std.testing.expectEqualStrings("foo|b", r.main_seq.body);
 }

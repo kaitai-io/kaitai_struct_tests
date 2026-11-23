@@ -28,6 +28,7 @@ func TestDebugSwitchUser(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, 1, r.Code)
 	assert.EqualValues(t, -190, r.Data.(*DebugSwitchUser_One).Val)
 }

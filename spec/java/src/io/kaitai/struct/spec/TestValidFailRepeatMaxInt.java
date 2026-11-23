@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import io.kaitai.struct.KaitaiStream;
 public class TestValidFailRepeatMaxInt extends CommonSpec {
-
     @Test(expectedExceptions = KaitaiStream.ValidationGreaterThanError.class)
     public void testValidFailRepeatMaxInt() throws Exception {
         ValidFailRepeatMaxInt r = ValidFailRepeatMaxInt.fromFile(SRC_DIR + "nav_parent_switch.bin");

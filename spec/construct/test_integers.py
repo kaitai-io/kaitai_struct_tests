@@ -7,6 +7,7 @@ from integers import _schema
 class TestIntegers(unittest.TestCase):
     def test_integers(self):
         r = _schema.parse_file('src/fixed_struct.bin')
+
         self.assertEqual(r.uint8, 255)
         self.assertEqual(r.uint16, 65535)
         self.assertEqual(r.uint32, 4294967295)

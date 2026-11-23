@@ -4,6 +4,7 @@ RSpec.describe 'BitsByteAligned' do
   it 'parses test properly' do
     require 'bits_byte_aligned'
     r = BitsByteAligned.from_file('src/fixed_struct.bin')
+
     expect(r.one).to eq 20
     expect(r.byte_1).to eq 65
     expect(r.two).to eq 2

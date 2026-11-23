@@ -7,6 +7,7 @@ from floating_points import _schema
 class TestFloatingPoints(unittest.TestCase):
     def test_floating_points(self):
         r = _schema.parse_file('src/floating_points.bin')
+
         self.assertAlmostEqual(r.single_value, 0.5, 6)
         self.assertAlmostEqual(r.single_value_be, 0.5, 6)
         self.assertAlmostEqual(r.double_value, 0.25, 6)

@@ -7,6 +7,7 @@ from cast_to_top import _schema
 class TestCastToTop(unittest.TestCase):
     def test_cast_to_top(self):
         r = _schema.parse_file('src/fixed_struct.bin')
+
         self.assertEqual(r.code, 80)
         self.assertEqual(r.header.code, 65)
         self.assertEqual(r.header_casted.code, 65)

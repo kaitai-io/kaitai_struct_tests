@@ -14,6 +14,7 @@ test "BitsSeqEndianCombo" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_bits_seq_endian_combo.BitsSeqEndianCombo.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(59, r.be1);
     try _imp_std.testing.expectEqual(187, r.be2);
     try _imp_std.testing.expectEqual(163, r.le3);

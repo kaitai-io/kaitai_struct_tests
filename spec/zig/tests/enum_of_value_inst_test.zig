@@ -14,6 +14,7 @@ test "EnumOfValueInst" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_enum_of_value_inst.EnumOfValueInst.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(_imp_enum_of_value_inst.EnumOfValueInst.Animal.cat, r.pet_1);
     try _imp_std.testing.expectEqual(_imp_enum_of_value_inst.EnumOfValueInst.Animal.chicken, r.pet_2);
     try _imp_std.testing.expectEqual(_imp_enum_of_value_inst.EnumOfValueInst.Animal.dog, (try r.pet3()));

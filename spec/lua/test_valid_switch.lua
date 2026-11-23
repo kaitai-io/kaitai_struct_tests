@@ -8,5 +8,4 @@ TestValidSwitch = {}
 
 function TestValidSwitch:test_valid_switch()
     local r = ValidSwitch:from_file("src/fixed_struct.bin")
-
 end

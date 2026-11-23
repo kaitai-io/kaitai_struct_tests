@@ -12,6 +12,7 @@ test "SwitchManualIntSizeElse" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_switch_manual_int_size_else.SwitchManualIntSizeElse.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(4, r.chunks.items.len);
     try _imp_std.testing.expectEqual(17, r.chunks.items[0].code);
     try _imp_std.testing.expectEqualStrings("Stuff", r.chunks.items[0].body.chunk_meta.title);

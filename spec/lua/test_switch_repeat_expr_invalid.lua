@@ -8,6 +8,7 @@ TestSwitchRepeatExprInvalid = {}
 
 function TestSwitchRepeatExprInvalid:test_switch_repeat_expr_invalid()
     local r = SwitchRepeatExprInvalid:from_file("src/switch_integers.bin")
+
     luaunit.assertEquals(#r.codes, 3)
     luaunit.assertEquals(r.codes[0 + 1], 1)
     luaunit.assertEquals(r.codes[1 + 1], 7)

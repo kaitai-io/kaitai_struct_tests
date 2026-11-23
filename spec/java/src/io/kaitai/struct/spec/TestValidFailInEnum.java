@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import io.kaitai.struct.KaitaiStream;
 public class TestValidFailInEnum extends CommonSpec {
-
     @Test(expectedExceptions = KaitaiStream.ValidationNotInEnumError.class)
     public void testValidFailInEnum() throws Exception {
         ValidFailInEnum r = ValidFailInEnum.fromFile(SRC_DIR + "enum_0.bin");

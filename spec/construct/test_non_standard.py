@@ -7,4 +7,5 @@ from non_standard import _schema
 class TestNonStandard(unittest.TestCase):
     def test_non_standard(self):
         r = _schema.parse_file('src/fixed_struct.bin')
+
         self.assertEqual(r.foo, 80)

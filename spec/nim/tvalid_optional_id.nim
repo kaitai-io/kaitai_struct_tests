@@ -5,4 +5,3 @@ import ../../compiled/nim/valid_optional_id
 import auxiliary/test_utils
 
 let r = ValidOptionalId.fromFile("../../src/fixed_struct.bin")
-

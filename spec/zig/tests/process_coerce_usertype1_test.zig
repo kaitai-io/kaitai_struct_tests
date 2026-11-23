@@ -14,6 +14,7 @@ test "ProcessCoerceUsertype1" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_process_coerce_usertype1.ProcessCoerceUsertype1.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(0, r.records.items[0].flag);
     try _imp_std.testing.expectEqual(1094795585, (try r.records.items[0].buf()).value);
     try _imp_std.testing.expectEqual(1, r.records.items[1].flag);

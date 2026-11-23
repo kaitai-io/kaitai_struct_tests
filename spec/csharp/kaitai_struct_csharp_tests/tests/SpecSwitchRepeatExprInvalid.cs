@@ -11,6 +11,7 @@ namespace Kaitai
         public void TestSwitchRepeatExprInvalid()
         {
             var r = SwitchRepeatExprInvalid.FromFile(SourceFile("switch_integers.bin"));
+
             Assert.AreEqual(r.Codes.Count, 3);
             Assert.AreEqual(r.Codes[0], 1);
             Assert.AreEqual(r.Codes[1], 7);

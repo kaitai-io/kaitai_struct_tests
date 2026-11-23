@@ -14,6 +14,7 @@ test "NavParentOverride" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_nav_parent_override.NavParentOverride.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(3, r.child_size);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 73, 49, 50 }, r.child_1.data);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 51, 66, 98 }, r.mediator_2.child_2.data);

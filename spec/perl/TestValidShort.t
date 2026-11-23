@@ -10,7 +10,6 @@ use ValidShort;
 
 sub test_valid_short: Test(0) {
     my $r = ValidShort->from_file('src/fixed_struct.bin');
-
 }
 
 Test::Class->runtests;

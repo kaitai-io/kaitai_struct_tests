@@ -14,6 +14,7 @@ test "TermU1Val" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_term_u1_val.TermU1Val.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 10, 0, 83, 111, 109, 101, 32, 65, 83, 67, 73, 73, 15, 0 }, r.foo);
     try _imp_std.testing.expectEqualStrings("\u{3053}\u{3093}\u{306b}", r.bar);
 }

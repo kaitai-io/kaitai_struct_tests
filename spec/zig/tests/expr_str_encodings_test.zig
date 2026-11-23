@@ -14,6 +14,7 @@ test "ExprStrEncodings" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_str_encodings.ExprStrEncodings.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(true, (try r.str1Eq()));
     try _imp_std.testing.expectEqual(true, (try r.str2Eq()));
     try _imp_std.testing.expectEqual(true, (try r.str3Eq()));

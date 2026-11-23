@@ -28,6 +28,7 @@ func TestRecursiveOne(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, 80, r.One)
 	assert.EqualValues(t, 65, r.Next.(*RecursiveOne).One)
 	assert.EqualValues(t, 67, r.Next.(*RecursiveOne).Next.(*RecursiveOne).One)

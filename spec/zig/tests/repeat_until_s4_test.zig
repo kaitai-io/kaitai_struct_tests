@@ -14,6 +14,7 @@ test "RepeatUntilS4" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_repeat_until_s4.RepeatUntilS4.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualSlices(i32, &.{ 66, 4919, -251658241, -1 }, r.entries.items);
     try _imp_std.testing.expectEqualStrings("foobar", r.afterall);
 }

@@ -14,6 +14,7 @@ test "ExprIoEof" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_io_eof.ExprIoEof.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(1262698832, r.substream1.one);
     try _imp_std.testing.expectEqual(null, r.substream1.two);
     try _imp_std.testing.expectEqual(4294914349, r.substream2.one);

@@ -28,6 +28,7 @@ func TestParamsPassStruct(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, 255, r.First.Foo)
 	assert.EqualValues(t, 1, r.One.Bar.Qux)
 	assert.EqualValues(t, 255, r.One.Foo.(*ParamsPassStruct_Block).Foo)

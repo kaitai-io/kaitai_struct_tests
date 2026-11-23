@@ -14,6 +14,7 @@ test "CombineEnum" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_combine_enum.CombineEnum.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(_imp_combine_enum.CombineEnum.Animal.pig, r.enum_u4);
     try _imp_std.testing.expectEqual(_imp_combine_enum.CombineEnum.Animal.horse, r.enum_u2);
     try _imp_std.testing.expectEqual(_imp_combine_enum.CombineEnum.Animal.horse, (try r.enumU4U2()));

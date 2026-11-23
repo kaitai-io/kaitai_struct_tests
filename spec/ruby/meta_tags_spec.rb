@@ -4,6 +4,5 @@ RSpec.describe 'MetaTags' do
   it 'parses test properly' do
     require 'meta_tags'
     r = MetaTags.from_file('src/fixed_struct.bin')
-
   end
 end

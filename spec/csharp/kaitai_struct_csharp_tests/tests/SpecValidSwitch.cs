@@ -11,7 +11,6 @@ namespace Kaitai
         public void TestValidSwitch()
         {
             var r = ValidSwitch.FromFile(SourceFile("fixed_struct.bin"));
-
         }
     }
 }

@@ -28,6 +28,7 @@ func TestProcessCoerceSwitch(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, 0, r.BufType)
 	assert.EqualValues(t, 0, r.Flag)
 	tmp1, err := r.Buf()

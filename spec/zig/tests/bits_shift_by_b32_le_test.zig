@@ -14,6 +14,7 @@ test "BitsShiftByB32Le" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_bits_shift_by_b32_le.BitsShiftByB32Le.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(4294967295, r.a);
     try _imp_std.testing.expectEqual(0, r.b);
 }

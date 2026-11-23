@@ -14,6 +14,7 @@ test "ProcessCoerceSwitch" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_process_coerce_switch.ProcessCoerceSwitch.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(0, r.buf_type);
     try _imp_std.testing.expectEqual(0, r.flag);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 65, 65, 65, 65 }, @as(*_imp_process_coerce_switch.ProcessCoerceSwitch.Foo, (try r.buf())).bar);

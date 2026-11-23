@@ -8,6 +8,7 @@ TestNameClashImportVsInst = {}
 
 function TestNameClashImportVsInst:test_name_clash_import_vs_inst()
     local r = NameClashImportVsInst:from_file("src/fixed_struct.bin")
+
     luaunit.assertEquals(r.integers.uint8, 255)
     luaunit.assertEquals(r.std, 3)
 end

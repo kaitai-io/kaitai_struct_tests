@@ -6,6 +6,7 @@ namespace Kaitai\Struct\Tests;
 class IfStructTest extends TestCase {
     public function testIfStruct() {
         $r = IfStruct::fromFile(self::SRC_DIR_PATH . '/if_struct.bin');
+
         $this->assertSame(83, $r->op1()->opcode());
         $this->assertNull($r->op1()->argTuple());
         $this->assertSame("foo", $r->op1()->argStr()->str());

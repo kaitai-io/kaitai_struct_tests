@@ -7,6 +7,7 @@ from bits_byte_aligned import _schema
 class TestBitsByteAligned(unittest.TestCase):
     def test_bits_byte_aligned(self):
         r = _schema.parse_file('src/fixed_struct.bin')
+
         self.assertEqual(r.one, 20)
         self.assertEqual(r.byte_1, 65)
         self.assertEqual(r.two, 2)

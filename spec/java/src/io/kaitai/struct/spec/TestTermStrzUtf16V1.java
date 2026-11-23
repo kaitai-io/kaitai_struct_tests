@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.TermStrzUtf16V1;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestTermStrzUtf16V1 extends CommonSpec {
-
     @Test
     public void testTermStrzUtf16V1() throws Exception {
         TermStrzUtf16V1 r = TermStrzUtf16V1.fromFile(SRC_DIR + "term_strz_utf16.bin");

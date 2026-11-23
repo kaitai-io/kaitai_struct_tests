@@ -7,6 +7,7 @@ from str_encodings import _schema
 class TestStrEncodings(unittest.TestCase):
     def test_str_encodings(self):
         r = _schema.parse_file('src/str_encodings.bin')
+
         self.assertEqual(r.str1, "Some ASCII")
         self.assertEqual(r.str2, "\u3053\u3093\u306b\u3061\u306f")
         self.assertEqual(r.str3, "\u3053\u3093\u306b\u3061\u306f")

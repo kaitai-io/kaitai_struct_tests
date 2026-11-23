@@ -6,6 +6,5 @@ namespace Kaitai\Struct\Tests;
 class ValidOptionalIdTest extends TestCase {
     public function testValidOptionalId() {
         $r = ValidOptionalId::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
-
     }
 }

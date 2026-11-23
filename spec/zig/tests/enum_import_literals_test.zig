@@ -15,6 +15,7 @@ test "EnumImportLiterals" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_enum_import_literals.EnumImportLiterals.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(7, (try r.pet1ToI()));
     try _imp_std.testing.expectEqual(true, (try r.pet1Eq()));
     try _imp_std.testing.expectEqual(_imp_enum_deep.EnumDeep.Container1.Container2.Animal.hare, (try r.pet2()));

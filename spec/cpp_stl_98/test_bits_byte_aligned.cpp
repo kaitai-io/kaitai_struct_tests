@@ -10,6 +10,7 @@ BOOST_AUTO_TEST_CASE(test_bits_byte_aligned) {
     std::ifstream ifs("src/fixed_struct.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     bits_byte_aligned_t* r = new bits_byte_aligned_t(&ks);
+
     BOOST_CHECK_EQUAL(r->one(), 20);
     BOOST_CHECK_EQUAL(r->byte_1(), 65);
     BOOST_CHECK_EQUAL(r->two(), 2);

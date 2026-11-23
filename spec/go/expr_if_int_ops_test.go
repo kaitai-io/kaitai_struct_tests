@@ -28,6 +28,7 @@ func TestExprIfIntOps(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, 3, r.Key)
 	assert.EqualValues(t, []uint8{252, 252, 252, 253, 9, 3, 3, 3}, r.Bytes)
 	tmp1, err := r.BytesSubKey()

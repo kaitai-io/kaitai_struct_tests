@@ -4,6 +4,7 @@ RSpec.describe 'NameClashImportVsInst' do
   it 'parses test properly' do
     require 'name_clash_import_vs_inst'
     r = NameClashImportVsInst.from_file('src/fixed_struct.bin')
+
     expect(r.integers.uint8).to eq 255
     expect(r.std).to eq 3
   end

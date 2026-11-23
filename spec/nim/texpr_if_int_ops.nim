@@ -5,6 +5,7 @@ import ../../compiled/nim/expr_if_int_ops
 import auxiliary/test_utils
 
 let r = ExprIfIntOps.fromFile("../../src/instance_io.bin")
+
 assert r.key == 3
 assert r.bytes == @[252'u8, 252'u8, 252'u8, 253'u8, 9'u8, 3'u8, 3'u8, 3'u8]
 assert r.bytesSubKey == 253

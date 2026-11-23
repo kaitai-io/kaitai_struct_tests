@@ -26,6 +26,7 @@ func TestDebug0(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, 80, r.One)
 	assert.EqualValues(t, 3, len(r.ArrayOfInts))
 	assert.EqualValues(t, 65, r.ArrayOfInts[0])

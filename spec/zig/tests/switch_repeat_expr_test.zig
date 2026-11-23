@@ -14,6 +14,7 @@ test "SwitchRepeatExpr" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_switch_repeat_expr.SwitchRepeatExpr.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(3, r.codes.items.len);
     try _imp_std.testing.expectEqual(1, r.codes.items[0]);
     try _imp_std.testing.expectEqual(7, r.codes.items[1]);

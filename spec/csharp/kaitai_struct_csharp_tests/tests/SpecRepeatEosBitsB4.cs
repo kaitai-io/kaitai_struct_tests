@@ -11,6 +11,7 @@ namespace Kaitai
         public void TestRepeatEosBitsB4()
         {
             var r = RepeatEosBitsB4.FromFile(SourceFile("enum_negative.bin"));
+
             Assert.AreEqual(r.Nibbles.Count, 4);
             Assert.AreEqual(r.Nibbles[0], 15);
             Assert.AreEqual(r.Nibbles[1], 15);

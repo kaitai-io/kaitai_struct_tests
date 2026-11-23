@@ -5,4 +5,3 @@ import ../../compiled/nim/docstrings
 import auxiliary/test_utils
 
 let r = Docstrings.fromFile("../../src/fixed_struct.bin")
-

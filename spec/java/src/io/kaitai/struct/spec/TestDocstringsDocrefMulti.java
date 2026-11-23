@@ -9,6 +9,5 @@ public class TestDocstringsDocrefMulti extends CommonSpec {
     @Test
     public void testDocstringsDocrefMulti() throws Exception {
         DocstringsDocrefMulti r = DocstringsDocrefMulti.fromFile(SRC_DIR + "fixed_struct.bin");
-
     }
 }

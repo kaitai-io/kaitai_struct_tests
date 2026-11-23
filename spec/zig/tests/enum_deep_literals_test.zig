@@ -14,6 +14,7 @@ test "EnumDeepLiterals" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_enum_deep_literals.EnumDeepLiterals.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(true, (try r.isPet1Ok()));
     try _imp_std.testing.expectEqual(true, (try r.isPet2Ok()));
 }

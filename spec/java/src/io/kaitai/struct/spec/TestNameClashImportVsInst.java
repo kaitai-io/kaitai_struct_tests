@@ -9,6 +9,7 @@ public class TestNameClashImportVsInst extends CommonSpec {
     @Test
     public void testNameClashImportVsInst() throws Exception {
         NameClashImportVsInst r = NameClashImportVsInst.fromFile(SRC_DIR + "fixed_struct.bin");
+
         assertIntEquals(r.integers().uint8(), 255);
         assertIntEquals(r.std(), 3);
     }

@@ -8,5 +8,4 @@ TestValidShort = {}
 
 function TestValidShort:test_valid_short()
     local r = ValidShort:from_file("src/fixed_struct.bin")
-
 end

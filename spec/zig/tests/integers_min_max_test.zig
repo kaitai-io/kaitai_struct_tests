@@ -14,6 +14,7 @@ test "IntegersMinMax" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_integers_min_max.IntegersMinMax.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(0, r.unsigned_min.u1);
     try _imp_std.testing.expectEqual(0, r.unsigned_min.u2le);
     try _imp_std.testing.expectEqual(0, r.unsigned_min.u4le);

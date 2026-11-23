@@ -7,6 +7,7 @@ from debug_enum_name import _schema
 class TestDebugEnumName(unittest.TestCase):
     def test_debug_enum_name(self):
         r = _schema.parse_file('src/fixed_struct.bin')
+
         self.assertEqual(r.one, 'enum_value_80')
         self.assertEqual(r.array_of_ints[0], 'enum_value_65')
         self.assertEqual(r.test_type.field1, 'enum_value_67')

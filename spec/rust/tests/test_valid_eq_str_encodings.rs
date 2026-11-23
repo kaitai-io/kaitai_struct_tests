@@ -10,6 +10,5 @@ fn test_valid_eq_str_encodings() -> KResult<()> {
     let bytes = fs::read("../../src/str_encodings.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<ValidEqStrEncodings> = ValidEqStrEncodings::read_into(&_io, None, None)?;
-
     Ok(())
 }

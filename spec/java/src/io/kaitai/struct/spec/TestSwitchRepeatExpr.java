@@ -9,6 +9,7 @@ public class TestSwitchRepeatExpr extends CommonSpec {
     @Test
     public void testSwitchRepeatExpr() throws Exception {
         SwitchRepeatExpr r = SwitchRepeatExpr.fromFile(SRC_DIR + "switch_integers.bin");
+
         assertIntEquals(r.codes().size(), 3);
         assertIntEquals(r.codes().get(((int) 0)), 1);
         assertIntEquals(r.codes().get(((int) 1)), 7);

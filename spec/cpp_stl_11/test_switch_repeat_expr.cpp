@@ -8,6 +8,7 @@ BOOST_AUTO_TEST_CASE(test_switch_repeat_expr) {
     std::ifstream ifs("src/switch_integers.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     switch_repeat_expr_t* r = new switch_repeat_expr_t(&ks);
+
     BOOST_CHECK_EQUAL(r->codes()->size(), 3);
     BOOST_CHECK_EQUAL(r->codes()->at(0), 1);
     BOOST_CHECK_EQUAL(r->codes()->at(1), 7);

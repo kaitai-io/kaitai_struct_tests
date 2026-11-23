@@ -14,6 +14,7 @@ test "NavRoot" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_nav_root.NavRoot.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(2, r.header.qty_entries);
     try _imp_std.testing.expectEqual(8, r.header.filename_len);
     try _imp_std.testing.expectEqual(2, r.index.entries.items.len);

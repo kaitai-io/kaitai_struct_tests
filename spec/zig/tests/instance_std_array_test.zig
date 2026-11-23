@@ -14,6 +14,7 @@ test "InstanceStdArray" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_instance_std_array.InstanceStdArray.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(16, r.ofs);
     try _imp_std.testing.expectEqual(3, r.qty_entries);
     try _imp_std.testing.expectEqual(4, r.entry_size);

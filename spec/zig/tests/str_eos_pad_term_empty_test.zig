@@ -14,6 +14,7 @@ test "StrEosPadTermEmpty" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_str_eos_pad_term_empty.StrEosPadTermEmpty.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualStrings("", r.str_pad.value);
     try _imp_std.testing.expectEqualStrings("", r.str_term.value);
     try _imp_std.testing.expectEqualStrings("", r.str_term_and_pad.value);

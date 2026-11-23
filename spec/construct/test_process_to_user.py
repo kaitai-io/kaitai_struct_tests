@@ -7,4 +7,5 @@ from process_to_user import _schema
 class TestProcessToUser(unittest.TestCase):
     def test_process_to_user(self):
         r = _schema.parse_file('src/process_rotate.bin')
+
         self.assertEqual(r.buf1.str, "Hello")

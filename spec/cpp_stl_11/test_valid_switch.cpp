@@ -11,6 +11,5 @@ BOOST_AUTO_TEST_CASE(test_valid_switch) {
     kaitai::kstream ks(&ifs);
     valid_switch_t* r = new valid_switch_t(&ks);
 
-
     delete r;
 }

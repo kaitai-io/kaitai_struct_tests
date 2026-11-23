@@ -10,6 +10,7 @@ fn test_repeat_eos_bits_b1() -> KResult<()> {
     let bytes = fs::read("../../src/enum_negative.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<RepeatEosBitsB1> = RepeatEosBitsB1::read_into(&_io, None, None)?;
+
     assert_eq!(r.bits().len(), 16);
     assert_eq!(r.bits()[0 as usize], true);
     assert_eq!(r.bits()[1 as usize], true);

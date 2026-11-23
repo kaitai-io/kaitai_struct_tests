@@ -9,6 +9,5 @@ public class TestFixedContents extends CommonSpec {
     @Test
     public void testFixedContents() throws Exception {
         FixedContents r = FixedContents.fromFile(SRC_DIR + "fixed_struct.bin");
-
     }
 }

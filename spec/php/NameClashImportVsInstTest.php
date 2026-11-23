@@ -6,6 +6,7 @@ namespace Kaitai\Struct\Tests;
 class NameClashImportVsInstTest extends TestCase {
     public function testNameClashImportVsInst() {
         $r = NameClashImportVsInst::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
+
         $this->assertSame(255, $r->integers()->uint8());
         $this->assertSame(3, $r->std());
     }

@@ -7,6 +7,7 @@ from expr_bits import _schema
 class TestExprBits(unittest.TestCase):
     def test_expr_bits(self):
         r = _schema.parse_file('src/switch_opcodes.bin')
+
         self.assertEqual(r.a, 2)
         self.assertEqual(r.enum_seq, 'foo')
         self.assertEqual(r.byte_size, b"\x66\x6F")

@@ -14,6 +14,7 @@ test "BytesPadTermZeroSize" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_bytes_pad_term_zero_size.BytesPadTermZeroSize.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{  }, r.str_pad);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{  }, r.str_term);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{  }, r.str_term_and_pad);

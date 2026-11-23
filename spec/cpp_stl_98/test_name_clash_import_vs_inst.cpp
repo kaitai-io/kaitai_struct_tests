@@ -10,6 +10,7 @@ BOOST_AUTO_TEST_CASE(test_name_clash_import_vs_inst) {
     std::ifstream ifs("src/fixed_struct.bin", std::ifstream::binary);
     kaitai::kstream ks(&ifs);
     name_clash_import_vs_inst_t* r = new name_clash_import_vs_inst_t(&ks);
+
     BOOST_CHECK_EQUAL(r->integers()->uint8(), 255);
     BOOST_CHECK_EQUAL(r->std(), 3);
 

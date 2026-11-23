@@ -11,6 +11,7 @@ namespace Kaitai
         public void TestRepeatEosU4()
         {
             var r = RepeatEosU4.FromFile(SourceFile("repeat_eos_struct.bin"));
+
             Assert.AreEqual(r.Numbers.Count, 4);
             Assert.AreEqual(r.Numbers[0], 0);
             Assert.AreEqual(r.Numbers[1], 66);

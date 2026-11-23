@@ -14,6 +14,7 @@ test "EnumIntRangeU" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_enum_int_range_u.EnumIntRangeU.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(_imp_enum_int_range_u.EnumIntRangeU.Constants.zero, r.f1);
     try _imp_std.testing.expectEqual(_imp_enum_int_range_u.EnumIntRangeU.Constants.int_max, r.f2);
 }

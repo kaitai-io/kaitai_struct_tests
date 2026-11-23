@@ -11,7 +11,6 @@ namespace Kaitai
         public void TestDocstringsDocrefMulti()
         {
             var r = DocstringsDocrefMulti.FromFile(SourceFile("fixed_struct.bin"));
-
         }
     }
 }

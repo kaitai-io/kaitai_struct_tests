@@ -5,4 +5,3 @@ import ../../compiled/nim/meta_tags
 import auxiliary/test_utils
 
 let r = MetaTags.fromFile("../../src/fixed_struct.bin")
-

@@ -9,6 +9,7 @@ public class TestBitsByteAligned extends CommonSpec {
     @Test
     public void testBitsByteAligned() throws Exception {
         BitsByteAligned r = BitsByteAligned.fromFile(SRC_DIR + "fixed_struct.bin");
+
         assertIntEquals(r.one(), 20);
         assertIntEquals(r.byte1(), 65);
         assertIntEquals(r.two(), 2);

@@ -12,6 +12,7 @@ test "SwitchBytearray" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_switch_bytearray.SwitchBytearray.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(4, r.opcodes.items.len);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 83 }, r.opcodes.items[0].code);
     try _imp_std.testing.expectEqualStrings("foobar", r.opcodes.items[0].body.?.strval.value);

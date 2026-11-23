@@ -14,6 +14,7 @@ test "SwitchIntegers2" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_switch_integers2.SwitchIntegers2.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(1, r.code);
     try _imp_std.testing.expectEqual(7, r.len);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 2, 64, 64, 4, 55, 19, 0 }, r.ham);

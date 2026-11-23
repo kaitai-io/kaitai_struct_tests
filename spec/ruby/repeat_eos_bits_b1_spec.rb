@@ -4,6 +4,7 @@ RSpec.describe 'RepeatEosBitsB1' do
   it 'parses test properly' do
     require 'repeat_eos_bits_b1'
     r = RepeatEosBitsB1.from_file('src/enum_negative.bin')
+
     expect(r.bits.length).to eq 16
     expect(r.bits[0]).to eq true
     expect(r.bits[1]).to eq true

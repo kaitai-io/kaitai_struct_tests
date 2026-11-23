@@ -7,6 +7,7 @@ from repeat_n_struct import _schema
 class TestRepeatNStruct(unittest.TestCase):
     def test_repeat_n_struct(self):
         r = _schema.parse_file('src/repeat_n_struct.bin')
+
         self.assertEqual(len(r.chunks), 2)
         self.assertEqual(r.chunks[0].offset, 16)
         self.assertEqual(r.chunks[0].len, 8312)

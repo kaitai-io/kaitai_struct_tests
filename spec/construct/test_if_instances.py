@@ -7,4 +7,5 @@ from if_instances import _schema
 class TestIfInstances(unittest.TestCase):
     def test_if_instances(self):
         r = _schema.parse_file('src/fixed_struct.bin')
+
         self.assertIsNone(r.never_happens)
