@@ -1,5 +1,5 @@
 # io_on_bytes.ksy: /instances/one_in_foo/io:
-# 	error: don't know how to call method '_io' of object type 'BytesLimitType(IntNum(100),None,false,None,None)'
+# 	error: don't know how to call method '_io' of object type 'byte array'
 #
 meta:
   id: io_on_bytes
