@@ -14,6 +14,7 @@ test "Expr3" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_3.Expr3.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(80, r.one);
     try _imp_std.testing.expectEqualStrings("ACK", r.two);
     try _imp_std.testing.expectEqualStrings("@ACK", (try r.three()));

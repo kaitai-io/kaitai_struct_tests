@@ -7,6 +7,7 @@ from repeat_until_sized import _schema
 class TestRepeatUntilSized(unittest.TestCase):
     def test_repeat_until_sized(self):
         r = _schema.parse_file('src/repeat_until_process.bin')
+
         self.assertEqual(len(r.records), 3)
         self.assertEqual(r.records[0].marker, 232)
         self.assertEqual(r.records[0].body, 2863311546)

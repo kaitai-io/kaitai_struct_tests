@@ -7,6 +7,7 @@ from switch_bytearray import _schema
 class TestSwitchBytearray(unittest.TestCase):
     def test_switch_bytearray(self):
         r = _schema.parse_file('src/switch_opcodes.bin')
+
         self.assertEqual(len(r.opcodes), 4)
         self.assertEqual(r.opcodes[0].code, b"\x53")
         self.assertEqual(r.opcodes[0].body.value, "foobar")

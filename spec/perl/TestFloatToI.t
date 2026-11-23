@@ -10,6 +10,7 @@ use FloatToI;
 
 sub test_float_to_i: Test(13) {
     my $r = FloatToI->from_file('src/floating_points.bin');
+
     ok(abs($r->single_value() - 0.5) < 1e-6, 'Approx equals');
     ok(abs($r->double_value() - 0.25) < 1e-6, 'Approx equals');
     ok(abs($r->single_value_if() - 0.5) < 1e-6, 'Approx equals');

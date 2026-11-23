@@ -14,6 +14,7 @@ test "InstanceIoUser" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_instance_io_user.InstanceIoUser.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(3, r.qty_entries);
     try _imp_std.testing.expectEqualStrings("the", (try r.entries.items[0].name()));
     try _imp_std.testing.expectEqualStrings("rainy", (try r.entries.items[1].name()));

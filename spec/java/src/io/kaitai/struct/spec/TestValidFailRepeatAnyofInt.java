@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import io.kaitai.struct.KaitaiStream;
 public class TestValidFailRepeatAnyofInt extends CommonSpec {
-
     @Test(expectedExceptions = KaitaiStream.ValidationNotAnyOfError.class)
     public void testValidFailRepeatAnyofInt() throws Exception {
         ValidFailRepeatAnyofInt r = ValidFailRepeatAnyofInt.fromFile(SRC_DIR + "process_coerce_bytes.bin");

@@ -14,6 +14,7 @@ test "ParamsPassStruct" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_params_pass_struct.ParamsPassStruct.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(255, r.first.foo);
     try _imp_std.testing.expectEqual(1, r.one.bar.qux);
     try _imp_std.testing.expectEqual(255, @as(*_imp_params_pass_struct.ParamsPassStruct.Block, r.one.foo).foo);

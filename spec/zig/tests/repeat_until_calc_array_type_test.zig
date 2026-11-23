@@ -14,6 +14,7 @@ test "RepeatUntilCalcArrayType" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_repeat_until_calc_array_type.RepeatUntilCalcArrayType.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(3, r.records.items.len);
     try _imp_std.testing.expectEqual(232, r.records.items[0].marker);
     try _imp_std.testing.expectEqual(2863311546, r.records.items[0].body);

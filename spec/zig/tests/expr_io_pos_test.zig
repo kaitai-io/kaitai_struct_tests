@@ -14,6 +14,7 @@ test "ExprIoPos" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_io_pos.ExprIoPos.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualStrings("CURIOSITY", r.substream1.my_str);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 17, 34, 51, 68 }, r.substream1.body);
     try _imp_std.testing.expectEqual(66, r.substream1.number);

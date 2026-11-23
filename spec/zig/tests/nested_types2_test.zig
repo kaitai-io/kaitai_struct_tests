@@ -14,6 +14,7 @@ test "NestedTypes2" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_nested_types2.NestedTypes2.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(80, r.one.typed_at_root.value_b);
     try _imp_std.testing.expectEqual(65, r.one.typed_here1.value_c);
     try _imp_std.testing.expectEqual(67, r.one.typed_here1.typed_here.value_d);

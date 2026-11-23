@@ -28,6 +28,7 @@ func TestRepeatEosU4(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, 4, len(r.Numbers))
 	assert.EqualValues(t, 0, r.Numbers[0])
 	assert.EqualValues(t, 66, r.Numbers[1])

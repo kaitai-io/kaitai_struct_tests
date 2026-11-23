@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import io.kaitai.struct.KaitaiStream;
 public class TestValidFailRepeatInst extends CommonSpec {
-
     @Test(expectedExceptions = KaitaiStream.ValidationNotEqualError.class)
     public void testValidFailRepeatInst() throws Exception {
         ValidFailRepeatInst r = ValidFailRepeatInst.fromFile(SRC_DIR + "bcd_user_type_be.bin");

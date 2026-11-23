@@ -14,5 +14,6 @@ test "ProcessToUser" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_process_to_user.ProcessToUser.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualStrings("Hello", r.buf1.str);
 }

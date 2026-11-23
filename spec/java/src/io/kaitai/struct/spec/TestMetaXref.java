@@ -9,6 +9,5 @@ public class TestMetaXref extends CommonSpec {
     @Test
     public void testMetaXref() throws Exception {
         MetaXref r = MetaXref.fromFile(SRC_DIR + "fixed_struct.bin");
-
     }
 }

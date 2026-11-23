@@ -7,6 +7,7 @@ from bits_enum import _schema
 class TestBitsEnum(unittest.TestCase):
     def test_bits_enum(self):
         r = _schema.parse_file('src/fixed_struct.bin')
+
         self.assertEqual(r.one, 'platypus')
         self.assertEqual(r.two, 'horse')
         self.assertEqual(r.three, 'cat')

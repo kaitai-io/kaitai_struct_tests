@@ -7,6 +7,7 @@ from enum_long_range_s import _schema
 class TestEnumLongRangeS(unittest.TestCase):
     def test_enum_long_range_s(self):
         r = _schema.parse_file('src/enum_long_range_s.bin')
+
         self.assertEqual(r.f1, 'long_min')
         self.assertEqual(r.f2, 'int_below_min')
         self.assertEqual(r.f3, 'int_min')

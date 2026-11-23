@@ -6,6 +6,5 @@ namespace Kaitai\Struct\Tests;
 class DocstringsDocrefMultiTest extends TestCase {
     public function testDocstringsDocrefMulti() {
         $r = DocstringsDocrefMulti::fromFile(self::SRC_DIR_PATH . '/fixed_struct.bin');
-
     }
 }

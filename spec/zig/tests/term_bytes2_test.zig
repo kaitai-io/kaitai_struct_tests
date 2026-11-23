@@ -14,6 +14,7 @@ test "TermBytes2" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_term_bytes2.TermBytes2.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 102, 111, 111 }, r.s1);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 98, 97, 114, 124 }, r.s2);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 98, 97, 122 }, r.s3);

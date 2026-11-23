@@ -14,6 +14,7 @@ test "CombineBytes" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_combine_bytes.CombineBytes.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 102, 111, 111 }, r.bytes_term);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 98, 97, 114, 124 }, r.bytes_limit);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 98, 97, 122, 64 }, r.bytes_eos);

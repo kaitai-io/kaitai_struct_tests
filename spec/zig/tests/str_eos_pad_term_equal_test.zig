@@ -14,6 +14,7 @@ test "StrEosPadTermEqual" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_str_eos_pad_term_equal.StrEosPadTermEqual.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualStrings("str1", r.s1.value);
     try _imp_std.testing.expectEqualStrings("str2foo@", r.s2.value);
     try _imp_std.testing.expectEqualStrings("str", r.s3.value);

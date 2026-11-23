@@ -11,6 +11,5 @@ BOOST_AUTO_TEST_CASE(test_valid_eq_str_encodings) {
     kaitai::kstream ks(&ifs);
     valid_eq_str_encodings_t* r = new valid_eq_str_encodings_t(&ks);
 
-
     delete r;
 }

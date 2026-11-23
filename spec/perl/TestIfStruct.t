@@ -10,6 +10,7 @@ use IfStruct;
 
 sub test_if_struct: Test(10) {
     my $r = IfStruct->from_file('src/if_struct.bin');
+
     is($r->op1()->opcode(), 83, 'Equals');
     ok(!defined($r->op1()->arg_tuple()), 'nil');
     is($r->op1()->arg_str()->str(), "foo", 'Equals');

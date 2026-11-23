@@ -14,6 +14,7 @@ test "DefaultEndianMod" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_default_endian_mod.DefaultEndianMod.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(1262698832, r.main.one);
     try _imp_std.testing.expectEqual(-52947, r.main.nest.two);
     try _imp_std.testing.expectEqual(1346454347, r.main.nest_be.two);

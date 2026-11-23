@@ -7,6 +7,7 @@ from str_pad_term_utf16 import _schema
 class TestStrPadTermUtf16(unittest.TestCase):
     def test_str_pad_term_utf16(self):
         r = _schema.parse_file('src/str_pad_term_utf16.bin')
+
         self.assertEqual(r.str_term, "a\u0200b")
         self.assertEqual(r.str_term_include, "c\u0200d\000")
         self.assertEqual(r.str_term_and_pad, "e\u0200f")

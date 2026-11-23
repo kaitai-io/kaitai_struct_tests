@@ -14,6 +14,7 @@ test "Enum0" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_enum_0.Enum0.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(_imp_enum_0.Enum0.Animal.cat, r.pet_1);
     try _imp_std.testing.expectEqual(_imp_enum_0.Enum0.Animal.chicken, r.pet_2);
 }

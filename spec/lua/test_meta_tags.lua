@@ -8,5 +8,4 @@ TestMetaTags = {}
 
 function TestMetaTags:test_meta_tags()
     local r = MetaTags:from_file("src/fixed_struct.bin")
-
 end

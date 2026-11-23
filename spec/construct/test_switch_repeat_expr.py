@@ -7,6 +7,7 @@ from switch_repeat_expr import _schema
 class TestSwitchRepeatExpr(unittest.TestCase):
     def test_switch_repeat_expr(self):
         r = _schema.parse_file('src/switch_integers.bin')
+
         self.assertEqual(len(r.codes), 3)
         self.assertEqual(r.codes[0], 1)
         self.assertEqual(r.codes[1], 7)

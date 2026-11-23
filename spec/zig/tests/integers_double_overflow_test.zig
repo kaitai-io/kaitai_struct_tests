@@ -14,6 +14,7 @@ test "IntegersDoubleOverflow" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_integers_double_overflow.IntegersDoubleOverflow.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(-9007199254740991, r.signed_safe_min_be);
     try _imp_std.testing.expectEqual(-9007199254740991, r.signed_safe_min_le);
     try _imp_std.testing.expectEqual(9007199254740991, r.signed_safe_max_be);

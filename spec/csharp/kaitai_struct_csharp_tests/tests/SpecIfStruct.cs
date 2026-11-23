@@ -11,6 +11,7 @@ namespace Kaitai
         public void TestIfStruct()
         {
             var r = IfStruct.FromFile(SourceFile("if_struct.bin"));
+
             Assert.AreEqual(r.Op1.Opcode, 83);
             Assert.IsNull(r.Op1.ArgTuple);
             Assert.AreEqual(r.Op1.ArgStr.Str, "foo");

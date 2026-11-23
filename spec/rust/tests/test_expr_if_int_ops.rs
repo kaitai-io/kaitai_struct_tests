@@ -10,6 +10,7 @@ fn test_expr_if_int_ops() -> KResult<()> {
     let bytes = fs::read("../../src/instance_io.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<ExprIfIntOps> = ExprIfIntOps::read_into(&_io, None, None)?;
+
     assert_eq!(*r.key(), 3);
     assert_eq!(*r.bytes(), vec![0xfcu8, 0xfcu8, 0xfcu8, 0xfdu8, 0x9u8, 0x3u8, 0x3u8, 0x3u8]);
     assert_eq!(*r.bytes_sub_key()?, 253);

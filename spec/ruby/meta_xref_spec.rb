@@ -4,6 +4,5 @@ RSpec.describe 'MetaXref' do
   it 'parses test properly' do
     require 'meta_xref'
     r = MetaXref.from_file('src/fixed_struct.bin')
-
   end
 end

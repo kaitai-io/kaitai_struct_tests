@@ -7,6 +7,7 @@ from combine_str import _schema
 class TestCombineStr(unittest.TestCase):
     def test_combine_str(self):
         r = _schema.parse_file('src/term_strz.bin')
+
         self.assertEqual(r.str_term, "foo")
         self.assertEqual(r.str_limit, "bar|")
         self.assertEqual(r.str_eos, "baz@")

@@ -5,4 +5,3 @@ import ../../compiled/nim/valid_not_parsed_if
 import auxiliary/test_utils
 
 let r = ValidNotParsedIf.fromFile("../../src/fixed_struct.bin")
-

@@ -7,6 +7,7 @@ from expr_array import _schema
 class TestExprArray(unittest.TestCase):
     def test_expr_array(self):
         r = _schema.parse_file('src/expr_array.bin')
+
         self.assertEqual(r.aint_size, 4)
         self.assertEqual(r.aint_first, 7657765)
         self.assertEqual(r.aint_last, 16272640)

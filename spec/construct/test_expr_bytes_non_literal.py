@@ -7,6 +7,7 @@ from expr_bytes_non_literal import _schema
 class TestExprBytesNonLiteral(unittest.TestCase):
     def test_expr_bytes_non_literal(self):
         r = _schema.parse_file('src/enum_negative.bin')
+
         self.assertEqual(len(r.calc_bytes), 2)
         self.assertEqual(r.calc_bytes[0], 255)
         self.assertEqual(r.calc_bytes[1], 1)

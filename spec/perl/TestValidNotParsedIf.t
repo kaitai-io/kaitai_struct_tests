@@ -10,7 +10,6 @@ use ValidNotParsedIf;
 
 sub test_valid_not_parsed_if: Test(0) {
     my $r = ValidNotParsedIf->from_file('src/fixed_struct.bin');
-
 }
 
 Test::Class->runtests;

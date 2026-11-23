@@ -7,5 +7,6 @@ from multiple_use import _schema
 class TestMultipleUse(unittest.TestCase):
     def test_multiple_use(self):
         r = _schema.parse_file('src/position_abs.bin')
+
         self.assertEqual(r.t1.first_use.value, 32)
         self.assertEqual(r.t2.second_use.value, 32)

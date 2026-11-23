@@ -7,6 +7,7 @@ from enum_if import _schema
 class TestEnumIf(unittest.TestCase):
     def test_enum_if(self):
         r = _schema.parse_file('src/if_struct.bin')
+
         self.assertEqual(r.op1.opcode, 'a_string')
         self.assertEqual(r.op1.arg_str.str, "foo")
         self.assertEqual(r.op2.opcode, 'a_tuple')

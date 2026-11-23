@@ -9,6 +9,5 @@ public class TestMetaTags extends CommonSpec {
     @Test
     public void testMetaTags() throws Exception {
         MetaTags r = MetaTags.fromFile(SRC_DIR + "fixed_struct.bin");
-
     }
 }

@@ -14,6 +14,7 @@ test "ExprStrOps" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_str_ops.ExprStrOps.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualStrings("foo|b", r.one);
     try _imp_std.testing.expectEqual(5, (try r.oneLen()));
     try _imp_std.testing.expectEqualStrings("b|oof", (try r.oneRev()));

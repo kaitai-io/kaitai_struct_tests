@@ -9,6 +9,5 @@ public class TestValidOptionalId extends CommonSpec {
     @Test
     public void testValidOptionalId() throws Exception {
         ValidOptionalId r = ValidOptionalId.fromFile(SRC_DIR + "fixed_struct.bin");
-
     }
 }

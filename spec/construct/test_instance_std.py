@@ -7,4 +7,5 @@ from instance_std import _schema
 class TestInstanceStd(unittest.TestCase):
     def test_instance_std(self):
         r = _schema.parse_file('src/str_encodings.bin')
+
         self.assertEqual(r.header, "Some ")

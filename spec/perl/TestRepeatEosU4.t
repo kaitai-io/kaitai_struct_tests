@@ -10,6 +10,7 @@ use RepeatEosU4;
 
 sub test_repeat_eos_u4: Test(5) {
     my $r = RepeatEosU4->from_file('src/repeat_eos_struct.bin');
+
     is(scalar(@{$r->numbers()}), 4, 'Equals');
     is(@{$r->numbers()}[0], 0, 'Equals');
     is(@{$r->numbers()}[1], 66, 'Equals');

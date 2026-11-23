@@ -5,6 +5,7 @@ import ../../compiled/nim/repeat_eos_bits_b1
 import auxiliary/test_utils
 
 let r = RepeatEosBitsB1.fromFile("../../src/enum_negative.bin")
+
 assert len(r.bits) == 16
 assert r.bits[0] == true
 assert r.bits[1] == true

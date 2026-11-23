@@ -14,6 +14,7 @@ test "RepeatUntilComplex" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_repeat_until_complex.RepeatUntilComplex.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(3, r.first.items.len);
     try _imp_std.testing.expectEqual(4, r.first.items[0].count);
     try _imp_std.testing.expectEqualSlices(u8, &.{ 0 + 1, 2, 3, 4 }, r.first.items[0].values.items);

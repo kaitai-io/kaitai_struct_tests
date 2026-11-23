@@ -7,6 +7,7 @@ from expr_if_int_ops import _schema
 class TestExprIfIntOps(unittest.TestCase):
     def test_expr_if_int_ops(self):
         r = _schema.parse_file('src/instance_io.bin')
+
         self.assertEqual(r.key, 3)
         self.assertEqual(r.bytes, b"\xFC\xFC\xFC\xFD\x09\x03\x03\x03")
         self.assertEqual(r.bytes_sub_key, 253)

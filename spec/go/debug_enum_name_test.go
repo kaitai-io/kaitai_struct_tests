@@ -28,6 +28,7 @@ func TestDebugEnumName(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	assert.EqualValues(t, DebugEnumName_TestEnum1__EnumValue80, r.One)
 	assert.EqualValues(t, DebugEnumName_TestEnum2__EnumValue65, r.ArrayOfInts[0])
 	assert.EqualValues(t, DebugEnumName_TestSubtype_InnerEnum1__EnumValue67, r.TestType.Field1)

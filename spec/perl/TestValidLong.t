@@ -10,7 +10,6 @@ use ValidLong;
 
 sub test_valid_long: Test(0) {
     my $r = ValidLong->from_file('src/fixed_struct.bin');
-
 }
 
 Test::Class->runtests;

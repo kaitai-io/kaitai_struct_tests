@@ -10,6 +10,7 @@ fn test_switch_repeat_expr() -> KResult<()> {
     let bytes = fs::read("../../src/switch_integers.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<SwitchRepeatExpr> = SwitchRepeatExpr::read_into(&_io, None, None)?;
+
     assert_eq!(r.codes().len(), 3);
     assert_eq!(r.codes()[0 as usize], 1);
     assert_eq!(r.codes()[1 as usize], 7);

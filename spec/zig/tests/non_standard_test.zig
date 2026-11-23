@@ -14,5 +14,6 @@ test "NonStandard" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_non_standard.NonStandard.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(80, r.foo);
 }

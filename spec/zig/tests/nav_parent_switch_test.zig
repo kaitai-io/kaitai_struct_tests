@@ -14,6 +14,7 @@ test "NavParentSwitch" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_nav_parent_switch.NavParentSwitch.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(1, r.category);
     try _imp_std.testing.expectEqual(66, @as(*_imp_nav_parent_switch.NavParentSwitch.Element1, r.content).foo);
     try _imp_std.testing.expectEqual(255, @as(*_imp_nav_parent_switch.NavParentSwitch.Element1, r.content).subelement.bar);

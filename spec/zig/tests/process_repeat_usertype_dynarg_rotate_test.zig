@@ -14,6 +14,7 @@ test "ProcessRepeatUsertypeDynargRotate" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_process_repeat_usertype_dynarg_rotate.ProcessRepeatUsertypeDynargRotate.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(25928, r.blocks_rol.items[0].a);
     try _imp_std.testing.expectEqual(46902, r.blocks_rol.items[1].a);
     try _imp_std.testing.expectEqual(29295, r.blocks_ror.items[0].a);

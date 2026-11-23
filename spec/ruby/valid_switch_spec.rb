@@ -4,6 +4,5 @@ RSpec.describe 'ValidSwitch' do
   it 'parses test properly' do
     require 'valid_switch'
     r = ValidSwitch.from_file('src/fixed_struct.bin')
-
   end
 end

@@ -7,6 +7,7 @@ from repeat_eos_bits_b1 import _schema
 class TestRepeatEosBitsB1(unittest.TestCase):
     def test_repeat_eos_bits_b1(self):
         r = _schema.parse_file('src/enum_negative.bin')
+
         self.assertEqual(len(r.bits), 16)
         self.assertEqual(r.bits[0], True)
         self.assertEqual(r.bits[1], True)

@@ -14,6 +14,7 @@ test "Integers" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_integers.Integers.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(255, r.uint8);
     try _imp_std.testing.expectEqual(65535, r.uint16);
     try _imp_std.testing.expectEqual(4294967295, r.uint32);

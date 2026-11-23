@@ -9,6 +9,7 @@ public class TestSwitchManualEnumInvalidElse extends CommonSpec {
     @Test
     public void testSwitchManualEnumInvalidElse() throws Exception {
         SwitchManualEnumInvalidElse r = SwitchManualEnumInvalidElse.fromFile(SRC_DIR + "enum_negative.bin");
+
         assertIntEquals(r.opcodes().size(), 2);
         assertEquals(r.opcodes().get(((int) 0)).code(), SwitchManualEnumInvalidElse.Opcode.CodeEnum.byId(255));
         assertTrue(r.opcodes().get(((int) 0)).code() instanceof SwitchManualEnumInvalidElse.Opcode.CodeEnum.Unknown);

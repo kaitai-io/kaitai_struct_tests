@@ -14,6 +14,7 @@ test "ProcessRepeatUsertypeDynargCustom" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_process_repeat_usertype_dynarg_custom.ProcessRepeatUsertypeDynargCustom.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(2290657028, r.blocks.items[0].a);
     try _imp_std.testing.expectEqual(2057999057, r.blocks.items[1].a);
     try _imp_std.testing.expectEqual(1, r.blocks_b.dummy);

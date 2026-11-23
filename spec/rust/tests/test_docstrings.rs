@@ -10,6 +10,5 @@ fn test_docstrings() -> KResult<()> {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<Docstrings> = Docstrings::read_into(&_io, None, None)?;
-
     Ok(())
 }

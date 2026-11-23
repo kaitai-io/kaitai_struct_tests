@@ -7,6 +7,7 @@ from index_to_param_until import _schema
 class TestIndexToParamUntil(unittest.TestCase):
     def test_index_to_param_until(self):
         r = _schema.parse_file('src/index_sizes.bin')
+
         self.assertEqual(r.qty, 3)
         self.assertEqual(r.sizes[0], 1)
         self.assertEqual(r.sizes[1], 8)

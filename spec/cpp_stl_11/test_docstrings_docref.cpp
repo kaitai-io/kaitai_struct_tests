@@ -11,6 +11,5 @@ BOOST_AUTO_TEST_CASE(test_docstrings_docref) {
     kaitai::kstream ks(&ifs);
     docstrings_docref_t* r = new docstrings_docref_t(&ks);
 
-
     delete r;
 }

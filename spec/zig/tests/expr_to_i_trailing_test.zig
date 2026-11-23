@@ -14,6 +14,7 @@ test "ExprToITrailing" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_to_i_trailing.ExprToITrailing.create(&arena, &_io, null, null);
+
     assertThrows(NumberFormatException.class, new ThrowingRunnable() {
         @Override
         public void run() throws Throwable {

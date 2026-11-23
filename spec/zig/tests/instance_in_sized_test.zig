@@ -14,6 +14,7 @@ test "InstanceInSized" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_instance_in_sized.InstanceInSized.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(9, r.cont.seq_sized.seq_f);
     try _imp_std.testing.expectEqual(172, (try r.cont.seq_sized.instInvoked()));
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 141, 141 }, (try r.cont.seq_sized.instUnusedBySeq()));

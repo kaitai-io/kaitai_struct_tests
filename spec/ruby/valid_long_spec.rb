@@ -4,6 +4,5 @@ RSpec.describe 'ValidLong' do
   it 'parses test properly' do
     require 'valid_long'
     r = ValidLong.from_file('src/fixed_struct.bin')
-
   end
 end

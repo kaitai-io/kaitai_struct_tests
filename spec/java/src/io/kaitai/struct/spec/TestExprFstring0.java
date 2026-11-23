@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ExprFstring0;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestExprFstring0 extends CommonSpec {
-
     @Test
     public void testExprFstring0() throws Exception {
         ExprFstring0 r = ExprFstring0.fromFile(SRC_DIR + "term_strz.bin");

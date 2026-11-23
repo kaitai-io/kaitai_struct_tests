@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.NestedTypesImport;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestNestedTypesImport extends CommonSpec {
-
     @Test
     public void testNestedTypesImport() throws Exception {
         NestedTypesImport r = NestedTypesImport.fromFile(SRC_DIR + "fixed_struct.bin");

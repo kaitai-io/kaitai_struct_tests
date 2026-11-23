@@ -14,6 +14,7 @@ test "BufferedStruct" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_buffered_struct.BufferedStruct.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(16, r.len1);
     try _imp_std.testing.expectEqual(66, r.block1.number1);
     try _imp_std.testing.expectEqual(67, r.block1.number2);

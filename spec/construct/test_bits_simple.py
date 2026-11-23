@@ -7,6 +7,7 @@ from bits_simple import _schema
 class TestBitsSimple(unittest.TestCase):
     def test_bits_simple(self):
         r = _schema.parse_file('src/fixed_struct.bin')
+
         self.assertEqual(r.byte_1, 80)
         self.assertEqual(r.byte_2, 65)
         self.assertEqual(r.bits_a, False)

@@ -11,7 +11,6 @@ namespace Kaitai
         public void TestMetaTags()
         {
             var r = MetaTags.FromFile(SourceFile("fixed_struct.bin"));
-
         }
     }
 }

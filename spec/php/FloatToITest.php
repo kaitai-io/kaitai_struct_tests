@@ -6,6 +6,7 @@ namespace Kaitai\Struct\Tests;
 class FloatToITest extends TestCase {
     public function testFloatToI() {
         $r = FloatToI::fromFile(self::SRC_DIR_PATH . '/floating_points.bin');
+
         $this->assertEquals($r->singleValue(), 0.5, '', 1e-6);
         $this->assertEquals($r->doubleValue(), 0.25, '', 1e-6);
         $this->assertEquals($r->singleValueIf(), 0.5, '', 1e-6);

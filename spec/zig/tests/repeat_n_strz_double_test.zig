@@ -12,6 +12,7 @@ test "RepeatNStrzDouble" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_repeat_n_strz_double.RepeatNStrzDouble.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(2, r.qty);
     try _imp_std.testing.expectEqualDeep(@as([]const []const u8, &.{ "foo" }), r.lines1.items);
     try _imp_std.testing.expectEqualDeep(@as([]const []const u8, &.{ "bar" }), r.lines2.items);

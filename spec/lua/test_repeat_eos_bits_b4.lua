@@ -8,6 +8,7 @@ TestRepeatEosBitsB4 = {}
 
 function TestRepeatEosBitsB4:test_repeat_eos_bits_b4()
     local r = RepeatEosBitsB4:from_file("src/enum_negative.bin")
+
     luaunit.assertEquals(#r.nibbles, 4)
     luaunit.assertEquals(r.nibbles[0 + 1], 15)
     luaunit.assertEquals(r.nibbles[1 + 1], 15)

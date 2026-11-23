@@ -6,7 +6,6 @@ import io.kaitai.struct.testformats.ImportsAbsAbs;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 public class TestImportsAbsAbs extends CommonSpec {
-
     @Test
     public void testImportsAbsAbs() throws Exception {
         ImportsAbsAbs r = ImportsAbsAbs.fromFile(SRC_DIR + "fixed_struct.bin");

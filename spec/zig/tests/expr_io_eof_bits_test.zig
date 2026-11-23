@@ -14,6 +14,7 @@ test "ExprIoEofBits" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_io_eof_bits.ExprIoEofBits.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(5167, r.foo);
     try _imp_std.testing.expectEqual(15, r.bar);
     try _imp_std.testing.expectEqual(null, r.baz);

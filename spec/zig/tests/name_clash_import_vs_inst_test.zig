@@ -14,6 +14,7 @@ test "NameClashImportVsInst" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_name_clash_import_vs_inst.NameClashImportVsInst.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(255, (try r.integers()).uint8);
     try _imp_std.testing.expectEqual(3, (try r.std()));
 }

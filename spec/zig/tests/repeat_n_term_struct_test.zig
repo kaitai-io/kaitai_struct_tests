@@ -14,6 +14,7 @@ test "RepeatNTermStruct" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_repeat_n_term_struct.RepeatNTermStruct.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(2, r.records1.items.len);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 232, 186 }, r.records1.items[0].value);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{  }, r.records1.items[1].value);

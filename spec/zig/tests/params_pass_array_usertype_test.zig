@@ -14,6 +14,7 @@ test "ParamsPassArrayUsertype" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_params_pass_array_usertype.ParamsPassArrayUsertype.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(2, r.pass_blocks.bar.items.len);
     try _imp_std.testing.expectEqual(1, r.pass_blocks.bar.items[0].foo);
     try _imp_std.testing.expectEqual(2, r.pass_blocks.bar.items[1].foo);

@@ -5,5 +5,6 @@ import ../../compiled/nim/name_clash_import_vs_inst
 import auxiliary/test_utils
 
 let r = NameClashImportVsInst.fromFile("../../src/fixed_struct.bin")
+
 assert r.integers.uint8 == 255
 assert r.std == 3

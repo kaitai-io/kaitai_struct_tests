@@ -10,6 +10,5 @@ fn test_valid_short() -> KResult<()> {
     let bytes = fs::read("../../src/fixed_struct.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<ValidShort> = ValidShort::read_into(&_io, None, None)?;
-
     Ok(())
 }

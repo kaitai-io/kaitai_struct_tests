@@ -14,6 +14,7 @@ test "InstanceInRepeatExpr" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_instance_in_repeat_expr.InstanceInRepeatExpr.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(2, r.chunks.items.len);
     try _imp_std.testing.expectEqual(16, r.chunks.items[0].offset);
     try _imp_std.testing.expectEqual(8312, r.chunks.items[0].len);

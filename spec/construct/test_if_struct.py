@@ -7,6 +7,7 @@ from if_struct import _schema
 class TestIfStruct(unittest.TestCase):
     def test_if_struct(self):
         r = _schema.parse_file('src/if_struct.bin')
+
         self.assertEqual(r.op1.opcode, 83)
         self.assertIsNone(r.op1.arg_tuple)
         self.assertEqual(r.op1.arg_str.str, "foo")

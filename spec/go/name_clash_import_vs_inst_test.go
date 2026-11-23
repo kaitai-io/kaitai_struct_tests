@@ -28,6 +28,7 @@ func TestNameClashImportVsInst(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	tmp1, err := r.Integers()
 	if err != nil {
 		t.Fatal(err)

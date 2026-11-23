@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import io.kaitai.struct.KaitaiStream;
 public class TestValidFailRepeatMinInt extends CommonSpec {
-
     @Test(expectedExceptions = KaitaiStream.ValidationLessThanError.class)
     public void testValidFailRepeatMinInt() throws Exception {
         ValidFailRepeatMinInt r = ValidFailRepeatMinInt.fromFile(SRC_DIR + "process_coerce_bytes.bin");

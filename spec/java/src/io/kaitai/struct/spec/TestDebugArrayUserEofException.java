@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import io.kaitai.struct.KaitaiStream;
 public class TestDebugArrayUserEofException extends CommonSpec {
-
     @Test
     public void testDebugArrayUserEofException() throws Exception {
         final DebugArrayUserEofException r = DebugArrayUserEofException.fromFile(SRC_DIR + "nav_parent_codes.bin");

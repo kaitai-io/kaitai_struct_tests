@@ -4,6 +4,5 @@ RSpec.describe 'ValidEqStrEncodings' do
   it 'parses test properly' do
     require 'valid_eq_str_encodings'
     r = ValidEqStrEncodings.from_file('src/str_encodings.bin')
-
   end
 end

@@ -10,6 +10,7 @@ fn test_debug_array_user_current_excluded() -> KResult<()> {
     let bytes = fs::read("../../src/term_strz.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<DebugArrayUserCurrentExcluded> = DebugArrayUserCurrentExcluded::read_into(&_io, None, None)?;
+
     assert_eq!(*r.array_of_cats()[0 as usize].meow(), vec![0x66u8, 0x6fu8, 0x6fu8]);
     assert_eq!(*r.array_of_cats()[1 as usize].meow(), vec![0x7cu8, 0x62u8]);
     assert_eq!(*r.array_of_cats()[2 as usize].meow(), vec![0x61u8]);

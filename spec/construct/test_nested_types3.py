@@ -7,6 +7,7 @@ from nested_types3 import _schema
 class TestNestedTypes3(unittest.TestCase):
     def test_nested_types3(self):
         r = _schema.parse_file('src/fixed_struct.bin')
+
         self.assertEqual(r.a_cc.value_cc, 80)
         self.assertEqual(r.a_c_d.value_d, 65)
         self.assertEqual(r.b.value_b, 67)

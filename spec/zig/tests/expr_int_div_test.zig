@@ -14,6 +14,7 @@ test "ExprIntDiv" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_int_div.ExprIntDiv.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(1262698832, r.int_u);
     try _imp_std.testing.expectEqual(-52947, r.int_s);
     try _imp_std.testing.expectEqual(756, (try r.divPosConst()));

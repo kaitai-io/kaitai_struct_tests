@@ -8,6 +8,7 @@ TestFloatToI = {}
 
 function TestFloatToI:test_float_to_i()
     local r = FloatToI:from_file("src/floating_points.bin")
+
     luaunit.assertAlmostEquals(r.single_value, 0.5, 0.000001)
     luaunit.assertAlmostEquals(r.double_value, 0.25, 0.000001)
     luaunit.assertAlmostEquals(r.single_value_if, 0.5, 0.000001)

@@ -14,6 +14,7 @@ test "NavParentFalse" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_nav_parent_false.NavParentFalse.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(3, r.child_size);
     try _imp_std.testing.expectEqual(73, r.element_a.foo.code);
     try _imp_std.testing.expectEqualSlices(u8, &[_]u8{ 49, 50, 51 }, r.element_a.foo.more);

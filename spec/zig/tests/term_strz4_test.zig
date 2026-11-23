@@ -14,6 +14,7 @@ test "TermStrz4" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_term_strz4.TermStrz4.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqualStrings("foo", r.s1.value);
     try _imp_std.testing.expectEqualStrings("bar", r.s2.value);
     try _imp_std.testing.expectEqualStrings("baz", r.s3.value);

@@ -5,4 +5,3 @@ import ../../compiled/nim/docstrings_docref_multi
 import auxiliary/test_utils
 
 let r = DocstringsDocrefMulti.fromFile("../../src/fixed_struct.bin")
-

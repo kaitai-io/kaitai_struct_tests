@@ -10,6 +10,7 @@ use RepeatEosBitsB1;
 
 sub test_repeat_eos_bits_b1: Test(17) {
     my $r = RepeatEosBitsB1->from_file('src/enum_negative.bin');
+
     is(scalar(@{$r->bits()}), 16, 'Equals');
     cmp_ok(@{$r->bits()}[0], '==', 1, 'Equals');
     cmp_ok(@{$r->bits()}[1], '==', 1, 'Equals');

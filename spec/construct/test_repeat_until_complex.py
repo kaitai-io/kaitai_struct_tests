@@ -7,6 +7,7 @@ from repeat_until_complex import _schema
 class TestRepeatUntilComplex(unittest.TestCase):
     def test_repeat_until_complex(self):
         r = _schema.parse_file('src/repeat_until_complex.bin')
+
         self.assertEqual(len(r.first), 3)
         self.assertEqual(r.first[0].count, 4)
         self.assertEqual(r.first[0].values, [0 + 1, 2, 3, 4])

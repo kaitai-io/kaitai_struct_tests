@@ -14,6 +14,7 @@ test "ExprCalcArrayOps" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_expr_calc_array_ops.ExprCalcArrayOps.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(7, (try r.intArraySize()));
     try _imp_std.testing.expectEqual(10, (try r.intArrayFirst()));
     try _imp_std.testing.expectEqual(25, (try r.intArrayMid()));

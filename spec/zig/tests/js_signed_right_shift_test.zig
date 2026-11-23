@@ -14,6 +14,7 @@ test "JsSignedRightShift" {
     defer arena.deinit();
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_js_signed_right_shift.JsSignedRightShift.create(&arena, &_io, null, null);
+
     try _imp_std.testing.expectEqual(1073741824, (try r.shouldBe40000000()));
     try _imp_std.testing.expectEqual(10485760, (try r.shouldBeA00000()));
 }
