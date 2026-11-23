@@ -31,6 +31,9 @@ class CSharpSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
 
   override def runParse(): Unit = {
     out.puts(s"var r = $className.FromFile(SourceFile(" + "\"" + spec.data + "\"));")
+    if (spec.debug) {
+      out.puts("r._read();")
+    }
   }
 
   override def runParseExpectError(expException: ExpectedException): Unit = {
@@ -41,7 +44,7 @@ class CSharpSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
     out.puts("delegate")
     out.puts("{")
     out.inc
-    out.puts(s"""$className.FromFile(SourceFile("${spec.data}"));""")
+    runParse()
     out.dec
     out.puts("}")
     out.dec

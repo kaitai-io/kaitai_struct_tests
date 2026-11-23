@@ -33,6 +33,9 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
   override def runParse(): Unit = {
     runParseCommon1()
     out.puts(s"$className* r = new $className(&ks);")
+    if (spec.debug) {
+      out.puts("r->_read();")
+    }
   }
 
   override def runParseExpectError(expException: ExpectedException): Unit = {
@@ -40,13 +43,23 @@ class CppStlSG(spec: TestSpec, provider: ClassTypeProvider, cppConfig: CppRuntim
     cppImportList.addKaitai("kaitai/exceptions.h")
 
     runParseCommon1()
-    out.puts(s"$className* r = ${compiler.nullPtr};")
-    out.puts("BOOST_CHECK_THROW(")
-    out.inc
-    out.puts(s"r = new $className(&ks),")
-    out.puts(compiler.ksErrorName(exception))
-    out.dec
-    out.puts(");")
+    if (spec.debug) {
+      out.puts(s"$className* r = new $className(&ks);")
+      out.puts("BOOST_CHECK_THROW(")
+      out.inc
+      out.puts("r->_read(),")
+      out.puts(compiler.ksErrorName(exception))
+      out.dec
+      out.puts(");")
+    } else {
+      out.puts(s"$className* r = ${compiler.nullPtr};")
+      out.puts("BOOST_CHECK_THROW(")
+      out.inc
+      out.puts(s"r = new $className(&ks),")
+      out.puts(compiler.ksErrorName(exception))
+      out.dec
+      out.puts(");")
+    }
   }
 
   def runParseCommon1(): Unit = {
