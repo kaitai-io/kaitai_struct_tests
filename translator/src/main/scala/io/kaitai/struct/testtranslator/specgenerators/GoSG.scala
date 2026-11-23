@@ -1,38 +1,50 @@
 package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.datatype.{DataType, EndOfStreamError, KSError}
+import _root_.io.kaitai.struct.datatype.DataType._
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.GoCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec, ExpectedException}
-import _root_.io.kaitai.struct.translators.GoTranslator
-import _root_.io.kaitai.struct.{ClassTypeProvider, RuntimeConfig, StringLanguageOutputWriter, Utils}
+import _root_.io.kaitai.struct.translators.{GoTranslator, TypeProvider}
+import _root_.io.kaitai.struct.{ClassTypeProvider, ImportList, RuntimeConfig, StringLanguageOutputWriter, Utils}
 
 class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   /**
     * Special wrapper around StringLanguageOutputWriter that catches all attempts
     * to access "this.INIT_OBJ_NAME" and replaces it with "r."
     */
-  class GoOutputWriter(out: StringLanguageOutputWriter) extends StringLanguageOutputWriter(indentStr) {
-    override def inc: Unit = out.inc
-    override def dec: Unit = out.dec
-    override def indentNow: String = out.indentNow
-
-    override def add(other: StringLanguageOutputWriter): Unit = out.add(other)
+  class GoOutputWriter(indentStr: String) extends StringLanguageOutputWriter(indentStr) {
     override def puts(s: String): Unit = {
-      val mangled = s.replace(REPLACER, "r.").replaceAll("return err$", "t.Fatal(err)")
-      out.puts(mangled)
+      super.puts(s.replace(REPLACER, "r."))
     }
-    override def puts = out.puts
-    override def close = out.close
-    override def putsLines(prefix: String, lines: String, hanging: String): Unit =
-      out.putsLines(prefix, lines, hanging)
-
-    override def result: String = out.result
   }
 
+  /**
+    * Special wrapper around translator that catches all attempts to write error
+    * check and turns it into assertion.
+    */
+  class GoTestTranslator(
+    out: StringLanguageOutputWriter,
+    provider: TypeProvider,
+    importList: ImportList,
+  ) extends GoTranslator(out, provider, importList) {
+    var doErrCheck = true
+
+    override def outAddErrCheck(): Unit = {
+      if (doErrCheck) {
+        out.puts("if err != nil {")
+        out.inc
+        out.puts("t.Fatal(err)")
+        out.dec
+        out.puts("}")
+      }
+    }
+  }
+
+  override val out = new GoOutputWriter(indentStr)
   val compiler = new GoCompiler(provider, RuntimeConfig())
   val className = GoCompiler.types2class(List(spec.id))
-  val translator = new GoTranslator(new GoOutputWriter(out), provider, importList)
+  val translator = new GoTestTranslator(out, provider, importList)
 
   override def fileName(name: String): String = s"${name}_test.go"
 
@@ -69,17 +81,7 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
   override def runParseExpectError(expException: ExpectedException): Unit = {
     val exception = expException.exception
     out.puts("err = r.Read(s, &r, &r)")
-    importList.add("\"github.com/stretchr/testify/assert\"")
-    out.puts("assert.Error(t, err)")
-    exception match {
-      case EndOfStreamError =>
-        importList.add("\"io\"")
-        out.puts("assert.ErrorIs(t, err, io.ErrUnexpectedEOF)")
-      case _ =>
-        val errorName = GoCompiler.ksErrorName(exception)
-        out.puts(s"var wantErr ${errorName}")
-        out.puts("assert.ErrorAs(t, err, &wantErr)")
-    }
+    checkErr(exception)
   }
 
   override def footer() = {
@@ -110,6 +112,33 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
   def trueArrayEquality(check: TestEquals, elType: DataType, elts: Seq[Ast.expr]): Unit =
     simpleEquality(check)
 
+  override def testException(actual: Ast.expr, exception: KSError): Unit = {
+    // We need a scope otherwise we got redeclaration error from Go in case of
+    // several assertions, because we use the same name for expected exception
+    out.puts("{")
+    out.inc
+
+    // We do not want error check because we expect an error
+    translator.doErrCheck = false
+    val actStr = translateAct(actual)
+    translator.doErrCheck = true
+
+    checkErr(exception)
+
+    // translateAct generates unused variable which not allowed in Go,
+    // so we use it by checking its value
+    translator.detectType(actual) match {
+      case _: FloatType => out.puts(s"assert.InDelta(t, 0, $actStr, $FLOAT_DELTA)")
+      case _: NumericType => out.puts(s"assert.EqualValues(t, 0, $actStr)")
+      case _: BooleanType => out.puts(s"assert.EqualValues(t, false, $actStr)")
+      case _: StrType => out.puts(s"assert.EqualValues(t, \"\", $actStr)")
+      case _ => out.puts(s"assert.Nil(t, $actStr)")
+    }
+
+    out.dec
+    out.puts("}")
+  }
+
   override def indentStr: String = "\t"
 
   override def results: String = {
@@ -132,4 +161,19 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
 
   def translateAct(x: Ast.expr) =
     translator.translate(x).replace(REPLACER, "r.")
+
+  /** Generates code to check returned Go error to match of specified `exception`. */
+  def checkErr(exception: KSError): Unit = {
+    importList.add("\"github.com/stretchr/testify/assert\"")
+    out.puts("assert.Error(t, err)")
+    exception match {
+      case EndOfStreamError =>
+        importList.add("\"io\"")
+        out.puts("assert.ErrorIs(t, err, io.ErrUnexpectedEOF)")
+      case _ =>
+        val errorName = GoCompiler.ksErrorName(exception)
+        out.puts(s"var wantErr ${errorName}")
+        out.puts("assert.ErrorAs(t, err, &wantErr)")
+    }
+  }
 }
