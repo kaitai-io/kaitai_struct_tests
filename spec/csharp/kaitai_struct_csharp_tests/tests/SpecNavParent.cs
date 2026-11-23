@@ -12,11 +12,11 @@ namespace Kaitai
         {
             var r = NavParent.FromFile(SourceFile("nav.bin"));
 
-            Assert.AreEqual(r.Header.QtyEntries, 2);
-            Assert.AreEqual(r.Header.FilenameLen, 8);
-            Assert.AreEqual(r.Index.Entries.Count, 2);
-            Assert.AreEqual(r.Index.Entries[0].Filename, "FIRST___");
-            Assert.AreEqual(r.Index.Entries[1].Filename, "SECOND__");
+            Assert.AreEqual(2, r.Header.QtyEntries);
+            Assert.AreEqual(8, r.Header.FilenameLen);
+            Assert.AreEqual(2, r.Index.Entries.Count);
+            Assert.AreEqual("FIRST___", r.Index.Entries[0].Filename);
+            Assert.AreEqual("SECOND__", r.Index.Entries[1].Filename);
         }
     }
 }

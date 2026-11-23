@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = StrPadTerm.FromFile(SourceFile("str_pad_term.bin"));
 
-            Assert.AreEqual(r.StrPad, "str1");
-            Assert.AreEqual(r.StrTerm, "str2foo");
-            Assert.AreEqual(r.StrTermAndPad, "str+++3bar+++");
-            Assert.AreEqual(r.StrTermInclude, "str4baz@");
+            Assert.AreEqual("str1", r.StrPad);
+            Assert.AreEqual("str2foo", r.StrTerm);
+            Assert.AreEqual("str+++3bar+++", r.StrTermAndPad);
+            Assert.AreEqual("str4baz@", r.StrTermInclude);
         }
     }
 }

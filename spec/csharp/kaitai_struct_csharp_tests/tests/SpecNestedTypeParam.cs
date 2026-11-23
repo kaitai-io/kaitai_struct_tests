@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = NestedTypeParam.FromFile(SourceFile("term_strz.bin"));
 
-            Assert.AreEqual(r.MainSeq.MyLen, 5);
-            Assert.AreEqual(r.MainSeq.Body, "foo|b");
+            Assert.AreEqual(5, r.MainSeq.MyLen);
+            Assert.AreEqual("foo|b", r.MainSeq.Body);
         }
     }
 }

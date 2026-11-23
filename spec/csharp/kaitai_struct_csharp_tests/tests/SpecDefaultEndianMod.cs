@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = DefaultEndianMod.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.Main.One, 1262698832);
-            Assert.AreEqual(r.Main.Nest.Two, -52947);
-            Assert.AreEqual(r.Main.NestBe.Two, 1346454347);
+            Assert.AreEqual(1262698832, r.Main.One);
+            Assert.AreEqual(-52947, r.Main.Nest.Two);
+            Assert.AreEqual(1346454347, r.Main.NestBe.Two);
         }
     }
 }

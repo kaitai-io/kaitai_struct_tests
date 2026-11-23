@@ -12,11 +12,11 @@ namespace Kaitai
         {
             var r = ParamsPassArrayUsertype.FromFile(SourceFile("position_to_end.bin"));
 
-            Assert.AreEqual(r.PassBlocks.Bar.Count, 2);
-            Assert.AreEqual(r.PassBlocks.Bar[0].Foo, 1);
-            Assert.AreEqual(r.PassBlocks.Bar[1].Foo, 2);
-            Assert.AreEqual(r.PassBlocks.One, new byte[] { 3 });
-            Assert.AreEqual(r.PassBlocks.Two, new byte[] { 4, 5 });
+            Assert.AreEqual(2, r.PassBlocks.Bar.Count);
+            Assert.AreEqual(1, r.PassBlocks.Bar[0].Foo);
+            Assert.AreEqual(2, r.PassBlocks.Bar[1].Foo);
+            Assert.AreEqual(new byte[] { 3 }, r.PassBlocks.One);
+            Assert.AreEqual(new byte[] { 4, 5 }, r.PassBlocks.Two);
         }
     }
 }

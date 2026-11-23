@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = ProcessRepeatUsertype.FromFile(SourceFile("process_xor_4.bin"));
 
-            Assert.AreEqual(r.Blocks[0].A, -1975704206);
-            Assert.AreEqual(r.Blocks[0].B, 20);
-            Assert.AreEqual(r.Blocks[1].A, 279597642);
-            Assert.AreEqual(r.Blocks[1].B, 68);
+            Assert.AreEqual(-1975704206, r.Blocks[0].A);
+            Assert.AreEqual(20, r.Blocks[0].B);
+            Assert.AreEqual(279597642, r.Blocks[1].A);
+            Assert.AreEqual(68, r.Blocks[1].B);
         }
     }
 }

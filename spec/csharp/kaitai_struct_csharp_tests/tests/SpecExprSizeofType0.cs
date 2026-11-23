@@ -12,7 +12,7 @@ namespace Kaitai
         {
             var r = ExprSizeofType0.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.SizeofBlock, ((1 + 4) + 2));
+            Assert.AreEqual((1 + 4) + 2, r.SizeofBlock);
         }
     }
 }

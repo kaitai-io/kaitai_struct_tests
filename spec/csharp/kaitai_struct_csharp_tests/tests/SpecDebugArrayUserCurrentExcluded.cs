@@ -13,9 +13,9 @@ namespace Kaitai
             // --debug implies --no-auto-read
             r._read();
 
-            Assert.AreEqual(r.ArrayOfCats[0].Meow, new byte[] { 102, 111, 111 });
-            Assert.AreEqual(r.ArrayOfCats[1].Meow, new byte[] { 124, 98 });
-            Assert.AreEqual(r.ArrayOfCats[2].Meow, new byte[] { 97 });
+            Assert.AreEqual(new byte[] { 102, 111, 111 }, r.ArrayOfCats[0].Meow);
+            Assert.AreEqual(new byte[] { 124, 98 }, r.ArrayOfCats[1].Meow);
+            Assert.AreEqual(new byte[] { 97 }, r.ArrayOfCats[2].Meow);
         }
     }
 }

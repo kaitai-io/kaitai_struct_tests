@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = JsSignedRightShift.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.ShouldBe40000000, 1073741824);
-            Assert.AreEqual(r.ShouldBeA00000, 10485760);
+            Assert.AreEqual(1073741824, r.ShouldBe40000000);
+            Assert.AreEqual(10485760, r.ShouldBeA00000);
         }
     }
 }

@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = EnumImportLiterals.FromFile(SourceFile("enum_0.bin"));
 
-            Assert.AreEqual(r.Pet1ToI, 7);
-            Assert.AreEqual(r.Pet1Eq, true);
-            Assert.AreEqual(r.Pet2, EnumDeep.Container1.Container2.Animal.Hare);
+            Assert.AreEqual(7, r.Pet1ToI);
+            Assert.AreEqual(true, r.Pet1Eq);
+            Assert.AreEqual(EnumDeep.Container1.Container2.Animal.Hare, r.Pet2);
         }
     }
 }

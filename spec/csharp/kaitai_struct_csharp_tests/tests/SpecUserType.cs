@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = UserType.FromFile(SourceFile("repeat_until_s4.bin"));
 
-            Assert.AreEqual(r.One.Width, 66);
-            Assert.AreEqual(r.One.Height, 4919);
+            Assert.AreEqual(66, r.One.Width);
+            Assert.AreEqual(4919, r.One.Height);
         }
     }
 }

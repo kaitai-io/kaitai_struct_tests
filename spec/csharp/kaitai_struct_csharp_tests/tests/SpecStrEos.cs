@@ -12,7 +12,7 @@ namespace Kaitai
         {
             var r = StrEos.FromFile(SourceFile("term_strz.bin"));
 
-            Assert.AreEqual(r.Str, "foo|bar|baz@");
+            Assert.AreEqual("foo|bar|baz@", r.Str);
         }
     }
 }

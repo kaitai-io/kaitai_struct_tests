@@ -13,16 +13,16 @@ namespace Kaitai
         {
             var r = SwitchManualIntSize.FromFile(SourceFile("switch_tlv.bin"));
 
-            Assert.AreEqual(r.Chunks.Count, 4);
-            Assert.AreEqual(r.Chunks[0].Code, 17);
-            Assert.AreEqual(((SwitchManualIntSize.Chunk.ChunkMeta) (r.Chunks[0].Body)).Title, "Stuff");
-            Assert.AreEqual(((SwitchManualIntSize.Chunk.ChunkMeta) (r.Chunks[0].Body)).Author, "Me");
-            Assert.AreEqual(r.Chunks[1].Code, 34);
-            Assert.AreEqual(((SwitchManualIntSize.Chunk.ChunkDir) (r.Chunks[1].Body)).Entries, new List<string> { "AAAA", "BBBB", "CCCC" });
-            Assert.AreEqual(r.Chunks[2].Code, 51);
-            Assert.AreEqual(((byte[]) (r.Chunks[2].Body)), new byte[] { 16, 32, 48, 64, 80, 96, 112, 128 });
-            Assert.AreEqual(r.Chunks[3].Code, 255);
-            Assert.AreEqual(((byte[]) (r.Chunks[3].Body)), new byte[] {  });
+            Assert.AreEqual(4, r.Chunks.Count);
+            Assert.AreEqual(17, r.Chunks[0].Code);
+            Assert.AreEqual("Stuff", ((SwitchManualIntSize.Chunk.ChunkMeta) (r.Chunks[0].Body)).Title);
+            Assert.AreEqual("Me", ((SwitchManualIntSize.Chunk.ChunkMeta) (r.Chunks[0].Body)).Author);
+            Assert.AreEqual(34, r.Chunks[1].Code);
+            Assert.AreEqual(new List<string> { "AAAA", "BBBB", "CCCC" }, ((SwitchManualIntSize.Chunk.ChunkDir) (r.Chunks[1].Body)).Entries);
+            Assert.AreEqual(51, r.Chunks[2].Code);
+            Assert.AreEqual(new byte[] { 16, 32, 48, 64, 80, 96, 112, 128 }, ((byte[]) (r.Chunks[2].Body)));
+            Assert.AreEqual(255, r.Chunks[3].Code);
+            Assert.AreEqual(new byte[] {  }, ((byte[]) (r.Chunks[3].Body)));
         }
     }
 }

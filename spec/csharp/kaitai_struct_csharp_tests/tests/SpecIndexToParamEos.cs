@@ -12,13 +12,13 @@ namespace Kaitai
         {
             var r = IndexToParamEos.FromFile(SourceFile("index_sizes.bin"));
 
-            Assert.AreEqual(r.Qty, 3);
-            Assert.AreEqual(r.Sizes[0], 1);
-            Assert.AreEqual(r.Sizes[1], 8);
-            Assert.AreEqual(r.Sizes[2], 4);
-            Assert.AreEqual(r.Blocks[0].Buf, "A");
-            Assert.AreEqual(r.Blocks[1].Buf, "BBBBBBBB");
-            Assert.AreEqual(r.Blocks[2].Buf, "CCCC");
+            Assert.AreEqual(3, r.Qty);
+            Assert.AreEqual(1, r.Sizes[0]);
+            Assert.AreEqual(8, r.Sizes[1]);
+            Assert.AreEqual(4, r.Sizes[2]);
+            Assert.AreEqual("A", r.Blocks[0].Buf);
+            Assert.AreEqual("BBBBBBBB", r.Blocks[1].Buf);
+            Assert.AreEqual("CCCC", r.Blocks[2].Buf);
         }
     }
 }

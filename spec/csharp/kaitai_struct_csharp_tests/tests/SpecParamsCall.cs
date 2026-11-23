@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = ParamsCall.FromFile(SourceFile("term_strz.bin"));
 
-            Assert.AreEqual(r.Buf1.Body, "foo|b");
-            Assert.AreEqual(r.Buf2.Body, "ar|ba");
-            Assert.AreEqual(r.Buf2.Trailer, 122);
+            Assert.AreEqual("foo|b", r.Buf1.Body);
+            Assert.AreEqual("ar|ba", r.Buf2.Body);
+            Assert.AreEqual(122, r.Buf2.Trailer);
         }
     }
 }

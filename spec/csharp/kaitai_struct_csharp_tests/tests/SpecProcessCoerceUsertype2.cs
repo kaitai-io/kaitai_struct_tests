@@ -12,10 +12,10 @@ namespace Kaitai
         {
             var r = ProcessCoerceUsertype2.FromFile(SourceFile("process_coerce_bytes.bin"));
 
-            Assert.AreEqual(r.Records[0].Flag, 0);
-            Assert.AreEqual(r.Records[0].Buf.Value, 1094795585);
-            Assert.AreEqual(r.Records[1].Flag, 1);
-            Assert.AreEqual(r.Records[1].Buf.Value, 1111638594);
+            Assert.AreEqual(0, r.Records[0].Flag);
+            Assert.AreEqual(1094795585, r.Records[0].Buf.Value);
+            Assert.AreEqual(1, r.Records[1].Flag);
+            Assert.AreEqual(1111638594, r.Records[1].Buf.Value);
         }
     }
 }

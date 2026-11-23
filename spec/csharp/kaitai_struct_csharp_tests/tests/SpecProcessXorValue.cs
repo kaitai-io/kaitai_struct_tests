@@ -12,8 +12,8 @@ namespace Kaitai
         {
             var r = ProcessXorValue.FromFile(SourceFile("process_xor_1.bin"));
 
-            Assert.AreEqual(r.Key, 255);
-            Assert.AreEqual(r.Buf, new byte[] { 102, 111, 111, 32, 98, 97, 114 });
+            Assert.AreEqual(255, r.Key);
+            Assert.AreEqual(new byte[] { 102, 111, 111, 32, 98, 97, 114 }, r.Buf);
         }
     }
 }

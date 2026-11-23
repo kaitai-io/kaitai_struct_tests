@@ -12,16 +12,16 @@ namespace Kaitai
         {
             var r = NavParent3.FromFile(SourceFile("nav_parent2.bin"));
 
-            Assert.AreEqual(r.OfsTags, 8);
-            Assert.AreEqual(r.NumTags, 2);
-            Assert.AreEqual(r.Tags[0].Name, "RAHC");
-            Assert.AreEqual(r.Tags[0].Ofs, 32);
-            Assert.AreEqual(r.Tags[0].NumItems, 3);
-            Assert.AreEqual(r.Tags[0].TagContent.Content, "foo");
-            Assert.AreEqual(r.Tags[1].Name, "RAHC");
-            Assert.AreEqual(r.Tags[1].Ofs, 35);
-            Assert.AreEqual(r.Tags[1].NumItems, 6);
-            Assert.AreEqual(r.Tags[1].TagContent.Content, "barbaz");
+            Assert.AreEqual(8, r.OfsTags);
+            Assert.AreEqual(2, r.NumTags);
+            Assert.AreEqual("RAHC", r.Tags[0].Name);
+            Assert.AreEqual(32, r.Tags[0].Ofs);
+            Assert.AreEqual(3, r.Tags[0].NumItems);
+            Assert.AreEqual("foo", r.Tags[0].TagContent.Content);
+            Assert.AreEqual("RAHC", r.Tags[1].Name);
+            Assert.AreEqual(35, r.Tags[1].Ofs);
+            Assert.AreEqual(6, r.Tags[1].NumItems);
+            Assert.AreEqual("barbaz", r.Tags[1].TagContent.Content);
         }
     }
 }

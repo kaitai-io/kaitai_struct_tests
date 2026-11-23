@@ -18,7 +18,7 @@ namespace Kaitai
                     _ = r.ToIR10;
                 }
             );
-            Assert.AreEqual(r.ToIR16, 152517308);
+            Assert.AreEqual(152517308, r.ToIR16);
             Assert.Throws<System.FormatException>(
                 delegate
                 {

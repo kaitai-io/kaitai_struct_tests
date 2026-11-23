@@ -13,11 +13,11 @@ namespace Kaitai
             // --debug implies --no-auto-read
             r._read();
 
-            Assert.AreEqual(r.OneCat.Meow, 80);
-            Assert.AreEqual(r.ArrayOfCats.Count, 3);
-            Assert.AreEqual(r.ArrayOfCats[0].Meow, 65);
-            Assert.AreEqual(r.ArrayOfCats[1].Meow, 67);
-            Assert.AreEqual(r.ArrayOfCats[2].Meow, 75);
+            Assert.AreEqual(80, r.OneCat.Meow);
+            Assert.AreEqual(3, r.ArrayOfCats.Count);
+            Assert.AreEqual(65, r.ArrayOfCats[0].Meow);
+            Assert.AreEqual(67, r.ArrayOfCats[1].Meow);
+            Assert.AreEqual(75, r.ArrayOfCats[2].Meow);
         }
     }
 }

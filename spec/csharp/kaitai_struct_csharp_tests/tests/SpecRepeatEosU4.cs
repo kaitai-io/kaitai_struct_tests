@@ -11,11 +11,11 @@ namespace Kaitai
         public void TestRepeatEosU4()
         {
             var r = RepeatEosU4.FromFile(SourceFile("repeat_eos_struct.bin"));
-            Assert.AreEqual(r.Numbers.Count, 4);
-            Assert.AreEqual(r.Numbers[0], 0);
-            Assert.AreEqual(r.Numbers[1], 66);
-            Assert.AreEqual(r.Numbers[2], 66);
-            Assert.AreEqual(r.Numbers[3], 2069);
+            Assert.AreEqual(4, r.Numbers.Count);
+            Assert.AreEqual(0, r.Numbers[0]);
+            Assert.AreEqual(66, r.Numbers[1]);
+            Assert.AreEqual(66, r.Numbers[2]);
+            Assert.AreEqual(2069, r.Numbers[3]);
         }
     }
 }

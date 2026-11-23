@@ -12,11 +12,11 @@ namespace Kaitai
         {
             var r = NestedSameName2.FromFile(SourceFile("nested_same_name2.bin"));
 
-            Assert.AreEqual(r.Version, 66);
-            Assert.AreEqual(r.MainData.MainSize, 2);
-            Assert.AreEqual(r.MainData.Foo.Data1, new byte[] { 17, 17, 17, 17 });
-            Assert.AreEqual(r.Dummy.DummySize, 3);
-            Assert.AreEqual(r.Dummy.Foo.Data2, new byte[] { 34, 34, 34, 34, 34, 34 });
+            Assert.AreEqual(66, r.Version);
+            Assert.AreEqual(2, r.MainData.MainSize);
+            Assert.AreEqual(new byte[] { 17, 17, 17, 17 }, r.MainData.Foo.Data1);
+            Assert.AreEqual(3, r.Dummy.DummySize);
+            Assert.AreEqual(new byte[] { 34, 34, 34, 34, 34, 34 }, r.Dummy.Foo.Data2);
         }
     }
 }

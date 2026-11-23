@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = NestedTypes.FromFile(SourceFile("fixed_struct.bin"));
 
-            Assert.AreEqual(r.One.TypedAtRoot.ValueB, 80);
-            Assert.AreEqual(r.One.TypedHere.ValueC, 65);
-            Assert.AreEqual(r.Two.ValueB, 67);
+            Assert.AreEqual(80, r.One.TypedAtRoot.ValueB);
+            Assert.AreEqual(65, r.One.TypedHere.ValueC);
+            Assert.AreEqual(67, r.Two.ValueB);
         }
     }
 }

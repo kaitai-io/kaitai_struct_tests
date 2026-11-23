@@ -12,9 +12,9 @@ namespace Kaitai
         {
             var r = StrPadTermUtf16.FromFile(SourceFile("str_pad_term_utf16.bin"));
 
-            Assert.AreEqual(r.StrTerm, "a\u0200b");
-            Assert.AreEqual(r.StrTermInclude, "c\u0200d\0");
-            Assert.AreEqual(r.StrTermAndPad, "e\u0200f");
+            Assert.AreEqual("a\u0200b", r.StrTerm);
+            Assert.AreEqual("c\u0200d\0", r.StrTermInclude);
+            Assert.AreEqual("e\u0200f", r.StrTermAndPad);
         }
     }
 }
