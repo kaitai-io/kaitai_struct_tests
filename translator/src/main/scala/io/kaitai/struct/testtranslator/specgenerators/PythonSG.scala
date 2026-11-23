@@ -73,7 +73,7 @@ class PythonSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerato
     out.puts(s"self.assertAlmostEqual($actStr, $expStr, 6)")
   }
 
-  override def nullAssert(actual: Ast.expr): Unit = {
+  override def nullAssert(actual: Ast.expr, actType: DataType): Unit = {
     val actStr = translateAct(actual)
     out.puts(s"self.assertIsNone($actStr)")
   }

@@ -15,6 +15,7 @@ BOOST_AUTO_TEST_CASE(test_nav_parent_recursive) {
     BOOST_CHECK_EQUAL(r->next()->value(), 1);
     BOOST_CHECK_EQUAL(r->next()->parent_value(), 255);
     BOOST_CHECK(r->next()->_is_null_next());
+    BOOST_CHECK(!r->next()->next());
 
     delete r;
 }

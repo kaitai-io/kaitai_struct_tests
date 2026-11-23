@@ -11,7 +11,7 @@ BOOST_AUTO_TEST_CASE(test_expr_sizeof_value_sized) {
     kaitai::kstream ks(&ifs);
     expr_sizeof_value_sized_t* r = new expr_sizeof_value_sized_t(&ks);
 
-    BOOST_CHECK_EQUAL(r->self_sizeof(), (12 + 2));
+    BOOST_CHECK_EQUAL(r->self_sizeof(), 12 + 2);
     BOOST_CHECK_EQUAL(r->sizeof_block(), 12);
     BOOST_CHECK_EQUAL(r->sizeof_block_a(), 1);
     BOOST_CHECK_EQUAL(r->sizeof_block_b(), 4);
