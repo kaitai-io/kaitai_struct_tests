@@ -5,7 +5,7 @@ version := "0.12-SNAPSHOT"
 scalaVersion := "2.13.18"
 
 libraryDependencies ++= Seq(
-  "io.kaitai" %% "kaitai-struct-compiler" % "0.12-SNAPSHOT",
+  "io.kaitai" %% "kaitai-struct-compiler" % "2.0.0-SNAPSHOT",
   "com.github.scopt" %% "scopt" % "4.1.0"
 )
 
