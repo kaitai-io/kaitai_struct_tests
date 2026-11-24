@@ -4,7 +4,7 @@ import (
 	"runtime/debug"
 	"os"
 	"testing"
-	"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai"
+	"github.com/kaitai-io/kaitai_struct_go_runtime/v2/kaitai"
 	. "test_formats"
 	"github.com/stretchr/testify/assert"
 	"fmt"

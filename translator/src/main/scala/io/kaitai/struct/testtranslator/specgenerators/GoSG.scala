@@ -39,7 +39,7 @@ class GoSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(sp
   importList.add("\"runtime/debug\"")
   importList.add("\"os\"")
   importList.add("\"testing\"")
-  importList.add("\"github.com/kaitai-io/kaitai_struct_go_runtime/kaitai\"")
+  importList.add("\"github.com/kaitai-io/kaitai_struct_go_runtime/v2/kaitai\"")
   importList.add(". \"test_formats\"")
 
   override def header() = {
