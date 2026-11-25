@@ -1,0 +1,173 @@
+id: type_int_ternary_mixed
+data: type_int_bin.bin
+asserts:
+  - actual: s1_val
+    expected: -0x80
+  - actual: s2_val
+    expected: -0x8000
+  - actual: s4_val
+    expected: -0x7fff_fffe
+  - actual: s8_val
+    expected: -0x0123_4567_89ab_cdef
+
+  - actual: u1_val
+    expected: 0xfd
+  - actual: u2_val
+    expected: 0xfffe
+  - actual: u4_val_msb_set
+    expected: 0xffee_ddc9
+  - actual: u4_val_msb_clear
+    expected: 0x7fff_ffff
+  - actual: u8_val_msb_set
+    expected: 0xfedc_ba98_7654_3210
+  - actual: u8_val_msb_clear
+    expected: 0x7fff_ffff_ffff_fffd
+
+  - actual: b08_val
+    expected: 0xfd
+  - actual: b16_val
+    expected: 0xfffe
+  - actual: b32_val
+    expected: 0xffee_ddc9
+  - actual: b64_val
+    expected: 0x7fff_ffff_ffff_fffd
+  - actual: b31_val
+    expected: 0x7fff_ffff
+  - actual: b63_val
+    expected: 0x7fff_ffff_ffff_fffc
+
+  - actual: cond
+    expected: true
+
+  - actual: s1_s2
+    expected: -0x80
+  - actual: s2_s1
+    expected: -0x8000
+  - actual: s1_s4
+    expected: -0x80
+  - actual: s4_s1
+    expected: -0x7fff_fffe
+  - actual: s1_s8
+    expected: -0x80
+  - actual: s8_s1
+    expected: -0x0123_4567_89ab_cdef
+  - actual: s2_s4
+    expected: -0x8000
+  - actual: s4_s2
+    expected: -0x7fff_fffe
+  - actual: s2_s8
+    expected: -0x8000
+  - actual: s8_s2
+    expected: -0x0123_4567_89ab_cdef
+  - actual: s4_s8
+    expected: -0x7fff_fffe
+  - actual: s8_s4
+    expected: -0x0123_4567_89ab_cdef
+
+  - actual: u1_u2
+    expected: 0xfd
+  - actual: u2_u1
+    expected: 0xfffe
+  - actual: u1_u4
+    expected: 0xfd
+  - actual: u4_u1
+    expected: 0xffee_ddc9
+  - actual: u1_u8
+    expected: 0xfd
+  - actual: u8_u1
+    expected: 0xfedc_ba98_7654_3210
+  - actual: u2_u4
+    expected: 0xfffe
+  - actual: u4_u2
+    expected: 0xffee_ddc9
+  - actual: u2_u8
+    expected: 0xfffe
+  - actual: u8_u2
+    expected: 0xfedc_ba98_7654_3210
+  - actual: u4_u8
+    expected: 0xffee_ddc9
+  - actual: u8_u4
+    expected: 0xfedc_ba98_7654_3210
+
+  - actual: s1_u1
+    expected: -0x80
+  - actual: u1_s1
+    expected: 0xfd
+  - actual: s1_u2
+    expected: -0x80
+  - actual: u2_s1
+    expected: 0xfffe
+  - actual: s2_u1
+    expected: -0x8000
+  - actual: u1_s2
+    expected: 0xfd
+  - actual: s2_u2
+    expected: -0x8000
+  - actual: u2_s2
+    expected: 0xfffe
+  - actual: s4_u1
+    expected: -0x7fff_fffe
+  - actual: u1_s4
+    expected: 0xfd
+  - actual: s4_u2
+    expected: -0x7fff_fffe
+  - actual: u2_s4
+    expected: 0xfffe
+  - actual: s8_u1
+    expected: -0x0123_4567_89ab_cdef
+  - actual: u1_s8
+    expected: 0xfd
+  - actual: s8_u2
+    expected: -0x0123_4567_89ab_cdef
+  - actual: u2_s8
+    expected: 0xfffe
+  - actual: s8_u4
+    expected: -0x0123_4567_89ab_cdef
+  - actual: u4_s8
+    expected: 0xffee_ddc9
+
+  - actual: s1_lit_u1
+    expected: -0x80
+  - actual: lit_u1_s1
+    expected: 0xc8
+  - actual: u1_lit_s4
+    expected: 0xfd
+  - actual: lit_s4_u1
+    expected: -0x1
+  - actual: s8_lit_u4
+    expected: -0x0123_4567_89ab_cdef
+  - actual: lit_u4_s8
+    expected: 0xb2d0_5e00
+  - actual: lit_s4_lit_u1
+    expected: -0x1
+  - actual: lit_u1_lit_s4
+    expected: 0xc8
+
+  - actual: b08_s1
+    expected: 0xfd
+  - actual: s1_b08
+    expected: -0x80
+  - actual: b16_u1
+    expected: 0xfffe
+  - actual: u1_b16
+    expected: 0xfd
+  - actual: b08_b16
+    expected: 0xfd
+  - actual: b16_b08
+    expected: 0xfffe
+  - actual: b31_s4
+    expected: 0x7fff_ffff
+  - actual: s4_b31
+    expected: -0x7fff_fffe
+  - actual: b31_u4
+    expected: 0x7fff_ffff
+  - actual: u4_b31
+    expected: 0xffee_ddc9
+  - actual: b32_s8
+    expected: 0xffee_ddc9
+  - actual: s8_b32
+    expected: -0x0123_4567_89ab_cdef
+  - actual: b64_u8
+    expected: 0x7fff_ffff_ffff_fffd
+  - actual: u8_b64
+    expected: 0xfedc_ba98_7654_3210

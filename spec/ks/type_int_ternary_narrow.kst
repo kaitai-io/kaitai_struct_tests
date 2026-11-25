@@ -1,0 +1,49 @@
+id: type_int_ternary_narrow
+data: type_int_bin.bin
+asserts:
+  - actual: s1_val
+    expected: -0x80
+  - actual: s2_val
+    expected: -0x8000
+  - actual: s4_val
+    expected: -0x7fff_fffe
+  - actual: s8_val
+    expected: -0x0123_4567_89ab_cdef
+
+  - actual: u1_val
+    expected: 0xfd
+  - actual: u2_val
+    expected: 0xfffe
+  - actual: u4_val_msb_set
+    expected: 0xffee_ddc9
+  - actual: u4_val_msb_clear
+    expected: 0x7fff_ffff
+  - actual: u8_val_msb_set
+    expected: 0xfedc_ba98_7654_3210
+  - actual: u8_val_msb_clear
+    expected: 0x7fff_ffff_ffff_fffd
+
+  - actual: b08_val
+    expected: 0xfd
+  - actual: b16_val
+    expected: 0xfffe
+  - actual: b32_val
+    expected: 0xffee_ddc9
+  - actual: b64_val
+    expected: 0x7fff_ffff_ffff_fffd
+  - actual: b31_val
+    expected: 0x7fff_ffff
+  - actual: b63_val
+    expected: 0x7fff_ffff_ffff_fffc
+
+  - actual: cond
+    expected: true
+
+  - actual: add_u1_u2_u4
+    expected: 0xffee_dec6
+  - actual: add_u2_u1_u8
+    expected: 0xfedc_ba98_7655_320e
+  - actual: add_u1_lit_u4
+    expected: 0xffee_dec6
+  - actual: add_b08_u2_u4
+    expected: 0xffee_dec6

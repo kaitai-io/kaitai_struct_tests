@@ -2,11 +2,11 @@ package io.kaitai.struct.testtranslator.specgenerators
 
 import _root_.io.kaitai.struct.{ClassTypeProvider, ImportList}
 import _root_.io.kaitai.struct.datatype.{DataType, KSError}
-import _root_.io.kaitai.struct.datatype.DataType.BytesType
+import _root_.io.kaitai.struct.datatype.DataType.{BytesType, CalcIntType, EnumType, IntType}
 import _root_.io.kaitai.struct.exprlang.Ast
 import _root_.io.kaitai.struct.languages.JavaScriptCompiler
 import _root_.io.kaitai.struct.testtranslator.{Main, TestAssert, TestEquals, TestSpec, ExpectedException}
-import _root_.io.kaitai.struct.translators.JavaScriptTranslator
+import _root_.io.kaitai.struct.translators.{JavaScriptTranslator, TypeDetector}
 
 class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(spec) {
   val className = JavaScriptCompiler.type2class(spec.id)
@@ -63,7 +63,7 @@ class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGene
   override def simpleEquality(check: TestEquals): Unit = {
     val actType = translator.detectType(check.actual)
     val actStr = translateAct(check.actual)
-    val expStr = translator.translate(check.expected)
+    val expStr = translateExpected(check.expected, actType)
     actType match {
       case _: BytesType =>
         out.puts(s"assert.deepStrictEqual($actStr, $expStr);")
@@ -114,6 +114,32 @@ class JavaScriptSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGene
         s"var $x = require('$fileName');"
       }).mkString("", "\n", "\n") + "\n" +
       out.result
+  }
+
+  /**
+   * Translates the expected value `exp` of an actual value of type `actType`.
+   * KSC represents 64-bit integers (`s8`, `u8`, `b33`..`b64`) as `bigint`,
+   * but `assert.strictEqual()` doesn't consider a `bigint` equal to a
+   * `number` (`assert.strictEqual(1n, 1)` fails). Integer literals expected
+   * for such values (or for enum values whose underlying integer type is
+   * 64-bit) are therefore translated as `bigint` literals.
+   */
+  def translateExpected(exp: Ast.expr, actType: DataType): String = {
+    // an enum value without a label is just its integer ID
+    val intType = actType match {
+      case it: IntType => Some(it)
+      case et: EnumType => Some(et.enumSpec.get.intType)
+      case _ => None
+    }
+    intType match {
+      case Some(it) if it != CalcIntType && it.bitWidth > 32 =>
+        TypeDetector.intLiteralValue(exp) match {
+          case Some(n) => s"${n}n"
+          case None => translator.translate(exp)
+        }
+      case _ =>
+        translator.translate(exp)
+    }
   }
 
   def translateAct(x: Ast.expr) =

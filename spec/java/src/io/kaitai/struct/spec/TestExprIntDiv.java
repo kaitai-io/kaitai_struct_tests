@@ -12,9 +12,12 @@ public class TestExprIntDiv extends CommonSpec {
 
         assertIntEquals(r.intU(), 1262698832);
         assertIntEquals(r.intS(), -52947);
+        assertIntEquals(r.intS8(), 4912676421555667280L);
         assertIntEquals(r.divPosConst(), 756);
         assertIntEquals(r.divNegConst(), -757);
         assertIntEquals(r.divPosSeq(), 97130679);
         assertIntEquals(r.divNegSeq(), -4073);
+        assertIntEquals(r.divPosS8Seq(), 377898186273512867L);
+        assertIntEquals(r.divNegS8Seq(), -377898186273512868L);
     }
 }

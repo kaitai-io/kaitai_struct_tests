@@ -1,0 +1,21 @@
+id: expr_calc_int_promotion
+data: expr_calc_int_promotion.bin
+asserts:
+  - actual: u4_val
+    expected: 3
+  - actual: u8_val
+    expected: 0x1_0000_0005
+  - actual: s8_val
+    expected: -0x1_0000_0000
+  - actual: items[0]
+    expected: '"ABC"'
+  - actual: items[1]
+    expected: '"DEFG"'
+  - actual: io_size_minus_u4
+    expected: 24
+  - actual: u8_plus_io_size
+    expected: 0x1_0000_0020
+  - actual: io_size_minus_s8
+    expected: 0x1_0000_001b
+  - actual: io_size_and_u4_lit
+    expected: 16

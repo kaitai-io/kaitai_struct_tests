@@ -6,8 +6,11 @@ var testHelper = require('testHelper');
 testHelper('ExprIntDiv', 'src/fixed_struct.bin', function(r, ExprIntDiv_) {
   assert.strictEqual(r.intU, 1262698832);
   assert.strictEqual(r.intS, -52947);
+  assert.strictEqual(r.intS8, 4912676421555667280n);
   assert.strictEqual(r.divPosConst, 756);
   assert.strictEqual(r.divNegConst, -757);
   assert.strictEqual(r.divPosSeq, 97130679);
   assert.strictEqual(r.divNegSeq, -4073);
+  assert.strictEqual(r.divPosS8Seq, 377898186273512867n);
+  assert.strictEqual(r.divNegS8Seq, -377898186273512868n);
 });

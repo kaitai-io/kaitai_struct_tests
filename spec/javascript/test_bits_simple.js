@@ -15,7 +15,7 @@ testHelper('BitsSimple', 'src/fixed_struct.bin', function(r, BitsSimple_) {
   assert.strictEqual(r.normalS2, -1);
   assert.strictEqual(r.byte8910, 5259587);
   assert.strictEqual(r.byte11To14, 1261262125);
-  assert.strictEqual(r.byte15To19, 293220057087);
-  assert.strictEqual(r.byte20To27, 18446744073709551615);
+  assert.strictEqual(r.byte15To19, 293220057087n);
+  assert.strictEqual(r.byte20To27, 18446744073709551615n);
   assert.strictEqual(r.testIfB1, 123);
 });

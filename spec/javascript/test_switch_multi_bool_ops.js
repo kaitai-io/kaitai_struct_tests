@@ -6,11 +6,11 @@ var testHelper = require('testHelper');
 testHelper('SwitchMultiBoolOps', 'src/switch_integers.bin', function(r, SwitchMultiBoolOps_) {
   assert.strictEqual(r.opcodes.length, 4);
   assert.strictEqual(r.opcodes[0].code, 1);
-  assert.strictEqual(r.opcodes[0].body, 7);
+  assert.strictEqual(r.opcodes[0].body, 7n);
   assert.strictEqual(r.opcodes[1].code, 2);
-  assert.strictEqual(r.opcodes[1].body, 16448);
+  assert.strictEqual(r.opcodes[1].body, 16448n);
   assert.strictEqual(r.opcodes[2].code, 4);
-  assert.strictEqual(r.opcodes[2].body, 4919);
+  assert.strictEqual(r.opcodes[2].body, 4919n);
   assert.strictEqual(r.opcodes[3].code, 8);
-  assert.strictEqual(r.opcodes[3].body, 4919);
+  assert.strictEqual(r.opcodes[3].body, 4919n);
 });

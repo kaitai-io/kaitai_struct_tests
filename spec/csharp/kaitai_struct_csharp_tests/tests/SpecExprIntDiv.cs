@@ -14,10 +14,13 @@ namespace Kaitai
 
             Assert.AreEqual(r.IntU, 1262698832);
             Assert.AreEqual(r.IntS, -52947);
+            Assert.AreEqual(r.IntS8, 4912676421555667280);
             Assert.AreEqual(r.DivPosConst, 756);
             Assert.AreEqual(r.DivNegConst, -757);
             Assert.AreEqual(r.DivPosSeq, 97130679);
             Assert.AreEqual(r.DivNegSeq, -4073);
+            Assert.AreEqual(r.DivPosS8Seq, 377898186273512867);
+            Assert.AreEqual(r.DivNegS8Seq, -377898186273512868);
         }
     }
 }

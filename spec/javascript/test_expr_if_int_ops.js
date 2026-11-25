@@ -4,7 +4,7 @@ var assert = require('assert');
 var testHelper = require('testHelper');
 
 testHelper('ExprIfIntOps', 'src/instance_io.bin', function(r, ExprIfIntOps_) {
-  assert.strictEqual(r.key, 3);
+  assert.strictEqual(r.key, 3n);
   assert.deepStrictEqual(r.bytes, new Uint8Array([252, 252, 252, 253, 9, 3, 3, 3]));
   assert.strictEqual(r.bytesSubKey, 253);
   assert.strictEqual(r.itemsSubKey, -3);

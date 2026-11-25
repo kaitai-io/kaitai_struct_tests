@@ -9,9 +9,12 @@ class ExprIntDivTest extends TestCase {
 
         $this->assertSame(1262698832, $r->intU());
         $this->assertSame(-52947, $r->intS());
+        $this->assertSame(4912676421555667280, $r->intS8());
         $this->assertSame(756, $r->divPosConst());
         $this->assertSame(-757, $r->divNegConst());
         $this->assertSame(97130679, $r->divPosSeq());
         $this->assertSame(-4073, $r->divNegSeq());
+        $this->assertSame(377898186273512867, $r->divPosS8Seq());
+        $this->assertSame(-377898186273512868, $r->divNegS8Seq());
     }
 }
