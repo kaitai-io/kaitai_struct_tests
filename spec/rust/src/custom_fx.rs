@@ -1,4 +1,4 @@
-extern crate kaitai;
+extern crate kaitai_struct;
 
 #[allow(non_snake_case)]
 
@@ -12,7 +12,7 @@ pub mod Nested {
             }
         }
 
-        impl kaitai::CustomDecoder for CustomFx {
+        impl kaitai_struct::CustomDecoder for CustomFx {
             fn decode(&self, bytes: &[u8]) -> Result<Vec<u8>, String> {
                 let mut res = bytes.to_vec();
                 res.insert(0, '_' as u8);

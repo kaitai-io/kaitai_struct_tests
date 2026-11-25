@@ -1,5 +1,5 @@
-extern crate kaitai;
-use kaitai::CustomDecoder;
+extern crate kaitai_struct;
+use kaitai_struct::CustomDecoder;
 
 pub struct CustomFxNoArgs {
 }

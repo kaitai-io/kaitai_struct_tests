@@ -6,7 +6,7 @@ edition = "2018"
 autotests = false
 
 [dependencies]
-kaitai = { path = "../../../runtime/rust" }
+kaitai_struct = { path = "../../../runtime/rust" }
 
 [[test]]
 name = "spec"

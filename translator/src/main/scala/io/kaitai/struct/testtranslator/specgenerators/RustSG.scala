@@ -16,8 +16,8 @@ class RustSG(spec: TestSpec, provider: ClassTypeProvider) extends BaseGenerator(
 
   override def header(): Unit = {
     importList.add("use std::fs;")
-    importList.add("extern crate kaitai;")
-    importList.add("use self::kaitai::*;")
+    importList.add("extern crate kaitai_struct;")
+    importList.add("use self::kaitai_struct::*;")
     importList.add(s"use rust::formats::${spec.id}::*;")
 
     spec.extraImports.foreach(entry => importList.add(s"use rust::formats::$entry::*;"))
