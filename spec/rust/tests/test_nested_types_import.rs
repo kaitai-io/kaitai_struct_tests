@@ -1,6 +1,6 @@
 use std::fs;
-extern crate kaitai;
-use self::kaitai::*;
+extern crate kaitai_struct;
+use self::kaitai_struct::*;
 use rust::formats::nested_types_import::*;
 
 #[test]
