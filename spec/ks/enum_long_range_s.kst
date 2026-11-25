@@ -3,15 +3,43 @@ data: enum_long_range_s.bin
 asserts:
   - actual: f1
     expected: enum_long_range_s::constants::long_min
+  - actual: f1.to_i
+    expected: -9223372036854775808
+  - actual: f1_to_i
+    expected: -9223372036854775808
   - actual: f2
     expected: enum_long_range_s::constants::int_below_min
+  - actual: f2.to_i
+    expected: -2147483649
+  - actual: f2_to_i
+    expected: -2147483649
   - actual: f3
     expected: enum_long_range_s::constants::int_min
+  - actual: f3.to_i
+    expected: -2147483648
+  - actual: f3_to_i
+    expected: -2147483648
   - actual: f4
     expected: enum_long_range_s::constants::zero
+  - actual: f4.to_i
+    expected: 0
+  - actual: f4_to_i
+    expected: 0
   - actual: f5
     expected: enum_long_range_s::constants::int_max
+  - actual: f5.to_i
+    expected: 2147483647
+  - actual: f5_to_i
+    expected: 2147483647
   - actual: f6
     expected: enum_long_range_s::constants::int_over_max
+  - actual: f6.to_i
+    expected: 2147483648
+  - actual: f6_to_i
+    expected: 2147483648
   - actual: f7
     expected: enum_long_range_s::constants::long_max
+  - actual: f7.to_i
+    expected: 9223372036854775807
+  - actual: f7_to_i
+    expected: 9223372036854775807

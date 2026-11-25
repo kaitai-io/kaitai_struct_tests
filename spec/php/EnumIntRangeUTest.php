@@ -6,8 +6,11 @@ namespace Kaitai\Struct\Tests;
 class EnumIntRangeUTest extends TestCase {
     public function testEnumIntRangeU() {
         $r = EnumIntRangeU::fromFile(self::SRC_DIR_PATH . '/enum_int_range_u.bin');
-
         $this->assertSame(\Kaitai\Struct\Tests\EnumIntRangeU\Constants::ZERO, $r->f1());
+        $this->assertSame(0, $r->f1());
+        $this->assertSame(0, $r->f1ToI());
         $this->assertSame(\Kaitai\Struct\Tests\EnumIntRangeU\Constants::INT_MAX, $r->f2());
+        $this->assertSame(4294967295, $r->f2());
+        $this->assertSame(4294967295, $r->f2ToI());
     }
 }

@@ -9,5 +9,7 @@ seq:
       in-enum: true
 enums:
   animal:
-    4: dog
-    12: chicken
+    type: u4
+    values:
+      4: dog
+      12: chicken

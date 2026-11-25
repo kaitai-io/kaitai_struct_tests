@@ -18,5 +18,7 @@ seq:
     if: 'foo_enum > animal::cat'
 enums:
   animal:
-    1: cat
-    2: dog
+    type: u1
+    values:
+      1: cat
+      2: dog

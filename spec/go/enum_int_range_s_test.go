@@ -28,8 +28,25 @@ func TestEnumIntRangeS(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-
 	assert.EqualValues(t, EnumIntRangeS_Constants__IntMin, r.F1)
+	assert.EqualValues(t, -2147483648, r.F1)
+	tmp1, err := r.F1ToI()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, -2147483648, tmp1)
 	assert.EqualValues(t, EnumIntRangeS_Constants__Zero, r.F2)
+	assert.EqualValues(t, 0, r.F2)
+	tmp2, err := r.F2ToI()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, 0, tmp2)
 	assert.EqualValues(t, EnumIntRangeS_Constants__IntMax, r.F3)
+	assert.EqualValues(t, 2147483647, r.F3)
+	tmp3, err := r.F3ToI()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, 2147483647, tmp3)
 }

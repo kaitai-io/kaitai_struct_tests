@@ -8,4 +8,8 @@ class TestEnumIntRangeU(unittest.TestCase):
     def test_enum_int_range_u(self):
         r = _schema.parse_file('src/enum_int_range_u.bin')
         self.assertEqual(r.f1, 'zero')
+        self.assertEqual(int(r.f1), 0)
+        self.assertEqual(r.f1_to_i, 0)
         self.assertEqual(r.f2, 'int_max')
+        self.assertEqual(int(r.f2), 4294967295)
+        self.assertEqual(r.f2_to_i, 4294967295)

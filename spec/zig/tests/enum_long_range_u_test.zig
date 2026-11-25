@@ -15,7 +15,15 @@ test "EnumLongRangeU" {
     var _io = _imp_kaitai_struct.KaitaiStream.fromFileReader(&reader);
     const r = try _imp_enum_long_range_u.EnumLongRangeU.create(&arena, &_io, null, null);
     try _imp_std.testing.expectEqual(_imp_enum_long_range_u.EnumLongRangeU.Constants.zero, r.f1);
+    try _imp_std.testing.expectEqual(0, @intFromEnum(r.f1));
+    try _imp_std.testing.expectEqual(0, (try r.f1ToI()));
     try _imp_std.testing.expectEqual(_imp_enum_long_range_u.EnumLongRangeU.Constants.int_max, r.f2);
+    try _imp_std.testing.expectEqual(4294967295, @intFromEnum(r.f2));
+    try _imp_std.testing.expectEqual(4294967295, (try r.f2ToI()));
     try _imp_std.testing.expectEqual(_imp_enum_long_range_u.EnumLongRangeU.Constants.int_over_max, r.f3);
+    try _imp_std.testing.expectEqual(4294967296, @intFromEnum(r.f3));
+    try _imp_std.testing.expectEqual(4294967296, (try r.f3ToI()));
     try _imp_std.testing.expectEqual(_imp_enum_long_range_u.EnumLongRangeU.Constants.long_max, r.f4);
+    try _imp_std.testing.expectEqual(18446744073709551615, @intFromEnum(r.f4));
+    try _imp_std.testing.expectEqual(18446744073709551615, (try r.f4ToI()));
 }

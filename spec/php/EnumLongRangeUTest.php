@@ -6,10 +6,17 @@ namespace Kaitai\Struct\Tests;
 class EnumLongRangeUTest extends TestCase {
     public function testEnumLongRangeU() {
         $r = EnumLongRangeU::fromFile(self::SRC_DIR_PATH . '/enum_long_range_u.bin');
-
         $this->assertSame(\Kaitai\Struct\Tests\EnumLongRangeU\Constants::ZERO, $r->f1());
+        $this->assertSame(0, $r->f1());
+        $this->assertSame(0, $r->f1ToI());
         $this->assertSame(\Kaitai\Struct\Tests\EnumLongRangeU\Constants::INT_MAX, $r->f2());
+        $this->assertSame(4294967295, $r->f2());
+        $this->assertSame(4294967295, $r->f2ToI());
         $this->assertSame(\Kaitai\Struct\Tests\EnumLongRangeU\Constants::INT_OVER_MAX, $r->f3());
+        $this->assertSame(4294967296, $r->f3());
+        $this->assertSame(4294967296, $r->f3ToI());
         $this->assertSame(\Kaitai\Struct\Tests\EnumLongRangeU\Constants::LONG_MAX, $r->f4());
+        $this->assertSame(-1, $r->f4());
+        $this->assertSame(-1, $r->f4ToI());
     }
 }

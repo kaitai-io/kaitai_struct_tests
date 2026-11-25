@@ -9,8 +9,11 @@ public class TestEnumIntRangeU extends CommonSpec {
     @Test
     public void testEnumIntRangeU() throws Exception {
         EnumIntRangeU r = EnumIntRangeU.fromFile(SRC_DIR + "enum_int_range_u.bin");
-
         assertEquals(r.f1(), EnumIntRangeU.Constants.ZERO);
+        assertIntEquals(r.f1().id(), 0);
+        assertIntEquals(r.f1ToI(), 0);
         assertEquals(r.f2(), EnumIntRangeU.Constants.INT_MAX);
+        assertIntEquals(r.f2().id(), 4294967295L);
+        assertIntEquals(r.f2ToI(), 4294967295L);
     }
 }

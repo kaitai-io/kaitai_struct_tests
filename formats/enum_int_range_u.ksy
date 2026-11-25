@@ -5,8 +5,10 @@ meta:
 
 enums:
   constants:
-    0: zero
-    4294967295: int_max
+    type: u4
+    values:
+      0: zero
+      4294967295: int_max
 
 seq:
   - id: f1
@@ -15,3 +17,9 @@ seq:
   - id: f2
     type: u4
     enum: constants
+
+instances:
+  f1_to_i:
+    value: f1.to_i
+  f2_to_i:
+    value: f2.to_i

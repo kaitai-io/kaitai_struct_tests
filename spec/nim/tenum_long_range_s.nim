@@ -5,11 +5,24 @@ import ../../compiled/nim/enum_long_range_s
 import auxiliary/test_utils
 
 let r = EnumLongRangeS.fromFile("../../src/enum_long_range_s.bin")
-
 assert r.f1 == enum_long_range_s.long_min
+assert ord(r.f1) == -9223372036854775808'i64
+assert r.f1ToI == -9223372036854775808'i64
 assert r.f2 == enum_long_range_s.int_below_min
+assert ord(r.f2) == -2147483649'i64
+assert r.f2ToI == -2147483649'i64
 assert r.f3 == enum_long_range_s.int_min
+assert ord(r.f3) == -2147483648
+assert r.f3ToI == -2147483648
 assert r.f4 == enum_long_range_s.zero
+assert ord(r.f4) == 0
+assert r.f4ToI == 0
 assert r.f5 == enum_long_range_s.int_max
+assert ord(r.f5) == 2147483647
+assert r.f5ToI == 2147483647
 assert r.f6 == enum_long_range_s.int_over_max
+assert ord(r.f6) == 2147483648'i64
+assert r.f6ToI == 2147483648'i64
 assert r.f7 == enum_long_range_s.long_max
+assert ord(r.f7) == 9223372036854775807'i64
+assert r.f7ToI == 9223372036854775807'i64

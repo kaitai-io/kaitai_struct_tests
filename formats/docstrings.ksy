@@ -21,6 +21,12 @@ types:
       And the text continues after that. Here's a MarkDown-style link:
       [woohoo](http://example.com) - one day it will be supported as
       well.
+enums:
+  sample_enum:
+    doc: A detailed description for enum "sample_enum"
+    type: u1
+    values:
+      1: foo
 instances:
   two:
     pos: 0

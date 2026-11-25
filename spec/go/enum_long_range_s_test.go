@@ -28,12 +28,53 @@ func TestEnumLongRangeS(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-
 	assert.EqualValues(t, EnumLongRangeS_Constants__LongMin, r.F1)
+	assert.EqualValues(t, int64(-9223372036854775808), r.F1)
+	tmp1, err := r.F1ToI()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, int64(-9223372036854775808), tmp1)
 	assert.EqualValues(t, EnumLongRangeS_Constants__IntBelowMin, r.F2)
+	assert.EqualValues(t, int64(-2147483649), r.F2)
+	tmp2, err := r.F2ToI()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, int64(-2147483649), tmp2)
 	assert.EqualValues(t, EnumLongRangeS_Constants__IntMin, r.F3)
+	assert.EqualValues(t, -2147483648, r.F3)
+	tmp3, err := r.F3ToI()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, -2147483648, tmp3)
 	assert.EqualValues(t, EnumLongRangeS_Constants__Zero, r.F4)
+	assert.EqualValues(t, 0, r.F4)
+	tmp4, err := r.F4ToI()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, 0, tmp4)
 	assert.EqualValues(t, EnumLongRangeS_Constants__IntMax, r.F5)
+	assert.EqualValues(t, 2147483647, r.F5)
+	tmp5, err := r.F5ToI()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, 2147483647, tmp5)
 	assert.EqualValues(t, EnumLongRangeS_Constants__IntOverMax, r.F6)
+	assert.EqualValues(t, uint32(2147483648), r.F6)
+	tmp6, err := r.F6ToI()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, uint32(2147483648), tmp6)
 	assert.EqualValues(t, EnumLongRangeS_Constants__LongMax, r.F7)
+	assert.EqualValues(t, int64(9223372036854775807), r.F7)
+	tmp7, err := r.F7ToI()
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.EqualValues(t, int64(9223372036854775807), tmp7)
 }

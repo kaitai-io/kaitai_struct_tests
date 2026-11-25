@@ -17,13 +17,17 @@ types:
   container1:
     enums:
       animal:
-        4: dog
-        7: cat
-        12: chicken
+        type: u4
+        values:
+          4: dog
+          7: cat
+          12: chicken
     types:
       container2:
         enums:
           animal:
-            4: canary
-            7: turtle
-            12: hare
+            type: u4
+            values:
+              4: canary
+              7: turtle
+              12: hare

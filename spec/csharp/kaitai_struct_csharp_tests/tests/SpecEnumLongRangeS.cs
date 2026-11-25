@@ -11,14 +11,27 @@ namespace Kaitai
         public void TestEnumLongRangeS()
         {
             var r = EnumLongRangeS.FromFile(SourceFile("enum_long_range_s.bin"));
-
             Assert.AreEqual(r.F1, EnumLongRangeS.Constants.LongMin);
+            Assert.AreEqual(((long) r.F1), -9223372036854775808);
+            Assert.AreEqual(r.F1ToI, -9223372036854775808);
             Assert.AreEqual(r.F2, EnumLongRangeS.Constants.IntBelowMin);
+            Assert.AreEqual(((long) r.F2), -2147483649);
+            Assert.AreEqual(r.F2ToI, -2147483649);
             Assert.AreEqual(r.F3, EnumLongRangeS.Constants.IntMin);
+            Assert.AreEqual(((long) r.F3), -2147483648);
+            Assert.AreEqual(r.F3ToI, -2147483648);
             Assert.AreEqual(r.F4, EnumLongRangeS.Constants.Zero);
+            Assert.AreEqual(((long) r.F4), 0);
+            Assert.AreEqual(r.F4ToI, 0);
             Assert.AreEqual(r.F5, EnumLongRangeS.Constants.IntMax);
+            Assert.AreEqual(((long) r.F5), 2147483647);
+            Assert.AreEqual(r.F5ToI, 2147483647);
             Assert.AreEqual(r.F6, EnumLongRangeS.Constants.IntOverMax);
+            Assert.AreEqual(((long) r.F6), 2147483648);
+            Assert.AreEqual(r.F6ToI, 2147483648);
             Assert.AreEqual(r.F7, EnumLongRangeS.Constants.LongMax);
+            Assert.AreEqual(((long) r.F7), 9223372036854775807);
+            Assert.AreEqual(r.F7ToI, 9223372036854775807);
         }
     }
 }

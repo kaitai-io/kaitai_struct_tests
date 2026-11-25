@@ -16,7 +16,9 @@ instances:
     enum: animal
 enums:
   animal:
-    4: dog
-    7: cat
-    12: chicken
-    0x66: boom
+    type: u1
+    values:
+      4: dog
+      7: cat
+      12: chicken
+      0x66: boom

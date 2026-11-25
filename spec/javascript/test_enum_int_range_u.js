@@ -5,5 +5,9 @@ var testHelper = require('testHelper');
 
 testHelper('EnumIntRangeU', 'src/enum_int_range_u.bin', function(r, EnumIntRangeU_) {
   assert.strictEqual(r.f1, EnumIntRangeU_.EnumIntRangeU.Constants.ZERO);
+  assert.strictEqual(r.f1, 0);
+  assert.strictEqual(r.f1ToI, 0);
   assert.strictEqual(r.f2, EnumIntRangeU_.EnumIntRangeU.Constants.INT_MAX);
+  assert.strictEqual(r.f2, 4294967295);
+  assert.strictEqual(r.f2ToI, 4294967295);
 });

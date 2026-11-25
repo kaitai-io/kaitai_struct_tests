@@ -8,7 +8,10 @@ TestEnumIntRangeU = {}
 
 function TestEnumIntRangeU:test_enum_int_range_u()
     local r = EnumIntRangeU:from_file("src/enum_int_range_u.bin")
-
     luaunit.assertEquals(r.f1, EnumIntRangeU.Constants.zero)
+    luaunit.assertEquals(r.f1.value, 0)
+    luaunit.assertEquals(r.f1_to_i, 0)
     luaunit.assertEquals(r.f2, EnumIntRangeU.Constants.int_max)
+    luaunit.assertEquals(r.f2.value, 4294967295)
+    luaunit.assertEquals(r.f2_to_i, 4294967295)
 end

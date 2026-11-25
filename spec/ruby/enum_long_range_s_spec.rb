@@ -4,13 +4,26 @@ RSpec.describe 'EnumLongRangeS' do
   it 'parses test properly' do
     require 'enum_long_range_s'
     r = EnumLongRangeS.from_file('src/enum_long_range_s.bin')
-
     expect(r.f1).to eq :constants_long_min
+    expect((EnumLongRangeS::I__CONSTANTS[r.f1] || r.f1)).to eq -9223372036854775808
+    expect(r.f1_to_i).to eq -9223372036854775808
     expect(r.f2).to eq :constants_int_below_min
+    expect((EnumLongRangeS::I__CONSTANTS[r.f2] || r.f2)).to eq -2147483649
+    expect(r.f2_to_i).to eq -2147483649
     expect(r.f3).to eq :constants_int_min
+    expect((EnumLongRangeS::I__CONSTANTS[r.f3] || r.f3)).to eq -2147483648
+    expect(r.f3_to_i).to eq -2147483648
     expect(r.f4).to eq :constants_zero
+    expect((EnumLongRangeS::I__CONSTANTS[r.f4] || r.f4)).to eq 0
+    expect(r.f4_to_i).to eq 0
     expect(r.f5).to eq :constants_int_max
+    expect((EnumLongRangeS::I__CONSTANTS[r.f5] || r.f5)).to eq 2147483647
+    expect(r.f5_to_i).to eq 2147483647
     expect(r.f6).to eq :constants_int_over_max
+    expect((EnumLongRangeS::I__CONSTANTS[r.f6] || r.f6)).to eq 2147483648
+    expect(r.f6_to_i).to eq 2147483648
     expect(r.f7).to eq :constants_long_max
+    expect((EnumLongRangeS::I__CONSTANTS[r.f7] || r.f7)).to eq 9223372036854775807
+    expect(r.f7_to_i).to eq 9223372036854775807
   end
 end

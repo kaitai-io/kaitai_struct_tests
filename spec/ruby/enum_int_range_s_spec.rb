@@ -4,9 +4,14 @@ RSpec.describe 'EnumIntRangeS' do
   it 'parses test properly' do
     require 'enum_int_range_s'
     r = EnumIntRangeS.from_file('src/enum_int_range_s.bin')
-
     expect(r.f1).to eq :constants_int_min
+    expect((EnumIntRangeS::I__CONSTANTS[r.f1] || r.f1)).to eq -2147483648
+    expect(r.f1_to_i).to eq -2147483648
     expect(r.f2).to eq :constants_zero
+    expect((EnumIntRangeS::I__CONSTANTS[r.f2] || r.f2)).to eq 0
+    expect(r.f2_to_i).to eq 0
     expect(r.f3).to eq :constants_int_max
+    expect((EnumIntRangeS::I__CONSTANTS[r.f3] || r.f3)).to eq 2147483647
+    expect(r.f3_to_i).to eq 2147483647
   end
 end

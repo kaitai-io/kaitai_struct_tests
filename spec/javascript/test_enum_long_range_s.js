@@ -5,10 +5,24 @@ var testHelper = require('testHelper');
 
 testHelper('EnumLongRangeS', 'src/enum_long_range_s.bin', function(r, EnumLongRangeS_) {
   assert.strictEqual(r.f1, EnumLongRangeS_.EnumLongRangeS.Constants.LONG_MIN);
+  assert.strictEqual(r.f1, -9223372036854775808);
+  assert.strictEqual(r.f1ToI, -9223372036854775808);
   assert.strictEqual(r.f2, EnumLongRangeS_.EnumLongRangeS.Constants.INT_BELOW_MIN);
+  assert.strictEqual(r.f2, -2147483649);
+  assert.strictEqual(r.f2ToI, -2147483649);
   assert.strictEqual(r.f3, EnumLongRangeS_.EnumLongRangeS.Constants.INT_MIN);
+  assert.strictEqual(r.f3, -2147483648);
+  assert.strictEqual(r.f3ToI, -2147483648);
   assert.strictEqual(r.f4, EnumLongRangeS_.EnumLongRangeS.Constants.ZERO);
+  assert.strictEqual(r.f4, 0);
+  assert.strictEqual(r.f4ToI, 0);
   assert.strictEqual(r.f5, EnumLongRangeS_.EnumLongRangeS.Constants.INT_MAX);
+  assert.strictEqual(r.f5, 2147483647);
+  assert.strictEqual(r.f5ToI, 2147483647);
   assert.strictEqual(r.f6, EnumLongRangeS_.EnumLongRangeS.Constants.INT_OVER_MAX);
+  assert.strictEqual(r.f6, 2147483648);
+  assert.strictEqual(r.f6ToI, 2147483648);
   assert.strictEqual(r.f7, EnumLongRangeS_.EnumLongRangeS.Constants.LONG_MAX);
+  assert.strictEqual(r.f7, 9223372036854775807);
+  assert.strictEqual(r.f7ToI, 9223372036854775807);
 });

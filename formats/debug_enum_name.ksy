@@ -27,11 +27,19 @@ types:
         enum: inner_enum2
     enums:
       inner_enum1:
-        67: enum_value_67
+        type: u1
+        values:
+          67: enum_value_67
       inner_enum2:
-        11: enum_value_11
+        type: u1
+        values:
+          11: enum_value_11
 enums:
   test_enum1:
-    80: enum_value_80
+    type: u1
+    values:
+      80: enum_value_80
   test_enum2:
-    65: enum_value_65
+    type: u1
+    values:
+      65: enum_value_65

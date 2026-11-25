@@ -5,8 +5,15 @@ import ../../compiled/nim/enum_long_range_u
 import auxiliary/test_utils
 
 let r = EnumLongRangeU.fromFile("../../src/enum_long_range_u.bin")
-
 assert r.f1 == enum_long_range_u.zero
+assert ord(r.f1) == 0
+assert r.f1ToI == 0
 assert r.f2 == enum_long_range_u.int_max
+assert ord(r.f2) == 4294967295'i64
+assert r.f2ToI == 4294967295'i64
 assert r.f3 == enum_long_range_u.int_over_max
+assert ord(r.f3) == 4294967296'i64
+assert r.f3ToI == 4294967296'i64
 assert r.f4 == enum_long_range_u.long_max
+assert ord(r.f4) == 18446744073709551615'u64
+assert r.f4ToI == 18446744073709551615'u64

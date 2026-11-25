@@ -10,13 +10,26 @@ fn test_enum_long_range_s() -> KResult<()> {
     let bytes = fs::read("../../src/enum_long_range_s.bin").unwrap();
     let _io = BytesReader::from(bytes);
     let r: OptRc<EnumLongRangeS> = EnumLongRangeS::read_into(&_io, None, None)?;
-
     assert_eq!(*r.f1(), EnumLongRangeS_Constants::LongMin);
+    assert_eq!(i64::from(&*r.f1()), -9223372036854775808);
+    assert_eq!(*r.f1_to_i()?, -9223372036854775808);
     assert_eq!(*r.f2(), EnumLongRangeS_Constants::IntBelowMin);
+    assert_eq!(i64::from(&*r.f2()), -2147483649);
+    assert_eq!(*r.f2_to_i()?, -2147483649);
     assert_eq!(*r.f3(), EnumLongRangeS_Constants::IntMin);
+    assert_eq!(i64::from(&*r.f3()), -2147483648);
+    assert_eq!(*r.f3_to_i()?, -2147483648);
     assert_eq!(*r.f4(), EnumLongRangeS_Constants::Zero);
+    assert_eq!(i64::from(&*r.f4()), 0);
+    assert_eq!(*r.f4_to_i()?, 0);
     assert_eq!(*r.f5(), EnumLongRangeS_Constants::IntMax);
+    assert_eq!(i64::from(&*r.f5()), 2147483647);
+    assert_eq!(*r.f5_to_i()?, 2147483647);
     assert_eq!(*r.f6(), EnumLongRangeS_Constants::IntOverMax);
+    assert_eq!(i64::from(&*r.f6()), 2147483648);
+    assert_eq!(*r.f6_to_i()?, 2147483648);
     assert_eq!(*r.f7(), EnumLongRangeS_Constants::LongMax);
+    assert_eq!(i64::from(&*r.f7()), 9223372036854775807);
+    assert_eq!(*r.f7_to_i()?, 9223372036854775807);
     Ok(())
 }

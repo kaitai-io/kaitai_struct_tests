@@ -3,7 +3,19 @@ data: enum_int_range_s.bin
 asserts:
   - actual: f1
     expected: enum_int_range_s::constants::int_min
+  - actual: f1.to_i
+    expected: -2147483648
+  - actual: f1_to_i
+    expected: -2147483648
   - actual: f2
     expected: enum_int_range_s::constants::zero
+  - actual: f2.to_i
+    expected: 0
+  - actual: f2_to_i
+    expected: 0
   - actual: f3
     expected: enum_int_range_s::constants::int_max
+  - actual: f3.to_i
+    expected: 2147483647
+  - actual: f3_to_i
+    expected: 2147483647

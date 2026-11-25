@@ -11,10 +11,15 @@ namespace Kaitai
         public void TestEnumIntRangeS()
         {
             var r = EnumIntRangeS.FromFile(SourceFile("enum_int_range_s.bin"));
-
             Assert.AreEqual(r.F1, EnumIntRangeS.Constants.IntMin);
+            Assert.AreEqual(((int) r.F1), -2147483648);
+            Assert.AreEqual(r.F1ToI, -2147483648);
             Assert.AreEqual(r.F2, EnumIntRangeS.Constants.Zero);
+            Assert.AreEqual(((int) r.F2), 0);
+            Assert.AreEqual(r.F2ToI, 0);
             Assert.AreEqual(r.F3, EnumIntRangeS.Constants.IntMax);
+            Assert.AreEqual(((int) r.F3), 2147483647);
+            Assert.AreEqual(r.F3ToI, 2147483647);
         }
     }
 }
