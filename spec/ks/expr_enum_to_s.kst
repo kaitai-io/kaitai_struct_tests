@@ -1,0 +1,5 @@
+id: expr_enum_to_s
+data: enum_0.bin
+asserts:
+  - actual: one_as_string
+    expected: '"one=cat"'
