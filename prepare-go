@@ -3,4 +3,10 @@
 . "$(dirname "$0")/config"
 
 mkdir -p "$FORMATS_COMPILED_DIR/go/src/test_formats"
-cp -u -t "$FORMATS_COMPILED_DIR/go/src/test_formats" helpers/go/go.mod helpers/go/go.sum
+cp helpers/go/go.mod helpers/go/go.sum "$FORMATS_COMPILED_DIR/go/src/test_formats/"
+mkdir -p "$FORMATS_COMPILED_DIR/go/src/test_formats_write"
+cp helpers/go-write/go.mod "$FORMATS_COMPILED_DIR/go/src/test_formats_write/"
+cp helpers/go/go.sum "$FORMATS_COMPILED_DIR/go/src/test_formats_write/"
+cp helpers/go-write/custom_fx_no_args.go helpers/go-write/my_custom_fx.go "$FORMATS_COMPILED_DIR/go/src/test_formats_write/"
+mkdir -p "$FORMATS_COMPILED_DIR/go/src/test_formats_write/nested/deeply"
+cp helpers/go-write/nested/deeply/go.mod helpers/go-write/nested/deeply/custom_fx.go "$FORMATS_COMPILED_DIR/go/src/test_formats_write/nested/deeply/"

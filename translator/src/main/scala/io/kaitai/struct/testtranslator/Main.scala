@@ -19,6 +19,7 @@ object Main extends App {
     "cpp_stl_11",
     "csharp",
     "go",
+    "go-write",
     "java",
     "java-write",
     "javascript",
